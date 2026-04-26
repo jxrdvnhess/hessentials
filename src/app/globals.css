@@ -1,26 +1,338 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------- Base ---------- */
+html {
+  background: #f8f6f3;
+  color: #1f1d1b;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("/soft-plaster-texture-with-plant-shadows.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #1f1d1b;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "kern", "liga", "calt";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #1f1d1b;
+  color: #f8f6f3;
+}
+
+/* ---------- Tailwind theme tokens (utilities like font-serif) ---------- */
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+/* ---------- Animations ---------- */
+@keyframes soapDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-44px) scale(1.015);
+    filter: blur(1px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(3px) scale(0.997);
+    filter: blur(0);
+  }
+  82% {
+    transform: translateY(-1.5px) scale(1.001);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.soap-drop {
+  animation: soapDrop 1.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
+}
+
+.fade-up {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- Enter Page: symbol → wordmark transformation ---------- */
+
+@keyframes symbolDropMorph {
+  /* Drop in */
+  0%   { opacity: 0; transform: translateY(-90px) scale(1); }
+  25%  { opacity: 1; transform: translateY(0)    scale(1); }
+  /* Brief hold */
+  38%  { opacity: 1; transform: translateY(0)    scale(1); }
+  /* Expand LARGE */
+  58%  { opacity: 1; transform: translateY(0)    scale(4); }
+  /* Hold at peak */
+  64%  { opacity: 1; transform: translateY(0)    scale(4); }
+  /* Shrink back down */
+  82%  { opacity: 0; transform: translateY(0)    scale(0.35); }
+  100% { opacity: 0; transform: translateY(0)    scale(0.35); }
+}
+
+@keyframes wordmarkEmerge {
+  0%   { opacity: 0; transform: scale(0.72); }
+  72%  { opacity: 0; transform: scale(0.72); }
+  92%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.symbol-drop-morph {
+  animation: symbolDropMorph 3.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.wordmark-emerge {
+  animation: wordmarkEmerge 3.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .symbol-drop-morph {
+    animation: none;
+    opacity: 0;
+    transform: none;
+  }
+  .wordmark-emerge {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes resultFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.result-fade {
+  animation: resultFade 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.delay-1 { animation-delay: 0.45s; }
+.delay-2 { animation-delay: 0.7s; }
+.delay-3 { animation-delay: 0.95s; }
+.delay-4 { animation-delay: 1.3s; }
+.delay-5 { animation-delay: 1.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .soap-drop,
+  .fade-up,
+  .result-fade {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Home hub arrival ---------- */
+
+@keyframes plasterRise {
+  0% {
+    opacity: 0;
+    transform: translateY(40%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plaster-rise {
+  animation: plasterRise 3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes wordmarkPress {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wordmark-press {
+  animation: wordmarkPress 3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plaster-rise,
+  .wordmark-press {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Editorial prose (rendered markdown) ---------- */
+
+.prose-editorial {
+  color: #1f1d1b;
+}
+
+.prose-editorial p,
+.prose-editorial ul,
+.prose-editorial ol {
+  font-size: 18px;
+  line-height: 1.75;
+  color: rgb(31 29 27 / 0.85);
+}
+
+.prose-editorial p + p,
+.prose-editorial p + ul,
+.prose-editorial p + ol,
+.prose-editorial ul + p,
+.prose-editorial ol + p,
+.prose-editorial ul + ul,
+.prose-editorial ol + ol {
+  margin-top: 1.75rem;
+}
+
+.prose-editorial h2 {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-size: clamp(1.625rem, 2.6vw, 2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: 4.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose-editorial h2:first-child {
+  margin-top: 0;
+}
+
+.prose-editorial h3 {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.prose-editorial h2 + p,
+.prose-editorial h2 + ul,
+.prose-editorial h2 + ol,
+.prose-editorial h3 + p,
+.prose-editorial h3 + ul,
+.prose-editorial h3 + ol {
+  margin-top: 0;
+}
+
+.prose-editorial hr {
+  border: 0;
+  height: 0;
+  margin: 4rem 0;
+  text-align: center;
+  overflow: visible;
+}
+
+.prose-editorial hr::before {
+  content: "—";
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  color: rgb(31 29 27 / 0.3);
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.prose-editorial ul {
+  list-style: none;
+  padding: 0;
+}
+
+.prose-editorial ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.prose-editorial ul > li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: rgb(31 29 27 / 0.35);
+}
+
+.prose-editorial ol {
+  padding-left: 1.5rem;
+}
+
+.prose-editorial li + li {
+  margin-top: 0.5rem;
+}
+
+.prose-editorial a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgb(31 29 27 / 0.3);
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.5s ease-out;
+}
+
+.prose-editorial a:hover {
+  text-decoration-color: rgb(31 29 27 / 0.7);
+}
+
+.prose-editorial strong {
+  font-weight: 500;
+  color: #1f1d1b;
+}
+
+.prose-editorial em {
+  font-style: italic;
+}
+
+.prose-editorial code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95em;
+  color: rgb(31 29 27 / 0.7);
+}
+
+.prose-editorial blockquote {
+  font-family: var(--font-serif), ui-serif, Georgia, serif;
+  font-style: italic;
+  font-size: 1.375rem;
+  line-height: 1.5;
+  color: rgb(31 29 27 / 0.7);
+  margin: 3rem 0;
+  text-align: center;
+  padding: 0;
+  border: 0;
+}
+
+.prose-editorial img {
+  width: 100%;
+  height: auto;
+  margin: 3rem 0;
 }
