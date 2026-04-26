@@ -18,4 +18,5 @@ Only what proves itself useful, personal, and lasting.
 
 Because there's a difference between things that look good and things that actually improve your life.
 
-Hessentials is only interested in the second.
+Hessentials is only interested in the second. 
+
