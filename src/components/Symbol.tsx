@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export type SymbolSize = "xs" | "sm" | "md" | "lg";
+export type SymbolSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 export type SymbolVariant = "default" | "inverse";
 
 type SymbolProps = {
@@ -16,6 +16,8 @@ const WIDTH: Record<SymbolSize, string> = {
   sm: "w-6",
   md: "w-10",
   lg: "w-16",
+  xl: "w-20",
+  "2xl": "w-24",
 };
 
 /**

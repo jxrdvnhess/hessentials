@@ -9,6 +9,7 @@ import {
   type ReadingResult,
   type Selection,
 } from "../data/aurelian";
+import AurelianStyle from "./AurelianStyle";
 
 type Field = {
   placement: Placement;
@@ -323,6 +324,9 @@ export default function BigThree() {
               ))}
             </div>
           </section>
+
+          {/* ---------- How This Shows Up in Style ---------- */}
+          <AurelianStyle sun={sun} moon={moon} rising={rising} />
         </div>
       )}
     </div>

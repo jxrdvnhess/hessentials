@@ -65,21 +65,10 @@ export default function AurelianPage() {
           Aurelian
         </h1>
 
-        <div className="mx-auto mt-12 max-w-[32rem] space-y-5 text-[17px] leading-[1.7] text-[#1f1d1b]/80 sm:text-[18px]">
-          <p>This is not astrology for identity.</p>
-          <p>It’s for behavior.</p>
-          <p>Timing.</p>
-          <p>Pressure.</p>
-          <p>Decision-making.</p>
-          <p className="pt-2">
-            How you actually operate. Not how you describe yourself.
-          </p>
-        </div>
-
-        <div className="mx-auto mt-12 max-w-[28rem] space-y-2 text-[18px] leading-[1.5] text-[#1f1d1b] sm:text-[19px]">
-          <p>Start with your Big Three.</p>
-          <p className="text-[#1f1d1b]/55">That’s enough.</p>
-        </div>
+        <p className="mx-auto mt-10 max-w-[30rem] font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.55] text-[#1f1d1b]/70">
+          A behavioral framework drawn from astrological structure — for how
+          you actually operate, not how you describe yourself.
+        </p>
       </section>
 
       {/* ---------- Section 2 + 3: Calculator ---------- */}

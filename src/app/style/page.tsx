@@ -5,7 +5,7 @@ import { STYLE_ARTICLES } from "../../data/style";
 export const metadata: Metadata = {
   title: "Style — Hessentials",
   description:
-    "Jordan Hess on what to wear, what to keep, what to ignore. A taste system translated into real life.",
+    "J.D.H. on what to wear, what to keep, what to ignore. A taste system translated into real life.",
 };
 
 export default function StyleIndexPage() {

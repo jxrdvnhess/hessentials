@@ -11,7 +11,7 @@
 
 import { recipes } from "./recipes";
 import { STYLE_ARTICLES } from "./style";
-import { SHOP_CATEGORIES } from "./shop";
+import { SHOP_PRODUCTS } from "./shop";
 
 export type SearchSection =
   | "Recipes"
@@ -143,20 +143,12 @@ const STYLE_ITEMS: SearchItem[] = STYLE_ARTICLES.map((a) => ({
   description: a.dek || a.subtitle,
 }));
 
-const SHOP_ITEMS: SearchItem[] = SHOP_CATEGORIES.flatMap((cat) => [
-  {
-    title: cat.name,
-    section: "Shop" as const,
-    url: `/shop#${cat.slug}`,
-    description: cat.pov,
-  },
-  ...cat.products.map((p) => ({
-    title: p.name,
-    section: "Shop" as const,
-    url: `/shop#${cat.slug}`,
-    description: `${p.brand} — ${p.reason}`,
-  })),
-]);
+const SHOP_ITEMS: SearchItem[] = SHOP_PRODUCTS.map((p) => ({
+  title: p.name,
+  section: "Shop" as const,
+  url: "/shop",
+  description: `${p.brand} — ${p.reason}`,
+}));
 
 export const SEARCH_INDEX: SearchItem[] = [
   ...RECIPE_ITEMS,

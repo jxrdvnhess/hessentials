@@ -21,7 +21,7 @@ export const recipes: RecipeEntry[] = [
       title: "Mediterranean Shrimp & White Beans",
       dek: "A weeknight dish that dresses up. Garlic-soft cannellini, lemon-bright shrimp, a slow slick of good olive oil.",
       meta: { serves: "Serves 4", time: "30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 lb", name: "large shrimp, peeled and deveined" },
         {
@@ -74,7 +74,7 @@ export const recipes: RecipeEntry[] = [
       title: "Caprese Chicken",
       dek: "The summer plate, simplified. Chicken seared into a single pan, then dressed in tomato, basil, and a slow blanket of melted mozzarella.",
       meta: { serves: "Serves 4", time: "35 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "4", name: "boneless skinless chicken breasts" },
         { quantity: "2 tbsp", name: "olive oil" },
@@ -121,7 +121,7 @@ export const recipes: RecipeEntry[] = [
       title: "Tuscan Orzo",
       dek: "Toasted orzo, warmed by sun-dried tomatoes and white wine, finished into a quiet, parmesan-thickened bowl.",
       meta: { serves: "Serves 4", time: "30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 1/2 cups", name: "orzo" },
         { quantity: "2 tbsp", name: "unsalted butter" },
@@ -180,7 +180,7 @@ export const recipes: RecipeEntry[] = [
       title: "Lemon Chicken with Olives & Herbs",
       dek: "Bone-in thighs braised in lemon and good olive oil, finished with castelvetranos and a soft scatter of herbs.",
       meta: { serves: "Serves 4", time: "50 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "6", name: "bone-in skin-on chicken thighs" },
         { quantity: "2 tbsp", name: "olive oil" },
@@ -227,7 +227,7 @@ export const recipes: RecipeEntry[] = [
       title: "Orzo with Spinach, Garlic & Parmesan",
       dek: "A quiet, weeknight pan of orzo, made tender with stock and finished, almost as an afterthought, in spinach and good parmesan.",
       meta: { serves: "Serves 4", time: "25 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 1/2 cups", name: "orzo" },
         { quantity: "3 tbsp", name: "olive oil" },
@@ -274,7 +274,7 @@ export const recipes: RecipeEntry[] = [
       title: "Grilled Salmon with Citrus & Dill Yogurt",
       dek: "Salmon kissed by char, set against a bright, herb-laced yogurt and a quick citrus salad.",
       meta: { serves: "Serves 4", time: "25 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "4",
@@ -324,7 +324,7 @@ export const recipes: RecipeEntry[] = [
       title: "Tomato & Burrata with Warm Olive Oil",
       dek: "The plate that asks the least and gives the most. Heirloom tomatoes at their summer peak, torn burrata, a slow pour of warmed olive oil.",
       meta: { serves: "Serves 4", time: "15 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "1 1/2 lbs",
@@ -371,7 +371,7 @@ export const recipes: RecipeEntry[] = [
       title: "Creamy Tuscan Chicken Orzo",
       dek: "Pan-seared chicken folded into toasted orzo, warmed by sun-dried tomatoes and white wine, finished into a quiet, parmesan-thickened bowl.",
       meta: { serves: "Serves 4", time: "40 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 1/2 lbs", name: "boneless skinless chicken breasts" },
         { quantity: "3 tbsp", name: "olive oil" },
@@ -425,7 +425,7 @@ export const recipes: RecipeEntry[] = [
       title: "Sunday Rigatoni",
       dek: "A slow afternoon of garlic, tomato, and good olive oil. Ladled without ceremony over thick, ribbed rigatoni.",
       meta: { serves: "Serves 6", time: "2 hr 30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1/4 cup", name: "extra-virgin olive oil" },
         { quantity: "1 large", name: "yellow onion, finely diced" },
@@ -482,7 +482,7 @@ export const recipes: RecipeEntry[] = [
       title: "Balsamic Roasted Chicken Caprese",
       dek: "Bone-in thighs roasted dark in balsamic and tomato, finished at the last possible moment under torn mozzarella and a quiet handful of basil.",
       meta: { serves: "Serves 4", time: "45 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "6", name: "bone-in skin-on chicken thighs" },
         { quantity: "1 pint", name: "cherry tomatoes" },
@@ -529,7 +529,7 @@ export const recipes: RecipeEntry[] = [
       title: "Maple Dijon Chicken & Veg Bake",
       dek: "A cool-weather sheet pan. Chicken, sweet potatoes, and brussels sprouts, glossed in maple and mustard and roasted until caramelized at the edges.",
       meta: { serves: "Serves 4", time: "50 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "6", name: "bone-in skin-on chicken thighs" },
         { quantity: "1 lb", name: "brussels sprouts, halved" },
@@ -582,7 +582,7 @@ export const recipes: RecipeEntry[] = [
       title: "Garlic Butter Chicken with Crispy Potatoes",
       dek: "Bone-in thighs and butter-crisped potatoes, basted slowly in garlic and thyme until the butter foams gold.",
       meta: { serves: "Serves 4", time: "45 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "6", name: "bone-in skin-on chicken thighs" },
         { quantity: "1 1/2 lbs", name: "baby Yukon gold potatoes, halved" },
@@ -625,7 +625,7 @@ export const recipes: RecipeEntry[] = [
       title: "Simple Arugula Salad",
       dek: "Five ingredients, no fuss. Peppery arugula, sharply dressed in lemon and olive oil, finished with shaved parmesan.",
       meta: { serves: "Serves 4", time: "10 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "5 oz", name: "baby arugula" },
         { quantity: "1", name: "lemon, juiced" },
@@ -664,7 +664,7 @@ export const recipes: RecipeEntry[] = [
       title: "Chopped Mediterranean Salad",
       dek: "Cucumber, tomato, chickpeas, and feta, chopped fine and dressed in lemon, olive oil, and a quiet handful of herbs.",
       meta: { serves: "Serves 4", time: "20 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1", name: "English cucumber, finely diced" },
         { quantity: "1 pint", name: "cherry tomatoes, quartered" },
@@ -719,7 +719,7 @@ export const recipes: RecipeEntry[] = [
       title: "Roasted Sweet Potato & Avocado Bowl",
       dek: "Charred sweet potato, soft greens, creamy avocado, and a tahini-lemon drizzle that pulls it all together.",
       meta: { serves: "Serves 2", time: "35 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "1 large",
@@ -768,7 +768,7 @@ export const recipes: RecipeEntry[] = [
       title: "Herby Chicken & Rice Bowl",
       dek: "Lemon-marinated chicken seared in a hot pan, set over fluffy rice with a quiet handful of herbs and a yogurt drizzle.",
       meta: { serves: "Serves 4", time: "45 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 1/2 lbs", name: "boneless skinless chicken thighs" },
         { quantity: "3 tbsp", name: "olive oil" },
@@ -822,7 +822,7 @@ export const recipes: RecipeEntry[] = [
       title: "Sourdough with Olive Oil & Garlic",
       dek: "Thick-sliced sourdough, toasted slow over fire or in a hot oven, rubbed while still warm with raw garlic and dressed in your best olive oil.",
       meta: { serves: "Serves 4", time: "10 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 small", name: "loaf good sourdough" },
         { quantity: "2 cloves", name: "garlic, halved" },
@@ -862,7 +862,7 @@ export const recipes: RecipeEntry[] = [
       title: "Soft Scrambled Eggs with Herbs",
       dek: "The most patient eggs — butter-rich, barely set, finished with chives and a soft scatter of herbs at the very last moment.",
       meta: { serves: "Serves 2", time: "15 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "4 large", name: "eggs" },
         { quantity: "1 tbsp", name: "heavy cream or whole milk" },
@@ -904,7 +904,7 @@ export const recipes: RecipeEntry[] = [
       title: "Coconut Red Curry Chicken",
       dek: "Red curry paste bloomed slowly in the thick cream of a coconut milk can — the technique that decides whether this dish tastes flat or layered.",
       meta: { serves: "Serves 4", time: "30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "1 1/2 lbs",
@@ -966,7 +966,7 @@ export const recipes: RecipeEntry[] = [
       title: "Ginger Soy Salmon Noodle Bowl",
       dek: "Salmon glazed and broiled close to the heat, set over chilled rice noodles dressed in scallion oil — fast, bright, and built in layers.",
       meta: { serves: "Serves 2", time: "30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "2",
@@ -1025,7 +1025,7 @@ export const recipes: RecipeEntry[] = [
       title: "Thai Basil Ground Chicken",
       dek: "Ground chicken cooked hot and fast — undisturbed long enough to crisp at the edges — then dressed with fish sauce, lime, and a defiant handful of basil at the very end.",
       meta: { serves: "Serves 4", time: "20 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "1 1/2 lbs",
@@ -1083,7 +1083,7 @@ export const recipes: RecipeEntry[] = [
       title: "Yellow Coconut Vegetable Curry",
       dek: "Whole spices toasted, turmeric bloomed, and coconut milk simmered into a slow, golden curry — the kind of one-pot that tastes deeper than the sum of its parts.",
       meta: { serves: "Serves 4", time: "45 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "2 tbsp", name: "coconut oil or neutral oil" },
         { quantity: "1 tsp", name: "cumin seeds" },
@@ -1151,7 +1151,7 @@ export const recipes: RecipeEntry[] = [
       title: "Chili Crisp Egg & Rice Bowl",
       dek: "A bowl built quickly but not carelessly — hot rice, a slow-fried egg with a deeply jammy yolk, scallion, soy, and a pour of chili crisp that does the heavy lifting.",
       meta: { serves: "Serves 1", time: "10 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         { quantity: "1 large", name: "egg" },
         {
@@ -1204,7 +1204,7 @@ export const recipes: RecipeEntry[] = [
       title: "Coconut Ginger Shrimp Soup",
       dek: "A coconut broth steeped slowly in ginger, lemongrass, and lime, finished — fast — with shrimp that arrive at the table just barely cooked.",
       meta: { serves: "Serves 4", time: "30 min" },
-      byline: "By Jordan Hess",
+      byline: "By J.D.H.",
       ingredients: [
         {
           quantity: "1 lb",
@@ -1264,6 +1264,148 @@ export const recipes: RecipeEntry[] = [
       ],
       notes:
         "Toasting the shrimp shells is the single step that turns soup into broth — the shells are sweet, briny, and full of the flavor most cooks throw away. Five minutes of heat extracts what the shrimp themselves cannot.",
+    },
+  },
+  {
+    slug: "black-pepper-cheesy-grits",
+    description:
+      "Stone-ground grits, slow-simmered into butter and sharp cheddar, finished under a heavy crack of black pepper.",
+    tags: ["Southern", "Comfort", "Breakfast", "Side"],
+    recipe: {
+      eyebrow: "Recipe — Southern",
+      title: "Black Pepper Cheesy Grits",
+      dek: "Stone-ground grits, slow-simmered into butter and sharp cheddar, finished under a heavy crack of black pepper.",
+      meta: { serves: "Serves 4", time: "45 min" },
+      byline: "By J.D.H.",
+      ingredients: [
+        { quantity: "1 cup", name: "stone-ground grits" },
+        { quantity: "3 cups", name: "water or chicken broth" },
+        { quantity: "1 cup", name: "whole milk or half-and-half" },
+        { quantity: "3 tbsp", name: "unsalted butter" },
+        { quantity: "1 cup", name: "sharp cheddar, finely grated" },
+        {
+          quantity: "1 tsp",
+          name: "freshly cracked black pepper",
+          note: "plus more to finish",
+        },
+        { quantity: "to taste", name: "sea salt" },
+      ],
+      method: [
+        "Bring the water or broth to a boil in a heavy-bottomed pot. Salt it generously — under-salted grits taste pale no matter how much butter follows.",
+        "Whisk the grits into the boiling liquid in a slow, steady stream. Whisking is what keeps them smooth; dumping them in is what makes them lumpy.",
+        "Lower the heat to its lowest setting. Cook, stirring often with a wooden spoon, for thirty to forty minutes. Slow-cooked grits are creamy; rushed grits are gritty. There is no shortcut here that the texture will forgive.",
+        "When the grains have softened completely and the pot looks loose and porridge-like, stir in the milk. Cook another five to seven minutes until thickened to your liking.",
+        "Off the heat: stir in the butter and cheddar in soft handfuls until they melt into the grits and the texture turns glossy.",
+        "Crack the black pepper in generously — more than feels reasonable. The pepper is the dish's spine, not its garnish. Taste, adjust salt.",
+      ],
+      serve:
+        "In wide, warm bowls — under a fried egg, beside roasted shrimp, or as the quiet base for a Sunday roast chicken.",
+      variations: [
+        "Stir in a spoon of crème fraîche at the end for a softer, tangier finish.",
+        "Swap the cheddar for a sharp gruyère if you want something more savory and adult.",
+        "Fold in a handful of caramelized onion for depth.",
+      ],
+      notes:
+        "Grits keep tightening as they cool. Loosen leftovers with a splash of warm milk before reheating — water alone makes them taste thin.",
+    },
+  },
+  {
+    slug: "apple-chicken-brie-fig-sandwich",
+    description:
+      "Sourdough pressed warm around chicken, brie, apple, and fig jam — finished with a peppery handful of arugula.",
+    tags: ["Sandwich", "Lunch", "Sweet-Savory", "Hosting"],
+    recipe: {
+      eyebrow: "Recipe — Lunch",
+      title: "Apple, Chicken, Brie & Fig Jam on Sourdough",
+      dek: "Sourdough pressed warm around tender chicken, melting brie, crisp apple, and a thin slick of fig jam — finished with a peppery handful of arugula.",
+      meta: { serves: "Serves 2", time: "20 min" },
+      byline: "By J.D.H.",
+      ingredients: [
+        { quantity: "4 thick slices", name: "sourdough bread" },
+        { quantity: "2 tbsp", name: "fig jam" },
+        {
+          quantity: "6 oz",
+          name: "cooked chicken, sliced or shredded",
+          note: "leftover roast or rotisserie",
+        },
+        { quantity: "4 oz", name: "brie, sliced", note: "rind on" },
+        {
+          quantity: "1 small",
+          name: "tart apple, thinly sliced",
+          note: "honeycrisp or pink lady",
+        },
+        { quantity: "1 small handful", name: "fresh arugula" },
+        { quantity: "2 tbsp", name: "unsalted butter, softened" },
+        { quantity: "to taste", name: "flaky salt and black pepper" },
+      ],
+      method: [
+        "Butter the outside of each sourdough slice, edge to edge — this is the crust, and a dry corner ruins the bite.",
+        "Spread fig jam across the inside face of all four slices. A thin layer; the jam is meant to season the sandwich, not soak it.",
+        "Layer the chicken, then the brie, then the apple onto two slices. The cheese sits between the warm chicken and the cool apple so it melts into both.",
+        "Close the sandwiches, butter side out.",
+        "Warm a heavy skillet over medium-low heat. Lay the sandwiches in and press gently with a spatula or a second pan. Cook slowly until deeply golden and the brie has melted, three to four minutes a side. Low heat is non-negotiable — high heat browns the bread before the cheese has a chance to give in.",
+        "Lift the sandwiches off the heat. Open them just enough to tuck the arugula in — at the end, never at the start. Heat wilts arugula into something sad; raw, it stays peppery and sharp against the cheese.",
+        "Cut on the bias. Finish with flaky salt and a turn of black pepper.",
+      ],
+      serve:
+        "With a small green salad, or chips, or nothing at all — the sandwich is the meal.",
+      variations: [
+        "Swap the chicken for thinly sliced roasted turkey for a Thanksgiving-leftover version.",
+        "Use pear in place of apple in late autumn — softer, more floral.",
+        "Add a few thin slices of prosciutto under the brie for a saltier edge.",
+      ],
+      notes:
+        "The arugula goes in last. Folded in once the sandwich is off the heat, it stays peppery and sharp; added earlier, it wilts into something bitter.",
+    },
+  },
+  {
+    slug: "swedish-family-plattar",
+    description:
+      "A heritage recipe — thin, custard-soft Swedish pancakes, served the way they have always been: butter, lingonberry, syrup.",
+    tags: ["Heritage", "Swedish", "Breakfast", "Family"],
+    recipe: {
+      eyebrow: "Recipe — Heritage",
+      title: "Swedish Family Plättar",
+      dek: "Thin, custard-soft Swedish pancakes — passed down through my family. Served the way they have always been: butter, lingonberry, syrup.",
+      meta: { serves: "Serves 6", time: "30 min" },
+      byline: "By J.D.H.",
+      ingredients: [
+        { quantity: "1 quart", name: "whole milk" },
+        { quantity: "1 cup", name: "water" },
+        { quantity: "4", name: "large eggs" },
+        { quantity: "3 cups", name: "all-purpose flour" },
+        { quantity: "1 cup", name: "sugar" },
+        { quantity: "1 pinch", name: "salt" },
+        { quantity: "to cook", name: "unsalted butter" },
+      ],
+      method: [
+        "Whisk the eggs, milk, and water together in a large bowl until fully combined and pale.",
+        "Add the flour, sugar, and salt. Whisk slowly at first, then steadily, until the batter is smooth — no lumps, no streaks. The batter should be thin, the consistency of crepe batter rather than American pancake batter. This thinness is the whole point.",
+        "Let the batter rest for ten minutes if you have time. The rest is what gives plättar their tender, almost-custard interior.",
+        "Heat a plättar pan or a small nonstick skillet over medium heat. Lightly butter each well or the pan surface.",
+        "Pour a scant ladle of batter into each well — just enough to thinly coat the bottom. Cook until the edges set, the surface looks dry, and small bubbles break across the top, about ninety seconds.",
+        "Flip with a thin spatula and cook briefly on the second side, twenty to thirty seconds — the second side should be lightly golden, not deeply browned.",
+        "Stack on a warm plate as you go. Continue with the rest of the batter, buttering the pan between rounds.",
+      ],
+      serve:
+        "Stacked on a warm plate, with cold butter, lingonberry jam, and a small pour of maple syrup. Eat them hot.",
+      variations: [
+        "Top with fresh berries and softly whipped cream for a more dessert-like version.",
+        "Roll each plätt around a thin schmear of jam and dust with powdered sugar — the way a Swedish grandmother might.",
+        "For a savory turn, skip the sugar and serve with smoked salmon and crème fraîche.",
+      ],
+      notes:
+        "A plättar pan — the small cast-iron skillet with seven shallow rounds — gives the dish its traditional shape. A standard nonstick skillet works too; the pancakes will simply be a touch larger and freer in form.",
+      origin: {
+        heading: "From My Family Kitchen",
+        body: "This is the original handwritten recipe card passed down through my Swedish family. It's how this dish has lived in our home for generations — simple, unpolished, and exactly how it was meant to be made.",
+        image: {
+          src: "/Hess Family Plattar.jpg",
+          alt: "Hess family plättar handwritten recipe card",
+          width: 4032,
+          height: 3024,
+        },
+      },
     },
   },
 ];

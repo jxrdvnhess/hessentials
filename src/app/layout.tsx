@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Hessentials — A system for choosing what holds.",
   description:
     "A quieter approach. Choosing well, and standing by it. Food, home, style, and the small decisions that shape how life actually feels.",
-  metadataBase: new URL("https://hessentials.com"),
+  metadataBase: new URL("https://hessentials.co"),
   openGraph: {
     title: "Hessentials",
     description: "A system for choosing what holds.",

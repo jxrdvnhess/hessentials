@@ -28,7 +28,7 @@ export type StyleArticle = {
 };
 
 const TONE = ["editorial", "personal", "practical", "slightly sassy"];
-const AUTHOR = "Jordan Hess";
+const AUTHOR = "J.D.H.";
 
 export const STYLE_ARTICLES: StyleArticle[] = [
   {
@@ -313,12 +313,20 @@ It is usually not the whole outfit. It is one missing layer of intention.`,
       },
       {
         type: "essay",
-        heading: "Every outfit needs structure.",
+        heading: "Every outfit has five parts. If one is missing, you feel it.",
         body: `I think about outfits in five parts: base, structure, texture, contrast, and finish.
 
-If one is missing, the whole thing feels slightly off. Not bad. Just not right.
+The base is the easiest to overlook. A clean tee, a fitted knit, a simple shirt — the layer everything else sits on. If the base is wrong, nothing on top of it works.
 
-This is why some outfits look good in theory but feel wrong in real life. They are incomplete.`,
+The structure is the piece that gives the outfit a silhouette. A trouser, a jacket, a skirt with shape. Something that holds a line. Without structure, an outfit reads soft.
+
+The texture is what keeps it from feeling flat. A heavyweight knit. A suede. A raw cotton. The eye needs at least one weight that is different from the others, or the whole outfit reads thin.
+
+The contrast is the one element that breaks the palette without breaking the outfit. A black shoe with a tan-on-tan look. A pale top with darker pants. A leather where everything else is fabric. Without contrast, an outfit looks like a uniform — in the bad way.
+
+The finish is the last detail. A watch, a bag, a hat, a pair of sunglasses. The thing that signals you finished getting dressed. An outfit without a finish reads like you got close.
+
+Most "off" outfits are missing one of these. Identify which, add it, walk out the door.`,
       },
       {
         type: "callout",
@@ -358,16 +366,26 @@ This is why some outfits look good in theory but feel wrong in real life. They a
           {
             name: "Textured Layer",
             brand: "Alex Mill",
-            reason: "Adds depth without noise.",
+            reason:
+              "A heavyweight overshirt or knit that adds the weight an outfit needs to stop reading flat.",
             priceRange: "$$",
-            alt: "Everlane",
+            alt: "Everlane for a more accessible version",
+          },
+          {
+            name: "Contrast Shoe",
+            brand: "Common Projects Black Achilles",
+            reason:
+              "A clean black shoe is the easiest contrast piece in any neutral outfit. Breaks the palette without making noise.",
+            priceRange: "$$$",
+            alt: "Veja V-10 in black for a softer alternative",
           },
           {
             name: "Minimal Accessory",
             brand: "Mejuri",
-            reason: "Finishes without distracting.",
+            reason:
+              "A watch, a chain, a single ring. The piece that tells the room you finished getting dressed.",
             priceRange: "$$",
-            alt: "Quince",
+            alt: "Quince for a more accessible price point",
           },
         ],
       },
@@ -394,46 +412,69 @@ And yet… it changes everything.`,
       },
       {
         type: "essay",
-        heading: "Most people skip this part.",
-        body: `Pant break, sleeve length, fabric weight, clean shoes.
+        heading: "The five details that do most of the work.",
+        body: `Pant break. A full break (fabric pooling on the shoe) reads sloppy on most cuts. A half-break — fabric kissing the top of the shoe — is the one to ask the tailor for. A no-break only works on a slim ankle and a clean shoe; otherwise it looks short.
 
-These are small things that quietly control the entire outcome.
+Sleeve length. The cuff should sit where the heel of the hand meets the wrist. Shorter reads outgrown. Longer reads borrowed. Get a tailor to set this once and you will stop noticing it forever.
 
-You do not need better outfits. You need better attention.`,
+Fabric weight. A light cotton tee under a heavy wool coat reads off because the proportions of the materials do not match. Match weight to weight: heavyweight knit with a real trouser, lightweight knit with a softer cotton. The eye registers this even when the brain does not.
+
+Clean shoes. The single fastest way to look better. Brush the suede. Wipe the leather. Replace the laces when they fray. A great outfit on dirty shoes reads as careless. A simple outfit on cared-for shoes reads as intentional.
+
+Crisp cuffs and collars. A wrinkled collar undoes the whole shirt. Steam, do not iron — faster, fewer creases, no scorching. A handheld steamer is one of the most underrated style tools there is.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If it looks off and you cannot explain why, it is probably a detail.",
+        body: "If it looks off and you cannot explain why, it is almost always a detail. Fix the detail before changing the outfit.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Check your sleeve length in the mirror.",
-          "Clean your shoes before leaving the house.",
-          "Notice fabric weight differences.",
-          "Adjust one small thing before changing the outfit.",
+          "Take a full-length photo of yourself in your most-worn outfit. Check sleeve length and pant break.",
+          "Brush or wipe your shoes before walking out the door. Two minutes, every time.",
+          "Steam — do not iron — your shirt collar and cuffs. Five seconds each.",
+          "Find a tailor and get one pair of pants hemmed correctly. Use that as your reference for everything else.",
+          "Replace any frayed lace, broken zipper, or missing button. These are visible, even from across a room.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Small upgrades. Noticeable difference.",
+        note: "Small tools. Big difference.",
         items: [
           {
-            name: "Garment Steamer",
-            brand: "Conair",
-            reason: "Wrinkles instantly ruin intention.",
-            priceRange: "$",
-            alt: "Rowenta",
+            name: "Handheld Garment Steamer",
+            brand: "Steamery Cirrus 2",
+            reason:
+              "Powerful enough for wool, fast enough to use before walking out. Lives near the door, gets used daily.",
+            priceRange: "$$",
+            alt: "Conair Turbo Extreme for an everyday version",
           },
           {
-            name: "Leather Care Kit",
+            name: "Suede Brush + Eraser Kit",
             brand: "Jason Markk",
-            reason: "Clean shoes change everything.",
+            reason:
+              "Brings suede shoes back from one wear. The single most cost-effective shoe-care purchase you can make.",
+            priceRange: "$",
+            alt: "Kiwi for a basic alternative",
+          },
+          {
+            name: "Leather Conditioner",
+            brand: "Saphir Renovateur",
+            reason:
+              "Twice a year on every leather shoe and bag. Doubles their lifespan and keeps them from cracking.",
             priceRange: "$$",
-            alt: "Kiwi",
+            alt: "Bickmore Bick 4 for a more accessible option",
+          },
+          {
+            name: "Local Tailor Visit",
+            brand: "Find one within walking distance",
+            reason:
+              "The best style upgrade is a tailor who knows your body. Hem one pair of pants. Take one shirt in. See what changes.",
+            priceRange: "$$",
+            alt: "Department-store alterations for a starting point",
           },
         ],
       },
@@ -446,7 +487,7 @@ You do not need better outfits. You need better attention.`,
     eyebrow: "Philosophy",
     title: "The Anti-Trend Rule",
     subtitle: "If it only works right now, it never really worked.",
-    dek: "Trends are data. Not direction.",
+    dek: "Trends are information. They are not instruction.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "minimal wardrobe, timeless neutrals",
@@ -454,207 +495,321 @@ You do not need better outfits. You need better attention.`,
       {
         type: "intro",
         heading: "You are always slightly late to trends.",
-        body: `By the time you see it everywhere, it is already over.`,
+        body: `By the time a trend reaches you, it has already been on the runway, on the people who shop runways, on Pinterest, on the early adopters, and on the brands knocking it off. You are arriving in the last 20%.
+
+That is not a problem. It is a signal. The trend is no longer telling you something new.`,
       },
       {
         type: "essay",
-        heading: "Borrow, don’t follow.",
-        body: `Trends can be useful. They show what people are responding to.
+        heading: "Borrow, do not follow.",
+        body: `Trends are useful as a read on what feels right in the moment. They are not useful as a shopping list.
 
-But your job is to filter, not adopt.
+The test is simple: would you wear this in three years?
 
-If it does not look like you, it will never feel right.`,
+If the answer is yes, the trend is just confirming taste you already had. Buy it, wear it, integrate it. You were going to land there anyway.
+
+If the answer is no, you are paying for the look of belonging. That is the most expensive way to dress, because the receipt is permanent and the relevance is not.
+
+Take the wide-leg trouser cycle. Wide-leg pants come back every decade. People who already liked a wider leg buy them and they look like themselves. People who do not, buy them, feel slightly costumed for a season, and then donate them. Same trend. Two completely different outcomes, decided by whether the piece was already on-brand for the person.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If it feels like you are trying something on, you probably are.",
+        body: "If you are buying it because everyone else is, you have already missed the moment that mattered.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Ignore trends for one month.",
-          "Rewear your strongest outfits.",
-          "Notice what still feels good.",
+          "Before buying anything trending, ask: would I wear this in three years? If no, skip it.",
+          "Spend a month not opening any fashion content. Notice what you actually reach for.",
+          "Identify two pieces you bought because of a trend and never wore. That is your data.",
+          "If you want a trend in your wardrobe, take it in the cheapest version possible. Save the budget for pieces that hold up.",
+          "Keep a short list of pieces you want to be wearing in five years. Buy from that list, not from your feed.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Timeless > temporary.",
+        note: "Pieces that have outlasted every trend cycle they have been part of.",
         items: [
           {
-            name: "Classic White Shirt",
+            name: "Classic White Button-Down",
             brand: "Toteme",
-            reason: "Never needs to prove itself.",
+            reason:
+              "Has been in style since shirts existed and will be in style after most of us. Never needs to prove itself.",
             priceRange: "$$$",
-            alt: "Everlane",
+            alt: "Everlane Relaxed Oxford for an everyday version",
+          },
+          {
+            name: "Straight-Leg Denim",
+            brand: "AGOLDE 90s",
+            reason:
+              "Cut that pre-dates the trend and outlasts it. A jean that holds up across years and silhouettes.",
+            priceRange: "$$",
+            alt: "Levi's 501 — the original, still correct",
+          },
+          {
+            name: "Crewneck Cashmere",
+            brand: "Naadam",
+            reason:
+              "Has never not worked. Buy in a color you wear, not the one you are seeing online.",
+            priceRange: "$$",
+            alt: "Quince for a more accessible option",
           },
         ],
       },
     ],
-    tags: ["trends", "style philosophy"],
+    tags: ["trends", "philosophy", "wardrobe"],
   },
   {
     slug: "the-signature-piece",
     category: "Style",
     eyebrow: "Identity",
     title: "The Signature Piece",
-    subtitle: "The thing people start associating with you.",
-    dek: "Repetition builds identity.",
+    subtitle: "Pick one thing. Wear it until it becomes the thing people associate with you.",
+    dek: "Style is not built on variety. It is built on repetition done well.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "hero jacket focus",
     sections: [
       {
         type: "intro",
-        heading: "You do not need variety. You need recognition.",
-        body: `This is where style becomes identity.`,
+        heading: "Think about the people whose style you actually remember.",
+        body: `You do not remember their full wardrobe. You remember one thing.
+
+A specific jacket. A particular shoe. A watch they wear every day. The same scent, room after room. That is the move.`,
       },
       {
         type: "essay",
-        heading: "Pick something and commit.",
-        body: `A jacket, a shoe, a watch, a scent.
+        heading: "How to find yours.",
+        body: `A signature piece is not chosen. It is noticed.
 
-Not ten. One.
+It is the thing you reach for without thinking. The piece you have already worn this week and want to wear again. The one that makes you feel like yourself the second it is on. If you have to talk yourself into it, it is not the one.
 
-That is how people remember you.`,
+Pick from a category that earns repetition. A jacket. A shoe. A watch. A scent. A bag. These are pieces you can wear again and again without anyone clocking it as a uniform — they read as your taste settling in.
+
+Avoid pieces that demand a moment. A statement coat that needs the right outfit underneath is not a signature piece. That is a costume. A signature piece works on a Tuesday at noon as well as it works at dinner.
+
+Then commit. The mistake people make is buying their signature piece and then immediately diluting it by buying three alternates. Do not. The whole idea is repetition. Wear it until it has a patina, then wear it more.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If everything changes, nothing sticks.",
+        body: "If you have it in three colors, none of them is your signature piece.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Identify one item you love wearing repeatedly.",
-          "Wear it more, not less.",
-          "Build around it.",
+          "Look at the last week of photos on your phone. Notice what you are wearing more than once. Start there.",
+          "Choose a category that earns repetition. Outerwear, footwear, accessory, scent.",
+          "If you are between two pieces, pick the one you would wear tomorrow without checking the weather or the calendar.",
+          "Wear it for thirty days straight. If you stop reaching for it, it was not the one.",
+          "When the first one wears out, replace it with the same piece. Do not upgrade. Do not switch.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Choose something you won’t get tired of.",
+        note: "Three categories that earn repetition. Pick one.",
         items: [
           {
-            name: "Sherpa Jacket",
-            brand: "Alo",
-            reason: "Recognizable, wearable, not loud.",
+            name: "Workwear-Cut Chore Coat",
+            brand: "Margaret Howell",
+            reason:
+              "Heavyweight cotton, structured but unfussy. Reads casual or considered depending on what is under it. Gets better with wear.",
+            priceRange: "$$$",
+            alt: "Alex Mill for the same shape at half the price",
+          },
+          {
+            name: "Suede Loafer",
+            brand: "Tod’s Gommino",
+            reason:
+              "A shoe people will start to associate with you. Quiet enough to wear daily, distinct enough to register.",
+            priceRange: "$$$",
+            alt: "Sezane for a softer, more accessible version",
+          },
+          {
+            name: "Field Watch",
+            brand: "Hamilton Khaki",
+            reason:
+              "An everyday watch that does not announce itself. Reads as personal, not as a status piece.",
             priceRange: "$$",
-            alt: "Abercrombie",
+            alt: "Timex Marlin for a vintage-feel alternative",
           },
         ],
       },
     ],
-    tags: ["signature", "identity"],
+    tags: ["signature", "identity", "wardrobe"],
   },
   {
     slug: "the-entryway-test",
     category: "Style",
     eyebrow: "Home",
     title: "The Entryway Test",
-    subtitle: "Your house starts talking before you do.",
-    dek: "Make sure it says something intentional.",
+    subtitle: "Your home is making an argument before you say a word.",
+    dek: "Stand at your front door, walk in, and ask three questions.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "warm entry vignette",
     sections: [
       {
         type: "intro",
-        heading: "First impressions are fast.",
-        body: `People decide how they feel about your space immediately.`,
+        heading: "The first six feet decide the rest of the house.",
+        body: `Whatever someone walks into first becomes the lens for everything else they see. If your entry is hectic, the rest of your home reads as hectic too — even if it is not.
+
+The good news: an entry is small. You can fix it in a weekend.`,
       },
       {
         type: "essay",
-        heading: "It does not need to be big.",
-        body: `It needs a landing moment. Light, texture, and function.`,
+        heading: "Three questions. That is the test.",
+        body: `Stand outside your door. Walk in like a guest. Then answer these:
+
+One — is there a place to put my keys, my phone, and one bag without thinking? If the answer is "the floor" or "anywhere I can find a spot," you have a function problem. A small tray and a hook fix it.
+
+Two — is the first light I see warm? Overhead lights and cool LEDs are interrogation lighting. A single warm lamp on a table changes the whole reading of the room.
+
+Three — is there one thing here worth looking at? Not a lot of things. One. A piece of art, a vase with branches, a stack of books with weight. The eye needs somewhere to land that is not utility.
+
+If the entry passes all three, the house does too. If it fails any of them, fix that one before fixing anything else.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "Your entry needs a lamp before anything else.",
+        body: "An entry needs a lamp before it needs anything else. If yours has overhead light only, start there.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Add one warm light source.",
-          "Create a key drop.",
-          "Remove clutter.",
+          "Add a small table or floating shelf if you do not have one. Twelve inches is enough.",
+          "Put a tray on it. Keys, wallet, glasses. Everything off the surface, into the tray.",
+          "Plug in a warm-bulb table lamp. 2700K, no cooler.",
+          "Hang one piece of art at eye level. Skip the gallery wall.",
+          "Remove anything that does not belong: shoes you do not wear, mail piles, that one box.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Simple, intentional.",
+        note: "Small footprint. High return.",
         items: [
           {
             name: "Ceramic Table Lamp",
-            brand: "CB2",
-            reason: "Soft light changes everything.",
+            brand: "Cedar & Moss",
+            reason:
+              "Warm, soft, weighted. The single object that does the most work in an entryway.",
             priceRange: "$$",
-            alt: "Target",
+            alt: "CB2 for a cleaner profile",
+          },
+          {
+            name: "Wall-Mounted Brass Hook",
+            brand: "Schoolhouse",
+            reason:
+              "One real hook, not a row of plastic ones. Holds a coat or a bag without making the wall busy.",
+            priceRange: "$",
+            alt: "Rejuvenation for similar quality",
+          },
+          {
+            name: "Catchall Tray",
+            brand: "Hawkins New York",
+            reason:
+              "Stops the surface from becoming a junk drawer. A tray turns mess into a vignette.",
+            priceRange: "$$",
+            alt: "Crate & Barrel for a basic version",
+          },
+          {
+            name: "Floor-Length Mirror",
+            brand: "West Elm",
+            reason:
+              "If your entry is small, a leaning mirror doubles the light and gives you one last check before you leave.",
+            priceRange: "$$",
+            alt: "IKEA Hovet for the same effect at a fraction of the price",
           },
         ],
       },
     ],
-    tags: ["entryway", "home"],
+    tags: ["entryway", "home", "first impressions"],
   },
   {
     slug: "signature-scent-is-branding",
     category: "Style",
     eyebrow: "Personal",
-    title: "Signature Scent Is Branding",
-    subtitle: "People remember how you smell.",
-    dek: "You just don’t realize it.",
+    title: "The Scent People Remember",
+    subtitle: "Worn close, repeated often, never announced.",
+    dek: "Most people pick the wrong scent for the wrong reason. The right one becomes part of how people think of you.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "fragrance still life",
     sections: [
       {
         type: "intro",
-        heading: "Scent is memory.",
-        body: `This matters more than people admit.`,
+        heading: "People remember how you smell more than they remember what you wore.",
+        body: `Scent attaches to memory in a way that almost nothing else does. Years later, someone catches a note of cedar or vanilla in a doorway and thinks of you.
+
+That is the move. Not loud. Not new every season. One scent, worn close, repeated until it becomes shorthand for you.`,
       },
       {
         type: "essay",
-        heading: "Recognition over volume.",
-        body: `It should sit close, not announce itself.`,
+        heading: "Close, not projecting.",
+        body: `The mistake most people make is buying a fragrance that fills a room.
+
+A scent that announces itself is doing the work of saying "I am here." A scent that sits close to the skin is doing the work of being remembered. The first reads as performance. The second reads as identity.
+
+Pick something with sillage you can control. Eau de toilette over eau de parfum if you tend to over-spray. Wood, musk, or skin-adjacent notes over heavy florals or sweet gourmands if you want it to read as personal rather than purchased.
+
+Day and evening can be the same scent or two different ones — that is preference, not rule. What matters is that you wear them long enough for people to associate them with you. Six months minimum before you swap. Otherwise you are just trying things on.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If your scent enters before you, it’s too much.",
+        body: "If your scent enters the room before you do, it is too much.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Choose one daytime scent.",
-          "Choose one evening scent.",
-          "Wear both consistently.",
+          "Sample for a week before you commit. A scent on a card is not a scent on your skin.",
+          "Spray once on the chest, once on the wrist. Stop there. Two sprays is the ceiling.",
+          "Wear the same scent for 30 days. If you stop noticing it, that is correct — others still do.",
+          "Avoid fragrances designed for a specific season. The right one works in any temperature.",
+          "If three people have asked what you are wearing in the last year, that is your scent. Stop searching.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Close, intentional, memorable.",
+        note: "Three scents that read as personal, not promotional.",
         items: [
           {
             name: "Santal 33",
             brand: "Le Labo",
-            reason: "Recognizable without trying.",
+            reason:
+              "Recognizable without trying. Wood, leather, a little cardamom. Wears close. Has aged into a quiet classic.",
             priceRange: "$$$",
-            alt: "Maison Margiela Replica",
+            alt: "Maison Margiela Replica 'Jazz Club' for similar warmth at half the price",
+          },
+          {
+            name: "Vetiver",
+            brand: "Guerlain",
+            reason:
+              "Earthy, slightly green, almost ascetic. The kind of scent people associate with one specific person.",
+            priceRange: "$$$",
+            alt: "Goldfield & Banks 'Velvet Splendour' for a softer take",
+          },
+          {
+            name: "Eau de Cologne",
+            brand: "Chanel Les Eaux de Chanel",
+            reason:
+              "An everyday, lower-projection option. Citrus, clean, never overdone. Good for the day before a meeting.",
+            priceRange: "$$",
+            alt: "Acqua di Parma Colonia for a more affordable classic",
           },
         ],
       },
     ],
-    tags: ["scent", "fragrance"],
+    tags: ["scent", "fragrance", "signature"],
   },
   {
     slug: "your-home-has-an-outfit-too",
@@ -662,259 +817,434 @@ That is how people remember you.`,
     eyebrow: "Home",
     title: "Your Home Has an Outfit Too",
     subtitle: "And some rooms are not dressed well.",
-    dek: "Same system. Bigger scale.",
+    dek: "If you can edit a closet, you can edit a room. Same instinct, bigger scale.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "warm modern classic room",
     sections: [
       {
         type: "intro",
-        heading: "It is the same instinct.",
-        body: `You already know how to do this.`,
+        heading: "Walk into a room and read it like an outfit.",
+        body: `Most rooms that feel off are not under-decorated. They are over-everything-d.
+
+Too many colors. Too many finishes. Too many objects fighting for the same shelf. The fix is the same one you already use on yourself in the morning: edit first, then add.`,
       },
       {
         type: "essay",
-        heading: "Translate it.",
-        body: `Base, structure, texture, finish.`,
+        heading: "The four parts of a dressed room.",
+        body: `Think of a room the way you think of an outfit: base, structure, texture, finish.
+
+The base is the largest piece — the sofa, the rug, the bed. This is your trouser. Get it neutral, get it durable, get it in a color you can live with for ten years. Loud bases age fast.
+
+The structure is the case goods — coffee table, console, dresser, dining table. This is your jacket. It gives the room a silhouette. Wood, metal, stone. Something with weight.
+
+The texture is the soft layer — pillows, throws, curtains, linens. This is your knit. It is what keeps a clean room from feeling like a showroom. Linen, wool, mohair, raw cotton. Mix at least three.
+
+The finish is the small layer — lamps, art, ceramics, books, the one strange object you found on a trip. This is your watch and your shoe. Get this part wrong and the whole outfit looks generic.
+
+If a room feels like nothing, you are usually missing texture or finish. If a room feels chaotic, you have too much finish and not enough base.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If everything is loud, nothing is working.",
+        body: "Loud rooms are usually rooms with no base. They are all accessories.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Remove three items.",
-          "Add one texture.",
-          "Adjust lighting.",
+          "Remove three objects from the room. Live with the absence for a week before deciding if anything goes back.",
+          "Identify your base, structure, texture, and finish. If one is missing, add only there.",
+          "Replace one synthetic textile (poly throw, plastic-feel rug) with a natural one. Linen, wool, cotton.",
+          "Switch off the overhead. Light the room with two lamps and see what is actually there.",
+          "Move the loudest object out of the room for a day. If you do not miss it, it was not earning its place.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Edit first, then add.",
+        note: "One layer at a time. Most rooms are missing one of the four.",
         items: [
           {
-            name: "Linen Throw Pillow",
-            brand: "H&M Home",
-            reason: "Softens everything instantly.",
-            priceRange: "$",
-            alt: "The Citizenry",
+            name: "Linen-Blend Sofa",
+            brand: "Article",
+            reason:
+              "A neutral, low-arm linen sofa is the home equivalent of a relaxed trouser. Quiet enough to live with, structured enough to anchor a room.",
+            priceRange: "$$$",
+            alt: "Sundays for a softer, more handmade feel",
+          },
+          {
+            name: "Solid Wood Coffee Table",
+            brand: "Crate & Barrel",
+            reason:
+              "Real wood with weight. Adds a finish you cannot fake with veneer or particleboard.",
+            priceRange: "$$",
+            alt: "West Elm for more design variety",
+          },
+          {
+            name: "Heavyweight Linen Throw",
+            brand: "The Citizenry",
+            reason:
+              "Reads as texture before color. Gets better the more it crumples, which is the whole point.",
+            priceRange: "$$",
+            alt: "H&M Home for an everyday version",
+          },
+          {
+            name: "Ceramic Table Lamp",
+            brand: "Cedar & Moss",
+            reason:
+              "Warm light at eye level. The single fastest way to make a room feel finished.",
+            priceRange: "$$",
+            alt: "CB2 for a cleaner profile",
           },
         ],
       },
     ],
-    tags: ["home", "interior"],
+    tags: ["home", "interior", "rooms"],
   },
   {
     slug: "hosting-is-a-performance",
     category: "Style",
     eyebrow: "Hosting",
     title: "Hosting Is a Performance",
-    subtitle: "In a calm, controlled way.",
-    dek: "A good night is designed.",
+    subtitle: "Not in a stressful way. In a designed way.",
+    dek: "Hosting is not what happens at dinner. It is what happens in the two hours before.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "warm dinner scene",
     sections: [
       {
         type: "intro",
-        heading: "People remember the feeling.",
-        body: `Not the menu.`,
+        heading: "The night is set before anyone arrives.",
+        body: `If you are still working when your first guest walks in, the night is already off.
+
+People do not remember the menu. They remember whether they could exhale when they walked in. That is not luck. That is staging.`,
       },
       {
         type: "essay",
-        heading: "Design the night.",
-        body: `Light, sound, pacing.`,
+        heading: "Atmosphere is built, not added.",
+        body: `Three things do most of the work: light, sound, pacing. In that order.
+
+Light is the easiest to get wrong and the easiest to fix. Turn off the overheads. Lamps and candles only. If a room cannot be lit by lamps and candles, that is a furniture problem, not a dimmer problem.
+
+Sound has to be on before the doorbell rings. Not loud. Present. A room without music feels like a waiting room, and your guest will register it before they realize why.
+
+Pacing is what people remember and never name. Drinks get poured, not asked about. The first thing on the table is already there when they sit down. Dinner lands when people are ready to sit, not when the timer says so. If you are still standing twenty minutes after a guest arrived, you are working, not hosting.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "Overhead lighting ruins everything.",
+        body: "If you are still in the kitchen when the first guest arrives, the night is already behind.",
+      },
+      {
+        type: "essay",
+        heading: "What not to do.",
+        body: `Skip the welcome speech. No one needs a tour.
+
+Do not ask what people want to drink. Pour something good. They can ask for something else.
+
+Plated apps look like a wedding. Put a board down and let people approach it.
+
+Do not apologize for anything. Not the food, not the apartment, not the playlist. The host sets the tone — if you are anxious, the room is anxious.`,
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Lower lighting.",
-          "Start music early.",
-          "Set the table simply.",
+          "Turn off every overhead light an hour before people arrive.",
+          "Start the playlist thirty minutes early so it is part of the room, not announced.",
+          "Have one thing already on the table when guests walk in — olives, a bowl of nuts, anything.",
+          "Pour the first drink without asking.",
+          "Sit down within the first fifteen minutes. If you cannot, your menu is too ambitious.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Atmosphere first.",
+        note: "Atmosphere first. Food second.",
         items: [
           {
-            name: "Candle Set",
+            name: "Tuberose or Wood Candle",
             brand: "Diptyque",
-            reason: "Softens the entire room.",
+            reason:
+              "One candle in the right place changes a whole room. Light it before guests arrive so the scent is in the air, not arriving with it.",
             priceRange: "$$$",
-            alt: "P.F. Candle Co.",
+            alt: "P.F. Candle Co. for an everyday version",
+          },
+          {
+            name: "Smart Dimmers",
+            brand: "Lutron Caséta",
+            reason:
+              "The single biggest atmosphere upgrade in any home. If your overhead lights cannot dim, they should not be on.",
+            priceRange: "$$",
+            alt: "Leviton Decora for a simpler install",
+          },
+          {
+            name: "Compact Speaker",
+            brand: "Sonos Era 100",
+            reason:
+              "Sounds intentional, looks intentional, gets out of the way. Hide it on a shelf, not on the counter.",
+            priceRange: "$$$",
+            alt: "Marshall Stanmore III for warmer character",
+          },
+          {
+            name: "Universal Wine Glass",
+            brand: "Zalto Universal",
+            reason:
+              "One shape, all wine. Stops the cabinet from filling up with single-purpose stems.",
+            priceRange: "$$$",
+            alt: "Schott Zwiesel Pure for an everyday version",
           },
         ],
       },
     ],
-    tags: ["hosting"],
+    tags: ["hosting", "atmosphere", "dinner"],
   },
   {
     slug: "the-dinner-plate-is-a-style-object",
     category: "Style",
     eyebrow: "Food",
     title: "The Dinner Plate Is a Style Object",
-    subtitle: "Yes, it matters.",
-    dek: "Presentation changes everything.",
+    subtitle: "Same food, different plate, completely different meal.",
+    dek: "Plating is not garnish. It is the difference between food someone eats and food someone remembers.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "plated dinner",
     sections: [
       {
         type: "intro",
-        heading: "This is not extra.",
-        body: `It is the point.`,
+        heading: "The same dish lands differently on the right plate.",
+        body: `A bowl of pasta covered edge-to-edge looks like a cafeteria. The same pasta, in the center of a wider plate, with one swipe of olive oil and a torn basil leaf, looks like dinner.
+
+Same food. Same effort. The plate is doing the work.`,
       },
       {
         type: "essay",
-        heading: "Edit the plate.",
-        body: `Space, color, texture.`,
+        heading: "Three things ruin most plates.",
+        body: `One — the food covers the entire surface. A plate needs negative space the way a room needs empty walls. The eye reads the white as intention. Without it, dinner looks like a pile.
+
+Two — everything is the same color. A bowl of beige food, no matter how good it tastes, photographs and presents flat. One green element, one acid, one finish. That is the rule.
+
+Three — there is no finish. A plate without a final touch looks unfinished because it is. A drizzle of oil, a crack of pepper, a sprinkle of flake salt, a sprig of something fresh. Five seconds of work that signals "this was on purpose."
+
+Use a plate one size larger than you think. Center the food. Leave a clean rim. Then add the green, the acid, and the finish in that order.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If it’s all one color, it’s not done.",
+        body: "If the plate is full to the edge, the food is not the problem. The plate is too small.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Use white plates.",
-          "Add green.",
-          "Finish with oil or crunch.",
+          "Switch to one size larger plates than you currently use. Most home dinnerware is undersized.",
+          "Plate from the center. Leave at least an inch of rim showing.",
+          "Add one green: parsley, basil, dill, chive. Torn, not chopped.",
+          "Finish with oil. A swirl of good olive oil makes anything look intentional.",
+          "Add one texture: crunch, crumble, flake salt. The eye needs a final note.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Simple upgrades.",
+        note: "Bigger plates. Better finishes.",
         items: [
           {
-            name: "White Dinnerware",
+            name: "Wide-Rim White Dinnerware",
             brand: "Fable",
-            reason: "Makes everything look better.",
+            reason:
+              "Slightly oversized, slightly off-white, made to leave space around the food. Makes home cooking look composed.",
             priceRange: "$$",
-            alt: "Crate & Barrel",
+            alt: "Crate & Barrel for a thinner-rim alternative",
+          },
+          {
+            name: "Olive Oil Bottle with Pour Spout",
+            brand: "Brightland",
+            reason:
+              "Quality oil and a real spout. Both matter. A drizzle is the easiest finish there is.",
+            priceRange: "$$",
+            alt: "California Olive Ranch in a refilled bottle",
+          },
+          {
+            name: "Flake Salt",
+            brand: "Maldon",
+            reason:
+              "Adds finish, adds texture, adds intention. A pinch on top of almost anything makes it look plated.",
+            priceRange: "$",
+            alt: "Jacobsen for an American-made version",
+          },
+          {
+            name: "Linen Napkins",
+            brand: "Hawkins New York",
+            reason:
+              "Reads as 'this was set, not thrown together.' A small upgrade with outsized effect.",
+            priceRange: "$$",
+            alt: "Quince for a more accessible price point",
           },
         ],
       },
     ],
-    tags: ["food", "plating"],
+    tags: ["food", "plating", "table"],
   },
   {
     slug: "style-is-not-gendered",
     category: "Style",
     eyebrow: "Philosophy",
     title: "Style Is Not Gendered",
-    subtitle: "The rules are the same.",
-    dek: "Only the expression changes.",
+    subtitle: "The rules read the same on everyone.",
+    dek: "Fit, proportion, and texture do not care who is wearing them.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "mixed styling silhouettes",
     sections: [
       {
         type: "intro",
-        heading: "This is simpler than people make it.",
-        body: `Fit, proportion, texture.`,
+        heading: "The rules are the rules.",
+        body: `A well-cut trouser is well-cut on anyone. A bad fit is a bad fit. Texture reads the same on every body.
+
+The reason fashion makes this complicated is that fashion sells more clothes when you buy two of everything. Style does not work that way.`,
       },
       {
         type: "essay",
-        heading: "Same system.",
-        body: `Different expression.`,
+        heading: "What actually changes is the silhouette, not the system.",
+        body: `Take one piece — a black, low-rise, slightly cropped wool trouser. Cut wide at the bottom.
+
+On a smaller frame, it works with a fitted knit and a flat shoe. The proportion is the trouser doing the volume and the top staying close.
+
+On a larger frame, the same trouser works with a heavier knit and a shoe with a little weight. Same trouser. Same rule. The proportion just resets relative to the body.
+
+Nothing changes about the standard. Fit first. Then texture. Then proportion. Then finish.
+
+The piece is not what differs. The combination differs. That is what people mean when they say someone has style — they understand combination, regardless of which side of the store they shop on.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "Good taste translates.",
+        body: "Stop shopping by department. Shop by silhouette.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Focus on fit first.",
-          "Then texture.",
-          "Then proportion.",
+          "Pick one piece you love. Try it on with three different combinations of weight, length, and shoe.",
+          "Stop reading sizing as identity. A small in one brand is a medium in another. The number is information, not meaning.",
+          "If a piece only works one way, it is not a strong piece. Strong pieces hold up across silhouettes.",
+          "Ignore the gender label on a tag once. See what happens.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Universal pieces.",
+        note: "Pieces that hold their shape across bodies.",
         items: [
           {
-            name: "Relaxed Trouser",
+            name: "Wide-Leg Wool Trouser",
             brand: "COS",
-            reason: "Works across styles and identities.",
+            reason:
+              "A real trouser cut wide enough to be the silhouette. Reads as intentional on anyone wearing it.",
             priceRange: "$$",
-            alt: "Uniqlo",
+            alt: "Toteme for a more elevated version",
+          },
+          {
+            name: "Heavyweight Crewneck Knit",
+            brand: "Naadam",
+            reason:
+              "Weight matters more than cut here. A real knit drapes; a thin one looks like an afterthought.",
+            priceRange: "$$",
+            alt: "Uniqlo for an everyday version",
+          },
+          {
+            name: "Leather Derby or Loafer",
+            brand: "Margaret Howell",
+            reason:
+              "A clean, slightly weighted shoe finishes any silhouette without committing to a category.",
+            priceRange: "$$$",
+            alt: "G.H. Bass Weejuns for the original at half the price",
           },
         ],
       },
     ],
-    tags: ["inclusive", "style"],
+    tags: ["philosophy", "fit", "proportion"],
   },
   {
     slug: "the-bag-sets-the-tone",
     category: "Style",
     eyebrow: "Accessories",
     title: "The Bag Sets the Tone",
-    subtitle: "If it looks chaotic, everything feels chaotic.",
-    dek: "Structure matters more than you think.",
+    subtitle: "Your bag is either holding your day or becoming the first problem in it.",
+    dek: "A good bag is structure. A bad bag is the reason you are late.",
     author: AUTHOR,
     tone: TONE,
     heroStyle: "minimal carry bag",
     sections: [
       {
         type: "intro",
-        heading: "Your bag tells the story.",
-        body: `Before you even speak.`,
+        heading: "A bag is read before you say anything.",
+        body: `Walk into a meeting, a restaurant, a flight. Your bag arrives before you do.
+
+If it looks slumped, overstuffed, and spilling charging cables, the read is "scattered." If it stands up on its own, closes cleanly, and has one job, the read is "in control." Same person, same outfit, completely different impression.`,
       },
       {
         type: "essay",
-        heading: "Structure creates calm.",
-        body: `A good bag removes friction.`,
+        heading: "Structure over slouch.",
+        body: `Most of the bags people own do not stand up. That is the whole problem.
+
+A bag with no structure becomes a sack. The contents shift, the shape collapses, and you spend ten minutes a day rummaging. A structured bag — leather, canvas with a base, anything that holds a silhouette — keeps the contents organized by virtue of its shape. You stop hunting for things because there are fewer places they can be.
+
+Pick the material to match the day. Leather reads more considered and lasts longer. Canvas reads more relaxed and washes. Nylon is for travel, not a Tuesday meeting. Match material to context the same way you match shoes to occasion.
+
+Then commit to one bag for the week. Most people own four or five bags and rotate them, which means they re-pack constantly and lose things in the process. Pick one. Use it. Empty it on Friday. Repack on Monday. That is the system.`,
       },
       {
         type: "callout",
         label: "Jordan’s Rule",
-        body: "If your bag is chaos, your day will be too.",
+        body: "If your bag does not stand up on its own, neither does your day.",
       },
       {
         type: "practical",
         heading: "Try This First",
         items: [
-          "Empty your bag.",
-          "Rebuild with intention.",
-          "Remove duplicates.",
+          "Empty your current bag onto a table. Cull anything you have not used in two weeks.",
+          "Use a small pouch inside the bag for cords and chargers. They are the chaos source.",
+          "Pick one bag and use it for seven days. No swapping.",
+          "If your bag has a logo, ask whether it is doing more than the bag is.",
+          "Replace your slumped tote first. That is the bag costing you the most every day.",
         ],
       },
       {
         type: "shop",
         heading: "Shop the Idea",
-        note: "Clean, functional, repeatable.",
+        note: "Three bags that hold their shape across price tiers.",
         items: [
           {
-            name: "Leather Tote",
-            brand: "Cuyana",
-            reason: "Structured without trying too hard.",
+            name: "Structured Leather Tote",
+            brand: "Cuyana Classic Structured",
+            reason:
+              "Holds its shape after years of use. Reads as intentional in any room. The single bag that does the most work.",
+            priceRange: "$$$",
+            alt: "Madewell Transport for a more accessible version",
+          },
+          {
+            name: "Waxed Canvas Carryall",
+            brand: "Filson Field Bag",
+            reason:
+              "For days when leather is too much. Structured base, real hardware, ages well, never apologizes.",
             priceRange: "$$",
-            alt: "Everlane",
+            alt: "L.L.Bean Boat & Tote (zip-top) for the same logic at a third of the cost",
+          },
+          {
+            name: "Compact Crossbody",
+            brand: "Polène Numéro Dix",
+            reason:
+              "When you need to carry less, not more. Structured shell, clean closure, reads as a deliberate edit.",
+            priceRange: "$$$",
+            alt: "Mansur Gavriel Mini Tote for a softer-shape alternative",
           },
         ],
       },
     ],
-    tags: ["bags", "accessories"],
+    tags: ["bags", "accessories", "carry"],
   },
 ];
 

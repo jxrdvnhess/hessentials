@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import DailyIntent from "../components/DailyIntent";
 import Wordmark from "../components/Wordmark";
 
 export default function EnterPage() {
@@ -45,17 +46,12 @@ export default function EnterPage() {
           </div>
         </div>
 
-        <p
-          style={{ animationDelay: "3.1s" }}
-          className="fade-up mx-auto mb-10 max-w-xl font-serif text-[clamp(1.125rem,1.7vw,1.375rem)] italic leading-[1.45] text-[#1f1d1b]/65 sm:mb-12"
-        >
-          The things that make everyday life feel a little better.
-        </p>
+        <DailyIntent />
 
         <Link
           href="/home"
           prefetch
-          style={{ animationDelay: "3.5s" }}
+          style={{ animationDelay: "3.8s" }}
           className="fade-up inline-block border border-[#1f1d1b]/55 px-9 py-4 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/80 transition-colors duration-500 ease-out hover:border-[#1f1d1b]/75 hover:text-[#1f1d1b] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1f1d1b]/50 focus-visible:ring-offset-4 focus-visible:ring-offset-[#fbfaf4]"
         >
           Enter

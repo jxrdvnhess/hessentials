@@ -21,6 +21,10 @@ const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
  * gateway stays clean. The wordmark anchors the bar; nav and search sit to
  * its right. The wordmark-press arrival animation is preserved on `/home`
  * so the hub still has its quieter sense of arrival.
+ *
+ * Background is a vertical gradient + blur, masked to fade out at the
+ * bottom edge. The intent is that the bar should feel like atmosphere, not
+ * a defined element — no detectable line as content scrolls beneath it.
  */
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -29,10 +33,21 @@ export default function SiteHeader() {
   const isHome = pathname === "/home";
 
   return (
-    <header
-      aria-label="Site"
-      className="sticky top-0 z-40 w-full backdrop-blur-[10px]"
-    >
+    <header aria-label="Site" className="sticky top-0 z-40 w-full">
+      {/* Soft wash — the bar exists, but its edge does not. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 backdrop-blur-[8px]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(248,246,243,0.78) 0%, rgba(248,246,243,0.55) 55%, rgba(248,246,243,0) 100%)",
+          maskImage:
+            "linear-gradient(to bottom, black 50%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 50%, transparent 100%)",
+        }}
+      />
+
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-6 py-2.5 sm:px-10 sm:py-3 md:px-16">
         <Link
           href="/home"

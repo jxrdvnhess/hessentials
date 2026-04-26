@@ -20,6 +20,15 @@ export type RecipeImage = {
   height: number;
 };
 
+export type RecipeOrigin = {
+  /** Small uppercase label above the body — e.g. "From My Family Kitchen". */
+  heading?: string;
+  /** A short paragraph framing the origin or heritage of the dish. */
+  body: string;
+  /** Optional supporting image — a recipe card, a photograph, a scan. */
+  image?: RecipeImage;
+};
+
 export type Recipe = {
   /** Small uppercase label above the title — e.g. "Recipe" or a series. */
   eyebrow?: string;
@@ -38,4 +47,6 @@ export type Recipe = {
   variations?: string[];
   /** Optional closing notes paragraph. */
   notes?: string;
+  /** Optional origin / heritage block — story plus an optional image. */
+  origin?: RecipeOrigin;
 };

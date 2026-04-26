@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `${title} — Hessentials`,
     description:
-      "Hessentials is about choosing well — a curated system for living with more intention.",
+      "Hessentials is about choosing well — a system for deciding what holds.",
   };
 }
 
@@ -27,15 +27,15 @@ export default async function AboutPage() {
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
-      <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
-        <header className="mb-20 text-center md:mb-28">
-          <h1 className="font-serif text-[clamp(2.25rem,5.5vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.025em] text-balance">
+      <article className="mx-auto w-full max-w-[640px] px-6 py-16 sm:px-8 md:py-20">
+        <header className="mb-10 md:mb-14">
+          <h1 className="font-serif text-[clamp(2rem,4.5vw,3rem)] font-normal leading-[1.05] tracking-[-0.02em] text-balance">
             {title}
           </h1>
         </header>
 
         <div
-          className="prose-editorial"
+          className="prose-editorial about-tight"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>

@@ -53,6 +53,7 @@ export default function Recipe({ recipe, className }: RecipeProps) {
     serve,
     variations,
     notes,
+    origin,
   } = recipe;
 
   const hasClosing =
@@ -243,6 +244,44 @@ export default function Recipe({ recipe, className }: RecipeProps) {
               </aside>
             )}
           </div>
+        </>
+      )}
+
+      {/* ---------- Origin / Heritage ---------- */}
+      {origin && (
+        <>
+          <p
+            aria-hidden
+            className="mx-auto mt-36 mb-16 text-center font-serif text-[18px] text-[#1f1d1b]/30 md:mt-48 md:mb-20"
+          >
+            —
+          </p>
+
+          <aside
+            aria-label="Origin"
+            className="mx-auto max-w-2xl text-center"
+          >
+            {origin.heading && (
+              <p className="mb-8 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+                {origin.heading}
+              </p>
+            )}
+            <p className="text-pretty mx-auto max-w-xl font-serif text-[18px] italic leading-[1.65] text-[#1f1d1b]/70 sm:text-[19px]">
+              {origin.body}
+            </p>
+            {origin.image && (
+              <figure className="mx-auto mt-16 md:mt-20">
+                <Image
+                  src={origin.image.src}
+                  alt={origin.image.alt}
+                  width={origin.image.width}
+                  height={origin.image.height}
+                  sizes="(min-width: 1024px) 720px, 100vw"
+                  className="h-auto w-full"
+                />
+              </figure>
+            )}
+          </aside>
         </>
       )}
     </article>

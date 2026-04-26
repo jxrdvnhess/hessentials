@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export type WordmarkSize = "small" | "nav" | "medium" | "large" | "hero";
+export type WordmarkVariant = "default" | "inverse";
 
 type WordmarkProps = {
   /**
@@ -12,6 +13,8 @@ type WordmarkProps = {
    *  - hero   → arrival / brand-moment placement
    */
   size?: WordmarkSize;
+  /** `default` is black on transparent. `inverse` is white on transparent — for dark backgrounds. */
+  variant?: WordmarkVariant;
   /** Use for above-the-fold instances (e.g., the entry screen). */
   priority?: boolean;
   /** Override accessible name. Defaults to "Hessentials". */
@@ -23,6 +26,9 @@ type WordmarkProps = {
 /**
  * Each size scales fluidly via clamp() — min/preferred/max — so the wordmark
  * stays proportional with surrounding type at every viewport.
+ *
+ * The source PNG is trimmed to the actual ink (994×255 → ~3.9:1) so any
+ * vertical breathing room comes from CSS, not baked-in whitespace.
  */
 const WIDTH_BY_SIZE: Record<WordmarkSize, string> = {
   small: "w-[clamp(112px,11vw,140px)]",
@@ -42,10 +48,16 @@ const SIZES_HINT_BY_SIZE: Record<WordmarkSize, string> = {
 
 export default function Wordmark({
   size = "medium",
+  variant = "default",
   priority = false,
   alt = "Hessentials",
   className,
 }: WordmarkProps) {
+  const src =
+    variant === "inverse"
+      ? "/hessentials-wordmark-inverse.png"
+      : "/hessentials-wordmark.png";
+
   return (
     <span
       className={[
@@ -55,11 +67,12 @@ export default function Wordmark({
       ].join(" ")}
     >
       <Image
-        src="/hessentials-wordmark.png"
+        src={src}
         alt={alt}
-        width={1200}
-        height={400}
+        width={994}
+        height={255}
         priority={priority}
+        quality={95}
         sizes={SIZES_HINT_BY_SIZE[size]}
         className="block h-auto w-full"
       />
