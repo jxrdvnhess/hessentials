@@ -31,7 +31,7 @@ export default function SiteHeader() {
   return (
     <header
       aria-label="Site"
-      className="sticky top-0 z-40 w-full bg-[#f8f6f3]/40 backdrop-blur-[6px] backdrop-saturate-150"
+      className="sticky top-0 z-40 w-full backdrop-blur-[10px]"
     >
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-6 py-2.5 sm:px-10 sm:py-3 md:px-16">
         <Link

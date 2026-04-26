@@ -13,15 +13,15 @@ export const metadata: Metadata = {
 const THE_EDIT = [
   { title: "The 5 things I cook every week", href: "/recipes" },
   {
-    title: "The kitchen setup that changed everything",
+    title: "The kitchen that changed everything",
     href: "/living/the-kitchen-setup-that-makes-you-cook-more",
   },
   {
-    title: "Getting dressed without overthinking it",
+    title: "Getting dressed without overthinking",
     href: "/style/the-uniform-is-not-boring",
   },
   { title: "What I keep buying again", href: "/shop" },
-  { title: "Hosting without making it a production", href: "/living" },
+  { title: "Hosting without the production", href: "/living" },
 ] as const;
 
 export default function HomePage() {
@@ -74,9 +74,9 @@ export default function HomePage() {
             alt=""
             fill
             sizes="100vw"
-            quality={90}
+            quality={95}
             className="object-cover object-[62%_50%] sm:object-center"
-            style={{ filter: "contrast(0.97) saturate(0.96) brightness(1.015)" }}
+            style={{ filter: "contrast(0.93) saturate(0.88) brightness(1.04)" }}
           />
         </div>
       </FadeOnScroll>

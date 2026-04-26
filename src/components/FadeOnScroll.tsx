@@ -25,10 +25,16 @@ type FadeOnScrollProps = {
 };
 
 /**
- * Mounts the children at opacity 0, then transitions to 1 the first time the
- * element intersects the viewport. Used for editorial pacing — the lifestyle
- * image fading into view as the reader scrolls past the hero. Opacity-only.
- * No transform, no scale. Respects `prefers-reduced-motion`.
+ * Reveals children with an opacity fade the first time they enter the
+ * viewport. Used for editorial pacing — the lifestyle image fading in as
+ * the reader scrolls past the hero. Opacity-only. No transform, no scale.
+ *
+ * Visibility model is inverted on purpose: the SSR / no-JS / print-mode
+ * default is **visible**. JS arms the wrapper after mount (briefly hiding
+ * it), then the IntersectionObserver reveals it. This way crawlers,
+ * print-to-PDF, and JS-disabled clients always see the content.
+ *
+ * Respects `prefers-reduced-motion` — those users skip the fade entirely.
  */
 export default function FadeOnScroll({
   children,
@@ -40,23 +46,24 @@ export default function FadeOnScroll({
   rootMargin = "0px",
 }: FadeOnScrollProps) {
   const ref = useRef<HTMLElement | null>(null);
+  const [armed, setArmed] = useState(false);
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // Reduced-motion users skip the fade — show immediately. setState here is
-    // browser-only (matchMedia isn't safe at SSR) so the effect is the right
-    // place to read it; we set once and bail.
+    // Reduced-motion users: don't arm. Element stays at its SSR default
+    // (visible). No flash, no transition.
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setShown(true);
-      return;
-    }
+    if (reduce) return;
+
+    // Arm: hide immediately. Brief flash on slow first paint, but ensures
+    // the IntersectionObserver fade is visible when it fires.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setArmed(true);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -76,11 +83,14 @@ export default function FadeOnScroll({
   }, [threshold, rootMargin]);
 
   const Tag = as;
+  // Visible by default. Hidden only when JS has armed the element AND it
+  // hasn't been intersected yet.
+  const opacity = !armed || shown ? 1 : 0;
   const mergedStyle: CSSProperties = {
     transitionProperty: "opacity",
     transitionDuration: `${durationMs}ms`,
     transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
-    opacity: shown ? 1 : 0,
+    opacity,
     ...style,
   };
 
