@@ -25,9 +25,26 @@ const GROUPS: Record<string, LivingGroup> = {
   "why-you-dont-cook-more": "Systems",
   "stop-buying-plush-blankets-use-cotton": "Environment",
   "youre-not-bad-with-plants": "Environment",
+  "stop-using-overhead-lights-after-sunset": "Environment",
   "the-10-minute-reset": "Rituals",
   "stop-using-fabric-softener": "Rituals",
 };
+
+/**
+ * Editor's pick — a small, deliberately mixed handful surfaced in a
+ * "Start Here" rail above the main archive on the default ("All") view.
+ * Ordered intentionally; not shuffled. The mix is intentional: one
+ * systems piece, one environment piece, one behavioral piece, one
+ * opinion piece — to signal the page's range, not its corrections.
+ * Update sparingly — this is the page's point of view.
+ */
+const FEATURED_SLUGS = [
+  "why-most-kitchens-are-set-up-wrong",
+  "stop-using-overhead-lights-after-sunset",
+  "the-10-minute-reset",
+  "why-you-dont-cook-more",
+  "why-tucson-is-the-best-town-in-the-southwest",
+];
 
 export default async function LivingIndexPage() {
   const articles = await getAllLivingArticles();
@@ -49,11 +66,14 @@ export default async function LivingIndexPage() {
         <p className="text-pretty mx-auto max-w-2xl font-serif text-[clamp(1.5rem,2.6vw,2rem)] italic leading-[1.4] text-[#1f1d1b]/80">
           Some things feel good. Some things work. They are not the same.
         </p>
+        <p className="text-pretty mx-auto mt-6 max-w-xl font-serif text-[15px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[16px]">
+          What holds up. What doesn&rsquo;t. And how to tell the difference.
+        </p>
       </section>
 
       {/* ---------- Filter + Grid (shuffled on every visit when "All") ---------- */}
       <div className="pb-32 sm:pb-40">
-        <LivingFilter articles={projected} />
+        <LivingFilter articles={projected} featuredSlugs={FEATURED_SLUGS} />
       </div>
     </main>
   );

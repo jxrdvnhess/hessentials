@@ -9,22 +9,30 @@ type FilterableRecipe = {
   title: string;
   description: string;
   tags: string[];
+  /** Optional, quiet secondary cue (e.g. "Weeknight staple"). */
+  cue?: string;
 };
 
 type RecipesFilterProps = {
   recipes: FilterableRecipe[];
+  /**
+   * Slugs to exclude from the default "All" view (e.g. recipes already
+   * surfaced in a "Start here" block above). They still appear under
+   * specific tag filters so narrowing remains complete.
+   */
+  deferSlugs?: readonly string[];
 };
 
 const FILTERS = [
-  "All",
-  "Weeknight",
-  "Slow",
-  "Hosting",
-  "Pantry",
-  "Vegetarian",
+  { label: "All", hint: null },
+  { label: "Weeknight", hint: "fast, reliable" },
+  { label: "Slow", hint: "worth it" },
+  { label: "Hosting", hint: "people over" },
+  { label: "Pantry", hint: "you already have this" },
+  { label: "Vegetarian", hint: null },
 ] as const;
 
-type Filter = (typeof FILTERS)[number];
+type Filter = (typeof FILTERS)[number]["label"];
 
 function matchesFilter(recipe: FilterableRecipe, filter: Filter): boolean {
   if (filter === "All") return true;
@@ -33,8 +41,15 @@ function matchesFilter(recipe: FilterableRecipe, filter: Filter): boolean {
   );
 }
 
-export default function RecipesFilter({ recipes }: RecipesFilterProps) {
+export default function RecipesFilter({
+  recipes,
+  deferSlugs,
+}: RecipesFilterProps) {
   const [active, setActive] = useState<Filter>("All");
+  const deferred = useMemo(
+    () => new Set(deferSlugs ?? []),
+    [deferSlugs]
+  );
 
   // Shuffle once on mount so every page visit lands on a fresh order
   // when the visitor is browsing "All". Specific tag filters keep the
@@ -52,22 +67,22 @@ export default function RecipesFilter({ recipes }: RecipesFilterProps) {
   const visible = useMemo(
     () =>
       active === "All"
-        ? shuffled
+        ? shuffled.filter((r) => !deferred.has(r.slug))
         : recipes.filter((r) => matchesFilter(r, active)),
-    [recipes, shuffled, active]
+    [recipes, shuffled, active, deferred]
   );
 
   return (
     <>
       <div className="mx-auto mb-16 max-w-4xl px-6 text-center sm:mb-20 sm:px-10">
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
-          {FILTERS.map((filter) => {
-            const isActive = filter === active;
+        <ul className="flex flex-wrap items-baseline justify-center gap-x-6 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
+          {FILTERS.map(({ label, hint }) => {
+            const isActive = label === active;
             return (
-              <li key={filter}>
+              <li key={label}>
                 <button
                   type="button"
-                  onClick={() => setActive(filter)}
+                  onClick={() => setActive(label)}
                   className={[
                     "cursor-pointer transition-colors duration-500 ease-out",
                     isActive
@@ -76,7 +91,22 @@ export default function RecipesFilter({ recipes }: RecipesFilterProps) {
                   ].join(" ")}
                   aria-pressed={isActive}
                 >
-                  {filter}
+                  {label}
+                  {hint && (
+                    <span
+                      className={[
+                        // Hidden on mobile — the inline hint pushed the filter row
+                        // to 4–5 wrapped lines on phones. Visible on sm+ where the
+                        // extra context aids scanning without crowding the layout.
+                        "ml-2 hidden text-[11px] normal-case tracking-normal sm:inline",
+                        isActive
+                          ? "text-[#1f1d1b]/55"
+                          : "text-[#1f1d1b]/30",
+                      ].join(" ")}
+                    >
+                      ({hint})
+                    </span>
+                  )}
                 </button>
               </li>
             );
@@ -96,6 +126,11 @@ export default function RecipesFilter({ recipes }: RecipesFilterProps) {
                 href={`/recipes/${recipe.slug}`}
                 className="group block transition-opacity duration-500 ease-out"
               >
+                {recipe.cue && (
+                  <p className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/40 sm:text-[11px]">
+                    {recipe.cue}
+                  </p>
+                )}
                 <h2 className="font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30">
                   {recipe.title}
                 </h2>

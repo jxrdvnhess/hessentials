@@ -18,9 +18,12 @@ export default function StyleIndexPage() {
         <p className="text-pretty mx-auto max-w-2xl font-serif text-[clamp(1.5rem,2.6vw,2rem)] italic leading-[1.4] text-[#1f1d1b]/80">
           What to wear. What to keep. What to ignore.
         </p>
+        <p className="mx-auto mt-6 max-w-md text-[13px] leading-[1.6] text-[#1f1d1b]/55 sm:text-[14px]">
+          A few of these will do most of the work.
+        </p>
       </section>
 
-      {/* ---------- Grid (shuffled on every visit) ---------- */}
+      {/* ---------- Index (Start Here + grouped sections) ---------- */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-32 sm:px-10 md:pb-40">
         <StyleIndex />
       </section>
