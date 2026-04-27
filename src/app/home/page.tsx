@@ -72,7 +72,7 @@ function Cinematic({
   // (where the aspect roughly matches anyway).
   if (type === "bleed") {
     return (
-      <div className="relative aspect-[3/2] w-full overflow-hidden md:aspect-auto md:h-screen">
+      <div className="relative aspect-[3/4] w-full overflow-hidden md:aspect-auto md:h-screen">
         <Image
           src={src}
           alt={alt}
@@ -91,7 +91,7 @@ function Cinematic({
   // Type B — feature frame
   return (
     <div className="px-[6vw]">
-      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px] md:aspect-auto md:h-[90vh] md:max-h-[1100px]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] md:aspect-auto md:h-[90vh] md:max-h-[1100px]">
         <Image
           src={src}
           alt={alt}
@@ -112,7 +112,7 @@ export default function HomePage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
       {/* ---------- Hero — text only. Image 01 emerges inside this viewport. ---------- */}
-      <section className="flex min-h-[65vh] items-center px-6 sm:px-10 md:px-16">
+      <section className="flex min-h-[52vh] items-center px-6 pt-16 sm:px-10 md:min-h-[65vh] md:px-16 md:pt-0">
         <div className="fade-up delay-3 max-w-[520px]">
           <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
             Hessentials
@@ -177,11 +177,13 @@ export default function HomePage() {
       </section>
 
       {/* ---------- Image 03 — Morning — Type B
-                  Desktop: Currently overlay anchored bottom-right.
-                  Mobile:  clean image (no overlay), then Currently as
-                           a separate cream section below the image —
-                           overlay text wasn't readable on a portrait-
-                           cropped image. */}
+                  Desktop: full Currently overlay, anchored bottom-right.
+                  Mobile:  bigger portrait crop with a quiet "Lately
+                           Currently" eyebrow overlaid bottom-center.
+                           The full Currently content block lives in a
+                           cream section below the image (the image
+                           keeps its brand-poetry moment; the content
+                           gets the readability of cream). */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
           src="/home/hacienda-03-morning.jpg"
@@ -189,7 +191,7 @@ export default function HomePage() {
           type="frame"
           quality={95}
         >
-          {/* DESKTOP-ONLY: radial darken + RightNow overlay. */}
+          {/* DESKTOP: radial darken + full RightNow overlay. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 hidden md:block"
@@ -201,17 +203,36 @@ export default function HomePage() {
           <div className="absolute right-16 bottom-16 hidden max-w-[320px] md:block">
             <RightNow variant="light" />
           </div>
+
+          {/* MOBILE: bottom darken + quiet eyebrow overlay only. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 md:hidden"
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom, transparent 55%, rgba(20,18,16,0.22) 78%, rgba(20,18,16,0.55) 100%)",
+            }}
+          />
+          <div className="absolute inset-x-0 bottom-7 flex flex-col items-center text-center md:hidden">
+            <p className="font-serif text-[12px] italic leading-none text-[#f8f6f3]/65">
+              Lately
+            </p>
+            <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
+              Currently
+            </p>
+          </div>
         </Cinematic>
       </section>
 
-      {/* MOBILE-ONLY: Currently as a clean cream section below the
-          morning image. Same content, properly composed for a phone. */}
+      {/* MOBILE-ONLY: Currently content list as a clean cream section
+          below the morning image. The "Lately Currently" eyebrow is
+          suppressed here because it lives on the image above. */}
       <section
         aria-label="Currently"
         className="block px-6 pt-12 pb-2 sm:px-10 md:hidden"
       >
         <div className="mx-auto max-w-[420px]">
-          <RightNow variant="default" />
+          <RightNow variant="default" hideEyebrow />
         </div>
       </section>
 
@@ -247,7 +268,7 @@ export default function HomePage() {
           type="frame"
           filter="brightness(0.78) saturate(0.92) contrast(1.02)"
         >
-          {/* DESKTOP-ONLY: bottom darken + footer overlay. */}
+          {/* DESKTOP: bottom darken + full footer overlay. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 hidden md:block"
@@ -257,9 +278,33 @@ export default function HomePage() {
             }}
           />
           <HomeFooterOverlay />
+
+          {/* MOBILE: bottom darken + brand-close whisper.
+              Just the wordmark eyebrow + tagline italic — the cleanup
+              image keeps its identity as the brand close. The full
+              footer (newsletter, symbol, legal) lives in the cream
+              block below. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 md:hidden"
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom, transparent 50%, rgba(20,18,16,0.28) 75%, rgba(20,18,16,0.65) 100%)",
+            }}
+          />
+          <div className="absolute inset-x-0 bottom-9 flex flex-col items-center text-center md:hidden">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
+              Hessentials
+            </p>
+            <p className="mt-3 font-serif text-[16px] italic leading-[1.4] text-[#f8f6f3]/85">
+              This is what stayed.
+            </p>
+          </div>
         </Cinematic>
 
-        {/* MOBILE-ONLY: cream footer block below the cleanup image. */}
+        {/* MOBILE-ONLY: cream footer block below the cleanup image
+            (newsletter + symbol + legal — the wordmark whisper above
+            already lives on the image). */}
         <HomeFooterMobile />
       </section>
     </main>

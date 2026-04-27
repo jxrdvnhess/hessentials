@@ -194,9 +194,16 @@ function pickRandom<T>(items: readonly T[]): T {
 type RightNowProps = {
   /** "default" — dark on cream (hero usage). "light" — cream on dark image (overlay usage). */
   variant?: "default" | "light";
+  /** When true, the "Lately Currently" eyebrow is suppressed (because
+   *  it's already shown elsewhere — e.g. as an overlay on the image
+   *  above this block on mobile). */
+  hideEyebrow?: boolean;
 };
 
-export default function RightNow({ variant = "default" }: RightNowProps) {
+export default function RightNow({
+  variant = "default",
+  hideEyebrow = false,
+}: RightNowProps) {
   // Initial state matches SSR output to avoid hydration mismatch.
   // Randomization fires after mount; refresh = new pick across all slots.
   const [picks, setPicks] = useState<Article[]>(() =>
@@ -245,22 +252,24 @@ export default function RightNow({ variant = "default" }: RightNowProps) {
 
   return (
     <div ref={wrapperRef as React.RefObject<HTMLDivElement>} className="right-now">
-      <div
-        ref={setRow(0)}
-        style={revealStyle(progress[0] ?? 0)}
-        className="mb-7"
-      >
-        <p
-          className={`mb-2 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
+      {!hideEyebrow && (
+        <div
+          ref={setRow(0)}
+          style={revealStyle(progress[0] ?? 0)}
+          className="mb-7"
         >
-          Lately
-        </p>
-        <p
-          className={`text-[11px] uppercase leading-none tracking-[0.26em] sm:text-[12px] ${eyebrow}`}
-        >
-          Currently
-        </p>
-      </div>
+          <p
+            className={`mb-2 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
+          >
+            Lately
+          </p>
+          <p
+            className={`text-[11px] uppercase leading-none tracking-[0.26em] sm:text-[12px] ${eyebrow}`}
+          >
+            Currently
+          </p>
+        </div>
+      )}
       <ul className="space-y-6">
         {SLOTS.map((slot, i) => {
           const article = picks[i];

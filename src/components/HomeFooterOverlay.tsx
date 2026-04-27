@@ -133,11 +133,12 @@ export default function HomeFooterOverlay() {
 }
 
 /**
- * Mobile-only homepage footer.
+ * Mobile-only homepage footer block.
  *
- * Renders as a clean cream block below the cleanup image on mobile,
- * since stacking type on a portrait-cropped image reads as broken.
- * Same content as the overlay above, properly composed for a phone.
+ * Renders as a clean cream block beneath the cleanup image. The
+ * cleanup image itself carries the brand whisper (Hessentials /
+ * "This is what stayed."); this block holds the rest — newsletter,
+ * symbol, legal. Two halves of one editorial composition.
  *
  * Hidden on md+ where <HomeFooterOverlay /> takes over.
  */
@@ -146,28 +147,20 @@ export function HomeFooterMobile() {
 
   return (
     <div className="block md:hidden">
-      <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-7 px-6 pt-16 pb-12 text-center sm:px-8 sm:pt-20 sm:pb-14">
-        <NewsletterSignup variant="default" />
-
+      <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-8 px-6 pt-14 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Link
           href="/home"
           aria-label="Hessentials — home"
-          className="mt-3 inline-block transition-opacity duration-500 ease-out hover:opacity-70"
+          className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
         >
           <Symbol size="xl" alt="Hessentials" />
         </Link>
 
-        <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55">
-          Hessentials
-        </p>
-
-        <p className="font-serif text-[16px] italic leading-[1.4] text-[#1f1d1b]/65">
-          This is what stayed.
-        </p>
+        <NewsletterSignup variant="default" />
 
         <nav
           aria-label="Legal"
-          className="mt-4 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
+          className="mt-3 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
         >
           <div className="flex items-center gap-x-5">
             {LEGAL_LINKS.slice(0, 3).map((link) => (

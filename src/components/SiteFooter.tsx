@@ -127,11 +127,13 @@ function CinematicFooter() {
       className="relative w-full"
     >
       {/* ---------- Image stage ----------
-          Mobile: aspect-[3/2] so the full landscape composition shows
-                  (the source is 1537×1023 — a tall mobile crop hides
-                  the doorway and most of the room).
-          Desktop: 72vh+ with overlay zones (aspect roughly matches). */}
-      <div className="relative aspect-[3/2] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
+          Mobile: tall portrait crop (aspect-[4/5]) so the photograph
+                  dominates the viewport like a magazine close. The
+                  brand whisper (wordmark + tagline) sits over the
+                  bottom of the image; newsletter + legal live in the
+                  cream block below.
+          Desktop: 72vh+ with full overlay zones (aspect matches). */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
         <Image
           src="/hacienda-footer-master.jpg"
           alt=""
@@ -155,6 +157,28 @@ function CinematicFooter() {
               "radial-gradient(ellipse 64% 76% at 92% 88%, rgba(20,18,16,0.68), rgba(20,18,16,0.32) 50%, transparent 78%)",
           }}
         />
+
+        {/* MOBILE-ONLY: bottom darken + brand whisper overlay. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 md:hidden"
+          style={{
+            opacity: revealOpacity,
+            backgroundImage:
+              "linear-gradient(to bottom, transparent 50%, rgba(20,18,16,0.28) 75%, rgba(20,18,16,0.65) 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-x-0 bottom-9 flex flex-col items-center text-center md:hidden"
+          style={{ opacity: revealOpacity }}
+        >
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
+            Hessentials
+          </p>
+          <p className="mt-3 font-serif text-[16px] italic leading-[1.4] text-[#f8f6f3]/85">
+            This is what stayed.
+          </p>
+        </div>
 
         {/* DESKTOP-ONLY: brand block, anchored mid-low-right. */}
         <div
@@ -219,33 +243,25 @@ function CinematicFooter() {
         </nav>
       </div>
 
-      {/* ---------- MOBILE-ONLY: cream footer block below image ----------
-          Properly stacked, generous spacing, fully readable on a phone.
-          Hidden on md+ where the desktop overlay handles the same content. */}
+      {/* ---------- MOBILE-ONLY: cream block below image ----------
+          The cleanup image carries the brand whisper (Hessentials /
+          "This is what stayed."); this block holds the rest —
+          symbol, newsletter, legal. Two halves of one composition. */}
       <div className="block md:hidden">
-        <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-7 px-6 pt-16 pb-12 text-center sm:px-8 sm:pt-20 sm:pb-14">
-          <NewsletterSignup variant="default" />
-
+        <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-8 px-6 pt-14 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
           <Link
             href="/home"
             aria-label="Hessentials — home"
-            className="mt-3 inline-block transition-opacity duration-500 ease-out hover:opacity-70"
+            className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
           >
             <Symbol size="xl" alt="Hessentials" />
           </Link>
 
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55">
-            Hessentials
-          </p>
+          <NewsletterSignup variant="default" />
 
-          <p className="font-serif text-[16px] italic leading-[1.4] text-[#1f1d1b]/65">
-            This is what stayed.
-          </p>
-
-          {/* Legal — three on top, contact below, in two clean rows. */}
           <nav
             aria-label="Legal"
-            className="mt-4 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
+            className="mt-3 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
           >
             <div className="flex items-center gap-x-5">
               {LEGAL_LINKS.slice(0, 3).map((link) => (
