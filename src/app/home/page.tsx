@@ -2,7 +2,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import RightNow from "../../components/RightNow";
 import TheEdit from "../../components/TheEdit";
-import HomeFooterOverlay from "../../components/HomeFooterOverlay";
+import HomeFooterOverlay, {
+  HomeFooterMobile,
+} from "../../components/HomeFooterOverlay";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -62,9 +64,15 @@ function Cinematic({
   quality = 92,
   children,
 }: CinematicProps) {
+  // Hacienda source images are 1537×1023 (3:2 landscape). On a portrait
+  // phone, h-screen / h-[90vh] crops the landscape composition into a
+  // narrow vertical strip — most of the room is sliced off the sides.
+  // On mobile we size by the source aspect ratio so the FULL composition
+  // shows; on desktop we keep the viewport-pinned cinematic sizing
+  // (where the aspect roughly matches anyway).
   if (type === "bleed") {
     return (
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative aspect-[3/2] w-full overflow-hidden md:aspect-auto md:h-screen">
         <Image
           src={src}
           alt={alt}
@@ -83,7 +91,7 @@ function Cinematic({
   // Type B — feature frame
   return (
     <div className="px-[6vw]">
-      <div className="relative h-[90vh] max-h-[1100px] w-full overflow-hidden rounded-[20px]">
+      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px] md:aspect-auto md:h-[90vh] md:max-h-[1100px]">
         <Image
           src={src}
           alt={alt}
@@ -168,7 +176,12 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ---------- Image 03 — Morning — Type B — Currently overlaid ---------- */}
+      {/* ---------- Image 03 — Morning — Type B
+                  Desktop: Currently overlay anchored bottom-right.
+                  Mobile:  clean image (no overlay), then Currently as
+                           a separate cream section below the image —
+                           overlay text wasn't readable on a portrait-
+                           cropped image. */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
           src="/home/hacienda-03-morning.jpg"
@@ -176,24 +189,30 @@ export default function HomePage() {
           type="frame"
           quality={95}
         >
-          {/* Subtle radial darken at bottom-right for legibility */}
+          {/* DESKTOP-ONLY: radial darken + RightNow overlay. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 hidden md:block"
             style={{
               backgroundImage:
                 "radial-gradient(ellipse 70% 60% at 100% 92%, rgba(20,18,16,0.58), rgba(20,18,16,0.22) 45%, transparent 75%)",
             }}
           />
-          {/*
-            Currently — bottom-right, 64px from edges, max-w 320px on
-            tablet/desktop. Tightened to 32px / 280px on phones so the
-            type doesn't clip the rounded frame's left edge.
-          */}
-          <div className="absolute bottom-8 right-8 max-w-[280px] sm:bottom-16 sm:right-16 sm:max-w-[320px]">
+          <div className="absolute right-16 bottom-16 hidden max-w-[320px] md:block">
             <RightNow variant="light" />
           </div>
         </Cinematic>
+      </section>
+
+      {/* MOBILE-ONLY: Currently as a clean cream section below the
+          morning image. Same content, properly composed for a phone. */}
+      <section
+        aria-label="Currently"
+        className="block px-6 pt-12 pb-2 sm:px-10 md:hidden"
+      >
+        <div className="mx-auto max-w-[420px]">
+          <RightNow variant="default" />
+        </div>
       </section>
 
       {/* ---------- The Edit — beige zone — image↔beige gap above ---------- */}
@@ -228,13 +247,10 @@ export default function HomePage() {
           type="frame"
           filter="brightness(0.78) saturate(0.92) contrast(1.02)"
         >
-          {/* Subtle radial darken at bottom for legibility of the
-              overlaid footer type. Mirrors the treatment used on
-              Image 03 — Morning, but anchored along the full bottom
-              edge instead of bottom-right. */}
+          {/* DESKTOP-ONLY: bottom darken + footer overlay. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 hidden md:block"
             style={{
               backgroundImage:
                 "linear-gradient(to bottom, transparent 35%, rgba(20,18,16,0.32) 65%, rgba(20,18,16,0.62) 100%)",
@@ -242,6 +258,9 @@ export default function HomePage() {
           />
           <HomeFooterOverlay />
         </Cinematic>
+
+        {/* MOBILE-ONLY: cream footer block below the cleanup image. */}
+        <HomeFooterMobile />
       </section>
     </main>
   );

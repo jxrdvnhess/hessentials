@@ -44,31 +44,25 @@ export default function SiteFooter() {
  *   /hacienda-footer-master.jpg — wide hacienda interior. Doorway is the
  *   anchor; everything else is secondary.
  *
- *     Desktop  object-position 35% center  → biases doorway to left-
- *              third, leaves the right plaster wall + sideboard for the
- *              footer overlay. Section ~60–75vh.
+ * DESKTOP (md+)
+ *   Image fills 60–75vh. Newsletter / symbol / tagline overlay anchors
+ *   to the lower-right (over the plaster wall, clear of the doorway and
+ *   wine glass). Legal nav sits at the bottom-left edge. The page lands
+ *   inside the photograph.
  *
- *     Mobile   object-position center      → doorway centred. Section
- *              ~70–85vh; the table drops to the lower third.
+ * MOBILE (< md)
+ *   Image becomes a clean hero (no overlaid text — type was unreadable
+ *   on top of portrait-cropped image features). A cream-colored footer
+ *   block below holds the newsletter, symbol, tagline, legal, and ©
+ *   year in a properly stacked layout with editorial breathing room.
+ *   This is the same brand close, composed for the device.
  *
  * REVEAL
- *   The whole footer (photograph + darken + editorial copy) is one
- *   moment. Opacity is scroll-LINKED to the section's progress through
- *   the viewport: it begins resolving as the user scrolls toward it,
- *   eased so most of the change happens late — quiet, then suddenly
- *   the room is there. Reduced-motion users skip the curve.
- *
- * SAFE ZONES
- *   Type never sits over: the doorway opening, the bright exterior, or
- *   the wine glass. On desktop the overlay anchors to the lower-right
- *   quadrant (plaster wall / sideboard / table shadow). On mobile the
- *   overlay sits along the bottom edge inside the darken.
+ *   The image fades in as the section enters the viewport (scroll-LINKED,
+ *   eased ease-out cubic). Reduced-motion users mount already-revealed.
  */
 function CinematicFooter() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  // Lazy initializer keeps SSR markup correct; reduced-motion users
-  // mount already-revealed. The effect still resets to 1 on the client
-  // for the reduced-motion case because SSR can't read matchMedia.
   const reducedMotion =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -77,16 +71,6 @@ function CinematicFooter() {
   );
   const year = new Date().getFullYear();
 
-  // Scroll-LINKED reveal. Section progress 0 = top of section at the
-  // bottom of the viewport (just entering); 1 = bottom of section at
-  // the top of the viewport (just leaving). Mapping:
-  //
-  //     progress 0.00 → 0.05    opacity 0   (held — they crest the page)
-  //     progress 0.05 → 0.40    opacity 0 → 1 (eased)
-  //     progress 0.40+          opacity 1   (settled)
-  //
-  // The whole footer (image, gradient, copy) shares this opacity so
-  // it reads as one moment rather than a sequence of arrivals.
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -117,7 +101,6 @@ function CinematicFooter() {
       let t = (p - REVEAL_START) / (REVEAL_END - REVEAL_START);
       if (t < 0) t = 0;
       else if (t > 1) t = 1;
-      // Ease-out cubic — quiet at the start, resolves toward the end.
       const eased = 1 - Math.pow(1 - t, 3);
       setRevealOpacity(eased);
     };
@@ -141,40 +124,28 @@ function CinematicFooter() {
     <footer
       ref={sectionRef}
       aria-label="Site"
-      className="relative w-full overflow-hidden"
+      className="relative w-full"
     >
-      {/* ---------- Image stage ---------- */}
-      <div className="relative h-[clamp(620px,80vh,940px)] w-full md:h-[clamp(560px,72vh,820px)]">
+      {/* ---------- Image stage ----------
+          Mobile: aspect-[3/2] so the full landscape composition shows
+                  (the source is 1537×1023 — a tall mobile crop hides
+                  the doorway and most of the room).
+          Desktop: 72vh+ with overlay zones (aspect roughly matches). */}
+      <div className="relative aspect-[3/2] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
         <Image
           src="/hacienda-footer-master.jpg"
           alt=""
           fill
           quality={92}
           sizes="100vw"
-          // Mobile: doorway centred vertically. Desktop: doorway biased
-          // to left-third so the right wall is free for the overlay.
           className="object-cover object-center md:object-[35%_center]"
-          // Opacity is scroll-driven (no CSS transition — smoothness
-          // comes from the rAF-throttled handler). Filter softens the
-          // photograph so the page lands inside it, not against it.
           style={{
             opacity: revealOpacity,
             filter: "brightness(0.92) saturate(0.95) contrast(1.02)",
           }}
         />
 
-        {/* Mobile darken — bottom band where the overlay sits. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 md:hidden"
-          style={{
-            opacity: revealOpacity,
-            backgroundImage:
-              "linear-gradient(to bottom, transparent 32%, rgba(20,18,16,0.42) 60%, rgba(20,18,16,0.82) 100%)",
-          }}
-        />
-
-        {/* Desktop darken — radial in the lower-right quadrant only. */}
+        {/* DESKTOP-ONLY: radial darken in lower-right quadrant. */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 hidden md:block"
@@ -185,18 +156,12 @@ function CinematicFooter() {
           }}
         />
 
-        {/* ---------- Brand block — anchored mid-low ----------
-            Sizing, spacing, and tone match the homepage closer
-            (HomeFooterOverlay): Symbol xl, gap-y-4 between rows, the
-            same opacity hierarchy on eyebrow and tagline. Centered on
-            mobile; right-anchored on desktop so the column sits over
-            the plaster wall and clears the doorway / wine glass. */}
+        {/* DESKTOP-ONLY: brand block, anchored mid-low-right. */}
         <div
           className="
-            pointer-events-auto absolute inset-x-6 bottom-24 mx-auto flex
-            max-w-md flex-col items-center gap-y-4 text-center
-            sm:bottom-28
-            md:inset-auto md:right-[6vw] md:bottom-[18vh] md:max-w-[360px] md:mx-0
+            pointer-events-auto absolute right-[6vw] bottom-[18vh] mx-0 hidden
+            max-w-[360px] flex-col items-center gap-y-4 text-center
+            md:flex
           "
           style={{ opacity: revealOpacity }}
         >
@@ -212,27 +177,22 @@ function CinematicFooter() {
             </Link>
           </div>
 
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[#f8f6f3]/70 sm:text-[12px]">
+          <p className="text-[12px] uppercase tracking-[0.28em] text-[#f8f6f3]/70">
             Hessentials
           </p>
 
-          <p className="font-serif text-[16px] italic leading-[1.4] text-[#f8f6f3]/75 sm:text-[17px]">
+          <p className="font-serif text-[17px] italic leading-[1.4] text-[#f8f6f3]/75">
             This is what stayed.
           </p>
         </div>
 
-        {/* ---------- Utility row — anchored at the bottom-left edge ----------
-            One line, left-aligned, no dividers. Legal nav and © year
-            flow as plain flex items separated only by gap. The page's
-            last whisper, set apart from the brand block above-right. */}
+        {/* DESKTOP-ONLY: legal nav, bottom-left. */}
         <nav
           aria-label="Legal"
           className="
-            pointer-events-auto absolute bottom-5 left-6 right-6 flex
-            flex-wrap items-center gap-x-6 gap-y-2
-            text-[10px] uppercase tracking-[0.24em] text-[#f8f6f3]/65
-            sm:bottom-6 sm:gap-x-7 sm:text-[11px]
-            md:left-[6vw] md:right-auto md:bottom-[3.5vh]
+            pointer-events-auto absolute bottom-[3.5vh] left-[6vw] hidden
+            flex-wrap items-center gap-x-7 gap-y-2 text-[11px] uppercase
+            tracking-[0.24em] text-[#f8f6f3]/65 md:flex
           "
           style={{ opacity: revealOpacity }}
         >
@@ -257,6 +217,59 @@ function CinematicFooter() {
           )}
           <span className="text-[#f8f6f3]/55">© {year}</span>
         </nav>
+      </div>
+
+      {/* ---------- MOBILE-ONLY: cream footer block below image ----------
+          Properly stacked, generous spacing, fully readable on a phone.
+          Hidden on md+ where the desktop overlay handles the same content. */}
+      <div className="block md:hidden">
+        <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-7 px-6 pt-16 pb-12 text-center sm:px-8 sm:pt-20 sm:pb-14">
+          <NewsletterSignup variant="default" />
+
+          <Link
+            href="/home"
+            aria-label="Hessentials — home"
+            className="mt-3 inline-block transition-opacity duration-500 ease-out hover:opacity-70"
+          >
+            <Symbol size="xl" alt="Hessentials" />
+          </Link>
+
+          <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55">
+            Hessentials
+          </p>
+
+          <p className="font-serif text-[16px] italic leading-[1.4] text-[#1f1d1b]/65">
+            This is what stayed.
+          </p>
+
+          {/* Legal — three on top, contact below, in two clean rows. */}
+          <nav
+            aria-label="Legal"
+            className="mt-4 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
+          >
+            <div className="flex items-center gap-x-5">
+              {LEGAL_LINKS.slice(0, 3).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="transition-colors duration-300 hover:text-[#1f1d1b]/75"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="flex items-center gap-x-5">
+              <a
+                href={LEGAL_LINKS[3].href}
+                className="transition-colors duration-300 hover:text-[#1f1d1b]/75"
+              >
+                {LEGAL_LINKS[3].label}
+              </a>
+              <span className="text-[#1f1d1b]/30">·</span>
+              <span className="text-[#1f1d1b]/40">© {year}</span>
+            </div>
+          </nav>
+        </div>
       </div>
     </footer>
   );

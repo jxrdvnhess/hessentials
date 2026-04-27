@@ -20,17 +20,17 @@ const LEGAL_LINKS: readonly LegalLink[] = [
 const ROW_COUNT = 6; // newsletter, symbol, wordmark, tagline, year, legal
 
 /**
- * Homepage-specific footer overlay.
+ * Homepage closing footer overlay.
  *
- * Lifted onto the last photograph (Image 04 — Cleanup) so the page closes
- * inside the world it built, not on a separate cream slab below it.
+ * DESKTOP (md+) — overlaid on Image 04 (Cleanup). The page closes
+ * inside the photograph it ends on. Reveal is scroll-LINKED with
+ * strict sequential gating (no row appears before the row above is
+ * essentially complete).
  *
- * Reveal is scroll-LINKED via the wrapper's progress through the
- * viewport. Strict sequential gating guarantees no row appears before
- * the row above is essentially complete.
- *
- * Layout: tight vertical rhythm and minimal bottom padding so the
- * legal links sit near the very bottom edge of the photograph.
+ * MOBILE (< md) — returns null. The mobile composition is handled by
+ * <HomeFooterMobile /> which renders as a clean cream block below the
+ * cleanup image (see home/page.tsx). Stacking text on a portrait-cropped
+ * image read as broken; mobile gets its own layout.
  */
 export default function HomeFooterOverlay() {
   const { wrapperRef, setRow, progress } = useScrollRevealStack(ROW_COUNT, {
@@ -41,7 +41,7 @@ export default function HomeFooterOverlay() {
   return (
     <div
       ref={wrapperRef as React.RefObject<HTMLDivElement>}
-      className="pointer-events-auto absolute inset-x-0 bottom-0 px-6 pb-6 sm:px-10 sm:pb-7 md:px-16 md:pb-8"
+      className="pointer-events-auto absolute inset-x-0 bottom-0 hidden px-6 pb-6 sm:px-10 sm:pb-7 md:block md:px-16 md:pb-8"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center gap-y-4 text-center">
         {/* 0 — Newsletter */}
@@ -126,6 +126,70 @@ export default function HomeFooterOverlay() {
               )}
             </span>
           ))}
+        </nav>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Mobile-only homepage footer.
+ *
+ * Renders as a clean cream block below the cleanup image on mobile,
+ * since stacking type on a portrait-cropped image reads as broken.
+ * Same content as the overlay above, properly composed for a phone.
+ *
+ * Hidden on md+ where <HomeFooterOverlay /> takes over.
+ */
+export function HomeFooterMobile() {
+  const year = new Date().getFullYear();
+
+  return (
+    <div className="block md:hidden">
+      <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-7 px-6 pt-16 pb-12 text-center sm:px-8 sm:pt-20 sm:pb-14">
+        <NewsletterSignup variant="default" />
+
+        <Link
+          href="/home"
+          aria-label="Hessentials — home"
+          className="mt-3 inline-block transition-opacity duration-500 ease-out hover:opacity-70"
+        >
+          <Symbol size="xl" alt="Hessentials" />
+        </Link>
+
+        <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55">
+          Hessentials
+        </p>
+
+        <p className="font-serif text-[16px] italic leading-[1.4] text-[#1f1d1b]/65">
+          This is what stayed.
+        </p>
+
+        <nav
+          aria-label="Legal"
+          className="mt-4 flex flex-col items-center gap-y-3 text-[10.5px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
+        >
+          <div className="flex items-center gap-x-5">
+            {LEGAL_LINKS.slice(0, 3).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors duration-300 hover:text-[#1f1d1b]/75"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-x-5">
+            <a
+              href={LEGAL_LINKS[3].href}
+              className="transition-colors duration-300 hover:text-[#1f1d1b]/75"
+            >
+              {LEGAL_LINKS[3].label}
+            </a>
+            <span className="text-[#1f1d1b]/30">·</span>
+            <span className="text-[#1f1d1b]/40">© {year}</span>
+          </div>
         </nav>
       </div>
     </div>
