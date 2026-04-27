@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Wordmark from "./Wordmark";
 import SiteSearch from "./SiteSearch";
+import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
   { label: "Recipes", href: "/recipes" },
@@ -62,7 +63,7 @@ export default function SiteHeader() {
           <Wordmark size="nav" priority={isHome} />
         </Link>
 
-        <div className="flex items-center gap-6 sm:gap-8 md:gap-10">
+        <div className="flex items-center gap-5 sm:gap-8 md:gap-10">
           <nav
             aria-label="Primary"
             className="hidden items-center gap-6 md:flex md:gap-8 lg:gap-10"
@@ -88,6 +89,7 @@ export default function SiteHeader() {
             })}
           </nav>
 
+          <MobileMenu links={NAV_LINKS} />
           <SiteSearch />
         </div>
       </div>

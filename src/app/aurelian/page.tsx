@@ -11,7 +11,7 @@ const PATTERN_LIBRARY = [
   {
     name: "Fast Surface, Slow Interior",
     body:
-      "This is the pattern of someone who appears ready before they actually are. The room reads confidence, speed, or composure. Inside, the system is still processing what the surface already signaled.",
+      "This is the pattern of someone who appears ready before they actually are. The room reads confidence, or speed, or composure. Inside, they're still catching up to what the surface already showed.",
   },
   {
     name: "High Standards, Quiet Pressure",
@@ -21,12 +21,12 @@ const PATTERN_LIBRARY = [
   {
     name: "Early Yes, Late Cost",
     body:
-      "This is the pattern of agreeing in the moment and negotiating with yourself afterward. It usually comes from a gap between social arrival and private capacity.",
+      "This is the pattern of agreeing in the moment and negotiating with yourself afterward. The room arrives faster than the inside does.",
   },
   {
     name: "Stable Until It Isn't",
     body:
-      "This pattern can hold more than most people realize. The issue is not weakness. It is delayed response. By the time the system shows distress, the internal threshold has already been crossed.",
+      "This pattern can hold more than most people realize. The issue is not weakness. It's delayed response. By the time it shows on the outside, the threshold has already been crossed.",
   },
   {
     name: "Precision Under Pressure",
@@ -58,7 +58,7 @@ export default function AurelianPage() {
       {/* ---------- Section 1: Top entrance ---------- */}
       <section className="mx-auto w-full max-w-[36rem] px-6 pt-16 text-center sm:pt-24 md:pt-28">
         <p className="mb-10 text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45 sm:text-[12px]">
-          Pattern Intelligence
+          Aurelian
         </p>
 
         <h1 className="font-serif text-[clamp(2.5rem,6vw,4.25rem)] font-normal leading-[1] tracking-[-0.025em] text-balance text-[#1f1d1b]">
@@ -66,8 +66,8 @@ export default function AurelianPage() {
         </h1>
 
         <p className="mx-auto mt-10 max-w-[30rem] font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.55] text-[#1f1d1b]/70">
-          A behavioral framework drawn from astrological structure — for how
-          you actually operate, not how you describe yourself.
+          Astrology, used to read how you actually operate. Not how you
+          describe yourself.
         </p>
       </section>
 
@@ -108,7 +108,7 @@ export default function AurelianPage() {
             The Pattern Library
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
-            Short studies in human behavior, timing, and energetic design.
+            Short studies in behavior, timing, and pressure.
           </p>
         </div>
 

@@ -44,21 +44,18 @@ export default function HomeContent() {
           <Wordmark size="medium" priority />
         </Link>
 
-        <nav aria-label="Primary" className={reveal("delay-2")}>
-          <ul className="hidden items-center gap-12 text-[12px] uppercase leading-none tracking-[0.22em] text-[#1f1d1b]/65 md:flex">
-            {NAV_LINKS.map(({ label, href }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="flex items-center gap-6 text-[10.5px] uppercase leading-none tracking-[0.22em] text-[#1f1d1b]/65 md:hidden">
+        {/*
+          Desktop nav only. On phones / small tablets the global SiteHeader
+          carries the Menu drawer — duplicating a 5-link inline row here
+          would overflow narrow iPhones (the wordmark + 5 nav items exceed
+          a 320–390px viewport). Mobile users get the same destinations
+          via the sticky header above this hero.
+        */}
+        <nav
+          aria-label="Primary"
+          className={`hidden md:block ${reveal("delay-2")}`.trim()}
+        >
+          <ul className="flex items-center gap-12 text-[12px] uppercase leading-none tracking-[0.22em] text-[#1f1d1b]/65">
             {NAV_LINKS.map(({ label, href }) => (
               <li key={href}>
                 <Link
@@ -77,7 +74,7 @@ export default function HomeContent() {
         <div className="grid items-end gap-12 md:grid-cols-12 md:gap-16">
           <div className={`${reveal("delay-3")} md:col-span-8`.trim()}>
             <p className="mb-10 text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/65 sm:mb-12 sm:text-[12px]">
-              The Hessentials System
+              Hessentials
             </p>
 
             <h1 className="font-serif text-[clamp(2.5rem,7vw,4.75rem)] font-normal leading-[1.04] tracking-[-0.02em] text-balance max-w-[16ch]">
@@ -87,9 +84,8 @@ export default function HomeContent() {
 
           <div className={`${reveal("delay-4")} md:col-span-4`.trim()}>
             <p className="text-pretty text-[17px] leading-[1.65] text-[#1f1d1b]/75 md:text-[18px]">
-              Hessentials is an editorial home for the objects, rituals, recipes,
-              rooms, ideas, and small decisions that make life feel more
-              considered.
+              An editorial home for the objects, rituals, rooms, and small
+              decisions that hold up.
             </p>
 
             <p className="mt-10 text-[11px] uppercase leading-none tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">

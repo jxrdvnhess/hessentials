@@ -4,6 +4,15 @@ export type ShopItem = {
   reason: string;
   priceRange: "$" | "$$" | "$$$";
   alt: string;
+  /**
+   * Direct buy link for the primary product. Brand-owned site preferred;
+   * reliable retailer (Nordstrom, etc.) acceptable as fallback.
+   * Required — per Hessentials STYLE rule, products without a buyable
+   * URL must not be referenced.
+   */
+  url: string;
+  /** Direct buy link for the alternative recommendation. */
+  altUrl?: string;
 };
 
 export type StyleSection =
@@ -91,6 +100,8 @@ If your outfit cannot survive a last-minute dinner plan or running into someone 
               "Holds shape, does not collapse after one wear, works under everything.",
             priceRange: "$$",
             alt: "COS for a slightly more minimal cut",
+            url: "https://www.buckmason.com/collections/heavyweight-tees",
+            altUrl: "https://www.cos.com/en_usd/men/men-tops/men-t-shirts.html",
           },
           {
             name: "Relaxed Tailored Trouser",
@@ -99,6 +110,8 @@ If your outfit cannot survive a last-minute dinner plan or running into someone 
               "Gives structure without feeling stiff. Instantly elevates anything basic.",
             priceRange: "$$",
             alt: "Lululemon for a softer, more flexible version",
+            url: "https://www.cos.com/en_usd/men/men-trousers.html",
+            altUrl: "https://shop.lululemon.com/c/mens-pants",
           },
           {
             name: "Soft Structured Jacket",
@@ -107,6 +120,8 @@ If your outfit cannot survive a last-minute dinner plan or running into someone 
               "Adds polish without trying too hard. This is where personality can live.",
             priceRange: "$$",
             alt: "Theory if you want it sharper",
+            url: "https://www.aloyoga.com/collections/mens-jackets-and-hoodies",
+            altUrl: "https://www.theory.com/men/jackets-coats/",
           },
           {
             name: "Minimal Leather Sneaker",
@@ -115,6 +130,8 @@ If your outfit cannot survive a last-minute dinner plan or running into someone 
               "Clean, consistent, never distracting. Works across almost everything.",
             priceRange: "$$$",
             alt: "New Balance 990 if you want comfort first",
+            url: "https://www.nordstrom.com/sr?keyword=common+projects+achilles",
+            altUrl: "https://www.newbalance.com/pd/made-in-usa-990v6/M990V6-43094-PMG-NA.html",
           },
         ],
       },
@@ -122,12 +139,12 @@ If your outfit cannot survive a last-minute dinner plan or running into someone 
     tags: ["wardrobe", "uniform", "personal style", "essentials"],
   },
   {
-    slug: "elevated-casual-is-a-discipline",
+    slug: "casual-is-not-a-free-pass",
     category: "Style",
     eyebrow: "Everyday Dressing",
-    title: "Elevated Casual Is a Discipline",
-    subtitle: "Effortless is built. Not accidental.",
-    dek: "Casual is where taste either shows up quietly or completely leaves the building.",
+    title: "Casual is not a free pass",
+    subtitle: "It only looks effortless.",
+    dek: "There is a very specific middle ground. Relaxed, but not undone.",
     author: AUTHOR,
     tone: TONE,
     heroStyle:
@@ -178,6 +195,8 @@ Also, if the outfit only works when you are standing perfectly still, it is not 
               "Immediately sharper than a basic tee without feeling dressed up.",
             priceRange: "$$",
             alt: "Abercrombie for a more accessible version",
+            url: "https://www.reiss.com/us/en/category/mens-tops",
+            altUrl: "https://www.abercrombie.com/shop/us/mens-tops",
           },
           {
             name: "Relaxed Trouser",
@@ -186,6 +205,8 @@ Also, if the outfit only works when you are standing perfectly still, it is not 
               "Gives structure without stiffness. Works across multiple outfits.",
             priceRange: "$$",
             alt: "Aritzia for a softer drape",
+            url: "https://www.cos.com/en_usd/men/men-trousers.html",
+            altUrl: "https://www.aritzia.com/us/en/clothing/pants",
           },
           {
             name: "Suede Everyday Shoe",
@@ -193,6 +214,8 @@ Also, if the outfit only works when you are standing perfectly still, it is not 
             reason: "Adds texture and intention without being loud.",
             priceRange: "$$",
             alt: "Birkenstock Boston Suede for a more relaxed version",
+            url: "https://www.clarks.com/c/mens-shoes/suede",
+            altUrl: "https://www.birkenstock.com/us/boston-soft-footbed-suede-leather/boston-suede-suedeleather-softfootbed-eva-u_46.html",
           },
           {
             name: "Soft Overshirt",
@@ -201,6 +224,8 @@ Also, if the outfit only works when you are standing perfectly still, it is not 
               "The easiest layer to throw on that still looks considered.",
             priceRange: "$$",
             alt: "J.Crew for a simpler option",
+            url: "https://www.alexmill.com/collections/men-shirts",
+            altUrl: "https://www.jcrew.com/c/mens/categories/clothing/shirts",
           },
         ],
       },
@@ -265,6 +290,8 @@ That is why texture is such an easy upgrade. It does not require a full reset. I
             reason: "Adds depth instantly without complicating the outfit.",
             priceRange: "$$",
             alt: "Naadam for a softer, more premium feel",
+            url: "https://www.everlane.com/collections/mens-sweaters",
+            altUrl: "https://naadam.co/collections/mens-cashmere-sweaters",
           },
           {
             name: "Suede Loafer",
@@ -272,6 +299,8 @@ That is why texture is such an easy upgrade. It does not require a full reset. I
             reason: "Brings texture and polish without being formal.",
             priceRange: "$$$",
             alt: "Vince for a more accessible version",
+            url: "https://www.tods.com/us-en/Men/Shoes/Gommino-and-City-Gommino/c/211-Tods/",
+            altUrl: "https://www.vince.com/men/shoes",
           },
           {
             name: "Linen Napkin Set",
@@ -279,6 +308,8 @@ That is why texture is such an easy upgrade. It does not require a full reset. I
             reason: "Transforms a table without adding clutter.",
             priceRange: "$$",
             alt: "Zara Home for a simpler option",
+            url: "https://food52.com/shop/categories/napkins",
+            altUrl: "https://www.zarahome.com/us/dining-room/napkins-c1020528.html",
           },
           {
             name: "Matte Ceramic Dishware",
@@ -286,6 +317,8 @@ That is why texture is such an easy upgrade. It does not require a full reset. I
             reason: "Soft finish makes everything feel more considered.",
             priceRange: "$$",
             alt: "Crate & Barrel for a classic version",
+            url: "https://fablehome.co/collections/dinnerware",
+            altUrl: "https://www.crateandbarrel.com/dining-and-entertaining/dinnerware-place-settings/1",
           },
         ],
       },
@@ -355,13 +388,17 @@ Most "off" outfits are missing one of these. Identify which, add it, walk out th
             reason: "Holds the outfit together from the start.",
             priceRange: "$$",
             alt: "COS for a cleaner silhouette",
+            url: "https://www.buckmason.com/collections/heavyweight-tees",
+            altUrl: "https://www.cos.com/en_usd/men/men-tops/men-t-shirts.html",
           },
           {
             name: "Tailored Trouser",
             brand: "Theory",
             reason: "Gives shape instantly.",
             priceRange: "$$$",
-            alt: "Quince for a budget version",
+            alt: "Uniqlo for a budget version",
+            url: "https://www.theory.com/men/pants",
+            altUrl: "https://www.uniqlo.com/us/en/men/pants/smart-pants",
           },
           {
             name: "Textured Layer",
@@ -370,6 +407,8 @@ Most "off" outfits are missing one of these. Identify which, add it, walk out th
               "A heavyweight overshirt or knit that adds the weight an outfit needs to stop reading flat.",
             priceRange: "$$",
             alt: "Everlane for a more accessible version",
+            url: "https://www.alexmill.com/collections/men-shirt-jackets-overshirts",
+            altUrl: "https://www.everlane.com/collections/mens-shirts",
           },
           {
             name: "Contrast Shoe",
@@ -378,6 +417,8 @@ Most "off" outfits are missing one of these. Identify which, add it, walk out th
               "A clean black shoe is the easiest contrast piece in any neutral outfit. Breaks the palette without making noise.",
             priceRange: "$$$",
             alt: "Veja V-10 in black for a softer alternative",
+            url: "https://www.nordstrom.com/sr?keyword=common+projects+black+achilles",
+            altUrl: "https://www.veja-store.com/en_us/men-v-10",
           },
           {
             name: "Minimal Accessory",
@@ -385,7 +426,9 @@ Most "off" outfits are missing one of these. Identify which, add it, walk out th
             reason:
               "A watch, a chain, a single ring. The piece that tells the room you finished getting dressed.",
             priceRange: "$$",
-            alt: "Quince for a more accessible price point",
+            alt: "Madewell for a more accessible price point",
+            url: "https://mejuri.com/shop/categories/all-jewelry",
+            altUrl: "https://www.madewell.com/jewelry",
           },
         ],
       },
@@ -393,11 +436,11 @@ Most "off" outfits are missing one of these. Identify which, add it, walk out th
     tags: ["outfits", "styling system"],
   },
   {
-    slug: "the-details-that-change-everything",
+    slug: "its-usually-the-small-things",
     category: "Style",
     eyebrow: "Taste Notes",
-    title: "The Details That Change Everything",
-    subtitle: "This is why some people look better and no one can explain why.",
+    title: "It's usually the small things",
+    subtitle: "Some people look better and no one can explain why.",
     dek: "It is not more effort. It is better awareness.",
     author: AUTHOR,
     tone: TONE,
@@ -451,6 +494,8 @@ Crisp cuffs and collars. A wrinkled collar undoes the whole shirt. Steam, do not
               "Powerful enough for wool, fast enough to use before walking out. Lives near the door, gets used daily.",
             priceRange: "$$",
             alt: "Conair Turbo Extreme for an everyday version",
+            url: "https://www.amazon.com/STEAMERY-Cirrus-NO-2-Steamer-Black/dp/B07NF9GTBF",
+            altUrl: "https://www.target.com/s?searchTerm=conair+turbo+extreme+steamer",
           },
           {
             name: "Suede Brush + Eraser Kit",
@@ -459,6 +504,8 @@ Crisp cuffs and collars. A wrinkled collar undoes the whole shirt. Steam, do not
               "Brings suede shoes back from one wear. The single most cost-effective shoe-care purchase you can make.",
             priceRange: "$",
             alt: "Kiwi for a basic alternative",
+            url: "https://jasonmarkk.com/products/premium-suede-cleaning-kit",
+            altUrl: "https://www.target.com/s?searchTerm=kiwi+shoe+polish",
           },
           {
             name: "Leather Conditioner",
@@ -467,14 +514,8 @@ Crisp cuffs and collars. A wrinkled collar undoes the whole shirt. Steam, do not
               "Twice a year on every leather shoe and bag. Doubles their lifespan and keeps them from cracking.",
             priceRange: "$$",
             alt: "Bickmore Bick 4 for a more accessible option",
-          },
-          {
-            name: "Local Tailor Visit",
-            brand: "Find one within walking distance",
-            reason:
-              "The best style upgrade is a tailor who knows your body. Hem one pair of pants. Take one shirt in. See what changes.",
-            priceRange: "$$",
-            alt: "Department-store alterations for a starting point",
+            url: "https://saphir.com/products/renovateur",
+            altUrl: "https://bickmore.com/products/bick-4-leather-conditioner-8oz",
           },
         ],
       },
@@ -540,6 +581,8 @@ Take the wide-leg trouser cycle. Wide-leg pants come back every decade. People w
               "Has been in style since shirts existed and will be in style after most of us. Never needs to prove itself.",
             priceRange: "$$$",
             alt: "Everlane Relaxed Oxford for an everyday version",
+            url: "https://toteme-studio.com/collections/shirts",
+            altUrl: "https://www.everlane.com/collections/mens-shirts",
           },
           {
             name: "Straight-Leg Denim",
@@ -548,6 +591,8 @@ Take the wide-leg trouser cycle. Wide-leg pants come back every decade. People w
               "Cut that pre-dates the trend and outlasts it. A jean that holds up across years and silhouettes.",
             priceRange: "$$",
             alt: "Levi's 501 — the original, still correct",
+            url: "https://agolde.com/collections/womens-90s-jean",
+            altUrl: "https://www.levi.com/US/en_US/jeans-by-fit-number/men/jeans/501/c/levi_jeans_by_fit_number_men_jeans_501",
           },
           {
             name: "Crewneck Cashmere",
@@ -555,7 +600,9 @@ Take the wide-leg trouser cycle. Wide-leg pants come back every decade. People w
             reason:
               "Has never not worked. Buy in a color you wear, not the one you are seeing online.",
             priceRange: "$$",
-            alt: "Quince for a more accessible option",
+            alt: "Uniqlo 100% Cashmere for a more accessible option",
+            url: "https://naadam.co/collections/mens-cashmere-sweaters",
+            altUrl: "https://www.uniqlo.com/us/en/men/sweaters/cashmere",
           },
         ],
       },
@@ -621,6 +668,8 @@ Then commit. The mistake people make is buying their signature piece and then im
               "Heavyweight cotton, structured but unfussy. Reads casual or considered depending on what is under it. Gets better with wear.",
             priceRange: "$$$",
             alt: "Alex Mill for the same shape at half the price",
+            url: "https://www.margarethowell.co.uk/men/clothing",
+            altUrl: "https://www.alexmill.com/collections/men-shirt-jackets-overshirts",
           },
           {
             name: "Suede Loafer",
@@ -629,6 +678,8 @@ Then commit. The mistake people make is buying their signature piece and then im
               "A shoe people will start to associate with you. Quiet enough to wear daily, distinct enough to register.",
             priceRange: "$$$",
             alt: "Sezane for a softer, more accessible version",
+            url: "https://www.tods.com/us-en/Men/Shoes/Gommino-and-City-Gommino/c/211-Tods/",
+            altUrl: "https://www.sezane.com/us/category/shoes-1",
           },
           {
             name: "Field Watch",
@@ -637,6 +688,8 @@ Then commit. The mistake people make is buying their signature piece and then im
               "An everyday watch that does not announce itself. Reads as personal, not as a status piece.",
             priceRange: "$$",
             alt: "Timex Marlin for a vintage-feel alternative",
+            url: "https://www.hamiltonwatch.com/en-us/h69439931-khaki-field-mechanical.html",
+            altUrl: "https://www.timex.com/marlin-collection/",
           },
         ],
       },
@@ -702,6 +755,8 @@ If the entry passes all three, the house does too. If it fails any of them, fix 
               "Warm, soft, weighted. The single object that does the most work in an entryway.",
             priceRange: "$$",
             alt: "CB2 for a cleaner profile",
+            url: "https://cedarandmoss.com/collections/table-lamps",
+            altUrl: "https://www.cb2.com/lighting/table-lamps/1",
           },
           {
             name: "Wall-Mounted Brass Hook",
@@ -710,6 +765,8 @@ If the entry passes all three, the house does too. If it fails any of them, fix 
               "One real hook, not a row of plastic ones. Holds a coat or a bag without making the wall busy.",
             priceRange: "$",
             alt: "Rejuvenation for similar quality",
+            url: "https://www.schoolhouse.com/collections/hooks-hardware",
+            altUrl: "https://www.rejuvenation.com/products/category/hardware/wall-hooks",
           },
           {
             name: "Catchall Tray",
@@ -718,6 +775,8 @@ If the entry passes all three, the house does too. If it fails any of them, fix 
               "Stops the surface from becoming a junk drawer. A tray turns mess into a vignette.",
             priceRange: "$$",
             alt: "Crate & Barrel for a basic version",
+            url: "https://hawkinsnewyork.com/collections/trays",
+            altUrl: "https://www.crateandbarrel.com/decorating-and-accessories/trays/1",
           },
           {
             name: "Floor-Length Mirror",
@@ -726,6 +785,8 @@ If the entry passes all three, the house does too. If it fails any of them, fix 
               "If your entry is small, a leaning mirror doubles the light and gives you one last check before you leave.",
             priceRange: "$$",
             alt: "IKEA Hovet for the same effect at a fraction of the price",
+            url: "https://www.westelm.com/shop/decor/decorative-mirrors/full-length-mirrors/",
+            altUrl: "https://www.ikea.com/us/en/p/hovet-mirror-aluminum-40507196/",
           },
         ],
       },
@@ -733,7 +794,7 @@ If the entry passes all three, the house does too. If it fails any of them, fix 
     tags: ["entryway", "home", "first impressions"],
   },
   {
-    slug: "signature-scent-is-branding",
+    slug: "the-scent-people-remember",
     category: "Style",
     eyebrow: "Personal",
     title: "The Scent People Remember",
@@ -789,6 +850,8 @@ Day and evening can be the same scent or two different ones — that is preferen
               "Recognizable without trying. Wood, leather, a little cardamom. Wears close. Has aged into a quiet classic.",
             priceRange: "$$$",
             alt: "Maison Margiela Replica 'Jazz Club' for similar warmth at half the price",
+            url: "https://www.lelabofragrances.com/santal-33-147.html",
+            altUrl: "https://www.sephora.com/product/replica-jazz-club-P385350",
           },
           {
             name: "Vetiver",
@@ -797,6 +860,8 @@ Day and evening can be the same scent or two different ones — that is preferen
               "Earthy, slightly green, almost ascetic. The kind of scent people associate with one specific person.",
             priceRange: "$$$",
             alt: "Goldfield & Banks 'Velvet Splendour' for a softer take",
+            url: "https://www.sephora.com/product/vetiver-eau-de-toilette-P380901",
+            altUrl: "https://goldfieldbanks.com/products/velvet-splendour",
           },
           {
             name: "Eau de Cologne",
@@ -805,6 +870,8 @@ Day and evening can be the same scent or two different ones — that is preferen
               "An everyday, lower-projection option. Citrus, clean, never overdone. Good for the day before a meeting.",
             priceRange: "$$",
             alt: "Acqua di Parma Colonia for a more affordable classic",
+            url: "https://www.chanel.com/us/fragrance/c/7x1x1x37/les-eaux-de-chanel/",
+            altUrl: "https://www.acquadiparma.com/default/en/colonia/COLONIAEDCRP.html",
           },
         ],
       },
@@ -872,6 +939,8 @@ If a room feels like nothing, you are usually missing texture or finish. If a ro
               "A neutral, low-arm linen sofa is the home equivalent of a relaxed trouser. Quiet enough to live with, structured enough to anchor a room.",
             priceRange: "$$$",
             alt: "Sundays for a softer, more handmade feel",
+            url: "https://www.article.com/category/sofas",
+            altUrl: "https://sundays-company.com/collections/sofas",
           },
           {
             name: "Solid Wood Coffee Table",
@@ -880,6 +949,8 @@ If a room feels like nothing, you are usually missing texture or finish. If a ro
               "Real wood with weight. Adds a finish you cannot fake with veneer or particleboard.",
             priceRange: "$$",
             alt: "West Elm for more design variety",
+            url: "https://www.crateandbarrel.com/furniture/coffee-tables/1",
+            altUrl: "https://www.westelm.com/shop/furniture/all-coffee-tables/",
           },
           {
             name: "Heavyweight Linen Throw",
@@ -888,6 +959,8 @@ If a room feels like nothing, you are usually missing texture or finish. If a ro
               "Reads as texture before color. Gets better the more it crumples, which is the whole point.",
             priceRange: "$$",
             alt: "H&M Home for an everyday version",
+            url: "https://www.the-citizenry.com/collections/throws",
+            altUrl: "https://www2.hm.com/en_us/home/shop-by-product/throws.html",
           },
           {
             name: "Ceramic Table Lamp",
@@ -896,6 +969,8 @@ If a room feels like nothing, you are usually missing texture or finish. If a ro
               "Warm light at eye level. The single fastest way to make a room feel finished.",
             priceRange: "$$",
             alt: "CB2 for a cleaner profile",
+            url: "https://cedarandmoss.com/collections/table-lamps",
+            altUrl: "https://www.cb2.com/lighting/table-lamps/1",
           },
         ],
       },
@@ -903,11 +978,11 @@ If a room feels like nothing, you are usually missing texture or finish. If a ro
     tags: ["home", "interior", "rooms"],
   },
   {
-    slug: "hosting-is-a-performance",
+    slug: "people-can-feel-when-its-forced",
     category: "Style",
     eyebrow: "Hosting",
-    title: "Hosting Is a Performance",
-    subtitle: "Not in a stressful way. In a designed way.",
+    title: "People can feel when it's forced",
+    subtitle: "Atmosphere is built, not added.",
     dek: "Hosting is not what happens at dinner. It is what happens in the two hours before.",
     author: AUTHOR,
     tone: TONE,
@@ -970,6 +1045,8 @@ Do not apologize for anything. Not the food, not the apartment, not the playlist
               "One candle in the right place changes a whole room. Light it before guests arrive so the scent is in the air, not arriving with it.",
             priceRange: "$$$",
             alt: "P.F. Candle Co. for an everyday version",
+            url: "https://www.diptyqueparis.com/en_us/p/tubereuse-tuberose-candle-190g.html",
+            altUrl: "https://pfcandleco.com/collections/candles",
           },
           {
             name: "Smart Dimmers",
@@ -978,6 +1055,8 @@ Do not apologize for anything. Not the food, not the apartment, not the playlist
               "The single biggest atmosphere upgrade in any home. If your overhead lights cannot dim, they should not be on.",
             priceRange: "$$",
             alt: "Leviton Decora for a simpler install",
+            url: "https://www.casetawireless.com/us/en/products/dimmers-switches/diva-smart-dimmer-switch",
+            altUrl: "https://www.leviton.com/products/residential/lighting-controls/decora-dimmers-fan-controls",
           },
           {
             name: "Compact Speaker",
@@ -986,6 +1065,8 @@ Do not apologize for anything. Not the food, not the apartment, not the playlist
               "Sounds intentional, looks intentional, gets out of the way. Hide it on a shelf, not on the counter.",
             priceRange: "$$$",
             alt: "Marshall Stanmore III for warmer character",
+            url: "https://www.sonos.com/en-us/shop/era-100",
+            altUrl: "https://www.marshall.com/us/en/product/stanmore-iii?pid=1006014",
           },
           {
             name: "Universal Wine Glass",
@@ -994,6 +1075,8 @@ Do not apologize for anything. Not the food, not the apartment, not the playlist
               "One shape, all wine. Stops the cabinet from filling up with single-purpose stems.",
             priceRange: "$$$",
             alt: "Schott Zwiesel Pure for an everyday version",
+            url: "https://www.amazon.com/Zalto-DenkArt-Universal-Hand-Blown-Crystal/dp/B08DH1F81Q",
+            altUrl: "https://www.crateandbarrel.com/search?query=schott+zwiesel+pure",
           },
         ],
       },
@@ -1057,6 +1140,8 @@ Use a plate one size larger than you think. Center the food. Leave a clean rim. 
               "Slightly oversized, slightly off-white, made to leave space around the food. Makes home cooking look composed.",
             priceRange: "$$",
             alt: "Crate & Barrel for a thinner-rim alternative",
+            url: "https://fablehome.co/collections/dinnerware",
+            altUrl: "https://www.crateandbarrel.com/dining-and-entertaining/dinnerware-place-settings/1",
           },
           {
             name: "Olive Oil Bottle with Pour Spout",
@@ -1065,6 +1150,8 @@ Use a plate one size larger than you think. Center the food. Leave a clean rim. 
               "Quality oil and a real spout. Both matter. A drizzle is the easiest finish there is.",
             priceRange: "$$",
             alt: "California Olive Ranch in a refilled bottle",
+            url: "https://brightland.co/collections/olive-oil",
+            altUrl: "https://www.californiaoliveranch.com/collections/olive-oil",
           },
           {
             name: "Flake Salt",
@@ -1073,6 +1160,8 @@ Use a plate one size larger than you think. Center the food. Leave a clean rim. 
               "Adds finish, adds texture, adds intention. A pinch on top of almost anything makes it look plated.",
             priceRange: "$",
             alt: "Jacobsen for an American-made version",
+            url: "https://www.williams-sonoma.com/products/maldon-salt/",
+            altUrl: "https://www.williams-sonoma.com/m/products/jacobsen-salt-company-flake-finishing-sea-salt/",
           },
           {
             name: "Linen Napkins",
@@ -1080,7 +1169,9 @@ Use a plate one size larger than you think. Center the food. Leave a clean rim. 
             reason:
               "Reads as 'this was set, not thrown together.' A small upgrade with outsized effect.",
             priceRange: "$$",
-            alt: "Quince for a more accessible price point",
+            alt: "Crate & Barrel for a more accessible price point",
+            url: "https://hawkinsnewyork.com/collections/linens-and-textiles",
+            altUrl: "https://www.crateandbarrel.com/dining-and-entertaining/cloth-napkins/1",
           },
         ],
       },
@@ -1145,6 +1236,8 @@ The piece is not what differs. The combination differs. That is what people mean
               "A real trouser cut wide enough to be the silhouette. Reads as intentional on anyone wearing it.",
             priceRange: "$$",
             alt: "Toteme for a more elevated version",
+            url: "https://www.cos.com/en_usd/search/?text=wide+leg+wool+trouser",
+            altUrl: "https://toteme-studio.com/collections/trousers",
           },
           {
             name: "Heavyweight Crewneck Knit",
@@ -1153,6 +1246,8 @@ The piece is not what differs. The combination differs. That is what people mean
               "Weight matters more than cut here. A real knit drapes; a thin one looks like an afterthought.",
             priceRange: "$$",
             alt: "Uniqlo for an everyday version",
+            url: "https://naadam.co/collections/cashmere-sweaters",
+            altUrl: "https://www.uniqlo.com/us/en/men/sweaters/cashmere",
           },
           {
             name: "Leather Derby or Loafer",
@@ -1161,6 +1256,8 @@ The piece is not what differs. The combination differs. That is what people mean
               "A clean, slightly weighted shoe finishes any silhouette without committing to a category.",
             priceRange: "$$$",
             alt: "G.H. Bass Weejuns for the original at half the price",
+            url: "https://www.margarethowell.co.uk/men/shoes",
+            altUrl: "https://www.ghbass.com/collections/the-original-weejuns",
           },
         ],
       },
@@ -1218,12 +1315,14 @@ Then commit to one bag for the week. Most people own four or five bags and rotat
         note: "Three bags that hold their shape across price tiers.",
         items: [
           {
-            name: "Structured Leather Tote",
-            brand: "Cuyana Classic Structured",
+            name: "Classic Easy Tote",
+            brand: "Cuyana",
             reason:
-              "Holds its shape after years of use. Reads as intentional in any room. The single bag that does the most work.",
+              "Italian leather, double handles, room for a 16-inch laptop. Softens with use without going slack. Reads as intentional in any room — the bag people start associating with you after a year.",
             priceRange: "$$$",
             alt: "Madewell Transport for a more accessible version",
+            url: "https://cuyana.com/products/classic-easy-tote",
+            altUrl: "https://www.madewell.com/p/womens/accessories/bags/totes/the-medium-transport-tote/F5788/",
           },
           {
             name: "Waxed Canvas Carryall",
@@ -1232,6 +1331,8 @@ Then commit to one bag for the week. Most people own four or five bags and rotat
               "For days when leather is too much. Structured base, real hardware, ages well, never apologizes.",
             priceRange: "$$",
             alt: "L.L.Bean Boat & Tote (zip-top) for the same logic at a third of the cost",
+            url: "https://www.filson.com/products/small-rugged-twill-field-bag-tan-1",
+            altUrl: "https://www.llbean.com/llb/shop/37037?page=boat-and-tote-bag-zip-top",
           },
           {
             name: "Compact Crossbody",
@@ -1240,6 +1341,8 @@ Then commit to one bag for the week. Most people own four or five bags and rotat
               "When you need to carry less, not more. Structured shell, clean closure, reads as a deliberate edit.",
             priceRange: "$$$",
             alt: "Mansur Gavriel Mini Tote for a softer-shape alternative",
+            url: "https://eng.polene-paris.com/collections/numero-dix",
+            altUrl: "https://www.mansurgavriel.com/collections/small-tote",
           },
         ],
       },

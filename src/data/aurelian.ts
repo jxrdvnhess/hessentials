@@ -591,10 +591,8 @@ function buildSynthesis(
       return `On its own, this read is direction without inner texture. The pattern here is ${pattern}. In practice, that means the part of you that ${p.workBehavior.split(",")[0]} is visible, and the part that processes the cost of running that way isn't on the page yet.`;
     }
     if (moon) {
-      const p = SIGNS[moon];
       return `On its own, this read is inner regulation without identity or arrival around it. The pattern here is ${pattern}. In practice, that means what soothes you and what destabilizes you are visible, and the way that shapes how you appear to the room isn't on the page yet.`;
     }
-    const p = SIGNS[rising!];
     return `On its own, this read is arrival without the inner system behind it. The pattern here is ${pattern}. In practice, that means the way you land in a room is visible, and what's actually running underneath that arrival isn't on the page yet.`;
   }
 

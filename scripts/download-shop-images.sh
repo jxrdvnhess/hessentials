@@ -22,7 +22,6 @@ mkdir -p "$DEST"
 # slug|imageSrc
 ITEMS=(
   'loewe-goya-thin-briefcase|https://www.loewe.com/dw/image/v2/BBPC_PRD/on/demandware.static/-/Sites-Loewe_master/default/dwca31ef16/images_rd/337.12.P57/337.12.P57-1100/337.12.P57_1100_1F.jpg?sw=850&q=100'
-  'quince-linen-pants|https://images.quince.com/7eAGPP7q4CFhsOk9DqpQli/05c1649b0521c6e2d686e4e1c71723b9/M-PNT-16-FLAX-33489_EDITED.jpg?w=1200&q=80&fm=jpg'
   'omega-aqua-terra-small-seconds|https://www.omegawatches.com/media/catalog/product/o/m/omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001-bdacfe.png?w=1200'
   'bedsure-waffle-blanket|https://m.media-amazon.com/images/I/91UYXcDdHnL._AC_SL1500_.jpg'
   'prada-court-leather-sneakers|https://www.prada.com/content/dam/pradabkg_products/2/2EE/2EE483/070F0009/2EE483_070_F0009_F_G000_SLR.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg'
@@ -30,14 +29,12 @@ ITEMS=(
   'lv-hippo-coffee-table|https://lvfurniturecollection.com/cdn/shop/files/hippo-coffee-table_6f30515d-913e-4667-9ad5-f86d1c03fe6b.png?v=1770254572&width=1946'
   'birkenstock-arizona-eva|https://www.birkenstock.com/dw/image/v2/BLZD_PRD/on/demandware.static/-/Sites-master-catalog-amer/default/dw6172c109/129421/129421.jpg?sw=1148&sh=1148&sm=fit&q=80'
   'ahlem-louxor|https://www.ahlemeyewear.com/cdn/shop/files/Louxor_SUN_WEB_greyGold_01_WEB_grey_1500x1002_crop_center.jpg?v=1714675082'
-  'quince-mesh-sweater-polo|https://images.quince.com/6RzIOSVBe0PjasL3JJi9AI/cd7704af61a8d52f303161d209d947d4/M-LKT-93-SPKBG-03_EDITED.jpg?w=1200&q=80&fm=jpg'
   'prada-linen-duffel|https://www.prada.com/content/dam/pradabkg_products/2/2VY/2VY011/2CX9F0018/2VY011_2CX9_F0018_V_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg'
   'crazy-water-sampler|https://drinkcrazywater.myshopify.com/cdn/shop/products/sampler_large.png?v=1509477709'
   'tag-heuer-aquaracer-quartz|https://www.tagheuer.com/on/demandware.static/-/Sites-tagheuer-master/default/dwced42cf4/TAG_Heuer_Aquaracer/CBP1112.BA0627/CBP1112.BA0627_Soldier.png?impolicy=TrimRatioResize&width=1254&ratioHeight=5&ratioWidth=4&expansion=true'
   'aveda-pureformance-clay|https://www.aveda.com/media/images/products/355x600/white/av_sku_A3TX01_34069_355x600_0.jpg'
   'massimo-dutti-tapered-jeans|https://static.massimodutti.net/assets/public/21d8/ffc7/26214fef9b7f/09b197e25617/00451110806-o8/00451110806-o8.jpg?ts=1770972782296&w=1600&f=auto'
   'tiffany-venetian-link-bracelet|https://media.tiffany.com/is/image/tco/60150727_BLT_ALT3X1?hei=1230&wid=1230&fmt=jpg'
-  'quince-silk-sleep-mask|https://images.quince.com/5IpMYbOpVBkz3wH1MZMWJ9/25563122b08b520366aeb5d6f1f3db90/eye_mask_1_navy.jpg?w=1200&q=80&fm=jpg'
   'prada-renylon-belt-bag|https://www.prada.com/content/dam/pradanux_products/2/2VL/2VL977/2DMGF0002/2VL977_2DMG_F0002_V_WOO_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg'
   'pacific-coast-down-pillow|https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR0x7j0UnChScpFZasLpeJ_lNMm26PoSOladxNb7CMzTfPRvGlhXqLcX8ElmiJPGT33RMY_n8av0qcahg6r1Bpic8E3jS-ilcFXGXUmwSzcR7XW8R5JSOpU_w'
   'massimo-dutti-cotton-slim-pants|https://static.massimodutti.net/assets/public/0b67/83b3/c1f84fd3b74f/e1f1c5ab126a/00101001401-o6/00101001401-o6.jpg?ts=1773142882443&w=1600&f=auto'

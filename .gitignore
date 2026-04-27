@@ -42,6 +42,10 @@ next-env.d.ts
 
 # Working files (brand source assets, drafts, notes — not part of the site)
 /*.docx
+/*.jpg
 /Hessentials_Symbol_Monogram_HESS_v1.png
 /Symbol/
+/Wordmark/
+/COPYRIGHT-REGISTRATION-GUIDE.md
+/STYLE-CHATEAU-AUDIT.md
 /public/*.docx

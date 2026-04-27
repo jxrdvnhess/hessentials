@@ -33,12 +33,13 @@ export default function DailyIntent() {
   const [today, setToday] = useState<Today | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setToday(resolveToday());
   }, []);
 
   return (
     <div
-      style={{ animationDelay: "3.1s" }}
+      style={{ animationDelay: "4.0s" }}
       className="fade-up mx-auto mb-10 max-w-xl text-center sm:mb-12"
     >
       <p className="mb-4 text-[10px] uppercase tracking-[0.32em] text-[#1f1d1b]/55">

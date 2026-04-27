@@ -2,11 +2,12 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import RightNow from "../../components/RightNow";
 import TheEdit from "../../components/TheEdit";
+import HomeFooterOverlay from "../../components/HomeFooterOverlay";
 
 export const metadata: Metadata = {
   title: "Hessentials",
   description:
-    "A system for choosing what holds. Food, home, style, and the small decisions that shape how life actually feels.",
+    "Choosing well, and standing by it. Food, home, style, and the small decisions that make a life feel considered.",
 };
 
 /**
@@ -41,6 +42,13 @@ type CinematicProps = {
   /** Inline filter for subdued moments (Cleanup). */
   filter?: string;
   priority?: boolean;
+  /**
+   * Quality tier — how aggressively to compress the image variants Next/Image
+   * generates. Higher = sharper on retina/4K, larger file. The narrative
+   * anchors (Dinner, Morning) get 95; secondary scenes (Exit, Cleanup)
+   * settle at 92. Allowed values are pre-declared in next.config.ts.
+   */
+  quality?: 90 | 92 | 95;
   /** Overlay slot — used only on Morning for the Currently module. */
   children?: React.ReactNode;
 };
@@ -51,6 +59,7 @@ function Cinematic({
   type,
   filter,
   priority,
+  quality = 92,
   children,
 }: CinematicProps) {
   if (type === "bleed") {
@@ -61,7 +70,7 @@ function Cinematic({
           alt={alt}
           fill
           sizes="100vw"
-          quality={92}
+          quality={quality}
           priority={priority}
           className="object-cover"
           style={filter ? { filter } : undefined}
@@ -80,7 +89,7 @@ function Cinematic({
           alt={alt}
           fill
           sizes="88vw"
-          quality={92}
+          quality={quality}
           priority={priority}
           className="object-cover"
           style={filter ? { filter } : undefined}
@@ -98,13 +107,17 @@ export default function HomePage() {
       <section className="flex min-h-[65vh] items-center px-6 sm:px-10 md:px-16">
         <div className="fade-up delay-3 max-w-[520px]">
           <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
-            A more intentional way to live
+            Hessentials
           </p>
           <h1 className="font-serif text-[clamp(2.75rem,7vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-balance">
             Life, edited well.
           </h1>
           <p className="text-pretty mt-8 font-serif text-[clamp(1.25rem,1.9vw,1.5rem)] italic leading-[1.45] text-[#1f1d1b]/70">
-            A system for choosing what holds.
+            This is what I kept coming back to.
+          </p>
+          {/* 02 — Micro-intro. Quiet continuation of the hero, not a new section. */}
+          <p className="mt-6 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px]">
+            Most of what&rsquo;s here just stayed. What didn&rsquo;t, didn&rsquo;t.
           </p>
         </div>
       </section>
@@ -141,6 +154,7 @@ export default function HomePage() {
           src="/home/hacienda-01-dinner.jpg"
           alt=""
           type="bleed"
+          quality={95}
           priority
         />
       </section>
@@ -156,7 +170,12 @@ export default function HomePage() {
 
       {/* ---------- Image 03 — Morning — Type B — Currently overlaid ---------- */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
-        <Cinematic src="/home/hacienda-03-morning.jpg" alt="" type="frame">
+        <Cinematic
+          src="/home/hacienda-03-morning.jpg"
+          alt=""
+          type="frame"
+          quality={95}
+        >
           {/* Subtle radial darken at bottom-right for legibility */}
           <div
             aria-hidden
@@ -186,17 +205,43 @@ export default function HomePage() {
         <TheEdit />
       </section>
 
-      {/* ---------- Image 04 — Cleanup — Type B — beige↔image gap above ---------- */}
+      {/*
+        Image 04 — Cleanup — Type B — closes the page.
+
+        The footer (newsletter + brand mark + tagline + legal) is overlaid
+        on this image instead of rendering on a separate cream slab below.
+        The page lands inside the world it built. Each footer row reveals
+        on scroll using the same staggered fade-up pattern as Currently
+        on Image 03 — keeps the homepage cinematic from top to bottom.
+
+        The global SiteFooter is suppressed on /home (see SiteFooter.tsx).
+        Bottom padding is intentionally minimal here so the image is the
+        last thing on the page.
+      */}
       <section
-        aria-hidden
-        style={{ marginTop: GAP_ZONE, paddingBottom: GAP_ZONE }}
+        aria-label="Site footer"
+        style={{ marginTop: GAP_ZONE, paddingBottom: "24px" }}
       >
         <Cinematic
           src="/home/hacienda-04-cleanup.jpg"
           alt=""
           type="frame"
-          filter="brightness(0.86) saturate(0.93) contrast(1.02)"
-        />
+          filter="brightness(0.78) saturate(0.92) contrast(1.02)"
+        >
+          {/* Subtle radial darken at bottom for legibility of the
+              overlaid footer type. Mirrors the treatment used on
+              Image 03 — Morning, but anchored along the full bottom
+              edge instead of bottom-right. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(to bottom, transparent 35%, rgba(20,18,16,0.32) 65%, rgba(20,18,16,0.62) 100%)",
+            }}
+          />
+          <HomeFooterOverlay />
+        </Cinematic>
       </section>
     </main>
   );

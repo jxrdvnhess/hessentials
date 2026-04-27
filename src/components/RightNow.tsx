@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import {
+  useScrollRevealStack,
+  revealStyle,
+} from "../lib/useScrollRevealStack";
 
 type Article = { title: string; url: string; payoff: string };
 
@@ -50,9 +54,9 @@ const WEARING: Article[] = [
     payoff: "the closet stops negotiating with you.",
   },
   {
-    title: "elevated casual is a discipline",
-    url: "/style/elevated-casual-is-a-discipline",
-    payoff: "looking pulled-together without trying.",
+    title: "casual is not a free pass",
+    url: "/style/casual-is-not-a-free-pass",
+    payoff: "it only looks effortless.",
   },
   {
     title: "texture is the outfit",
@@ -83,13 +87,13 @@ const REFINING: Article[] = [
     payoff: "stop owning twelve. own one.",
   },
   {
-    title: "the kitchen setup that makes you cook more",
-    url: "/living/the-kitchen-setup-that-makes-you-cook-more",
-    payoff: "the thing that changes how often you cook.",
+    title: "why you don't cook more",
+    url: "/living/why-you-dont-cook-more",
+    payoff: "it isn't discipline. it's the geography.",
   },
   {
-    title: "the 10-minute reset that changes your evenings",
-    url: "/living/the-10-minute-reset-that-changes-your-evenings",
+    title: "the 10-minute reset",
+    url: "/living/the-10-minute-reset",
     payoff: "the small habit that changes the night.",
   },
   {
@@ -114,11 +118,6 @@ const SHOPPING: Article[] = [
     title: "the goya thin briefcase",
     url: "/shop/loewe-goya-thin-briefcase",
     payoff: "soft calfskin. doesn't announce the day.",
-  },
-  {
-    title: "100% linen pants, the heavier weave",
-    url: "/shop/quince-linen-pants",
-    payoff: "linen that doesn't punish you for sitting down.",
   },
   {
     title: "court leather sneakers",
@@ -169,8 +168,8 @@ const RETHINKING: Article[] = [
     payoff: "the layout problem nobody fixes.",
   },
   {
-    title: "the details that change everything",
-    url: "/style/the-details-that-change-everything",
+    title: "it's usually the small things",
+    url: "/style/its-usually-the-small-things",
     payoff: "the small things doing the heavy lifting.",
   },
   {
@@ -211,6 +210,19 @@ export default function RightNow({ variant = "default" }: RightNowProps) {
     setPicks(SLOTS.map((s) => pickRandom(s.articles)));
   }, []);
 
+  // Scroll-LINKED reveal (not timer-triggered). Reveal is tied to the
+  // wrapper's scroll progress through the viewport, so every row gets
+  // its turn regardless of where it sits in the stack. Strict
+  // sequential gating ensures no row appears before the row above is
+  // essentially complete — fast scroll and slow scroll produce the
+  // same ordered emergence, just compressed/stretched in time.
+  //
+  // Eyebrow ("Currently") is row 0; the five SLOTS follow as rows 1–5.
+  const { wrapperRef, setRow, progress } = useScrollRevealStack(
+    SLOTS.length + 1,
+    { followLagSeconds: 0.6 }
+  );
+
   const light = variant === "light";
 
   // Light variant uses cream tones at the same opacity values so the
@@ -218,6 +230,9 @@ export default function RightNow({ variant = "default" }: RightNowProps) {
   const eyebrow = light
     ? "text-[#f8f6f3]/65"
     : "text-[#1f1d1b]/50";
+  const preEyebrow = light
+    ? "text-[#f8f6f3]/40"
+    : "text-[#1f1d1b]/35";
   const slotLabel = light
     ? "text-[#f8f6f3]/55"
     : "text-[#1f1d1b]/40";
@@ -229,17 +244,34 @@ export default function RightNow({ variant = "default" }: RightNowProps) {
     : "text-[#1f1d1b]/55";
 
   return (
-    <div className="right-now">
-      <p
-        className={`mb-7 text-[11px] uppercase leading-none tracking-[0.26em] sm:text-[12px] ${eyebrow}`}
+    <div ref={wrapperRef as React.RefObject<HTMLDivElement>} className="right-now">
+      <div
+        ref={setRow(0)}
+        style={revealStyle(progress[0] ?? 0)}
+        className="mb-7"
       >
-        Currently
-      </p>
+        <p
+          className={`mb-2 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
+        >
+          Lately
+        </p>
+        <p
+          className={`text-[11px] uppercase leading-none tracking-[0.26em] sm:text-[12px] ${eyebrow}`}
+        >
+          Currently
+        </p>
+      </div>
       <ul className="space-y-6">
         {SLOTS.map((slot, i) => {
           const article = picks[i];
+          // Row index in the reveal stack: eyebrow is 0; slots are 1+.
+          const rowIndex = i + 1;
           return (
-            <li key={slot.label}>
+            <li
+              key={slot.label}
+              ref={setRow(rowIndex)}
+              style={revealStyle(progress[rowIndex] ?? 0)}
+            >
               <p
                 className={`text-[10.5px] uppercase tracking-[0.24em] sm:text-[11px] ${slotLabel}`}
               >

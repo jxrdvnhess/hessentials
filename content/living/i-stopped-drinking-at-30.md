@@ -4,67 +4,54 @@ slug: i-stopped-drinking-at-30
 category: living
 ---
 
-I stopped drinking at thirty. Not because anything went wrong. Because I started noticing what alcohol was actually doing — to my sleep, to my mornings, to the day after a dinner that should have been a good night — and the math stopped working.
+I stopped drinking at thirty.
 
-That's the whole story. There's no rock-bottom. No before-and-after. Just an audit, run honestly, that came back the same way every time.
+The honest version is harder than the clean one I used to lead with. I was at the lowest stretch of a long depression, and alcohol had quietly become the way I was managing it. Numbing the mind, mostly. Turning the volume down on a head that — blame the Virgo placements — runs hot at the best of times.
 
----
+I wasn't a daily drinker in the way that phrase usually lands. I was a person using drinking the way other people use phone-scrolling: to take the edge off something that actually needed care, not edge-management.
 
-## What I noticed first
-
-The first thing was sleep.
-
-A glass of wine at dinner does not help you sleep. It puts you to sleep, which is a different thing — and then it disrupts the second half of the night, when REM sleep is supposed to do most of its work. You wake up at 4 a.m. with your heart faintly elevated. You "slept eight hours" and feel like you slept five. I'd spent a decade explaining that morning to myself as "I think I'm getting sick" or "I just need coffee." It was the wine.
-
-When I stopped, the mornings showed up sharper than they had in years. Not heroically. Just clear. The kind of clear where you can read for an hour before your day starts because your brain isn't catching up from a low-grade chemical event.
-
-The next thing was money. I'd never tracked it. Once I did, I realized I was spending the cost of a small vacation every year on things I drank without thinking about — two glasses of wine at dinner, the bar tab on a Saturday, the bottles in the rotation. The number was embarrassing in both directions: embarrassing because I hadn't been paying attention, and embarrassing because of how much it was.
-
-Then came the rest. Skin clearer. Anxiety lower. Workouts that actually built something instead of just chipping away at a baseline. I'd told myself most of that was age catching up to me. It wasn't. It was a slow, daily, normalized substance that I'd never bothered to put under any real scrutiny.
+What finally moved me wasn't a moral conviction. It was being tired. Tired of the low-grade anxiety the next morning. Tired of replaying the dumb things I'd said the night before. Tired of the gap between the version of me at dinner and the version of me at 7 a.m., and how much of every morning was repair work I'd ordered up the night before. At some point I just stopped wanting to keep paying it.
 
 ---
 
-## Why most people don't stop
+## The reframe that helped
 
-There's a cultural assumption that adult life requires alcohol. That dinners need wine. That weddings need open bars. That a hard week earns a drink. That sophistication is a wine list.
+The useful frame wasn't "quit drinking." It was "stop self-medicating something that needs a different tool."
 
-None of it is true. All of it is downstream of an enormous industry that has spent a century making sure those associations feel like facts.
+When you treat the alcohol as the problem, you set yourself up for a willpower fight nobody wins. When you treat it as a downstream symptom — of stress, of unprocessed feeling, of a missing routine, of a brain that needs a quieter input — the conversation moves to better ground.
 
-When you opt out, you find out how thin the assumption is. People are mildly thrown for about ten seconds — and then the conversation is the conversation. Nobody actually cared. The discomfort, almost always, was projected. You assumed your friends would find a non-drinker boring. They didn't. They'd been waiting for someone to take it off the table.
-
----
-
-## What replaces it
-
-Almost every social occasion has a beverage role to fill. Drink for drink, the role is fillable.
-
-- A San Pellegrino with lime in a wine glass is the same gesture, with none of the cost
-- The non-alcoholic wines have caught up. Surely Brut, Athletic Brewing, Töst — these are real drinks now, not the apologetic juices of ten years ago
-- A clean, well-made mocktail at a real bar — fresh juice, bitters, ice, soda — is often better than the cocktail it replaces, and a bartender will respect the order
-- Sparkling water at home, full stop. Bubbles do most of the psychological work that alcohol was doing
-
-The harder part isn't the drink. It's the muscle of asking for it without explaining yourself. That gets easier in about a month. The first few times you'll over-explain — health kick, taking a break, dry month. Eventually you'll just say "water for me" and the room will move on, because the room never cared in the first place.
+What I needed wasn't sobriety. It was a day that didn't require anesthesia at the end of it.
 
 ---
 
-## The cultural shift
+## What actually changed
 
-I'm not the only one. I'm not even early.
+Most of what changed wasn't the drink. It was the day around it.
 
-Alcohol consumption in the U.S. has been dropping, particularly among adults under thirty-five, for most of the last decade. The non-alcoholic beverage market has been growing in double digits year over year. "Sober-curious" went from a fringe phrase to a New York Times trend piece to a normal way to describe a Tuesday. Restaurants have N/A pairings now. Bars list zero-proof menus. The thing that felt countercultural in 2017 is, in 2026, just one of the things people do.
+An actual morning. Not the influencer kind — just a real one. Up around the same time. Light first, screen later. Movement, even if it was just a walk. Something to read, on paper, before anything that pings.
 
-What's interesting is that the shift hasn't really been moralized. Nobody who quit, in my experience, has done it because they think drinking is wrong. They've done it because they ran the audit and the audit was clear.
+An actual night. Eat earlier. Phone away by ten. Room dark enough to sleep in. Tomorrow's coffee decided the night before so the morning runs itself.
 
----
-
-## What I'd say if you asked me
-
-Don't make a project of it. Don't announce it. Don't quit for a month — that frames it as a punishment that ends. Just stop, and watch what happens.
-
-You'll know in about three weeks whether you want to go back. Most people don't.
+The drink, in retrospect, had been filling a hole the rest of the day was leaving open. Once the day got better, I wanted the drink less. Not drinking turned out to be the side effect of finally having a structure I could lean on.
 
 ---
 
-The decision turned out to be quieter than I expected.
+## The case for routine, for everyone
 
-The benefits were louder.
+This isn't a case for not drinking. The brand isn't anti-anything except half-living.
+
+It's a case for routine.
+
+Most adult lives don't crater because of one big problem. They crater in the absence of small returning ones. The same wake-up window. The same first hour. The same place keys go. The same Sunday reset. Boring infrastructure the body and mind learn to lean on.
+
+Routines are an editing tool. They take decisions off the table so you have energy for the ones that matter. "I'll just have one" rarely stays one because it isn't a decision — it's a habit pretending to be a choice. Routine replaces both with something quieter.
+
+The friend who has two glasses of wine with dinner and walks the dog at 6:30 a.m. every day is, in structural terms, fine. The friend who never drinks but is awake at one a.m. scrolling under blue light — that's the one I'd quietly worry about.
+
+The drink isn't the variable. The structure is.
+
+---
+
+I'm just as fun as I was. I just say less dumb shit, and I remember the conversation the next day.
+
+That's the whole upgrade. Pour another glass and read more — the two aren't in opposition.

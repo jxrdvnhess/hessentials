@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { shuffleArray } from "../lib/shuffle";
 
 type FilterableRecipe = {
   slug: string;
@@ -35,9 +36,25 @@ function matchesFilter(recipe: FilterableRecipe, filter: Filter): boolean {
 export default function RecipesFilter({ recipes }: RecipesFilterProps) {
   const [active, setActive] = useState<Filter>("All");
 
+  // Shuffle once on mount so every page visit lands on a fresh order
+  // when the visitor is browsing "All". Specific tag filters keep the
+  // recipes' declared order (narrowing should feel predictable).
+  // Pattern: SSR renders the declared order (deterministic, hydration-safe);
+  // the client re-orders after mount. The setState-in-effect lint warning
+  // is suppressed below — this is exactly the SSR-then-randomize pattern
+  // the rule discourages, but here it's the intended behavior.
+  const [shuffled, setShuffled] = useState<FilterableRecipe[]>(recipes);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setShuffled(shuffleArray(recipes));
+  }, [recipes]);
+
   const visible = useMemo(
-    () => recipes.filter((r) => matchesFilter(r, active)),
-    [recipes, active]
+    () =>
+      active === "All"
+        ? shuffled
+        : recipes.filter((r) => matchesFilter(r, active)),
+    [recipes, shuffled, active]
   );
 
   return (

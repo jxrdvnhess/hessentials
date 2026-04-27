@@ -28,6 +28,7 @@ export default function ArrivalProvider({
     if (typeof window === "undefined") return;
 
     if (sessionStorage.getItem(SESSION_FLAG)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPhase("subsequent");
     } else {
       setPhase("first");

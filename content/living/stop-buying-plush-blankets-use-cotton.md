@@ -73,7 +73,7 @@ Wash separately the first time. Cold water. Tumble dry low or hang. After that, 
 ## What I actually use
 
 - Coyuchi Organic Cotton Blanket — herringbone, lasts a decade
-- Quince Organic Cotton Waffle Blanket — the same idea, lower price
+- Bedsure Cotton Waffle Blanket — the same idea, lower price
 
 One on the bed, one folded on the back of the couch. Both wash and come out better than they went in.
 

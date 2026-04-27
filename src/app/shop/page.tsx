@@ -5,7 +5,7 @@ import ShopGrid from "../../components/ShopGrid";
 export const metadata: Metadata = {
   title: "Shop — Hessentials",
   description:
-    "A curated edit of products that have stayed. Things bought, used, and returned to — because they actually work in real life.",
+    "Things bought, used, and returned to. The ones that held up.",
 };
 
 export default function ShopPage() {

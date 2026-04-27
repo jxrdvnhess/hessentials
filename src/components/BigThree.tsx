@@ -133,6 +133,7 @@ export default function BigThree() {
   // Reset reading whenever any selection changes after a reading has rendered.
   useEffect(() => {
     if (result !== null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResult(null);
       setEmptyMessage(null);
     }

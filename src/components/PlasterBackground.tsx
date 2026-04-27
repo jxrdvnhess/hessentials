@@ -24,6 +24,7 @@ export default function PlasterBackground() {
 
   useEffect(() => {
     if (pathname === "/home") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHomeArrivals((n) => n + 1);
     }
   }, [pathname]);

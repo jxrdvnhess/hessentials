@@ -4,16 +4,15 @@
  * Single flat array of products. Categories are tags, not sections — the
  * filter row on the shop page narrows the grid without rearranging it.
  *
- * IMAGE SOURCING (current state):
- * Each `image` field holds the brand CDN URL directly. next.config.ts allows
- * those hostnames via `remotePatterns`. The shop renders without any local
- * asset step. Trade-off: brand CDN URLs occasionally rot — when one breaks,
- * its card falls back to the brand-name placeholder until the URL is updated.
- *
- * To localize later (recommended once the catalog stabilizes):
- *   1. Run `bash scripts/download-shop-images.sh` to populate /public/shop/.
- *   2. Replace each `image` value with `/shop/<slug>.jpg`.
- *   3. Optional: trim `remotePatterns` from next.config.ts.
+ * IMAGE SOURCING:
+ * Images are hosted locally under /public/shop. Convention is one slug per
+ * product, indexed sequentially:
+ *   - /shop/<slug>-1.jpg   primary card image
+ *   - /shop/<slug>-2.jpg   second view (gallery)
+ *   - /shop/<slug>-3.jpg   …and so on
+ * The first entry of `images` should match `image` (the primary used on the
+ * grid + OG metadata). Single-image products may keep `image` only and skip
+ * the `images` array — the renderer falls back gracefully.
  */
 
 export type PriceTier = "$" | "$$" | "$$$" | "$$$$";
@@ -51,11 +50,16 @@ export type ShopProduct = {
   priceRange: PriceTier;
   /** External product page. */
   url: string;
-  /** Renderable image URL — CDN today, /shop/<slug>.jpg once localized. */
+  /** Renderable image URL (typically `/shop/<slug>-1.jpg`). */
   image: string;
+  /**
+   * Optional gallery. When present, the detail page renders a carousel.
+   * The first entry should match `image` (used on the grid + metadata).
+   */
+  images?: string[];
 };
 
-export const SHOP_INTRO = "Things worth keeping.";
+export const SHOP_INTRO = "Bought. Used. Kept.";
 
 /**
  * Curated, non-grouped order. Categories alternate intentionally — the grid
@@ -70,19 +74,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Soft calfskin. The bag for not announcing the day.",
     priceRange: "$$$$",
     url: "https://www.loewe.com/usa/en/men/bags/portfolio-and-briefcases/goya-thin-briefcase-in-soft-grained-calfskin/337.12.P57-1100.html",
-    image:
-      "https://www.loewe.com/dw/image/v2/BBPC_PRD/on/demandware.static/-/Sites-Loewe_master/default/dwca31ef16/images_rd/337.12.P57/337.12.P57-1100/337.12.P57_1100_1F.jpg?sw=850&q=100",
-  },
-  {
-    slug: "quince-linen-pants",
-    name: "100% Linen Pants",
-    brand: "Quince",
-    category: "Apparel",
-    reason: "Linen that doesn’t punish you for sitting down in it.",
-    priceRange: "$",
-    url: "https://www.quince.com/men/men-s-100-linen-pants?color=flax",
-    image:
-      "https://images.quince.com/7eAGPP7q4CFhsOk9DqpQli/05c1649b0521c6e2d686e4e1c71723b9/M-PNT-16-FLAX-33489_EDITED.jpg?w=1200&q=80&fm=jpg",
+    image: "/shop/loewe-goya-thin-briefcase-1.jpg",
+    images: [
+      "/shop/loewe-goya-thin-briefcase-1.jpg",
+      "/shop/loewe-goya-thin-briefcase-2.jpg",
+      "/shop/loewe-goya-thin-briefcase-3.jpg",
+    ],
   },
   {
     slug: "omega-aqua-terra-small-seconds",
@@ -92,8 +89,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "The dress watch you can swim in.",
     priceRange: "$$$$",
     url: "https://www.omegawatches.com/en-us/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001",
-    image:
-      "https://www.omegawatches.com/media/catalog/product/o/m/omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001-bdacfe.png?w=450",
+    image: "/shop/omega-aqua-terra-small-seconds-1.jpg",
+    images: [
+      "/shop/omega-aqua-terra-small-seconds-1.jpg",
+      "/shop/omega-aqua-terra-small-seconds-2.jpg",
+      "/shop/omega-aqua-terra-small-seconds-3.jpg",
+    ],
   },
   {
     slug: "bedsure-waffle-blanket",
@@ -103,7 +104,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Cotton, not synthetic. Cool in summer, warm enough otherwise.",
     priceRange: "$",
     url: "https://bedsurehome.com/products/cotton-waffle-weave-blanket?variant=40158662000742",
-    image: "https://m.media-amazon.com/images/I/91UYXcDdHnL._AC_SL1500_.jpg",
+    image: "/shop/bedsure-waffle-blanket-1.jpg",
+    images: [
+      "/shop/bedsure-waffle-blanket-1.jpg",
+      "/shop/bedsure-waffle-blanket-2.jpg",
+      "/shop/bedsure-waffle-blanket-3.jpg",
+    ],
   },
   {
     slug: "prada-court-leather-sneakers",
@@ -113,19 +119,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "The sneaker you keep wearing once you stop trying to look young.",
     priceRange: "$$$$",
     url: "https://www.prada.com/us/en/p/court-leather-sneakers/2EE483_070_F0009_F_G000",
-    image:
-      "https://www.prada.com/content/dam/pradabkg_products/2/2EE/2EE483/070F0009/2EE483_070_F0009_F_G000_SLR.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+    image: "/shop/prada-court-leather-sneakers-1.jpg",
+    images: [
+      "/shop/prada-court-leather-sneakers-1.jpg",
+      "/shop/prada-court-leather-sneakers-2.jpg",
+      "/shop/prada-court-leather-sneakers-3.jpg",
+      "/shop/prada-court-leather-sneakers-4.jpg",
+    ],
   },
   {
     slug: "massimo-dutti-linen-double-collar-tee",
     name: "Linen-Cotton Double-Collar T-Shirt",
     brand: "Massimo Dutti",
     category: "Apparel",
-    reason: "The tee that knows it’s not just a tee.",
+    reason: "Wears like a shirt. Reads like a tee.",
     priceRange: "$$",
     url: "https://www.massimodutti.com/us/linen-and-cotton-doublecollar-tshirt-l00659198?pelement=59486681",
-    image:
-      "https://static.massimodutti.net/assets/public/dcac/dcf9/610443679566/3bdbbec2edff/00659198700-o6/00659198700-o6.jpg?ts=1777020874502&w=1600&f=auto",
+    image: "/shop/massimo-dutti-linen-double-collar-tee-1.jpg",
+    images: [
+      "/shop/massimo-dutti-linen-double-collar-tee-1.jpg",
+      "/shop/massimo-dutti-linen-double-collar-tee-2.jpg",
+      "/shop/massimo-dutti-linen-double-collar-tee-3.jpg",
+    ],
   },
   {
     slug: "lv-hippo-coffee-table",
@@ -135,8 +150,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Substantial. Anchors the room without raising its voice.",
     priceRange: "$$$$",
     url: "https://lvfurniturecollection.com/products/hippo-coffee-table?country=US&currency=USD&variant=45139005243523",
-    image:
-      "https://lvfurniturecollection.com/cdn/shop/files/hippo-coffee-table_6f30515d-913e-4667-9ad5-f86d1c03fe6b.png?v=1770254572&width=1946",
+    image: "/shop/lv-hippo-coffee-table-1.jpg",
+    images: [
+      "/shop/lv-hippo-coffee-table-1.jpg",
+      "/shop/lv-hippo-coffee-table-2.jpg",
+      "/shop/lv-hippo-coffee-table-3.jpg",
+      "/shop/lv-hippo-coffee-table-4.jpg",
+    ],
   },
   {
     slug: "birkenstock-arizona-eva",
@@ -146,8 +166,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "For pools, beaches, kitchens. Anywhere you don’t want to think.",
     priceRange: "$",
     url: "https://www.birkenstock.com/us/arizona-eva/arizona-eva-eva-0-eva-u_3716.html",
-    image:
-      "https://www.birkenstock.com/dw/image/v2/BLZD_PRD/on/demandware.static/-/Sites-master-catalog-amer/default/dw6172c109/129421/129421.jpg?sw=1148&sh=1148&sm=fit&q=80",
+    image: "/shop/birkenstock-arizona-eva-1.jpg",
+    images: [
+      "/shop/birkenstock-arizona-eva-1.jpg",
+      "/shop/birkenstock-arizona-eva-2.jpg",
+      "/shop/birkenstock-arizona-eva-3.jpg",
+    ],
   },
   {
     slug: "ahlem-louxor",
@@ -157,19 +181,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Hand-finished in France. People notice without knowing why.",
     priceRange: "$$$",
     url: "https://www.ahlemeyewear.com/products/louxor-1?variant=44903388545273",
-    image:
-      "https://www.ahlemeyewear.com/cdn/shop/files/Louxor_SUN_WEB_greyGold_01_WEB_grey_1500x1002_crop_center.jpg?v=1714675082",
-  },
-  {
-    slug: "quince-mesh-sweater-polo",
-    name: "Mesh Stitch Cotton Sweater Polo",
-    brand: "Quince",
-    category: "Apparel",
-    reason: "The polo that doesn’t look like a polo.",
-    priceRange: "$",
-    url: "https://www.quince.com/men/mens-mesh-stitch-organic-cotton-short-sleeve-sweater-polo?color=speckled-beige&gender=men",
-    image:
-      "https://images.quince.com/6RzIOSVBe0PjasL3JJi9AI/cd7704af61a8d52f303161d209d947d4/M-LKT-93-SPKBG-03_EDITED.jpg?w=1200&q=80&fm=jpg",
+    image: "/shop/ahlem-louxor-1.jpg",
+    images: [
+      "/shop/ahlem-louxor-1.jpg",
+      "/shop/ahlem-louxor-2.jpg",
+      "/shop/ahlem-louxor-3.jpg",
+    ],
   },
   {
     slug: "prada-linen-duffel",
@@ -179,8 +196,15 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Looks unstructured. Holds more than it should.",
     priceRange: "$$$$",
     url: "https://www.prada.com/us/en/p/linen-blend-drawstring-duffel-bag/2VY011_2CX9_F0018_V_OOO",
-    image:
-      "https://www.prada.com/content/dam/pradabkg_products/2/2VY/2VY011/2CX9F0018/2VY011_2CX9_F0018_V_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+    image: "/shop/prada-linen-duffel-1.jpg",
+    images: [
+      "/shop/prada-linen-duffel-1.jpg",
+      "/shop/prada-linen-duffel-2.jpg",
+      "/shop/prada-linen-duffel-3.jpg",
+      "/shop/prada-linen-duffel-4.jpg",
+      "/shop/prada-linen-duffel-5.jpg",
+      "/shop/prada-linen-duffel-6.jpg",
+    ],
   },
   {
     slug: "crazy-water-sampler",
@@ -190,8 +214,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Texas mineral water from Mineral Wells. Four numbered strengths.",
     priceRange: "$",
     url: "https://drinkcrazywater.myshopify.com/collections/water/products/crazy-water-sampler",
-    image:
-      "https://drinkcrazywater.myshopify.com/cdn/shop/products/sampler_large.png?v=1509477709",
+    image: "/shop/crazy-water-sampler.jpg",
   },
   {
     slug: "tag-heuer-aquaracer-quartz",
@@ -201,8 +224,15 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "A real watch, finished correctly, without the chronograph tax.",
     priceRange: "$$$$",
     url: "https://www.tagheuer.com/us/en/timepieces/collections/tag-heuer-aquaracer/40-mm-quartz/CBP1112.BA0627.html",
-    image:
-      "https://www.tagheuer.com/on/demandware.static/-/Sites-tagheuer-master/default/dwced42cf4/TAG_Heuer_Aquaracer/CBP1112.BA0627/CBP1112.BA0627_Soldier.png?impolicy=TrimRatioResize&width=1254&ratioHeight=5&ratioWidth=4&expansion=true",
+    image: "/shop/tag-heuer-aquaracer-quartz-1.jpg",
+    images: [
+      "/shop/tag-heuer-aquaracer-quartz-1.jpg",
+      "/shop/tag-heuer-aquaracer-quartz-2.jpg",
+      "/shop/tag-heuer-aquaracer-quartz-3.jpg",
+      "/shop/tag-heuer-aquaracer-quartz-4.jpg",
+      "/shop/tag-heuer-aquaracer-quartz-5.jpg",
+      "/shop/tag-heuer-aquaracer-quartz-6.jpg",
+    ],
   },
   {
     slug: "aveda-pureformance-clay",
@@ -212,8 +242,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Hold without product crunch. Most others can’t say that.",
     priceRange: "$$",
     url: "https://www.aveda.com/product/17776/16733/styling/mens-styling/aveda-men-pure-formance-grooming-clay?size=2.5_fl_oz%2F75_ml",
-    image:
-      "https://www.aveda.com/media/images/products/355x600/white/av_sku_A3TX01_34069_355x600_0.jpg",
+    image: "/shop/aveda-pureformance-clay-1.jpg",
+    images: [
+      "/shop/aveda-pureformance-clay-1.jpg",
+      "/shop/aveda-pureformance-clay-2.jpg",
+      "/shop/aveda-pureformance-clay-3.jpg",
+    ],
   },
   {
     slug: "massimo-dutti-tapered-jeans",
@@ -223,8 +257,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Tapered without being skinny. The cut that actually lasts.",
     priceRange: "$$",
     url: "https://www.massimodutti.com/us/tapered-fit-jeans-l00451110?pelement=57966404",
-    image:
-      "https://static.massimodutti.net/assets/public/21d8/ffc7/26214fef9b7f/09b197e25617/00451110806-o8/00451110806-o8.jpg?ts=1770972782296&w=1600&f=auto",
+    image: "/shop/massimo-dutti-tapered-jeans-1.jpg",
+    images: [
+      "/shop/massimo-dutti-tapered-jeans-1.jpg",
+      "/shop/massimo-dutti-tapered-jeans-2.jpg",
+      "/shop/massimo-dutti-tapered-jeans-3.jpg",
+      "/shop/massimo-dutti-tapered-jeans-4.jpg",
+    ],
   },
   {
     slug: "tiffany-venetian-link-bracelet",
@@ -234,19 +273,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Sterling silver. The kind people inherit.",
     priceRange: "$$$",
     url: "https://www.tiffany.com/jewelry/bracelets/sterling-silver-bracelets-117817401.html",
-    image:
-      "https://media.tiffany.com/is/image/tco/60150727_BLT_ALT3X1?hei=1230&wid=1230&fmt=jpg",
-  },
-  {
-    slug: "quince-silk-sleep-mask",
-    name: "Mulberry Silk Sleep Mask",
-    brand: "Quince",
-    category: "Travel",
-    reason: "Real silk. Twelve dollars. The math is fine.",
-    priceRange: "$",
-    url: "https://www.quince.com/home/sleep-mask?color=navy",
-    image:
-      "https://images.quince.com/5IpMYbOpVBkz3wH1MZMWJ9/25563122b08b520366aeb5d6f1f3db90/eye_mask_1_navy.jpg?w=1200&q=80&fm=jpg",
+    image: "/shop/tiffany-venetian-link-bracelet-1.jpg",
+    images: [
+      "/shop/tiffany-venetian-link-bracelet-1.jpg",
+      "/shop/tiffany-venetian-link-bracelet-2.jpg",
+      "/shop/tiffany-venetian-link-bracelet-3.jpg",
+      "/shop/tiffany-venetian-link-bracelet-4.jpg",
+    ],
   },
   {
     slug: "prada-renylon-belt-bag",
@@ -256,8 +289,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "When you want to carry less but still want it close.",
     priceRange: "$$$$",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-belt-bag/2VL977_2DMG_F0002_V_WOO",
-    image:
-      "https://www.prada.com/content/dam/pradanux_products/2/2VL/2VL977/2DMGF0002/2VL977_2DMG_F0002_V_WOO_SLF.png/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+    image: "/shop/prada-renylon-belt-bag-1.jpg",
+    images: [
+      "/shop/prada-renylon-belt-bag-1.jpg",
+      "/shop/prada-renylon-belt-bag-2.jpg",
+      "/shop/prada-renylon-belt-bag-3.jpg",
+      "/shop/prada-renylon-belt-bag-4.jpg",
+    ],
   },
   {
     slug: "pacific-coast-down-pillow",
@@ -267,8 +305,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Holds shape through the night. Most pillows don’t.",
     priceRange: "$$",
     url: "https://www.amazon.com/Pacific-Coast-Standard-Sleeping-Downproof/dp/B0DPV65G7Y?th=1",
-    image:
-      "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR0x7j0UnChScpFZasLpeJ_lNMm26PoSOladxNb7CMzTfPRvGlhXqLcX8ElmiJPGT33RMY_n8av0qcahg6r1Bpic8E3jS-ilcFXGXUmwSzcR7XW8R5JSOpU_w",
+    image: "/shop/pacific-coast-down-pillow-1.jpg",
+    images: [
+      "/shop/pacific-coast-down-pillow-1.jpg",
+      "/shop/pacific-coast-down-pillow-2.jpg",
+    ],
   },
   {
     slug: "massimo-dutti-cotton-slim-pants",
@@ -278,8 +319,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Reads more expensive than it is. Wears like it, too.",
     priceRange: "$$",
     url: "https://www.massimodutti.com/us/cotton-blend-slim-fit-pants-l00101001?pelement=58445844",
-    image:
-      "https://static.massimodutti.net/assets/public/0b67/83b3/c1f84fd3b74f/e1f1c5ab126a/00101001401-o6/00101001401-o6.jpg?ts=1773142882443&w=1600&f=auto",
+    image: "/shop/massimo-dutti-cotton-slim-pants-1.jpg",
+    images: [
+      "/shop/massimo-dutti-cotton-slim-pants-1.jpg",
+      "/shop/massimo-dutti-cotton-slim-pants-2.jpg",
+      "/shop/massimo-dutti-cotton-slim-pants-3.jpg",
+      "/shop/massimo-dutti-cotton-slim-pants-4.jpg",
+    ],
   },
   {
     slug: "birkenstock-arizona-leather",
@@ -289,8 +335,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "You stop noticing them after five minutes. That’s the point.",
     priceRange: "$$",
     url: "https://www.birkenstock.com/us/arizona-soft-footbed-natural-leather-oiled/arizona-core-oiledleather-softfootbed-eva-u_5326.html",
-    image:
-      "https://www.birkenstock.com/dw/image/v2/BLZD_PRD/on/demandware.static/-/Sites-master-catalog-amer/default/dw4dfcde85/452761/452761.jpg?sw=1148&sh=1148&sm=fit&q=80",
+    image: "/shop/birkenstock-arizona-leather-1.jpg",
+    images: [
+      "/shop/birkenstock-arizona-leather-1.jpg",
+      "/shop/birkenstock-arizona-leather-2.jpg",
+      "/shop/birkenstock-arizona-leather-3.jpg",
+    ],
   },
   {
     slug: "johnston-murphy-rhodes-backpack",
@@ -300,8 +350,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Looks like a briefcase. Carries like a backpack.",
     priceRange: "$$",
     url: "https://www.johnstonmurphy.com/p/leather-goods-backpacks-briefcases/rhodes-backpack/14510.html?dwvar_14510_color=Tan%20Full%20Grain",
-    image:
-      "https://www.johnstonmurphy.com/dw/image/v2/AANO_PRD/on/demandware.static/-/Sites-genesco-master/default/dw64925262/large/4611736_master.jpg?sw=1200&sh=1130&strip=false",
+    image: "/shop/johnston-murphy-rhodes-backpack-1.jpg",
+    images: [
+      "/shop/johnston-murphy-rhodes-backpack-1.jpg",
+      "/shop/johnston-murphy-rhodes-backpack-2.jpg",
+      "/shop/johnston-murphy-rhodes-backpack-3.jpg",
+      "/shop/johnston-murphy-rhodes-backpack-4.jpg",
+    ],
   },
   {
     slug: "aveda-pureformance-cream",
@@ -311,8 +366,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Softer hold. Same trick — finish doesn’t read as done.",
     priceRange: "$$",
     url: "https://www.aveda.com/product/17776/16732/styling/mens-styling/aveda-men-pure-formance-grooming-cream?size=4.2_fl_oz%2F125_ml",
-    image:
-      "https://www.aveda.com/media/images/products/355x600/white/av_sku_A3TW01_34068_355x600_0.jpg",
+    image: "/shop/aveda-pureformance-cream-1.jpg",
+    images: [
+      "/shop/aveda-pureformance-cream-1.jpg",
+      "/shop/aveda-pureformance-cream-2.jpg",
+      "/shop/aveda-pureformance-cream-3.jpg",
+    ],
   },
   {
     slug: "ahlem-haussmann",
@@ -322,8 +381,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "The frame that suits more faces than it should.",
     priceRange: "$$$",
     url: "https://www.ahlemeyewear.com/products/haussman?variant=44220169715961",
-    image:
-      "https://www.ahlemeyewear.com/cdn/shop/files/Haussmann_SUN_Champagne_01_WEB_grey_2d6e74b6-308e-46f5-9ece-376eab17439b_1500x1002_crop_center.jpg?v=1736543132",
+    image: "/shop/ahlem-haussmann-1.jpg",
+    images: [
+      "/shop/ahlem-haussmann-1.jpg",
+      "/shop/ahlem-haussmann-2.jpg",
+      "/shop/ahlem-haussmann-3.jpg",
+      "/shop/ahlem-haussmann-4.jpg",
+    ],
   },
   {
     slug: "away-the-large",
@@ -333,8 +397,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Checked. Heavy-duty. Doesn’t pretend to be cute.",
     priceRange: "$$$",
     url: "https://www.awaytravel.com/products/large-navy-blue",
-    image:
-      "https://www.awaytravel.com/cdn/shop/files/872a3683-1382-44ea-b173-efa206cdd7d8_6a783a90-fdc2-4fab-ac47-a720cdc93b8e.jpg?v=1773689166&width=1200",
+    image: "/shop/away-the-large-1.jpg",
+    images: [
+      "/shop/away-the-large-1.jpg",
+      "/shop/away-the-large-2.jpg",
+      "/shop/away-the-large-3.jpg",
+      "/shop/away-the-large-4.jpg",
+    ],
   },
   {
     slug: "massimo-dutti-cotton-tee",
@@ -344,8 +413,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Heavyweight cotton. The base layer for everything.",
     priceRange: "$",
     url: "https://www.massimodutti.com/us/100-cotton-short-sleeve-tshirt-l01418212?pelement=56718135",
-    image:
-      "https://static.massimodutti.net/assets/public/deb2/11c0/a0d24d6e8786/3f0d9377fc33/01418212712-o7/01418212712-o7.jpg?ts=1770630992252&w=1600&f=auto",
+    image: "/shop/massimo-dutti-cotton-tee-1.jpg",
+    images: [
+      "/shop/massimo-dutti-cotton-tee-1.jpg",
+      "/shop/massimo-dutti-cotton-tee-2.jpg",
+      "/shop/massimo-dutti-cotton-tee-3.jpg",
+      "/shop/massimo-dutti-cotton-tee-4.jpg",
+    ],
   },
   {
     slug: "goodfellow-flat-front-shorts",
@@ -355,8 +429,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Cheap in price. Not in how they wear.",
     priceRange: "$",
     url: "https://www.target.com/p/men-s-5-flat-front-shorts-goodfellow-co/-/A-94965145?preselect=94886502",
-    image:
-      "https://target.scene7.com/is/image/Target/GUEST_4f30aa05-e862-4b91-82fb-b14c368bda9d?wid=1200&hei=1200&qlt=80",
+    image: "/shop/goodfellow-flat-front-shorts-1.jpg",
+    images: [
+      "/shop/goodfellow-flat-front-shorts-1.jpg",
+      "/shop/goodfellow-flat-front-shorts-2.jpg",
+    ],
   },
   {
     slug: "prada-renylon-backpack",
@@ -366,8 +443,14 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Prada nylon is a uniform. This is the carry version.",
     priceRange: "$$$$",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-backpack/2VZ048_2DMG_F0002_V_OOO",
-    image:
-      "https://www.prada.com/content/dam/pradabkg_products/2/2VZ/2VZ048/2DMGF0002/2VZ048_2DMG_F0002_V_OOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+    image: "/shop/prada-renylon-backpack-1.jpg",
+    images: [
+      "/shop/prada-renylon-backpack-1.jpg",
+      "/shop/prada-renylon-backpack-2.jpg",
+      "/shop/prada-renylon-backpack-3.jpg",
+      "/shop/prada-renylon-backpack-4.jpg",
+      "/shop/prada-renylon-backpack-5.jpg",
+    ],
   },
   {
     slug: "uniqlo-oxford-oversized-shirt",
@@ -377,8 +460,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Oversized without losing structure. Layers over everything.",
     priceRange: "$",
     url: "https://www.uniqlo.com/us/en/products/E484905-000/00?colorDisplayCode=01&sizeDisplayCode=003",
-    image:
-      "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/484905/sub/goods_484905_sub14_3x4.jpg",
+    image: "/shop/uniqlo-oxford-oversized-shirt-1.jpg",
+    images: [
+      "/shop/uniqlo-oxford-oversized-shirt-1.jpg",
+      "/shop/uniqlo-oxford-oversized-shirt-2.jpg",
+      "/shop/uniqlo-oxford-oversized-shirt-3.jpg",
+    ],
   },
   {
     slug: "abercrombie-premium-ribbed-tank",
@@ -388,8 +475,12 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Holds shape under everything. Worth it for that alone.",
     priceRange: "$",
     url: "https://www.abercrombie.com/shop/us/p/premium-ribbed-tank-61149838?categoryId=73458",
-    image:
-      "https://img.abercrombie.com/is/image/anf/KIC_124-5764-00037-900_model1?policy=product-extra-large",
+    image: "/shop/abercrombie-premium-ribbed-tank-1.jpg",
+    images: [
+      "/shop/abercrombie-premium-ribbed-tank-1.jpg",
+      "/shop/abercrombie-premium-ribbed-tank-2.jpg",
+      "/shop/abercrombie-premium-ribbed-tank-3.jpg",
+    ],
   },
   {
     slug: "prada-renylon-duffle",
@@ -399,8 +490,14 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Built to take a beating. Doesn’t read like it has.",
     priceRange: "$$$$",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-duffle-bag/2VC013_2DMH_F0002_V_XOO",
-    image:
-      "https://www.prada.com/content/dam/pradabkg_products/2/2VC/2VC013/2DMHF0002/2VC013_2DMH_F0002_V_XOO_SLF.jpg/_jcr_content/renditions/cq5dam.web.hebebed.2400.2400.jpg",
+    image: "/shop/prada-renylon-duffle-1.jpg",
+    images: [
+      "/shop/prada-renylon-duffle-1.jpg",
+      "/shop/prada-renylon-duffle-2.jpg",
+      "/shop/prada-renylon-duffle-3.jpg",
+      "/shop/prada-renylon-duffle-4.jpg",
+      "/shop/prada-renylon-duffle-5.jpg",
+    ],
   },
   {
     slug: "away-bigger-carry-on",
@@ -410,8 +507,13 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Hits the size limit on purpose. Holds a week.",
     priceRange: "$$",
     url: "https://www.awaytravel.com/products/bigger-carry-on-navy-blue",
-    image:
-      "https://www.awaytravel.com/cdn/shop/files/215cd47b-8e23-4546-9a91-b5035b4d078c_9d00a95f-e0b6-4b8f-8ee6-ce6393f1b82e.jpg?v=1773689166&width=1200",
+    image: "/shop/away-bigger-carry-on-1.jpg",
+    images: [
+      "/shop/away-bigger-carry-on-1.jpg",
+      "/shop/away-bigger-carry-on-2.jpg",
+      "/shop/away-bigger-carry-on-3.jpg",
+      "/shop/away-bigger-carry-on-4.jpg",
+    ],
   },
   {
     slug: "clayton-crume-canvas-tote",
@@ -421,8 +523,160 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     reason: "Heavy canvas, leather handles. Outlasts replacing.",
     priceRange: "$$",
     url: "https://claytonandcrume.com/products/canvas-market-tote?country=US&currency=USD&variant=47093690171559",
-    image:
-      "https://claytonandcrume.com/cdn/shop/files/CanvasMarketTote_1_1_e83c0901-e7be-49f1-972a-34e98cc9d5f9.jpg?v=1761077812&width=1200",
+    image: "/shop/clayton-crume-canvas-tote-1.jpg",
+    images: [
+      "/shop/clayton-crume-canvas-tote-1.jpg",
+      "/shop/clayton-crume-canvas-tote-2.jpg",
+      "/shop/clayton-crume-canvas-tote-3.jpg",
+      "/shop/clayton-crume-canvas-tote-4.jpg",
+    ],
+  },
+  {
+    slug: "abercrombie-seersucker-swim-trunk",
+    name: "Pull-On Seersucker Swim Trunk",
+    brand: "Abercrombie",
+    category: "Apparel",
+    reason: "Seersucker, not slick nylon. The pool trunk that reads thought-out.",
+    priceRange: "$",
+    url: "https://www.abercrombie.com/shop/us/p/pull-on-seersucker-swim-trunk-58989323",
+    image: "/shop/Abercrombie-Seersucker-Swim-Trunk-1.jpg",
+    images: [
+      "/shop/Abercrombie-Seersucker-Swim-Trunk-1.jpg",
+      "/shop/Abercrombie-Seersucker-Swim-Trunk-2.jpg",
+      "/shop/Abercrombie-Seersucker-Swim-Trunk-3.jpg",
+    ],
+  },
+  {
+    slug: "clayton-daybook",
+    name: "Daybook",
+    brand: "Clayton & Crume",
+    category: "Home",
+    reason: "Full-grain leather, brass snap, refillable. The notebook you keep.",
+    priceRange: "$$$",
+    url: "https://claytonandcrume.com/products/daybook",
+    image: "/shop/clayton-daybook-1.jpg",
+    images: [
+      "/shop/clayton-daybook-1.jpg",
+      "/shop/clayton-daybook-2.jpg",
+      "/shop/clayton-daybook-3.jpg",
+      "/shop/clayton-daybook-4.jpg",
+    ],
+  },
+  {
+    slug: "ibex-wool-dryer-puffs",
+    name: "Wool Dryer Puffs",
+    brand: "Ibex",
+    category: "Home",
+    reason:
+      "Merino wool, US-made. Replaces dryer sheets and never runs out.",
+    priceRange: "$",
+    url: "https://ibex.com/products/wool-dryer-puffs",
+    image: "/shop/ibex-dryer-puffs-1.jpg",
+    images: [
+      "/shop/ibex-dryer-puffs-1.jpg",
+      "/shop/ibex-dryer-puffs-2.jpg",
+      "/shop/ibex-dryer-puffs-3.jpg",
+      "/shop/ibex-dryer-puffs-4.jpg",
+    ],
+  },
+  {
+    slug: "ysl-l-homme-edt",
+    name: "L’Homme Eau de Toilette",
+    brand: "YSL",
+    category: "Grooming",
+    reason: "Bergamot and cedar. The dependable cologne that wears close.",
+    priceRange: "$$$",
+    url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/lhomme/lhomme-eau-de-toilette-spray/284YSL.html",
+    image: "/shop/ysl-l-homme-1.jpg",
+  },
+  {
+    slug: "ysl-myslf-edp",
+    name: "MYSLF Eau de Parfum",
+    brand: "YSL",
+    category: "Grooming",
+    reason:
+      "Orange blossom, vetiver. The brighter one — for when L’Homme is too quiet.",
+    priceRange: "$$$",
+    url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/myslf/myslf-eau-de-parfum/WW-51115YSL.html",
+    image: "/shop/ysl-MYSLF-1.jpg",
+    images: ["/shop/ysl-MYSLF-1.jpg", "/shop/ysl-MYSLF-2.jpg"],
+  },
+  {
+    slug: "prada-paradigme-edp",
+    name: "Paradigme Eau de Parfum",
+    brand: "Prada",
+    category: "Grooming",
+    reason: "Mate and ambergris. Reads as the wearer, not the brand.",
+    priceRange: "$$$$",
+    url: "https://www.prada.com/us/en/p/paradigme-edp-100-ml/2A1451_2H0Q_F0Z99_P_ML100",
+    image: "/shop/prada-Paradigme-1.jpg",
+    images: [
+      "/shop/prada-Paradigme-1.jpg",
+      "/shop/prada-Paradigme-2.jpg",
+      "/shop/prada-Paradigme-3.jpg",
+    ],
+  },
+  {
+    slug: "kiehls-avocado-eye-cream",
+    name: "Creamy Eye Treatment with Avocado",
+    brand: "Kiehl’s",
+    category: "Grooming",
+    reason: "Avocado oil, no fuss. Forty years on the counter for a reason.",
+    priceRange: "$$",
+    url: "https://www.kiehls.com/skincare/eye-creams-and-serums/avocado-eye-cream/258.html",
+    image: "/shop/kiehls-avocado-eye-cream-1.jpg",
+    images: [
+      "/shop/kiehls-avocado-eye-cream-1.jpg",
+      "/shop/kiehls-avocado-eye-cream-2.jpg",
+    ],
+  },
+  {
+    slug: "louis-vuitton-dopp-kit",
+    name: "Dopp Kit (Damier Graphite)",
+    brand: "Louis Vuitton",
+    category: "Bags",
+    reason:
+      "Damier Graphite canvas. Travels with the bag, not buried inside it.",
+    priceRange: "$$$$",
+    url: "https://us.louisvuitton.com/eng-us/products/dopp-kit-toilet-pouch-damier-graphite-canvas-nvprod1420096v/N40127",
+    image: "/shop/louis-vuitton-dopp-kit-1.jpg",
+    images: [
+      "/shop/louis-vuitton-dopp-kit-1.jpg",
+      "/shop/louis-vuitton-dopp-kit-2.jpg",
+      "/shop/louis-vuitton-dopp-kit-3.jpg",
+      "/shop/louis-vuitton-dopp-kit-4.jpg",
+    ],
+  },
+  {
+    slug: "prada-symbole-sunglasses",
+    name: "Symbole Sunglasses",
+    brand: "Prada",
+    category: "Eyewear",
+    reason: "Triangle, not logo. Prada that doesn’t need to introduce itself.",
+    priceRange: "$$$$",
+    url: "https://www.prada.com/us/en/p/prada-symbole-sunglasses/SPRB17_E16K_FE08Z_C_054",
+    image: "/shop/Prada-Symbole-sunglasses-1.jpg",
+    images: [
+      "/shop/Prada-Symbole-sunglasses-1.jpg",
+      "/shop/Prada-Symbole-sunglasses-2.jpg",
+      "/shop/Prada-Symbole-sunglasses-3.jpg",
+      "/shop/Prada-Symbole-sunglasses-4.jpg",
+    ],
+  },
+  {
+    slug: "dr-bronner-tea-tree-bar-soap",
+    name: "Tea Tree Pure-Castile Bar Soap",
+    brand: "Dr. Bronner’s",
+    category: "Grooming",
+    reason: "Tea tree, real oils, no fillers. Soap the way it used to be.",
+    priceRange: "$",
+    url: "https://www.drbronner.com/products/tea-tree-pure-castile-bar-soap",
+    image: "/shop/dr-bronners-pure-castile-tea-tree-1.jpg",
+    images: [
+      "/shop/dr-bronners-pure-castile-tea-tree-1.jpg",
+      "/shop/dr-bronners-pure-castile-tea-tree-2.jpg",
+      "/shop/dr-bronners-pure-castile-tea-tree-3.jpg",
+    ],
   },
 ];
 

@@ -26,11 +26,11 @@ const POOL: Record<Category, EditItem[]> = {
     { title: "Sunday rigatoni, the slow afternoon pot", href: "/recipes/sunday-rigatoni", category: "recipes" },
     { title: "Tuscan orzo, fast and rich", href: "/recipes/tuscan-orzo", category: "recipes" },
     { title: "Caprese chicken, year-round", href: "/recipes/caprese-chicken", category: "recipes" },
-    { title: "The breakfast that ruins all others", href: "/recipes/soft-scrambled-eggs-with-herbs", category: "recipes" },
+    { title: "The breakfast I keep making", href: "/recipes/soft-scrambled-eggs-with-herbs", category: "recipes" },
   ],
   living: [
-    { title: "The kitchen that changed everything", href: "/living/the-kitchen-setup-that-makes-you-cook-more", category: "living" },
-    { title: "The 10-minute reset", href: "/living/the-10-minute-reset-that-changes-your-evenings", category: "living" },
+    { title: "Why you don't cook more", href: "/living/why-you-dont-cook-more", category: "living" },
+    { title: "The 10-minute reset", href: "/living/the-10-minute-reset", category: "living" },
     { title: "Hosting without the production", href: "/living", category: "living" },
     { title: "Stop using fabric softener", href: "/living/stop-using-fabric-softener", category: "living" },
     { title: "The one pot that does everything", href: "/living/the-one-pot-that-does-everything", category: "living" },
@@ -43,7 +43,7 @@ const POOL: Record<Category, EditItem[]> = {
     { title: "The signature piece", href: "/style/the-signature-piece", category: "style" },
   ],
   shop: [
-    { title: "What I keep buying again", href: "/shop", category: "shop" },
+    { title: "I keep buying this", href: "/shop", category: "shop" },
     { title: "The closet edit", href: "/shop", category: "shop" },
     { title: "Pieces that earn their place", href: "/shop", category: "shop" },
     { title: "The kitchen, restocked", href: "/shop", category: "shop" },

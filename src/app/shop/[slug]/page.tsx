@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SHOP_PRODUCTS, getProductBySlug } from "../../../data/shop";
 import { getShopEssay } from "../../../lib/shop";
+import ProductGallery from "../../../components/ProductGallery";
 
 type Params = { slug: string };
 
@@ -61,22 +61,11 @@ export default async function ShopProductPage({
         <div className="grid items-start gap-x-12 gap-y-12 md:grid-cols-12 md:gap-x-16">
           {/* Image */}
           <div className="md:col-span-7">
-            <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#ebe7df]">
-              <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-                <span className="font-serif text-[clamp(1.125rem,1.6vw,1.5rem)] italic leading-[1.4] text-[#1f1d1b]/30">
-                  {product.brand}
-                </span>
-              </div>
-              <Image
-                src={product.image}
-                alt={`${product.brand} — ${product.name}`}
-                fill
-                sizes="(min-width: 768px) 58vw, 100vw"
-                quality={95}
-                unoptimized
-                className="object-cover"
-              />
-            </div>
+            <ProductGallery
+              images={product.images ?? [product.image]}
+              alt={`${product.brand} — ${product.name}`}
+              fallback={product.brand}
+            />
           </div>
 
           {/* Meta */}

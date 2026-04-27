@@ -23,7 +23,6 @@ Each filename matches the product `slug` from `src/data/shop.ts` plus `.jpg`.
 - `prada-americas-cup-sneaker.jpg`
 - `massimo-dutti-tailored-trouser.jpg`
 - `club-monaco-ribbed-tank.jpg`
-- `quince-linen-pant.jpg`
 - `goodfellow-chino-shorts.jpg`
 - `birkenstock-arizona-sandal.jpg`
 

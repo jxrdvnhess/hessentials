@@ -123,11 +123,21 @@ function PracticalSection({
 }
 
 function ShopItemRow({ item }: { item: ShopItem }) {
+  const linkClass =
+    "underline decoration-[#1f1d1b]/20 underline-offset-[5px] transition-colors hover:decoration-[#1f1d1b]/60";
+
   return (
     <div>
       <div className="mb-3 flex items-baseline justify-between gap-6">
         <h3 className="font-serif text-[clamp(1.125rem,1.8vw,1.375rem)] font-normal leading-[1.25] tracking-[-0.01em] text-[#1f1d1b]">
-          {item.name}
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            {item.name}
+          </a>
         </h3>
         <span
           aria-label="Price range"
@@ -143,7 +153,19 @@ function ShopItemRow({ item }: { item: ShopItem }) {
         {item.reason}
       </p>
       <p className="text-[14px] italic leading-[1.65] text-[#1f1d1b]/55 sm:text-[15px]">
-        Alternative — {item.alt}
+        Alternative —{" "}
+        {item.altUrl ? (
+          <a
+            href={item.altUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClass}
+          >
+            {item.alt}
+          </a>
+        ) : (
+          item.alt
+        )}
       </p>
     </div>
   );

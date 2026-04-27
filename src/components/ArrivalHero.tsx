@@ -15,6 +15,7 @@ export default function ArrivalHero() {
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setRevealed(true);
       return;
     }

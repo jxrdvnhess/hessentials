@@ -31,9 +31,9 @@ export type SearchItem = {
 
 const LIVING_ITEMS: SearchItem[] = [
   {
-    title: "The Kitchen Setup That Makes You Cook More",
+    title: "Why you don't cook more",
     section: "Living",
-    url: "/living/the-kitchen-setup-that-makes-you-cook-more",
+    url: "/living/why-you-dont-cook-more",
   },
   {
     title: "Why Most Kitchens Are Set Up Wrong",
@@ -41,9 +41,9 @@ const LIVING_ITEMS: SearchItem[] = [
     url: "/living/why-most-kitchens-are-set-up-wrong",
   },
   {
-    title: "The 10-Minute Reset That Changes Your Evenings",
+    title: "The 10-minute reset",
     section: "Living",
-    url: "/living/the-10-minute-reset-that-changes-your-evenings",
+    url: "/living/the-10-minute-reset",
   },
   {
     title: "You're Not Bad with Plants",

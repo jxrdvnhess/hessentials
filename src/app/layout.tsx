@@ -1,9 +1,27 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import PlasterBackground from "../components/PlasterBackground";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import "./globals.css";
+
+/**
+ * Mobile-first viewport defaults.
+ *
+ * - `width=device-width, initial-scale=1` — render at the device's actual
+ *   width on iPhone/iPad (without this, iOS Safari falls back to a 980px
+ *   layout viewport and shrinks everything).
+ * - `viewportFit: "cover"` — let layouts opt in to safe-area-inset paddings
+ *   so the wordmark and menu drawer respect the iPhone notch / home bar.
+ * - `themeColor` — matches the plaster background so the iOS status bar and
+ *   tab bar tint with the brand instead of stark white.
+ */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#f8f6f3",
+};
 
 const serif = Playfair_Display({
   subsets: ["latin"],
@@ -19,15 +37,49 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Hessentials — A system for choosing what holds.",
+  title: {
+    default: "Hessentials — Choosing well, and standing by it.",
+    // Per-page titles (set via generateMetadata) get appended:
+    //   "Privacy — Hessentials" instead of just "Privacy".
+    template: "%s | Hessentials",
+  },
   description:
-    "A quieter approach. Choosing well, and standing by it. Food, home, style, and the small decisions that shape how life actually feels.",
+    "Choosing well, and standing by it. Food, home, style, and the small decisions that make a life feel considered.",
   metadataBase: new URL("https://hessentials.co"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Hessentials",
-    description: "A system for choosing what holds.",
+    description: "This is what stayed.",
+    url: "https://hessentials.co",
+    siteName: "Hessentials",
     type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Hessentials — Choosing well, and standing by it.",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hessentials",
+    description: "This is what stayed.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
   },
   icons: {
     icon: [

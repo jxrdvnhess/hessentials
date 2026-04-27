@@ -73,7 +73,7 @@ That's it. There's no seasoning ritual, no special soap, no "never use detergent
 ## What I actually use
 
 - Le Creuset 5.5-quart round Dutch oven — the one that lasts a lifetime
-- Quince enameled cast iron Dutch oven — the same idea at a fraction of the cost
+- Lodge Enameled Cast Iron Dutch Oven — the same idea at a fraction of the cost
 
 Either works. The expensive one is heirloom-quality and comes in colors that don't go out of style. The cheaper one cooks identically. Pick by budget, not by status.
 
