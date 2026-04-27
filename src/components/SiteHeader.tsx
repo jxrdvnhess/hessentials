@@ -36,18 +36,20 @@ export default function SiteHeader() {
   return (
     <header aria-label="Site" className="sticky top-0 z-40 w-full">
       {/* Soft wash — the bar exists, but its edge does not.
-          Mobile gets a stronger cream wash + heavier blur so the
-          wordmark stays readable when an image sits behind it. */}
+          Mobile gets a near-opaque cream wash + heavier blur so the
+          wordmark stays readable and content scrolling beneath the
+          header doesn't bleed through. Desktop keeps the airier
+          atmospheric treatment. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 backdrop-blur-[12px] md:backdrop-blur-[8px]"
+        className="pointer-events-none absolute inset-0 -z-10 backdrop-blur-[14px] md:backdrop-blur-[8px]"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, rgba(248,246,243,0.92) 0%, rgba(248,246,243,0.7) 55%, rgba(248,246,243,0) 100%)",
+            "linear-gradient(to bottom, rgba(248,246,243,0.98) 0%, rgba(248,246,243,0.92) 60%, rgba(248,246,243,0) 100%)",
           maskImage:
-            "linear-gradient(to bottom, black 55%, transparent 100%)",
+            "linear-gradient(to bottom, black 70%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(to bottom, black 55%, transparent 100%)",
+            "linear-gradient(to bottom, black 70%, transparent 100%)",
         }}
       />
 
