@@ -84,12 +84,12 @@ export default function NewsletterSignup({
       </p>
 
       <p className={`font-serif text-[15px] italic leading-[1.45] sm:text-[16px] ${tagline}`}>
-        A note when there&rsquo;s something to say.
+        Recipes I keep making, what to skip, the upgrades that hold up. Sent when it&rsquo;s worth it.
       </p>
 
       {status === "success" ? (
         <p className={`mt-1 font-serif text-[15px] italic leading-[1.45] sm:text-[16px] ${successMsg}`}>
-          Thank you. We&rsquo;ll be in touch.
+          You&rsquo;re in. Next note lands when there&rsquo;s something to say.
         </p>
       ) : (
         <form

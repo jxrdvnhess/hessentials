@@ -28,7 +28,7 @@ const COOKING: Article[] = [
   {
     title: "tuscan orzo",
     url: "/recipes/tuscan-orzo",
-    payoff: "fast, rich, and actually satisfying.",
+    payoff: "fast, rich, satisfying.",
   },
   {
     title: "caprese chicken",
@@ -71,7 +71,7 @@ const WEARING: Article[] = [
   {
     title: "the bag sets the tone",
     url: "/style/the-bag-sets-the-tone",
-    payoff: "the one detail people actually notice.",
+    payoff: "the one detail people notice.",
   },
   {
     title: "the signature piece",
@@ -99,7 +99,7 @@ const REFINING: Article[] = [
   {
     title: "stop using fabric softener",
     url: "/living/stop-using-fabric-softener",
-    payoff: "what it's actually doing to your clothes.",
+    payoff: "what it's doing to your clothes.",
   },
   {
     title: "the entryway test",
@@ -224,9 +224,11 @@ export default function RightNow({
   // essentially complete — fast scroll and slow scroll produce the
   // same ordered emergence, just compressed/stretched in time.
   //
-  // Eyebrow ("Currently") is row 0; the five SLOTS follow as rows 1–5.
+  // Row 0: "Start here" featured article (fixed, always shown).
+  // Row 1: "Currently" eyebrow (suppressed when hideEyebrow is true).
+  // Rows 2–6: the five rotating SLOTS.
   const { wrapperRef, setRow, progress } = useScrollRevealStack(
-    SLOTS.length + 1,
+    SLOTS.length + 2,
     { followLagSeconds: 0.6 }
   );
 
@@ -246,35 +248,80 @@ export default function RightNow({
   const articleTitle = light
     ? "text-[#f8f6f3]/95"
     : "text-[#1f1d1b]/90";
+  // Start Here gets the strongest contrast — full opacity title and a
+  // brighter payoff — so the entire block reads as primary against the
+  // rotating Currently slots which sit at /90 /95 and /55 /70.
+  const startHereTitle = light
+    ? "text-[#f8f6f3]"
+    : "text-[#1f1d1b]";
+  const startHerePayoff = light
+    ? "text-[#f8f6f3]/85"
+    : "text-[#1f1d1b]/70";
   const articlePayoff = light
     ? "text-[#f8f6f3]/70"
     : "text-[#1f1d1b]/55";
 
   return (
     <div ref={wrapperRef as React.RefObject<HTMLDivElement>} className="right-now">
+      {/* Row 0 — Start Here. Fixed featured article. Always shown, even
+          when the Currently eyebrow is hidden (mobile/image overlay case).
+          This is the single, named entry point into the brand for anyone
+          arriving without context. Title sits 4–5px larger than the
+          rotating Currently slots below to claim primary hierarchy. */}
+      <div
+        ref={setRow(0)}
+        style={revealStyle(progress[0] ?? 0)}
+        className="mb-10"
+      >
+        <p
+          className={`mb-3 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
+        >
+          If you&rsquo;re new, start here
+        </p>
+        <Link href="/recipes" className="group inline-block">
+          <span
+            className={`inline-flex items-baseline gap-2 font-serif text-[24px] italic leading-[1.2] tracking-[-0.01em] transition-opacity duration-300 ease-out group-hover:opacity-65 sm:text-[26px] ${startHereTitle}`}
+          >
+            The 5 things I cook every week
+            <span aria-hidden className="text-[13px] not-italic">
+              →
+            </span>
+          </span>
+          <span
+            className={`mt-2 block text-[13px] leading-[1.45] transition-opacity duration-300 ease-out group-hover:opacity-65 sm:text-[13.5px] ${startHerePayoff}`}
+          >
+            If you cook nothing else from here, cook these.
+          </span>
+        </Link>
+      </div>
+
+      {/* Row 1 — Currently eyebrow. The rotating set below is what's on
+          rotation right now. Suppressed only when the eyebrow lives on
+          the image above (mobile morning overlay case). */}
       {!hideEyebrow && (
         <div
-          ref={setRow(0)}
-          style={revealStyle(progress[0] ?? 0)}
+          ref={setRow(1)}
+          style={revealStyle(progress[1] ?? 0)}
           className="mb-7"
         >
-          <p
-            className={`mb-2 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
-          >
-            Lately
-          </p>
           <p
             className={`text-[11px] uppercase leading-none tracking-[0.26em] sm:text-[12px] ${eyebrow}`}
           >
             Currently
+          </p>
+          <p
+            className={`mt-2.5 font-serif text-[12.5px] italic leading-[1.4] sm:text-[13px] ${preEyebrow}`}
+          >
+            What&rsquo;s in rotation right now.
           </p>
         </div>
       )}
       <ul className="space-y-6">
         {SLOTS.map((slot, i) => {
           const article = picks[i];
-          // Row index in the reveal stack: eyebrow is 0; slots are 1+.
-          const rowIndex = i + 1;
+          // Row index in the reveal stack: Start Here is 0, Currently
+          // eyebrow is 1, slots start at 2.
+          const rowIndex = i + 2;
           return (
             <li
               key={slot.label}

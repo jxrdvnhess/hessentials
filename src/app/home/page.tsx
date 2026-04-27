@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import RightNow from "../../components/RightNow";
 import TheEdit from "../../components/TheEdit";
@@ -9,7 +10,7 @@ import HomeFooterOverlay, {
 export const metadata: Metadata = {
   title: "Hessentials",
   description:
-    "Choosing well, and standing by it. Food, home, style, and the small decisions that make a life feel considered.",
+    "Food, home, and style for people who want better defaults, not more options. Recipes, rooms, and small upgrades worth the time.",
 };
 
 /**
@@ -121,12 +122,31 @@ export default function HomePage() {
             Life, edited well.
           </h1>
           <p className="text-pretty mt-8 font-serif text-[clamp(1.25rem,1.9vw,1.5rem)] italic leading-[1.45] text-[#1f1d1b]/70">
-            This is what I kept coming back to.
+            Food, home, and style for people who want better defaults, not more options.
           </p>
-          {/* 02 — Micro-intro. Quiet continuation of the hero, not a new section. */}
+          {/* Direct, blunt clarification. Tells the reader what they're getting. */}
           <p className="mt-6 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px]">
-            Most of what&rsquo;s here just stayed. What didn&rsquo;t, didn&rsquo;t.
+            Less to decide. More that works.
           </p>
+          {/* Single, named entry point. Hero must answer "what do I do next" within three seconds.
+              The label is italic serif (not an uppercase eyebrow) so it reads like a quiet
+              hand on the shoulder rather than a section header. */}
+          <div className="mt-10">
+            <p className="font-serif text-[12px] italic leading-none text-[#1f1d1b]/55 sm:text-[13px]">
+              If you&rsquo;re new, start here
+            </p>
+            <Link
+              href="/recipes"
+              className="group mt-3 inline-flex items-baseline gap-2"
+            >
+              <span className="font-serif text-[clamp(1.0625rem,1.5vw,1.25rem)] italic leading-[1.35] text-[#1f1d1b]/85 transition-opacity duration-300 ease-out group-hover:opacity-65">
+                The 5 things I cook every week
+              </span>
+              <span aria-hidden className="text-[12px] not-italic text-[#1f1d1b]/45">
+                →
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -204,35 +224,21 @@ export default function HomePage() {
             <RightNow variant="light" />
           </div>
 
-          {/* MOBILE: bottom darken + quiet eyebrow overlay only. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 md:hidden"
-            style={{
-              backgroundImage:
-                "linear-gradient(to bottom, transparent 55%, rgba(20,18,16,0.22) 78%, rgba(20,18,16,0.55) 100%)",
-            }}
-          />
-          <div className="absolute inset-x-0 bottom-7 flex flex-col items-center text-center md:hidden">
-            <p className="font-serif text-[12px] italic leading-none text-[#f8f6f3]/65">
-              Lately
-            </p>
-            <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
-              Currently
-            </p>
-          </div>
+          {/* MOBILE: image stays clean. All Start Here + Currently labels
+              live in the cream block below so the cream block reads as a
+              single, guided composition rather than splitting an eyebrow
+              across the seam. */}
         </Cinematic>
       </section>
 
-      {/* MOBILE-ONLY: Currently content list as a clean cream section
-          below the morning image. The "Lately Currently" eyebrow is
-          suppressed here because it lives on the image above. */}
+      {/* MOBILE-ONLY: full Start Here + Currently block as a clean cream
+          section below the morning image. */}
       <section
-        aria-label="Currently"
+        aria-label="Start here and Currently"
         className="block px-6 pt-12 pb-2 sm:px-10 md:hidden"
       >
         <div className="mx-auto max-w-[420px]">
-          <RightNow variant="default" hideEyebrow />
+          <RightNow variant="default" />
         </div>
       </section>
 
@@ -242,6 +248,20 @@ export default function HomePage() {
         className="px-6 sm:px-10 md:px-16"
         style={{ marginTop: GAP_ZONE }}
       >
+        <div className="mb-12 max-w-[520px] sm:mb-14 md:mb-16">
+          {/* Quiet edge line. A single, confident truth that frames the
+              section without raising its voice. Generous spacing below
+              so it reads as a quiet aside, not a heading. */}
+          <p className="font-serif text-[clamp(0.95rem,1.2vw,1.0625rem)] italic leading-[1.55] text-[#1f1d1b]/55">
+            Most of what you&rsquo;ve been told to buy, cook, or follow isn&rsquo;t that good.
+          </p>
+          <p className="mt-14 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
+            The Edit
+          </p>
+          <p className="text-balance mt-4 font-serif text-[clamp(1.125rem,1.6vw,1.375rem)] italic leading-[1.4] text-[#1f1d1b]/70">
+            The pieces that hold up. Read one. Use it tonight.
+          </p>
+        </div>
         <TheEdit />
       </section>
 

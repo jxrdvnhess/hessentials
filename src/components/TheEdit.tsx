@@ -23,7 +23,7 @@ type EditItem = {
 const POOL: Record<Category, EditItem[]> = {
   recipes: [
     { title: "The 5 things I cook every week", href: "/recipes", category: "recipes" },
-    { title: "Sunday rigatoni, the slow afternoon pot", href: "/recipes/sunday-rigatoni", category: "recipes" },
+    { title: "Sunday rigatoni, the slow one", href: "/recipes/sunday-rigatoni", category: "recipes" },
     { title: "Tuscan orzo, fast and rich", href: "/recipes/tuscan-orzo", category: "recipes" },
     { title: "Caprese chicken, year-round", href: "/recipes/caprese-chicken", category: "recipes" },
     { title: "The breakfast I keep making", href: "/recipes/soft-scrambled-eggs-with-herbs", category: "recipes" },
