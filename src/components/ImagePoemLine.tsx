@@ -30,6 +30,14 @@ type ImagePoemLineProps = {
    * the closing line ~200ms after the four poem lines settle.
    */
   delayMs?: number;
+  /**
+   * Optional thesis standfirst that pairs with the poem line. When present,
+   * renders below the line as a print pull-quote with hairlines bracketing
+   * top and bottom. Desktop only (md+) — on smaller breakpoints the
+   * standfirst should render outside the image (see Frame 3 mobile cream
+   * block in home/page.tsx).
+   */
+  standfirst?: string;
 };
 
 const SIZE_PX: Record<NonNullable<ImagePoemLineProps["size"]>, string> = {
@@ -64,6 +72,7 @@ export default function ImagePoemLine({
   position,
   size = "md",
   delayMs = 0,
+  standfirst,
 }: ImagePoemLineProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [armed, setArmed] = useState(false);
@@ -153,7 +162,7 @@ export default function ImagePoemLine({
             : "mr-auto",
         ].join(" ")}
         style={{
-          width: "80px",
+          width: standfirst ? "80px" : "80px",
           height: "0.5px",
           marginTop: "16px",
           backgroundColor: "#f1ece2",
@@ -163,6 +172,65 @@ export default function ImagePoemLine({
           transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
+
+      {/* Optional standfirst — desktop only. The first hairline above
+          this paragraph is the existing one rendered above; this block
+          adds the standfirst body and a closing hairline. Cream
+          #f1ece2 at ~95% opacity, italic serif, magazine pull-quote
+          treatment per Frame 3 §2.1. Hidden on mobile because the
+          standfirst would crowd the poem line at small sizes — see
+          home/page.tsx for the mobile cream-block fallback. */}
+      {standfirst && (
+        <div
+          className="hidden md:block"
+          style={{
+            opacity: targetOpacity,
+            transitionProperty: "opacity",
+            transitionDuration: "650ms",
+            transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          <p
+            className={[
+              "font-serif italic text-balance",
+              align === "center"
+                ? "mx-auto"
+                : align === "right"
+                ? "ml-auto"
+                : "mr-auto",
+            ].join(" ")}
+            style={{
+              marginTop: "16px",
+              maxWidth: "min(30rem, 100%)",
+              fontSize: "clamp(1.125rem, 1.5vw, 1.375rem)",
+              lineHeight: 1.32,
+              color: "#f1ece2",
+              opacity: 0.95,
+              textShadow: "0 1px 24px rgba(20, 18, 16, 0.35)",
+            }}
+          >
+            {standfirst}
+          </p>
+          <span
+            aria-hidden
+            className={[
+              "block",
+              align === "center"
+                ? "mx-auto"
+                : align === "right"
+                ? "ml-auto"
+                : "mr-auto",
+            ].join(" ")}
+            style={{
+              width: "80px",
+              height: "0.5px",
+              marginTop: "16px",
+              backgroundColor: "#f1ece2",
+              opacity: 0.55,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

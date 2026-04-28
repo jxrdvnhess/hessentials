@@ -239,6 +239,49 @@ body {
   }
 }
 
+/* ---------- Currently overlay (light variant) — Frame 4 §3.3 + §3.4 ----
+   Two effects keyed to .right-now-light, applied only when the
+   Currently block sits over the photograph (desktop overlay):
+
+   §3.3  Character-depth text-shadow on every text leaf inside the
+         block. Pairs with the right-edge scrim (added in markup) —
+         scrim handles backdrop, shadow handles characters. Cream-
+         toned italic type gets physical weight against the warm
+         photo without going opaque.
+
+   §3.4  Slide-in-from-right entrance. Magazine-page-turn easing
+         (slow-start, hard-finish — cubic-bezier(0.22, 1, 0.36, 1)).
+         IntersectionObserver toggles .is-visible (in RightNow.tsx);
+         the class drives the transform/opacity transition. Re-entry
+         replays because the observer removes the class on full exit.
+         Wrapped in prefers-reduced-motion: no-preference so motion-
+         sensitive users see the panel arrive statically.            */
+
+.right-now-light {
+  /* §3.3 — character text-shadow inherited by all text leaves. */
+}
+
+.right-now-light :is(p, span, a) {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.45),
+    0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .right-now-light {
+    /* §3.4 — initial state. JS adds .is-visible when intersection
+       ratio crosses 0.25; class is removed on full exit so re-entry
+       replays. */
+    transform: translateX(48px);
+    opacity: 0;
+    transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.7s ease-out;
+  }
+  .right-now-light.is-visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* ---------- Reveal-stack — generic scroll-triggered cascade ----------
    Same mechanic as `.right-now` but reusable for any stacked block that
    should fade up in sequence as it enters view (e.g. the homepage

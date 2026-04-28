@@ -81,6 +81,23 @@ const INITIAL: EditItem[] = [
   POOL.living[1],
 ];
 
+/**
+ * Six warm-tone gradients per spec §4.2. Cycled by SLOT POSITION
+ * (card 1, 2, 3, 4, 5, 6 → palettes 1–6), not by article identity.
+ *
+ * Direction `135deg` (top-left lighter, bottom-right darker) is
+ * intentional: title sits bottom-left, where the gradient has its
+ * mid-tone, giving cream type maximal contrast without flat fill.
+ */
+const PALETTES: readonly string[] = [
+  "linear-gradient(135deg, #d4a574 0%, #a06840 100%)", // amber
+  "linear-gradient(135deg, #c4a888 0%, #6b4f3a 100%)", // taupe
+  "linear-gradient(135deg, #6b5544 0%, #3d2a1f 100%)", // dark espresso
+  "linear-gradient(135deg, #b8a285 0%, #8a6f4f 100%)", // tan
+  "linear-gradient(135deg, #9c8264 0%, #4d3a26 100%)", // dark walnut
+  "linear-gradient(135deg, #d4b896 0%, #b78659 100%)", // wheat
+];
+
 export default function TheEdit() {
   const [items, setItems] = useState<EditItem[]>(INITIAL);
 
@@ -90,22 +107,46 @@ export default function TheEdit() {
   }, []);
 
   return (
-    <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 md:grid-cols-3 md:gap-x-16 md:gap-y-12">
-      {items.map((item) => (
+    <ul className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 md:grid-cols-3 md:gap-x-10 md:gap-y-10">
+      {items.map((item, i) => (
         <li key={`${item.category}-${item.href}-${item.title}`}>
           <Link
             href={item.href}
-            className="group block border-t border-[#1f1d1b]/10 pt-5 transition-colors duration-500 ease-out hover:border-[#1f1d1b]/35"
+            className="edit-tile group block transition-all duration-[400ms]"
           >
-            <span className="flex items-baseline gap-3 font-serif text-[clamp(1.125rem,1.7vw,1.375rem)] font-normal leading-[1.25] tracking-[-0.01em] text-balance text-[#1f1d1b]/85 transition-colors duration-500 ease-out group-hover:text-[#1f1d1b]">
-              <span className="flex-1">{item.title}</span>
-              <span
-                aria-hidden
-                className="text-[12px] not-italic text-[#1f1d1b]/35 transition-colors duration-500 ease-out group-hover:text-[#1f1d1b]/75"
-              >
-                →
-              </span>
-            </span>
+            <div
+              className="
+                edit-tile__block relative aspect-[5/3] cursor-pointer
+                overflow-hidden rounded-[4px]
+                md:aspect-auto md:h-[clamp(150px,16vw,200px)]
+                transition-[transform,filter] duration-[400ms]
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+                group-hover:-translate-y-0.5
+                group-hover:brightness-105 group-hover:saturate-[1.05]
+              "
+              style={{ backgroundImage: PALETTES[i % PALETTES.length] }}
+            >
+              <div className="absolute inset-0 flex flex-col justify-end px-5 py-5 sm:px-6 sm:py-6 md:px-7 md:py-7">
+                <div className="flex items-baseline justify-between gap-3.5">
+                  <span
+                    className="text-balance flex-1 font-serif text-[19px] font-normal italic leading-[1.22] tracking-[-0.005em] sm:text-[20px] md:text-[22px]"
+                    style={{
+                      color: "rgba(248, 246, 243, 0.97)",
+                      textShadow: "0 1px 22px rgba(0,0,0,0.18)",
+                    }}
+                  >
+                    {item.title}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="flex-shrink-0 font-serif text-[16px] italic leading-none"
+                    style={{ color: "rgba(248, 246, 243, 0.72)" }}
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
+            </div>
           </Link>
         </li>
       ))}
