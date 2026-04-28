@@ -136,6 +136,23 @@ export default async function ShopProductPage({
           </div>
         </section>
       )}
+
+      {/* ---------- Bottom — onward ---------- */}
+      <nav
+        aria-label="Continue browsing"
+        className="mx-auto mt-32 mb-24 max-w-2xl px-6 text-center sm:mt-40 sm:px-10 md:mt-48 md:mb-32"
+      >
+        <Link
+          href="/shop"
+          className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
+        >
+          <span aria-hidden>←</span>
+          Shop
+        </Link>
+        <p className="mt-6 font-serif text-[15px] italic leading-[1.6] text-[#1f1d1b]/50 sm:text-[16px]">
+          More worth keeping.
+        </p>
+      </nav>
     </main>
   );
 }

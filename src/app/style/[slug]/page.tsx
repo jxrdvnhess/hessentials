@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   STYLE_ARTICLES,
@@ -276,6 +277,23 @@ export default async function StyleArticlePage({
             </p>
           </footer>
         )}
+
+        {/* ---------- Bottom — onward ---------- */}
+        <nav
+          aria-label="Continue reading"
+          className="mx-auto mt-32 max-w-2xl text-center sm:mt-40 md:mt-48"
+        >
+          <Link
+            href="/style"
+            className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
+          >
+            <span aria-hidden>←</span>
+            Style
+          </Link>
+          <p className="mt-6 font-serif text-[15px] italic leading-[1.6] text-[#1f1d1b]/50 sm:text-[16px]">
+            More worth wearing.
+          </p>
+        </nav>
       </article>
     </main>
   );

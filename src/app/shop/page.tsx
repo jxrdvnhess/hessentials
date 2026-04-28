@@ -19,6 +19,9 @@ export default function ShopPage() {
         <p className="font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.4] text-[#1f1d1b]/70">
           {SHOP_INTRO}
         </p>
+        <p className="mt-6 text-[10px] uppercase tracking-[0.22em] leading-[1.7] text-[#1f1d1b]/40 sm:text-[11px]">
+          $ under $100  ·  $$ $100–400  ·  $$$ $400–1,000  ·  $$$$ above $1,000
+        </p>
       </section>
 
       {/* ---------- Filter + Grid ---------- */}

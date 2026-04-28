@@ -6,12 +6,24 @@ import Wordmark from "./Wordmark";
 import SiteSearch from "./SiteSearch";
 import MobileMenu from "./MobileMenu";
 
+/**
+ * Nav order is editorial, not alphabetical.
+ *
+ *   Aurelian sits first — the editorial intelligence layer that runs
+ *   across the site, not a content pillar.
+ *   The four content pillars cluster in the middle, in editorial order:
+ *   Recipes, Living, Style, Practice.
+ *   Shop sits after the pillars — it's the marketplace expression of
+ *   the four pillars, not a fifth pillar of its own.
+ *   About closes the row.
+ */
 const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+  { label: "Aurelian", href: "/aurelian" },
   { label: "Recipes", href: "/recipes" },
   { label: "Living", href: "/living" },
   { label: "Style", href: "/style" },
+  { label: "Practice", href: "/practice" },
   { label: "Shop", href: "/shop" },
-  { label: "Aurelian", href: "/aurelian" },
   { label: "About", href: "/about" },
 ];
 
@@ -70,7 +82,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-5 sm:gap-8 md:gap-10">
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-6 md:flex md:gap-8 lg:gap-10"
+            className="hidden items-center gap-5 md:flex md:gap-7 lg:gap-9"
           >
             {NAV_LINKS.map((link) => {
               const active =

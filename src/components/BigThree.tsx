@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import {
   generateReading,
@@ -328,6 +329,62 @@ export default function BigThree() {
 
           {/* ---------- How This Shows Up in Style ---------- */}
           <AurelianStyle sun={sun} moon={moon} rising={rising} />
+
+          {/* ---------- Now Wander ---------- */}
+          <section
+            aria-label="Continue"
+            className="mx-auto mt-32 max-w-[34rem] text-center sm:mt-44"
+          >
+            <p className="mb-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+              Now wander
+            </p>
+            <p className="text-pretty mx-auto max-w-md font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.55] text-[#1f1d1b]/70">
+              Read what pulls you. Cook something specific. The rest of
+              the site is here.
+            </p>
+            <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
+              <li>
+                <Link
+                  href="/recipes"
+                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
+                >
+                  Recipes
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/living"
+                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
+                >
+                  Living
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/style"
+                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
+                >
+                  Style
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/practice"
+                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
+                >
+                  Practice
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop"
+                  className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]"
+                >
+                  Shop
+                </Link>
+              </li>
+            </ul>
+          </section>
         </div>
       )}
     </div>

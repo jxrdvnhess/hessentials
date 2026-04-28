@@ -6,6 +6,7 @@ import TheEdit from "../../components/TheEdit";
 import HomeFooterOverlay, {
   HomeFooterMobile,
 } from "../../components/HomeFooterOverlay";
+import PoemLine from "../../components/PoemLine";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -34,7 +35,10 @@ export const metadata: Metadata = {
  *   Image ↔ Beige zone  140px
  */
 
-const GAP_IMG = "24px"; // Image to image
+// Image-to-beige spacing token (used on The Edit's top margin). The
+// image↔image gap is now supplied by the poem-line sections, which
+// carry their own vertical breathing room — the old GAP_IMG constant
+// was retired with that change.
 const GAP_ZONE = "140px"; // Image to beige / beige to image
 
 type CinematicProps = {
@@ -131,16 +135,16 @@ export default function HomePage() {
           {/* Single, named entry point. Hero must answer "what do I do next" within three seconds.
               The label is italic serif (not an uppercase eyebrow) so it reads like a quiet
               hand on the shoulder rather than a section header. */}
-          <div className="mt-10">
+          <div className="mt-10 max-w-[480px]">
             <p className="font-serif text-[12px] italic leading-none text-[#1f1d1b]/55 sm:text-[13px]">
               If you&rsquo;re new, start here
             </p>
             <Link
-              href="/recipes"
-              className="group mt-3 inline-flex items-baseline gap-2"
+              href="/aurelian"
+              className="group mt-3 inline-flex flex-wrap items-baseline gap-x-2"
             >
               <span className="font-serif text-[clamp(1.0625rem,1.5vw,1.25rem)] italic leading-[1.35] text-[#1f1d1b]/85 transition-opacity duration-300 ease-out group-hover:opacity-65">
-                The 5 things I cook every week
+                Aurelian &mdash; a short reading on how you operate
               </span>
               <span aria-hidden className="text-[12px] not-italic text-[#1f1d1b]/45">
                 →
@@ -151,22 +155,50 @@ export default function HomePage() {
       </section>
 
       {/*
+        ---------- Poem line 1 — between hero and Image 01 ----------
+
+        The four-line poem sits in the cream gaps between hero and the
+        four cinematic images. Each line fades in via a slow dissolve
+        as it enters the viewport — the eye should catch it in
+        mid-arrival, not chase it.
+
+        Sequence (locked):
+          [hero ends]
+          Some things hold up.
+          [Image 01 — Dinner]
+          Most things don't.
+          [Image 02 — Exit]
+          You learn which is which in the morning.
+          [Image 03 — Morning]
+          [The Edit]
+          What's left is the life.
+          [Image 04 — Cleanup, "This is what stayed." overlay]
+
+        The poem turns the photo arc into a single thought: thesis,
+        antithesis, the discovery, the result. The closing image's
+        existing overlay then arrives with narrative weight earned by
+        the scroll.
+      */}
+      <PoemLine className="py-20 sm:py-24 md:py-28">
+        Some things hold up.
+      </PoemLine>
+
+      {/*
         Image 01 — Dinner — Type A.
 
         This is the only place the strict GAP_ZONE rule is intentionally
-        relaxed. The opening image must extend the hero, not begin a new
+        relaxed. The opening image must extend the poem, not begin a new
         section. So:
 
-          - no top margin: the image touches the hero directly
+          - no top margin: the image touches the poem line directly
           - top mask: the image's upper ~28% is faded to transparent
             via a linear-gradient mask, revealing the page's cream
             background through it
 
-        The result: the seam between hero and image is cream-on-cream
-        (invisible). Below the seam, the image gradually becomes itself.
-        The headline sits in the upper cream area where it always was,
-        unaffected. The viewer is already inside the world before they
-        consciously scroll.
+        The result: the seam between cream-poem and image is
+        cream-on-cream (invisible). Below the seam, the image gradually
+        becomes itself. The viewer is already inside the world before
+        they consciously scroll.
       */}
       <section
         aria-hidden
@@ -187,14 +219,24 @@ export default function HomePage() {
         />
       </section>
 
-      {/* ---------- Image 02 — Exit — Type A — image↔image gap above ---------- */}
-      <section aria-hidden style={{ marginTop: GAP_IMG }}>
+      {/* ---------- Poem line 2 — between Image 01 and Image 02 ---------- */}
+      <PoemLine className="py-20 sm:py-24 md:py-28">
+        Most things don&rsquo;t.
+      </PoemLine>
+
+      {/* ---------- Image 02 — Exit — Type A ---------- */}
+      <section aria-hidden>
         <Cinematic
           src="/home/hacienda-02-exterior.jpg"
           alt=""
           type="bleed"
         />
       </section>
+
+      {/* ---------- Poem line 3 — between Image 02 and Image 03 ---------- */}
+      <PoemLine className="py-20 sm:py-24 md:py-28">
+        You learn which is which in the morning.
+      </PoemLine>
 
       {/* ---------- Image 03 — Morning — Type B
                   Desktop: full Currently overlay, anchored bottom-right.
@@ -204,7 +246,7 @@ export default function HomePage() {
                            cream section below the image (the image
                            keeps its brand-poetry moment; the content
                            gets the readability of cream). */}
-      <section aria-hidden style={{ marginTop: GAP_IMG }}>
+      <section aria-hidden>
         <Cinematic
           src="/home/hacienda-03-morning.jpg"
           alt=""
@@ -266,6 +308,17 @@ export default function HomePage() {
       </section>
 
       {/*
+        ---------- Poem line 4 — between The Edit and Image 04 ----------
+
+        The closing line of the poem. Lands slightly more slowly than the
+        first three lines (longer dissolve) so it has time to settle
+        before "This is what stayed" arrives over the cleanup image.
+      */}
+      <PoemLine className="py-24 sm:py-28 md:py-32" durationMs={2000}>
+        What&rsquo;s left is the life.
+      </PoemLine>
+
+      {/*
         Image 04 — Cleanup — Type B — closes the page.
 
         The footer (newsletter + brand mark + tagline + legal) is overlaid
@@ -280,7 +333,7 @@ export default function HomePage() {
       */}
       <section
         aria-label="Site footer"
-        style={{ marginTop: GAP_ZONE, paddingBottom: "24px" }}
+        style={{ paddingBottom: "24px" }}
       >
         <Cinematic
           src="/home/hacienda-04-cleanup.jpg"

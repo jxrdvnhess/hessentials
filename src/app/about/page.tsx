@@ -73,6 +73,14 @@ export default function AboutPage() {
 
           <p className="mt-6">Only what proves itself.</p>
         </div>
+
+        {/* Signature line — closes the About page with quiet authorship.
+            The brand is editorial, not anonymous; the visitor should
+            leave knowing one person stands behind the filter. */}
+        <p className="mt-16 max-w-[520px] font-serif text-[clamp(0.9375rem,1.15vw,1.0625rem)] italic leading-[1.6] text-[#1f1d1b]/55 sm:mt-20">
+          Run by Jordan Hess. Every piece passes the same test before it
+          gets in.
+        </p>
       </section>
     </main>
   );

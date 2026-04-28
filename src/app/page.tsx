@@ -1,8 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import DailyIntent from "../components/DailyIntent";
 import Wordmark from "../components/Wordmark";
 
+/**
+ * Entry / splash page.
+ *
+ * Stripped to its three load-bearing elements:
+ *   1. Wordmark — the symbol → wordmark transformation on load.
+ *   2. Tagline — the single line the brand wants the visitor to leave with.
+ *   3. Enter — the named, single entry point into the site.
+ *
+ * The daily-intent block was removed deliberately. The splash exists to
+ * set the tone, not to deliver content; content lives at /home onward.
+ */
 export default function EnterPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#fbfaf4] text-[#1f1d1b]">
@@ -27,7 +37,7 @@ export default function EnterPage() {
           emerges from that same bar shape — the handoff is shape-shared,
           not a fade. See globals.css for the chained phase animations.
         */}
-        <div className="relative mb-10 inline-flex items-center justify-center">
+        <div className="relative mb-12 inline-flex items-center justify-center sm:mb-14">
           <div className="wordmark-emerge">
             <Wordmark size="large" priority />
           </div>
@@ -49,7 +59,13 @@ export default function EnterPage() {
           </div>
         </div>
 
-        <DailyIntent />
+        {/* Tagline — single editorial line; arrives after the wordmark settles. */}
+        <p
+          style={{ animationDelay: "4.0s" }}
+          className="fade-up mx-auto mb-12 max-w-xl font-serif text-[clamp(1.0625rem,1.6vw,1.25rem)] italic leading-[1.55] text-[#1f1d1b]/70 sm:mb-14"
+        >
+          Choosing well, and standing by it.
+        </p>
 
         <Link
           href="/home"

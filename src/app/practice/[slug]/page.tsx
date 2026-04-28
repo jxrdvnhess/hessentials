@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
-  getAllLivingSlugs,
-  getLivingArticleBySlug,
-} from "../../../lib/living";
+  getAllPracticeSlugs,
+  getPracticeArticleBySlug,
+} from "../../../lib/practice";
 
 type Params = { slug: string };
 
 export async function generateStaticParams() {
-  const slugs = await getAllLivingSlugs();
+  const slugs = await getAllPracticeSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
@@ -19,7 +19,7 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = await getLivingArticleBySlug(slug);
+  const article = await getPracticeArticleBySlug(slug);
   if (!article) return {};
 
   return {
@@ -28,17 +28,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function LivingArticlePage({
+export default async function PracticeArticlePage({
   params,
 }: {
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const article = await getLivingArticleBySlug(slug);
+  const article = await getPracticeArticleBySlug(slug);
   if (!article) notFound();
 
   const { meta, html } = article;
-  const eyebrow = meta.section ? `Living — ${meta.section}` : "Living";
+  const eyebrow = meta.section ? `Practice — ${meta.section}` : "Practice";
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
@@ -78,14 +78,14 @@ export default async function LivingArticlePage({
           className="mx-auto mt-32 max-w-2xl text-center sm:mt-40 md:mt-48"
         >
           <Link
-            href="/living"
+            href="/practice"
             className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
           >
             <span aria-hidden>←</span>
-            Living
+            Practice
           </Link>
           <p className="mt-6 font-serif text-[15px] italic leading-[1.6] text-[#1f1d1b]/50 sm:text-[16px]">
-            More worth reading.
+            More worth returning to.
           </p>
         </nav>
       </article>

@@ -258,7 +258,7 @@ function ProductCard({
               {product.brand}
             </p>
             <span
-              aria-label={`Price range ${product.priceRange}`}
+              aria-label={`Price ${product.priceRange}`}
               className="font-serif text-[14px] tracking-[0.04em] text-[#1f1d1b]/55"
             >
               {product.priceRange}
@@ -268,7 +268,7 @@ function ProductCard({
             {product.reason}
           </p>
           <span className="mt-4 inline-flex items-baseline gap-2 text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 transition-colors duration-500 ease-out group-hover:text-[#1f1d1b] sm:text-[12px]">
-            Read
+            Details
             <span aria-hidden className="text-[12px]">
               →
             </span>

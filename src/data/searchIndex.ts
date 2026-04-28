@@ -17,6 +17,7 @@ export type SearchSection =
   | "Recipes"
   | "Living"
   | "Style"
+  | "Practice"
   | "Shop"
   | "Aurelian";
 
@@ -69,6 +70,95 @@ const LIVING_ITEMS: SearchItem[] = [
     title: "Stop Using Fabric Softener",
     section: "Living",
     url: "/living/stop-using-fabric-softener",
+  },
+];
+
+/* ---------- Practice (markdown-authored, hardcoded for indexing) ---------- */
+
+const PRACTICE_ITEMS: SearchItem[] = [
+  {
+    title: "I Stopped Drinking at 30",
+    section: "Practice",
+    url: "/practice/i-stopped-drinking-at-30",
+    description:
+      "A clear-eyed audit, not a sobriety crusade. The drink wasn't the variable. The structure was.",
+  },
+  {
+    title: "Why I Write Down What I Want and Carry It With Me",
+    section: "Practice",
+    url: "/practice/practice-why-i-write-down-what-i-want",
+    description:
+      "Not manifestation. A corrective for a brain that drifts.",
+  },
+  {
+    title: "Sound Baths, and How to Tell Which Ones Work",
+    section: "Practice",
+    url: "/practice/practice-sound-baths-how-to-tell-which-ones-work",
+    description:
+      "The good ones aren't decided by the bowls. They're decided by the silences.",
+  },
+  {
+    title: "11:11 Is a Real Practice. It Just Isn't What People Say It Is.",
+    section: "Practice",
+    url: "/practice/practice-1111-is-a-real-practice",
+    description:
+      "Not a sign from the universe. A punctuation mark you've trained yourself to use.",
+  },
+  {
+    title: "Compliment One Person Every Day. Make It Specific.",
+    section: "Practice",
+    url: "/practice/practice-compliment-one-person-every-day",
+    description:
+      "Generic compliments are noise. Specific ones become part of how the recipient understands themselves.",
+  },
+  {
+    title: "Pick One Stone. Know Why.",
+    section: "Practice",
+    url: "/practice/practice-pick-one-stone-know-why",
+    description:
+      "A bowl of crystals isn't a practice. One stone, chosen for one reason, is.",
+  },
+  {
+    title: "Walking Is Not Slow Running",
+    section: "Practice",
+    url: "/practice/practice-walking-is-not-slow-running",
+    description:
+      "A different machine doing different work. The cardio frame steals the cognitive practice.",
+  },
+  {
+    title: "Go to Mass Occasionally. Even If You're Not Catholic.",
+    section: "Practice",
+    url: "/practice/practice-go-to-mass-occasionally",
+    description:
+      "Sit in the back. The form does what it was built to do, whether you believe or not.",
+  },
+  {
+    title: "Tarot Isn't Prediction. Here's What It Is.",
+    section: "Practice",
+    url: "/practice/practice-tarot-isnt-prediction",
+    description:
+      "A structured way to ask yourself a question you already know the answer to.",
+  },
+  {
+    title: "The Single Object You Carry",
+    section: "Practice",
+    url: "/practice/practice-the-single-object-you-carry",
+    description:
+      "Not your phone. Not your wallet. The chosen object, carried for one season.",
+  },
+  {
+    title: "Silence. Five Minutes. No App.",
+    section: "Practice",
+    url: "/practice/practice-silence-five-minutes-no-app",
+    description:
+      "A meditation app is a meditation about a meditation. The actual practice is sitting quietly without one.",
+  },
+  {
+    title: "The Annual Review Beats Resolutions",
+    section: "Practice",
+    url: "/practice/practice-the-annual-review-beats-resolutions",
+    description:
+      "Resolutions are forecasts. The annual review is a conversation with the person you actually were.",
   },
 ];
 
@@ -154,6 +244,7 @@ export const SEARCH_INDEX: SearchItem[] = [
   ...RECIPE_ITEMS,
   ...LIVING_ITEMS,
   ...STYLE_ITEMS,
+  ...PRACTICE_ITEMS,
   ...SHOP_ITEMS,
   ...AURELIAN_ITEMS,
 ];

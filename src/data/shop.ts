@@ -15,7 +15,17 @@
  * the `images` array — the renderer falls back gracefully.
  */
 
-export type PriceTier = "$" | "$$" | "$$$" | "$$$$";
+/**
+ * Display price for a Shop product.
+ *
+ * Values are either a single retail price ("$95") or a tight range
+ * when retail varies by size, length, or finish ("$1,400–$1,800").
+ *
+ * Tier markers ($ / $$ / $$$ / $$$$) were retired — the brand stance
+ * is clarity, and tier markers were a soft hedge. Prices update with
+ * the inventory; ranges should stay tight.
+ */
+export type PriceTier = string;
 
 export type ShopCategory =
   | "Apparel"
@@ -72,7 +82,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Loewe",
     category: "Bags",
     reason: "Soft calfskin. The bag for not announcing the day.",
-    priceRange: "$$$$",
+    priceRange: "$4,200–$4,500",
     url: "https://www.loewe.com/usa/en/men/bags/portfolio-and-briefcases/goya-thin-briefcase-in-soft-grained-calfskin/337.12.P57-1100.html",
     image: "/shop/loewe-goya-thin-briefcase-1.jpg",
     images: [
@@ -87,7 +97,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Omega",
     category: "Watches & Jewelry",
     reason: "The dress watch you can swim in.",
-    priceRange: "$$$$",
+    priceRange: "$5,800–$6,400",
     url: "https://www.omegawatches.com/en-us/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001",
     image: "/shop/omega-aqua-terra-small-seconds-1.jpg",
     images: [
@@ -102,7 +112,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Bedsure",
     category: "Home",
     reason: "Cotton, not synthetic. Cool in summer, warm enough otherwise.",
-    priceRange: "$",
+    priceRange: "$35–$55",
     url: "https://bedsurehome.com/products/cotton-waffle-weave-blanket?variant=40158662000742",
     image: "/shop/bedsure-waffle-blanket-1.jpg",
     images: [
@@ -117,7 +127,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Footwear",
     reason: "The sneaker you keep wearing once you stop trying to look young.",
-    priceRange: "$$$$",
+    priceRange: "$890–$1,050",
     url: "https://www.prada.com/us/en/p/court-leather-sneakers/2EE483_070_F0009_F_G000",
     image: "/shop/prada-court-leather-sneakers-1.jpg",
     images: [
@@ -133,7 +143,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Massimo Dutti",
     category: "Apparel",
     reason: "Wears like a shirt. Reads like a tee.",
-    priceRange: "$$",
+    priceRange: "$69–$89",
     url: "https://www.massimodutti.com/us/linen-and-cotton-doublecollar-tshirt-l00659198?pelement=59486681",
     image: "/shop/massimo-dutti-linen-double-collar-tee-1.jpg",
     images: [
@@ -148,7 +158,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "LV Furniture Collection",
     category: "Home",
     reason: "Substantial. Anchors the room without raising its voice.",
-    priceRange: "$$$$",
+    priceRange: "$1,800–$2,400",
     url: "https://lvfurniturecollection.com/products/hippo-coffee-table?country=US&currency=USD&variant=45139005243523",
     image: "/shop/lv-hippo-coffee-table-1.jpg",
     images: [
@@ -164,7 +174,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Birkenstock",
     category: "Footwear",
     reason: "For pools, beaches, kitchens. Anywhere you don’t want to think.",
-    priceRange: "$",
+    priceRange: "$45",
     url: "https://www.birkenstock.com/us/arizona-eva/arizona-eva-eva-0-eva-u_3716.html",
     image: "/shop/birkenstock-arizona-eva-1.jpg",
     images: [
@@ -179,7 +189,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Ahlem",
     category: "Eyewear",
     reason: "Hand-finished in France. People notice without knowing why.",
-    priceRange: "$$$",
+    priceRange: "$480–$540",
     url: "https://www.ahlemeyewear.com/products/louxor-1?variant=44903388545273",
     image: "/shop/ahlem-louxor-1.jpg",
     images: [
@@ -194,7 +204,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Bags",
     reason: "Looks unstructured. Holds more than it should.",
-    priceRange: "$$$$",
+    priceRange: "$2,800–$3,400",
     url: "https://www.prada.com/us/en/p/linen-blend-drawstring-duffel-bag/2VY011_2CX9_F0018_V_OOO",
     image: "/shop/prada-linen-duffel-1.jpg",
     images: [
@@ -212,7 +222,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Crazy Water",
     category: "Provisions",
     reason: "Texas mineral water from Mineral Wells. Four numbered strengths.",
-    priceRange: "$",
+    priceRange: "$30–$45",
     url: "https://drinkcrazywater.myshopify.com/collections/water/products/crazy-water-sampler",
     image: "/shop/crazy-water-sampler.jpg",
   },
@@ -222,7 +232,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Tag Heuer",
     category: "Watches & Jewelry",
     reason: "A real watch, finished correctly, without the chronograph tax.",
-    priceRange: "$$$$",
+    priceRange: "$2,000–$2,400",
     url: "https://www.tagheuer.com/us/en/timepieces/collections/tag-heuer-aquaracer/40-mm-quartz/CBP1112.BA0627.html",
     image: "/shop/tag-heuer-aquaracer-quartz-1.jpg",
     images: [
@@ -240,7 +250,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Aveda",
     category: "Grooming",
     reason: "Hold without product crunch. Most others can’t say that.",
-    priceRange: "$$",
+    priceRange: "$30",
     url: "https://www.aveda.com/product/17776/16733/styling/mens-styling/aveda-men-pure-formance-grooming-clay?size=2.5_fl_oz%2F75_ml",
     image: "/shop/aveda-pureformance-clay-1.jpg",
     images: [
@@ -255,7 +265,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Massimo Dutti",
     category: "Apparel",
     reason: "Tapered without being skinny. The cut that actually lasts.",
-    priceRange: "$$",
+    priceRange: "$89–$109",
     url: "https://www.massimodutti.com/us/tapered-fit-jeans-l00451110?pelement=57966404",
     image: "/shop/massimo-dutti-tapered-jeans-1.jpg",
     images: [
@@ -271,7 +281,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Tiffany & Co.",
     category: "Watches & Jewelry",
     reason: "Sterling silver. The kind people inherit.",
-    priceRange: "$$$",
+    priceRange: "$375–$575",
     url: "https://www.tiffany.com/jewelry/bracelets/sterling-silver-bracelets-117817401.html",
     image: "/shop/tiffany-venetian-link-bracelet-1.jpg",
     images: [
@@ -287,7 +297,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Bags",
     reason: "When you want to carry less but still want it close.",
-    priceRange: "$$$$",
+    priceRange: "$1,650–$1,950",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-belt-bag/2VL977_2DMG_F0002_V_WOO",
     image: "/shop/prada-renylon-belt-bag-1.jpg",
     images: [
@@ -303,7 +313,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Pacific Coast",
     category: "Home",
     reason: "Holds shape through the night. Most pillows don’t.",
-    priceRange: "$$",
+    priceRange: "$80–$110",
     url: "https://www.amazon.com/Pacific-Coast-Standard-Sleeping-Downproof/dp/B0DPV65G7Y?th=1",
     image: "/shop/pacific-coast-down-pillow-1.jpg",
     images: [
@@ -317,7 +327,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Massimo Dutti",
     category: "Apparel",
     reason: "Reads more expensive than it is. Wears like it, too.",
-    priceRange: "$$",
+    priceRange: "$79–$99",
     url: "https://www.massimodutti.com/us/cotton-blend-slim-fit-pants-l00101001?pelement=58445844",
     image: "/shop/massimo-dutti-cotton-slim-pants-1.jpg",
     images: [
@@ -333,7 +343,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Birkenstock",
     category: "Footwear",
     reason: "You stop noticing them after five minutes. That’s the point.",
-    priceRange: "$$",
+    priceRange: "$135–$155",
     url: "https://www.birkenstock.com/us/arizona-soft-footbed-natural-leather-oiled/arizona-core-oiledleather-softfootbed-eva-u_5326.html",
     image: "/shop/birkenstock-arizona-leather-1.jpg",
     images: [
@@ -348,7 +358,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Johnston & Murphy",
     category: "Bags",
     reason: "Looks like a briefcase. Carries like a backpack.",
-    priceRange: "$$",
+    priceRange: "$245–$295",
     url: "https://www.johnstonmurphy.com/p/leather-goods-backpacks-briefcases/rhodes-backpack/14510.html?dwvar_14510_color=Tan%20Full%20Grain",
     image: "/shop/johnston-murphy-rhodes-backpack-1.jpg",
     images: [
@@ -364,7 +374,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Aveda",
     category: "Grooming",
     reason: "Softer hold. Same trick — finish doesn’t read as done.",
-    priceRange: "$$",
+    priceRange: "$30",
     url: "https://www.aveda.com/product/17776/16732/styling/mens-styling/aveda-men-pure-formance-grooming-cream?size=4.2_fl_oz%2F125_ml",
     image: "/shop/aveda-pureformance-cream-1.jpg",
     images: [
@@ -379,7 +389,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Ahlem",
     category: "Eyewear",
     reason: "The frame that suits more faces than it should.",
-    priceRange: "$$$",
+    priceRange: "$480–$540",
     url: "https://www.ahlemeyewear.com/products/haussman?variant=44220169715961",
     image: "/shop/ahlem-haussmann-1.jpg",
     images: [
@@ -395,7 +405,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Away",
     category: "Travel",
     reason: "Checked. Heavy-duty. Doesn’t pretend to be cute.",
-    priceRange: "$$$",
+    priceRange: "$375–$425",
     url: "https://www.awaytravel.com/products/large-navy-blue",
     image: "/shop/away-the-large-1.jpg",
     images: [
@@ -411,7 +421,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Massimo Dutti",
     category: "Apparel",
     reason: "Heavyweight cotton. The base layer for everything.",
-    priceRange: "$",
+    priceRange: "$39",
     url: "https://www.massimodutti.com/us/100-cotton-short-sleeve-tshirt-l01418212?pelement=56718135",
     image: "/shop/massimo-dutti-cotton-tee-1.jpg",
     images: [
@@ -427,7 +437,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Goodfellow & Co.",
     category: "Apparel",
     reason: "Cheap in price. Not in how they wear.",
-    priceRange: "$",
+    priceRange: "$20–$28",
     url: "https://www.target.com/p/men-s-5-flat-front-shorts-goodfellow-co/-/A-94965145?preselect=94886502",
     image: "/shop/goodfellow-flat-front-shorts-1.jpg",
     images: [
@@ -441,7 +451,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Bags",
     reason: "Prada nylon is a uniform. This is the carry version.",
-    priceRange: "$$$$",
+    priceRange: "$2,400–$2,800",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-backpack/2VZ048_2DMG_F0002_V_OOO",
     image: "/shop/prada-renylon-backpack-1.jpg",
     images: [
@@ -458,7 +468,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Uniqlo",
     category: "Apparel",
     reason: "Oversized without losing structure. Layers over everything.",
-    priceRange: "$",
+    priceRange: "$40",
     url: "https://www.uniqlo.com/us/en/products/E484905-000/00?colorDisplayCode=01&sizeDisplayCode=003",
     image: "/shop/uniqlo-oxford-oversized-shirt-1.jpg",
     images: [
@@ -473,7 +483,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Abercrombie",
     category: "Apparel",
     reason: "Holds shape under everything. Worth it for that alone.",
-    priceRange: "$",
+    priceRange: "$25–$32",
     url: "https://www.abercrombie.com/shop/us/p/premium-ribbed-tank-61149838?categoryId=73458",
     image: "/shop/abercrombie-premium-ribbed-tank-1.jpg",
     images: [
@@ -488,7 +498,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Bags",
     reason: "Built to take a beating. Doesn’t read like it has.",
-    priceRange: "$$$$",
+    priceRange: "$2,100–$2,500",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-duffle-bag/2VC013_2DMH_F0002_V_XOO",
     image: "/shop/prada-renylon-duffle-1.jpg",
     images: [
@@ -505,7 +515,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Away",
     category: "Travel",
     reason: "Hits the size limit on purpose. Holds a week.",
-    priceRange: "$$",
+    priceRange: "$295–$345",
     url: "https://www.awaytravel.com/products/bigger-carry-on-navy-blue",
     image: "/shop/away-bigger-carry-on-1.jpg",
     images: [
@@ -521,7 +531,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Clayton & Crume",
     category: "Bags",
     reason: "Heavy canvas, leather handles. Outlasts replacing.",
-    priceRange: "$$",
+    priceRange: "$145–$195",
     url: "https://claytonandcrume.com/products/canvas-market-tote?country=US&currency=USD&variant=47093690171559",
     image: "/shop/clayton-crume-canvas-tote-1.jpg",
     images: [
@@ -537,7 +547,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Abercrombie",
     category: "Apparel",
     reason: "Seersucker, not slick nylon. The pool trunk that reads thought-out.",
-    priceRange: "$",
+    priceRange: "$55–$75",
     url: "https://www.abercrombie.com/shop/us/p/pull-on-seersucker-swim-trunk-58989323",
     image: "/shop/Abercrombie-Seersucker-Swim-Trunk-1.jpg",
     images: [
@@ -552,7 +562,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Clayton & Crume",
     category: "Home",
     reason: "Full-grain leather, brass snap, refillable. The notebook you keep.",
-    priceRange: "$$$",
+    priceRange: "$245–$295",
     url: "https://claytonandcrume.com/products/daybook",
     image: "/shop/clayton-daybook-1.jpg",
     images: [
@@ -569,7 +579,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Home",
     reason:
       "Merino wool, US-made. Replaces dryer sheets and never runs out.",
-    priceRange: "$",
+    priceRange: "$25–$35",
     url: "https://ibex.com/products/wool-dryer-puffs",
     image: "/shop/ibex-dryer-puffs-1.jpg",
     images: [
@@ -585,7 +595,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "YSL",
     category: "Grooming",
     reason: "Bergamot and cedar. The dependable cologne that wears close.",
-    priceRange: "$$$",
+    priceRange: "$95–$160",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/lhomme/lhomme-eau-de-toilette-spray/284YSL.html",
     image: "/shop/ysl-l-homme-1.jpg",
   },
@@ -596,7 +606,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Grooming",
     reason:
       "Orange blossom, vetiver. The brighter one — for when L’Homme is too quiet.",
-    priceRange: "$$$",
+    priceRange: "$115–$185",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/myslf/myslf-eau-de-parfum/WW-51115YSL.html",
     image: "/shop/ysl-MYSLF-1.jpg",
     images: ["/shop/ysl-MYSLF-1.jpg", "/shop/ysl-MYSLF-2.jpg"],
@@ -607,7 +617,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Grooming",
     reason: "Mate and ambergris. Reads as the wearer, not the brand.",
-    priceRange: "$$$$",
+    priceRange: "$250–$300",
     url: "https://www.prada.com/us/en/p/paradigme-edp-100-ml/2A1451_2H0Q_F0Z99_P_ML100",
     image: "/shop/prada-Paradigme-1.jpg",
     images: [
@@ -622,7 +632,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Kiehl’s",
     category: "Grooming",
     reason: "Avocado oil, no fuss. Forty years on the counter for a reason.",
-    priceRange: "$$",
+    priceRange: "$45",
     url: "https://www.kiehls.com/skincare/eye-creams-and-serums/avocado-eye-cream/258.html",
     image: "/shop/kiehls-avocado-eye-cream-1.jpg",
     images: [
@@ -637,7 +647,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "Bags",
     reason:
       "Damier Graphite canvas. Travels with the bag, not buried inside it.",
-    priceRange: "$$$$",
+    priceRange: "$720–$820",
     url: "https://us.louisvuitton.com/eng-us/products/dopp-kit-toilet-pouch-damier-graphite-canvas-nvprod1420096v/N40127",
     image: "/shop/louis-vuitton-dopp-kit-1.jpg",
     images: [
@@ -653,7 +663,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "Eyewear",
     reason: "Triangle, not logo. Prada that doesn’t need to introduce itself.",
-    priceRange: "$$$$",
+    priceRange: "$475–$590",
     url: "https://www.prada.com/us/en/p/prada-symbole-sunglasses/SPRB17_E16K_FE08Z_C_054",
     image: "/shop/Prada-Symbole-sunglasses-1.jpg",
     images: [
@@ -669,7 +679,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Dr. Bronner’s",
     category: "Grooming",
     reason: "Tea tree, real oils, no fillers. Soap the way it used to be.",
-    priceRange: "$",
+    priceRange: "$7",
     url: "https://www.drbronner.com/products/tea-tree-pure-castile-bar-soap",
     image: "/shop/dr-bronners-pure-castile-tea-tree-1.jpg",
     images: [

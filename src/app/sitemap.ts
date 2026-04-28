@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/recipes`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${SITE}/living`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${SITE}/style`, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${SITE}/practice`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${SITE}/shop`, priority: 0.9, changeFrequency: "weekly" },
     { url: `${SITE}/privacy`, priority: 0.3, changeFrequency: "yearly" },
     { url: `${SITE}/terms`, priority: 0.3, changeFrequency: "yearly" },
@@ -87,11 +88,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
   }));
 
+  // ---------- Dynamic — practice articles (from /content/practice/*.md) ----------
+  let practiceSlugs: string[] = [];
+  try {
+    const practiceDir = path.join(process.cwd(), "content", "practice");
+    const entries = await fs.readdir(practiceDir);
+    practiceSlugs = entries
+      .filter((file) => file.endsWith(".md"))
+      .map((file) => file.replace(/\.md$/, ""));
+  } catch {
+    // Directory missing or unreadable at build time — ship without these.
+  }
+  const practiceRoutes: MetadataRoute.Sitemap = practiceSlugs.map((slug) => ({
+    url: `${SITE}/practice/${slug}`,
+    lastModified: now,
+    priority: 0.7,
+    changeFrequency: "monthly",
+  }));
+
   return [
     ...staticRoutes,
     ...recipeRoutes,
     ...styleRoutes,
     ...shopRoutes,
     ...livingRoutes,
+    ...practiceRoutes,
   ];
 }

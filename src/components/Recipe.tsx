@@ -9,18 +9,11 @@ type RecipeProps = {
 
 type MetaItem = { key: string; node: React.ReactNode };
 
-function MetaLine({
-  meta,
-  trailing,
-}: {
-  meta?: RecipeMeta;
-  trailing?: React.ReactNode;
-}) {
+function MetaLine({ meta }: { meta?: RecipeMeta }) {
   const items: MetaItem[] = [];
   if (meta?.serves) items.push({ key: "serves", node: meta.serves });
   if (meta?.time) items.push({ key: "time", node: meta.time });
   if (meta?.yields) items.push({ key: "yields", node: meta.yields });
-  if (trailing) items.push({ key: "trailing", node: trailing });
 
   if (items.length === 0) return null;
 
@@ -86,19 +79,15 @@ export default function Recipe({ recipe, className }: RecipeProps) {
           </p>
         )}
 
-        {(meta || ingredients.length > 0) && (
+        {meta && (
           <div className="mt-16">
-            <MetaLine
-              meta={meta}
-              trailing={
-                ingredients.length > 0 ? (
-                  <CopyShoppingList
-                    title={title}
-                    ingredients={ingredients}
-                  />
-                ) : undefined
-              }
-            />
+            <MetaLine meta={meta} />
+          </div>
+        )}
+
+        {ingredients.length > 0 && (
+          <div className="mt-6 flex justify-center">
+            <CopyShoppingList title={title} ingredients={ingredients} />
           </div>
         )}
 

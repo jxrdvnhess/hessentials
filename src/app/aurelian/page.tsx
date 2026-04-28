@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BigThree from "../../components/BigThree";
+import AurelianWeekly from "../../components/AurelianWeekly";
 
 export const metadata: Metadata = {
   title: "Aurelian — Hessentials",
@@ -71,6 +72,12 @@ export default function AurelianPage() {
         </p>
       </section>
 
+      {/* ---------- This Week — non-interactive weekly reading ----------
+                  Sits between the hero and the Big Three tool. The Big
+                  Three reads the person; This Week reads the moment.
+                  Both apply the same framework. */}
+      <AurelianWeekly />
+
       {/* ---------- Section 2 + 3: Calculator ---------- */}
       <section
         id="big-three"
@@ -88,6 +95,10 @@ export default function AurelianPage() {
             Sun is direction. Moon is inner rhythm. Rising is how the world
             meets you. Select what you know. Aurelian will read what&rsquo;s
             there.
+          </p>
+          <p className="mx-auto mt-4 max-w-[28rem] text-[12.5px] uppercase tracking-[0.22em] leading-[1.7] text-[#1f1d1b]/40 sm:text-[13px]">
+            What you&rsquo;ll get: a behavioral reading across identity,
+            inner life, and arrival. Roughly 600 words.
           </p>
         </div>
 

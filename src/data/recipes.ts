@@ -14,7 +14,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "mediterranean-shrimp-white-beans",
     description:
-      "Garlic-soft cannellini, lemon-bright shrimp, a slow slick of good olive oil.",
+      "Cannellini softened in garlic, shrimp brightened with lemon, finished in good olive oil.",
     tags: ["Mediterranean", "Weeknight", "Hosting", "30 min"],
     recipe: {
       eyebrow: "Recipe — Mediterranean",
@@ -267,12 +267,12 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "grilled-salmon-with-citrus-and-dill-yogurt",
     description:
-      "Salmon kissed by char, set against a bright herbed yogurt and a quick citrus.",
+      "Charred grilled salmon, herbed yogurt, a sharp hit of citrus.",
     tags: ["Mediterranean", "Spring", "Seafood"],
     recipe: {
       eyebrow: "Recipe — Mediterranean",
       title: "Grilled Salmon with Citrus & Dill Yogurt",
-      dek: "Salmon kissed by char, set against a bright, herb-laced yogurt and a quick citrus salad.",
+      dek: "Grilled salmon with crisp char, set against an herb-laced yogurt and a quick citrus salad.",
       meta: { serves: "Serves 4", time: "25 min" },
       byline: "By J.D.H.",
       ingredients: [
@@ -418,7 +418,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "sunday-rigatoni",
     description:
-      "Slow-cooked tomato sauce, hand-crushed and patient, ladled over thick rigatoni.",
+      "Slow-cooked, hand-crushed tomato sauce, ladled over thick rigatoni.",
     tags: ["Italian", "Sunday", "Slow", "Hosting"],
     recipe: {
       eyebrow: "Recipe — Italian",
@@ -855,12 +855,12 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "soft-scrambled-eggs-with-herbs",
     description:
-      "Patient eggs, butter-rich and barely set, finished with a soft scatter of herbs.",
+      "Eggs scrambled slow in butter, barely set, finished with a soft scatter of herbs.",
     tags: ["Breakfast", "Slow", "15 min"],
     recipe: {
       eyebrow: "Recipe — Breakfast",
       title: "Soft Scrambled Eggs with Herbs",
-      dek: "The most patient eggs — butter-rich, barely set, finished with chives and a soft scatter of herbs at the very last moment.",
+      dek: "Slow scrambled eggs, butter-rich, barely set, finished with chives and a soft scatter of herbs at the last moment.",
       meta: { serves: "Serves 2", time: "15 min" },
       byline: "By J.D.H.",
       ingredients: [
@@ -1018,12 +1018,12 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "thai-basil-ground-chicken",
     description:
-      "High-heat ground chicken with garlic, chili, and a final defiant handful of basil.",
+      "High-heat ground chicken with garlic, chili, and a final handful of basil.",
     tags: ["Thai-Inspired", "Weeknight", "20 min"],
     recipe: {
       eyebrow: "Recipe — Global",
       title: "Thai Basil Ground Chicken",
-      dek: "Ground chicken cooked hot and fast — undisturbed long enough to crisp at the edges — then dressed with fish sauce, lime, and a defiant handful of basil at the very end.",
+      dek: "Ground chicken cooked hot and fast — undisturbed long enough to crisp at the edges — then dressed with fish sauce, lime, and a final handful of basil.",
       meta: { serves: "Serves 4", time: "20 min" },
       byline: "By J.D.H.",
       ingredients: [
@@ -1197,7 +1197,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "coconut-ginger-shrimp-soup",
     description:
-      "A coconut broth steeped in ginger, lemongrass, and lime — quick, layered, alive.",
+      "A coconut broth steeped in ginger, lemongrass, and lime — quick, layered, sharp.",
     tags: ["Asian-Inspired", "Weeknight", "30 min"],
     recipe: {
       eyebrow: "Recipe — Global",

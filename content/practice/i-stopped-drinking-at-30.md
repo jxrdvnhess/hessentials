@@ -1,7 +1,10 @@
 ---
 title: I Stopped Drinking at 30
 slug: i-stopped-drinking-at-30
-category: living
+category: practice
+section: Cyclical
+description: A clear-eyed audit, not a sobriety crusade. The drink wasn't the variable. The structure was.
+byline: By Jordan Hess
 ---
 
 I stopped drinking at thirty.
