@@ -24,7 +24,7 @@ export default function AurelianThisWeekPanel() {
   return (
     <aside
       aria-label="Aurelian — This Week"
-      className="fade-up delay-4 absolute right-10 top-1/2 hidden w-[340px] -translate-y-1/2 border-l border-[#1f1d1b]/12 pl-7 md:block lg:right-16 lg:w-[360px]"
+      className="fade-up delay-4 absolute right-10 top-1/2 hidden w-[340px] -translate-y-1/2 border-l border-[#1f1d1b]/20 pl-7 md:block lg:right-16 lg:w-[360px]"
     >
       <div className="text-[11px] uppercase leading-[1.5] tracking-[0.28em] text-[#1f1d1b]/55">
         Aurelian &middot; This Week

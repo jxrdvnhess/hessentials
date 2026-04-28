@@ -246,37 +246,11 @@ export default function HomePage() {
               align: "right",
             }}
             size="lg"
-            standfirst="Most of what you've been told to buy, cook, or follow isn't that good."
+            standfirst="Most of what you’ve been told to buy, cook, or follow isn’t that good."
           >
             Most don&rsquo;t.
           </ImagePoemLine>
         </Cinematic>
-      </section>
-
-      {/* MOBILE-ONLY: thesis standfirst as a cream pull-quote block.
-          On desktop the standfirst renders inside the image above; on
-          mobile the small image height would crowd the line, so it
-          gets its own cream beat instead. */}
-      <section
-        aria-label="Thesis"
-        className="block px-6 pt-8 pb-2 sm:px-10 md:hidden"
-      >
-        <div className="mx-auto max-w-[420px]">
-          <span
-            aria-hidden
-            className="ml-auto block w-20"
-            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
-          />
-          <p className="text-balance ml-auto mt-4 max-w-[420px] text-right font-serif text-[clamp(1.0625rem,1.4vw,1.1875rem)] italic leading-[1.4] text-[#1f1d1b]/85">
-            Most of what you&rsquo;ve been told to buy, cook, or follow
-            isn&rsquo;t that good.
-          </p>
-          <span
-            aria-hidden
-            className="ml-auto mt-4 block w-20"
-            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
-          />
-        </div>
       </section>
 
       {/* ---------- Image 03 — Late afternoon, solo with notebook — Type B ----------
