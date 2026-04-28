@@ -453,3 +453,33 @@ body {
 }
 
 /* (About page no longer uses the prose pipeline — it's composed in JSX.) */
+
+/* ---------- Filter pill underline (§2.3) ----------
+   Active pill: 1px underline in text color, anchored 2–3px below baseline.
+   Inactive: plain text. Hover on inactive: faint cream underline at 40%
+   opacity as an interactivity signal. No pill shapes, no borders, no fills. */
+
+.filter-pill {
+  position: relative;
+  padding-bottom: 6px;
+}
+
+.filter-pill::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: rgb(200 191 174 / 0); /* #c8bfae @ 0% — invisible by default */
+  transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.filter-pill:hover::after {
+  background-color: rgb(200 191 174 / 0.4); /* faint cream on hover */
+}
+
+.filter-pill-active::after,
+.filter-pill-active:hover::after {
+  background-color: rgb(31 29 27 / 1); /* text color, full strength */
+}

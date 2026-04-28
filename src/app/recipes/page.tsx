@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import RecipesFilter from "../../components/RecipesFilter";
 import { recipes } from "../../data/recipes";
+import SectionDivider from "../../components/SectionDivider";
 
 export const metadata: Metadata = {
   title: "Recipes — Hessentials",
@@ -47,8 +48,14 @@ export default function RecipesIndexPage() {
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
       {/* ---------- Intro ---------- */}
-      <section className="mx-auto w-full max-w-3xl px-6 pt-16 pb-10 text-center sm:px-10 md:pt-24">
-        <p className="mb-8 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+      <section className="mx-auto flex w-full max-w-3xl flex-col items-center px-6 pt-16 pb-10 text-center sm:px-10 md:pt-24">
+        {/* Hairline above the pillar eyebrow (§2.2). */}
+        <span
+          aria-hidden
+          className="block w-20"
+          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        />
+        <p className="mt-6 mb-8 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
           Recipes
         </p>
         <p className="text-pretty mx-auto max-w-xl font-serif text-[clamp(1.5rem,2.6vw,2rem)] italic leading-[1.4] text-[#1f1d1b]/80">
@@ -59,10 +66,19 @@ export default function RecipesIndexPage() {
         </p>
       </section>
 
+      {/* "h" motif transitioning from intro to Start Here (§2.1). */}
+      <SectionDivider />
+
       {/* ---------- Start Here ---------- */}
-      <section className="mx-auto w-full max-w-6xl px-6 pt-8 pb-16 sm:px-10 sm:pt-12 sm:pb-24">
-        <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+      <section className="mx-auto w-full max-w-6xl px-6 pt-2 pb-16 sm:px-10 sm:pt-4 sm:pb-24">
+        <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center sm:mb-16">
+          {/* Hairline above the section eyebrow (§2.2). */}
+          <span
+            aria-hidden
+            className="block w-20"
+            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+          />
+          <p className="mt-6 mb-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
             Start here
           </p>
           <h2 className="text-pretty mx-auto max-w-xl font-serif text-[clamp(1.25rem,2.2vw,1.625rem)] leading-[1.25] tracking-[-0.01em] text-[#1f1d1b]">
@@ -73,28 +89,59 @@ export default function RecipesIndexPage() {
           </p>
         </div>
 
-        <ul className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-x-12 gap-y-14 sm:grid-cols-2 sm:gap-x-14 md:gap-x-20 md:gap-y-16">
-          {featured.map((recipe) => (
-            <li key={recipe.slug}>
-              <Link
-                href={`/recipes/${recipe.slug}`}
-                className="group block transition-opacity duration-500 ease-out"
-              >
-                <h3 className="font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30">
-                  {recipe.title}
-                </h3>
-                <p className="text-pretty mt-4 font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/65 sm:text-[17px]">
-                  {recipe.description}
-                </p>
-              </Link>
-            </li>
-          ))}
+        <ul className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-x-10 gap-y-14 sm:grid-cols-2 sm:gap-x-12 md:gap-x-14 md:gap-y-16">
+          {featured.flatMap((recipe, idx) => {
+            const cols = 2;
+            const els = [];
+            if (idx > 0 && idx % cols === 0) {
+              els.push(
+                <li
+                  key={`hr-${recipe.slug}`}
+                  aria-hidden
+                  className="hidden sm:col-span-2 sm:block"
+                >
+                  <span
+                    className="block w-full"
+                    style={{
+                      height: "0.5px",
+                      backgroundColor: "#c8bfae",
+                    }}
+                  />
+                </li>
+              );
+            }
+            els.push(
+              <li key={recipe.slug}>
+                <Link
+                  href={`/recipes/${recipe.slug}`}
+                  className="group block transition-opacity duration-500 ease-out"
+                >
+                  <h3 className="font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30">
+                    {recipe.title}
+                  </h3>
+                  <p className="text-pretty mt-4 font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/65 sm:text-[17px]">
+                    {recipe.description}
+                  </p>
+                </Link>
+              </li>
+            );
+            return els;
+          })}
         </ul>
       </section>
 
+      {/* "h" motif transitioning from Start Here to The Rest (§2.1). */}
+      <SectionDivider />
+
       {/* ---------- The Rest ---------- */}
-      <section className="mx-auto w-full max-w-3xl px-6 pt-8 pb-12 text-center sm:px-10 sm:pt-12 sm:pb-16">
-        <p className="mb-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+      <section className="mx-auto flex w-full max-w-3xl flex-col items-center px-6 pt-2 pb-12 text-center sm:px-10 sm:pt-4 sm:pb-16">
+        {/* Hairline above the section eyebrow (§2.2). */}
+        <span
+          aria-hidden
+          className="block w-20"
+          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        />
+        <p className="mt-6 mb-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
           The rest
         </p>
         <p className="mx-auto max-w-md font-serif text-[15px] italic leading-[1.55] text-[#1f1d1b]/55 sm:text-[16px]">

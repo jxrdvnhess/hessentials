@@ -234,31 +234,40 @@ export default function RightNow({
 
   const light = variant === "light";
 
-  // Light variant uses cream tones at the same opacity values so the
-  // overlay reads against a darkened image with the same hierarchy.
+  // Light variant uses warm cream `#f1ece2` (per §1.3) at high opacity so
+  // type reads against a darkened photographic background. The dark
+  // (cream-zone) variant keeps the existing warm-near-black hierarchy.
   const eyebrow = light
-    ? "text-[#f8f6f3]/65"
+    ? "text-[#f1ece2]/95"
     : "text-[#1f1d1b]/50";
   const preEyebrow = light
-    ? "text-[#f8f6f3]/40"
+    ? "text-[#f1ece2]/80"
     : "text-[#1f1d1b]/35";
+  // Slot labels (COOKING / WEARING / REFINING / SHOPPING / RETHINKING):
+  // clean uppercase sans, letter-spaced. Cream at 95% on the overlay so
+  // they read clearly against the photograph. Per §1.3.
   const slotLabel = light
-    ? "text-[#f8f6f3]/55"
+    ? "text-[#f1ece2]/95"
     : "text-[#1f1d1b]/40";
+  // Article links — keep italic, slightly heavier weight (font-medium),
+  // cream at 95% on the overlay. Heavier weight applied via a class on
+  // the link span itself below.
   const articleTitle = light
-    ? "text-[#f8f6f3]/95"
+    ? "text-[#f1ece2]/95"
     : "text-[#1f1d1b]/90";
   // Start Here gets the strongest contrast — full opacity title and a
   // brighter payoff — so the entire block reads as primary against the
-  // rotating Currently slots which sit at /90 /95 and /55 /70.
+  // rotating Currently slots.
   const startHereTitle = light
-    ? "text-[#f8f6f3]"
+    ? "text-[#f1ece2]"
     : "text-[#1f1d1b]";
   const startHerePayoff = light
-    ? "text-[#f8f6f3]/85"
+    ? "text-[#f1ece2]/85"
     : "text-[#1f1d1b]/70";
+  // Supporting deks (payoff lines beneath each link): cream at 80% for
+  // hierarchy beneath the link itself. Per §1.3.
   const articlePayoff = light
-    ? "text-[#f8f6f3]/70"
+    ? "text-[#f1ece2]/80"
     : "text-[#1f1d1b]/55";
 
   return (
@@ -335,7 +344,9 @@ export default function RightNow({
               </p>
               <Link href={article.url} className="group mt-1 inline-block">
                 <span
-                  className={`inline-flex items-baseline gap-2 font-serif text-[17px] italic leading-[1.35] transition-opacity duration-300 ease-out group-hover:opacity-60 sm:text-[18px] ${articleTitle}`}
+                  className={`inline-flex items-baseline gap-2 font-serif text-[17px] italic leading-[1.35] transition-opacity duration-300 ease-out group-hover:opacity-60 sm:text-[18px] ${
+                    light ? "font-medium" : ""
+                  } ${articleTitle}`}
                 >
                   {article.title}
                   <span aria-hidden className="text-[12px] not-italic">

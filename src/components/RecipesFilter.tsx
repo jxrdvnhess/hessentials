@@ -75,7 +75,7 @@ export default function RecipesFilter({
   return (
     <>
       <div className="mx-auto mb-16 max-w-4xl px-6 text-center sm:mb-20 sm:px-10">
-        <ul className="flex flex-wrap items-baseline justify-center gap-x-6 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
+        <ul className="flex flex-wrap items-baseline justify-center gap-x-7 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
           {FILTERS.map(({ label, hint }) => {
             const isActive = label === active;
             return (
@@ -84,9 +84,9 @@ export default function RecipesFilter({
                   type="button"
                   onClick={() => setActive(label)}
                   className={[
-                    "cursor-pointer transition-colors duration-500 ease-out",
+                    "filter-pill cursor-pointer transition-colors duration-500 ease-out",
                     isActive
-                      ? "text-[#1f1d1b]"
+                      ? "filter-pill-active text-[#1f1d1b]"
                       : "text-[#1f1d1b]/40 hover:text-[#1f1d1b]/75",
                   ].join(" ")}
                   aria-pressed={isActive}
@@ -119,27 +119,50 @@ export default function RecipesFilter({
           Nothing under that filter yet. More entries arriving.
         </p>
       ) : (
-        <ul className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-12 gap-y-16 px-6 sm:grid-cols-2 sm:gap-x-14 sm:px-10 md:gap-x-20 md:gap-y-20">
-          {visible.map((recipe) => (
-            <li key={recipe.slug}>
-              <Link
-                href={`/recipes/${recipe.slug}`}
-                className="group block transition-opacity duration-500 ease-out"
-              >
-                {recipe.cue && (
-                  <p className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/40 sm:text-[11px]">
-                    {recipe.cue}
+        <ul className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 gap-y-16 px-6 sm:grid-cols-2 sm:gap-x-12 sm:px-10 md:gap-x-14 md:gap-y-20">
+          {visible.flatMap((recipe, idx) => {
+            const cols = 2;
+            const els = [];
+            // Row hairline above every row after the first (sm+).
+            if (idx > 0 && idx % cols === 0) {
+              els.push(
+                <li
+                  key={`hr-${idx}`}
+                  aria-hidden
+                  className="hidden sm:col-span-2 sm:block"
+                >
+                  <span
+                    className="block w-full"
+                    style={{
+                      height: "0.5px",
+                      backgroundColor: "#c8bfae",
+                    }}
+                  />
+                </li>
+              );
+            }
+            els.push(
+              <li key={recipe.slug}>
+                <Link
+                  href={`/recipes/${recipe.slug}`}
+                  className="group block transition-opacity duration-500 ease-out"
+                >
+                  {recipe.cue && (
+                    <p className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/40 sm:text-[11px]">
+                      {recipe.cue}
+                    </p>
+                  )}
+                  <h2 className="font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30">
+                    {recipe.title}
+                  </h2>
+                  <p className="text-pretty mt-4 font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/65 sm:text-[17px]">
+                    {recipe.description}
                   </p>
-                )}
-                <h2 className="font-serif text-[clamp(1.5rem,2.6vw,2rem)] font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30">
-                  {recipe.title}
-                </h2>
-                <p className="text-pretty mt-4 font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/65 sm:text-[17px]">
-                  {recipe.description}
-                </p>
-              </Link>
-            </li>
-          ))}
+                </Link>
+              </li>
+            );
+            return els;
+          })}
         </ul>
       )}
     </>

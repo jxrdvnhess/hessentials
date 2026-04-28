@@ -21,8 +21,14 @@ export default function AurelianWeekly() {
       aria-labelledby="this-week-heading"
       className="mx-auto w-full max-w-[36rem] px-6 pt-24 sm:px-10 md:pt-32"
     >
-      <div className="text-center">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45 sm:text-[12px]">
+      <div className="flex flex-col items-center text-center">
+        {/* Hairline above the section eyebrow (§2.2). */}
+        <span
+          aria-hidden
+          className="block w-20"
+          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        />
+        <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/55 sm:text-[12px]">
           This Week
         </p>
         <p className="mt-3 text-[10.5px] uppercase tracking-[0.26em] text-[#1f1d1b]/40 sm:text-[11px]">

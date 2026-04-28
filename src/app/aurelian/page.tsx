@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import BigThree from "../../components/BigThree";
 import AurelianWeekly from "../../components/AurelianWeekly";
+import SectionDivider from "../../components/SectionDivider";
 
 export const metadata: Metadata = {
   title: "Aurelian — Hessentials",
@@ -57,8 +58,14 @@ export default function AurelianPage() {
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
       {/* ---------- Section 1: Top entrance ---------- */}
-      <section className="mx-auto w-full max-w-[36rem] px-6 pt-16 text-center sm:pt-24 md:pt-28">
-        <p className="mb-10 text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45 sm:text-[12px]">
+      <section className="mx-auto flex w-full max-w-[36rem] flex-col items-center px-6 pt-16 text-center sm:pt-24 md:pt-28">
+        {/* Hairline above the page eyebrow (§2.2). */}
+        <span
+          aria-hidden
+          className="block w-20"
+          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        />
+        <p className="mt-6 mb-10 text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/55 sm:text-[12px]">
           Aurelian
         </p>
 
@@ -71,6 +78,9 @@ export default function AurelianPage() {
           describe yourself.
         </p>
       </section>
+
+      {/* "h" motif transitioning from hero into This Week (§2.1). */}
+      <SectionDivider />
 
       {/* ---------- This Week — non-interactive weekly reading ----------
                   Sits between the hero and the Big Three tool. The Big
@@ -105,20 +115,29 @@ export default function AurelianPage() {
         <BigThree />
       </section>
 
+      {/* "h" motif transitioning into Pattern Library (§2.1). */}
+      <SectionDivider />
+
       {/* ---------- Section 5: Pattern Library ---------- */}
       <section
         id="pattern-library"
         aria-labelledby="pattern-library-heading"
-        className="mx-auto w-full max-w-6xl px-6 pt-24 sm:px-10 md:pt-32"
+        className="mx-auto w-full max-w-6xl px-6 pt-12 sm:px-10 md:pt-16"
       >
-        <div className="text-center">
+        <div className="flex flex-col items-center text-center">
           <h2
             id="pattern-library-heading"
             className="font-serif text-[clamp(2rem,4vw,2.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-balance"
           >
             The Pattern Library
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
+          {/* Hairline above the supporting eyebrow (§2.2). */}
+          <span
+            aria-hidden
+            className="mt-6 block w-20"
+            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+          />
+          <p className="mx-auto mt-5 max-w-xl text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
             Short studies in behavior, timing, and pressure.
           </p>
         </div>
@@ -140,21 +159,32 @@ export default function AurelianPage() {
         </ul>
       </section>
 
+      {/* "h" motif transitioning into Notes (§2.1). */}
+      <SectionDivider />
+
       {/* ---------- Section 6: Notes from Aurelian ---------- */}
       <section
         id="notes"
         aria-labelledby="notes-heading"
-        className="mx-auto w-full max-w-5xl px-6 pt-24 pb-32 text-center sm:px-10 md:pt-32 md:pb-40"
+        className="mx-auto w-full max-w-5xl px-6 pt-12 pb-32 text-center sm:px-10 md:pt-16 md:pb-40"
       >
-        <h2
-          id="notes-heading"
-          className="font-serif text-[clamp(2rem,4vw,2.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-balance"
-        >
-          Notes from Aurelian
-        </h2>
-        <p className="mx-auto mt-6 max-w-lg text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
-          Field notes on timing, perception, pressure, and self-recognition.
-        </p>
+        <div className="flex flex-col items-center">
+          <h2
+            id="notes-heading"
+            className="font-serif text-[clamp(2rem,4vw,2.75rem)] font-normal leading-[1.05] tracking-[-0.02em] text-balance"
+          >
+            Notes from Aurelian
+          </h2>
+          {/* Hairline above the supporting eyebrow (§2.2). */}
+          <span
+            aria-hidden
+            className="mt-6 block w-20"
+            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+          />
+          <p className="mx-auto mt-5 max-w-lg text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
+            Field notes on timing, perception, pressure, and self-recognition.
+          </p>
+        </div>
 
         <div className="mx-auto mt-14 grid max-w-4xl grid-cols-1 gap-x-12 gap-y-10 text-left text-[16px] leading-[1.65] text-[#1f1d1b]/80 sm:mt-16 sm:grid-cols-2 sm:gap-x-14 sm:gap-y-12 sm:text-[17px]">
           {NOTES.map((note) => (

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { STYLE_ARTICLES, type StyleArticle } from "../data/style";
+import SectionDivider from "./SectionDivider";
 
 /**
  * Style index.
@@ -85,11 +86,29 @@ function ArticleCard({ article }: { article: StyleArticle }) {
 }
 
 function ArticleGrid({ articles }: { articles: StyleArticle[] }) {
+  // Tighter column gap (§2.4) + row hairlines on sm+ between rows.
+  const cols = 2;
   return (
-    <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 sm:gap-x-14 md:gap-x-20 md:gap-y-20">
-      {articles.map((article) => (
-        <ArticleCard key={article.slug} article={article} />
-      ))}
+    <ul className="grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2 sm:gap-x-12 md:gap-x-14 md:gap-y-20">
+      {articles.flatMap((article, idx) => {
+        const els = [];
+        if (idx > 0 && idx % cols === 0) {
+          els.push(
+            <li
+              key={`hr-${article.slug}`}
+              aria-hidden
+              className="hidden sm:col-span-2 sm:block"
+            >
+              <span
+                className="block w-full"
+                style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+              />
+            </li>
+          );
+        }
+        els.push(<ArticleCard key={article.slug} article={article} />);
+        return els;
+      })}
     </ul>
   );
 }
@@ -100,14 +119,20 @@ export default function StyleIndex() {
   ).filter(Boolean);
 
   return (
-    <div className="space-y-28 md:space-y-36">
+    <div>
       {/* ---------- Start Here ---------- */}
       <section>
-        <header className="mb-12 md:mb-16">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+        <header className="mb-12 flex flex-col items-start md:mb-16">
+          {/* Hairline above the eyebrow (§2.2). */}
+          <span
+            aria-hidden
+            className="block w-20"
+            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+          />
+          <p className="mt-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
             Start Here
           </p>
-          <h2 className="text-balance font-serif text-[clamp(1.5rem,2.4vw,1.875rem)] font-normal leading-[1.2] tracking-[-0.015em] text-[#1f1d1b]">
+          <h2 className="text-balance mt-5 font-serif text-[clamp(1.5rem,2.4vw,1.875rem)] font-normal leading-[1.2] tracking-[-0.015em] text-[#1f1d1b]">
             The rules that change everything first.
           </h2>
           <p className="text-pretty mt-3 max-w-xl font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/60 sm:text-[17px]">
@@ -125,8 +150,15 @@ export default function StyleIndex() {
         if (articles.length === 0) return null;
         return (
           <section key={group.label}>
-            <header className="mb-10 md:mb-14">
-              <p className="text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+            {/* "h" motif marks the transition between groups (§2.1). */}
+            <SectionDivider />
+            <header className="mb-10 flex flex-col items-start md:mb-14">
+              <span
+                aria-hidden
+                className="block w-20"
+                style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+              />
+              <p className="mt-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
                 {group.label}
               </p>
             </header>

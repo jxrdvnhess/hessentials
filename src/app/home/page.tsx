@@ -6,7 +6,8 @@ import TheEdit from "../../components/TheEdit";
 import HomeFooterOverlay, {
   HomeFooterMobile,
 } from "../../components/HomeFooterOverlay";
-import PoemLine from "../../components/PoemLine";
+import ImagePoemLine from "../../components/ImagePoemLine";
+import Symbol from "../../components/Symbol";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -27,19 +28,20 @@ export const metadata: Metadata = {
  * TEXT SYSTEMS (three only)
  *   Hero            left-aligned, max-w 520px, vertically centered
  *   Currently       overlay on Morning only, bottom-right, 64px from
- *                   edges, max-w 320px, subtle radial gradient
+ *                   edges, max-w 320px, localized scrim under block
  *   Article Grid    The Edit, beige zone, 2-3 column structured
  *
- * SPACING TOKENS (locked)
- *   Image ↔ Image       24px
- *   Image ↔ Beige zone  140px
+ * IMAGE ARC PACING (post 2026-04-28 design refinement)
+ *   The four images now stack near-flush as a cinematic sequence. Poem
+ *   lines moved off the cream gaps and into the images themselves at
+ *   art-directed low-detail zones (see ImagePoemLine). Hero → Image 01
+ *   keeps a modest cream gap so the hero has room to breathe. Between
+ *   images: 12px — a film cut, not a section break.
  */
 
-// Image-to-beige spacing token (used on The Edit's top margin). The
-// image↔image gap is now supplied by the poem-line sections, which
-// carry their own vertical breathing room — the old GAP_IMG constant
-// was retired with that change.
-const GAP_ZONE = "140px"; // Image to beige / beige to image
+const GAP_HERO = "8vh"; // Hero → Image 01 — modest cream breath before the arc
+const GAP_IMG = "12px"; // Image ↔ Image — film cut
+const GAP_ZONE = "96px"; // Image ↔ The Edit — beige zone, compressed from 140px
 
 type CinematicProps = {
   src: string;
@@ -56,7 +58,7 @@ type CinematicProps = {
    * settle at 92. Allowed values are pre-declared in next.config.ts.
    */
   quality?: 90 | 92 | 95;
-  /** Overlay slot — used only on Morning for the Currently module. */
+  /** Overlay slot — used for in-image poem lines, the Currently module, and footer overlays. */
   children?: React.ReactNode;
 };
 
@@ -116,8 +118,11 @@ function Cinematic({
 export default function HomePage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
-      {/* ---------- Hero — text only. Image 01 emerges inside this viewport. ---------- */}
-      <section className="flex min-h-[52vh] items-center px-6 pt-16 sm:px-10 md:min-h-[65vh] md:px-16 md:pt-0">
+      {/* ---------- Hero — text only. Image 01 emerges below this viewport. ----------
+          The right side of the hero used to read as accidental empty space. A
+          single small "h" mark in the upper-right anchors the asymmetry without
+          adding content (per §1.4). */}
+      <section className="relative flex min-h-[52vh] items-center px-6 pt-16 sm:px-10 md:min-h-[65vh] md:px-16 md:pt-0">
         <div className="fade-up delay-3 max-w-[520px]">
           <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
             Hessentials
@@ -152,58 +157,41 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+
+        {/* Hero asymmetry mark — quiet "h" anchoring the upper-right
+            quadrant. Tonal-cream tint via opacity so it reads as
+            present-but-not-announced against the plaster background. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-6 top-12 hidden opacity-25 sm:right-10 sm:block md:right-16 md:top-16"
+        >
+          <Symbol size="xs" />
+        </div>
       </section>
-
-      {/*
-        ---------- Poem line 1 — between hero and Image 01 ----------
-
-        The four-line poem sits in the cream gaps between hero and the
-        four cinematic images. Each line fades in via a slow dissolve
-        as it enters the viewport — the eye should catch it in
-        mid-arrival, not chase it.
-
-        Sequence (locked):
-          [hero ends]
-          Some things hold up.
-          [Image 01 — Dinner]
-          Most things don't.
-          [Image 02 — Exit]
-          You learn which is which in the morning.
-          [Image 03 — Morning]
-          [The Edit]
-          What's left is the life.
-          [Image 04 — Cleanup, "This is what stayed." overlay]
-
-        The poem turns the photo arc into a single thought: thesis,
-        antithesis, the discovery, the result. The closing image's
-        existing overlay then arrives with narrative weight earned by
-        the scroll.
-      */}
-      <PoemLine className="py-20 sm:py-24 md:py-28">
-        Some things hold up.
-      </PoemLine>
 
       {/*
         Image 01 — Dinner — Type A.
 
-        This is the only place the strict GAP_ZONE rule is intentionally
-        relaxed. The opening image must extend the poem, not begin a new
-        section. So:
+        The opening image extends the hero rather than beginning a new
+        section:
 
-          - no top margin: the image touches the poem line directly
+          - small cream breath above (GAP_HERO ~ 8vh)
           - top mask: the image's upper ~28% is faded to transparent
             via a linear-gradient mask, revealing the page's cream
             background through it
 
-        The result: the seam between cream-poem and image is
-        cream-on-cream (invisible). Below the seam, the image gradually
-        becomes itself. The viewer is already inside the world before
-        they consciously scroll.
+        The result: the seam between hero and image is cream-on-cream
+        (invisible). Below the seam, the image gradually becomes itself.
+        The viewer is already inside the world before they consciously
+        scroll.
+
+        Inside the image: Some things hold up. — upper-left wall area.
       */}
       <section
         aria-hidden
         className="w-full"
         style={{
+          marginTop: GAP_HERO,
           maskImage:
             "linear-gradient(to bottom, transparent 0%, transparent 4%, black 32%)",
           WebkitMaskImage:
@@ -216,50 +204,85 @@ export default function HomePage() {
           type="bleed"
           quality={95}
           priority
-        />
+        >
+          <ImagePoemLine
+            position={{
+              top: "16%",
+              left: "8%",
+              maxWidth: "min(38rem, 56%)",
+              align: "left",
+            }}
+            size="lg"
+          >
+            Some things hold up.
+          </ImagePoemLine>
+        </Cinematic>
       </section>
 
-      {/* ---------- Poem line 2 — between Image 01 and Image 02 ---------- */}
-      <PoemLine className="py-20 sm:py-24 md:py-28">
-        Most things don&rsquo;t.
-      </PoemLine>
-
-      {/* ---------- Image 02 — Exit — Type A ---------- */}
-      <section aria-hidden>
+      {/* ---------- Image 02 — Exit — Type A — film-cut gap above ----------
+          Inside: Most things don't. — lower-right shadowed area. */}
+      <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
           src="/home/hacienda-02-exterior.jpg"
           alt=""
           type="bleed"
-        />
+        >
+          <ImagePoemLine
+            position={{
+              bottom: "14%",
+              right: "8%",
+              maxWidth: "min(36rem, 54%)",
+              align: "right",
+            }}
+            size="lg"
+          >
+            Most things don&rsquo;t.
+          </ImagePoemLine>
+        </Cinematic>
       </section>
 
-      {/* ---------- Poem line 3 — between Image 02 and Image 03 ---------- */}
-      <PoemLine className="py-20 sm:py-24 md:py-28">
-        You learn which is which in the morning.
-      </PoemLine>
-
-      {/* ---------- Image 03 — Morning — Type B
-                  Desktop: full Currently overlay, anchored bottom-right.
-                  Mobile:  bigger portrait crop with a quiet "Lately
-                           Currently" eyebrow overlaid bottom-center.
-                           The full Currently content block lives in a
-                           cream section below the image (the image
-                           keeps its brand-poetry moment; the content
-                           gets the readability of cream). */}
-      <section aria-hidden>
+      {/* ---------- Image 03 — Morning — Type B — film-cut gap above ----------
+                  Desktop: full Currently overlay, anchored bottom-right,
+                  with a localized scrim that darkens only the area beneath
+                  the Currently block (per §1.3).
+                  Mobile:  bigger portrait crop with the full Currently
+                  block in a cream section below the image — the image
+                  keeps its brand-poetry moment.
+                  Inside: You learn which is which in the morning. — upper-center. */}
+      <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
           src="/home/hacienda-03-morning.jpg"
           alt=""
           type="frame"
           quality={95}
         >
-          {/* DESKTOP: radial darken + full RightNow overlay. */}
+          <ImagePoemLine
+            position={{
+              top: "10%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              maxWidth: "min(40rem, 80%)",
+              align: "center",
+            }}
+            size="lg"
+          >
+            You learn which is which in the morning.
+          </ImagePoemLine>
+
+          {/* DESKTOP: localized scrim under the Currently block + Currently overlay.
+              The scrim is bounded to the lower-right zone where the type
+              actually sits — not a full-image darken — so the rest of the
+              composition stays clean. Per §1.3. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 hidden md:block"
             style={{
               backgroundImage:
-                "radial-gradient(ellipse 70% 60% at 100% 92%, rgba(20,18,16,0.58), rgba(20,18,16,0.22) 45%, transparent 75%)",
+                "linear-gradient(to bottom right, transparent 35%, rgba(20,18,16,0.42) 80%, rgba(20,18,16,0.62) 100%)",
+              maskImage:
+                "radial-gradient(ellipse 55% 55% at 100% 100%, black 0%, black 50%, transparent 90%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 55% 55% at 100% 100%, black 0%, black 50%, transparent 90%)",
             }}
           />
           <div className="absolute right-16 bottom-16 hidden max-w-[320px] md:block">
@@ -297,7 +320,15 @@ export default function HomePage() {
           <p className="font-serif text-[clamp(0.95rem,1.2vw,1.0625rem)] italic leading-[1.55] text-[#1f1d1b]/55">
             Most of what you&rsquo;ve been told to buy, cook, or follow isn&rsquo;t that good.
           </p>
-          <p className="mt-14 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
+          {/* Section eyebrow with the new hairline above it (§2.2).
+              80px wide, 0.5px, tonal cream — anchors the label as an
+              architectural moment, not a floating tag. */}
+          <span
+            aria-hidden
+            className="mt-14 block w-20"
+            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+          />
+          <p className="mt-6 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
             The Edit
           </p>
           <p className="text-balance mt-4 font-serif text-[clamp(1.125rem,1.6vw,1.375rem)] italic leading-[1.4] text-[#1f1d1b]/70">
@@ -306,17 +337,6 @@ export default function HomePage() {
         </div>
         <TheEdit />
       </section>
-
-      {/*
-        ---------- Poem line 4 — between The Edit and Image 04 ----------
-
-        The closing line of the poem. Lands slightly more slowly than the
-        first three lines (longer dissolve) so it has time to settle
-        before "This is what stayed" arrives over the cleanup image.
-      */}
-      <PoemLine className="py-24 sm:py-28 md:py-32" durationMs={2000}>
-        What&rsquo;s left is the life.
-      </PoemLine>
 
       {/*
         Image 04 — Cleanup — Type B — closes the page.
@@ -330,10 +350,14 @@ export default function HomePage() {
         The global SiteFooter is suppressed on /home (see SiteFooter.tsx).
         Bottom padding is intentionally minimal here so the image is the
         last thing on the page.
+
+        Inside the image: What's left is the life. — set above the
+        existing "This is what stayed" overlay, with a longer reveal
+        delay so the closing whisper settles after the poem line.
       */}
       <section
         aria-label="Site footer"
-        style={{ paddingBottom: "24px" }}
+        style={{ marginTop: GAP_ZONE, paddingBottom: "24px" }}
       >
         <Cinematic
           src="/home/hacienda-04-cleanup.jpg"
@@ -341,6 +365,19 @@ export default function HomePage() {
           type="frame"
           filter="brightness(0.78) saturate(0.92) contrast(1.02)"
         >
+          <ImagePoemLine
+            position={{
+              top: "12%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              maxWidth: "min(40rem, 80%)",
+              align: "center",
+            }}
+            size="lg"
+          >
+            What&rsquo;s left is the life.
+          </ImagePoemLine>
+
           {/* DESKTOP: bottom darken + full footer overlay. */}
           <div
             aria-hidden

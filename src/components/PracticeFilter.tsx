@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { shuffleArray } from "../lib/shuffle";
+import SectionDivider from "./SectionDivider";
 
 /** Lightweight article projection — the page passes only what the index
  *  needs to render, not the full HTML body. */
@@ -29,7 +30,7 @@ type Props = {
  *
  * Same composition pattern as Living: a curated "Start Here" rail above
  * the rest, and a filter row that narrows by group when a single bucket
- * is selected. The buckets here are the editorial frame Practice sits in:
+ * is selected. Buckets:
  *
  *   Daily     — small things returned to (walk, compliment, silence,
  *               single object, the stone you carry)
@@ -67,9 +68,9 @@ export default function PracticeFilter({ articles, featuredSlugs = [] }: Props) 
 
   return (
     <>
-      {/* Filter row */}
+      {/* Filter row — active pill carries a hairline underline (§2.3). */}
       <div className="mx-auto mb-16 max-w-4xl px-6 text-center sm:mb-20 sm:px-10">
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
+        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
           {FILTERS.map((filter) => {
             const isActive = filter === active;
             return (
@@ -79,9 +80,9 @@ export default function PracticeFilter({ articles, featuredSlugs = [] }: Props) 
                   onClick={() => setActive(filter)}
                   aria-pressed={isActive}
                   className={[
-                    "cursor-pointer transition-colors duration-500 ease-out",
+                    "filter-pill cursor-pointer transition-colors duration-500 ease-out",
                     isActive
-                      ? "text-[#1f1d1b]"
+                      ? "filter-pill-active text-[#1f1d1b]"
                       : "text-[#1f1d1b]/40 hover:text-[#1f1d1b]/75",
                   ].join(" ")}
                 >
@@ -112,6 +113,9 @@ export default function PracticeFilter({ articles, featuredSlugs = [] }: Props) 
                 subline="Read one. Come back to the rest."
               />
               <ArticleGrid articles={featured} variant="featured" />
+              {/* "h" motif at the transition between the curated set
+                  and the broader archive (§2.1). */}
+              <SectionDivider />
               <SectionLabel
                 eyebrow="More"
                 subline="Read what pulls you."
@@ -147,13 +151,22 @@ function SectionLabel({
   subline,
   spacing = "default",
 }: SectionLabelProps) {
+  // Light top margin when this label follows a SectionDivider — the
+  // divider already carries the section break.
   const topMargin =
-    spacing === "between" ? "mt-24 sm:mt-32 md:mt-40" : "mt-0";
+    spacing === "between" ? "mt-2 sm:mt-4" : "mt-0";
   return (
     <div
-      className={`mx-auto mb-12 max-w-3xl px-6 text-center sm:mb-16 sm:px-10 ${topMargin}`}
+      className={`mx-auto mb-12 flex max-w-3xl flex-col items-center px-6 text-center sm:mb-16 sm:px-10 ${topMargin}`}
     >
-      <p className="text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+      {/* Hairline above the all-caps label (§2.2). 80px wide, 0.5px,
+          tonal cream — anchors the label as architecture. */}
+      <span
+        aria-hidden
+        className="block w-20"
+        style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+      />
+      <p className="mt-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
         {eyebrow}
       </p>
       {headline && (
@@ -187,32 +200,58 @@ function ArticleGrid({ articles, variant = "default" }: ArticleGridProps) {
     ? "text-[16px] sm:text-[17px] md:text-[18px]"
     : "text-[16px] sm:text-[17px]";
 
+  // Tighter column gap (§2.4) + row hairlines above every row after
+  // the first (mobile single-column hides the dividers — the stack
+  // reads cleaner without).
+  const cols = 2;
+
   return (
     <ul
-      className={`mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-12 px-6 sm:grid-cols-2 sm:gap-x-14 sm:px-10 md:gap-x-20 ${gapY}`}
+      className={`mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-10 px-6 sm:grid-cols-2 sm:gap-x-12 sm:px-10 md:gap-x-14 ${gapY}`}
     >
-      {articles.map((article) => (
-        <li key={article.slug}>
-          <Link
-            href={`/practice/${article.slug}`}
-            className="group block transition-opacity duration-500 ease-out"
-          >
-            <h2
-              className={`font-serif ${titleSize} font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30`}
+      {articles.flatMap((article, idx) => {
+        const els = [];
+        if (idx > 0 && idx % cols === 0) {
+          els.push(
+            <li
+              key={`hr-${idx}`}
+              aria-hidden
+              className="hidden sm:col-span-2 sm:block"
             >
-              {article.title}
-            </h2>
-
-            {article.excerpt && (
-              <p
-                className={`text-pretty mt-4 font-serif italic leading-[1.55] text-[#1f1d1b]/65 ${excerptSize}`}
+              <span
+                className="block w-full"
+                style={{
+                  height: "0.5px",
+                  backgroundColor: "#c8bfae",
+                }}
+              />
+            </li>
+          );
+        }
+        els.push(
+          <li key={article.slug}>
+            <Link
+              href={`/practice/${article.slug}`}
+              className="group block transition-opacity duration-500 ease-out"
+            >
+              <h2
+                className={`font-serif ${titleSize} font-normal leading-[1.15] tracking-[-0.015em] text-balance text-[#1f1d1b] underline decoration-transparent decoration-[0.5px] underline-offset-[8px] transition-[text-decoration-color] duration-500 ease-out group-hover:decoration-[#1f1d1b]/30`}
               >
-                {article.excerpt}
-              </p>
-            )}
-          </Link>
-        </li>
-      ))}
+                {article.title}
+              </h2>
+
+              {article.excerpt && (
+                <p
+                  className={`text-pretty mt-4 font-serif italic leading-[1.55] text-[#1f1d1b]/65 ${excerptSize}`}
+                >
+                  {article.excerpt}
+                </p>
+              )}
+            </Link>
+          </li>
+        );
+        return els;
+      })}
     </ul>
   );
 }
