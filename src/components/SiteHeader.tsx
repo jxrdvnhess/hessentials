@@ -9,21 +9,22 @@ import MobileMenu from "./MobileMenu";
 /**
  * Nav order is editorial, not alphabetical.
  *
- *   Aurelian sits first — the editorial intelligence layer that runs
- *   across the site, not a content pillar.
- *   The four content pillars cluster in the middle, in editorial order:
+ *   The four content pillars open the row, in editorial order:
  *   Recipes, Living, Style, Practice.
- *   Shop sits after the pillars — it's the marketplace expression of
- *   the four pillars, not a fifth pillar of its own.
+ *   Shop follows — the marketplace expression across the four pillars,
+ *   not a fifth pillar of its own.
+ *   Aurelian sits between Shop and About — the editorial intelligence
+ *   layer above the pillars, navigable but visually adjacent to About
+ *   so the row reads pillars-first.
  *   About closes the row.
  */
 const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
-  { label: "Aurelian", href: "/aurelian" },
   { label: "Recipes", href: "/recipes" },
   { label: "Living", href: "/living" },
   { label: "Style", href: "/style" },
   { label: "Practice", href: "/practice" },
   { label: "Shop", href: "/shop" },
+  { label: "Aurelian", href: "/aurelian" },
   { label: "About", href: "/about" },
 ];
 
