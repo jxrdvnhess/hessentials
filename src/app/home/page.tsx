@@ -170,7 +170,7 @@ export default function HomePage() {
       </section>
 
       {/*
-        Image 01 — Dinner — Type A.
+        Image 01 — Morning, two men at the table — Type A.
 
         The opening image extends the hero rather than beginning a new
         section:
@@ -185,7 +185,8 @@ export default function HomePage() {
         The viewer is already inside the world before they consciously
         scroll.
 
-        Inside the image: Some things hold up. — upper-left wall area.
+        Inside the image: Some moments hold. — upper-left plaster wall,
+        the undetailed area above and to the left of the older man.
       */}
       <section
         aria-hidden
@@ -199,7 +200,7 @@ export default function HomePage() {
         }}
       >
         <Cinematic
-          src="/home/hacienda-01-dinner.jpg"
+          src="/home/merida-moment-1.jpg"
           alt=""
           type="bleed"
           quality={95}
@@ -207,82 +208,88 @@ export default function HomePage() {
         >
           <ImagePoemLine
             position={{
-              top: "16%",
-              left: "8%",
-              maxWidth: "min(38rem, 56%)",
+              top: "14%",
+              left: "6%",
+              maxWidth: "min(34rem, 48%)",
               align: "left",
             }}
             size="lg"
           >
-            Some things hold up.
+            Some moments hold.
           </ImagePoemLine>
         </Cinematic>
       </section>
 
-      {/* ---------- Image 02 — Exit — Type A — film-cut gap above ----------
-          Inside: Most things don't. — lower-right shadowed area. */}
+      {/* ---------- Image 02 — Midday poolside — Type A — film-cut gap above ----------
+          Inside: Most don't. — upper-right where the pink-clay wall
+          meets the architectural shadow under the eaves. */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
-          src="/home/hacienda-02-exterior.jpg"
+          src="/home/merida-moment-2.jpg"
           alt=""
           type="bleed"
         >
           <ImagePoemLine
             position={{
-              bottom: "14%",
-              right: "8%",
-              maxWidth: "min(36rem, 54%)",
+              top: "10%",
+              right: "6%",
+              maxWidth: "min(30rem, 42%)",
               align: "right",
             }}
             size="lg"
           >
-            Most things don&rsquo;t.
+            Most don&rsquo;t.
           </ImagePoemLine>
         </Cinematic>
       </section>
 
-      {/* ---------- Image 03 — Morning — Type B — film-cut gap above ----------
+      {/* ---------- Image 03 — Late afternoon, solo with notebook — Type B ----------
                   Desktop: full Currently overlay, anchored bottom-right,
                   with a localized scrim that darkens only the area beneath
-                  the Currently block (per §1.3).
+                  the Currently block (per §3.1).
                   Mobile:  bigger portrait crop with the full Currently
                   block in a cream section below the image — the image
                   keeps its brand-poetry moment.
-                  Inside: You learn which is which in the morning. — upper-center. */}
+                  Inside: You learn the difference. — upper-left wall area
+                  where the pink-clay wall catches the gold light, above
+                  and to the left of the seated man. */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
-          src="/home/hacienda-03-morning.jpg"
+          src="/home/merida-moment-3.jpg"
           alt=""
           type="frame"
           quality={95}
         >
           <ImagePoemLine
             position={{
-              top: "10%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              maxWidth: "min(40rem, 80%)",
-              align: "center",
+              top: "12%",
+              left: "6%",
+              maxWidth: "min(32rem, 46%)",
+              align: "left",
             }}
             size="lg"
           >
-            You learn which is which in the morning.
+            You learn the difference.
           </ImagePoemLine>
 
           {/* DESKTOP: localized scrim under the Currently block + Currently overlay.
-              The scrim is bounded to the lower-right zone where the type
-              actually sits — not a full-image darken — so the rest of the
-              composition stays clean. Per §1.3. */}
+              The scrim is bounded to the lower-right column where the
+              type actually sits — not a full-image darken — so the rest
+              of the composition stays clean. Per §3.1: transparent →
+              ~40% black, sized to the column where the text lives. The
+              new merida_moment_3.jpg has a brighter doorway behind the
+              block, so the scrim is a touch heavier than spec to keep
+              the article links legible. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 hidden md:block"
             style={{
               backgroundImage:
-                "linear-gradient(to bottom right, transparent 35%, rgba(20,18,16,0.42) 80%, rgba(20,18,16,0.62) 100%)",
+                "linear-gradient(to bottom right, transparent 30%, rgba(20,18,16,0.32) 65%, rgba(20,18,16,0.5) 100%)",
               maskImage:
-                "radial-gradient(ellipse 55% 55% at 100% 100%, black 0%, black 50%, transparent 90%)",
+                "radial-gradient(ellipse 60% 70% at 100% 100%, black 0%, black 45%, transparent 90%)",
               WebkitMaskImage:
-                "radial-gradient(ellipse 55% 55% at 100% 100%, black 0%, black 50%, transparent 90%)",
+                "radial-gradient(ellipse 60% 70% at 100% 100%, black 0%, black 45%, transparent 90%)",
             }}
           />
           <div className="absolute right-16 bottom-16 hidden max-w-[320px] md:block">
@@ -339,7 +346,7 @@ export default function HomePage() {
       </section>
 
       {/*
-        Image 04 — Cleanup — Type B — closes the page.
+        Image 04 — Night, dinner conversation — Type B — closes the page.
 
         The footer (newsletter + brand mark + tagline + legal) is overlaid
         on this image instead of rendering on a separate cream slab below.
@@ -351,31 +358,30 @@ export default function HomePage() {
         Bottom padding is intentionally minimal here so the image is the
         last thing on the page.
 
-        Inside the image: What's left is the life. — set above the
-        existing "This is what stayed" overlay, with a longer reveal
-        delay so the closing whisper settles after the poem line.
+        Inside the image: What was real, stayed. — upper-center wall
+        behind the table, in the soft pendant glow.
       */}
       <section
         aria-label="Site footer"
         style={{ marginTop: GAP_ZONE, paddingBottom: "24px" }}
       >
         <Cinematic
-          src="/home/hacienda-04-cleanup.jpg"
+          src="/home/merida-moment-4.jpg"
           alt=""
           type="frame"
-          filter="brightness(0.78) saturate(0.92) contrast(1.02)"
+          filter="brightness(0.92) saturate(0.96) contrast(1.02)"
         >
           <ImagePoemLine
             position={{
-              top: "12%",
+              top: "10%",
               left: "50%",
               transform: "translateX(-50%)",
-              maxWidth: "min(40rem, 80%)",
+              maxWidth: "min(36rem, 70%)",
               align: "center",
             }}
             size="lg"
           >
-            What&rsquo;s left is the life.
+            What was real, stayed.
           </ImagePoemLine>
 
           {/* DESKTOP: bottom darken + full footer overlay. */}

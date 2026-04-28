@@ -20,14 +20,14 @@ const LEGAL_LINKS: readonly LegalLink[] = [
  * Site footer.
  *
  * On every page after the homepage, the page closes inside the
- * "hacienda" photograph instead of on a separate cream slab. The image
+ * cinematic photograph instead of on a separate cream slab. The image
  * is the primary surface; the footer (newsletter + brand mark + tagline
  * + legal) is layered into the safe zones over a quiet darken.
  *
  * Suppressed on:
  *   /        — Enter Page (gateway stays clean)
  *   /home    — homepage closes inside its own photograph (HomeFooterOverlay
- *              on hacienda-04-cleanup.jpg). Same cinematic logic; the
+ *              on merida-moment-4.jpg). Same cinematic logic; the
  *              homepage just owns its own closing image.
  */
 export default function SiteFooter() {
@@ -41,8 +41,9 @@ export default function SiteFooter() {
  * Cinematic image footer.
  *
  * IMAGE
- *   /hacienda-footer-master.jpg — wide hacienda interior. Doorway is the
- *   anchor; everything else is secondary.
+ *   /merida-moment-6.jpg — pool corridor at dusk, arched doorway as the
+ *   anchor. The lit interior beyond the arch carries the warm focal
+ *   point; the long water and ivy walls hold the rest of the frame.
  *
  * DESKTOP (md+)
  *   Image fills 60–75vh. Newsletter / symbol / tagline overlay anchors
@@ -135,15 +136,15 @@ function CinematicFooter() {
           Desktop: 72vh+ with full overlay zones (aspect matches). */}
       <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
         <Image
-          src="/hacienda-footer-master.jpg"
+          src="/merida-moment-6.jpg"
           alt=""
           fill
           quality={92}
           sizes="100vw"
-          className="object-cover object-center md:object-[35%_center]"
+          className="object-cover object-center md:object-center"
           style={{
             opacity: revealOpacity,
-            filter: "brightness(0.92) saturate(0.95) contrast(1.02)",
+            filter: "brightness(0.95) saturate(0.96) contrast(1.02)",
           }}
         />
 
@@ -172,11 +173,14 @@ function CinematicFooter() {
           className="absolute inset-x-0 bottom-9 flex flex-col items-center text-center md:hidden"
           style={{ opacity: revealOpacity }}
         >
-          <p className="text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
-            Hessentials
-          </p>
-          <p className="mt-3 font-serif text-[16px] italic leading-[1.4] text-[#f8f6f3]/85">
+          <p
+            className="font-serif text-[20px] italic leading-[1.3] text-[#f1ece2] sm:text-[22px]"
+            style={{ opacity: 0.95 }}
+          >
             This is what stayed.
+          </p>
+          <p className="mt-3 text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
+            Hessentials
           </p>
         </div>
 
@@ -191,7 +195,14 @@ function CinematicFooter() {
         >
           <NewsletterSignup variant="light" />
 
-          <div className="mt-2">
+          <p
+            className="mt-3 font-serif text-[24px] italic leading-[1.3] text-[#f1ece2] sm:text-[26px]"
+            style={{ opacity: 0.95 }}
+          >
+            This is what stayed.
+          </p>
+
+          <div className="mt-1">
             <Link
               href="/home"
               aria-label="Hessentials — home"
@@ -203,10 +214,6 @@ function CinematicFooter() {
 
           <p className="text-[12px] uppercase tracking-[0.28em] text-[#f8f6f3]/70">
             Hessentials
-          </p>
-
-          <p className="font-serif text-[17px] italic leading-[1.4] text-[#f8f6f3]/75">
-            This is what stayed.
           </p>
         </div>
 

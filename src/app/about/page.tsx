@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import SectionDivider from "../../components/SectionDivider";
+import AboutEssay from "../../components/AboutEssay";
 
 export const metadata: Metadata = {
   title: "About — Hessentials",
@@ -8,98 +8,55 @@ export const metadata: Metadata = {
 };
 
 /**
- * About — magazine feature opener.
+ * About — full-bleed hero with overlay essay (per Master Update Brief §4).
  *
- *   Hero image at the top, sized to support the manifesto rather than
- *   lead it (per §2.5). The brand position is *the standard, not the
- *   personality* — capping the image's max-width brings it down to
- *   ~50–55% viewport height on most desktops while preserving the
- *   landscape composition (no crop). Type B feature-frame treatment
- *   (rounded 20px) is preserved so it still speaks the homepage's
- *   visual vocabulary.
+ *   Single image, single essay, single signature, footer. The brevity
+ *   is the design.
  *
- *   Writing follows underneath in a narrow column: eyebrow, italic
- *   serif headline, then four paragraphs of body. Reads in fifteen
- *   seconds. Stops.
+ *   Hero: merida_moment_5.jpg, full-bleed, 80–90vh desktop / 70vh
+ *   mobile. Object-cover, focal point biased toward the right (table
+ *   side) so the empty plaster wall on the left holds the essay.
  *
- *   Page ends; standard SiteFooter takes the close (hacienda image +
- *   newsletter + legal). No in-page footer here — duplicating what
- *   the global footer already does is wasted effort.
+ *   Essay: italic serif throughout, ~18–22px desktop / 16px mobile,
+ *   line-height 1.6–1.7, max column 480–540px desktop / 280–320px
+ *   mobile. Cream #f1ece2 at 95%. Soft scrim under the column.
  *
- *   Note: §2.5 of the design refinement brief offered two options for
- *   reducing the hero photo's prominence — (A) reduce size, or (B)
- *   move to a side anchor. Option A is implemented here as the more
- *   restrained move. If Option B reads better in production, the
- *   change is small and isolated to this file.
+ *   Signature: hand-drawn heart + JH initials SVG (Jordan provides).
+ *   Sits ~32–48px below the closing line, 140px desktop / 110px mobile,
+ *   inheriting the cream essay color via currentColor. Placeholder
+ *   rendered until the SVG arrives.
+ *
+ *   Page ends; standard SiteFooter takes the close (merida_moment_6 +
+ *   "This is what stayed." + newsletter + legal). No "h" motif here.
+ *   No section header hairlines here. The brevity is the design.
  */
 export default function AboutPage() {
   return (
-    <main className="relative z-10 min-h-screen text-[#1f1d1b]">
-      {/* ---------- Hero image — reduced (§2.5 option A) ---------- */}
+    <main className="relative z-10 text-[#1f1d1b]">
+      {/* ---------- Hero image + essay overlay ----------
+          Min-height: 70vh on mobile, ~85vh on desktop. Section grows
+          taller if the essay column needs more vertical room (the
+          essay is the gravity here — the image accommodates the text,
+          not the other way around). Image focal point biased toward
+          the right table area so the empty plaster wall on the left
+          holds the essay column. */}
       <section
-        aria-hidden
-        className="px-6 pt-12 sm:px-10 sm:pt-16 md:px-16 md:pt-20"
+        aria-label="About Hessentials"
+        className="relative w-full overflow-hidden"
       >
-        <figure className="mx-auto max-w-[720px]">
-          <div className="overflow-hidden rounded-[20px]">
-            <Image
-              src="/home/hacienda-03-morning.jpg"
-              alt=""
-              width={1537}
-              height={1023}
-              sizes="(min-width: 800px) 720px, (min-width: 768px) calc(100vw - 8rem), calc(100vw - 3rem)"
-              quality={95}
-              priority
-              className="block h-auto w-full"
-            />
-          </div>
-        </figure>
-      </section>
-
-      {/* "h" motif transitioning from hero photo to manifesto (§2.1). */}
-      <SectionDivider />
-
-      {/* ---------- Writing ---------- */}
-      <section
-        aria-label="Hessentials"
-        className="mx-auto w-full max-w-[640px] px-6 pb-32 sm:px-8 sm:pb-40 md:pb-48"
-      >
-        {/* Hairline above the page eyebrow (§2.2). */}
-        <span
-          aria-hidden
-          className="block w-20"
-          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        {/* Image fills the section as a background; AboutEssay drives
+            the section's height via its own min-h + py. */}
+        <Image
+          src="/about/merida-moment-5.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          quality={95}
+          priority
+          className="object-cover object-[72%_center] md:object-[68%_center]"
         />
-        <p className="mt-6 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
-          About
-        </p>
 
-        <h1 className="mt-8 font-serif text-[clamp(1.875rem,3.4vw,2.625rem)] font-normal italic leading-[1.2] tracking-[-0.012em] text-balance text-[#1f1d1b] sm:mt-10">
-          An editorial home for choosing well.
-        </h1>
-
-        <div className="mt-12 max-w-[520px] font-serif text-[clamp(1.0625rem,1.4vw,1.1875rem)] font-normal leading-[1.6] text-[#1f1d1b]/85 sm:mt-14">
-          <p>Modern life got loud. Most of it doesn&rsquo;t matter.</p>
-
-          <p className="mt-6">
-            Hessentials is for the small decisions that hold up &mdash; what
-            to cook, what to keep, what to buy, what to ignore.
-          </p>
-
-          <p className="mt-6">
-            Not trends. Not algorithms. Not a performance of taste.
-          </p>
-
-          <p className="mt-6">Only what proves itself.</p>
-        </div>
-
-        {/* Signature line — closes the About page with quiet authorship.
-            The brand is editorial, not anonymous; the visitor should
-            leave knowing one person stands behind the filter. */}
-        <p className="mt-16 max-w-[520px] font-serif text-[clamp(0.9375rem,1.15vw,1.0625rem)] italic leading-[1.6] text-[#1f1d1b]/55 sm:mt-20">
-          Run by Jordan Hess. Every piece passes the same test before it
-          gets in.
-        </p>
+        <AboutEssay />
       </section>
     </main>
   );
