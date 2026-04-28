@@ -84,81 +84,77 @@ const PRACTICE_ITEMS: SearchItem[] = [
       "A clear-eyed audit, not a sobriety crusade. The drink wasn't the variable. The structure was.",
   },
   {
-    title: "Why I Write Down What I Want and Carry It With Me",
+    title: "Why I write down what I want and carry it with me",
     section: "Practice",
     url: "/practice/practice-why-i-write-down-what-i-want",
     description:
-      "Not manifestation. A corrective for a brain that drifts.",
+      "Most of what people call wanting something doesn't survive a folded page in pen.",
   },
   {
-    title: "Sound Baths, and How to Tell Which Ones Work",
+    title: "Sound baths and how to tell which ones work",
     section: "Practice",
     url: "/practice/practice-sound-baths-how-to-tell-which-ones-work",
-    description:
-      "The good ones aren't decided by the bowls. They're decided by the silences.",
+    description: "Most of them don't. Here's what you're listening for.",
   },
   {
-    title: "11:11 Is a Real Practice. It Just Isn't What People Say It Is.",
+    title: "11:11 is a real practice. It just isn't what people say it is.",
     section: "Practice",
     url: "/practice/practice-1111-is-a-real-practice",
     description:
-      "Not a sign from the universe. A punctuation mark you've trained yourself to use.",
+      "The number doesn't mean anything. The pause means everything.",
   },
   {
-    title: "Compliment One Person Every Day. Make It Specific.",
+    title: "Compliment one person every day. Make it specific.",
     section: "Practice",
     url: "/practice/practice-compliment-one-person-every-day",
     description:
-      "Generic compliments are noise. Specific ones become part of how the recipient understands themselves.",
+      "Not because they need it. Because of what it does to you.",
   },
   {
-    title: "Pick One Stone. Know Why.",
+    title: "Pick one stone. Know why.",
     section: "Practice",
     url: "/practice/practice-pick-one-stone-know-why",
-    description:
-      "A bowl of crystals isn't a practice. One stone, chosen for one reason, is.",
+    description: "Not for healing. For commitment.",
   },
   {
-    title: "Walking Is Not Slow Running",
+    title: "Walking is not slow running.",
     section: "Practice",
     url: "/practice/practice-walking-is-not-slow-running",
-    description:
-      "A different machine doing different work. The cardio frame steals the cognitive practice.",
+    description: "One is for the body. The other is for the rest of you.",
   },
   {
-    title: "Go to Mass Occasionally. Even If You're Not Catholic.",
+    title: "Go to Mass occasionally. Even if you're not Catholic.",
     section: "Practice",
     url: "/practice/practice-go-to-mass-occasionally",
     description:
-      "Sit in the back. The form does what it was built to do, whether you believe or not.",
+      "One tradition's seriousness about the divine can deepen yours.",
   },
   {
-    title: "Tarot Isn't Prediction. Here's What It Is.",
+    title: "Tarot isn't prediction. Here's what it is.",
     section: "Practice",
     url: "/practice/practice-tarot-isnt-prediction",
     description:
-      "A structured way to ask yourself a question you already know the answer to.",
+      "Stop asking it what's going to happen. Start asking it what's already true.",
   },
   {
-    title: "The Single Object You Carry",
+    title: "The single object you carry.",
     section: "Practice",
     url: "/practice/practice-the-single-object-you-carry",
-    description:
-      "Not your phone. Not your wallet. The chosen object, carried for one season.",
+    description: "Not jewelry. Not a talisman. An anchor.",
   },
   {
-    title: "Silence. Five Minutes. No App.",
+    title: "Silence. Five minutes. No app.",
     section: "Practice",
     url: "/practice/practice-silence-five-minutes-no-app",
     description:
-      "A meditation app is a meditation about a meditation. The actual practice is sitting quietly without one.",
+      "The thing every meditation app is selling you a worse version of.",
   },
   {
-    title: "The Annual Review Beats Resolutions",
+    title: "The annual review beats resolutions.",
     section: "Practice",
     url: "/practice/practice-the-annual-review-beats-resolutions",
     description:
-      "Resolutions are forecasts. The annual review is a conversation with the person you actually were.",
+      "Looking back is the practice. Looking forward is the byproduct.",
   },
 ];
 
