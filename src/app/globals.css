@@ -526,3 +526,227 @@ body {
 .filter-pill-active:hover::after {
   background-color: rgb(31 29 27 / 1); /* text color, full strength */
 }
+
+/* ---------- Splash morph (first-visit /home arrival) ----------
+   Full sequence runs on a single 2950ms timeline so all four movements
+   stay synchronized across overlay layers and the page underneath:
+
+     0     - 1500 ms  Movement 1   Hold (full-bleed image)
+     1500  - 1700 ms  Movement 2   Mask reveal (200ms fade)
+     1700  - 2600 ms  Movement 3   Scale + translate (900ms, cb 0.65/0/0.35/1)
+     2600  - 2950 ms  Movement 4   Color settle (350ms crossfade)
+
+   All page elements (header + main) sit at opacity 0 from movements 1-2,
+   then fade in across movement 3 — they're fully visible by the time the
+   morph wordmark lands in the masthead position, and the morph's image-
+   in-letters crossfades to brand color in movement 4. By movement 4 end
+   the morph wordmark and the masthead wordmark overlap exactly, so the
+   overlay can be removed without a visible swap.
+
+   Triggered server-side by reading the `hessentials_splash_seen` cookie
+   in /home/page.tsx; that page emits a tiny inline script that adds the
+   `splash-pending` class to <html> synchronously before paint, which is
+   what these rules key off of. Once the SplashMorph client component
+   completes (or is skipped), it removes the class and unmounts the
+   overlay. */
+
+/* Masthead landing position — matches SiteHeader's wordmark coords per
+   breakpoint. Source: SiteHeader uses px-6 sm:px-10 md:px-16 + py-2.5
+   sm:py-3, with Wordmark size="nav" (clamp(140px,14vw,200px)). */
+:root {
+  --splash-end-top: 10px;
+  --splash-end-left: 24px;
+  --splash-end-width: 140px;
+}
+@media (min-width: 640px) {
+  :root {
+    --splash-end-top: 12px;
+    --splash-end-left: 40px;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --splash-end-left: 64px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --splash-end-width: clamp(140px, 14vw, 200px);
+  }
+}
+
+/* Page hide / fade-in. Header + main sit at opacity 0 while .splash-pending
+   is set; the keyframe drives them back to 1 in lock-step with the morph. */
+@keyframes splash-page-fade {
+  0%      { opacity: 0; animation-timing-function: linear; }
+  57.63%  { opacity: 0; animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+  88.14%  { opacity: 1; }
+  100%    { opacity: 1; }
+}
+
+html.splash-pending header,
+html.splash-pending main {
+  opacity: 0;
+  animation: splash-page-fade 2950ms forwards;
+}
+
+/* Skip path: any input → page snaps to opacity 1 with a 200ms ease-out,
+   overlay fades out alongside (handled per-layer below). */
+html.splash-skipping header,
+html.splash-skipping main {
+  animation: none;
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+/* Overlay container — fixed, above everything. */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: auto;
+  background-color: transparent;
+  /* Block scrolling under the splash so wheel-induced layout shift can't
+     bleed into Movement 3's page-fade-in. */
+  touch-action: none;
+}
+
+/* Layer 1: full-bleed splash image. Visible during Movement 1,
+   fades out across Movement 2. */
+.splash-fullbleed {
+  position: absolute;
+  inset: 0;
+  background-image: url("/splash/morning-merida.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: splash-fullbleed-fade 2950ms forwards;
+}
+
+@keyframes splash-fullbleed-fade {
+  0%     { opacity: 1; animation-timing-function: linear; }
+  50.85% { opacity: 1; animation-timing-function: ease-out; }
+  57.63% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+/* Layers 2 + 3: shared mask + position. The wordmark mask uses the high-
+   res PNG via mask-image so the alpha channel becomes the visible area;
+   the layer's background fills it (image for layer 2, brand color for
+   layer 3). Mask-size is 100% of the layer's box, so when the box scales
+   the masked content scales with it. Aspect ratio locked to the
+   wordmark's natural 994:255 so the box stays proportional throughout
+   the morph. */
+.splash-wordmark {
+  position: fixed;
+  /* Default = end (masthead) position. Keyframes override during
+     Movements 1-2 to land the start state at full-screen scale. */
+  width: var(--splash-end-width);
+  top: var(--splash-end-top);
+  left: var(--splash-end-left);
+  aspect-ratio: 994 / 255;
+
+  -webkit-mask-image: url("/hessentials-wordmark.png");
+  mask-image: url("/hessentials-wordmark.png");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Layer 2 — image revealed inside the wordmark.
+   Opacity timeline:
+     hold + most of mask    : 0
+     end of Movement 2      : 1 (fades in over 200ms)
+     end of Movement 3      : 1 (still visible at masthead position)
+     end of Movement 4      : 0 (crossfaded out for color layer)
+   Position timeline:
+     hold + Movement 2      : full-screen (95vw, vertically centered)
+     Movement 3 → end       : masthead position (cubic-bezier easing) */
+.splash-wordmark--image {
+  background-image: url("/splash/morning-merida.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: splash-wordmark-image 2950ms forwards;
+}
+
+@keyframes splash-wordmark-image {
+  0% {
+    opacity: 0;
+    width: 95vw;
+    top: calc(50vh - (95vw / (994 / 255) / 2));
+    left: 2.5vw;
+    animation-timing-function: linear;
+  }
+  50.85% {
+    opacity: 0;
+    width: 95vw;
+    top: calc(50vh - (95vw / (994 / 255) / 2));
+    left: 2.5vw;
+    animation-timing-function: ease-out;
+  }
+  57.63% {
+    opacity: 1;
+    width: 95vw;
+    top: calc(50vh - (95vw / (994 / 255) / 2));
+    left: 2.5vw;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  88.14% {
+    opacity: 1;
+    width: var(--splash-end-width);
+    top: var(--splash-end-top);
+    left: var(--splash-end-left);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    opacity: 0;
+    width: var(--splash-end-width);
+    top: var(--splash-end-top);
+    left: var(--splash-end-left);
+  }
+}
+
+/* Layer 3 — brand color inside the wordmark mask. Always at masthead
+   position; opacity is the only thing that animates (Movement 4 fade-in). */
+.splash-wordmark--color {
+  background-color: #1f1d1b;
+  animation: splash-wordmark-color 2950ms forwards;
+}
+
+@keyframes splash-wordmark-color {
+  0%      { opacity: 0; }
+  88.14%  { opacity: 0; animation-timing-function: ease-in-out; }
+  100%    { opacity: 1; }
+}
+
+/* Skip — when state flips to "skipping", every overlay layer fades to 0
+   over 200ms (the page underneath does the same). */
+.splash-overlay[data-render="skipping"] .splash-fullbleed,
+.splash-overlay[data-render="skipping"] .splash-wordmark--image,
+.splash-overlay[data-render="skipping"] .splash-wordmark--color {
+  animation: none;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+/* Reduced motion — the SplashMorph component already short-circuits to
+   "done" so the overlay never mounts. This block is a safety net for the
+   page-fade rule above so the SSR opacity-0 state doesn't strand the
+   page if the cookie/JS path were to misfire. */
+@media (prefers-reduced-motion: reduce) {
+  html.splash-pending header,
+  html.splash-pending main {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* The /home masthead's wordmark-press arrival animation is redundant
+   while the splash plays (the morph IS the arrival). Suppress it. */
+html.splash-pending .wordmark-press {
+  animation: none;
+}

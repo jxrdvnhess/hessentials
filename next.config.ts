@@ -44,6 +44,16 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // / → /home — the splash gateway with wordmark + Enter button has
+      // been replaced by the cinematic morph that fires on /home itself
+      // (first-visit, cookie-gated). Single canonical homepage URL now.
+      // Kept as a non-permanent redirect for a few months in case we
+      // change our minds; promote to permanent once stable.
+      {
+        source: "/",
+        destination: "/home",
+        permanent: false,
+      },
       {
         source: "/living/the-10-minute-reset-that-changes-your-evenings",
         destination: "/living/the-10-minute-reset",

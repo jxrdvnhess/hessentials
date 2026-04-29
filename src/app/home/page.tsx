@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import RightNow from "../../components/RightNow";
 import TheEdit from "../../components/TheEdit";
 import HomeFooterOverlay, {
@@ -9,12 +10,29 @@ import HomeFooterOverlay, {
 import ImagePoemLine from "../../components/ImagePoemLine";
 import Symbol from "../../components/Symbol";
 import AurelianThisWeekPanel from "../../components/AurelianThisWeekPanel";
+import SplashMorph from "../../components/SplashMorph";
 
 export const metadata: Metadata = {
   title: "Hessentials",
   description:
     "Food, home, and style for people who want better defaults, not more options. Recipes, rooms, and small upgrades worth the time.",
 };
+
+/**
+ * Splash gate.
+ *
+ * The morph plays on first visit (cookie absent) and is suppressed on
+ * subsequent visits within 30 days (cookie present). The cookie check
+ * happens server-side so the page renders correctly on first paint —
+ * a returning visitor sees the homepage immediately, no JS round-trip.
+ *
+ * When the morph is going to play, we emit a tiny inline `<script>` that
+ * adds `splash-pending` to documentElement synchronously during HTML
+ * parsing, before any paint. That class drives the page-fade-in keyframe
+ * (see globals.css) so the masthead and main don't briefly flash visible
+ * before the SplashMorph client component hydrates.
+ */
+const SPLASH_COOKIE = "hessentials_splash_seen";
 
 /**
  * Homepage layout system — strict.
@@ -116,9 +134,37 @@ function Cinematic({
   );
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const cookieStore = await cookies();
+  const playSplash = !cookieStore.has(SPLASH_COOKIE);
+
   return (
-    <main className="relative z-10 text-[#1f1d1b]">
+    <>
+      {/* Preload the splash image so the 1.5s hold isn't a download wait. */}
+      {playSplash && (
+        <link
+          rel="preload"
+          as="image"
+          href="/splash/morning-merida.jpg"
+          fetchPriority="high"
+        />
+      )}
+
+      {/* Inline script that runs synchronously during HTML parse — adds the
+          `splash-pending` class to <html> before paint so the SSR'd opacity-0
+          rule applies immediately and the masthead/main don't flash visible
+          for a frame before SplashMorph hydrates. */}
+      {playSplash && (
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('splash-pending');`,
+          }}
+        />
+      )}
+
+      {playSplash && <SplashMorph />}
+
+      <main className="relative z-10 text-[#1f1d1b]">
       {/* ---------- Hero — H1 left, Aurelian This Week panel right (md+).
           §1.2 — min-h compressed to 42vh with items-end so the H1 sits
           near the bottom and Image 01 enters the viewport at ~30–40%
@@ -427,6 +473,7 @@ export default function HomePage() {
             already lives on the image). */}
         <HomeFooterMobile />
       </section>
-    </main>
+      </main>
+    </>
   );
 }
