@@ -9,6 +9,25 @@ import {
 
 type Article = { title: string; url: string; payoff: string };
 
+/**
+ * Shared picks singleton. Both the desktop overlay and the mobile
+ * cream block are separate <RightNow /> instances (they live in
+ * different DOM positions — overlay is absolute inside Image 03,
+ * cream block is its own section below). To keep them showing the
+ * same article in each slot (Frame 4 §3.5 bug fix), we share state
+ * via a module-level cache + subscriber set:
+ *
+ *   - Server render: every instance returns the deterministic initial
+ *     picks (first article in each slot) so SSR is stable.
+ *   - Client mount: the first instance to fire its useEffect picks
+ *     once, writes to the cache, and broadcasts to any other instance
+ *     already mounted. Subsequent instances read from the cache.
+ *
+ * Result: both overlay and cream-block render the same five picks.
+ */
+let cachedPicks: Article[] | null = null;
+const subscribers = new Set<(p: Article[]) => void>();
+
 const COOKING: Article[] = [
   {
     title: "mediterranean shrimp with white beans",
@@ -198,23 +217,42 @@ type RightNowProps = {
    *  it's already shown elsewhere — e.g. as an overlay on the image
    *  above this block on mobile). */
   hideEyebrow?: boolean;
+  /**
+   * When true, the wrapper applies a slide-in-from-right animation as
+   * it enters the viewport — magazine-page-turn feel (cubic-bezier
+   * slow-start/hard-finish). Replays on re-entry. Wrapped in
+   * prefers-reduced-motion: no-preference so motion-sensitive users
+   * see the panel arrive statically. Per Frame 4 §3.4 — only the
+   * desktop overlay variant uses it.
+   */
+  withSlideIn?: boolean;
 };
 
 export default function RightNow({
   variant = "default",
   hideEyebrow = false,
+  withSlideIn = false,
 }: RightNowProps) {
-  // Initial state matches SSR output to avoid hydration mismatch.
-  // Randomization fires after mount; refresh = new pick across all slots.
-  const [picks, setPicks] = useState<Article[]>(() =>
-    SLOTS.map((s) => s.articles[0])
+  // Picks come from the shared singleton (see top-of-file). Initial
+  // state matches SSR output (first article in each slot) to avoid
+  // hydration mismatch; the client-side mount upgrades to the cached
+  // randomized picks (or runs the pick once if this instance is first).
+  const [picks, setPicks] = useState<Article[]>(
+    () => cachedPicks ?? SLOTS.map((s) => s.articles[0])
   );
 
   useEffect(() => {
-    // Deliberate: server renders the first article in each slot to keep
-    // hydration deterministic, then the client randomizes once after mount.
+    // First instance to mount picks once and broadcasts.
+    if (cachedPicks === null) {
+      cachedPicks = SLOTS.map((s) => pickRandom(s.articles));
+      subscribers.forEach((cb) => cb(cachedPicks!));
+    }
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setPicks(SLOTS.map((s) => pickRandom(s.articles)));
+    setPicks(cachedPicks);
+    subscribers.add(setPicks);
+    return () => {
+      subscribers.delete(setPicks);
+    };
   }, []);
 
   // Scroll-LINKED reveal (not timer-triggered). Reveal is tied to the
@@ -224,13 +262,38 @@ export default function RightNow({
   // essentially complete — fast scroll and slow scroll produce the
   // same ordered emergence, just compressed/stretched in time.
   //
-  // Row 0: "Start here" featured article (fixed, always shown).
-  // Row 1: "Currently" eyebrow (suppressed when hideEyebrow is true).
-  // Rows 2–6: the five rotating SLOTS.
+  // Row 0: "Currently" eyebrow (suppressed when hideEyebrow is true).
+  // Rows 1–5: the five rotating SLOTS.
   const { wrapperRef, setRow, progress } = useScrollRevealStack(
-    SLOTS.length + 2,
+    SLOTS.length + 1,
     { followLagSeconds: 0.6 }
   );
+
+  // Slide-in animation (desktop overlay only). Replays on re-entry —
+  // toggling the .is-visible class via IntersectionObserver. Reduced
+  // motion is handled in CSS via @media (prefers-reduced-motion) so
+  // we don't need a JS guard here. Observes the same node as the
+  // scroll-reveal wrapper (wrapperRef), so no duplicate ref needed.
+  useEffect(() => {
+    if (!withSlideIn) return;
+    const node = wrapperRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.intersectionRatio > 0.25) {
+            node.classList.add("is-visible");
+          } else if (entry.intersectionRatio === 0) {
+            // Out of view — reset so re-entry replays the animation.
+            node.classList.remove("is-visible");
+          }
+        }
+      },
+      { threshold: [0, 0.25, 0.5] }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [withSlideIn, wrapperRef]);
 
   const light = variant === "light";
 
@@ -255,62 +318,32 @@ export default function RightNow({
   const articleTitle = light
     ? "text-[#f1ece2]/95"
     : "text-[#1f1d1b]/90";
-  // Start Here gets the strongest contrast — full opacity title and a
-  // brighter payoff — so the entire block reads as primary against the
-  // rotating Currently slots.
-  const startHereTitle = light
-    ? "text-[#f1ece2]"
-    : "text-[#1f1d1b]";
-  const startHerePayoff = light
-    ? "text-[#f1ece2]/85"
-    : "text-[#1f1d1b]/70";
   // Supporting deks (payoff lines beneath each link): cream at 80% for
   // hierarchy beneath the link itself. Per §1.3.
   const articlePayoff = light
     ? "text-[#f1ece2]/80"
     : "text-[#1f1d1b]/55";
 
-  return (
-    <div ref={wrapperRef as React.RefObject<HTMLDivElement>} className="right-now">
-      {/* Row 0 — Start Here. Fixed featured article. Always shown, even
-          when the Currently eyebrow is hidden (mobile/image overlay case).
-          This is the single, named entry point into the brand for anyone
-          arriving without context. Title sits 4–5px larger than the
-          rotating Currently slots below to claim primary hierarchy. */}
-      <div
-        ref={setRow(0)}
-        style={revealStyle(progress[0] ?? 0)}
-        className="mb-10"
-      >
-        <p
-          className={`mb-3 font-serif text-[12px] italic leading-none sm:text-[13px] ${preEyebrow}`}
-        >
-          If you&rsquo;re new, start here
-        </p>
-        <Link href="/recipes" className="group inline-block">
-          <span
-            className={`inline-flex items-baseline gap-2 font-serif text-[24px] italic leading-[1.2] tracking-[-0.01em] transition-opacity duration-300 ease-out group-hover:opacity-65 sm:text-[26px] ${startHereTitle}`}
-          >
-            The 5 things I cook every week
-            <span aria-hidden className="text-[13px] not-italic">
-              →
-            </span>
-          </span>
-          <span
-            className={`mt-2 block text-[13px] leading-[1.45] transition-opacity duration-300 ease-out group-hover:opacity-65 sm:text-[13.5px] ${startHerePayoff}`}
-          >
-            If you cook nothing else from here, cook these.
-          </span>
-        </Link>
-      </div>
+  // The .right-now-light class keys the slide-in animation + character
+  // text-shadow defined in globals.css (Frame 4 §3.3, §3.4).
+  const wrapperClass = ["right-now", light ? "right-now-light" : ""]
+    .filter(Boolean)
+    .join(" ");
 
-      {/* Row 1 — Currently eyebrow. The rotating set below is what's on
-          rotation right now. Suppressed only when the eyebrow lives on
-          the image above (mobile morning overlay case). */}
+  return (
+    <div
+      ref={wrapperRef as React.RefObject<HTMLDivElement>}
+      className={wrapperClass}
+    >
+      {/* Row 0 — Currently eyebrow. The rotating set below is what's
+          on rotation right now. Suppressed only when the eyebrow lives
+          on the image above (mobile morning overlay case). Per Frame
+          4 §3.1 the old "Start here / The 5 things I cook every week"
+          row was removed — Currently leads now. */}
       {!hideEyebrow && (
         <div
-          ref={setRow(1)}
-          style={revealStyle(progress[1] ?? 0)}
+          ref={setRow(0)}
+          style={revealStyle(progress[0] ?? 0)}
           className="mb-7"
         >
           <p
@@ -328,9 +361,9 @@ export default function RightNow({
       <ul className="space-y-6">
         {SLOTS.map((slot, i) => {
           const article = picks[i];
-          // Row index in the reveal stack: Start Here is 0, Currently
-          // eyebrow is 1, slots start at 2.
-          const rowIndex = i + 2;
+          // Row index in the reveal stack: Currently eyebrow is 0, slots
+          // start at 1.
+          const rowIndex = i + 1;
           return (
             <li
               key={slot.label}

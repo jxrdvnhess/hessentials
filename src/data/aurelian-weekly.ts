@@ -24,6 +24,12 @@ export type AurelianWeeklyReading = {
   headline: string;
   /** 3–5 paragraphs of body. Each paragraph ~50–80 words. */
   paragraphs: string[];
+  /**
+   * Single hand-picked sharpest line for the home-page panel.
+   * Editorial choice — must NOT be the opening sentence (per spec).
+   * Update when `paragraphs` changes.
+   */
+  excerpt: string;
 };
 
 export const CURRENT_READING: AurelianWeeklyReading = {
@@ -40,4 +46,6 @@ export const CURRENT_READING: AurelianWeeklyReading = {
 
     "The watch point: agreeing in the room to the cadence the room is running at, then privately running a different cadence on the way home. The cost of that gap is small for a week and unsustainable past a month. The week's small practice is naming the actual pace once, out loud, to one person who needs to hear it. Most weeks ask for more. This one asks for less, on purpose.",
   ],
+  excerpt:
+    "Most weeks ask for more. This one asks for less, on purpose.",
 };

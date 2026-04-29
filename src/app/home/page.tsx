@@ -8,6 +8,7 @@ import HomeFooterOverlay, {
 } from "../../components/HomeFooterOverlay";
 import ImagePoemLine from "../../components/ImagePoemLine";
 import Symbol from "../../components/Symbol";
+import AurelianThisWeekPanel from "../../components/AurelianThisWeekPanel";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -118,11 +119,14 @@ function Cinematic({
 export default function HomePage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
-      {/* ---------- Hero — text only. Image 01 emerges below this viewport. ----------
-          The right side of the hero used to read as accidental empty space. A
-          single small "h" mark in the upper-right anchors the asymmetry without
-          adding content (per §1.4). */}
-      <section className="relative flex min-h-[52vh] items-center px-6 pt-16 sm:px-10 md:min-h-[65vh] md:px-16 md:pt-0">
+      {/* ---------- Hero — H1 left, Aurelian This Week panel right (md+).
+          §1.2 — min-h compressed to 42vh with items-end so the H1 sits
+          near the bottom and Image 01 enters the viewport at ~30–40%
+          of its height (first cut of a film, not a portrait).
+          §1.3 — Aurelian This Week panel anchors the right side on md+;
+          on mobile, the original "If you're new, start here / Aurelian"
+          CTA cluster returns to the left column. */}
+      <section className="relative flex min-h-[42vh] items-end px-6 pt-24 pb-4 sm:px-10 md:px-16">
         <div className="fade-up delay-3 max-w-[520px]">
           <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
             Hessentials
@@ -137,10 +141,9 @@ export default function HomePage() {
           <p className="mt-6 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px]">
             Less to decide. More that works.
           </p>
-          {/* Single, named entry point. Hero must answer "what do I do next" within three seconds.
-              The label is italic serif (not an uppercase eyebrow) so it reads like a quiet
-              hand on the shoulder rather than a section header. */}
-          <div className="mt-10 max-w-[480px]">
+          {/* Mobile-only CTA cluster (per §1.3 — desktop CTA lives in
+              the Aurelian This Week panel on the right). */}
+          <div className="mt-10 max-w-[480px] md:hidden">
             <p className="font-serif text-[12px] italic leading-none text-[#1f1d1b]/55 sm:text-[13px]">
               If you&rsquo;re new, start here
             </p>
@@ -158,12 +161,15 @@ export default function HomePage() {
           </div>
         </div>
 
+        {/* Aurelian This Week — desktop only (md+). */}
+        <AurelianThisWeekPanel />
+
         {/* Hero asymmetry mark — quiet "h" anchoring the upper-right
-            quadrant. Tonal-cream tint via opacity so it reads as
-            present-but-not-announced against the plaster background. */}
+            quadrant. Hidden on md+ (the Aurelian panel now anchors that
+            zone with real content). */}
         <div
           aria-hidden
-          className="pointer-events-none absolute right-6 top-12 hidden opacity-25 sm:right-10 sm:block md:right-16 md:top-16"
+          className="pointer-events-none absolute right-6 top-12 hidden opacity-25 sm:right-10 sm:block md:hidden"
         >
           <Symbol size="xs" />
         </div>
@@ -222,7 +228,10 @@ export default function HomePage() {
 
       {/* ---------- Image 02 — Midday poolside — Type A — film-cut gap above ----------
           Inside: Most don't. — upper-right where the pink-clay wall
-          meets the architectural shadow under the eaves. */}
+          meets the architectural shadow under the eaves. The thesis
+          standfirst pairs with it on desktop (§2.1) as a print
+          pull-quote bracketed by hairlines; on mobile it renders as
+          a cream pull-quote block immediately below the image. */}
       <section aria-hidden style={{ marginTop: GAP_IMG }}>
         <Cinematic
           src="/home/merida-moment-2.jpg"
@@ -233,10 +242,11 @@ export default function HomePage() {
             position={{
               top: "10%",
               right: "6%",
-              maxWidth: "min(30rem, 42%)",
+              maxWidth: "min(34rem, 48%)",
               align: "right",
             }}
             size="lg"
+            standfirst="Most of what you’ve been told to buy, cook, or follow isn’t that good."
           >
             Most don&rsquo;t.
           </ImagePoemLine>
@@ -272,28 +282,23 @@ export default function HomePage() {
             You learn the difference.
           </ImagePoemLine>
 
-          {/* DESKTOP: localized scrim under the Currently block + Currently overlay.
-              The scrim is bounded to the lower-right column where the
-              type actually sits — not a full-image darken — so the rest
-              of the composition stays clean. Per §3.1: transparent →
-              ~40% black, sized to the column where the text lives. The
-              new merida_moment_3.jpg has a brighter doorway behind the
-              block, so the scrim is a touch heavier than spec to keep
-              the article links legible. */}
+          {/* DESKTOP: right-edge scrim per Frame 4 §3.2 — a narrow
+              gradient running from the right edge inward (60% width),
+              transparent on the left → warm-dark on the right. Pairs
+              with the .right-now character text-shadow (§3.3) — scrim
+              handles backdrop, text-shadow handles characters.
+              z-[1] sits above the image, below the .right-now overlay
+              which is z-[2]. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 hidden md:block"
+            className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[60%] md:block"
             style={{
-              backgroundImage:
-                "linear-gradient(to bottom right, transparent 30%, rgba(20,18,16,0.32) 65%, rgba(20,18,16,0.5) 100%)",
-              maskImage:
-                "radial-gradient(ellipse 60% 70% at 100% 100%, black 0%, black 45%, transparent 90%)",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 60% 70% at 100% 100%, black 0%, black 45%, transparent 90%)",
+              background:
+                "linear-gradient(to left, rgba(20,15,10,0.45) 0%, rgba(20,15,10,0.25) 40%, rgba(20,15,10,0) 100%)",
             }}
           />
-          <div className="absolute right-16 bottom-16 hidden max-w-[320px] md:block">
-            <RightNow variant="light" />
+          <div className="absolute right-16 bottom-16 z-[2] hidden max-w-[320px] md:block">
+            <RightNow variant="light" withSlideIn />
           </div>
 
           {/* MOBILE: image stays clean. All Start Here + Currently labels
@@ -303,10 +308,11 @@ export default function HomePage() {
         </Cinematic>
       </section>
 
-      {/* MOBILE-ONLY: full Start Here + Currently block as a clean cream
-          section below the morning image. */}
+      {/* MOBILE-ONLY: Currently block as a clean cream section below
+          the afternoon image. Shares state with the desktop overlay
+          via the singleton in RightNow.tsx (Frame 4 §3.5). */}
       <section
-        aria-label="Start here and Currently"
+        aria-label="Currently"
         className="block px-6 pt-12 pb-2 sm:px-10 md:hidden"
       >
         <div className="mx-auto max-w-[420px]">
@@ -314,25 +320,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- The Edit — beige zone — image↔beige gap above ---------- */}
+      {/* ---------- The Edit — beige zone — image↔beige gap above ----------
+          Per §2.2: the standalone thesis "Most of what you've been
+          told..." moves up to Frame 3 as a print pull-quote paired
+          with "Most don't." Only the section eyebrow + standfirst +
+          hairline remain here. */}
       <section
         aria-label="The Edit"
         className="px-6 sm:px-10 md:px-16"
         style={{ marginTop: GAP_ZONE }}
       >
         <div className="mb-12 max-w-[520px] sm:mb-14 md:mb-16">
-          {/* Quiet edge line. A single, confident truth that frames the
-              section without raising its voice. Generous spacing below
-              so it reads as a quiet aside, not a heading. */}
-          <p className="font-serif text-[clamp(0.95rem,1.2vw,1.0625rem)] italic leading-[1.55] text-[#1f1d1b]/55">
-            Most of what you&rsquo;ve been told to buy, cook, or follow isn&rsquo;t that good.
-          </p>
-          {/* Section eyebrow with the new hairline above it (§2.2).
+          {/* Section eyebrow with the hairline above it (§5.2).
               80px wide, 0.5px, tonal cream — anchors the label as an
               architectural moment, not a floating tag. */}
           <span
             aria-hidden
-            className="mt-14 block w-20"
+            className="block w-20"
             style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
           />
           <p className="mt-6 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
