@@ -21,9 +21,9 @@ export const metadata: Metadata = {
  *   section height via top/bottom padding.
  *
  *   Padding math:
- *     pt-[100vh]  — first line of essay sits at viewport bottom at
- *                   scroll 0 (so it "enters from below" as the user
- *                   begins to scroll)
+ *     pt-[50vh]   — first line sits ~halfway up the viewport at scroll
+ *                   0, landing on the wall portion of the image so the
+ *                   user sees it immediately and knows to scroll
  *     pb-[100vh]  — sticky releases at the same scroll position the
  *                   last line exits the top (clean release, no dead
  *                   pinned-image runway after the essay)
@@ -72,7 +72,7 @@ export default function AboutPage() {
 
         {/* Foreground — text column. Drives the section's height via
             top/bottom padding so the sticky has scroll runway. */}
-        <div className="relative z-10 max-w-[50vw] pt-[100vh] pb-[100vh] pl-[8vw] pr-[2vw]">
+        <div className="relative z-10 max-w-[50vw] pt-[50vh] pb-[100vh] pl-[8vw] pr-[2vw]">
           <AboutEssay variant="overlay" />
         </div>
       </section>
