@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import RightNow from "../components/RightNow";
 import TheEdit from "../components/TheEdit";
@@ -96,15 +95,19 @@ function Cinematic({
     );
   }
 
-  // Type B — feature frame
+  // Type B — feature frame.
+  // The inset margins + rounded corners are a desktop-only treatment.
+  // On mobile, photographs go edge-to-edge with no card frame so the
+  // figures and architecture inside read at real photographic scale
+  // rather than thumb-scale inside a inset card.
   return (
-    <div className="px-[6vw]">
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] md:aspect-auto md:h-[90vh] md:max-h-[1100px]">
+    <div className="md:px-[6vw]">
+      <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[90vh] md:max-h-[1100px] md:rounded-[20px]">
         <Image
           src={src}
           alt={alt}
           fill
-          sizes="88vw"
+          sizes="100vw"
           quality={quality}
           priority={priority}
           className="object-cover"
@@ -142,28 +145,16 @@ export default function HomePage() {
           <p className="mt-6 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px]">
             Less to decide. More that works.
           </p>
-          {/* Mobile-only CTA cluster (per §1.3 — desktop CTA lives in
-              the Aurelian This Week panel on the right). */}
-          <div className="mt-10 max-w-[480px] md:hidden">
-            <p className="font-serif text-[12px] italic leading-none text-[#1f1d1b]/55 sm:text-[13px]">
-              If you&rsquo;re new, start here
-            </p>
-            <Link
-              href="/aurelian"
-              className="group mt-3 inline-flex flex-wrap items-baseline gap-x-2"
-            >
-              <span className="font-serif text-[clamp(1.0625rem,1.5vw,1.25rem)] italic leading-[1.35] text-[#1f1d1b]/85 transition-opacity duration-300 ease-out group-hover:opacity-65">
-                Aurelian &mdash; a short reading on how you operate
-              </span>
-              <span aria-hidden className="text-[12px] not-italic text-[#1f1d1b]/45">
-                →
-              </span>
-            </Link>
-          </div>
+          {/* Mobile Aurelian This Week — replaces the old "If you're
+              new, start here / Aurelian — a short reading" CTA cluster
+              so mobile visitors meet the same editorial moment desktop
+              visitors do. Same content as the desktop aside, stacked
+              under the hero copy. */}
+          <AurelianThisWeekPanel layout="mobile-stacked" />
         </div>
 
-        {/* Aurelian This Week — desktop only (md+). */}
-        <AurelianThisWeekPanel />
+        {/* Aurelian This Week — desktop right-side aside (md+). */}
+        <AurelianThisWeekPanel layout="desktop-aside" />
 
         {/* Hero asymmetry mark — quiet "h" anchoring the upper-right
             quadrant. Hidden on md+ (the Aurelian panel now anchors that

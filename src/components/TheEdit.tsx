@@ -82,22 +82,32 @@ const INITIAL: EditItem[] = [
 ];
 
 /**
- * Six warm-tone gradients per spec §4.2. Cycled by SLOT POSITION
- * (card 1, 2, 3, 4, 5, 6 → palettes 1–6), not by article identity.
- *
- * Direction `135deg` (top-left lighter, bottom-right darker) is
- * intentional: title sits bottom-left, where the gradient has its
- * mid-tone, giving cream type maximal contrast without flat fill.
+ * Display label per category — small caps eyebrow above the title.
+ * Skipped if a card's title carries the category implicitly already.
  */
-const PALETTES: readonly string[] = [
-  "linear-gradient(135deg, #d4a574 0%, #a06840 100%)", // amber
-  "linear-gradient(135deg, #c4a888 0%, #6b4f3a 100%)", // taupe
-  "linear-gradient(135deg, #6b5544 0%, #3d2a1f 100%)", // dark espresso
-  "linear-gradient(135deg, #b8a285 0%, #8a6f4f 100%)", // tan
-  "linear-gradient(135deg, #9c8264 0%, #4d3a26 100%)", // dark walnut
-  "linear-gradient(135deg, #d4b896 0%, #b78659 100%)", // wheat
-];
+const CATEGORY_LABEL: Record<Category, string> = {
+  recipes: "Recipes",
+  living: "Living",
+  style: "Style",
+  shop: "Shop",
+};
 
+/**
+ * The Edit — type-only editorial cards.
+ *
+ * Magazine table-of-contents register. Each card is a hairline above,
+ * a small uppercase category eyebrow, an italic display title, and a
+ * right-aligned arrow. No background gradients, no oversized type, no
+ * fixed-aspect tile sizing — the section reads as a list of pieces, not
+ * a stack of CTA panels.
+ *
+ * Layout:
+ *   - Mobile (<sm)  : single column, full-width
+ *   - Desktop (sm+) : two columns, breathing room between
+ *
+ * The whole section should fit close to one viewport on desktop, and
+ * one or two scroll-flicks on mobile.
+ */
 export default function TheEdit() {
   const [items, setItems] = useState<EditItem[]>(INITIAL);
 
@@ -107,45 +117,43 @@ export default function TheEdit() {
   }, []);
 
   return (
-    <ul className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 md:grid-cols-3 md:gap-x-10 md:gap-y-10">
-      {items.map((item, i) => (
+    <ul className="grid grid-cols-1 gap-x-12 sm:grid-cols-2 sm:gap-x-16 md:gap-x-20">
+      {items.map((item) => (
         <li key={`${item.category}-${item.href}-${item.title}`}>
           <Link
             href={item.href}
-            className="edit-tile group block transition-all duration-[400ms]"
+            className="
+              group block border-t border-[#1f1d1b]/15 py-5 transition-colors
+              duration-500 ease-out hover:border-[#1f1d1b]/40
+              sm:py-6
+            "
           >
-            <div
-              className="
-                edit-tile__block relative aspect-[5/3] cursor-pointer
-                overflow-hidden rounded-[4px]
-                md:aspect-auto md:h-[clamp(150px,16vw,200px)]
-                transition-[transform,filter] duration-[400ms]
-                ease-[cubic-bezier(0.22,1,0.36,1)]
-                group-hover:-translate-y-0.5
-                group-hover:brightness-105 group-hover:saturate-[1.05]
-              "
-              style={{ backgroundImage: PALETTES[i % PALETTES.length] }}
-            >
-              <div className="absolute inset-0 flex flex-col justify-end px-5 py-5 sm:px-6 sm:py-6 md:px-7 md:py-7">
-                <div className="flex items-baseline justify-between gap-3.5">
-                  <span
-                    className="text-balance flex-1 font-serif text-[19px] font-normal italic leading-[1.22] tracking-[-0.005em] sm:text-[20px] md:text-[22px]"
-                    style={{
-                      color: "rgba(248, 246, 243, 0.97)",
-                      textShadow: "0 1px 22px rgba(0,0,0,0.18)",
-                    }}
-                  >
-                    {item.title}
-                  </span>
-                  <span
-                    aria-hidden
-                    className="flex-shrink-0 font-serif text-[16px] italic leading-none"
-                    style={{ color: "rgba(248, 246, 243, 0.72)" }}
-                  >
-                    →
-                  </span>
-                </div>
-              </div>
+            <p className="text-[10px] uppercase leading-none tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[10.5px]">
+              {CATEGORY_LABEL[item.category]}
+            </p>
+            <div className="mt-3 flex items-baseline justify-between gap-4">
+              <span
+                className="
+                  text-balance flex-1 font-serif text-[20px] font-normal italic
+                  leading-[1.25] tracking-[-0.005em] text-[#2b1f17]/90
+                  transition-colors duration-500 ease-out
+                  group-hover:text-[#2b1f17]
+                  sm:text-[22px] md:text-[24px]
+                "
+              >
+                {item.title}
+              </span>
+              <span
+                aria-hidden
+                className="
+                  shrink-0 font-serif text-[14px] not-italic leading-none
+                  text-[#1f1d1b]/35
+                  transition-colors duration-500 ease-out
+                  group-hover:text-[#1f1d1b]/70
+                "
+              >
+                &rarr;
+              </span>
             </div>
           </Link>
         </li>
