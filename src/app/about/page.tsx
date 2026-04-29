@@ -8,55 +8,94 @@ export const metadata: Metadata = {
 };
 
 /**
- * About — full-bleed hero with overlay essay (per Master Update Brief §4).
+ * About — sticky-backdrop hero (2026-04-29 spec).
  *
- *   Single image, single essay, single signature, footer. The brevity
- *   is the design.
+ *   merida_moment_5.jpg becomes a full-bleed sticky backdrop. The
+ *   essay scrolls over the left half of the image; the image stays
+ *   pinned for the duration of the essay, then releases and the page
+ *   continues into the global SiteFooter (merida_moment_6 + newsletter
+ *   + legal) unchanged.
  *
- *   Hero: merida_moment_5.jpg, full-bleed, 80–90vh desktop / 70vh
- *   mobile. Object-cover, focal point biased toward the right (table
- *   side) so the empty plaster wall on the left holds the essay.
+ *   Pattern: relative section → absolute child fills it and contains
+ *   the sticky h-screen image → relative-positioned essay column drives
+ *   section height via top/bottom padding.
  *
- *   Essay: italic serif throughout, ~18–22px desktop / 16px mobile,
- *   line-height 1.6–1.7, max column 480–540px desktop / 280–320px
- *   mobile. Cream #f1ece2 at 95%. Soft scrim under the column.
+ *   Padding math:
+ *     pt-[50vh]   — first line sits ~halfway up the viewport at scroll
+ *                   0, landing on the wall portion of the image so the
+ *                   user sees it immediately and knows to scroll
+ *     pb-[100vh]  — sticky releases at the same scroll position the
+ *                   last line exits the top (clean release, no dead
+ *                   pinned-image runway after the essay)
  *
- *   Signature: hand-drawn heart + JH initials SVG (Jordan provides).
- *   Sits ~32–48px below the closing line, 140px desktop / 110px mobile,
- *   inheriting the cream essay color via currentColor. Placeholder
- *   rendered until the SVG arrives.
- *
- *   Page ends; standard SiteFooter takes the close (merida_moment_6 +
- *   "This is what stayed." + newsletter + legal). No "h" motif here.
- *   No section header hairlines here. The brevity is the design.
+ *   Mobile (sub-md): sticky pattern is abandoned per spec — sticky
+ *   over portrait crops always reads worse than a clean stacked
+ *   layout. Image renders as a standard hero, essay flows beneath in
+ *   normal document order.
  */
 export default function AboutPage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
-      {/* ---------- Hero image + essay overlay ----------
-          Min-height: 70vh on mobile, ~85vh on desktop. Section grows
-          taller if the essay column needs more vertical room (the
-          essay is the gravity here — the image accommodates the text,
-          not the other way around). Image focal point biased toward
-          the right table area so the empty plaster wall on the left
-          holds the essay column. */}
+      {/* ---------- DESKTOP (md+) — sticky backdrop ---------- */}
       <section
         aria-label="About Hessentials"
-        className="relative w-full overflow-hidden"
+        className="relative hidden w-full md:block"
       >
-        {/* Image fills the section as a background; AboutEssay drives
-            the section's height via its own min-h + py. */}
-        <Image
-          src="/about/merida-moment-5.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          quality={95}
-          priority
-          className="object-cover object-[72%_center] md:object-[68%_center]"
-        />
+        {/* Background layer — fills the entire section. The sticky
+            child inside it pins to the viewport top while this layer
+            (i.e., the section) is in view. Once the section's bottom
+            scrolls past the viewport top, the sticky releases. */}
+        <div className="absolute inset-0">
+          <div className="sticky top-0 h-screen w-full overflow-hidden">
+            <Image
+              src="/about/merida-moment-5.jpg"
+              alt=""
+              fill
+              sizes="100vw"
+              quality={95}
+              priority
+              className="object-cover object-center"
+            />
+            {/* Subtle left-side scrim — only enough to hold cream type
+                against the wall. Transparent on the right (table side
+                stays clean). */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, rgba(20,18,16,0.32) 0%, rgba(20,18,16,0.18) 22%, rgba(20,18,16,0) 55%)",
+              }}
+            />
+          </div>
+        </div>
 
-        <AboutEssay />
+        {/* Foreground — text column. Drives the section's height via
+            top/bottom padding so the sticky has scroll runway. */}
+        <div className="relative z-10 max-w-[50vw] pt-[50vh] pb-[100vh] pl-[8vw] pr-[2vw]">
+          <AboutEssay variant="overlay" />
+        </div>
+      </section>
+
+      {/* ---------- MOBILE (sub-md) — stacked hero + flow ---------- */}
+      <section
+        aria-label="About Hessentials"
+        className="block md:hidden"
+      >
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
+          <Image
+            src="/about/merida-moment-5.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={95}
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="px-6 pt-12 pb-20 sm:px-8 sm:pt-16">
+          <AboutEssay variant="inline" />
+        </div>
       </section>
     </main>
   );
