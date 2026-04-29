@@ -8,6 +8,7 @@ import HomeFooterOverlay, {
 import ImagePoemLine from "../components/ImagePoemLine";
 import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
+import MothersDayModule from "../components/MothersDayModule";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
  *   images: 12px — a film cut, not a section break.
  */
 
-const GAP_HERO = "8vh"; // Hero → Image 01 — modest cream breath before the arc
+const GAP_HERO = "4vh"; // Hero → Image 01 — tightened so the image edge peeks within the first viewport (fold cue)
 const GAP_IMG = "12px"; // Image ↔ Image — film cut
 const GAP_ZONE = "96px"; // Image ↔ The Edit — beige zone, compressed from 140px
 
@@ -130,7 +131,14 @@ export default function HomePage() {
           §1.3 — Aurelian This Week panel anchors the right side on md+;
           on mobile, the original "If you're new, start here / Aurelian"
           CTA cluster returns to the left column. */}
-      <section className="relative flex min-h-[42vh] items-end px-6 pt-24 pb-4 sm:px-10 md:px-16">
+      {/* Fold cue (2026-04-29): md:min-h-[88vh] anchors the hero to
+          most of the first viewport with items-end, so the H1 sits
+          near the bottom and Image 01's top edge peeks below — a
+          content cue that there's more to read, not a UI element.
+          Mobile is content-driven (mobile-stacked Aurelian module
+          already pushes the hero past viewport on phones); the
+          eyebrow of that module serves as the mobile fold cue. */}
+      <section className="relative flex min-h-[42vh] items-end px-6 pt-24 pb-4 sm:px-10 md:min-h-[88vh] md:px-16">
         <div className="fade-up delay-3 max-w-[520px]">
           <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
             Hessentials
@@ -168,20 +176,23 @@ export default function HomePage() {
       </section>
 
       {/*
+        Mother's Day editorial module — second fold.
+
+        The image at the left of this module is now what peeks below
+        the hero at the fold (replacing Image 01's previous role as
+        the fold cue). The user lands on the hero, sees the table
+        photograph cueing continuation, and scrolls into the module.
+      */}
+      <div style={{ marginTop: GAP_HERO }}>
+        <MothersDayModule />
+      </div>
+
+      {/*
         Image 01 — Morning, two men at the table — Type A.
 
-        The opening image extends the hero rather than beginning a new
-        section:
-
-          - small cream breath above (GAP_HERO ~ 8vh)
-          - top mask: the image's upper ~28% is faded to transparent
-            via a linear-gradient mask, revealing the page's cream
-            background through it
-
-        The result: the seam between hero and image is cream-on-cream
-        (invisible). Below the seam, the image gradually becomes itself.
-        The viewer is already inside the world before they consciously
-        scroll.
+        The opening image of the cinematic arc. Crisp edge — no top
+        gradient fade — so the seam between Mother's Day module and
+        the arc reads as a clean editorial transition.
 
         Inside the image: Some moments hold. — upper-left plaster wall,
         the undetailed area above and to the left of the older man.
@@ -189,13 +200,7 @@ export default function HomePage() {
       <section
         aria-hidden
         className="w-full"
-        style={{
-          marginTop: GAP_HERO,
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, transparent 4%, black 32%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0%, transparent 4%, black 32%)",
-        }}
+        style={{ marginTop: GAP_IMG }}
       >
         <Cinematic
           src="/home/merida-moment-1.jpg"
