@@ -1,3 +1,16 @@
+// =============================================================================
+// PARKED — not imported anywhere as of 2026-04-29.
+//
+// The plaster texture overlay was pulled site-wide because it was reading as
+// wallpaper imitating what the footer photograph now does for real and
+// competing with the photography. The site is flat brand cream now (var
+// --cream-bg in globals.css). This component remains in the repo per the
+// archive policy — the texture PNG (/public/soft-plaster-texture-with-
+// plant-shadows.png) is also kept for possible future use in a specific
+// editorial context. Delete this file if the next look-and-feel pass
+// makes this clearly obsolete.
+// =============================================================================
+
 "use client";
 
 import { useEffect, useState } from "react";

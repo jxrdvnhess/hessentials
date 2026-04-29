@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
-import PlasterBackground from "../components/PlasterBackground";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import "./globals.css";
@@ -113,7 +112,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="text-[#1f1d1b] antialiased">
-        <PlasterBackground />
         <SiteHeader />
         {children}
         <SiteFooter />

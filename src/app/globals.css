@@ -16,19 +16,12 @@ html {
 }
 
 body {
-  /* Plaster texture is the universal backdrop on every route. We
-     DELIBERATELY omit `background-attachment: fixed` — that's the iOS
-     Safari bug that caused per-frame repaints / jitter. The default
-     (`scroll`) is iPhone/iPad-safe: the bg moves with content rather
-     than being recomposited on every scroll tick. The texture also
-     shows immediately as part of the document's CSS, so there's no
-     flash of solid cream while <PlasterBackground /> hydrates. The
-     bg-color underneath is a fallback if the image fails. */
+  /* Flat brand cream on every route. The previous plaster-texture
+     overlay was pulled site-wide on 2026-04-29 — it was reading as
+     wallpaper imitating what the footer photograph now does for real,
+     and it was competing with the photography. Letting the imagery,
+     typography, and writing carry the warmth instead. */
   background-color: var(--cream-bg);
-  background-image: url("/soft-plaster-texture-with-plant-shadows.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   color: #1f1d1b;
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "kern", "liga", "calt";
@@ -317,23 +310,13 @@ body {
   }
 }
 
-/* ---------- Home hub arrival ---------- */
-
-@keyframes plasterRise {
-  0% {
-    opacity: 0;
-    transform: translateY(40%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.plaster-rise {
-  animation: plasterRise 3s cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: transform, opacity;
-}
+/* ---------- Home hub arrival ----------
+   The `plaster-rise` keyframe (texture rising into place on home
+   arrival) was removed when the plaster overlay itself was pulled
+   site-wide on 2026-04-29. `wordmark-press` is also currently
+   orphan — the className was dropped from SiteHeader when the splash
+   morph took over arrival duties — but the keyframes are kept here
+   for now in case a future arrival pattern wants to reuse them. */
 
 @keyframes wordmarkPress {
   0% {
@@ -352,7 +335,6 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .plaster-rise,
   .wordmark-press {
     animation: none;
     opacity: 1;
