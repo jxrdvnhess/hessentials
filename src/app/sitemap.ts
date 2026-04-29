@@ -24,8 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Next's MetadataRoute.Sitemap (rather than widening to `string`).
   type StaticEntry = Omit<MetadataRoute.Sitemap[number], "lastModified">;
   const staticEntries: StaticEntry[] = [
-    { url: `${SITE}/`, priority: 1.0, changeFrequency: "monthly" },
-    { url: `${SITE}/home`, priority: 1.0, changeFrequency: "weekly" },
+    { url: `${SITE}/`, priority: 1.0, changeFrequency: "weekly" },
     { url: `${SITE}/about`, priority: 0.8, changeFrequency: "yearly" },
     { url: `${SITE}/aurelian`, priority: 0.8, changeFrequency: "monthly" },
     { url: `${SITE}/recipes`, priority: 0.9, changeFrequency: "weekly" },

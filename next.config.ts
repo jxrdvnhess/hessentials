@@ -44,14 +44,13 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
-      // / → /home — the splash gateway with wordmark + Enter button has
-      // been replaced by the cinematic morph that fires on /home itself
-      // (first-visit, cookie-gated). Single canonical homepage URL now.
-      // Kept as a non-permanent redirect for a few months in case we
-      // change our minds; promote to permanent once stable.
+      // /home → / — the homepage moved to the canonical / URL so visitors
+      // land on hessentials.co (not hessentials.co/home). Any legacy
+      // links to /home bounce here. Non-permanent for now in case we
+      // need to walk this back; promote to permanent once stable.
       {
-        source: "/",
-        destination: "/home",
+        source: "/home",
+        destination: "/",
         permanent: false,
       },
       {

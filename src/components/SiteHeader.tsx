@@ -31,20 +31,20 @@ const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
 /**
  * Global site header.
  *
- * Sticky across every interior page, hidden on the Enter Page (`/`) so the
- * gateway stays clean. The wordmark anchors the bar; nav and search sit to
- * its right. The wordmark-press arrival animation is preserved on `/home`
- * so the hub still has its quieter sense of arrival.
+ * Sticky across every page. The wordmark anchors the bar; nav and
+ * search sit to its right. The previous `wordmark-press` arrival
+ * animation on the homepage was removed once the splash morph took
+ * over arrival duties — the morph IS the arrival, and a second drop-
+ * down animation after the splash settled was redundant.
  *
  * Background is a vertical gradient + blur, masked to fade out at the
- * bottom edge. The intent is that the bar should feel like atmosphere, not
- * a defined element — no detectable line as content scrolls beneath it.
+ * bottom edge. The intent is that the bar should feel like atmosphere,
+ * not a defined element — no detectable line as content scrolls beneath
+ * it.
  */
 export default function SiteHeader() {
   const pathname = usePathname();
-  if (pathname === "/") return null;
-
-  const isHome = pathname === "/home";
+  const isHome = pathname === "/";
 
   return (
     <header aria-label="Site" className="sticky top-0 z-40 w-full">
@@ -68,14 +68,9 @@ export default function SiteHeader() {
 
       <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-6 py-2.5 sm:px-10 sm:py-3 md:px-16">
         <Link
-          href="/home"
+          href="/"
           aria-label="Hessentials — home"
-          className={[
-            "inline-block shrink-0",
-            isHome ? "wordmark-press" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")}
+          className="inline-block shrink-0"
         >
           <Wordmark size="nav" priority={isHome} />
         </Link>

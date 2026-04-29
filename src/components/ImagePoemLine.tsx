@@ -179,7 +179,11 @@ export default function ImagePoemLine({
           #f1ece2 at ~95% opacity, italic serif, magazine pull-quote
           treatment per Frame 3 §2.1. Hidden on mobile because the
           standfirst would crowd the poem line at small sizes — see
-          home/page.tsx for the mobile cream-block fallback. */}
+          home/page.tsx for the mobile cream-block fallback.
+
+          Reveal is delayed 350ms after the poem line above so the
+          line lands first and the thesis settles in beneath it
+          (per Jordan's editorial pacing — beat, then beat). */}
       {standfirst && (
         <div
           className="hidden md:block"
@@ -187,6 +191,7 @@ export default function ImagePoemLine({
             opacity: targetOpacity,
             transitionProperty: "opacity",
             transitionDuration: "650ms",
+            transitionDelay: "350ms",
             transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         >

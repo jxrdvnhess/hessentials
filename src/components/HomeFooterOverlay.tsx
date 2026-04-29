@@ -60,7 +60,7 @@ export default function HomeFooterOverlay() {
           className="mt-2"
         >
           <Link
-            href="/home"
+            href="/"
             aria-label="Hessentials — home"
             className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
           >
@@ -149,7 +149,7 @@ export function HomeFooterMobile() {
     <div className="block md:hidden">
       <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-8 px-6 pt-14 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
         <Link
-          href="/home"
+          href="/"
           aria-label="Hessentials — home"
           className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
         >

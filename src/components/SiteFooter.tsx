@@ -25,15 +25,13 @@ const LEGAL_LINKS: readonly LegalLink[] = [
  * + legal) is layered into the safe zones over a quiet darken.
  *
  * Suppressed on:
- *   /        — Enter Page (gateway stays clean)
- *   /home    — homepage closes inside its own photograph (HomeFooterOverlay
+ *   /        — homepage closes inside its own photograph (HomeFooterOverlay
  *              on merida-moment-4.jpg). Same cinematic logic; the
  *              homepage just owns its own closing image.
  */
 export default function SiteFooter() {
   const pathname = usePathname();
   if (pathname === "/") return null;
-  if (pathname === "/home") return null;
   return <CinematicFooter />;
 }
 
@@ -41,9 +39,14 @@ export default function SiteFooter() {
  * Cinematic image footer.
  *
  * IMAGE
- *   /merida-moment-6.jpg — pool corridor at dusk, arched doorway as the
- *   anchor. The lit interior beyond the arch carries the warm focal
- *   point; the long water and ivy walls hold the rest of the frame.
+ *   /splash/morning-merida.jpg — morning bedroom, raking sun, unmade
+ *   linens, a figure crossing the archway. The previous dusk-courtyard
+ *   image read as architectural showcase; this one carries human
+ *   presence and morning-light register, keeping the footer's emotional
+ *   tone in step with the editorial voice. Same asset is used in the
+ *   /home splash sequence — the repetition is intentional.
+ *   The dusk image is archived at /merida-courtyard-dusk-archived.jpg
+ *   for reuse later (Aurelian, Practice, future newsletter header).
  *
  * DESKTOP (md+)
  *   Image fills 60–75vh. Newsletter / symbol / tagline overlay anchors
@@ -136,15 +139,18 @@ function CinematicFooter() {
           Desktop: 72vh+ with full overlay zones (aspect matches). */}
       <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
         <Image
-          src="/merida-moment-6.jpg"
+          src="/splash/morning-merida.jpg"
           alt=""
           fill
           quality={92}
           sizes="100vw"
-          className="object-cover object-center md:object-center"
+          className="object-cover object-center"
           style={{
             opacity: revealOpacity,
-            filter: "brightness(0.95) saturate(0.96) contrast(1.02)",
+            // Slight darken + warm bias so cream type sits cleanly on
+            // the linens and shadow wall. Tune after live preview if
+            // any zone fights the type.
+            filter: "brightness(0.94) saturate(0.98) contrast(1.02)",
           }}
         />
 
@@ -204,7 +210,7 @@ function CinematicFooter() {
 
           <div className="mt-1">
             <Link
-              href="/home"
+              href="/"
               aria-label="Hessentials — home"
               className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
             >
@@ -257,7 +263,7 @@ function CinematicFooter() {
       <div className="block md:hidden">
         <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-8 px-6 pt-14 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
           <Link
-            href="/home"
+            href="/"
             aria-label="Hessentials — home"
             className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
           >
