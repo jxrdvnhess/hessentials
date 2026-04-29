@@ -19,13 +19,14 @@ export default function ShopPage() {
         <p className="font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.4] text-[#1f1d1b]/70">
           {SHOP_INTRO}
         </p>
-        <p className="mt-6 text-[10px] uppercase tracking-[0.22em] leading-[1.7] text-[#1f1d1b]/40 sm:text-[11px]">
-          $ under $100  ·  $$ $100–400  ·  $$$ $400–1,000  ·  $$$$ above $1,000
-        </p>
+        {/* The price-tier legend ($ / $$ / $$$ / $$$$) was removed —
+            redundant now that every card shows actual dollar amounts.
+            The pt on the grid section below was bumped to preserve the
+            breathing room above the category nav. */}
       </section>
 
       {/* ---------- Filter + Grid ---------- */}
-      <div className="mx-auto w-full max-w-7xl px-6 pt-8 pb-32 sm:px-10 sm:pt-12 md:pb-40">
+      <div className="mx-auto w-full max-w-7xl px-6 pt-14 pb-32 sm:px-10 sm:pt-16 md:pb-40">
         <ShopGrid />
       </div>
     </main>

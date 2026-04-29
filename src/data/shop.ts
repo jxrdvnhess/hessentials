@@ -97,7 +97,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Omega",
     category: "Watches & Jewelry",
     reason: "The dress watch you can swim in.",
-    priceRange: "$5,800–$6,400",
+    priceRange: "$12,000",
     url: "https://www.omegawatches.com/en-us/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001",
     image: "/shop/omega-aqua-terra-small-seconds-1.jpg",
     images: [
