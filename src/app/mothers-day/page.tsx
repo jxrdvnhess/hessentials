@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Byline from "../../components/Byline";
 
 export const metadata: Metadata = {
   title: "Mother's Day — Hessentials",
@@ -183,6 +184,9 @@ export default function MothersDayArticle() {
             One good decision, executed well, beats five average ones.
           </P>
         </Body>
+
+        {/* Closing byline. */}
+        <Byline />
 
         {/* ---------- Bottom — quiet exit ---------- */}
         <nav

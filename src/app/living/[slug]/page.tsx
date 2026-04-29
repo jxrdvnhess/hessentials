@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Byline from "../../../components/Byline";
 import {
   getAllLivingSlugs,
   getLivingArticleBySlug,
@@ -59,11 +60,10 @@ export default async function LivingArticlePage({
             </p>
           )}
 
-          {(meta.byline || meta.date) && (
-            <p className="mt-10 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/45">
-              {[meta.byline, meta.date].filter(Boolean).join("  ·  ")}
-            </p>
-          )}
+          {/* Top-of-article byline + date were removed per the
+              Authorship brief — bylines belong at the end as a
+              signature, not at the top as journalism-style attribution.
+              See <Byline /> below. */}
         </header>
 
         {/* ---------- Body ---------- */}
@@ -71,6 +71,10 @@ export default async function LivingArticlePage({
           className="prose-editorial"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+
+        {/* Closing byline — sits just below the final paragraph,
+            generous whitespace before the "Continue reading" nav. */}
+        <Byline author={meta.byline} />
 
         {/* ---------- Bottom — onward ---------- */}
         <nav

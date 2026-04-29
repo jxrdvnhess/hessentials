@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import BigThree from "../../components/BigThree";
 import AurelianWeekly from "../../components/AurelianWeekly";
+import Byline from "../../components/Byline";
 import SectionDivider from "../../components/SectionDivider";
 
 export const metadata: Metadata = {
@@ -192,6 +193,11 @@ export default function AurelianPage() {
               {note}
             </p>
           ))}
+        </div>
+
+        {/* Closing byline — Aurelian signs his own page. */}
+        <div className="mx-auto mt-16 max-w-4xl text-center sm:mt-20">
+          <Byline author="Aurelian" />
         </div>
       </section>
     </main>

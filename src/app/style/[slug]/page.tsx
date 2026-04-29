@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Byline from "../../../components/Byline";
 import {
   STYLE_ARTICLES,
   getStyleArticleBySlug,
@@ -246,9 +247,9 @@ export default async function StyleArticlePage({
             {article.dek}
           </p>
 
-          <p className="mt-10 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/45">
-            By {article.author}
-          </p>
+          {/* Top-of-article byline removed per Authorship brief —
+              the byline now sits at the bottom of the body as a
+              signature. See <Byline /> below. */}
         </header>
 
         {/* ---------- Body sections ---------- */}
@@ -268,6 +269,9 @@ export default async function StyleArticlePage({
             </div>
           ))}
         </div>
+
+        {/* Closing byline. */}
+        <Byline author={article.author} />
 
         {/* ---------- Tags ---------- */}
         {article.tags.length > 0 && (

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Byline from "./Byline";
 import CopyShoppingList from "./CopyShoppingList";
 import type { Recipe as RecipeData, RecipeMeta } from "../types/recipe";
 
@@ -91,11 +92,9 @@ export default function Recipe({ recipe, className }: RecipeProps) {
           </div>
         )}
 
-        {byline && (
-          <p className="mt-10 text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/45">
-            {byline}
-          </p>
-        )}
+        {/* Top-of-recipe byline removed per Authorship brief —
+            byline now sits at the bottom of the recipe as a
+            signature. See <Byline /> at the end of this article. */}
       </header>
 
       {/* ---------- Hero image ---------- */}
@@ -273,6 +272,9 @@ export default function Recipe({ recipe, className }: RecipeProps) {
           </aside>
         </>
       )}
+
+      {/* Closing byline. */}
+      <Byline author={byline} />
     </article>
   );
 }
