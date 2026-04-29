@@ -536,3 +536,43 @@ body {
   background-color: rgb(31 29 27 / 1); /* text color, full strength */
 }
 
+
+/* ---------- Homepage masthead nod ----------
+   On initial page load of the homepage, the header's nav links and
+   search icon arrive first; after a 250ms beat, the wordmark fades
+   into its masthead position. The eye naturally tracks whatever
+   arrives last — this gives the wordmark its moment without anything
+   that reads as an explicit animation.
+
+   The right read is "huh, I'm here," with the eye landing on the
+   wordmark naturally. If anyone watching it thinks "oh, the wordmark
+   is animating in," the timings need to be softened — the lever is
+   the delay before the wordmark fade and the fade duration itself.
+
+   Applied via classes set in SiteHeader.tsx, gated to pathname === "/".
+   prefers-reduced-motion bypasses both fades — the header simply
+   appears whole. */
+
+@keyframes home-nod-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.home-nod-items {
+  opacity: 0;
+  animation: home-nod-fade-in 400ms cubic-bezier(0.4, 0, 0.2, 1) 0ms forwards;
+}
+
+.home-nod-wordmark {
+  opacity: 0;
+  /* 400ms items fade + 250ms beat = 650ms delay. */
+  animation: home-nod-fade-in 400ms cubic-bezier(0.4, 0, 0.2, 1) 650ms forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-nod-items,
+  .home-nod-wordmark {
+    opacity: 1;
+    animation: none;
+  }
+}
