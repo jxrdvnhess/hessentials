@@ -36,18 +36,11 @@ const GROUPS: Record<string, PracticeGroup> = {
   "i-stopped-drinking-at-30": "Cyclical",
 };
 
-/**
- * Editor's pick — a deliberately mixed handful surfaced in a "Start Here"
- * rail above the main archive on the default ("All") view. One from each
- * bucket plus a fourth that sets the tone of the pillar. Update sparingly.
- */
-const FEATURED_SLUGS = [
-  "i-stopped-drinking-at-30",
-  "practice-walking-is-not-slow-running",
-  "practice-the-annual-review-beats-resolutions",
-  "practice-1111-is-a-real-practice",
-  "practice-why-i-write-down-what-i-want",
-];
+// Pillar pages treat all content equally — no curated subset is held
+// up as the recommended entry point. The previous FEATURED_SLUGS const
+// + Start Here rail was removed in the 2026-04-30 equal-treatment pass.
+// Articles flow directly under the filter chips, in their natural
+// (shuffled-on-mount) order.
 
 export default async function PracticeIndexPage() {
   const articles = await getAllPracticeArticles();
@@ -86,7 +79,7 @@ export default async function PracticeIndexPage() {
 
       {/* ---------- Filter + Grid ---------- */}
       <div className="pb-32 sm:pb-40">
-        <PracticeFilter articles={projected} featuredSlugs={FEATURED_SLUGS} />
+        <PracticeFilter articles={projected} />
       </div>
     </main>
   );

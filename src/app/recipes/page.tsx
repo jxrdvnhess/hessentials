@@ -48,9 +48,6 @@ export default function RecipesIndexPage() {
         <p className="text-pretty mx-auto max-w-xl font-serif text-[clamp(1.5rem,2.6vw,2rem)] italic leading-[1.4] text-[#1f1d1b]/80">
           Food that earns its place.
         </p>
-        <p className="mx-auto mt-5 max-w-md font-serif text-[15px] italic leading-[1.55] text-[#1f1d1b]/55 sm:text-[16px]">
-          Start with a few. Come back to the rest.
-        </p>
       </section>
 
       {/* ---------- Filter + Grid ---------- */}

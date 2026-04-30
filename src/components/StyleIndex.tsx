@@ -5,13 +5,17 @@ import SectionDivider from "./SectionDivider";
 /**
  * Style index.
  *
- * The /style page is no longer a single shuffled grid. It now leads
- * with a curated "Start Here" set, then groups the remaining articles
- * into quiet thematic sections so the page reads as a system rather
- * than a list. Order is intentional — no shuffle.
+ * Pillar pages treat all content equally (per the 2026-04-30 equal-
+ * treatment pass) — the previous "Start Here" eyebrow + headline
+ * + subline was removed. The articles formerly held under that bracket
+ * still appear at the top of the page in their declared order, just
+ * without the curatorial framing. The thematic groupings beneath
+ * (Getting Dressed / Personal Signals / Home as Extension) stay as-is.
+ *
+ * Order is intentional — no shuffle.
  */
 
-const START_HERE_SLUGS = [
+const TOP_SLUGS = [
   "the-5-piece-rule",
   "casual-is-not-a-free-pass",
   "the-signature-piece",
@@ -114,33 +118,14 @@ function ArticleGrid({ articles }: { articles: StyleArticle[] }) {
 }
 
 export default function StyleIndex() {
-  const startHere = START_HERE_SLUGS.map(
+  const topArticles = TOP_SLUGS.map(
     (slug) => ARTICLES_BY_SLUG[slug]
   ).filter(Boolean);
 
   return (
     <div>
-      {/* ---------- Start Here ---------- */}
-      <section>
-        <header className="mb-12 flex flex-col items-start md:mb-16">
-          {/* Hairline above the eyebrow (§2.2). */}
-          <span
-            aria-hidden
-            className="block w-20"
-            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
-          />
-          <p className="mt-5 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
-            Start Here
-          </p>
-          <h2 className="text-balance mt-5 font-serif text-[clamp(1.5rem,2.4vw,1.875rem)] font-normal leading-[1.2] tracking-[-0.015em] text-[#1f1d1b]">
-            The rules that change everything first.
-          </h2>
-          <p className="text-pretty mt-3 max-w-xl font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/60 sm:text-[17px]">
-            If nothing else, start with these.
-          </p>
-        </header>
-        <ArticleGrid articles={startHere} />
-      </section>
+      {/* ---------- Top of page — formerly "Start Here", now unbracketed ---------- */}
+      {topArticles.length > 0 && <ArticleGrid articles={topArticles} />}
 
       {/* ---------- Grouped sections ---------- */}
       {GROUPS.map((group) => {

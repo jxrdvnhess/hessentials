@@ -31,21 +31,11 @@ const GROUPS: Record<string, LivingGroup> = {
   "stop-using-fabric-softener": "Rituals",
 };
 
-/**
- * Editor's pick — a small, deliberately mixed handful surfaced in a
- * "Start Here" rail above the main archive on the default ("All") view.
- * Ordered intentionally; not shuffled. The mix is intentional: one
- * systems piece, one environment piece, one behavioral piece, one
- * opinion piece — to signal the page's range, not its corrections.
- * Update sparingly — this is the page's point of view.
- */
-const FEATURED_SLUGS = [
-  "why-most-kitchens-are-set-up-wrong",
-  "stop-using-overhead-lights-after-sunset",
-  "the-10-minute-reset",
-  "why-you-dont-cook-more",
-  "why-tucson-is-the-best-town-in-the-southwest",
-];
+// Pillar pages treat all content equally — no curated subset is held
+// up as the recommended entry point. The previous FEATURED_SLUGS const
+// + Start Here rail was removed in the 2026-04-30 equal-treatment pass.
+// Articles flow directly under the filter chips, in their natural
+// (shuffled-on-mount) order.
 
 export default async function LivingIndexPage() {
   const articles = await getAllLivingArticles();
@@ -83,7 +73,7 @@ export default async function LivingIndexPage() {
 
       {/* ---------- Filter + Grid (shuffled on every visit when "All") ---------- */}
       <div className="pb-32 sm:pb-40">
-        <LivingFilter articles={projected} featuredSlugs={FEATURED_SLUGS} />
+        <LivingFilter articles={projected} />
       </div>
     </main>
   );
