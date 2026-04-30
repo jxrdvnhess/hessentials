@@ -3,21 +3,22 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SHOP_PRODUCTS, getProductBySlug } from "../../../data/shop";
 import { getShopEssay } from "../../../lib/shop";
-import {
-  fetchProductPrice,
-  PRICING_REVALIDATE_SECONDS,
-} from "../../../lib/pricing/fetchPrice";
+import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
 import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
 
 type Params = { slug: string };
 
 /**
- * 12-hour ISR — see PRICING_REVALIDATE_SECONDS. Detail pages
- * regenerate so the live price + verified date stay fresh without
- * hitting the source on every render.
+ * 12-hour ISR (43200 seconds). Detail pages regenerate so the live
+ * price + verified date stay fresh without hitting the source on
+ * every render.
+ *
+ * Next.js requires this to be a literal — see the matching constant
+ * `PRICING_REVALIDATE_SECONDS` in `src/lib/pricing/fetchPrice.ts`;
+ * keep the two in sync.
  */
-export const revalidate = PRICING_REVALIDATE_SECONDS;
+export const revalidate = 43200;
 
 export function generateStaticParams() {
   return SHOP_PRODUCTS.map((p) => ({ slug: p.slug }));

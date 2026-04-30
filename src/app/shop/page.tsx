@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { SHOP_INTRO, SHOP_PRODUCTS } from "../../data/shop";
 import ShopGrid from "../../components/ShopGrid";
-import {
-  fetchAllPrices,
-  PRICING_REVALIDATE_SECONDS,
-} from "../../lib/pricing/fetchPrice";
+import { fetchAllPrices } from "../../lib/pricing/fetchPrice";
 
 export const metadata: Metadata = {
   title: "Shop — Hessentials",
@@ -13,11 +10,15 @@ export const metadata: Metadata = {
 };
 
 /**
- * 12-hour ISR — see PRICING_REVALIDATE_SECONDS. Shop index regenerates
- * with every revalidation cycle so live prices stay current without
- * thrashing source sites on every request.
+ * 12-hour ISR (43200 seconds). Shop index regenerates with every
+ * revalidation cycle so live prices stay current without thrashing
+ * source sites on every request.
+ *
+ * Next.js requires this to be a literal — see the matching constant
+ * `PRICING_REVALIDATE_SECONDS` in `src/lib/pricing/fetchPrice.ts`;
+ * keep the two in sync.
  */
-export const revalidate = PRICING_REVALIDATE_SECONDS;
+export const revalidate = 43200;
 
 export default async function ShopPage() {
   // Resolve every product's display price server-side. fetchAllPrices
