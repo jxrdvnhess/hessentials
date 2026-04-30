@@ -19,6 +19,15 @@ export type LivingGroup = "Systems" | "Environment" | "Rituals";
 const FILTERS = ["All", "Systems", "Environment", "Rituals"] as const;
 type Filter = (typeof FILTERS)[number];
 
+// Stable module-level reference for the empty default. Without this,
+// an inline `featuredSlugs = []` in the signature would create a new
+// array on every render, the useMemo below would recompute `rest` (new
+// ref), the shuffle effect would re-fire, setState would trigger a
+// re-render — an infinite loop that visually presents as the article
+// list "shaking" continuously. Surfaced after the equal-treatment pass
+// dropped the `featuredSlugs` prop at the call site.
+const EMPTY_SLUGS: readonly string[] = [];
+
 type Props = {
   articles: LivingIndexArticle[];
   /**
@@ -27,7 +36,7 @@ type Props = {
    * is active the rail collapses and all matching articles render in a
    * single uniform grid.
    */
-  featuredSlugs?: string[];
+  featuredSlugs?: readonly string[];
 };
 
 /**
@@ -45,7 +54,10 @@ type Props = {
  * Server-side render uses the unshuffled order so hydration is
  * deterministic; the client re-orders after mount.
  */
-export default function LivingFilter({ articles, featuredSlugs = [] }: Props) {
+export default function LivingFilter({
+  articles,
+  featuredSlugs = EMPTY_SLUGS,
+}: Props) {
   const [active, setActive] = useState<Filter>("All");
 
   // Featured / rest split — featured holds its declared order; rest is
