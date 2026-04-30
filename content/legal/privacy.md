@@ -12,7 +12,7 @@ This page explains what we collect, why, and how to ask us to remove it.
 
 If you subscribe, we collect your email address and use it to send the things you signed up for. Nothing else.
 
-If you visit, we may collect basic, anonymized analytics — pages viewed, approximate region, device type — to understand what's resonating. None of it is tied to your identity.
+If you visit, we collect basic, anonymized analytics — pages viewed, approximate region, device type — to understand what's resonating. None of it is tied to your identity. The collection runs through Google Analytics 4; Google handles that data under [their own privacy policy](https://policies.google.com/privacy).
 
 If you write to us, we keep the message and your reply address long enough to answer you well.
 

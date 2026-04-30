@@ -8,13 +8,12 @@ export const metadata: Metadata = {
 };
 
 /**
- * About — sticky-backdrop hero (2026-04-29 spec).
+ * About — sticky-backdrop hero.
  *
  *   merida_moment_5.jpg becomes a full-bleed sticky backdrop. The
- *   essay scrolls over the left half of the image; the image stays
- *   pinned for the duration of the essay, then releases and the page
- *   continues into the global SiteFooter (merida_moment_6 + newsletter
- *   + legal) unchanged.
+ *   essay scrolls over the image; the image stays pinned for the
+ *   duration of the essay, then releases and the page continues into
+ *   the global SiteFooter unchanged.
  *
  *   Pattern: relative section → absolute child fills it and contains
  *   the sticky h-screen image → relative-positioned essay column drives
@@ -28,19 +27,18 @@ export const metadata: Metadata = {
  *                   last line exits the top (clean release, no dead
  *                   pinned-image runway after the essay)
  *
- *   Mobile (sub-md): sticky pattern is abandoned per spec — sticky
- *   over portrait crops always reads worse than a clean stacked
- *   layout. Image renders as a standard hero, essay flows beneath in
- *   normal document order.
+ *   Mobile (2026-04-30 unification): same sticky pattern as desktop.
+ *   The earlier mobile-stacked variant was reconsidered — with
+ *   object-left so the wall area dominates the portrait crop, a
+ *   uniform vertical scrim for legibility, and the existing cream +
+ *   text-shadow on AboutEssay's overlay variant, the editorial weight
+ *   (image present through the whole read, signature on the image)
+ *   carries to mobile.
  */
 export default function AboutPage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
-      {/* ---------- DESKTOP (md+) — sticky backdrop ---------- */}
-      <section
-        aria-label="About Hessentials"
-        className="relative hidden w-full md:block"
-      >
+      <section aria-label="About Hessentials" className="relative w-full">
         {/* Background layer — fills the entire section. The sticky
             child inside it pins to the viewport top while this layer
             (i.e., the section) is in view. Once the section's bottom
@@ -54,14 +52,26 @@ export default function AboutPage() {
               sizes="100vw"
               quality={95}
               priority
-              className="object-cover object-center"
+              className="object-cover object-left md:object-center"
             />
-            {/* Subtle left-side scrim — only enough to hold cream type
-                against the wall. Transparent on the right (table side
-                stays clean). */}
+            {/* MOBILE scrim — uniform vertical darken across the full
+                photograph so cream type reads cleanly anywhere in the
+                column on a portrait crop. Subtle so the wall still
+                carries. */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0"
+              className="pointer-events-none absolute inset-0 md:hidden"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(20,18,16,0.40) 0%, rgba(20,18,16,0.32) 50%, rgba(20,18,16,0.45) 100%)",
+              }}
+            />
+            {/* DESKTOP scrim — left-side gradient. Holds cream type
+                against the wall; transparent on the right (table side
+                stays photographically clean). */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 hidden md:block"
               style={{
                 background:
                   "linear-gradient(to right, rgba(20,18,16,0.32) 0%, rgba(20,18,16,0.18) 22%, rgba(20,18,16,0) 55%)",
@@ -71,30 +81,11 @@ export default function AboutPage() {
         </div>
 
         {/* Foreground — text column. Drives the section's height via
-            top/bottom padding so the sticky has scroll runway. */}
-        <div className="relative z-10 max-w-[50vw] pt-[50vh] pb-[100vh] pl-[8vw] pr-[2vw]">
+            top/bottom padding so the sticky has scroll runway. Mobile
+            uses the full column width with page padding; desktop
+            constrains to the left half of the viewport. */}
+        <div className="relative z-10 px-6 pt-[50vh] pb-[100vh] sm:px-8 md:max-w-[50vw] md:pl-[8vw] md:pr-[2vw]">
           <AboutEssay variant="overlay" />
-        </div>
-      </section>
-
-      {/* ---------- MOBILE (sub-md) — stacked hero + flow ---------- */}
-      <section
-        aria-label="About Hessentials"
-        className="block md:hidden"
-      >
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
-          <Image
-            src="/about/merida-moment-5.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            quality={95}
-            priority
-            className="object-cover object-center"
-          />
-        </div>
-        <div className="px-6 pt-12 pb-20 sm:px-8 sm:pt-16">
-          <AboutEssay variant="inline" />
         </div>
       </section>
     </main>
