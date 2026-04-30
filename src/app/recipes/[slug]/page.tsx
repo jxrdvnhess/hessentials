@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Recipe from "../../../components/Recipe";
+import JsonLd from "../../../components/JsonLd";
+import { recipeSchema } from "../../../lib/jsonLd";
 import { recipes, getRecipeBySlug } from "../../../data/recipes";
 
 type Params = { slug: string };
@@ -54,6 +56,16 @@ export default async function RecipeDetailPage({
           More to come back to.
         </p>
       </nav>
+
+      {/* Recipe structured data — surfaces in Google's recipe
+          carousels with cook time, ingredients, and steps. */}
+      <JsonLd
+        data={recipeSchema({
+          url: `/recipes/${entry.slug}`,
+          recipe: entry.recipe,
+          description: entry.description,
+        })}
+      />
     </main>
   );
 }

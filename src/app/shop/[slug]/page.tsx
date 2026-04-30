@@ -6,6 +6,8 @@ import { getShopEssay } from "../../../lib/shop";
 import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
 import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
+import JsonLd from "../../../components/JsonLd";
+import { productSchema } from "../../../lib/jsonLd";
 
 type Params = { slug: string };
 
@@ -189,6 +191,17 @@ export default async function ShopProductPage({
           More worth keeping.
         </p>
       </nav>
+
+      {/* Product structured data — surfaces price + brand + image
+          in shopping-related rich results. Uses the curated
+          priceRange (single → Offer, range → AggregateOffer); see
+          jsonLd.ts for the parsing rationale. */}
+      <JsonLd
+        data={productSchema({
+          url: `/shop/${product.slug}`,
+          product,
+        })}
+      />
     </main>
   );
 }

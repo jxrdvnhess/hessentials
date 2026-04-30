@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
+import JsonLd from "../../../components/JsonLd";
+import { articleSchema } from "../../../lib/jsonLd";
 import {
   getAllLivingSlugs,
   getLivingArticleBySlug,
@@ -93,6 +95,19 @@ export default async function LivingArticlePage({
           </p>
         </nav>
       </article>
+
+      {/* Article structured data — strengthens eligibility for Top
+          Stories / article rich results, and gives Google a clean
+          author + publisher + datePublished signal. */}
+      <JsonLd
+        data={articleSchema({
+          url: `/living/${article.slug}`,
+          headline: meta.title,
+          description: meta.description ?? article.excerpt,
+          datePublished: meta.date,
+          byline: meta.byline,
+        })}
+      />
     </main>
   );
 }

@@ -3,6 +3,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import JsonLd from "../components/JsonLd";
+import { organizationSchema, websiteSchema } from "../lib/jsonLd";
 import "./globals.css";
 
 /**
@@ -129,6 +131,11 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        {/* Site-wide structured data — Organization (publisher
+            identity) + WebSite (with SitelinksSearchBox potentialAction
+            pointed at /search). Per-page schemas (Article, Recipe,
+            Product) layer on top from each route. */}
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </body>
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>

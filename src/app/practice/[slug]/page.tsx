@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
+import JsonLd from "../../../components/JsonLd";
+import { articleSchema } from "../../../lib/jsonLd";
 import {
   getAllPracticeSlugs,
   getPracticeArticleBySlug,
@@ -90,6 +92,18 @@ export default async function PracticeArticlePage({
           </p>
         </nav>
       </article>
+
+      {/* Article structured data — same shape as Living, including
+          Practice's editorial section in the description fallback. */}
+      <JsonLd
+        data={articleSchema({
+          url: `/practice/${article.slug}`,
+          headline: meta.title,
+          description: meta.description ?? article.excerpt,
+          datePublished: meta.date,
+          byline: meta.byline,
+        })}
+      />
     </main>
   );
 }

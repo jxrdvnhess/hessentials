@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
+import JsonLd from "../../../components/JsonLd";
+import { articleSchema } from "../../../lib/jsonLd";
 import {
   STYLE_ARTICLES,
   getStyleArticleBySlug,
@@ -299,6 +301,18 @@ export default async function StyleArticlePage({
           </p>
         </nav>
       </article>
+
+      {/* Article structured data. Style pieces don't carry frontmatter
+          dates (they're authored as static TS objects), so
+          datePublished is omitted — Article schema works without it. */}
+      <JsonLd
+        data={articleSchema({
+          url: `/style/${article.slug}`,
+          headline: article.title,
+          description: article.dek,
+          byline: article.author,
+        })}
+      />
     </main>
   );
 }
