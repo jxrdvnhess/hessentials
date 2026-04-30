@@ -34,6 +34,15 @@ import type { ShopProduct } from "../data/shop";
 const SITE = "https://hessentials.co";
 const BRAND_NAME = "Hessentials";
 const LOGO_URL = `${SITE}/og-image.png`;
+/**
+ * Fallback image used when a piece of content doesn't carry its own.
+ * Google's Recipe rich-results spec requires `image` (not optional —
+ * missing it invalidates the entire Recipe block), and Article rich
+ * results gain Top Stories eligibility when one is present. Pointing
+ * at the site OG image gets the schema validated; per-piece images
+ * become a content task to upgrade rich-result quality.
+ */
+const FALLBACK_IMAGE = `${SITE}/og-image.png`;
 
 /* ---------- Helpers ---------- */
 
@@ -275,7 +284,7 @@ export function recipeSchema({ url, recipe, description }: RecipeSchemaInput) {
         url: LOGO_URL,
       },
     },
-    ...(recipe.image?.src ? { image: absoluteUrl(recipe.image.src) } : {}),
+    image: recipe.image?.src ? absoluteUrl(recipe.image.src) : FALLBACK_IMAGE,
     ...(totalTime ? { totalTime } : {}),
     ...(recipeYield ? { recipeYield } : {}),
     recipeIngredient: recipe.ingredients.map(ingredientToString),
