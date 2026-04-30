@@ -23,7 +23,7 @@ type Article = { title: string; url: string; payoff: string };
  *     once, writes to the cache, and broadcasts to any other instance
  *     already mounted. Subsequent instances read from the cache.
  *
- * Result: both overlay and cream-block render the same five picks.
+ * Result: both overlay and cream-block render the same four picks.
  */
 let cachedPicks: Article[] | null = null;
 const subscribers = new Set<(p: Article[]) => void>();
@@ -165,45 +165,18 @@ const SHOPPING: Article[] = [
   },
 ];
 
-const RETHINKING: Article[] = [
-  {
-    title: "the anti-trend rule",
-    url: "/style/the-anti-trend-rule",
-    payoff: "what to ignore. and how.",
-  },
-  {
-    title: "style is not gendered",
-    url: "/style/style-is-not-gendered",
-    payoff: "the rule that's already breaking.",
-  },
-  {
-    title: "you're not bad with plants",
-    url: "/living/youre-not-bad-with-plants",
-    payoff: "the lie you keep telling yourself.",
-  },
-  {
-    title: "why most kitchens are set up wrong",
-    url: "/living/why-most-kitchens-are-set-up-wrong",
-    payoff: "the layout problem nobody fixes.",
-  },
-  {
-    title: "it's usually the small things",
-    url: "/style/its-usually-the-small-things",
-    payoff: "the small things doing the heavy lifting.",
-  },
-  {
-    title: "ditch the coffee machine, get an espresso machine",
-    url: "/living/ditch-the-coffee-machine-get-an-espresso-machine",
-    payoff: "the upgrade you'll never undo.",
-  },
-];
+// RETHINKING was removed from CURRENTLY in the 2026-04-30 trim. Its
+// register — refusing assumptions, introspection — is the most
+// Practice-coded of the slots, and Practice now holds its own
+// statement teaser on the homepage. Pulling Rethinking sharpens that
+// distinction so CURRENTLY reads as four content rotations and the
+// Practice teaser stands alone with its own depth.
 
 const SLOTS = [
   { label: "Cooking", articles: COOKING },
   { label: "Wearing", articles: WEARING },
   { label: "Refining", articles: REFINING },
   { label: "Shopping", articles: SHOPPING },
-  { label: "Rethinking", articles: RETHINKING },
 ] as const;
 
 function pickRandom<T>(items: readonly T[]): T {
@@ -263,7 +236,7 @@ export default function RightNow({
   // same ordered emergence, just compressed/stretched in time.
   //
   // Row 0: "Currently" eyebrow (suppressed when hideEyebrow is true).
-  // Rows 1–5: the five rotating SLOTS.
+  // Rows 1–4: the four rotating SLOTS.
   const { wrapperRef, setRow, progress } = useScrollRevealStack(
     SLOTS.length + 1,
     { followLagSeconds: 0.6 }
@@ -306,8 +279,8 @@ export default function RightNow({
   const preEyebrow = light
     ? "text-[#f1ece2]/80"
     : "text-[#1f1d1b]/35";
-  // Slot labels (COOKING / WEARING / REFINING / SHOPPING / RETHINKING):
-  // clean uppercase sans, letter-spaced. Cream at 95% on the overlay so
+  // Slot labels (COOKING / WEARING / REFINING / SHOPPING): clean
+  // uppercase sans, letter-spaced. Cream at 95% on the overlay so
   // they read clearly against the photograph. Per §1.3.
   const slotLabel = light
     ? "text-[#f1ece2]/95"
@@ -339,7 +312,9 @@ export default function RightNow({
           on rotation right now. Suppressed only when the eyebrow lives
           on the image above (mobile morning overlay case). Per Frame
           4 §3.1 the old "Start here / The 5 things I cook every week"
-          row was removed — Currently leads now. */}
+          row was removed — Currently leads now. Rows 1–4 (CURRENTLY
+          dropped from 5 → 4 slots in the 2026-04-30 trim — RETHINKING
+          retired in favor of the Practice statement teaser). */}
       {!hideEyebrow && (
         <div
           ref={setRow(0)}

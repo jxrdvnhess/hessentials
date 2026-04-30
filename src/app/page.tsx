@@ -1,14 +1,11 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import RightNow from "../components/RightNow";
-import TheEdit from "../components/TheEdit";
-import HomeFooterOverlay, {
-  HomeFooterMobile,
-} from "../components/HomeFooterOverlay";
 import ImagePoemLine from "../components/ImagePoemLine";
 import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
 import MothersDayModule from "../components/MothersDayModule";
+import HomePracticeTeaser from "../components/HomePracticeTeaser";
 
 export const metadata: Metadata = {
   title: "Hessentials",
@@ -317,112 +314,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- The Edit — beige zone — image↔beige gap above ----------
-          Per §2.2: the standalone thesis "Most of what you've been
-          told..." moves up to Frame 3 as a print pull-quote paired
-          with "Most don't." Only the section eyebrow + standfirst +
-          hairline remain here. */}
+      {/* ---------- Practice statement teaser — beige zone ----------
+          Replaces the prior six-tile The Edit roundup. Practice carries
+          the brand's most distinctive editorial voice; one piece at
+          full editorial weight earns more here than six surface-level
+          links. The component owns its own eyebrow + hairline so it
+          slots straight into the GAP_ZONE rhythm.
+
+          The dinner photograph and the "What was real, stayed." line
+          (which used to anchor the homepage closer) are baked into
+          this teaser as its fixed visual identity. The site closes
+          via the universal SiteFooter rendered from layout.tsx. */}
       <section
-        aria-label="The Edit"
-        className="px-6 sm:px-10 md:px-16"
-        style={{ marginTop: GAP_ZONE }}
+        aria-label="Practice"
+        style={{ marginTop: GAP_ZONE, paddingBottom: GAP_ZONE }}
       >
-        <div className="mb-12 max-w-[520px] sm:mb-14 md:mb-16">
-          {/* Section eyebrow with the hairline above it (§5.2).
-              80px wide, 0.5px, tonal cream — anchors the label as an
-              architectural moment, not a floating tag. */}
-          <span
-            aria-hidden
-            className="block w-20"
-            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
-          />
-          <p className="mt-6 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
-            The Edit
-          </p>
-          <p className="text-balance mt-4 font-serif text-[clamp(1.125rem,1.6vw,1.375rem)] italic leading-[1.4] text-[#1f1d1b]/70">
-            The pieces that hold up. Read one. Use it tonight.
-          </p>
-        </div>
-        <TheEdit />
-      </section>
-
-      {/*
-        Image 04 — Night, dinner conversation — Type B — closes the page.
-
-        The footer (newsletter + brand mark + tagline + legal) is overlaid
-        on this image instead of rendering on a separate cream slab below.
-        The page lands inside the world it built. Each footer row reveals
-        on scroll using the same staggered fade-up pattern as Currently
-        on Image 03 — keeps the homepage cinematic from top to bottom.
-
-        The global SiteFooter is suppressed on /home (see SiteFooter.tsx).
-        Bottom padding is intentionally minimal here so the image is the
-        last thing on the page.
-
-        Inside the image: What was real, stayed. — upper-center wall
-        behind the table, in the soft pendant glow.
-      */}
-      <section
-        aria-label="Site footer"
-        style={{ marginTop: GAP_ZONE, paddingBottom: "24px" }}
-      >
-        <Cinematic
-          src="/home/merida-moment-4.jpg"
-          alt=""
-          type="frame"
-          filter="brightness(0.92) saturate(0.96) contrast(1.02)"
-        >
-          <ImagePoemLine
-            position={{
-              top: "10%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              maxWidth: "min(36rem, 70%)",
-              align: "center",
-            }}
-            size="lg"
-          >
-            What was real, stayed.
-          </ImagePoemLine>
-
-          {/* DESKTOP: bottom darken + full footer overlay. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 hidden md:block"
-            style={{
-              backgroundImage:
-                "linear-gradient(to bottom, transparent 35%, rgba(20,18,16,0.32) 65%, rgba(20,18,16,0.62) 100%)",
-            }}
-          />
-          <HomeFooterOverlay />
-
-          {/* MOBILE: bottom darken + brand-close whisper.
-              Just the wordmark eyebrow + tagline italic — the cleanup
-              image keeps its identity as the brand close. The full
-              footer (newsletter, symbol, legal) lives in the cream
-              block below. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 md:hidden"
-            style={{
-              backgroundImage:
-                "linear-gradient(to bottom, transparent 50%, rgba(20,18,16,0.28) 75%, rgba(20,18,16,0.65) 100%)",
-            }}
-          />
-          <div className="absolute inset-x-0 bottom-9 flex flex-col items-center text-center md:hidden">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#f8f6f3]/85">
-              Hessentials
-            </p>
-            <p className="mt-3 font-serif text-[16px] italic leading-[1.4] text-[#f8f6f3]/85">
-              This is what stayed.
-            </p>
-          </div>
-        </Cinematic>
-
-        {/* MOBILE-ONLY: cream footer block below the cleanup image
-            (newsletter + symbol + legal — the wordmark whisper above
-            already lives on the image). */}
-        <HomeFooterMobile />
+        <HomePracticeTeaser />
       </section>
       </main>
     </>

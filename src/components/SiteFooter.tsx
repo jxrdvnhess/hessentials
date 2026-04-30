@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import HomeLink from "./HomeLink";
 import Symbol from "./Symbol";
@@ -20,19 +19,17 @@ const LEGAL_LINKS: readonly LegalLink[] = [
 /**
  * Site footer.
  *
- * On every page after the homepage, the page closes inside the
- * cinematic photograph instead of on a separate cream slab. The image
- * is the primary surface; the footer (newsletter + brand mark + tagline
- * + legal) is layered into the safe zones over a quiet darken.
+ * Every page closes inside the cinematic photograph rather than on a
+ * separate cream slab. The image is the primary surface; the footer
+ * (newsletter + brand mark + tagline + legal) is layered into the safe
+ * zones over a quiet darken.
  *
- * Suppressed on:
- *   /        — homepage closes inside its own photograph (HomeFooterOverlay
- *              on merida-moment-4.jpg). Same cinematic logic; the
- *              homepage just owns its own closing image.
+ * The homepage used to own its own closer (HomeFooterOverlay on
+ * merida-moment-4.jpg) — that image and its "What was real, stayed."
+ * line moved into the Practice statement teaser, and the site close
+ * unified to this universal footer.
  */
 export default function SiteFooter() {
-  const pathname = usePathname();
-  if (pathname === "/") return null;
   return <CinematicFooter />;
 }
 
