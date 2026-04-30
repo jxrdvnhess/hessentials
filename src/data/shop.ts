@@ -245,7 +245,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-linen-duffel-5.jpg",
       "/shop/prada-linen-duffel-6.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 800,
   },
   {
@@ -348,7 +348,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-belt-bag-3.jpg",
       "/shop/prada-renylon-belt-bag-4.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 600,
   },
   {
@@ -524,7 +524,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-backpack-4.jpg",
       "/shop/prada-renylon-backpack-5.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 800,
   },
   {
@@ -577,7 +577,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-duffle-4.jpg",
       "/shop/prada-renylon-duffle-5.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 800,
   },
   {
@@ -710,7 +710,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-Paradigme-2.jpg",
       "/shop/prada-Paradigme-3.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 100,
   },
   {
@@ -766,7 +766,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/Prada-Symbole-sunglasses-3.jpg",
       "/shop/Prada-Symbole-sunglasses-4.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 200,
   },
   {
