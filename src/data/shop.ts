@@ -92,6 +92,13 @@ export type ShopProduct = {
    * subset of CSS — see `extractors/html.ts` for the grammar.
    */
   htmlPriceSelector?: string;
+  /**
+   * Plausibility floor. Variants below this dollar amount are dropped
+   * before display — the typical case is a Shopify shop that lists
+   * sample swatches or replacement parts as full variants. Set this
+   * just below the lowest legitimate variant of the actual product.
+   */
+  priceFloor?: number;
 };
 
 export const SHOP_INTRO = "Bought. Used. Kept.";
@@ -115,6 +122,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/loewe-goya-thin-briefcase-2.jpg",
       "/shop/loewe-goya-thin-briefcase-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 1000,
   },
   {
     slug: "omega-aqua-terra-small-seconds",
@@ -130,6 +139,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/omega-aqua-terra-small-seconds-2.jpg",
       "/shop/omega-aqua-terra-small-seconds-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 5000,
   },
   {
     slug: "bedsure-waffle-blanket",
@@ -145,6 +156,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/bedsure-waffle-blanket-2.jpg",
       "/shop/bedsure-waffle-blanket-3.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 15,
   },
   {
     slug: "prada-court-leather-sneakers",
@@ -161,6 +174,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-court-leather-sneakers-3.jpg",
       "/shop/prada-court-leather-sneakers-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 300,
   },
   {
     slug: "massimo-dutti-linen-double-collar-tee",
@@ -176,6 +191,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-linen-double-collar-tee-2.jpg",
       "/shop/massimo-dutti-linen-double-collar-tee-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 25,
   },
   {
     slug: "lv-hippo-coffee-table",
@@ -192,11 +209,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/lv-hippo-coffee-table-3.jpg",
       "/shop/lv-hippo-coffee-table-4.jpg",
     ],
-    // Smoke-test entry for the live pricing system. Shopify storefronts
-    // expose every variant via /products/<handle>.json — see
-    // `src/lib/pricing/extractors/shopify.ts`. Other listings remain on
-    // implicit manual mode until the audit pass classifies them.
     extractionMethod: "shopify",
+    priceFloor: 800,
   },
   {
     slug: "birkenstock-arizona-eva",
@@ -212,6 +226,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/birkenstock-arizona-eva-2.jpg",
       "/shop/birkenstock-arizona-eva-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 20,
   },
   {
     slug: "ahlem-louxor",
@@ -227,6 +243,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/ahlem-louxor-2.jpg",
       "/shop/ahlem-louxor-3.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 200,
   },
   {
     slug: "prada-linen-duffel",
@@ -245,6 +263,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-linen-duffel-5.jpg",
       "/shop/prada-linen-duffel-6.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 800,
   },
   {
     slug: "crazy-water-sampler",
@@ -255,6 +275,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     priceRange: "$30–$45",
     url: "https://drinkcrazywater.myshopify.com/collections/water/products/crazy-water-sampler",
     image: "/shop/crazy-water-sampler.jpg",
+    extractionMethod: "shopify",
+    priceFloor: 15,
   },
   {
     slug: "tag-heuer-aquaracer-quartz",
@@ -273,6 +295,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/tag-heuer-aquaracer-quartz-5.jpg",
       "/shop/tag-heuer-aquaracer-quartz-6.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 800,
   },
   {
     slug: "aveda-pureformance-clay",
@@ -288,6 +312,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/aveda-pureformance-clay-2.jpg",
       "/shop/aveda-pureformance-clay-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 12,
   },
   {
     slug: "massimo-dutti-tapered-jeans",
@@ -304,6 +330,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-tapered-jeans-3.jpg",
       "/shop/massimo-dutti-tapered-jeans-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 30,
   },
   {
     slug: "tiffany-venetian-link-bracelet",
@@ -320,6 +348,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/tiffany-venetian-link-bracelet-3.jpg",
       "/shop/tiffany-venetian-link-bracelet-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 150,
   },
   {
     slug: "prada-renylon-belt-bag",
@@ -336,6 +366,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-belt-bag-3.jpg",
       "/shop/prada-renylon-belt-bag-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 600,
   },
   {
     slug: "pacific-coast-down-pillow",
@@ -350,6 +382,9 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/pacific-coast-down-pillow-1.jpg",
       "/shop/pacific-coast-down-pillow-2.jpg",
     ],
+    // Amazon aggressively blocks server-side fetches. Stays on manual
+    // priceRange — keep this updated by hand or move to a non-Amazon
+    // source if one exists.
   },
   {
     slug: "massimo-dutti-cotton-slim-pants",
@@ -366,6 +401,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-cotton-slim-pants-3.jpg",
       "/shop/massimo-dutti-cotton-slim-pants-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 25,
   },
   {
     slug: "birkenstock-arizona-leather",
@@ -381,6 +418,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/birkenstock-arizona-leather-2.jpg",
       "/shop/birkenstock-arizona-leather-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 50,
   },
   {
     slug: "johnston-murphy-rhodes-backpack",
@@ -397,6 +436,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/johnston-murphy-rhodes-backpack-3.jpg",
       "/shop/johnston-murphy-rhodes-backpack-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 100,
   },
   {
     slug: "aveda-pureformance-cream",
@@ -412,6 +453,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/aveda-pureformance-cream-2.jpg",
       "/shop/aveda-pureformance-cream-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 12,
   },
   {
     slug: "ahlem-haussmann",
@@ -428,6 +471,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/ahlem-haussmann-3.jpg",
       "/shop/ahlem-haussmann-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 200,
   },
   {
     slug: "away-the-large",
@@ -444,6 +489,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/away-the-large-3.jpg",
       "/shop/away-the-large-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 150,
   },
   {
     slug: "massimo-dutti-cotton-tee",
@@ -460,6 +507,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-cotton-tee-3.jpg",
       "/shop/massimo-dutti-cotton-tee-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 15,
   },
   {
     slug: "goodfellow-flat-front-shorts",
@@ -474,6 +523,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/goodfellow-flat-front-shorts-1.jpg",
       "/shop/goodfellow-flat-front-shorts-2.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 10,
   },
   {
     slug: "prada-renylon-backpack",
@@ -491,6 +542,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-backpack-4.jpg",
       "/shop/prada-renylon-backpack-5.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 800,
   },
   {
     slug: "uniqlo-oxford-oversized-shirt",
@@ -506,6 +559,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/uniqlo-oxford-oversized-shirt-2.jpg",
       "/shop/uniqlo-oxford-oversized-shirt-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 15,
   },
   {
     slug: "abercrombie-premium-ribbed-tank",
@@ -521,6 +576,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/abercrombie-premium-ribbed-tank-2.jpg",
       "/shop/abercrombie-premium-ribbed-tank-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 10,
   },
   {
     slug: "prada-renylon-duffle",
@@ -538,6 +595,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-duffle-4.jpg",
       "/shop/prada-renylon-duffle-5.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 800,
   },
   {
     slug: "away-bigger-carry-on",
@@ -554,6 +613,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/away-bigger-carry-on-3.jpg",
       "/shop/away-bigger-carry-on-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 100,
   },
   {
     slug: "clayton-crume-canvas-tote",
@@ -570,6 +631,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/clayton-crume-canvas-tote-3.jpg",
       "/shop/clayton-crume-canvas-tote-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 50,
   },
   {
     slug: "abercrombie-seersucker-swim-trunk",
@@ -585,6 +648,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/Abercrombie-Seersucker-Swim-Trunk-2.jpg",
       "/shop/Abercrombie-Seersucker-Swim-Trunk-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 20,
   },
   {
     slug: "clayton-daybook",
@@ -601,6 +666,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/clayton-daybook-3.jpg",
       "/shop/clayton-daybook-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 80,
   },
   {
     slug: "ibex-wool-dryer-puffs",
@@ -618,6 +685,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/ibex-dryer-puffs-3.jpg",
       "/shop/ibex-dryer-puffs-4.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 10,
   },
   {
     slug: "ysl-l-homme-edt",
@@ -628,6 +697,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     priceRange: "$95–$160",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/lhomme/lhomme-eau-de-toilette-spray/284YSL.html",
     image: "/shop/ysl-l-homme-1.jpg",
+    extractionMethod: "json-ld",
+    priceFloor: 35,
   },
   {
     slug: "ysl-myslf-edp",
@@ -640,6 +711,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/myslf/myslf-eau-de-parfum/WW-51115YSL.html",
     image: "/shop/ysl-MYSLF-1.jpg",
     images: ["/shop/ysl-MYSLF-1.jpg", "/shop/ysl-MYSLF-2.jpg"],
+    extractionMethod: "json-ld",
+    priceFloor: 40,
   },
   {
     slug: "prada-paradigme-edp",
@@ -655,6 +728,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-Paradigme-2.jpg",
       "/shop/prada-Paradigme-3.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 100,
   },
   {
     slug: "kiehls-avocado-eye-cream",
@@ -669,6 +744,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/kiehls-avocado-eye-cream-1.jpg",
       "/shop/kiehls-avocado-eye-cream-2.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 18,
   },
   {
     slug: "louis-vuitton-dopp-kit",
@@ -686,6 +763,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/louis-vuitton-dopp-kit-3.jpg",
       "/shop/louis-vuitton-dopp-kit-4.jpg",
     ],
+    // Louis Vuitton aggressively blocks server-side fetches; this may
+    // fail and fall back to the static priceRange. Admin page will
+    // surface the error if so.
+    extractionMethod: "json-ld",
+    priceFloor: 250,
   },
   {
     slug: "prada-symbole-sunglasses",
@@ -702,6 +784,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/Prada-Symbole-sunglasses-3.jpg",
       "/shop/Prada-Symbole-sunglasses-4.jpg",
     ],
+    extractionMethod: "json-ld",
+    priceFloor: 200,
   },
   {
     slug: "dr-bronner-tea-tree-bar-soap",
@@ -717,6 +801,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/dr-bronners-pure-castile-tea-tree-2.jpg",
       "/shop/dr-bronners-pure-castile-tea-tree-3.jpg",
     ],
+    extractionMethod: "shopify",
+    priceFloor: 3,
   },
 ];
 

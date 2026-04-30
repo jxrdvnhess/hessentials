@@ -29,6 +29,11 @@ export type ExtractionMethod =
  * Normalized output of any extractor. The fetch layer turns this into
  * a `PriceFetchResult`, then the pricing format helper turns the
  * `variants` array into a display string ("$1,800" or "From $850").
+ *
+ * Extractors enforce currency at their boundary — JSON-LD reads
+ * `priceCurrency` and rejects non-USD; Shopify reads the storefront's
+ * base currency and rejects non-USD; HTML assumes the displayed
+ * currency on the page (caller's responsibility to pick a USD URL).
  */
 export type ExtractedPrice = {
   /** All variant prices in USD whole or fractional dollars. Length 1+. */

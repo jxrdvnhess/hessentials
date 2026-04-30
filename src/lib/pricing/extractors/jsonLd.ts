@@ -151,6 +151,11 @@ export async function extractJsonLd(url: string): Promise<ExtractedPrice> {
   const variants: number[] = [];
   let availabilityCount = 0;
   let soldOutCount = 0;
+  // Currency check: when a priceCurrency appears anywhere in the
+  // collected Offers, every observed currency must be USD. If the
+  // source serves anything else we refuse the result rather than
+  // mislabelling foreign-denominated prices as dollars.
+  const seenCurrencies = new Set<string>();
 
   for (const block of blocks) {
     for (const product of findProducts(block)) {
@@ -164,12 +169,26 @@ export async function extractJsonLd(url: string): Promise<ExtractedPrice> {
         const high = readPrice(offer["highPrice"]);
         if (high !== null) variants.push(high);
 
+        const currency = offer["priceCurrency"];
+        if (typeof currency === "string" && currency.length) {
+          seenCurrencies.add(currency.toUpperCase());
+        }
+
         const avail = offer["availability"];
         if (typeof avail === "string") {
           availabilityCount += 1;
           if (SOLD_OUT_AVAILABILITY.has(avail)) soldOutCount += 1;
         }
       }
+    }
+  }
+
+  if (seenCurrencies.size > 0) {
+    const nonUsd = [...seenCurrencies].filter((c) => c !== "USD");
+    if (nonUsd.length) {
+      throw new Error(
+        `JSON-LD reported non-USD currency: ${nonUsd.join(", ")}`
+      );
     }
   }
 

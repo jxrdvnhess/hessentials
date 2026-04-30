@@ -75,9 +75,23 @@ export async function fetchProductPrice(
 
   try {
     const extracted = await runExtractor(product);
+    // Apply per-product plausibility floor — drops sample swatches,
+    // replacement parts, and other variant noise that would yield a
+    // misleadingly low "From $X". Falls back to the static priceRange
+    // if nothing remains above the floor.
+    const filtered =
+      typeof product.priceFloor === "number"
+        ? extracted.variants.filter((v) => v >= product.priceFloor!)
+        : extracted.variants;
+    if (!filtered.length) {
+      throw new Error(
+        `All variants below priceFloor ($${product.priceFloor}); ` +
+          `raw values: ${extracted.variants.join(", ")}`
+      );
+    }
     const display = extracted.soldOut
       ? "Sold out"
-      : formatVariants(extracted.variants);
+      : formatVariants(filtered);
     return {
       display,
       live: true,
