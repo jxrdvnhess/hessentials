@@ -122,7 +122,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/loewe-goya-thin-briefcase-2.jpg",
       "/shop/loewe-goya-thin-briefcase-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 1000,
   },
   {
@@ -173,7 +173,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-linen-double-collar-tee-2.jpg",
       "/shop/massimo-dutti-linen-double-collar-tee-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 25,
   },
   {
@@ -245,7 +245,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-linen-duffel-5.jpg",
       "/shop/prada-linen-duffel-6.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 800,
   },
   {
@@ -294,7 +294,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/aveda-pureformance-clay-2.jpg",
       "/shop/aveda-pureformance-clay-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 12,
   },
   {
@@ -312,7 +312,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-tapered-jeans-3.jpg",
       "/shop/massimo-dutti-tapered-jeans-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 30,
   },
   {
@@ -330,7 +330,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/tiffany-venetian-link-bracelet-3.jpg",
       "/shop/tiffany-venetian-link-bracelet-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 150,
   },
   {
@@ -348,7 +348,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-belt-bag-3.jpg",
       "/shop/prada-renylon-belt-bag-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 600,
   },
   {
@@ -383,7 +383,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-cotton-slim-pants-3.jpg",
       "/shop/massimo-dutti-cotton-slim-pants-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 25,
   },
   {
@@ -435,7 +435,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/aveda-pureformance-cream-2.jpg",
       "/shop/aveda-pureformance-cream-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 12,
   },
   {
@@ -489,7 +489,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/massimo-dutti-cotton-tee-3.jpg",
       "/shop/massimo-dutti-cotton-tee-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 15,
   },
   {
@@ -505,7 +505,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/goodfellow-flat-front-shorts-1.jpg",
       "/shop/goodfellow-flat-front-shorts-2.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 10,
   },
   {
@@ -524,7 +524,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-backpack-4.jpg",
       "/shop/prada-renylon-backpack-5.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 800,
   },
   {
@@ -541,7 +541,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/uniqlo-oxford-oversized-shirt-2.jpg",
       "/shop/uniqlo-oxford-oversized-shirt-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 15,
   },
   {
@@ -558,7 +558,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/abercrombie-premium-ribbed-tank-2.jpg",
       "/shop/abercrombie-premium-ribbed-tank-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 10,
   },
   {
@@ -577,7 +577,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-renylon-duffle-4.jpg",
       "/shop/prada-renylon-duffle-5.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 800,
   },
   {
@@ -630,7 +630,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/Abercrombie-Seersucker-Swim-Trunk-2.jpg",
       "/shop/Abercrombie-Seersucker-Swim-Trunk-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 20,
   },
   {
@@ -679,7 +679,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     priceRange: "$95–$160",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/lhomme/lhomme-eau-de-toilette-spray/284YSL.html",
     image: "/shop/ysl-l-homme-1.jpg",
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 35,
   },
   {
@@ -693,7 +693,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/myslf/myslf-eau-de-parfum/WW-51115YSL.html",
     image: "/shop/ysl-MYSLF-1.jpg",
     images: ["/shop/ysl-MYSLF-1.jpg", "/shop/ysl-MYSLF-2.jpg"],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 40,
   },
   {
@@ -710,7 +710,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/prada-Paradigme-2.jpg",
       "/shop/prada-Paradigme-3.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 100,
   },
   {
@@ -726,7 +726,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/kiehls-avocado-eye-cream-1.jpg",
       "/shop/kiehls-avocado-eye-cream-2.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 18,
   },
   {
@@ -748,7 +748,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     // Louis Vuitton aggressively blocks server-side fetches; this may
     // fail and fall back to the static priceRange. Admin page will
     // surface the error if so.
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 250,
   },
   {
@@ -766,7 +766,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/Prada-Symbole-sunglasses-3.jpg",
       "/shop/Prada-Symbole-sunglasses-4.jpg",
     ],
-    extractionMethod: "json-ld",
+    extractionMethod: "manual",
     priceFloor: 200,
   },
   {
