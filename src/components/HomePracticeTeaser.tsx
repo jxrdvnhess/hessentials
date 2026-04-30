@@ -162,10 +162,10 @@ export default function HomePracticeTeaser() {
                 position={{
                   top: "10%",
                   left: "7%",
-                  maxWidth: "min(28rem, 58%)",
+                  maxWidth: "min(24rem, 58%)",
                   align: "left",
                 }}
-                size="md"
+                size="sm"
               >
                 What was real, stayed.
               </ImagePoemLine>
