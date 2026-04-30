@@ -823,7 +823,7 @@ export const recipes: RecipeEntry[] = [
         heading: "From My Family Kitchen",
         body: "This is the original handwritten recipe card passed down through my Swedish family. It's how this dish has lived in our home for generations — simple, unpolished, and exactly how it was meant to be made.",
         image: {
-          src: "/Hess Family Plattar.jpg",
+          src: "/hess-family-plattar.jpg",
           alt: "Hess family plättar handwritten recipe card",
           width: 4032,
           height: 3024,
