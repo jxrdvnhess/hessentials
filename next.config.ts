@@ -93,6 +93,14 @@ const nextConfig: NextConfig = {
         destination: "/style/the-scent-people-remember",
         permanent: true,
       },
+      // Prada Court Leather Sneakers retired 2026-04-30 (pre-order
+      // listing without a fetchable price). Replacement sneakers are
+      // pending. Bouncing to the Shop index in the meantime.
+      {
+        source: "/shop/prada-court-leather-sneakers",
+        destination: "/shop",
+        permanent: true,
+      },
     ];
   },
 };

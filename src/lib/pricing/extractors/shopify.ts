@@ -87,6 +87,8 @@ export async function extractShopify(url: string): Promise<ExtractedPrice> {
       Accept: "application/json",
     },
     next: { revalidate: 43200 },
+    // Hard 4s ceiling — see jsonLd extractor for rationale.
+    signal: AbortSignal.timeout(4000),
   });
   if (!res.ok) {
     throw new Error(`Shopify HTTP ${res.status}`);

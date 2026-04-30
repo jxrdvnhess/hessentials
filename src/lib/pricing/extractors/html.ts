@@ -117,6 +117,8 @@ export async function extractHtml(
       Accept: "text/html,application/xhtml+xml",
     },
     next: { revalidate: 43200 },
+    // Hard 4s ceiling — see jsonLd extractor for rationale.
+    signal: AbortSignal.timeout(4000),
   });
   if (!res.ok) {
     throw new Error(`Source HTTP ${res.status}`);

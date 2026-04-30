@@ -138,6 +138,11 @@ export async function extractJsonLd(url: string): Promise<ExtractedPrice> {
     },
     // Next.js fetch caching — see fetchPrice.ts for the orchestration.
     next: { revalidate: 43200 },
+    // Hard 4s ceiling. Without this, slow / hostile sources hang the
+    // Next.js static export and the build fails after the page export
+    // timeout. A timeout error is caught by fetchPrice and falls back
+    // to the static priceRange — quiet, predictable.
+    signal: AbortSignal.timeout(4000),
   });
   if (!res.ok) {
     throw new Error(`Source HTTP ${res.status}`);
