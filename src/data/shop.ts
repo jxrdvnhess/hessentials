@@ -51,14 +51,27 @@ export const SHOP_CATEGORIES: readonly ShopCategory[] = [
   "Provisions",
 ];
 
+/**
+ * How to read the live price off the source `url`. When unset, the
+ * pricing layer leaves the static `priceRange` in place — that's the
+ * default for every existing listing until the audit pass classifies
+ * it. See `src/lib/pricing/fetchPrice.ts`.
+ */
+export type ExtractionMethod = "json-ld" | "shopify" | "html" | "manual";
+
 export type ShopProduct = {
   slug: string;
   name: string;
   brand: string;
   category: ShopCategory;
   reason: string;
+  /**
+   * Manual / last-known-good price. Always rendered when no
+   * `extractionMethod` is set, or as the fallback when a live fetch
+   * fails. Curated by Jordan; live fetches override at runtime.
+   */
   priceRange: PriceTier;
-  /** External product page. */
+  /** External product page. Doubles as the source for live pricing. */
   url: string;
   /** Renderable image URL (typically `/shop/<slug>-1.jpg`). */
   image: string;
@@ -67,6 +80,18 @@ export type ShopProduct = {
    * The first entry should match `image` (used on the grid + metadata).
    */
   images?: string[];
+  /**
+   * Optional live-pricing strategy. Omit (or set to "manual") to keep
+   * the static `priceRange`. The audit pass fills these in per source
+   * domain.
+   */
+  extractionMethod?: ExtractionMethod;
+  /**
+   * CSS selector pointing at the priced element. Required when
+   * `extractionMethod === "html"`, ignored otherwise. Supports a small
+   * subset of CSS — see `extractors/html.ts` for the grammar.
+   */
+  htmlPriceSelector?: string;
 };
 
 export const SHOP_INTRO = "Bought. Used. Kept.";
@@ -167,6 +192,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/lv-hippo-coffee-table-3.jpg",
       "/shop/lv-hippo-coffee-table-4.jpg",
     ],
+    // Smoke-test entry for the live pricing system. Shopify storefronts
+    // expose every variant via /products/<handle>.json — see
+    // `src/lib/pricing/extractors/shopify.ts`. Other listings remain on
+    // implicit manual mode until the audit pass classifies them.
+    extractionMethod: "shopify",
   },
   {
     slug: "birkenstock-arizona-eva",

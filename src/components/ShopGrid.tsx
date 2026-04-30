@@ -9,6 +9,7 @@ import {
   type ShopCategory,
   type ShopProduct,
 } from "../data/shop";
+import type { PriceFetchResult } from "../lib/pricing/types";
 import { shuffleArray } from "../lib/shuffle";
 
 /**
@@ -62,11 +63,15 @@ const SWIPE_THRESHOLD = 40;
 function ProductCard({
   product,
   aspect,
+  price,
 }: {
   product: ShopProduct;
   /** CSS aspect-ratio value for the image frame (e.g. "4 / 5"). Applied
    *  on sm+; mobile collapses to the canonical 4/5 below. */
   aspect: string;
+  /** Resolved price for this product. May be live, manual fallback, or
+   *  a sold-out signal. The card never recomputes — it just renders. */
+  price: PriceFetchResult;
 }) {
   const detailHref = `/shop/${product.slug}`;
   const images = product.images ?? [product.image];
@@ -257,12 +262,24 @@ function ProductCard({
             <p className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/55 sm:text-[12px]">
               {product.brand}
             </p>
-            <span
-              aria-label={`Price ${product.priceRange}`}
-              className="font-serif text-[14px] tracking-[0.04em] text-[#1f1d1b]/55"
-            >
-              {product.priceRange}
-            </span>
+            {price.soldOut ? (
+              // Sold-out tag replaces the price on cards. Reads as a
+              // small uppercase aside, matching the brand label across
+              // the gap — no exclamation, no urgency.
+              <span
+                aria-label="Sold out"
+                className="text-[10px] uppercase tracking-[0.24em] text-[#1f1d1b]/45"
+              >
+                Sold out
+              </span>
+            ) : (
+              <span
+                aria-label={`Price ${price.display}`}
+                className="font-serif text-[14px] tracking-[0.04em] text-[#1f1d1b]/55"
+              >
+                {price.display}
+              </span>
+            )}
           </div>
           <p className="mt-3 text-pretty font-serif text-[16px] italic leading-[1.55] text-[#1f1d1b]/80 sm:text-[17px]">
             {product.reason}
@@ -279,8 +296,26 @@ function ProductCard({
   );
 }
 
-export default function ShopGrid() {
+export default function ShopGrid({
+  prices,
+}: {
+  /** Slug → resolved price. Server-rendered upstream; the grid never
+   *  fetches. Missing entries fall back to the static priceRange so
+   *  the grid stays render-stable even mid-deploy. */
+  prices: Record<string, PriceFetchResult>;
+}) {
   const [filter, setFilter] = useState<Filter>("All");
+
+  // Helper: every card needs a price. If the upstream map is missing a
+  // slug for any reason, synthesize a manual fallback from the static
+  // priceRange — the card never renders without something to show.
+  const priceFor = (product: ShopProduct): PriceFetchResult =>
+    prices[product.slug] ?? {
+      display: product.priceRange,
+      live: false,
+      soldOut: false,
+      method: "manual",
+    };
 
   // Re-shuffle on every page visit. Server-side render keeps the declared
   // order (deterministic, hydration-safe); after mount we swap to a freshly
@@ -360,6 +395,7 @@ export default function ShopGrid() {
               <ProductCard
                 product={product}
                 aspect={ASPECT_CYCLE[i % ASPECT_CYCLE.length]}
+                price={priceFor(product)}
               />
             </li>
           ))}

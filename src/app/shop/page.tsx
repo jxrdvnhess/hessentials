@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { SHOP_INTRO } from "../../data/shop";
+import { SHOP_INTRO, SHOP_PRODUCTS } from "../../data/shop";
 import ShopGrid from "../../components/ShopGrid";
+import {
+  fetchAllPrices,
+  PRICING_REVALIDATE_SECONDS,
+} from "../../lib/pricing/fetchPrice";
 
 export const metadata: Metadata = {
   title: "Shop — Hessentials",
@@ -8,7 +12,19 @@ export const metadata: Metadata = {
     "Things bought, used, and returned to. The ones that held up.",
 };
 
-export default function ShopPage() {
+/**
+ * 12-hour ISR — see PRICING_REVALIDATE_SECONDS. Shop index regenerates
+ * with every revalidation cycle so live prices stay current without
+ * thrashing source sites on every request.
+ */
+export const revalidate = PRICING_REVALIDATE_SECONDS;
+
+export default async function ShopPage() {
+  // Resolve every product's display price server-side. fetchAllPrices
+  // never throws — failures fall back to the static priceRange — so the
+  // grid always has a complete map.
+  const prices = await fetchAllPrices(SHOP_PRODUCTS);
+
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
       {/* ---------- Intro ---------- */}
@@ -27,7 +43,7 @@ export default function ShopPage() {
 
       {/* ---------- Filter + Grid ---------- */}
       <div className="mx-auto w-full max-w-7xl px-6 pt-14 pb-32 sm:px-10 sm:pt-16 md:pb-40">
-        <ShopGrid />
+        <ShopGrid prices={prices} />
       </div>
     </main>
   );

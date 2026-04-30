@@ -3,9 +3,21 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SHOP_PRODUCTS, getProductBySlug } from "../../../data/shop";
 import { getShopEssay } from "../../../lib/shop";
+import {
+  fetchProductPrice,
+  PRICING_REVALIDATE_SECONDS,
+} from "../../../lib/pricing/fetchPrice";
+import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
 
 type Params = { slug: string };
+
+/**
+ * 12-hour ISR — see PRICING_REVALIDATE_SECONDS. Detail pages
+ * regenerate so the live price + verified date stay fresh without
+ * hitting the source on every render.
+ */
+export const revalidate = PRICING_REVALIDATE_SECONDS;
 
 export function generateStaticParams() {
   return SHOP_PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -41,7 +53,10 @@ export default async function ShopProductPage({
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
-  const essay = await getShopEssay(slug);
+  const [essay, price] = await Promise.all([
+    getShopEssay(slug),
+    fetchProductPrice(product),
+  ]);
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
@@ -86,9 +101,29 @@ export default async function ShopProductPage({
               {product.reason}
             </p>
 
-            <p className="mt-8 font-serif text-[15px] tracking-[0.04em] text-[#1f1d1b]/55">
-              {product.priceRange}
-            </p>
+            {price.soldOut ? (
+              // Sold-out reads as a small uppercase aside — same
+              // register as the category label above, so it doesn't
+              // shout. The CTA below still links out (the page may
+              // restock).
+              <p className="mt-8 text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[12px]">
+                Sold out
+              </p>
+            ) : (
+              <p className="mt-8 font-serif text-[15px] tracking-[0.04em] text-[#1f1d1b]/55">
+                {price.display}
+              </p>
+            )}
+
+            {/* Verified date — italic, small, beneath the price. Only
+                renders for successful live fetches; manual / fallback
+                listings stay quiet (no date is more honest than a
+                stale one). */}
+            {price.live && price.lastVerified && (
+              <p className="mt-2 font-serif text-[12px] italic leading-[1.4] text-[#1f1d1b]/40 sm:text-[13px]">
+                Last verified {formatVerifiedDate(price.lastVerified)}
+              </p>
+            )}
 
             <div className="mt-10 flex flex-col items-start gap-4">
               <a
