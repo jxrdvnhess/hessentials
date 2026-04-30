@@ -53,6 +53,16 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: false,
       },
+      // /recipes/garlic-butter-chicken-with-crispy-potatoes — retired in
+      // the 2026-04-30 library editorial pass (thematic overlap with the
+      // pesto-caprese chicken recipe and other chicken-on-a-plate
+      // variants). 301 to the recipes index so any external links bounce
+      // cleanly.
+      {
+        source: "/recipes/garlic-butter-chicken-with-crispy-potatoes",
+        destination: "/recipes",
+        permanent: true,
+      },
       {
         source: "/living/the-10-minute-reset-that-changes-your-evenings",
         destination: "/living/the-10-minute-reset",

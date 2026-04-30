@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import HomeLink from "./HomeLink";
 import Symbol from "./Symbol";
 import NewsletterSignup from "./NewsletterSignup";
 
@@ -209,13 +210,9 @@ function CinematicFooter() {
           </p>
 
           <div className="mt-1">
-            <Link
-              href="/"
-              aria-label="Hessentials — home"
-              className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
-            >
+            <HomeLink className="inline-block transition-opacity duration-500 ease-out hover:opacity-70">
               <Symbol size="xl" variant="inverse" alt="Hessentials" />
-            </Link>
+            </HomeLink>
           </div>
 
           <p className="text-[12px] uppercase tracking-[0.28em] text-[#f8f6f3]/70">
@@ -262,13 +259,9 @@ function CinematicFooter() {
           symbol, newsletter, legal. Two halves of one composition. */}
       <div className="block md:hidden">
         <div className="mx-auto flex max-w-[420px] flex-col items-center gap-y-8 px-6 pt-14 pb-10 text-center sm:px-8 sm:pt-16 sm:pb-12">
-          <Link
-            href="/"
-            aria-label="Hessentials — home"
-            className="inline-block transition-opacity duration-500 ease-out hover:opacity-70"
-          >
+          <HomeLink className="inline-block transition-opacity duration-500 ease-out hover:opacity-70">
             <Symbol size="xl" alt="Hessentials" />
-          </Link>
+          </HomeLink>
 
           <NewsletterSignup variant="default" />
 

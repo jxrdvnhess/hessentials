@@ -7,7 +7,7 @@ description: One tradition's seriousness about the divine can deepen yours.
 byline: By Jordan Hess
 ---
 
-I'm not Catholic anymore, and I'm not asking you to convert. I am asking you to notice that there's a particular kind of attention in a Mass that you can't get most other places, and that being in proximity to it occasionally — once a quarter, once a year — does something to you that nothing else does.
+I'm a cradle Catholic, and I'm not asking you to convert. I am asking you to notice that there's a particular kind of attention in a Mass that you can't get most other places, and that being in proximity to it occasionally — once a quarter, once a year — does something to you that nothing else does.
 
 A real Mass, not a mall Mass with a guitar band, has an architecture you can feel in the room. The standing, sitting, kneeling. The Latin or the formal English. The parts where you say the same words that millions of other people have said for two thousand years. The Eucharist. The silence between things. The whole hour is built to put you in a particular relationship with something larger than your day.
 

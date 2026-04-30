@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import HomeLink from "./HomeLink";
 import Wordmark from "./Wordmark";
 import SiteSearch from "./SiteSearch";
 import MobileMenu from "./MobileMenu";
@@ -73,9 +74,7 @@ export default function SiteHeader() {
             last — this gives the wordmark its moment without an
             explicit animation gimmick. Suppressed on interior pages
             and under prefers-reduced-motion (see globals.css). */}
-        <Link
-          href="/"
-          aria-label="Hessentials — home"
+        <HomeLink
           className={[
             "inline-block shrink-0",
             isHome ? "home-nod-wordmark" : "",
@@ -84,7 +83,7 @@ export default function SiteHeader() {
             .join(" ")}
         >
           <Wordmark size="nav" priority={isHome} />
-        </Link>
+        </HomeLink>
 
         <div
           className={[

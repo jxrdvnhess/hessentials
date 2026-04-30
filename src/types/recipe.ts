@@ -5,6 +5,13 @@ export type Ingredient = {
   name: string;
   /** Optional inline aside, e.g. "(or substitute butter)" */
   note?: string;
+  /**
+   * Optional sub-heading. When any ingredient in the list carries a
+   * `group`, the ingredients section renders with sub-headings
+   * (e.g. "Coconut Rice", "Shrimp Curry"). Used only for recipes
+   * with distinct components.
+   */
+  group?: string;
 };
 
 export type RecipeMeta = {
@@ -35,6 +42,12 @@ export type Recipe = {
   title: string;
   /** One-line editorial dek beneath the title. */
   dek?: string;
+  /**
+   * Short opening paragraph (one or two sentences) sitting between the
+   * title block and the ingredients section. Editorial body text — the
+   * recipe's quick framing in the writer's voice.
+   */
+  opening?: string;
   meta?: RecipeMeta;
   image?: RecipeImage;
   byline?: string;
