@@ -1,8 +1,22 @@
 import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import "./globals.css";
+
+/**
+ * Google Analytics is wired via @next/third-parties (Next's official
+ * GA4 integration — script-tag injection, automatic pageview tracking
+ * with App Router, no client-side useEffect needed).
+ *
+ * The measurement ID lives in NEXT_PUBLIC_GA_ID, set in the Vercel
+ * project's environment variables. The conditional render below means
+ * the script only loads when the env var is present — keeps localhost
+ * out of production stats and prevents any tracking until the var is
+ * configured.
+ */
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 /**
  * Mobile-first viewport defaults.
@@ -116,6 +130,7 @@ export default function RootLayout({
         {children}
         <SiteFooter />
       </body>
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
     </html>
   );
 }

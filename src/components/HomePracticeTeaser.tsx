@@ -146,8 +146,13 @@ export default function HomePracticeTeaser() {
               wall without crowding the figures or the pendants.
 
               md:rounded-[20px] matches the Type B feature-frame
-              rounding on Image 03 above so the seam reads continuous. */}
-          <div className="md:col-span-7">
+              rounding on Image 03 above so the seam reads continuous.
+
+              -mx-6 sm:-mx-10 md:mx-0 — on mobile the image breaks
+              out of the parent's px-6/sm:px-10 padding so it lands
+              edge-to-edge like Image 01 / Image 02 above. Resets on
+              md+ where the contained 7/12 spread layout takes over. */}
+          <div className="md:col-span-7 -mx-6 sm:-mx-10 md:mx-0">
             <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[4/3] md:rounded-[20px]">
               <Image
                 src={PRACTICE_SLOT_IMAGE}
