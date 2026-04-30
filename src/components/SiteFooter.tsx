@@ -129,13 +129,18 @@ function CinematicFooter() {
       className="relative w-full"
     >
       {/* ---------- Image stage ----------
-          Mobile: tall portrait crop (aspect-[4/5]) so the photograph
-                  dominates the viewport like a magazine close. The
-                  brand whisper (wordmark + tagline) sits over the
-                  bottom of the image; newsletter + legal live in the
-                  cream block below.
+          Mobile: 3:2 landscape crop. The 4:5 portrait crop we used to
+                  ship cropped the source (1672×941, ~16:9) into a narrow
+                  vertical strip — only the doorway zone read, and the
+                  bed on the left and the figure-shadow on the right
+                  both got chopped off. 3:2 lets ~85% of the source
+                  width show on a 390-430px viewport, so the full
+                  composition (linens / doorway / figure / shadow) lands
+                  the way it does on desktop. The brand whisper
+                  (wordmark + tagline) still sits at the bottom; the
+                  cream block holds newsletter + legal beneath.
           Desktop: 72vh+ with full overlay zones (aspect matches). */}
-      <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
+      <div className="relative aspect-[3/2] w-full overflow-hidden md:aspect-auto md:h-[clamp(560px,72vh,820px)]">
         <Image
           src="/splash/morning-merida.jpg"
           alt=""

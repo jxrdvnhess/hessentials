@@ -122,12 +122,18 @@ export default function HomePracticeTeaser() {
       aria-labelledby="practice-teaser-headline"
       className="relative w-full"
     >
-      <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 md:px-16">
+      <div className="w-full px-6 sm:px-10 md:px-[6vw]">
         {/* PRACTICE eyebrow + hairline removed so the dinner photo
             lands as the next beat in the cinematic arc, not a
             separately-labelled module. The article headline + URL
             carry the pillar identity now; the photo + line do the
-            visual work. */}
+            visual work.
+
+            Wrapper inset matches Image 03's md:px-[6vw] (Type B
+            feature-frame) so the dinner photo's left edge aligns with
+            the rope-chair image directly above it, and the rounded
+            corners + 6vw inset read as a continuous editorial spread
+            instead of a separate module. */}
 
         {/* Spread — image LEFT, text RIGHT on md+. Mirrors the Mother's
             Day module's 7/5 proportion so the two read as siblings. */}
@@ -137,9 +143,12 @@ export default function HomePracticeTeaser() {
               homepage closer). The line sits in the upper-left
               plaster zone (clean wall area above and to the left of
               the older man), where it reads cleanly against the warm
-              wall without crowding the figures or the pendants. */}
+              wall without crowding the figures or the pendants.
+
+              md:rounded-[20px] matches the Type B feature-frame
+              rounding on Image 03 above so the seam reads continuous. */}
           <div className="md:col-span-7">
-            <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[4/3]">
+            <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[4/3] md:rounded-[20px]">
               <Image
                 src={PRACTICE_SLOT_IMAGE}
                 alt=""
