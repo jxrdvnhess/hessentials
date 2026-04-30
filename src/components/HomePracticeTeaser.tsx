@@ -123,21 +123,11 @@ export default function HomePracticeTeaser() {
       className="relative w-full"
     >
       <div className="mx-auto w-full max-w-[1400px] px-6 sm:px-10 md:px-16">
-        {/* Section eyebrow above the spread — hairline + PRACTICE
-            caps. No standfirst: The Edit needed framing copy because
-            it was a roundup; this is one piece, and the headline does
-            the work. (If a standfirst is wanted later, it's editorial
-            copy and should come from Jordan or Aurelian.) */}
-        <div className="mb-12 max-w-[520px] sm:mb-14 md:mb-16">
-          <span
-            aria-hidden
-            className="block w-20"
-            style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
-          />
-          <p className="mt-6 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
-            Practice
-          </p>
-        </div>
+        {/* PRACTICE eyebrow + hairline removed so the dinner photo
+            lands as the next beat in the cinematic arc, not a
+            separately-labelled module. The article headline + URL
+            carry the pillar identity now; the photo + line do the
+            visual work. */}
 
         {/* Spread — image LEFT, text RIGHT on md+. Mirrors the Mother's
             Day module's 7/5 proportion so the two read as siblings. */}

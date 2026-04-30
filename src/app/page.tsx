@@ -314,20 +314,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---------- Practice statement teaser — beige zone ----------
-          Replaces the prior six-tile The Edit roundup. Practice carries
-          the brand's most distinctive editorial voice; one piece at
-          full editorial weight earns more here than six surface-level
-          links. The component owns its own eyebrow + hairline so it
-          slots straight into the GAP_ZONE rhythm.
-
-          The dinner photograph and the "What was real, stayed." line
-          (which used to anchor the homepage closer) are baked into
-          this teaser as its fixed visual identity. The site closes
-          via the universal SiteFooter rendered from layout.tsx. */}
+      {/* ---------- Practice statement teaser ----------
+          The dinner photograph + "What was real, stayed." line that
+          used to anchor the closer are baked into this teaser. With
+          the PRACTICE eyebrow dropped, the section reads as the next
+          beat in the photo arc — film-cut gap above (12px) instead
+          of the cream-zone GAP_ZONE break the old The Edit roundup
+          needed. Bottom keeps GAP_ZONE so the teaser breathes before
+          the universal SiteFooter (rendered from layout.tsx) takes
+          over the close. */}
       <section
         aria-label="Practice"
-        style={{ marginTop: GAP_ZONE, paddingBottom: GAP_ZONE }}
+        style={{ marginTop: GAP_IMG, paddingBottom: GAP_ZONE }}
       >
         <HomePracticeTeaser />
       </section>
