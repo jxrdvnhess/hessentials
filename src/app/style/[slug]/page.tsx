@@ -185,8 +185,20 @@ function ShopSection({
       <p className="mb-3 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
         {section.heading}
       </p>
-      <p className="mb-12 text-pretty font-serif text-[17px] italic leading-[1.6] text-[#1f1d1b]/65 sm:text-[18px]">
+      <p className="mb-8 text-pretty font-serif text-[17px] italic leading-[1.6] text-[#1f1d1b]/65 sm:text-[18px]">
         {section.note}
+      </p>
+      {/* Affiliate disclosure — sits above the outbound shop links so
+          the proximity is clear (FTC guidance). Quiet but legible. */}
+      <p className="mb-12 max-w-md font-serif text-[12px] leading-[1.6] text-[#1f1d1b]/50 sm:text-[13px]">
+        This page contains affiliate links. Hessentials may earn a
+        commission at no cost to you.{" "}
+        <Link
+          href="/affiliate-disclosure"
+          className="underline decoration-[#1f1d1b]/25 underline-offset-[3px] transition-colors duration-500 ease-out hover:decoration-[#1f1d1b]/65"
+        >
+          Full disclosure
+        </Link>
       </p>
       <div className="space-y-12">
         {section.items.map((item, i) => (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SHOP_INTRO, SHOP_PRODUCTS } from "../../data/shop";
+import { SHOP_INTRO, SHOP_SUBTITLE, SHOP_PRODUCTS } from "../../data/shop";
 import ShopGrid from "../../components/ShopGrid";
 import { fetchAllPrices } from "../../lib/pricing/fetchPrice";
 
@@ -28,13 +28,30 @@ export default async function ShopPage() {
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
-      {/* ---------- Intro ---------- */}
-      <section className="mx-auto w-full max-w-2xl px-6 pt-16 pb-8 text-center sm:px-10 md:pt-24">
-        <p className="mb-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
+      {/* ---------- Intro ----------
+          Mirrors the pillar-page intro architecture: hairline →
+          eyebrow → headline → subtitle. Spacing rhythm matches
+          Recipes / Living / Style / Practice so all five pillar
+          surfaces read like the same hand made them. */}
+      <section className="mx-auto flex w-full max-w-2xl flex-col items-center px-6 pt-16 pb-8 text-center sm:px-10 md:pt-24">
+        {/* Hairline above the pillar eyebrow (§2.2). */}
+        <span
+          aria-hidden
+          className="block w-20"
+          style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
+        />
+        <p className="mt-6 mb-8 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
           Shop
         </p>
         <p className="font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.4] text-[#1f1d1b]/70">
           {SHOP_INTRO}
+        </p>
+        {/* Secondary-tier subtitle (Style / Shop): font-serif
+            13/14px at /55 opacity. Primary tier (Living / Practice)
+            sits at 15/16px /55. Both share the same register;
+            the size difference is intentional hierarchy. */}
+        <p className="mx-auto mt-6 max-w-md font-serif text-[13px] leading-[1.6] text-[#1f1d1b]/55 sm:text-[14px]">
+          {SHOP_SUBTITLE}
         </p>
         {/* The price-tier legend ($ / $$ / $$$ / $$$$) was removed —
             redundant now that every card shows actual dollar amounts.

@@ -141,13 +141,18 @@ export default async function ShopProductPage({
                 </span>
               </a>
 
-              <p className="max-w-xs text-[10px] uppercase tracking-[0.22em] leading-[1.7] text-[#1f1d1b]/35 sm:text-[11px]">
-                Hessentials may earn a small commission.{" "}
+              {/* Affiliate disclosure — sits directly below the
+                  primary buy link per FTC proximity guidance. Quiet
+                  but legible: sentence-case serif, /55 opacity. Not
+                  a warning banner, not a footnote. */}
+              <p className="max-w-sm font-serif text-[12px] leading-[1.6] text-[#1f1d1b]/55 sm:text-[13px]">
+                This page contains affiliate links. Hessentials may earn a
+                commission at no cost to you.{" "}
                 <Link
                   href="/affiliate-disclosure"
-                  className="underline decoration-[#1f1d1b]/25 underline-offset-[3px] transition-colors duration-500 ease-out hover:decoration-[#1f1d1b]/60"
+                  className="underline decoration-[#1f1d1b]/30 underline-offset-[3px] transition-colors duration-500 ease-out hover:decoration-[#1f1d1b]/70"
                 >
-                  Disclosure
+                  Full disclosure
                 </Link>
               </p>
             </div>
