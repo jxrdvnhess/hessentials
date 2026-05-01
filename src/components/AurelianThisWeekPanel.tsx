@@ -44,7 +44,7 @@ export default function AurelianThisWeekPanel({ layout }: Props) {
   return (
     <aside aria-label="Aurelian — This Week" className={wrapperClass}>
       <div className="text-[11px] uppercase leading-[1.5] tracking-[0.28em] text-[#1f1d1b]/55">
-        Aurelian &middot; This Week
+        Aurelian — This Week
       </div>
       <div className="mt-1.5 text-[10.5px] uppercase leading-[1.5] tracking-[0.25em] text-[#1f1d1b]/40">
         {range}

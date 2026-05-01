@@ -38,6 +38,20 @@ export default async function RecipeDetailPage({
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
+      {/* ---------- Top — back link ----------
+          Mirrors the Shop product detail return link. Pillar
+          attribution is the source of truth — recipes return to
+          /recipes. Same component, same treatment, site-wide. */}
+      <div className="mx-auto w-full max-w-7xl px-6 pt-10 sm:px-10 md:px-16 md:pt-12">
+        <Link
+          href="/recipes"
+          className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
+        >
+          <span aria-hidden>←</span>
+          Recipes
+        </Link>
+      </div>
+
       <Recipe recipe={entry.recipe} />
 
       {/* ---------- Bottom — onward ---------- */}

@@ -54,9 +54,12 @@ const sans = Inter({
 export const metadata: Metadata = {
   title: {
     default: "Hessentials — Choosing well, and standing by it.",
-    // Per-page titles (set via generateMetadata) get appended:
-    //   "Privacy — Hessentials" instead of just "Privacy".
-    template: "%s | Hessentials",
+    // Every per-page title already includes "— Hessentials" (e.g.
+    // "Recipes — Hessentials", "Pull-On Seersucker Swim Trunk —
+    // Abercrombie — Hessentials"), so the template is a passthrough.
+    // The previous template appended "| Hessentials" and produced
+    // duplicates like "Recipes — Hessentials | Hessentials".
+    template: "%s",
   },
   description:
     "Choosing well, and standing by it. Food, home, style, and the small decisions that make a life feel considered.",

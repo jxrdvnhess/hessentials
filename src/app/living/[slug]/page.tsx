@@ -45,6 +45,19 @@ export default async function LivingArticlePage({
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
+      {/* ---------- Top — back link ----------
+          Mirrors the Shop product detail return link. Pillar
+          attribution is the source of truth. */}
+      <div className="mx-auto w-full max-w-7xl px-6 pt-10 sm:px-10 md:px-16 md:pt-12">
+        <Link
+          href="/living"
+          className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
+        >
+          <span aria-hidden>←</span>
+          Living
+        </Link>
+      </div>
+
       <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
         {/* ---------- Header ---------- */}
         <header className="mb-20 text-center md:mb-28">

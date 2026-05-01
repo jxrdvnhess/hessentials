@@ -18,7 +18,9 @@
 export type AurelianWeeklyReading = {
   /** The Monday that begins the reading's week. ISO date. */
   weekOf: string;
-  /** Display string: "April 27 — May 3, 2026". */
+  /** Display string: "April 27–May 3, 2026". Date and numeric ranges
+   * use an en dash (U+2013) with no surrounding spaces — editorial
+   * convention. Body-copy em dashes are spaced; ranges are not. */
   range: string;
   /** Short scene-setting headline (one sentence). */
   headline: string;
@@ -34,7 +36,7 @@ export type AurelianWeeklyReading = {
 
 export const CURRENT_READING: AurelianWeeklyReading = {
   weekOf: "2026-04-27",
-  range: "April 27 — May 3, 2026",
+  range: "April 27–May 3, 2026",
   headline:
     "The week the year stops asking you to hurry and starts asking you to settle.",
   paragraphs: [
