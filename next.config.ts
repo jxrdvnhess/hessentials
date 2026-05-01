@@ -101,6 +101,65 @@ const nextConfig: NextConfig = {
         destination: "/shop",
         permanent: true,
       },
+      // Practice slug rename pass (2026-05-01): stripped the duplicate
+      // `practice-` prefix from every Practice article slug. The pillar
+      // already namespaces the URL — repeating it in the slug was noise.
+      // 308 (permanent) so SEO equity transfers to the canonical paths.
+      {
+        source: "/practice/practice-1111-is-a-real-practice",
+        destination: "/practice/1111-is-a-real-practice",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-compliment-one-person-every-day",
+        destination: "/practice/compliment-one-person-every-day",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-go-to-mass-occasionally",
+        destination: "/practice/go-to-mass-occasionally",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-pick-one-stone-know-why",
+        destination: "/practice/pick-one-stone-know-why",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-silence-five-minutes-no-app",
+        destination: "/practice/silence-five-minutes-no-app",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-sound-baths-how-to-tell-which-ones-work",
+        destination: "/practice/sound-baths-how-to-tell-which-ones-work",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-tarot-isnt-prediction",
+        destination: "/practice/tarot-isnt-prediction",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-the-annual-review-beats-resolutions",
+        destination: "/practice/the-annual-review-beats-resolutions",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-the-single-object-you-carry",
+        destination: "/practice/the-single-object-you-carry",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-walking-is-not-slow-running",
+        destination: "/practice/walking-is-not-slow-running",
+        permanent: true,
+      },
+      {
+        source: "/practice/practice-why-i-write-down-what-i-want",
+        destination: "/practice/why-i-write-down-what-i-want",
+        permanent: true,
+      },
     ];
   },
 };

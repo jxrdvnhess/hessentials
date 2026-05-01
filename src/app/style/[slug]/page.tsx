@@ -258,8 +258,11 @@ export default async function StyleArticlePage({
       <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
         {/* ---------- Article header ---------- */}
         <header className="mb-20 text-center md:mb-28">
+          {/* Two-part eyebrow per the canonical editorial article
+              header (PILLAR — SUBCATEGORY). Mirrors how Practice and
+              Living render the same shape. */}
           <p className="mb-10 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
-            {article.eyebrow}
+            Style — {article.eyebrow}
           </p>
 
           <h1 className="font-serif text-[clamp(2.25rem,5.5vw,3.75rem)] font-normal leading-[1.04] tracking-[-0.025em] text-balance">

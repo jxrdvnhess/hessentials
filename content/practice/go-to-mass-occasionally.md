@@ -1,6 +1,6 @@
 ---
 title: Go to Mass occasionally. Even if you're not Catholic.
-slug: practice-go-to-mass-occasionally
+slug: go-to-mass-occasionally
 category: practice
 section: Inner
 description: One tradition's seriousness about the divine can deepen yours.

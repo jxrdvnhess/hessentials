@@ -1,7 +1,8 @@
 ---
-title: Why Most Kitchens Are Set Up Wrong
+title: Why most kitchens are set up wrong.
 slug: why-most-kitchens-are-set-up-wrong
 category: living
+section: Systems
 ---
 
 Most kitchens aren't lacking tools.

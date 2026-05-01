@@ -1,7 +1,8 @@
 ---
-title: The 10-minute reset
+title: The 10-minute reset.
 slug: the-10-minute-reset
 category: living
+section: Rituals
 ---
 
 Your evenings don't reset because of how you feel.

@@ -1,6 +1,6 @@
 ---
-title: Why I write down what I want and carry it with me
-slug: practice-why-i-write-down-what-i-want
+title: Why I write down what I want and carry it with me.
+slug: why-i-write-down-what-i-want
 category: practice
 section: Inner
 description: Most of what people call wanting something doesn't survive a folded page in pen.

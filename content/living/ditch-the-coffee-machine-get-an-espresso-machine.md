@@ -1,7 +1,8 @@
 ---
-title: Ditch the Coffee Machine. Get an Espresso Machine.
+title: Ditch the coffee machine. Get an espresso machine.
 slug: ditch-the-coffee-machine-get-an-espresso-machine
 category: living
+section: Systems
 ---
 
 There's a point where you stop tolerating bad coffee.

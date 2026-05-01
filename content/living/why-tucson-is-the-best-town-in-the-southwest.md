@@ -1,5 +1,5 @@
 ---
-title: Why Tucson Is the Best Town in the Southwest
+title: Why Tucson is the best town in the Southwest.
 slug: why-tucson-is-the-best-town-in-the-southwest
 category: living
 ---

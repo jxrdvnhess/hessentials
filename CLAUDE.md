@@ -261,3 +261,31 @@ If it doesn’t feel considered, they’re out.
 This audience builds businesses.
 
 ---
+
+## TYPOGRAPHY — DASHES
+
+Em dashes (—) in body copy and eyebrows: use surrounding spaces.
+
+```
+word — word
+PILLAR — SUBCATEGORY
+```
+
+En dashes (–) in numeric and date ranges: no surrounding spaces.
+
+```
+$55–$75
+April 27–May 3, 2026
+```
+
+Hyphens (-): only for compound words.
+
+```
+long-form
+10-minute
+five-piece
+```
+
+Never substitute one for another.
+
+---

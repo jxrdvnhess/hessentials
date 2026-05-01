@@ -1,6 +1,6 @@
 ---
 title: The single object you carry.
-slug: practice-the-single-object-you-carry
+slug: the-single-object-you-carry
 category: practice
 section: Daily
 description: Not jewelry. Not a talisman. An anchor.

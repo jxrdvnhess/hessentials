@@ -1,6 +1,6 @@
 ---
-title: Sound baths and how to tell which ones work
-slug: practice-sound-baths-how-to-tell-which-ones-work
+title: Sound baths and how to tell which ones work.
+slug: sound-baths-how-to-tell-which-ones-work
 category: practice
 section: Inner
 description: Most of them don't. Here's what you're listening for.

@@ -12,24 +12,22 @@ export const metadata: Metadata = {
     "Notes on rooms, rituals, plants, and the small decisions that change how home feels.",
 };
 
-/**
- * Editorial groupings keyed by article slug. The interactive filter row
- * lives in <LivingFilter />; this map decides which bucket each piece
- * belongs to so the filter ("Systems" / "Environment" / "Rituals") can
- * narrow the list. Articles without an explicit group default to
- * Systems — review and add an entry here when a new piece ships.
- */
-const GROUPS: Record<string, LivingGroup> = {
-  "the-one-pot-that-does-everything": "Systems",
-  "ditch-the-coffee-machine-get-an-espresso-machine": "Systems",
-  "why-most-kitchens-are-set-up-wrong": "Systems",
-  "why-you-dont-cook-more": "Systems",
-  "stop-buying-plush-blankets-use-cotton": "Environment",
-  "youre-not-bad-with-plants": "Environment",
-  "stop-using-overhead-lights-after-sunset": "Environment",
-  "the-10-minute-reset": "Rituals",
-  "stop-using-fabric-softener": "Rituals",
-};
+// Section is the canonical source of truth — read directly from each
+// article's markdown frontmatter (`section: Systems | Environment |
+// Rituals`). The article header and the index filter share the same
+// value so a piece's eyebrow and its filter bucket can never drift.
+// Articles without a section default to Systems.
+const VALID_GROUPS: readonly LivingGroup[] = [
+  "Systems",
+  "Environment",
+  "Rituals",
+];
+
+function asLivingGroup(value: string | undefined): LivingGroup {
+  return VALID_GROUPS.includes(value as LivingGroup)
+    ? (value as LivingGroup)
+    : "Systems";
+}
 
 // Pillar pages treat all content equally — no curated subset is held
 // up as the recommended entry point. The previous FEATURED_SLUGS const
@@ -44,7 +42,7 @@ export default async function LivingIndexPage() {
     slug: article.slug,
     title: article.meta.title,
     excerpt: article.excerpt,
-    group: GROUPS[article.slug] ?? "Systems",
+    group: asLivingGroup(article.meta.section),
   }));
 
   return (

@@ -1,7 +1,8 @@
 ---
-title: The One Chair
+title: The one chair.
 slug: the-one-chair
 category: living
+section: Environment
 ---
 
 Most people buy chairs for rooms.

@@ -50,23 +50,23 @@ const FEATURED_PRACTICE: readonly Featured[] = [
       "a clear-eyed audit, not a sobriety crusade. the drink wasn't the variable.",
   },
   {
-    slug: "practice-tarot-isnt-prediction",
+    slug: "tarot-isnt-prediction",
     title: "Tarot isn't prediction. Here's what it is.",
     descriptor:
       "stop asking it what's going to happen. start asking it what's already true.",
   },
   {
-    slug: "practice-1111-is-a-real-practice",
+    slug: "1111-is-a-real-practice",
     title: "11:11 is a real practice. It just isn't what people say it is.",
     descriptor: "the number doesn't mean anything. the pause means everything.",
   },
   {
-    slug: "practice-compliment-one-person-every-day",
+    slug: "compliment-one-person-every-day",
     title: "Compliment one person every day. Make it specific.",
     descriptor: "not because they need it. because of what it does to you.",
   },
   {
-    slug: "practice-go-to-mass-occasionally",
+    slug: "go-to-mass-occasionally",
     title: "Go to Mass occasionally. Even if you're not Catholic.",
     descriptor:
       "one tradition's seriousness about the divine can deepen yours.",

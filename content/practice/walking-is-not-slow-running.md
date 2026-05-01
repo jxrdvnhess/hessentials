@@ -1,6 +1,6 @@
 ---
 title: Walking is not slow running.
-slug: practice-walking-is-not-slow-running
+slug: walking-is-not-slow-running
 category: practice
 section: Daily
 description: One is for the body. The other is for the rest of you.

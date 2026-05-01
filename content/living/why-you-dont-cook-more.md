@@ -1,7 +1,8 @@
 ---
-title: Why you don't cook more
+title: Why you don't cook more.
 slug: why-you-dont-cook-more
 category: living
+section: Systems
 ---
 
 Cooking more isn't about discipline.

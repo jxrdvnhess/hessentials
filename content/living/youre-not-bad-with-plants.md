@@ -1,7 +1,8 @@
 ---
-title: You're Not Bad with Plants
+title: You're not bad with plants.
 slug: youre-not-bad-with-plants
 category: living
+section: Environment
 ---
 
 There's a story people tell themselves about plants: some people have a green thumb, and the rest are doomed.

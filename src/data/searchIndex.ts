@@ -86,73 +86,73 @@ const PRACTICE_ITEMS: SearchItem[] = [
   {
     title: "Why I write down what I want and carry it with me",
     section: "Practice",
-    url: "/practice/practice-why-i-write-down-what-i-want",
+    url: "/practice/why-i-write-down-what-i-want",
     description:
       "Most of what people call wanting something doesn't survive a folded page in pen.",
   },
   {
     title: "Sound baths and how to tell which ones work",
     section: "Practice",
-    url: "/practice/practice-sound-baths-how-to-tell-which-ones-work",
+    url: "/practice/sound-baths-how-to-tell-which-ones-work",
     description: "Most of them don't. Here's what you're listening for.",
   },
   {
     title: "11:11 is a real practice. It just isn't what people say it is.",
     section: "Practice",
-    url: "/practice/practice-1111-is-a-real-practice",
+    url: "/practice/1111-is-a-real-practice",
     description:
       "The number doesn't mean anything. The pause means everything.",
   },
   {
     title: "Compliment one person every day. Make it specific.",
     section: "Practice",
-    url: "/practice/practice-compliment-one-person-every-day",
+    url: "/practice/compliment-one-person-every-day",
     description:
       "Not because they need it. Because of what it does to you.",
   },
   {
     title: "Pick one stone. Know why.",
     section: "Practice",
-    url: "/practice/practice-pick-one-stone-know-why",
+    url: "/practice/pick-one-stone-know-why",
     description: "Not for healing. For commitment.",
   },
   {
     title: "Walking is not slow running.",
     section: "Practice",
-    url: "/practice/practice-walking-is-not-slow-running",
+    url: "/practice/walking-is-not-slow-running",
     description: "One is for the body. The other is for the rest of you.",
   },
   {
     title: "Go to Mass occasionally. Even if you're not Catholic.",
     section: "Practice",
-    url: "/practice/practice-go-to-mass-occasionally",
+    url: "/practice/go-to-mass-occasionally",
     description:
       "One tradition's seriousness about the divine can deepen yours.",
   },
   {
     title: "Tarot isn't prediction. Here's what it is.",
     section: "Practice",
-    url: "/practice/practice-tarot-isnt-prediction",
+    url: "/practice/tarot-isnt-prediction",
     description:
       "Stop asking it what's going to happen. Start asking it what's already true.",
   },
   {
     title: "The single object you carry.",
     section: "Practice",
-    url: "/practice/practice-the-single-object-you-carry",
+    url: "/practice/the-single-object-you-carry",
     description: "Not jewelry. Not a talisman. An anchor.",
   },
   {
     title: "Silence. Five minutes. No app.",
     section: "Practice",
-    url: "/practice/practice-silence-five-minutes-no-app",
+    url: "/practice/silence-five-minutes-no-app",
     description:
       "The thing every meditation app is selling you a worse version of.",
   },
   {
     title: "The annual review beats resolutions.",
     section: "Practice",
-    url: "/practice/practice-the-annual-review-beats-resolutions",
+    url: "/practice/the-annual-review-beats-resolutions",
     description:
       "Looking back is the practice. Looking forward is the byproduct.",
   },

@@ -38,7 +38,7 @@ const EDIT_ITEMS: EditItem[] = [
   },
   {
     title: "Tarot isn't prediction",
-    href: "/practice/practice-tarot-isnt-prediction",
+    href: "/practice/tarot-isnt-prediction",
     category: "practice",
   },
   {

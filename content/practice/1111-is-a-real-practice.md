@@ -1,6 +1,6 @@
 ---
 title: "11:11 is a real practice. It just isn't what people say it is."
-slug: practice-1111-is-a-real-practice
+slug: 1111-is-a-real-practice
 category: practice
 section: Inner
 description: The number doesn't mean anything. The pause means everything.

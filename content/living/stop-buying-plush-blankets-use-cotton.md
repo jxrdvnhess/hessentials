@@ -1,7 +1,8 @@
 ---
-title: Stop Buying Plush Blankets. Use Cotton.
+title: Stop buying plush blankets. Use cotton.
 slug: stop-buying-plush-blankets-use-cotton
 category: living
+section: Environment
 ---
 
 There's a difference between something that feels good for five minutes and something that actually works.

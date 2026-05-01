@@ -1,7 +1,8 @@
 ---
-title: Stop Using Fabric Softener
+title: Stop using fabric softener.
 slug: stop-using-fabric-softener
 category: living
+section: Rituals
 ---
 
 Most people are washing their clothes correctly.

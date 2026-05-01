@@ -1,6 +1,6 @@
 ---
 title: Tarot isn't prediction. Here's what it is.
-slug: practice-tarot-isnt-prediction
+slug: tarot-isnt-prediction
 category: practice
 section: Inner
 description: Stop asking it what's going to happen. Start asking it what's already true.

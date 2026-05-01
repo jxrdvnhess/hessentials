@@ -1,5 +1,5 @@
 ---
-title: I Stopped Drinking at 30
+title: I stopped drinking at 30.
 slug: i-stopped-drinking-at-30
 category: practice
 section: Cyclical

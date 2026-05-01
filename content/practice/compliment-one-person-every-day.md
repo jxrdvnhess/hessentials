@@ -1,6 +1,6 @@
 ---
 title: Compliment one person every day. Make it specific.
-slug: practice-compliment-one-person-every-day
+slug: compliment-one-person-every-day
 category: practice
 section: Daily
 description: Not because they need it. Because of what it does to you.

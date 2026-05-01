@@ -1,6 +1,6 @@
 ---
 title: Pick one stone. Know why.
-slug: practice-pick-one-stone-know-why
+slug: pick-one-stone-know-why
 category: practice
 section: Daily
 description: Not for healing. For commitment.

@@ -1,6 +1,6 @@
 ---
 title: Silence. Five minutes. No app.
-slug: practice-silence-five-minutes-no-app
+slug: silence-five-minutes-no-app
 category: practice
 section: Daily
 description: The thing every meditation app is selling you a worse version of.

@@ -1,6 +1,6 @@
 ---
 title: The annual review beats resolutions.
-slug: practice-the-annual-review-beats-resolutions
+slug: the-annual-review-beats-resolutions
 category: practice
 section: Cyclical
 description: Looking back is the practice. Looking forward is the byproduct.

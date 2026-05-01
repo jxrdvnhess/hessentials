@@ -12,29 +12,22 @@ export const metadata: Metadata = {
     "Notes on the small returning things — what to do every day, what to do once a year, what to carry, what to ignore.",
 };
 
-/**
- * Editorial groupings keyed by article slug. The filter row narrows the
- * archive into the three buckets Practice sits in: Daily, Inner, Cyclical.
- * Articles without an explicit group default to Daily — review and add an
- * entry here when a new piece ships.
- */
-const GROUPS: Record<string, PracticeGroup> = {
-  // Daily — small, returnable, kept
-  "practice-walking-is-not-slow-running": "Daily",
-  "practice-compliment-one-person-every-day": "Daily",
-  "practice-silence-five-minutes-no-app": "Daily",
-  "practice-pick-one-stone-know-why": "Daily",
-  "practice-the-single-object-you-carry": "Daily",
-  // Inner — practices that work on the interior
-  "practice-sound-baths-how-to-tell-which-ones-work": "Inner",
-  "practice-1111-is-a-real-practice": "Inner",
-  "practice-go-to-mass-occasionally": "Inner",
-  "practice-tarot-isnt-prediction": "Inner",
-  "practice-why-i-write-down-what-i-want": "Inner",
-  // Cyclical — once a year, once a life
-  "practice-the-annual-review-beats-resolutions": "Cyclical",
-  "i-stopped-drinking-at-30": "Cyclical",
-};
+// Section is the canonical source of truth — read directly from each
+// article's markdown frontmatter (`section: Daily | Inner | Cyclical`).
+// The article header and the index filter share the same value so a
+// piece's eyebrow and its filter bucket can never drift. Articles
+// without a section default to Daily.
+const VALID_GROUPS: readonly PracticeGroup[] = [
+  "Daily",
+  "Inner",
+  "Cyclical",
+];
+
+function asPracticeGroup(value: string | undefined): PracticeGroup {
+  return VALID_GROUPS.includes(value as PracticeGroup)
+    ? (value as PracticeGroup)
+    : "Daily";
+}
 
 // Pillar pages treat all content equally — no curated subset is held
 // up as the recommended entry point. The previous FEATURED_SLUGS const
@@ -49,7 +42,7 @@ export default async function PracticeIndexPage() {
     slug: article.slug,
     title: article.meta.title,
     excerpt: article.excerpt,
-    group: GROUPS[article.slug] ?? "Daily",
+    group: asPracticeGroup(article.meta.section),
   }));
 
   return (

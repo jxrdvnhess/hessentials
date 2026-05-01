@@ -1,7 +1,8 @@
 ---
-title: The One Pot That Does Everything
+title: The one pot that does everything.
 slug: the-one-pot-that-does-everything
 category: living
+section: Systems
 ---
 
 If I had to cook with one piece of cookware for the rest of my life, it would be a Dutch oven.

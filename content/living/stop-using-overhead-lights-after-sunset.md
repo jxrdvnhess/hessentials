@@ -1,7 +1,8 @@
 ---
-title: Stop Using Overhead Lights After Sunset
+title: Stop using overhead lights after sunset.
 slug: stop-using-overhead-lights-after-sunset
 category: living
+section: Environment
 ---
 
 A room can be clean, the furniture can be right, the art can be hung correctly — and the room can still feel cheap.
