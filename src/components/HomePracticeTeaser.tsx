@@ -71,6 +71,11 @@ const FEATURED_PRACTICE: readonly Featured[] = [
     descriptor:
       "one tradition's seriousness about the divine can deepen yours.",
   },
+  {
+    slug: "what-the-cows-know",
+    title: "What the Cows Know",
+    descriptor: "the cows aren't guessing. neither are you.",
+  },
 ];
 
 /** Fixed image for the slot (see component header). */

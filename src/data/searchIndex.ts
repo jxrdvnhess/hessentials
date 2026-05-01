@@ -71,6 +71,16 @@ const LIVING_ITEMS: SearchItem[] = [
     section: "Living",
     url: "/living/stop-using-fabric-softener",
   },
+  {
+    title: "Buy the Bundles",
+    section: "Living",
+    url: "/living/buy-the-bundles",
+  },
+  {
+    title: "Ten Minutes Late",
+    section: "Living",
+    url: "/living/ten-minutes-late",
+  },
 ];
 
 /* ---------- Practice (markdown-authored, hardcoded for indexing) ---------- */
@@ -155,6 +165,12 @@ const PRACTICE_ITEMS: SearchItem[] = [
     url: "/practice/the-annual-review-beats-resolutions",
     description:
       "Looking back is the practice. Looking forward is the byproduct.",
+  },
+  {
+    title: "What the Cows Know",
+    section: "Practice",
+    url: "/practice/what-the-cows-know",
+    description: "The cows aren't guessing. Neither are you.",
   },
 ];
 

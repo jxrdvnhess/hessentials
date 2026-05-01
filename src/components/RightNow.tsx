@@ -130,6 +130,16 @@ const REFINING: Article[] = [
     url: "/living/stop-buying-plush-blankets-use-cotton",
     payoff: "the upgrade nobody talks about.",
   },
+  {
+    title: "buy the bundles",
+    url: "/living/buy-the-bundles",
+    payoff: "the room is the same. the light is the same.",
+  },
+  {
+    title: "ten minutes late",
+    url: "/living/ten-minutes-late",
+    payoff: "the bar is low. most people miss it.",
+  },
 ];
 
 const SHOPPING: Article[] = [
