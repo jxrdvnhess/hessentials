@@ -338,42 +338,35 @@ export default function ShopGrid({
 
   return (
     <>
-      {/* ---------- Filter row ---------- */}
-      <nav
-        aria-label="Filter shop by category"
-        className="mb-12 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 px-2 sm:mb-16 sm:gap-x-6"
-      >
-        {ALL_FILTERS.map((label, idx) => {
-          const active = filter === label;
-          return (
-            <span
-              key={label}
-              className="flex items-center gap-x-4 sm:gap-x-6"
-            >
-              {idx > 0 && (
-                <span
-                  aria-hidden
-                  className="hidden text-[10px] text-[#1f1d1b]/25 sm:inline"
+      {/* ---------- Filter row ----------
+          Mirrors the pillar-page filter treatment exactly: flat ul,
+          space-separated, no middle-dot separators, active item
+          carries the filter-pill underline. Brings Shop into parity
+          with Recipes / Living / Practice so all four filter rows
+          read as one system. */}
+      <nav aria-label="Filter shop by category" className="mb-12 sm:mb-16">
+        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
+          {ALL_FILTERS.map((label) => {
+            const active = filter === label;
+            return (
+              <li key={label}>
+                <button
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setFilter(label)}
+                  className={[
+                    "filter-pill cursor-pointer transition-colors duration-500 ease-out",
+                    active
+                      ? "filter-pill-active text-[#1f1d1b]"
+                      : "text-[#1f1d1b]/40 hover:text-[#1f1d1b]/75",
+                  ].join(" ")}
                 >
-                  ·
-                </span>
-              )}
-              <button
-                type="button"
-                aria-pressed={active}
-                onClick={() => setFilter(label)}
-                className={[
-                  "cursor-pointer text-[11px] uppercase leading-none tracking-[0.24em] transition-colors duration-500 ease-out sm:text-[12px]",
-                  active
-                    ? "text-[#1f1d1b]"
-                    : "text-[#1f1d1b]/45 hover:text-[#1f1d1b]/80",
-                ].join(" ")}
-              >
-                {label}
-              </button>
-            </span>
-          );
-        })}
+                  {label}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
       </nav>
 
       {/* ---------- Mosaic ----------
