@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SHOP_PRODUCTS } from "../../../data/shop";
+import { SHOP_PRODUCTS, CATEGORY_KEYS } from "../../../data/shop";
 import { ShopEditList } from "./ShopEditList";
 
 export const metadata: Metadata = {
@@ -23,18 +23,20 @@ export const dynamic = "force-dynamic";
 export default function AdminShopEditPage() {
   if (process.env.NODE_ENV === "production") notFound();
 
-  const items = [...SHOP_PRODUCTS]
-    .map((p) => ({
-      slug: p.slug,
-      name: p.name,
-      brand: p.brand,
-      category: p.category,
-      subcategory: p.subcategory ?? "",
-      priceRange: p.priceRange,
-      reason: p.reason.trim(),
-      hasReason: p.reason.trim().length > 0,
-    }))
-    .sort((a, b) => a.brand.localeCompare(b.brand));
+  // `addedIndex` is the position in the canonical SHOP_PRODUCTS array.
+  // The import flow appends new entries, so higher index ≈ more recently
+  // added. Used as the proxy for the Date added sort.
+  const items = SHOP_PRODUCTS.map((p, i) => ({
+    slug: p.slug,
+    name: p.name,
+    brand: p.brand,
+    category: p.category,
+    subcategory: p.subcategory ?? "",
+    priceRange: p.priceRange,
+    reason: p.reason.trim(),
+    hasReason: p.reason.trim().length > 0,
+    addedIndex: i,
+  }));
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
@@ -76,7 +78,7 @@ export default function AdminShopEditPage() {
           </p>
         </header>
 
-        <ShopEditList items={items} />
+        <ShopEditList items={items} categoryOrder={[...CATEGORY_KEYS]} />
       </div>
     </main>
   );
