@@ -842,6 +842,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     image: "/shop/kallmeyer-parker-convertible-clutch-in-leather-1.jpg",
     extractionMethod: "shopify",
   },
+  {
+    slug: "soeur-blue-imani-dress",
+    name: "BLUE IMANI DRESS",
+    brand: "Soeur",
+    category: "womens",
+    subcategory: "dresses",
+    reason: "", // TODO: editorial reason
+    priceRange: "$425",
+    url: "https://us.soeur.fr/products/robe-imani-navy-rob0925imani26snav01",
+    image: "/shop/soeur-blue-imani-dress-1.jpg",
+    images: [
+      "/shop/soeur-blue-imani-dress-1.jpg",
+      "/shop/soeur-blue-imani-dress-2.jpg",
+      "/shop/soeur-blue-imani-dress-3.jpg",
+      "/shop/soeur-blue-imani-dress-4.jpg",
+      "/shop/soeur-blue-imani-dress-5.jpg",
+      "/shop/soeur-blue-imani-dress-6.jpg",
+    ],
+    extractionMethod: "shopify",
+  },
 ];
 
 export function getProductBySlug(slug: string): ShopProduct | undefined {
