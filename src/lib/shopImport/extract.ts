@@ -302,7 +302,7 @@ export function parseProductPage(
     }
   }
 
-  // OG fallbacks
+  // OG fallbacks for name/brand
   if (!name) name = readMetaTag(html, "og:title") ?? readTitleTag(html);
   if (!brand) {
     brand =
@@ -310,11 +310,18 @@ export function parseProductPage(
       readMetaTag(html, "product:brand") ??
       titleizeHost(hostOf(sourceUrl));
   }
-  if (!imageAcc.length) {
-    for (const img of readMetaTagAll(html, "og:image")) imageAcc.push(img);
-    const twitterImg = readMetaTag(html, "twitter:image");
-    if (twitterImg) imageAcc.push(twitterImg);
+  // Always merge OG / Twitter images alongside JSON-LD — many product
+  // pages embed only the primary image in JSON-LD and stash the rest
+  // of the gallery in og:image entries (or, for Shopify, the
+  // .json endpoint — handled in the orchestrator below).
+  for (const img of readMetaTagAll(html, "og:image")) imageAcc.push(img);
+  for (const img of readMetaTagAll(html, "og:image:secure_url")) {
+    imageAcc.push(img);
   }
+  const twitterImg = readMetaTag(html, "twitter:image");
+  if (twitterImg) imageAcc.push(twitterImg);
+  const twitterImgSrc = readMetaTag(html, "twitter:image:src");
+  if (twitterImgSrc) imageAcc.push(twitterImgSrc);
 
   // Absolutize + dedupe images
   const seen = new Set<string>();
@@ -345,7 +352,100 @@ export function parseProductPage(
   };
 }
 
+/**
+ * Shopify storefronts publish every product at `/products/<handle>.json`,
+ * including the full image gallery as `product.images[].src`. Most
+ * Shopify product pages only embed the primary image in JSON-LD, so
+ * this is how we recover the rest of the gallery.
+ *
+ * Returns absolute image URLs in source order. Quietly returns `[]`
+ * on any error — the orchestrator falls back to whatever images the
+ * HTML / OG tags surfaced.
+ */
+async function fetchShopifyGallery(productUrl: string): Promise<string[]> {
+  try {
+    const u = new URL(productUrl);
+    const match = u.pathname.match(/^(.*?\/products\/[^/]+)/);
+    if (!match) return [];
+    u.pathname = `${match[1]}.json`;
+    u.search = "";
+    u.hash = "";
+    const res = await fetch(u.toString(), {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+        Accept: "application/json",
+      },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      cache: "no-store",
+    });
+    if (!res.ok) return [];
+    const payload = (await res.json()) as {
+      product?: {
+        images?: Array<{ src?: string; position?: number }>;
+        image?: { src?: string };
+      };
+    };
+    const out: string[] = [];
+    const list = payload.product?.images ?? [];
+    // Sort by position so primary lands first when the API hands them
+    // back in update-time order.
+    const sorted = [...list].sort(
+      (a, b) => (a.position ?? 0) - (b.position ?? 0)
+    );
+    for (const img of sorted) {
+      if (typeof img.src === "string" && img.src.trim()) {
+        out.push(img.src.trim());
+      }
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Cap the number of images we surface to the import form. The form
+ * renders thumbnails, so an extreme-case page with 30+ images would
+ * produce visual noise. Eight is plenty for a curated edit and lets
+ * the user deselect down to the chosen handful.
+ */
+const MAX_IMAGES = 10;
+
 export async function extractProduct(url: string): Promise<ExtractedProduct> {
   const html = await fetchProductPage(url);
-  return parseProductPage(html, url);
+  const result = parseProductPage(html, url);
+
+  // For Shopify URLs, the .json endpoint carries the full gallery —
+  // typically more than the JSON-LD `Product.image`. Prepend so the
+  // user sees the full list without having to re-import.
+  if (result.extractionMethod === "shopify") {
+    const gallery = await fetchShopifyGallery(url);
+    if (gallery.length > 0) {
+      const seen = new Set(result.images);
+      const merged: string[] = [];
+      // Shopify gallery first (more complete), then anything we found
+      // from JSON-LD / OG that isn't a duplicate.
+      for (const img of gallery) {
+        const abs = absolutize(img, url);
+        if (!seen.has(abs)) {
+          seen.add(abs);
+          merged.push(abs);
+        }
+      }
+      for (const img of result.images) {
+        if (!seen.has(img)) {
+          seen.add(img);
+          merged.push(img);
+        }
+      }
+      result.images = merged;
+    }
+  }
+
+  if (result.images.length > MAX_IMAGES) {
+    result.images = result.images.slice(0, MAX_IMAGES);
+  }
+
+  return result;
 }
