@@ -48,14 +48,19 @@ import { shuffleArray } from "../lib/shuffle";
  *   col   — Tailwind col-start / col-span class for desktop
  *   row   — Tailwind row-span (height multiplier)
  *   mt    — extra top margin on the frame to break the implicit
- *           grid baseline
+ *           grid baseline (capped at 28 = 112px per the density
+ *           tuning addendum so adjacent frames stay within 120px)
  *   ratio — frame outer aspect ratio: portrait | square | landscape
  *   align — mobile alignment: left | right | center; pairs with
  *           a width below
  *   width — mobile width as % of column
  *
  * Hand-tuned for asymmetry: no two adjacent slots share col-start,
- * row-span, or ratio. Cycle length 11.
+ * row-span, or ratio. col-start values rotate across all four
+ * horizontal zones (left / center-left / center-right / right) so
+ * no 600px vertical window sits empty in the middle.
+ *
+ * Cycle length 11.
  */
 type Slot = {
   col: string;
@@ -67,17 +72,17 @@ type Slot = {
 };
 
 const SLOTS: readonly Slot[] = [
-  { col: "sm:col-start-1 sm:col-span-4", row: "sm:row-span-2", mt: "sm:mt-0",  ratio: "portrait",  align: "left",   width: "w-[100%]" },
-  { col: "sm:col-start-7 sm:col-span-3", row: "sm:row-span-1", mt: "sm:mt-24", ratio: "landscape", align: "right",  width: "w-[78%]"  },
-  { col: "sm:col-start-5 sm:col-span-3", row: "sm:row-span-2", mt: "sm:mt-40", ratio: "square",    align: "left",   width: "w-[88%]"  },
-  { col: "sm:col-start-9 sm:col-span-4", row: "sm:row-span-2", mt: "sm:mt-12", ratio: "portrait",  align: "center", width: "w-[100%]" },
-  { col: "sm:col-start-1 sm:col-span-3", row: "sm:row-span-1", mt: "sm:mt-32", ratio: "landscape", align: "right",  width: "w-[72%]"  },
-  { col: "sm:col-start-4 sm:col-span-4", row: "sm:row-span-2", mt: "sm:mt-20", ratio: "square",    align: "left",   width: "w-[92%]"  },
-  { col: "sm:col-start-9 sm:col-span-3", row: "sm:row-span-1", mt: "sm:mt-48", ratio: "portrait",  align: "right",  width: "w-[80%]"  },
-  { col: "sm:col-start-2 sm:col-span-3", row: "sm:row-span-2", mt: "sm:mt-8",  ratio: "portrait",  align: "center", width: "w-[100%]" },
-  { col: "sm:col-start-6 sm:col-span-4", row: "sm:row-span-1", mt: "sm:mt-36", ratio: "landscape", align: "left",   width: "w-[84%]"  },
-  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-2", mt: "sm:mt-16", ratio: "square",   align: "right",  width: "w-[76%]"  },
-  { col: "sm:col-start-1 sm:col-span-4", row: "sm:row-span-2", mt: "sm:mt-44", ratio: "landscape", align: "left",   width: "w-[100%]" },
+  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-0",  ratio: "portrait",  align: "left",   width: "w-[100%]" },
+  { col: "sm:col-start-6 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-12", ratio: "landscape", align: "right",  width: "w-[80%]"  },
+  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-2", mt: "sm:mt-4",  ratio: "portrait",  align: "left",   width: "w-[88%]"  },
+  { col: "sm:col-start-3 sm:col-span-3",  row: "sm:row-span-1", mt: "sm:mt-20", ratio: "square",    align: "center", width: "w-[100%]" },
+  { col: "sm:col-start-7 sm:col-span-3",  row: "sm:row-span-2", mt: "sm:mt-8",  ratio: "portrait",  align: "right",  width: "w-[76%]"  },
+  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-1", mt: "sm:mt-16", ratio: "landscape", align: "left",   width: "w-[84%]"  },
+  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-24", ratio: "landscape", align: "right",  width: "w-[72%]"  },
+  { col: "sm:col-start-5 sm:col-span-3",  row: "sm:row-span-2", mt: "sm:mt-12", ratio: "square",    align: "center", width: "w-[100%]" },
+  { col: "sm:col-start-8 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-20", ratio: "portrait",  align: "left",   width: "w-[92%]"  },
+  { col: "sm:col-start-2 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-4",  ratio: "landscape", align: "right",  width: "w-[78%]"  },
+  { col: "sm:col-start-9 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-16", ratio: "portrait",  align: "center", width: "w-[100%]" },
 ];
 
 /** Tailwind aspect-ratio classes for each ratio bucket. */
@@ -171,13 +176,14 @@ export default function ShopGallery({
   return (
     <ul
       ref={rootRef}
-      // Desktop: 12-col grid with auto rows. Generous gaps so the
-      // cream wall reads. Mobile: flex-col — slots' alignment +
-      // width classes do the asymmetric work.
+      // Desktop: 12-col grid with auto rows. Gaps tuned per the
+      // density addendum — typical 48–80px, capped at 120px when
+      // combined with the per-slot mt-offsets. Mobile: flex-col —
+      // slots' alignment + width classes do the asymmetric work.
       className="
-        flex flex-col gap-y-12
-        sm:grid sm:grid-cols-12 sm:gap-x-12 sm:gap-y-24 sm:[grid-auto-flow:dense]
-        lg:gap-x-16 lg:gap-y-28
+        flex flex-col gap-y-10
+        sm:grid sm:grid-cols-12 sm:gap-x-10 sm:gap-y-16 sm:[grid-auto-flow:dense]
+        lg:gap-x-12 lg:gap-y-20
       "
     >
       {order.map((product, i) => {
@@ -236,9 +242,12 @@ function Frame({
       >
         <div
           // The frame: white mat + hairline outer border. Padding
-          // sets the mat thickness — sides ~9–11% of width, bottom
-          // ~13% so the caption has room to live there.
-          className="relative bg-white border border-[#1f1d1b]/12 px-[10%] pt-[10%] pb-[14%]"
+          // sets the mat thickness — 8% sides, 10.4% bottom (8 × 1.3
+          // for the museum-convention deeper bottom mat). All values
+          // sit in the 6-10% target range from the density addendum.
+          // Padding percentages are relative to frame WIDTH, so mat
+          // scales with the frame, not the source image.
+          className="relative bg-white border border-[#1f1d1b]/12 px-[8%] pt-[8%] pb-[10.4%]"
         >
           {/* Image plate — natural aspect-ratio bucket. Image uses
               object-contain so the natural source ratio survives
@@ -260,11 +269,12 @@ function Frame({
           </div>
 
           {/* Caption — sits on the lower mat, fades in on hover.
-              Absolute so the lower mat keeps its own breathing room
-              when nothing's hovering. */}
+              Inset matches the new 8% side mat so the text edge
+              aligns with the image edge. Absolute so the mat keeps
+              its breathing room when nothing's hovering. */}
           <div
             aria-hidden
-            className="absolute inset-x-[10%] bottom-[3%] flex flex-col items-start opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+            className="absolute inset-x-[8%] bottom-[3%] flex flex-col items-start opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
           >
             <span className="font-serif text-[13px] leading-[1.2] text-[#1f1d1b] sm:text-[14px]">
               {product.name}

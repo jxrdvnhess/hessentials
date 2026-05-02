@@ -166,7 +166,7 @@ export default function PersistentShopMenu() {
     >
       <div className="mx-auto flex w-full max-w-7xl items-center px-6 sm:px-10">
         {/* ---------- Desktop bar ---------- */}
-        <ul className="hidden flex-wrap items-center gap-x-7 gap-y-2 py-3 text-[11px] uppercase leading-none tracking-[0.22em] sm:flex">
+        <ul className="hidden flex-wrap items-center gap-x-4 gap-y-2 py-3 text-[11px] uppercase leading-none tracking-[0.22em] sm:flex">
           {/* All — flat link, no dropdown. */}
           <li>
             <Link
@@ -187,25 +187,24 @@ export default function PersistentShopMenu() {
           </li>
 
           {/* Pillar items with hover dropdowns. */}
-          {visiblePillars.map((p, i) => {
+          {visiblePillars.map((p) => {
             const subs = [...CATEGORY_TREE[p].subcategories];
             const isActive = activePillar === p;
             const isOpen = hoverPillar === p;
             return (
               <li
                 key={p}
-                className="relative"
+                className="relative inline-flex items-center"
                 onMouseEnter={() => {
                   cancelClose();
                   setHoverPillar(p);
                 }}
               >
-                {/* The middle dot belongs visually with the previous
-                    pillar — render it before each pillar except the
-                    first one in the list. The All link sits before
-                    this map and gets its own dot here. */}
-                <span aria-hidden className="mr-7 -ml-4 text-[#1f1d1b]/30">
-                  {i === 0 ? "·" : ""}
+                {/* Middle dot before every pillar — `All` is rendered
+                    outside this map, so this produces the full
+                    sequence: All · Mens · Womens · ... */}
+                <span aria-hidden className="mr-3 text-[#1f1d1b]/30">
+                  ·
                 </span>
                 <Link
                   href={`/shop/${p}`}
