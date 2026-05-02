@@ -7,7 +7,7 @@ import {
   type Category,
 } from "../../data/shop";
 import { productsForPillar } from "../../lib/shop";
-import ShopMosaic from "../../components/ShopMosaic";
+import ShopGallery from "../../components/ShopGallery";
 import DrillDownHero, { type DrillBlock } from "../../components/DrillDownHero";
 
 export const metadata: Metadata = {
@@ -24,12 +24,15 @@ export const metadata: Metadata = {
 export const revalidate = 43200;
 
 /**
- * Pillar order for the drill-down hero on `/shop`. Hand-curated to
- * match the persistent menu (which also excludes Provisions and
- * Womens at launch).
+ * Pillar order for the drill-down hero on `/shop`. Hand-curated.
+ * WOMENS sits between MENS and ACCESSORIES; Provisions remains
+ * intentionally absent. Pillars with zero matching products
+ * (after the audience-aware filter) are hidden — see
+ * `LANDING_PILLARS` filter below.
  */
 const LANDING_PILLARS: readonly Category[] = [
   "mens",
+  "womens",
   "accessories",
   "grooming",
   "travel",
@@ -43,11 +46,15 @@ function representativeImage(pillar: Category): string | undefined {
 }
 
 export default function ShopPage() {
-  const blocks: DrillBlock[] = LANDING_PILLARS.map((p) => ({
-    label: categoryLabel(p),
-    href: `/shop/${p}`,
-    image: representativeImage(p),
-  }));
+  const blocks: DrillBlock[] = LANDING_PILLARS
+    // Hide pillars with zero matching products. WOMENS reveals
+    // automatically once at least one product lands.
+    .filter((p) => productsForPillar(p).length > 0)
+    .map((p) => ({
+      label: categoryLabel(p),
+      href: `/shop/${p}`,
+      image: representativeImage(p),
+    }));
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
@@ -72,12 +79,15 @@ export default function ShopPage() {
         </p>
       </section>
 
-      {/* ---------- Mosaic ----------
-          Full-bleed asymmetric grid. Edges run to the viewport so
-          the imagery carries. ShopMosaic handles randomization,
-          parallax, and hover overlays. */}
-      <section aria-label="All products" className="px-1 sm:px-1.5">
-        <ShopMosaic products={SHOP_PRODUCTS} />
+      {/* ---------- Gallery wall ----------
+          Framed plates on the cream page. Standard page margins,
+          no bleed. ShopGallery handles randomization, asymmetric
+          placement, parallax, and hover. */}
+      <section
+        aria-label="All products"
+        className="mx-auto w-full max-w-7xl px-6 pb-32 sm:px-10 md:pb-40"
+      >
+        <ShopGallery products={SHOP_PRODUCTS} />
       </section>
 
       {/* ---------- Drill-down hero ---------- */}

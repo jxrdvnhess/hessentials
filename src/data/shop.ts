@@ -127,7 +127,7 @@ export type ShopProduct = {
 
 export const SHOP_INTRO = "Vetted. Chosen. Kept.";
 export const SHOP_SUBTITLE =
-  "An edit in motion — added to only when something earns its place.";
+  "An edit in motion. Added to only when something earns its place.";
 
 /**
  * Curated, non-grouped order. Categories alternate intentionally — the grid

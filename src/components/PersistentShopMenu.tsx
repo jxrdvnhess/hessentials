@@ -42,26 +42,52 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CATEGORY_TREE,
+  SHOP_PRODUCTS,
   categoryLabel,
   subcategoryLabel,
   type Category,
 } from "../data/shop";
 
 /**
- * Launch pillar order. Hand-curated, not derived — the brief
- * specifies this exact list for launch (excluding provisions and
- * womens). To add a pillar later, append here.
+ * Launch pillar order. Hand-curated, not derived. WOMENS sits
+ * between MENS and ACCESSORIES per the addendum.
+ *
+ * Provisions remains intentionally absent.
+ *
+ * Pillars with zero products (after the audience-aware filter) are
+ * hidden at runtime — see `pillarHasProducts` below. WOMENS
+ * therefore reveals itself automatically once at least one matching
+ * product lands; no code change required.
  */
 const PILLARS: readonly Category[] = [
   "mens",
+  "womens",
   "accessories",
   "grooming",
   "travel",
   "home",
 ];
+
+const AUDIENCE_PILLARS = new Set<Category>(["mens", "womens"]);
+
+/**
+ * Mirror of the lib/shop.ts `productsForPillar` rule, restated here
+ * so the menu (a client component) can decide visibility without
+ * importing the server-only essay/markdown layer of lib/shop.ts.
+ */
+function pillarHasProducts(pillar: Category): boolean {
+  if (AUDIENCE_PILLARS.has(pillar)) {
+    return SHOP_PRODUCTS.some(
+      (p) =>
+        p.category === pillar ||
+        (p.audience ?? []).includes(pillar as "mens" | "womens")
+    );
+  }
+  return SHOP_PRODUCTS.some((p) => p.category === pillar);
+}
 
 /** ms to wait after mouseleave before collapsing the dropdown. */
 const HOVER_CLOSE_DELAY_MS = 150;
@@ -92,6 +118,16 @@ function parsePath(pathname: string): ParsedPath {
 export default function PersistentShopMenu() {
   const pathname = usePathname() ?? "/";
   const { isShop, activePillar, activeSubcategory } = parsePath(pathname);
+
+  /**
+   * Hide pillars with zero products. The list updates implicitly as
+   * curation evolves. Memoized — SHOP_PRODUCTS is bundled at build
+   * time so this only ever runs once per mount.
+   */
+  const visiblePillars = useMemo(
+    () => PILLARS.filter((p) => pillarHasProducts(p)),
+    []
+  );
 
   const [hoverPillar, setHoverPillar] = useState<Category | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -151,7 +187,7 @@ export default function PersistentShopMenu() {
           </li>
 
           {/* Pillar items with hover dropdowns. */}
-          {PILLARS.map((p, i) => {
+          {visiblePillars.map((p, i) => {
             const subs = [...CATEGORY_TREE[p].subcategories];
             const isActive = activePillar === p;
             const isOpen = hoverPillar === p;
@@ -292,7 +328,7 @@ export default function PersistentShopMenu() {
                 All
               </Link>
             </li>
-            {PILLARS.map((p) => {
+            {visiblePillars.map((p) => {
               const subs = [...CATEGORY_TREE[p].subcategories];
               const isActive = activePillar === p;
               return (

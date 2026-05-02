@@ -24,7 +24,7 @@ import {
   productsForSubcategory,
   subcategoriesPresentForPillar,
 } from "../../../lib/shop";
-import ShopMosaic from "../../../components/ShopMosaic";
+import ShopGallery from "../../../components/ShopGallery";
 import DrillDownHero, {
   type DrillBlock,
 } from "../../../components/DrillDownHero";
@@ -76,12 +76,12 @@ export default function PillarView({ pillar }: { pillar: Category }) {
         </p>
       </section>
 
-      {/* ---------- Mosaic ---------- */}
+      {/* ---------- Gallery wall ---------- */}
       <section
         aria-label={`${categoryLabel(pillar)} products`}
-        className="px-1 sm:px-1.5"
+        className="mx-auto w-full max-w-7xl px-6 pb-32 sm:px-10 md:pb-40"
       >
-        <ShopMosaic products={products} />
+        <ShopGallery products={products} />
       </section>
 
       {/* ---------- Drill-down hero (subcategories) ---------- */}
