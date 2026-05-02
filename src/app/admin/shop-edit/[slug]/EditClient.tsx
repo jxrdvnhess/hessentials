@@ -26,6 +26,34 @@ const TEXTAREA_CLS = `${INPUT_CLS} min-h-[80px] resize-y leading-[1.5]`;
 const BUTTON_CLS =
   "inline-flex items-center justify-center border border-[#1f1d1b]/30 px-5 py-2.5 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b] transition-colors hover:bg-[#1f1d1b] hover:text-[#f6f1e7] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-[#1f1d1b]";
 
+/* ---------- Audience dropdown ---------- */
+
+type Audience = "mens" | "womens";
+type AudienceOption = "none" | "mens" | "womens" | "both";
+
+/** Array → dropdown value. Order-insensitive. */
+function audienceToOption(a: readonly Audience[]): AudienceOption {
+  const set = new Set(a);
+  if (set.has("mens") && set.has("womens")) return "both";
+  if (set.has("mens")) return "mens";
+  if (set.has("womens")) return "womens";
+  return "none";
+}
+
+/** Dropdown value → array. The array is the source of truth. */
+function optionToAudience(opt: AudienceOption): Audience[] {
+  if (opt === "none") return [];
+  if (opt === "both") return ["mens", "womens"];
+  return [opt];
+}
+
+const AUDIENCE_LABELS: Record<AudienceOption, string> = {
+  none: "None",
+  mens: "Mens only",
+  womens: "Womens only",
+  both: "Gender-neutral (both)",
+};
+
 export function EditClient({
   initial,
   tree,
@@ -38,6 +66,7 @@ export function EditClient({
   const [brand, setBrand] = useState(initial.brand);
   const [category, setCategory] = useState<string>(initial.category);
   const [subcategory, setSubcategory] = useState<string>(initial.subcategory);
+  const [audience, setAudience] = useState<Audience[]>(initial.audience);
   const [reason, setReason] = useState(initial.reason);
   const [priceRange, setPriceRange] = useState(initial.priceRange);
   const [url, setUrl] = useState(initial.url);
@@ -99,6 +128,7 @@ export function EditClient({
     brand !== initial.brand ||
     category !== initial.category ||
     subcategory !== initial.subcategory ||
+    audienceToOption(audience) !== audienceToOption(initial.audience) ||
     reason !== initial.reason ||
     priceRange !== initial.priceRange ||
     url !== initial.url ||
@@ -118,6 +148,7 @@ export function EditClient({
           brand,
           category,
           subcategory: subcategory || undefined,
+          audience,
           reason,
           priceRange,
           url,
@@ -237,6 +268,31 @@ export function EditClient({
               <option key={sub} value={sub} />
             ))}
           </datalist>
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="audience" className={LABEL_CLS}>
+            Audience
+          </label>
+          <select
+            id="audience"
+            value={audienceToOption(audience)}
+            onChange={(e) =>
+              setAudience(optionToAudience(e.target.value as AudienceOption))
+            }
+            className={INPUT_CLS}
+          >
+            {(["none", "mens", "womens", "both"] as AudienceOption[]).map(
+              (opt) => (
+                <option key={opt} value={opt}>
+                  {AUDIENCE_LABELS[opt]}
+                </option>
+              )
+            )}
+          </select>
+          <p className="mt-2 font-serif text-[12px] italic text-[#1f1d1b]/55">
+            Gender-neutral items appear in both Mens and Womens shop
+            pillars.
+          </p>
         </div>
         <div className="sm:col-span-2">
           <div className="flex items-baseline justify-between gap-3">

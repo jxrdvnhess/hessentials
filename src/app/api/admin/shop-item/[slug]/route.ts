@@ -76,6 +76,7 @@ type PatchBody = {
   brand?: string;
   category?: string;
   subcategory?: string;
+  audience?: string[];
   reason?: string;
   priceRange?: string;
   url?: string;
@@ -107,6 +108,14 @@ export async function PATCH(
   const brand = (body.brand ?? "").trim();
   const category = (body.category ?? "").trim();
   const subcategory = (body.subcategory ?? "").trim();
+  const audienceInput = Array.isArray(body.audience) ? body.audience : [];
+  const audience = Array.from(
+    new Set(
+      audienceInput
+        .map((a) => String(a).trim().toLowerCase())
+        .filter((a): a is "mens" | "womens" => a === "mens" || a === "womens")
+    )
+  );
   const reason = body.reason ?? "";
   const priceRange = (body.priceRange ?? "").trim();
   const url = (body.url ?? "").trim();
@@ -142,6 +151,12 @@ export async function PATCH(
     brand,
     category: category as Category,
     subcategory: subcategory || undefined,
+    audience: audience.length > 0 ? audience : undefined,
+    // Preserve the original creation timestamp on edits. PATCH never
+    // re-stamps the product as "newly added" just because something
+    // changed.
+    dateAdded:
+      SHOP_PRODUCTS.find((p) => p.slug === slug)?.dateAdded ?? undefined,
     reason,
     priceRange,
     url,

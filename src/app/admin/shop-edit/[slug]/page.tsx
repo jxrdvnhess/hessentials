@@ -42,6 +42,7 @@ export default async function AdminShopEditDetailPage({
     brand: product.brand,
     category: product.category,
     subcategory: product.subcategory ?? "",
+    audience: [...(product.audience ?? [])],
     reason: product.reason,
     priceRange: product.priceRange,
     url: product.url,
@@ -106,6 +107,8 @@ export type ProductForClient = {
   /** Top-level — may still be a Legacy* string for unmigrated products. */
   category: ShopProduct["category"];
   subcategory: string;
+  /** Cross-pillar audience tags. Defaults to [] (None). */
+  audience: ("mens" | "womens")[];
   reason: string;
   priceRange: string;
   url: string;

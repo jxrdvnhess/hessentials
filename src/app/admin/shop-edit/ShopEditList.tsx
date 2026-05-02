@@ -10,7 +10,7 @@
  */
 
 import Link from "next/link";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 
 type Item = {
   slug: string;
@@ -18,12 +18,48 @@ type Item = {
   brand: string;
   category: string;
   subcategory: string;
+  audience: ("mens" | "womens")[];
   priceRange: string;
   reason: string;
   hasReason: boolean;
-  /** Position in SHOP_PRODUCTS — proxy for "date added" sort. */
+  /** ISO timestamp; "" for legacy entries that haven't been backfilled. */
+  dateAdded: string;
+  /** Fallback ordering when dateAdded ties (or is empty for both). */
   addedIndex: number;
 };
+
+/**
+ * Compact format for the DATE ADDED column.
+ * Within 30 days: "May 2". Older: "Apr 28, 2026".
+ */
+function formatDateAdded(iso: string): string {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "—";
+  const now = Date.now();
+  const ageMs = now - d.getTime();
+  const within30 = ageMs >= 0 && ageMs < 30 * 24 * 60 * 60 * 1000;
+  return within30
+    ? d.toLocaleDateString("en-US", { month: "short", day: "numeric" })
+    : d.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      });
+}
+
+/**
+ * Compact audience indicator for the list view.
+ * `[]` → "" (omitted), `["mens"]` → "M", `["womens"]` → "W",
+ * `["mens","womens"]` → "M · W". Order-insensitive.
+ */
+function audienceMark(a: readonly ("mens" | "womens")[]): string {
+  const set = new Set(a);
+  if (set.has("mens") && set.has("womens")) return "M · W";
+  if (set.has("mens")) return "M";
+  if (set.has("womens")) return "W";
+  return "";
+}
 
 /** Cap the reason preview at this many characters; ellipsis if longer. */
 const REASON_PREVIEW_MAX = 60;
@@ -45,24 +81,6 @@ type SortKey =
 type SortDirection = "asc" | "desc";
 type SortState = { key: SortKey; direction: SortDirection };
 
-const SORT_KEYS: readonly SortKey[] = [
-  "product",
-  "brand",
-  "category",
-  "price",
-  "reason",
-  "dateAdded",
-];
-
-const SORT_LABELS: Record<SortKey, string> = {
-  product: "Product",
-  brand: "Brand",
-  category: "Category",
-  price: "Price",
-  reason: "Reason",
-  dateAdded: "Date added",
-};
-
 /** Default first-click direction for each sort. */
 function defaultDirectionFor(key: SortKey): SortDirection {
   return key === "dateAdded" ? "desc" : "asc";
@@ -70,6 +88,41 @@ function defaultDirectionFor(key: SortKey): SortDirection {
 
 /** The cleared / initial state — DATE ADDED desc, per the brief. */
 const DEFAULT_SORT: SortState = { key: "dateAdded", direction: "desc" };
+
+/** localStorage key for sort persistence. */
+const SORT_STORAGE_KEY = "hessentials.admin.shopedit.sort";
+
+const VALID_SORT_KEYS = new Set<SortKey>([
+  "product",
+  "brand",
+  "category",
+  "price",
+  "reason",
+  "dateAdded",
+]);
+
+/** Parse a stored value, returning DEFAULT_SORT on any malformed input. */
+function readStoredSort(): SortState {
+  if (typeof window === "undefined") return DEFAULT_SORT;
+  try {
+    const raw = window.localStorage.getItem(SORT_STORAGE_KEY);
+    if (!raw) return DEFAULT_SORT;
+    const parsed = JSON.parse(raw) as { column?: string; direction?: string };
+    if (
+      typeof parsed.column === "string" &&
+      VALID_SORT_KEYS.has(parsed.column as SortKey) &&
+      (parsed.direction === "asc" || parsed.direction === "desc")
+    ) {
+      return {
+        key: parsed.column as SortKey,
+        direction: parsed.direction,
+      };
+    }
+  } catch {
+    // ignore malformed storage
+  }
+  return DEFAULT_SORT;
+}
 
 /**
  * Three-click cycle:
@@ -128,10 +181,59 @@ function buildComparator(
         if (av !== bv) return dir * (av - bv);
         return a.name.localeCompare(b.name);
       };
-    case "dateAdded":
-      // ascending = oldest first (lowest index); descending = newest first.
-      return (a, b) => dir * (a.addedIndex - b.addedIndex);
+    case "dateAdded": {
+      // Sort by ISO timestamp (lexicographic compare works for ISO).
+      // Empty / unparseable strings fall back to addedIndex as a stable
+      // proxy so legacy entries retain their array order within a tie.
+      return (a, b) => {
+        const cmp = a.dateAdded.localeCompare(b.dateAdded);
+        if (cmp !== 0) return dir * cmp;
+        return dir * (a.addedIndex - b.addedIndex);
+      };
+    }
   }
+}
+
+/* ---------- Sortable column header ---------- */
+
+/**
+ * One sortable label inside a `<th>`. Renders a button that cycles
+ * default → reverse → cleared on click; shows a small ↑ / ↓ arrow
+ * inline when this sort is active. Hover state: subtle underline.
+ *
+ * For columns where the header reads as one piece (CATEGORY, PRICE,
+ * REASON, DATE ADDED), a single `<SortLabel>` fills the cell. For
+ * the PRODUCT / BRAND header, two `<SortLabel>` instances sit side
+ * by side with a slash between them.
+ */
+function SortLabel({
+  sortKey,
+  sort,
+  setSort,
+  children,
+}: {
+  sortKey: SortKey;
+  sort: SortState;
+  setSort: React.Dispatch<React.SetStateAction<SortState>>;
+  children: React.ReactNode;
+}) {
+  const active = sort.key === sortKey;
+  const arrow = active ? (sort.direction === "asc" ? " ↑" : " ↓") : "";
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={() => setSort((s) => nextSort(s, sortKey))}
+      className={[
+        "cursor-pointer transition-colors duration-300 ease-out",
+        "hover:underline hover:underline-offset-4 hover:decoration-[#1f1d1b]/40",
+        active ? "text-[#1f1d1b]" : "text-[#1f1d1b]/55 hover:text-[#1f1d1b]/85",
+      ].join(" ")}
+    >
+      {children}
+      {arrow}
+    </button>
+  );
 }
 
 /* ---------- Component ---------- */
@@ -146,7 +248,32 @@ export function ShopEditList({
 }) {
   const [rows, setRows] = useState(items);
   const [query, setQuery] = useState("");
+  // Seed with DEFAULT_SORT on the server render; hydrate from
+  // localStorage on the client mount. Two-step pattern keeps the
+  // server-rendered HTML stable.
   const [sort, setSort] = useState<SortState>(DEFAULT_SORT);
+  useEffect(() => {
+    // Mount-time hydration from localStorage. The setState-in-effect
+    // rule doesn't apply cleanly here — there's no server-safe way to
+    // read browser storage at construct time. Matches the same pattern
+    // used in ShopGrid's shuffle hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSort(readStoredSort());
+  }, []);
+  // Persist every sort change. The brief uses { column, direction }
+  // as the storage shape — keep that contract verbatim so it's
+  // legible when inspected in DevTools.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      window.localStorage.setItem(
+        SORT_STORAGE_KEY,
+        JSON.stringify({ column: sort.key, direction: sort.direction })
+      );
+    } catch {
+      // Quota / private mode — silent.
+    }
+  }, [sort]);
   const [confirming, setConfirming] = useState<string | null>(null);
   const [pending, setPending] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -168,7 +295,8 @@ export function ShopEditList({
         r.brand.toLowerCase().includes(q) ||
         r.slug.toLowerCase().includes(q) ||
         r.category.toLowerCase().includes(q) ||
-        r.subcategory.toLowerCase().includes(q)
+        r.subcategory.toLowerCase().includes(q) ||
+        r.audience.some((a) => a.includes(q))
     );
   }, [rows, query]);
 
@@ -270,37 +398,6 @@ export function ShopEditList({
         </p>
       </div>
 
-      {/* Sort row — same uppercase tracking as the public filter pills,
-          with an arrow indicator on the active sort showing direction.
-          Click cycles default → reverse → clear. */}
-      <nav
-        aria-label="Sort products"
-        className="mb-6 flex flex-wrap items-baseline gap-x-5 gap-y-2 text-[10px] uppercase leading-none tracking-[0.22em]"
-      >
-        <span className="text-[#1f1d1b]/40">Sort by</span>
-        {SORT_KEYS.map((key) => {
-          const active = sort.key === key;
-          const arrow = active ? (sort.direction === "asc" ? " ↑" : " ↓") : "";
-          return (
-            <button
-              key={key}
-              type="button"
-              aria-pressed={active}
-              onClick={() => setSort((s) => nextSort(s, key))}
-              className={[
-                "cursor-pointer transition-colors duration-300 ease-out",
-                active
-                  ? "text-[#1f1d1b]"
-                  : "text-[#1f1d1b]/40 hover:text-[#1f1d1b]/75",
-              ].join(" ")}
-            >
-              {SORT_LABELS[key]}
-              {arrow}
-            </button>
-          );
-        })}
-      </nav>
-
       {error && (
         <p className="mb-4 font-mono text-[12px] text-[#a23a23]">{error}</p>
       )}
@@ -316,10 +413,39 @@ export function ShopEditList({
         <table className="w-full border-collapse text-left text-[14px] text-[#1f1d1b]">
           <thead>
             <tr className="border-b border-[#1f1d1b]/15 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
-              <th className="py-3 pr-4 font-normal">Product</th>
-              <th className="py-3 pr-4 font-normal">Category</th>
-              <th className="py-3 pr-4 font-normal">Price</th>
-              <th className="py-3 pr-4 font-normal">Reason</th>
+              {/* PRODUCT column has two sort axes — name and brand. The
+                  cell stacks both visually, so each word in the header
+                  is independently clickable. Slash separator matches
+                  the admin breadcrumb pattern. */}
+              <th className="py-3 pr-4 font-normal">
+                <SortLabel sortKey="product" sort={sort} setSort={setSort}>
+                  Product
+                </SortLabel>
+                <span className="mx-2 text-[#1f1d1b]/30">/</span>
+                <SortLabel sortKey="brand" sort={sort} setSort={setSort}>
+                  Brand
+                </SortLabel>
+              </th>
+              <th className="py-3 pr-4 font-normal">
+                <SortLabel sortKey="category" sort={sort} setSort={setSort}>
+                  Category
+                </SortLabel>
+              </th>
+              <th className="py-3 pr-4 font-normal">
+                <SortLabel sortKey="price" sort={sort} setSort={setSort}>
+                  Price
+                </SortLabel>
+              </th>
+              <th className="py-3 pr-4 font-normal">
+                <SortLabel sortKey="reason" sort={sort} setSort={setSort}>
+                  Reason
+                </SortLabel>
+              </th>
+              <th className="py-3 pr-4 font-normal text-right">
+                <SortLabel sortKey="dateAdded" sort={sort} setSort={setSort}>
+                  Date added
+                </SortLabel>
+              </th>
               <th className="py-3 font-normal text-right">Actions</th>
             </tr>
           </thead>
@@ -327,7 +453,7 @@ export function ShopEditList({
             {filtered.length === 0 ? (
               <tr>
                 <td
-                  colSpan={5}
+                  colSpan={6}
                   className="py-12 text-center font-serif text-[14px] italic text-[#1f1d1b]/55"
                 >
                   No matches.
@@ -340,7 +466,7 @@ export function ShopEditList({
                 {section.divider && (
                   <tr aria-hidden className="border-0">
                     {/* Divider sits in the PRODUCT column with the rest of
-                        the row empty (colSpan={5}). Generous top padding
+                        the row empty (colSpan={6}). Generous top padding
                         — roughly 1.5× a standard row's height — gives
                         breathing room between pillars; standard bottom
                         padding keeps the first product visually attached.
@@ -348,7 +474,7 @@ export function ShopEditList({
                         which gives the table a nice breathing zone under
                         the column headers. */}
                     <td
-                      colSpan={5}
+                      colSpan={6}
                       className="border-0 pt-20 pb-3 align-baseline"
                     >
                       <span className="text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45">
@@ -383,6 +509,14 @@ export function ShopEditList({
                           / {row.subcategory}
                         </div>
                       )}
+                      {audienceMark(row.audience) && (
+                        <div
+                          className="mt-1 font-mono text-[10px] tracking-[0.12em] text-[#1f1d1b]/45"
+                          aria-label={`Audience: ${row.audience.join(", ")}`}
+                        >
+                          {audienceMark(row.audience)}
+                        </div>
+                      )}
                     </td>
                     <td className="py-3 pr-4 font-serif text-[14px]">
                       {row.priceRange}
@@ -396,10 +530,21 @@ export function ShopEditList({
                           {previewReason(row.reason)}
                         </span>
                       ) : (
-                        <span className="text-[12px] uppercase tracking-[0.18em] text-[#a23a23]">
-                          Missing
+                        // Faint em dash signals "absence" without shouting.
+                        // The only legitimate em-dash use post-consistency-pass.
+                        <span
+                          aria-label="No reason yet"
+                          className="font-serif text-[16px] text-[#1f1d1b]/25"
+                        >
+                          —
                         </span>
                       )}
+                    </td>
+                    <td
+                      className="py-3 pr-4 text-right font-mono text-[11px] text-[#1f1d1b]/55 whitespace-nowrap"
+                      title={row.dateAdded || undefined}
+                    >
+                      {formatDateAdded(row.dateAdded)}
                     </td>
                     <td className="py-3 text-right">
                       {confirming === row.slug ? (

@@ -35,11 +35,41 @@ export type ExtractedProduct = {
    * reason generator; the import form does not display it.
    */
   description: string;
+  /**
+   * Cross-pillar audience tags inferred from URL path hints
+   * (`/mens/`, `/men/`, `/womens/`, `/women/`, `/unisex/`).
+   * The user can override before commit.
+   */
+  audience: ("mens" | "womens")[];
   /** Best-guess extractor for the live pricing layer. */
   extractionMethod: ExtractionMethod;
   /** Domain stripped to host (no www.) — used as a brand fallback. */
   host: string;
 };
+
+/**
+ * Best-effort audience inference from the source URL path. Returns
+ * the array directly: empty when no signal, mens-only, womens-only,
+ * or both for unisex pages. Caller pairs this with the chosen
+ * top-level category (mens/womens) as a final fallback.
+ */
+export function inferAudienceFromUrl(url: string): ("mens" | "womens")[] {
+  let path = "";
+  try {
+    path = new URL(url).pathname.toLowerCase();
+  } catch {
+    return [];
+  }
+  // Pad with slashes so `/men/` matches even when adjacent to other segments.
+  const padded = `/${path.replace(/^\/+|\/+$/g, "")}/`;
+  const hasMens = /\/(mens?|man|male)\//.test(padded);
+  const hasWomens = /\/(womens?|woman|female|ladies)\//.test(padded);
+  const hasUnisex = /\/(unisex|all-genders?|gender-neutral)\//.test(padded);
+  if (hasUnisex || (hasMens && hasWomens)) return ["mens", "womens"];
+  if (hasMens) return ["mens"];
+  if (hasWomens) return ["womens"];
+  return [];
+}
 
 const FETCH_TIMEOUT_MS = 8000;
 
@@ -369,6 +399,7 @@ export function parseProductPage(
     soldOut,
     images,
     description: cleanDescription,
+    audience: inferAudienceFromUrl(sourceUrl),
     extractionMethod: guessExtractionMethod(sourceUrl),
     host: hostOf(sourceUrl),
   };

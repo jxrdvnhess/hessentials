@@ -37,6 +37,18 @@ export type NewShopEntry = {
    * window — new imports should always carry one.
    */
   subcategory?: Subcategory;
+  /**
+   * Cross-pillar audience tags. Empty array elides the field entirely.
+   * Single-value arrays render as `audience: ["mens"]`.
+   */
+  audience?: ("mens" | "womens")[];
+  /**
+   * ISO timestamp written verbatim to the entry. Caller is expected
+   * to set this to `new Date().toISOString()` on fresh imports;
+   * preserved as-is when an existing entry is replaced (so re-saving
+   * a product through the edit form doesn't change its added date).
+   */
+  dateAdded?: string;
   /** Editorial — left blank by default. */
   reason?: string;
   priceRange: string;
@@ -64,6 +76,14 @@ export function formatEntry(entry: NewShopEntry): string {
   lines.push(`    category: ${tsString(entry.category)},`);
   if (entry.subcategory && entry.subcategory.trim().length > 0) {
     lines.push(`    subcategory: ${tsString(entry.subcategory.trim())},`);
+  }
+  if (entry.audience && entry.audience.length > 0) {
+    // Render as a literal array — order preserved as passed in.
+    const items = entry.audience.map((a) => tsString(a)).join(", ");
+    lines.push(`    audience: [${items}],`);
+  }
+  if (entry.dateAdded && entry.dateAdded.trim().length > 0) {
+    lines.push(`    dateAdded: ${tsString(entry.dateAdded.trim())},`);
   }
   // Reason is left empty by the import flow and filled in editorially.
   // When empty, drop a TODO marker so the next pass spots it; once

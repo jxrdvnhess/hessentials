@@ -49,6 +49,7 @@ type CommitBody = {
   brand?: string;
   category?: string;
   subcategory?: string;
+  audience?: string[];
   reason?: string;
   priceRange?: string;
   url?: string;
@@ -87,6 +88,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const brand = (body.brand ?? "").trim();
   const category = (body.category ?? "").trim();
   const subcategory = (body.subcategory ?? "").trim();
+  const audienceInput = Array.isArray(body.audience) ? body.audience : [];
+  const audience = audienceInput
+    .map((a) => String(a).trim().toLowerCase())
+    .filter((a): a is "mens" | "womens" => a === "mens" || a === "womens");
+  // De-duplicate while preserving order.
+  const audienceUnique = Array.from(new Set(audience));
   const reason = (body.reason ?? "").trim();
   const priceRange = (body.priceRange ?? "").trim();
   const url = (body.url ?? "").trim();
@@ -152,6 +159,10 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     brand,
     category: category as Category,
     subcategory: subcategory || undefined,
+    audience: audienceUnique.length > 0 ? audienceUnique : undefined,
+    // Stamp creation time at commit. Edits via PATCH preserve the
+    // original dateAdded — see /api/admin/shop-item/[slug].
+    dateAdded: new Date().toISOString(),
     reason,
     priceRange,
     url,

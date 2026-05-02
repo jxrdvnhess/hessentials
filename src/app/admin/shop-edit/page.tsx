@@ -32,9 +32,11 @@ export default function AdminShopEditPage() {
     brand: p.brand,
     category: p.category,
     subcategory: p.subcategory ?? "",
+    audience: [...(p.audience ?? [])] as ("mens" | "womens")[],
     priceRange: p.priceRange,
     reason: p.reason.trim(),
     hasReason: p.reason.trim().length > 0,
+    dateAdded: p.dateAdded ?? "",
     addedIndex: i,
   }));
 

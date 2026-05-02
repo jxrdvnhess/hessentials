@@ -26,11 +26,36 @@ type ParsedPayload = {
   prices: number[];
   soldOut: boolean;
   images: string[];
+  audience: ("mens" | "womens")[];
   extractionMethod: ExtractionMethod;
   host: string;
   priceRange: string;
   slug: string;
   slugCollision: boolean;
+};
+
+type Audience = "mens" | "womens";
+type AudienceOption = "none" | "mens" | "womens" | "both";
+
+function audienceToOption(a: readonly Audience[]): AudienceOption {
+  const set = new Set(a);
+  if (set.has("mens") && set.has("womens")) return "both";
+  if (set.has("mens")) return "mens";
+  if (set.has("womens")) return "womens";
+  return "none";
+}
+
+function optionToAudience(opt: AudienceOption): Audience[] {
+  if (opt === "none") return [];
+  if (opt === "both") return ["mens", "womens"];
+  return [opt];
+}
+
+const AUDIENCE_LABELS: Record<AudienceOption, string> = {
+  none: "None",
+  mens: "Mens only",
+  womens: "Womens only",
+  both: "Gender-neutral (both)",
 };
 
 type ImageState = {
@@ -79,6 +104,7 @@ export function ImportClient({
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState<string>("");
   const [subcategory, setSubcategory] = useState<string>("");
+  const [audience, setAudience] = useState<Audience[]>([]);
   const [reason, setReason] = useState("");
   const [reasonState, setReasonState] = useState<
     "idle" | "generating" | "error"
@@ -110,6 +136,7 @@ export function ImportClient({
     setBrand("");
     setCategory("");
     setSubcategory("");
+    setAudience([]);
     setReason("");
     setReasonState("idle");
     setReasonError(null);
@@ -191,6 +218,9 @@ export function ImportClient({
         setName(p.name);
         setBrand(p.brand);
         setPriceRange(p.priceRange);
+        // URL-based audience hint from the extractor; the user can
+        // override before commit via the dropdown.
+        setAudience(p.audience ?? []);
         setExtractionMethod(p.extractionMethod);
         setImages(
           p.images.map((src) => ({
@@ -309,6 +339,7 @@ export function ImportClient({
           brand,
           category,
           subcategory: subcategory || undefined,
+          audience,
           reason,
           priceRange,
           url,
@@ -335,6 +366,7 @@ export function ImportClient({
   }, [
     category,
     subcategory,
+    audience,
     reason,
     parsed,
     images,
@@ -479,6 +511,13 @@ export function ImportClient({
                   ) {
                     setSubcategory("");
                   }
+                  // Audience fallback: when nothing was inferred from
+                  // the URL, derive from a gendered top-level. The
+                  // user can still override.
+                  if (audience.length === 0) {
+                    if (next === "mens") setAudience(["mens"]);
+                    else if (next === "womens") setAudience(["womens"]);
+                  }
                 }}
                 className={INPUT_CLS}
               >
@@ -528,6 +567,33 @@ export function ImportClient({
                     categories.ts to make it canonical.
                   </p>
                 )}
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="audience" className={LABEL_CLS}>
+                Audience
+              </label>
+              <select
+                id="audience"
+                value={audienceToOption(audience)}
+                onChange={(e) =>
+                  setAudience(
+                    optionToAudience(e.target.value as AudienceOption)
+                  )
+                }
+                className={INPUT_CLS}
+              >
+                {(["none", "mens", "womens", "both"] as AudienceOption[]).map(
+                  (opt) => (
+                    <option key={opt} value={opt}>
+                      {AUDIENCE_LABELS[opt]}
+                    </option>
+                  )
+                )}
+              </select>
+              <p className="mt-2 font-serif text-[12px] italic text-[#1f1d1b]/55">
+                Gender-neutral items appear in both Mens and Womens shop
+                pillars.
+              </p>
             </div>
             <div>
               <label htmlFor="priceRange" className={LABEL_CLS}>

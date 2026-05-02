@@ -79,6 +79,22 @@ export type ShopProduct = {
    * fails. Curated by Jordan; live fetches override at runtime.
    */
   priceRange: PriceTier;
+  /**
+   * Cross-pillar audience tags. Lets one product appear in MENS and
+   * WOMENS at the same time without duplicating the entry. Empty
+   * array (or omitted) for items that don't carry a gendered
+   * audience signal — those filter solely by `category`.
+   *
+   * Allowed values: "mens", "womens". Order doesn't matter.
+   */
+  audience?: ("mens" | "womens")[];
+  /**
+   * ISO timestamp of original import. Existing entries created
+   * before this field landed are backfilled with a single baseline
+   * date; new entries get `Date.now()` at import time. Used for the
+   * Date added sort and the list-view DATE ADDED column.
+   */
+  dateAdded?: string;
   /** External product page. Doubles as the source for live pricing. */
   url: string;
   /** Renderable image URL (typically `/shop/<slug>-1.jpg`). */
@@ -124,8 +140,9 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Loewe",
     category: "accessories",
     subcategory: "bags",
-    reason: "Soft calfskin. The bag for not announcing the day.",
-    priceRange: "$4,200–$4,500",
+    reason: "Soft grained calfskin, herringbone lining. The briefcase that carries the meeting without wearing it.",
+    priceRange: "2900",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.loewe.com/usa/en/men/bags/portfolio-and-briefcases/goya-thin-briefcase-in-soft-grained-calfskin/337.12.P57-1100.html",
     image: "/shop/loewe-goya-thin-briefcase-1.jpg",
     images: [
@@ -133,7 +150,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/loewe-goya-thin-briefcase-2.jpg",
       "/shop/loewe-goya-thin-briefcase-3.jpg",
     ],
-    extractionMethod: "manual",
+    extractionMethod: "json-ld",
     priceFloor: 1000,
   },
   {
@@ -144,6 +161,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "watches",
     reason: "The dress watch you can swim in.",
     priceRange: "$12,000",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.omegawatches.com/en-us/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-small-seconds-41-mm-22022412103001",
     image: "/shop/omega-aqua-terra-small-seconds-1.jpg",
     images: [
@@ -162,6 +180,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bedding",
     reason: "Cotton, not synthetic. Cool in summer, warm enough otherwise.",
     priceRange: "$35–$55",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://bedsurehome.com/products/cotton-waffle-weave-blanket?variant=40158662000742",
     image: "/shop/bedsure-waffle-blanket-1.jpg",
     images: [
@@ -180,6 +199,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Wears like a shirt. Reads like a tee.",
     priceRange: "$69–$89",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.massimodutti.com/us/linen-and-cotton-doublecollar-tshirt-l00659198?pelement=59486681",
     image: "/shop/massimo-dutti-linen-double-collar-tee-1.jpg",
     images: [
@@ -198,6 +218,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "furniture",
     reason: "Substantial. Anchors the room without raising its voice.",
     priceRange: "$1,800–$2,400",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://lvfurniturecollection.com/products/hippo-coffee-table?country=US&currency=USD&variant=45139005243523",
     image: "/shop/lv-hippo-coffee-table-1.jpg",
     images: [
@@ -217,6 +238,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "footwear",
     reason: "For pools, beaches, kitchens. Anywhere you don’t want to think.",
     priceRange: "$45",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.birkenstock.com/us/arizona-eva/arizona-eva-eva-0-eva-u_3716.html",
     image: "/shop/birkenstock-arizona-eva-1.jpg",
     images: [
@@ -235,6 +257,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "eyewear",
     reason: "Hand-finished in France. People notice without knowing why.",
     priceRange: "$480–$540",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.ahlemeyewear.com/products/louxor-1?variant=44903388545273",
     image: "/shop/ahlem-louxor-1.jpg",
     images: [
@@ -253,6 +276,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Looks unstructured. Holds more than it should.",
     priceRange: "$2,800–$3,400",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/linen-blend-drawstring-duffel-bag/2VY011_2CX9_F0018_V_OOO",
     image: "/shop/prada-linen-duffel-1.jpg",
     images: [
@@ -274,6 +298,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "beverages",
     reason: "Texas mineral water from Mineral Wells. Four numbered strengths.",
     priceRange: "$30–$45",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://drinkcrazywater.myshopify.com/collections/water/products/crazy-water-sampler",
     image: "/shop/crazy-water-sampler.jpg",
     extractionMethod: "shopify",
@@ -287,6 +312,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "watches",
     reason: "A real watch, finished correctly, without the chronograph tax.",
     priceRange: "$2,000–$2,400",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.tagheuer.com/us/en/timepieces/collections/tag-heuer-aquaracer/40-mm-quartz/CBP1112.BA0627.html",
     image: "/shop/tag-heuer-aquaracer-quartz-1.jpg",
     images: [
@@ -308,6 +334,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "hair",
     reason: "Hold without product crunch. Most others can’t say that.",
     priceRange: "$30",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.aveda.com/product/17776/16733/styling/mens-styling/aveda-men-pure-formance-grooming-clay?size=2.5_fl_oz%2F75_ml",
     image: "/shop/aveda-pureformance-clay-1.jpg",
     images: [
@@ -326,6 +353,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "pants",
     reason: "Tapered without being skinny. The cut that actually lasts.",
     priceRange: "$89–$109",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.massimodutti.com/us/tapered-fit-jeans-l00451110?pelement=57966404",
     image: "/shop/massimo-dutti-tapered-jeans-1.jpg",
     images: [
@@ -345,6 +373,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "jewelry",
     reason: "Sterling silver. The kind people inherit.",
     priceRange: "$375–$575",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.tiffany.com/jewelry/bracelets/sterling-silver-bracelets-117817401.html",
     image: "/shop/tiffany-venetian-link-bracelet-1.jpg",
     images: [
@@ -364,6 +393,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "When you want to carry less but still want it close.",
     priceRange: "$1,650–$1,950",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-belt-bag/2VL977_2DMG_F0002_V_WOO",
     image: "/shop/prada-renylon-belt-bag-1.jpg",
     images: [
@@ -383,6 +413,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bedding",
     reason: "Holds shape through the night. Most pillows don’t.",
     priceRange: "$80–$110",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.amazon.com/Pacific-Coast-Standard-Sleeping-Downproof/dp/B0DPV65G7Y?th=1",
     image: "/shop/pacific-coast-down-pillow-1.jpg",
     images: [
@@ -399,6 +430,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "pants",
     reason: "Reads more expensive than it is. Wears like it, too.",
     priceRange: "$79–$99",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.massimodutti.com/us/cotton-blend-slim-fit-pants-l00101001?pelement=58445844",
     image: "/shop/massimo-dutti-cotton-slim-pants-1.jpg",
     images: [
@@ -418,6 +450,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "footwear",
     reason: "You stop noticing them after five minutes. That’s the point.",
     priceRange: "$135–$155",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.birkenstock.com/us/arizona-soft-footbed-natural-leather-oiled/arizona-core-oiledleather-softfootbed-eva-u_5326.html",
     image: "/shop/birkenstock-arizona-leather-1.jpg",
     images: [
@@ -436,6 +469,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Looks like a briefcase. Carries like a backpack.",
     priceRange: "$245–$295",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.johnstonmurphy.com/p/leather-goods-backpacks-briefcases/rhodes-backpack/14510.html?dwvar_14510_color=Tan%20Full%20Grain",
     image: "/shop/johnston-murphy-rhodes-backpack-1.jpg",
     images: [
@@ -455,6 +489,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "hair",
     reason: "Softer hold. Same trick — finish doesn’t read as done.",
     priceRange: "$30",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.aveda.com/product/17776/16732/styling/mens-styling/aveda-men-pure-formance-grooming-cream?size=4.2_fl_oz%2F125_ml",
     image: "/shop/aveda-pureformance-cream-1.jpg",
     images: [
@@ -473,6 +508,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "eyewear",
     reason: "The frame that suits more faces than it should.",
     priceRange: "$480–$540",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.ahlemeyewear.com/products/haussman?variant=44220169715961",
     image: "/shop/ahlem-haussmann-1.jpg",
     images: [
@@ -492,6 +528,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "luggage",
     reason: "Checked. Heavy-duty. Doesn’t pretend to be cute.",
     priceRange: "$375–$425",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.awaytravel.com/products/large-navy-blue",
     image: "/shop/away-the-large-1.jpg",
     images: [
@@ -511,6 +548,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Heavyweight cotton. The base layer for everything.",
     priceRange: "$39",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.massimodutti.com/us/100-cotton-short-sleeve-tshirt-l01418212?pelement=56718135",
     image: "/shop/massimo-dutti-cotton-tee-1.jpg",
     images: [
@@ -530,6 +568,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shorts",
     reason: "Cheap in price. Not in how they wear.",
     priceRange: "$20–$28",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.target.com/p/men-s-5-flat-front-shorts-goodfellow-co/-/A-94965145?preselect=94886502",
     image: "/shop/goodfellow-flat-front-shorts-1.jpg",
     images: [
@@ -547,6 +586,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Prada nylon is a uniform. This is the carry version.",
     priceRange: "$2,400–$2,800",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-backpack/2VZ048_2DMG_F0002_V_OOO",
     image: "/shop/prada-renylon-backpack-1.jpg",
     images: [
@@ -567,6 +607,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Oversized without losing structure. Layers over everything.",
     priceRange: "$40",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.uniqlo.com/us/en/products/E484905-000/00?colorDisplayCode=01&sizeDisplayCode=003",
     image: "/shop/uniqlo-oxford-oversized-shirt-1.jpg",
     images: [
@@ -585,6 +626,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Holds shape under everything. Worth it for that alone.",
     priceRange: "$25–$32",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.abercrombie.com/shop/us/p/premium-ribbed-tank-61149838?categoryId=73458",
     image: "/shop/abercrombie-premium-ribbed-tank-1.jpg",
     images: [
@@ -603,6 +645,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Built to take a beating. Doesn’t read like it has.",
     priceRange: "$2,100–$2,500",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/re-nylon-and-saffiano-leather-duffle-bag/2VC013_2DMH_F0002_V_XOO",
     image: "/shop/prada-renylon-duffle-1.jpg",
     images: [
@@ -623,6 +666,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "luggage",
     reason: "Hits the size limit on purpose. Holds a week.",
     priceRange: "$295–$345",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.awaytravel.com/products/bigger-carry-on-navy-blue",
     image: "/shop/away-bigger-carry-on-1.jpg",
     images: [
@@ -642,6 +686,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Heavy canvas, leather handles. Outlasts replacing.",
     priceRange: "$145–$195",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://claytonandcrume.com/products/canvas-market-tote?country=US&currency=USD&variant=47093690171559",
     image: "/shop/clayton-crume-canvas-tote-1.jpg",
     images: [
@@ -661,6 +706,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "swim",
     reason: "Seersucker, not slick nylon. The pool trunk that reads thought-out.",
     priceRange: "$55–$75",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.abercrombie.com/shop/us/p/pull-on-seersucker-swim-trunk-58989323",
     image: "/shop/Abercrombie-Seersucker-Swim-Trunk-1.jpg",
     images: [
@@ -679,6 +725,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "stationery",
     reason: "Full-grain leather, brass snap, refillable. The notebook you keep.",
     priceRange: "$245–$295",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://claytonandcrume.com/products/daybook",
     image: "/shop/clayton-daybook-1.jpg",
     images: [
@@ -698,6 +745,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "laundry",
     reason: "Merino wool, US-made. Replaces dryer sheets and never runs out.",
     priceRange: "$25–$35",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://ibex.com/products/wool-dryer-puffs",
     image: "/shop/ibex-dryer-puffs-1.jpg",
     images: [
@@ -717,6 +765,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "fragrance",
     reason: "Bergamot and cedar. The dependable cologne that wears close.",
     priceRange: "$95–$160",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/lhomme/lhomme-eau-de-toilette-spray/284YSL.html",
     image: "/shop/ysl-l-homme-1.jpg",
     extractionMethod: "manual",
@@ -730,6 +779,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "fragrance",
     reason: "Orange blossom, vetiver. The brighter one — for when L’Homme is too quiet.",
     priceRange: "$115–$185",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.yslbeautyus.com/fragrance/mens-fragrances/myslf/myslf-eau-de-parfum/WW-51115YSL.html",
     image: "/shop/ysl-MYSLF-1.jpg",
     images: [
@@ -747,6 +797,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "fragrance",
     reason: "Mate and ambergris. Reads as the wearer, not the brand.",
     priceRange: "$250–$300",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/paradigme-edp-100-ml/2A1451_2H0Q_F0Z99_P_ML100",
     image: "/shop/prada-Paradigme-1.jpg",
     images: [
@@ -765,6 +816,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "skin",
     reason: "Avocado oil, no fuss. Forty years on the counter for a reason.",
     priceRange: "$45",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.kiehls.com/skincare/eye-creams-and-serums/avocado-eye-cream/258.html",
     image: "/shop/kiehls-avocado-eye-cream-1.jpg",
     images: [
@@ -782,6 +834,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Damier Graphite canvas. Travels with the bag, not buried inside it.",
     priceRange: "$720–$820",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://us.louisvuitton.com/eng-us/products/dopp-kit-toilet-pouch-damier-graphite-canvas-nvprod1420096v/N40127",
     image: "/shop/louis-vuitton-dopp-kit-1.jpg",
     images: [
@@ -801,6 +854,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "eyewear",
     reason: "Triangle, not logo. Prada that doesn’t need to introduce itself.",
     priceRange: "$475–$590",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/prada-symbole-sunglasses/SPRB17_E16K_FE08Z_C_054",
     image: "/shop/Prada-Symbole-sunglasses-1.jpg",
     images: [
@@ -820,6 +874,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "body",
     reason: "Tea tree, real oils, no fillers. Soap the way it used to be.",
     priceRange: "$7",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.drbronner.com/products/tea-tree-pure-castile-bar-soap",
     image: "/shop/dr-bronner-tea-tree-bar-soap-1.jpg",
     images: [
@@ -838,6 +893,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "dresses",
     reason: "Pleated cotton twill, asymmetrical collar. The dress that looks considered without trying.",
     priceRange: "$425",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://us.soeur.fr/products/robe-imani-navy-rob0925imani26snav01",
     image: "/shop/soeur-blue-imani-dress-1.jpg",
     images: [
@@ -858,6 +914,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "outerwear",
     reason: "Organic double sateen cotton. The oversized coat that closes off-centre and stays quiet about it.",
     priceRange: "$870",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://us.soeur.fr/products/manteau-hyacinthe-gris-clair-man0813hyacinth26sgri02",
     image: "/shop/soeur-grey-hyacinthe-coat-1.jpg",
     images: [
@@ -877,6 +934,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "tops",
     reason: "The tank that earns its keep past summer.",
     priceRange: "$160",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://us.soeur.fr/products/debardeur-ila-vert-de-gris-tsh0757ila26sver23",
     image: "/shop/soeur-grey-ila-tank-top-1.jpg",
     images: [
@@ -895,6 +953,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Cotton crochet, floral embroidery. The summer bag that earns its detail.",
     priceRange: "$1,950",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.miumiu.com/us/en/p/ivy-embroidered-cotton-handbag/5BA281_2IH5_F0018_V_OR3",
     image: "/shop/miu-miu-ivy-embroidered-cotton-handbag-1.jpg",
     extractionMethod: "json-ld",
@@ -907,6 +966,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Abacá fiber, not cotton. Naturally antibacterial, UV resistant, and compostable when it's done.",
     priceRange: "$259",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://carpasus.com/collections/spring-summer-26/products/overshirt-abaca-olive",
     image: "/shop/carpasus-overshirt-abaca-olive-1.jpg",
     images: [
@@ -927,6 +987,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "bags",
     reason: "Leather outside, suede in. Clutch at night, crossbody by day.",
     priceRange: "$945",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://kallmeyer.nyc/collections/fw25/products/parker-convertible-clutch-100-cow-leather-chocolate",
     image: "/shop/kallmeyer-parker-convertible-clutch-in-leather-1.jpg",
     images: [
@@ -946,6 +1007,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Lightweight oxford, eased fit. The OCBD without the starch.",
     priceRange: "$148",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.buckmason.com/products/canyon-lane-stripe-california-oxford-bd-shirt",
     image: "/shop/buck-mason-canyon-lane-stripe-california-oxford-bd-shirt-1.jpg",
     images: [
@@ -965,6 +1027,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "footwear",
     reason: "Clean leather, geometric sole. The sneaker that lets the triangle do the talking.",
     priceRange: "$950",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/court-leather-sneakers/2EE483_070_F0009_F_G000",
     image: "/shop/prada-court-leather-sneakers-1.jpg",
     extractionMethod: "json-ld",
@@ -977,6 +1040,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "footwear",
     reason: "Drill cotton, rubber sole. The sneaker that doesn't need leather to hold its shape.",
     priceRange: "$995",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.prada.com/us/en/p/drill-fabric-sneakers/2EE467_3LKE_F0009_F_G000",
     image: "/shop/prada-drill-fabric-sneakers-1.jpg",
     extractionMethod: "json-ld",
@@ -989,6 +1053,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Fluid rayon, not stiff cotton. The western shirt that moves like it means it.",
     priceRange: "$228",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://www.buckmason.com/products/burnt-orange-sunset-rayon-western-shirt",
     image: "/shop/buck-mason-burnt-orange-sunset-rayon-western-shirt-1.jpg",
     images: [
@@ -1007,6 +1072,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "shirts",
     reason: "Abacá fiber, not cotton. Soft, antibacterial, and breaks down when it's done.",
     priceRange: "$269",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://carpasus.com/products/overshirt-abaca-black",
     image: "/shop/carpasus-overshirt-abaca-black-1.jpg",
     images: [
@@ -1026,6 +1092,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "pants",
     reason: "Banana-plant fiber, not cotton. Antibacterial, UV resistant, and soft enough to forget about.",
     priceRange: "$199",
+    dateAdded: "2026-04-01T00:00:00.000Z",
     url: "https://carpasus.com/collections/trousers/products/trousers-abaca-black",
     image: "/shop/carpasus-trousers-abaca-black-1.jpg",
     images: [

@@ -421,7 +421,7 @@ export default function ShopGrid({
           `mouseLeave` lets the cursor cross from pill to dropdown
           without flicker. */}
       <nav
-        aria-label="Filter shop by category"
+        aria-label="Filter Shop by category"
         className="mb-12 sm:mb-16"
         onMouseLeave={onNavLeave}
       >
