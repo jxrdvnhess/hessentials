@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteHeader from "../components/SiteHeader";
+import PersistentShopMenu from "../components/PersistentShopMenu";
 import FooterGate from "../components/FooterGate";
 import JsonLd from "../components/JsonLd";
 import { organizationSchema, websiteSchema } from "../lib/jsonLd";
@@ -132,6 +133,7 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="text-[#1f1d1b] antialiased">
         <SiteHeader />
+        <PersistentShopMenu />
         {children}
         <FooterGate />
         {/* Site-wide structured data — Organization (publisher

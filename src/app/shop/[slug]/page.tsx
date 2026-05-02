@@ -2,10 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
+  CATEGORY_KEYS,
   SHOP_PRODUCTS,
   getProductBySlug,
   categoryLabel,
   subcategoryLabel,
+  type Category,
 } from "../../../data/shop";
 import { getShopEssay } from "../../../lib/shop";
 import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
@@ -13,8 +15,20 @@ import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
 import JsonLd from "../../../components/JsonLd";
 import { productSchema } from "../../../lib/jsonLd";
+import PillarView from "./PillarView";
 
 type Params = { slug: string };
+
+/**
+ * Same dynamic segment serves two surfaces: pillar pages
+ * (`/shop/<pillar>`) and product detail (`/shop/<slug>`). The
+ * brief specifies this URL shape; we branch on whether the value
+ * matches a CATEGORY_KEY rather than splitting routes.
+ */
+const PILLAR_SET: ReadonlySet<string> = new Set<string>(CATEGORY_KEYS);
+function isPillar(value: string): value is Category {
+  return PILLAR_SET.has(value);
+}
 
 /**
  * 12-hour ISR (43200 seconds). Detail pages regenerate so the live
@@ -28,7 +42,12 @@ type Params = { slug: string };
 export const revalidate = 43200;
 
 export function generateStaticParams() {
-  return SHOP_PRODUCTS.map((p) => ({ slug: p.slug }));
+  // Both pillar pages and product detail pages share this dynamic
+  // segment — pre-render both sets so SSG covers everything.
+  return [
+    ...CATEGORY_KEYS.map((slug) => ({ slug })),
+    ...SHOP_PRODUCTS.map((p) => ({ slug: p.slug })),
+  ];
 }
 
 export async function generateMetadata({
@@ -37,6 +56,11 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (isPillar(slug)) {
+    return {
+      title: `${categoryLabel(slug)} — Shop — Hessentials`,
+    };
+  }
   const product = getProductBySlug(slug);
   if (!product) return { title: "Shop — Hessentials" };
 
@@ -58,6 +82,13 @@ export default async function ShopProductPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
+  // Pillar branch — when the segment matches a CATEGORY_KEY, render
+  // the pillar surface (mosaic + subcategory drill-down) instead of
+  // a product detail page.
+  if (isPillar(slug)) {
+    return <PillarView pillar={slug} />;
+  }
+
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
