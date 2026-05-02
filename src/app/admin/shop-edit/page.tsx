@@ -5,7 +5,7 @@ import { SHOP_PRODUCTS } from "../../../data/shop";
 import { ShopEditList } from "./ShopEditList";
 
 export const metadata: Metadata = {
-  title: "Shop edit — Admin",
+  title: "Admin / Shop edit",
   robots: { index: false, follow: false },
 };
 
@@ -31,6 +31,7 @@ export default function AdminShopEditPage() {
       category: p.category,
       subcategory: p.subcategory ?? "",
       priceRange: p.priceRange,
+      reason: p.reason.trim(),
       hasReason: p.reason.trim().length > 0,
     }))
     .sort((a, b) => a.brand.localeCompare(b.brand));
@@ -46,8 +47,8 @@ export default function AdminShopEditPage() {
             Shop edit
           </h1>
           <p className="mt-4 max-w-xl font-serif text-[15px] italic leading-[1.5] text-[#1f1d1b]/65">
-            Every product in the edit. Click to edit. Delete removes the
-            entry and its images.
+            Every Shop listing in one place. Edit to refine. Delete
+            removes the entry and its images.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-[11px] uppercase tracking-[0.22em]">
             <Link

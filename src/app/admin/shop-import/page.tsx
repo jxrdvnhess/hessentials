@@ -4,7 +4,7 @@ import { ImportClient } from "./ImportClient";
 import { CATEGORY_TREE } from "../../../data/shop";
 
 export const metadata: Metadata = {
-  title: "Shop import — Admin",
+  title: "Admin / Shop import",
   // Belt-and-suspenders. The page is unlinked and dev-only, but the
   // noindex pairs with the runtime 403 from the commit endpoint.
   robots: { index: false, follow: false },

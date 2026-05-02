@@ -19,8 +19,17 @@ type Item = {
   category: string;
   subcategory: string;
   priceRange: string;
+  reason: string;
   hasReason: boolean;
 };
+
+/** Cap the reason preview at this many characters; ellipsis if longer. */
+const REASON_PREVIEW_MAX = 60;
+
+function previewReason(reason: string): string {
+  if (reason.length <= REASON_PREVIEW_MAX) return reason;
+  return reason.slice(0, REASON_PREVIEW_MAX).trimEnd() + "…";
+}
 
 export function ShopEditList({ items }: { items: Item[] }) {
   const [rows, setRows] = useState(items);
@@ -155,11 +164,18 @@ export function ShopEditList({ items }: { items: Item[] }) {
                 <td className="py-3 pr-4 font-serif text-[14px]">
                   {row.priceRange}
                 </td>
-                <td className="py-3 pr-4 text-[12px] uppercase tracking-[0.18em]">
+                <td className="max-w-[28ch] py-3 pr-4">
                   {row.hasReason ? (
-                    <span className="text-[#1f1d1b]/55">Set</span>
+                    <span
+                      className="font-serif text-[13px] italic leading-[1.4] text-[#1f1d1b]/75"
+                      title={row.reason}
+                    >
+                      {previewReason(row.reason)}
+                    </span>
                   ) : (
-                    <span className="text-[#a23a23]">Missing</span>
+                    <span className="text-[12px] uppercase tracking-[0.18em] text-[#a23a23]">
+                      Missing
+                    </span>
                   )}
                 </td>
                 <td className="py-3 text-right">

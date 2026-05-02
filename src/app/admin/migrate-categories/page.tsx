@@ -6,7 +6,7 @@ import { classifyProduct } from "../../../lib/shopImport/classify";
 import { MigrateClient, type Row } from "./MigrateClient";
 
 export const metadata: Metadata = {
-  title: "Migrate categories — Admin",
+  title: "Admin / Migrate categories",
   robots: { index: false, follow: false },
 };
 

@@ -145,7 +145,7 @@ export function EditClient({
       <section className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="slug" className={LABEL_CLS}>
-            Slug — read only
+            Slug (read only)
           </label>
           <input
             id="slug"
@@ -241,7 +241,7 @@ export function EditClient({
         <div className="sm:col-span-2">
           <div className="flex items-baseline justify-between gap-3">
             <label htmlFor="reason" className={LABEL_CLS}>
-              Reason — editorial
+              Reason (editorial)
             </label>
             <div className="flex items-center gap-3">
               {reasonError && (
@@ -321,7 +321,7 @@ export function EditClient({
         )}
         <div>
           <label htmlFor="priceFloor" className={LABEL_CLS}>
-            Price floor — optional
+            Price floor (optional)
           </label>
           <input
             id="priceFloor"
@@ -349,7 +349,7 @@ export function EditClient({
 
       {/* Images — read-only at this surface. */}
       <section className="border-t border-[#1f1d1b]/15 pt-8">
-        <p className={LABEL_CLS}>Images — read only</p>
+        <p className={LABEL_CLS}>Images (read only)</p>
         <p className="mt-2 font-serif text-[13px] italic text-[#1f1d1b]/55">
           To change images, delete this product and re-import.
         </p>
@@ -366,7 +366,7 @@ export function EditClient({
               </div>
               <div className="px-2 py-1.5 text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
                 {i + 1}
-                {i === 0 ? " — primary" : ""}
+                {i === 0 ? " (primary)" : ""}
               </div>
             </li>
           ))}

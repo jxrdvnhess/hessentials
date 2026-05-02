@@ -4,7 +4,7 @@ import { fetchAllPrices } from "../../../lib/pricing/fetchPrice";
 import { PricingTable, type PricingRow } from "./PricingTable";
 
 export const metadata: Metadata = {
-  title: "Pricing — Admin",
+  title: "Admin / Pricing",
   // Keep this page out of any crawler index. It's not linked from the
   // public site but the noindex/nofollow is belt-and-suspenders.
   robots: { index: false, follow: false },

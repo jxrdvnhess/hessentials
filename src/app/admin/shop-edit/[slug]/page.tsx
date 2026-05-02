@@ -9,7 +9,7 @@ import {
 import { EditClient } from "./EditClient";
 
 export const metadata: Metadata = {
-  title: "Edit product — Admin",
+  title: "Admin / Edit product",
   robots: { index: false, follow: false },
 };
 
@@ -62,7 +62,7 @@ export default async function AdminShopEditDetailPage({
       <div className="mx-auto w-full max-w-4xl px-6 pt-12 pb-24 sm:px-10 md:pt-16">
         <header className="mb-10">
           <p className="text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45">
-            Admin — edit
+            Admin / Edit
           </p>
           <h1 className="mt-3 font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-normal leading-[1.1] tracking-[-0.01em]">
             {product.name}

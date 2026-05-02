@@ -463,7 +463,7 @@ export function ImportClient({
             </div>
             <div>
               <label htmlFor="category" className={LABEL_CLS}>
-                Category — required
+                Category (required)
               </label>
               <select
                 id="category"
@@ -492,7 +492,7 @@ export function ImportClient({
             </div>
             <div>
               <label htmlFor="subcategory" className={LABEL_CLS}>
-                Subcategory — optional
+                Subcategory (optional)
               </label>
               <input
                 id="subcategory"
@@ -542,7 +542,7 @@ export function ImportClient({
               {parsed.prices.length > 0 && (
                 <p className="mt-2 font-mono text-[11px] text-[#1f1d1b]/55">
                   Source variants: {parsed.prices.map((p) => `$${p}`).join(", ")}
-                  {parsed.soldOut ? " — sold out" : ""}
+                  {parsed.soldOut ? " (sold out)" : ""}
                 </p>
               )}
             </div>
@@ -580,7 +580,7 @@ export function ImportClient({
             )}
             <div>
               <label htmlFor="priceFloor" className={LABEL_CLS}>
-                Price floor — optional
+                Price floor (optional)
               </label>
               <input
                 id="priceFloor"
@@ -596,7 +596,7 @@ export function ImportClient({
             <div className="sm:col-span-2">
               <div className="flex items-baseline justify-between gap-3">
                 <label htmlFor="reason" className={LABEL_CLS}>
-                  Reason — editorial
+                  Reason (editorial)
                 </label>
                 <div className="flex items-center gap-3">
                   {reasonError && (
@@ -638,7 +638,7 @@ export function ImportClient({
 
           {/* Images */}
           <div className="border-t border-[#1f1d1b]/15 pt-8">
-            <p className={LABEL_CLS}>Images — primary first</p>
+            <p className={LABEL_CLS}>Images (primary first)</p>
             {images.length === 0 ? (
               <p className="mt-3 font-serif text-[14px] italic text-[#1f1d1b]/55">
                 No images parsed from the source.
@@ -691,7 +691,7 @@ export function ImportClient({
                       <div className="flex items-center justify-between border-t border-[#1f1d1b]/10 px-2 py-1.5">
                         <span className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
                           {i + 1}
-                          {i === 0 ? " — primary" : ""}
+                          {i === 0 ? " (primary)" : ""}
                         </span>
                         <span className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/45">
                           {img.selected ? "Keep" : "Skip"}
