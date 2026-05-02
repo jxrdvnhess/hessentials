@@ -79,6 +79,11 @@ export function ImportClient({
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState<string>("");
   const [subcategory, setSubcategory] = useState<string>("");
+  const [reason, setReason] = useState("");
+  const [reasonState, setReasonState] = useState<
+    "idle" | "generating" | "error"
+  >("idle");
+  const [reasonError, setReasonError] = useState<string | null>(null);
   const [priceRange, setPriceRange] = useState("");
   const [priceFloor, setPriceFloor] = useState("");
   const [extractionMethod, setExtractionMethod] =
@@ -105,6 +110,9 @@ export function ImportClient({
     setBrand("");
     setCategory("");
     setSubcategory("");
+    setReason("");
+    setReasonState("idle");
+    setReasonError(null);
     setPriceRange("");
     setPriceFloor("");
     setExtractionMethod("manual");
@@ -237,6 +245,43 @@ export function ImportClient({
     }
   }, [url]);
 
+  const onGenerateReason = useCallback(async () => {
+    if (!name || !brand || !category) {
+      setReasonError("Need name, brand, and category before generating.");
+      return;
+    }
+    setReasonState("generating");
+    setReasonError(null);
+    try {
+      const res = await fetch("/api/admin/generate-reason", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          brand,
+          category,
+          subcategory: subcategory || undefined,
+          url,
+        }),
+      });
+      const payload = (await res.json()) as {
+        reason?: string;
+        refined?: boolean;
+        error?: string;
+      };
+      if (!res.ok || !payload.refined || !payload.reason) {
+        setReasonState("error");
+        setReasonError(payload.error ?? `HTTP ${res.status}`);
+        return;
+      }
+      setReason(payload.reason);
+      setReasonState("idle");
+    } catch (e) {
+      setReasonState("error");
+      setReasonError(e instanceof Error ? e.message : String(e));
+    }
+  }, [name, brand, category, subcategory, url]);
+
   const onCommit = useCallback(async () => {
     if (!category) {
       setErrorMsg("Pick a category before committing.");
@@ -264,6 +309,7 @@ export function ImportClient({
           brand,
           category,
           subcategory: subcategory || undefined,
+          reason,
           priceRange,
           url,
           images: selectedImages,
@@ -289,6 +335,7 @@ export function ImportClient({
   }, [
     category,
     subcategory,
+    reason,
     parsed,
     images,
     slug,
@@ -546,10 +593,45 @@ export function ImportClient({
                 placeholder="e.g. 50"
               />
             </div>
-            <div>
-              <label className={LABEL_CLS}>Reason — editorial</label>
-              <p className="mt-2 font-serif text-[14px] italic text-[#1f1d1b]/55">
-                Left blank. Fill in directly in shop.ts after commit.
+            <div className="sm:col-span-2">
+              <div className="flex items-baseline justify-between gap-3">
+                <label htmlFor="reason" className={LABEL_CLS}>
+                  Reason — editorial
+                </label>
+                <div className="flex items-center gap-3">
+                  {reasonError && (
+                    <span className="font-mono text-[10px] text-[#a23a23]">
+                      {reasonError}
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    onClick={onGenerateReason}
+                    disabled={
+                      reasonState === "generating" ||
+                      !name ||
+                      !brand ||
+                      !category
+                    }
+                    className="border border-[#1f1d1b]/40 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b] transition-colors hover:bg-[#1f1d1b] hover:text-[#f6f1e7] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#1f1d1b]"
+                  >
+                    {reasonState === "generating"
+                      ? "Drafting…"
+                      : reason
+                      ? "Regenerate"
+                      : "Generate"}
+                  </button>
+                </div>
+              </div>
+              <textarea
+                id="reason"
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
+                placeholder="One line. The reason this earns its place. Or click Generate."
+                className={`${INPUT_CLS} min-h-[72px] resize-y leading-[1.5] placeholder:italic placeholder:text-[#1f1d1b]/35`}
+              />
+              <p className="mt-2 font-serif text-[12px] italic text-[#1f1d1b]/55">
+                Generated lines are drafts — review before commit.
               </p>
             </div>
           </div>

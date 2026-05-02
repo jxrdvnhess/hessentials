@@ -10,7 +10,7 @@
  */
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 type Item = {
   slug: string;
@@ -24,6 +24,7 @@ type Item = {
 
 export function ShopEditList({ items }: { items: Item[] }) {
   const [rows, setRows] = useState(items);
+  const [query, setQuery] = useState("");
   const [confirming, setConfirming] = useState<string | null>(null);
   const [pending, setPending] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -31,6 +32,24 @@ export function ShopEditList({ items }: { items: Item[] }) {
     slug: string;
     images: number;
   } | null>(null);
+
+  /**
+   * Live filter — case-insensitive substring match against the fields
+   * a human would actually type when looking for a product. The search
+   * runs over `rows` (post-delete state), not the original `items`.
+   */
+  const visible = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return rows;
+    return rows.filter(
+      (r) =>
+        r.name.toLowerCase().includes(q) ||
+        r.brand.toLowerCase().includes(q) ||
+        r.slug.toLowerCase().includes(q) ||
+        r.category.toLowerCase().includes(q) ||
+        r.subcategory.toLowerCase().includes(q)
+    );
+  }, [rows, query]);
 
   const onDelete = async (slug: string) => {
     setError(null);
@@ -62,6 +81,20 @@ export function ShopEditList({ items }: { items: Item[] }) {
 
   return (
     <div>
+      {/* Search — single input, filters on name / brand / slug / category. */}
+      <div className="mb-6 flex flex-wrap items-center gap-3">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by name, brand, slug, or category"
+          className="w-full max-w-md border border-[#1f1d1b]/20 bg-white/40 px-3 py-2 font-serif text-[14px] text-[#1f1d1b] outline-none placeholder:italic placeholder:text-[#1f1d1b]/40 focus:border-[#1f1d1b]/40"
+        />
+        <p className="font-serif text-[12px] italic text-[#1f1d1b]/55">
+          {visible.length} of {rows.length}
+        </p>
+      </div>
+
       {error && (
         <p className="mb-4 font-mono text-[12px] text-[#a23a23]">{error}</p>
       )}
@@ -85,7 +118,17 @@ export function ShopEditList({ items }: { items: Item[] }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
+            {visible.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={5}
+                  className="py-12 text-center font-serif text-[14px] italic text-[#1f1d1b]/55"
+                >
+                  No matches.
+                </td>
+              </tr>
+            ) : null}
+            {visible.map((row) => (
               <tr
                 key={row.slug}
                 className="border-b border-[#1f1d1b]/8 align-top"

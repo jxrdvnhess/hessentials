@@ -29,6 +29,12 @@ export type ExtractedProduct = {
   soldOut: boolean;
   /** Absolute image URLs, in source order, deduplicated. */
   images: string[];
+  /**
+   * Product description from JSON-LD `Product.description` or the
+   * page's `og:description` meta. Used as substantive grist for the
+   * reason generator; the import form does not display it.
+   */
+  description: string;
   /** Best-guess extractor for the live pricing layer. */
   extractionMethod: ExtractionMethod;
   /** Domain stripped to host (no www.) — used as a brand fallback. */
@@ -274,6 +280,7 @@ export function parseProductPage(
 
   let name: string | null = null;
   let brand: string | null = null;
+  let description: string | null = null;
   const imageAcc: string[] = [];
   const variants: number[] = [];
   let availabilityCount = 0;
@@ -283,6 +290,7 @@ export function parseProductPage(
     for (const product of findProducts(block)) {
       if (!name) name = readString(product["name"]);
       if (!brand) brand = readBrand(product["brand"]);
+      if (!description) description = readString(product["description"]);
       readImages(product["image"], imageAcc);
 
       for (const offer of findOffers(product)) {
@@ -302,13 +310,19 @@ export function parseProductPage(
     }
   }
 
-  // OG fallbacks for name/brand
+  // OG fallbacks for name/brand/description
   if (!name) name = readMetaTag(html, "og:title") ?? readTitleTag(html);
   if (!brand) {
     brand =
       readMetaTag(html, "og:site_name") ??
       readMetaTag(html, "product:brand") ??
       titleizeHost(hostOf(sourceUrl));
+  }
+  if (!description) {
+    description =
+      readMetaTag(html, "og:description") ??
+      readMetaTag(html, "description") ??
+      "";
   }
   // Always merge OG / Twitter images alongside JSON-LD — many product
   // pages embed only the primary image in JSON-LD and stash the rest
@@ -341,12 +355,20 @@ export function parseProductPage(
   const soldOut =
     availabilityCount > 0 && soldOutCount === availabilityCount;
 
+  // Strip HTML tags from description — JSON-LD and meta tags
+  // occasionally embed raw HTML. The reason generator wants prose.
+  const cleanDescription = (description ?? "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
   return {
     name: name ?? "",
     brand: brand ?? "",
     prices,
     soldOut,
     images,
+    description: cleanDescription,
     extractionMethod: guessExtractionMethod(sourceUrl),
     host: hostOf(sourceUrl),
   };

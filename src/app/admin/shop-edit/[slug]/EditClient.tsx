@@ -52,6 +52,47 @@ export function EditClient({
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [reasonState, setReasonState] = useState<
+    "idle" | "generating" | "error"
+  >("idle");
+  const [reasonError, setReasonError] = useState<string | null>(null);
+
+  const onGenerateReason = async () => {
+    if (!name || !brand || !category) {
+      setReasonError("Need name, brand, and category before generating.");
+      return;
+    }
+    setReasonState("generating");
+    setReasonError(null);
+    try {
+      const res = await fetch("/api/admin/generate-reason", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          brand,
+          category,
+          subcategory: subcategory || undefined,
+          url: initial.url,
+        }),
+      });
+      const payload = (await res.json()) as {
+        reason?: string;
+        refined?: boolean;
+        error?: string;
+      };
+      if (!res.ok || !payload.refined || !payload.reason) {
+        setReasonState("error");
+        setReasonError(payload.error ?? `HTTP ${res.status}`);
+        return;
+      }
+      setReason(payload.reason);
+      setReasonState("idle");
+    } catch (e) {
+      setReasonState("error");
+      setReasonError(e instanceof Error ? e.message : String(e));
+    }
+  };
 
   const dirty =
     name !== initial.name ||
@@ -198,15 +239,41 @@ export function EditClient({
           </datalist>
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor="reason" className={LABEL_CLS}>
-            Reason — editorial
-          </label>
+          <div className="flex items-baseline justify-between gap-3">
+            <label htmlFor="reason" className={LABEL_CLS}>
+              Reason — editorial
+            </label>
+            <div className="flex items-center gap-3">
+              {reasonError && (
+                <span className="font-mono text-[10px] text-[#a23a23]">
+                  {reasonError}
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={onGenerateReason}
+                disabled={
+                  reasonState === "generating" ||
+                  !name ||
+                  !brand ||
+                  !category
+                }
+                className="border border-[#1f1d1b]/40 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b] transition-colors hover:bg-[#1f1d1b] hover:text-[#f6f1e7] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#1f1d1b]"
+              >
+                {reasonState === "generating"
+                  ? "Drafting…"
+                  : reason
+                  ? "Regenerate"
+                  : "Generate"}
+              </button>
+            </div>
+          </div>
           <textarea
             id="reason"
             value={reason}
             onChange={(e) => setReason(e.target.value)}
-            className={TEXTAREA_CLS}
-            placeholder="One line. The reason this earns its place."
+            className={`${TEXTAREA_CLS} placeholder:italic placeholder:text-[#1f1d1b]/35`}
+            placeholder="One line. The reason this earns its place. Or click Generate."
           />
         </div>
         <div>

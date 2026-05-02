@@ -49,6 +49,7 @@ type CommitBody = {
   brand?: string;
   category?: string;
   subcategory?: string;
+  reason?: string;
   priceRange?: string;
   url?: string;
   images?: string[];
@@ -86,6 +87,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const brand = (body.brand ?? "").trim();
   const category = (body.category ?? "").trim();
   const subcategory = (body.subcategory ?? "").trim();
+  const reason = (body.reason ?? "").trim();
   const priceRange = (body.priceRange ?? "").trim();
   const url = (body.url ?? "").trim();
   const extractionMethod = (body.extractionMethod ?? "manual").trim();
@@ -150,7 +152,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     brand,
     category: category as Category,
     subcategory: subcategory || undefined,
-    reason: "",
+    reason,
     priceRange,
     url,
     images: saveResult.saved.map((s) => s.publicPath),

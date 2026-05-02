@@ -78,6 +78,22 @@ export function MigrateClient({
   const [applying, setApplying] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [written, setWritten] = useState<string[]>([]);
+  const [query, setQuery] = useState("");
+
+  /** Live filter — same fields a human types when searching. */
+  const visibleRows = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return rows;
+    return rows.filter(
+      (r) =>
+        r.name.toLowerCase().includes(q) ||
+        r.brand.toLowerCase().includes(q) ||
+        r.slug.toLowerCase().includes(q) ||
+        r.legacyCategory.toLowerCase().includes(q) ||
+        r.currentCategory.toLowerCase().includes(q) ||
+        r.currentSubcategory.toLowerCase().includes(q)
+    );
+  }, [rows, query]);
 
   const dirtyRows = useMemo(() => {
     return rows.filter((r) => {
@@ -140,6 +156,18 @@ export function MigrateClient({
 
   return (
     <div>
+      <div className="mb-6 flex flex-wrap items-center gap-3">
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by name, brand, slug, or category"
+          className="w-full max-w-md border border-[#1f1d1b]/20 bg-white/40 px-3 py-2 font-serif text-[14px] text-[#1f1d1b] outline-none placeholder:italic placeholder:text-[#1f1d1b]/40 focus:border-[#1f1d1b]/40"
+        />
+        <p className="font-serif text-[12px] italic text-[#1f1d1b]/55">
+          {visibleRows.length} of {rows.length}
+        </p>
+      </div>
       <div className="mb-6 flex flex-wrap items-center gap-4">
         <button
           type="button"
@@ -186,7 +214,17 @@ export function MigrateClient({
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => {
+            {visibleRows.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={6}
+                  className="py-12 text-center font-serif text-[14px] italic text-[#1f1d1b]/55"
+                >
+                  No matches.
+                </td>
+              </tr>
+            ) : null}
+            {visibleRows.map((r) => {
               const s = state[r.slug];
               const dirty =
                 s.category !== r.currentCategory ||
