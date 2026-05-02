@@ -6,7 +6,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   SHOP_CATEGORIES,
   SHOP_PRODUCTS,
-  type ShopCategory,
+  categoryLabel,
+  subcategoryLabel,
+  CATEGORY_TREE,
+  type Category,
   type ShopProduct,
 } from "../data/shop";
 import type { PriceFetchResult } from "../lib/pricing/types";
@@ -31,9 +34,44 @@ import { shuffleArray } from "../lib/shuffle";
  * same mosaic — no flicker on hydrate, no surprise re-tiling.
  */
 
-type Filter = ShopCategory | "All";
+type Filter = Category | "All";
 
 const ALL_FILTERS: readonly Filter[] = ["All", ...SHOP_CATEGORIES] as const;
+
+/** Render label for a filter pill — "All" is literal; others go through categoryLabel. */
+function pillLabel(f: Filter): string {
+  return f === "All" ? "All" : categoryLabel(f);
+}
+
+/**
+ * Subcategories per category, restricted to those with products.
+ *
+ * Computed once at module load: canonical order from CATEGORY_TREE
+ * first (subcategories declared in `categories.ts`), then any extras
+ * that products use but the canonical list doesn't carry. Categories
+ * with zero subcategories yield an empty array — the row stays
+ * collapsed when that top-level is hovered.
+ */
+const SUBCATEGORIES_BY_CATEGORY: Record<Category, string[]> = (() => {
+  const out = {} as Record<Category, string[]>;
+  for (const cat of SHOP_CATEGORIES) {
+    // Cast `readonly [...]` literal-tuple from `as const satisfies` down
+    // to a plain string set for `.has()` against runtime subcategories.
+    const canonical = new Set<string>(CATEGORY_TREE[cat].subcategories);
+    const present = new Set<string>(
+      SHOP_PRODUCTS.filter((p) => p.category === cat).map((p) => p.subcategory)
+    );
+    const ordered: string[] = [];
+    for (const s of CATEGORY_TREE[cat].subcategories) {
+      if (present.has(s)) ordered.push(s);
+    }
+    for (const s of present) {
+      if (!canonical.has(s)) ordered.push(s);
+    }
+    out[cat] = ordered;
+  }
+  return out;
+})();
 
 /**
  * Aspect-ratio cycle for desktop / tablet. Designed so adjacent cards in a
@@ -305,6 +343,27 @@ export default function ShopGrid({
   prices: Record<string, PriceFetchResult>;
 }) {
   const [filter, setFilter] = useState<Filter>("All");
+  const [subFilter, setSubFilter] = useState<string | null>(null);
+  /**
+   * Hover preview state — when a top-level pill is hovered, its
+   * subcategories appear below even if the user hasn't clicked it
+   * yet. The pre-clear timeout gives the user a window to glide from
+   * top-level to subcategory pill without the row vanishing mid-move.
+   */
+  const [hoverCat, setHoverCat] = useState<Category | null>(null);
+  const hoverClearRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const onPillEnter = (cat: Category) => {
+    if (hoverClearRef.current) {
+      clearTimeout(hoverClearRef.current);
+      hoverClearRef.current = null;
+    }
+    setHoverCat(cat);
+  };
+  const onNavLeave = () => {
+    if (hoverClearRef.current) clearTimeout(hoverClearRef.current);
+    hoverClearRef.current = setTimeout(() => setHoverCat(null), 180);
+  };
 
   // Helper: every card needs a price. If the upstream map is missing a
   // slug for any reason, synthesize a manual fallback from the static
@@ -328,32 +387,61 @@ export default function ShopGrid({
     setShuffled(shuffleArray(SHOP_PRODUCTS));
   }, []);
 
-  const products = useMemo(
-    () =>
+  const products = useMemo(() => {
+    let list =
       filter === "All"
         ? shuffled
-        : SHOP_PRODUCTS.filter((p) => p.category === filter),
-    [filter, shuffled]
-  );
+        : SHOP_PRODUCTS.filter((p) => p.category === filter);
+    if (subFilter) list = list.filter((p) => p.subcategory === subFilter);
+    return list;
+  }, [filter, subFilter, shuffled]);
+
+  /** Clear subcategory filter whenever the top-level changes — a sub
+   *  selection rarely makes sense across categories. */
+  const setTopFilter = (next: Filter) => {
+    setFilter(next);
+    setSubFilter(null);
+  };
 
   return (
     <>
       {/* ---------- Filter row ----------
           Mirrors the pillar-page filter treatment exactly: flat ul,
           space-separated, no middle-dot separators, active item
-          carries the filter-pill underline. Brings Shop into parity
-          with Recipes / Living / Practice so all four filter rows
-          read as one system. */}
-      <nav aria-label="Filter shop by category" className="mb-12 sm:mb-16">
+          carries the filter-pill underline.
+
+          Hovering any top-level pill reveals a vertical dropdown of
+          its subcategories, anchored directly under the pill. The
+          dropdown carries no surface — no card, no shadow, no border
+          — just typography over the page texture. Same uppercase
+          tracking as the row above; subcategories stack vertically.
+
+          The dropdown floats absolutely, so the grid below does NOT
+          shift when it appears. The 180ms pre-clear timeout on
+          `mouseLeave` lets the cursor cross from pill to dropdown
+          without flicker. */}
+      <nav
+        aria-label="Filter shop by category"
+        className="mb-12 sm:mb-16"
+        onMouseLeave={onNavLeave}
+      >
         <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
-          {ALL_FILTERS.map((label) => {
-            const active = filter === label;
+          {ALL_FILTERS.map((key) => {
+            const active = filter === key;
+            const isCat = key !== "All";
+            const subs = isCat ? SUBCATEGORIES_BY_CATEGORY[key as Category] : [];
+            const dropdownOpen = isCat && hoverCat === key && subs.length > 0;
             return (
-              <li key={label}>
+              <li key={key} className="relative">
                 <button
                   type="button"
                   aria-pressed={active}
-                  onClick={() => setFilter(label)}
+                  aria-haspopup={subs.length > 0 ? "menu" : undefined}
+                  aria-expanded={dropdownOpen ? true : undefined}
+                  onClick={() => setTopFilter(key)}
+                  onMouseEnter={
+                    isCat ? () => onPillEnter(key as Category) : undefined
+                  }
                   className={[
                     "filter-pill cursor-pointer transition-colors duration-500 ease-out",
                     active
@@ -361,8 +449,65 @@ export default function ShopGrid({
                       : "text-[#1f1d1b]/40 hover:text-[#1f1d1b]/75",
                   ].join(" ")}
                 >
-                  {label}
+                  {pillLabel(key)}
                 </button>
+
+                {/* Vertical dropdown — anchored directly beneath this
+                    pill, centered horizontally. Always rendered for
+                    categories with subs (so fade-out animates); pointer
+                    events and opacity gate visibility. The `pt-4`
+                    padding bridges the pill ↔ dropdown gap so the
+                    cursor doesn't traverse non-nav space when moving
+                    down to a sub item. */}
+                {isCat && subs.length > 0 && (
+                  <div
+                    role="menu"
+                    aria-label={`${pillLabel(key)} subcategories`}
+                    onMouseEnter={() => onPillEnter(key as Category)}
+                    className={[
+                      "absolute left-1/2 top-full z-30 -translate-x-1/2 pt-4",
+                      "transition-opacity duration-300 ease-out",
+                      dropdownOpen
+                        ? "opacity-100 pointer-events-auto"
+                        : "opacity-0 pointer-events-none",
+                    ].join(" ")}
+                  >
+                    <ul className="flex flex-col items-center gap-y-3 text-[10px] uppercase leading-none tracking-[0.22em] sm:text-[11px]">
+                      {subs.map((sub) => {
+                        const subActive =
+                          subFilter === sub && filter === key;
+                        return (
+                          <li key={sub} className="whitespace-nowrap">
+                            <button
+                              type="button"
+                              role="menuitemcheckbox"
+                              aria-checked={subActive}
+                              onClick={() => {
+                                // Click from a hover preview commits the
+                                // top-level too — the user has clearly
+                                // chosen this branch.
+                                if (filter !== key) {
+                                  setFilter(key as Category);
+                                }
+                                setSubFilter((curr) =>
+                                  curr === sub ? null : sub
+                                );
+                              }}
+                              className={[
+                                "cursor-pointer transition-colors duration-300 ease-out",
+                                subActive
+                                  ? "text-[#1f1d1b]"
+                                  : "text-[#1f1d1b]/55 hover:text-[#1f1d1b]",
+                              ].join(" ")}
+                            >
+                              {subcategoryLabel(sub)}
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
               </li>
             );
           })}

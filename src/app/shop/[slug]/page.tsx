@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { SHOP_PRODUCTS, getProductBySlug } from "../../../data/shop";
+import {
+  SHOP_PRODUCTS,
+  getProductBySlug,
+  categoryLabel,
+  subcategoryLabel,
+} from "../../../data/shop";
 import { getShopEssay } from "../../../lib/shop";
 import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
 import { formatVerifiedDate } from "../../../lib/pricing/format";
@@ -89,7 +94,15 @@ export default async function ShopProductPage({
           {/* Meta */}
           <div className="md:col-span-5 md:sticky md:top-24">
             <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/45 sm:text-[12px]">
-              {product.category}
+              {categoryLabel(product.category)}
+              {product.subcategory ? (
+                <>
+                  <span aria-hidden className="mx-2 text-[#1f1d1b]/25">
+                    /
+                  </span>
+                  {subcategoryLabel(product.subcategory)}
+                </>
+              ) : null}
             </p>
 
             <p className="mt-6 text-[12px] uppercase tracking-[0.24em] text-[#1f1d1b]/55 sm:text-[13px]">
