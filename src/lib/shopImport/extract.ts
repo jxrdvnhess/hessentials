@@ -471,16 +471,26 @@ async function fetchShopifyGallery(productUrl: string): Promise<string[]> {
     u.pathname = `${match[1]}.json`;
     u.search = "";
     u.hash = "";
-    const res = await fetch(u.toString(), {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-        Accept: "application/json",
-      },
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-      cache: "no-store",
-    });
+    const target = u.toString();
+
+    // Same browser-like headers and 429 retry logic as the HTML
+    // fetch — the .json endpoint sits behind the same CDN bot
+    // filters and silently failing here was the most common cause
+    // of "everything parsed but no images" on Shopify shops.
+    const attempt = async (): Promise<Response> =>
+      fetch(target, {
+        headers: { ...BROWSER_HEADERS, Accept: "application/json" },
+        signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+        cache: "no-store",
+      });
+
+    let res = await attempt();
+    if (res.status === 429) {
+      await new Promise((r) => setTimeout(r, 1500));
+      res = await attempt();
+    }
     if (!res.ok) return [];
+
     const payload = (await res.json()) as {
       product?: {
         images?: Array<{ src?: string; position?: number }>;

@@ -106,6 +106,7 @@ export function ImportClient({
   const [subcategory, setSubcategory] = useState<string>("");
   const [audience, setAudience] = useState<Audience[]>([]);
   const [reason, setReason] = useState("");
+  const [pasteUrls, setPasteUrls] = useState("");
   const [reasonState, setReasonState] = useState<
     "idle" | "generating" | "error"
   >("idle");
@@ -140,6 +141,7 @@ export function ImportClient({
     setReason("");
     setReasonState("idle");
     setReasonError(null);
+    setPasteUrls("");
     setPriceRange("");
     setPriceFloor("");
     setExtractionMethod("manual");
@@ -311,6 +313,43 @@ export function ImportClient({
       setReasonError(e instanceof Error ? e.message : String(e));
     }
   }, [name, brand, category, subcategory, url]);
+
+  /**
+   * Paste-fallback for image extraction.
+   *
+   * Some sites publish product info in JSON-LD but render their
+   * gallery via JavaScript only — name/brand/price come through but
+   * `images` arrives empty. Or the Shopify .json endpoint
+   * rate-limits while the HTML fetch succeeds. Either way the user
+   * can copy image URLs from the source page and paste them here;
+   * each line becomes a tile in the grid above.
+   *
+   * Pasted URLs aren't probed — the browser will surface broken
+   * images via the natural <img> error state, and the user can
+   * deselect them. Trusting the paste keeps the workflow snappy.
+   */
+  const onAddPastedImages = useCallback(() => {
+    const urls = pasteUrls
+      .split("\n")
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0 && /^https?:\/\//i.test(s));
+    if (urls.length === 0) {
+      setPasteUrls("");
+      return;
+    }
+    setImages((curr) => {
+      const seen = new Set(curr.map((c) => c.source));
+      const additions = urls
+        .filter((u) => !seen.has(u))
+        .map<ImageState>((u) => ({
+          source: u,
+          status: "ok",
+          selected: true,
+        }));
+      return [...curr, ...additions];
+    });
+    setPasteUrls("");
+  }, [pasteUrls]);
 
   const onCommit = useCallback(async () => {
     if (!category) {
@@ -768,6 +807,41 @@ export function ImportClient({
                 ))}
               </ul>
             )}
+
+            {/* Paste-fallback: when the source returned no images
+                or the gallery is incomplete, the user can copy URLs
+                from the product page and paste them here, one per
+                line. Pasted URLs aren't probed — broken images
+                surface via the browser's natural <img> error state. */}
+            <div className="mt-6">
+              <label
+                htmlFor="paste-image-urls"
+                className={`${LABEL_CLS} font-normal`}
+              >
+                Add image URLs manually
+              </label>
+              <p className="mt-1 font-serif text-[12px] italic text-[#1f1d1b]/55">
+                One per line. Useful when the source page hides its
+                gallery behind JavaScript or rate-limits the .json
+                endpoint.
+              </p>
+              <textarea
+                id="paste-image-urls"
+                value={pasteUrls}
+                onChange={(e) => setPasteUrls(e.target.value)}
+                placeholder={"https://cdn.example.com/product-1.jpg\nhttps://cdn.example.com/product-2.jpg"}
+                rows={3}
+                className={`${INPUT_CLS} font-mono text-[12px] leading-[1.6] resize-y`}
+              />
+              <button
+                type="button"
+                onClick={onAddPastedImages}
+                disabled={!pasteUrls.trim()}
+                className="mt-3 border border-[#1f1d1b]/30 px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b] transition-colors hover:bg-[#1f1d1b] hover:text-[#f6f1e7] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-[#1f1d1b]"
+              >
+                Add to gallery
+              </button>
+            </div>
           </div>
 
           {/* Commit */}
