@@ -129,7 +129,11 @@ export async function PATCH(
       `category must be one of: ${SHOP_CATEGORIES.join(", ")}`
     );
   }
-  if (subcategory && !/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(subcategory)) {
+  // Subcategory is required by the schema — see commit route for rationale.
+  if (!subcategory) {
+    return badRequest("subcategory is required");
+  }
+  if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(subcategory)) {
     return badRequest("subcategory must be lowercase kebab-case");
   }
   if (!priceRange) return badRequest("priceRange is required");

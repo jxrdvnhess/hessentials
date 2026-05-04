@@ -1433,6 +1433,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     name: "THE STRIPED TRIANGLE SCARF",
     brand: "FAVORITE DAUGHTER",
     category: "accessories",
+    subcategory: "scarves",
     audience: ["womens"],
     dateAdded: "2026-05-04T19:40:53.732Z",
     reason: "Wool-blend stripe, triangle cut, all-season chic. Wraps three ways without instructions.",

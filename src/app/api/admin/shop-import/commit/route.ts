@@ -110,10 +110,15 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       `category must be one of: ${SHOP_CATEGORIES.join(", ")}`
     );
   }
-  // Subcategory is advisory — the canonical list is in categories.ts but
-  // free-text values are allowed, so new subcategories can be created at
-  // import time. We just enforce kebab-case.
-  if (subcategory && !/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(subcategory)) {
+  // Subcategory is required — ShopProduct's type makes it non-optional,
+  // and an entry without one breaks the production build at type-check
+  // time. Free-text values are still allowed (the canonical list in
+  // categories.ts is advisory autocomplete, not a strict allowlist) —
+  // we just enforce non-empty kebab-case.
+  if (!subcategory) {
+    return badRequest("subcategory is required");
+  }
+  if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(subcategory)) {
     return badRequest("subcategory must be lowercase kebab-case");
   }
   // Best-effort visibility on canonical fit — log but don't block.
