@@ -852,9 +852,9 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     brand: "Prada",
     category: "accessories",
     subcategory: "eyewear",
-    reason: "Triangle, not logo. Prada that doesn’t need to introduce itself.",
-    priceRange: "$475–$590",
     dateAdded: "2026-04-01T00:00:00.000Z",
+    reason: "Iconic enough that it doesn’t need to introduce itself.",
+    priceRange: "$475–$590",
     url: "https://www.prada.com/us/en/p/prada-symbole-sunglasses/SPRB17_E16K_FE08Z_C_054",
     image: "/shop/Prada-Symbole-sunglasses-1.jpg",
     images: [
@@ -1377,7 +1377,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "footwear",
     audience: ["womens"],
     dateAdded: "2026-05-04T19:25:36.611Z",
-    reason: "", // TODO: editorial reason
+    reason: "Slim leather straps, kitten heel. Summer sandal that doesn't overstate itself.",
     priceRange: "201",
     url: "https://sistersoeur.com/collections/bestsellers/products/eden-black",
     image: "/shop/sister-x-soeur-eden-black-1.jpg",
