@@ -286,17 +286,65 @@ function titleizeHost(host: string): string {
     .join(" ");
 }
 
+/**
+ * Headers that approximate what a real Chrome session sends. CDN bot
+ * filters (Cloudflare, Akamai, DataDome) increasingly fingerprint
+ * the absence of these — a fetch with only User-Agent and Accept
+ * gets flagged faster than one with the full client-hint stack.
+ *
+ * None of this guarantees passage; it just lowers the false-positive
+ * rate against polite filters. Aggressive bot mitigation
+ * (e.g. Saks, Net-a-Porter) needs a headless browser, which we
+ * deliberately don't run.
+ */
+const BROWSER_HEADERS: Record<string, string> = {
+  "User-Agent":
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+  Accept:
+    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+  "Accept-Language": "en-US,en;q=0.9",
+  "Accept-Encoding": "gzip, deflate, br",
+  "Sec-Ch-Ua":
+    '"Chromium";v="121", "Not A(Brand";v="99", "Google Chrome";v="121"',
+  "Sec-Ch-Ua-Mobile": "?0",
+  "Sec-Ch-Ua-Platform": '"macOS"',
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "none",
+  "Sec-Fetch-User": "?1",
+  "Upgrade-Insecure-Requests": "1",
+};
+
+/**
+ * Fetch the product page HTML.
+ *
+ * On HTTP 429 (rate-limited), retry once after a short backoff —
+ * polite filters often relax for the next request. A persistent 429
+ * means the IP is in a longer-window throttle and the caller should
+ * either wait a minute or pick a brand-direct URL.
+ */
 export async function fetchProductPage(url: string): Promise<string> {
-  const res = await fetch(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
-      Accept: "text/html,application/xhtml+xml",
-    },
-    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    cache: "no-store",
-  });
+  const attempt = async (): Promise<Response> =>
+    fetch(url, {
+      headers: BROWSER_HEADERS,
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+      cache: "no-store",
+    });
+
+  let res = await attempt();
+  if (res.status === 429) {
+    // Brief backoff, then a single retry. Don't burn the whole
+    // SSE stream waiting — the 8s outer timeout still applies.
+    await new Promise((r) => setTimeout(r, 1500));
+    res = await attempt();
+  }
   if (!res.ok) {
+    if (res.status === 429) {
+      throw new Error(
+        "Source HTTP 429 — rate-limited. Wait a minute and try again, " +
+          "or use a brand-direct URL (multi-brand retailers throttle scrapers)."
+      );
+    }
     throw new Error(`Source HTTP ${res.status}`);
   }
   return res.text();
