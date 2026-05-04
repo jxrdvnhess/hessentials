@@ -89,6 +89,36 @@ function pillarHasProducts(pillar: Category): boolean {
   return SHOP_PRODUCTS.some((p) => p.category === pillar);
 }
 
+/**
+ * Subcategories that actually have at least one product under a
+ * pillar, ordered: canonical CATEGORY_TREE entries first (in their
+ * declared order), then any extras seen in products but not in the
+ * canonical tree. An empty pillar yields []; the dropdown then
+ * collapses to just the "All <Pillar>" link.
+ *
+ * The audience-aware union (`category === pillar` OR
+ * `audience.includes(pillar)`) only matters for mens / womens —
+ * matches the rest of the menu's filtering rule.
+ */
+function presentSubcategories(pillar: Category): string[] {
+  const inPillar = (p: (typeof SHOP_PRODUCTS)[number]) =>
+    AUDIENCE_PILLARS.has(pillar)
+      ? p.category === pillar ||
+        (p.audience ?? []).includes(pillar as "mens" | "womens")
+      : p.category === pillar;
+  const present = new Set<string>();
+  for (const p of SHOP_PRODUCTS) {
+    if (inPillar(p) && p.subcategory) present.add(p.subcategory);
+  }
+  const canonical = CATEGORY_TREE[pillar]?.subcategories ?? [];
+  const ordered: string[] = [];
+  for (const s of canonical) if (present.has(s)) ordered.push(s);
+  const extras = Array.from(present)
+    .filter((s) => !(canonical as readonly string[]).includes(s))
+    .sort();
+  return [...ordered, ...extras];
+}
+
 /** ms to wait after mouseleave before collapsing the dropdown. */
 const HOVER_CLOSE_DELAY_MS = 150;
 
@@ -188,7 +218,10 @@ export default function PersistentShopMenu() {
 
           {/* Pillar items with hover dropdowns. */}
           {visiblePillars.map((p) => {
-            const subs = [...CATEGORY_TREE[p].subcategories];
+            // Only show subcategories that actually have products
+            // under this pillar. Empty subs hide automatically; new
+            // subs reveal as soon as the first product lands.
+            const subs = presentSubcategories(p);
             const isActive = activePillar === p;
             const isOpen = hoverPillar === p;
             return (
@@ -329,7 +362,8 @@ export default function PersistentShopMenu() {
               </Link>
             </li>
             {visiblePillars.map((p) => {
-              const subs = [...CATEGORY_TREE[p].subcategories];
+              // Mobile mirrors the desktop rule — empty subs hidden.
+              const subs = presentSubcategories(p);
               const isActive = activePillar === p;
               return (
                 <li key={p} className="mb-8">
