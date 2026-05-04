@@ -14,6 +14,14 @@ export const metadata: Metadata = {
 };
 
 /**
+ * Revalidate hourly so the Aurelian This Week panel's auto-computed
+ * date range (`May 4–10, 2026`) rolls over within an hour of Monday
+ * morning without requiring a redeploy. Editorial copy still rolls
+ * with a push — see src/data/aurelian-weekly.ts.
+ */
+export const revalidate = 3600;
+
+/**
  * Homepage layout system — strict.
  *
  * IMAGE TYPES (two only)

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CURRENT_READING } from "../data/aurelian-weekly";
+import { getCurrentReading } from "../data/aurelian-weekly";
 
 type AurelianThisWeekLayout = "desktop-aside" | "mobile-stacked";
 
@@ -31,7 +31,7 @@ type Props = {
  * in src/data/aurelian-weekly.ts.
  */
 export default function AurelianThisWeekPanel({ layout }: Props) {
-  const { range, headline, excerpt } = CURRENT_READING;
+  const { range, headline, excerpt } = getCurrentReading();
 
   // The desktop layout is an absolute right-side aside; the mobile
   // layout is a relative stacked block. Same internal content tree;

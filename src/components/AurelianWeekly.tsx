@@ -1,4 +1,4 @@
-import { CURRENT_READING } from "../data/aurelian-weekly";
+import { getCurrentReading } from "../data/aurelian-weekly";
 
 /**
  * Aurelian — This Week.
@@ -13,7 +13,7 @@ import { CURRENT_READING } from "../data/aurelian-weekly";
  * section so the Aurelian voice is consistent across blocks.
  */
 export default function AurelianWeekly() {
-  const { range, headline, paragraphs } = CURRENT_READING;
+  const { range, headline, paragraphs } = getCurrentReading();
 
   return (
     <section

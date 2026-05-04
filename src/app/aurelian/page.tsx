@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     "Aurelian is the interpretive layer of Hessentials. Astrology used as a behavioral framework — timing, pressure, instinct, emotional regulation, and the gap between how someone appears and how they actually operate inside.",
 };
 
+/**
+ * Revalidate hourly so the This Week reading's auto-computed date
+ * range rolls over within an hour of Monday morning without requiring
+ * a redeploy. Editorial copy still rolls with a push — see
+ * src/data/aurelian-weekly.ts.
+ */
+export const revalidate = 3600;
+
 const PATTERN_LIBRARY = [
   {
     name: "Fast Surface, Slow Interior",
