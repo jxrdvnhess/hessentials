@@ -232,18 +232,19 @@ export default function PersistentShopMenu() {
                 )}
 
                 {/* Dropdown panel — flat, no shadow, top hairline,
-                    cream body. Items invert on hover. */}
-                {subs.length > 0 && (
+                    cream body. Items invert on hover.
+                    Conditional render (not opacity gating) so the
+                    previous panel unmounts instantly when the cursor
+                    moves to a new pillar — otherwise the 200ms
+                    fade-out overlaps with the next panel's fade-in
+                    and both are visible at once. The 180ms close
+                    delay on `onNavLeave` still keeps the panel alive
+                    on slow diagonal mouse paths. */}
+                {subs.length > 0 && isOpen && (
                   <div
                     role="menu"
                     aria-label={`${categoryLabel(p)} subcategories`}
-                    className={[
-                      "absolute left-0 top-full z-30 min-w-[200px] border-t border-[#1f1d1b]/15 bg-[#f8f6f3]",
-                      "transition-opacity duration-200 ease-out",
-                      isOpen
-                        ? "opacity-100 pointer-events-auto"
-                        : "opacity-0 pointer-events-none",
-                    ].join(" ")}
+                    className="absolute left-0 top-full z-30 min-w-[200px] border-t border-[#1f1d1b]/15 bg-[#f8f6f3]"
                   >
                     <ul className="py-1">
                       <li>
