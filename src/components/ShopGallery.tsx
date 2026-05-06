@@ -153,12 +153,32 @@ export default function ShopGallery({
     return out;
   }, [products]);
 
+  // Parallax is desktop-only. On mobile the gallery becomes a
+  // single flex-column with limited gap-y between frames; a CSS
+  // transform that slides one frame upward by 100–240px will
+  // visually collide with the frame above it (the transform
+  // doesn't reflow layout). Track viewport so we can no-op the
+  // transform under sm.
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const apply = () => setIsDesktop(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
   // Single scroll listener writes a CSS variable on the gallery
   // root; each frame reads its depth × variable in inline style.
+  // Listener is disabled on mobile so --scroll stays at 0.
   const rootRef = useRef<HTMLUListElement | null>(null);
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
+    if (!isDesktop) {
+      root.style.setProperty("--scroll", "0");
+      return;
+    }
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -175,7 +195,7 @@ export default function ShopGallery({
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isDesktop]);
 
   if (order.length === 0) {
     return (
@@ -217,9 +237,13 @@ export default function ShopGallery({
             style={
               {
                 // Each frame applies its parallax via the shared
-                // --scroll variable on the root.
-                transform: `translate3d(0, calc(var(--scroll, 0) * ${depth}px), 0)`,
-                willChange: depth > 0 ? "transform" : undefined,
+                // --scroll variable on the root. Desktop-only —
+                // mobile leaves the transform off so frames stack
+                // cleanly in a single flex column.
+                transform: isDesktop
+                  ? `translate3d(0, calc(var(--scroll, 0) * ${depth}px), 0)`
+                  : undefined,
+                willChange: isDesktop && depth > 0 ? "transform" : undefined,
               } as React.CSSProperties
             }
           >
