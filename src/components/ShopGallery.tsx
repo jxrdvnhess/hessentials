@@ -47,9 +47,6 @@ import { shuffleArray } from "../lib/shuffle";
  *
  *   col   — Tailwind col-start / col-span class for desktop
  *   row   — Tailwind row-span (height multiplier)
- *   mt    — extra top margin on the frame to break the implicit
- *           grid baseline (capped at 28 = 112px per the density
- *           tuning addendum so adjacent frames stay within 120px)
  *   ratio — frame outer aspect ratio: portrait | square | landscape
  *   align — mobile alignment: left | right | center; pairs with
  *           a width below
@@ -60,29 +57,36 @@ import { shuffleArray } from "../lib/shuffle";
  * horizontal zones (left / center-left / center-right / right) so
  * no 600px vertical window sits empty in the middle.
  *
+ * Earlier revisions added per-slot top-margin offsets (mt-4..mt-24)
+ * to break the implicit grid baseline. Those have been removed:
+ * with mixed row-spans and `grid-auto-flow:dense`, the offsets
+ * pushed frames past their grid-cell boundary and visually
+ * collided with the next row's frame. Asymmetry now comes from
+ * row-span variation, ratio variation, and column rotation alone —
+ * which is enough.
+ *
  * Cycle length 11.
  */
 type Slot = {
   col: string;
   row: string;
-  mt: string;
   ratio: "portrait" | "square" | "landscape";
   align: "left" | "right" | "center";
   width: string;
 };
 
 const SLOTS: readonly Slot[] = [
-  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-0",  ratio: "portrait",  align: "left",   width: "w-[100%]" },
-  { col: "sm:col-start-6 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-12", ratio: "landscape", align: "right",  width: "w-[80%]"  },
-  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-2", mt: "sm:mt-4",  ratio: "portrait",  align: "left",   width: "w-[88%]"  },
-  { col: "sm:col-start-3 sm:col-span-3",  row: "sm:row-span-1", mt: "sm:mt-20", ratio: "square",    align: "center", width: "w-[100%]" },
-  { col: "sm:col-start-7 sm:col-span-3",  row: "sm:row-span-2", mt: "sm:mt-8",  ratio: "portrait",  align: "right",  width: "w-[76%]"  },
-  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-1", mt: "sm:mt-16", ratio: "landscape", align: "left",   width: "w-[84%]"  },
-  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-24", ratio: "landscape", align: "right",  width: "w-[72%]"  },
-  { col: "sm:col-start-5 sm:col-span-3",  row: "sm:row-span-2", mt: "sm:mt-12", ratio: "square",    align: "center", width: "w-[100%]" },
-  { col: "sm:col-start-8 sm:col-span-4",  row: "sm:row-span-1", mt: "sm:mt-20", ratio: "portrait",  align: "left",   width: "w-[92%]"  },
-  { col: "sm:col-start-2 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-4",  ratio: "landscape", align: "right",  width: "w-[78%]"  },
-  { col: "sm:col-start-9 sm:col-span-4",  row: "sm:row-span-2", mt: "sm:mt-16", ratio: "portrait",  align: "center", width: "w-[100%]" },
+  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-2", ratio: "portrait",  align: "left",   width: "w-[100%]" },
+  { col: "sm:col-start-6 sm:col-span-4",  row: "sm:row-span-1", ratio: "landscape", align: "right",  width: "w-[80%]"  },
+  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-2", ratio: "portrait",  align: "left",   width: "w-[88%]"  },
+  { col: "sm:col-start-3 sm:col-span-3",  row: "sm:row-span-1", ratio: "square",    align: "center", width: "w-[100%]" },
+  { col: "sm:col-start-7 sm:col-span-3",  row: "sm:row-span-2", ratio: "portrait",  align: "right",  width: "w-[76%]"  },
+  { col: "sm:col-start-10 sm:col-span-3", row: "sm:row-span-1", ratio: "landscape", align: "left",   width: "w-[84%]"  },
+  { col: "sm:col-start-1 sm:col-span-4",  row: "sm:row-span-1", ratio: "landscape", align: "right",  width: "w-[72%]"  },
+  { col: "sm:col-start-5 sm:col-span-3",  row: "sm:row-span-2", ratio: "square",    align: "center", width: "w-[100%]" },
+  { col: "sm:col-start-8 sm:col-span-4",  row: "sm:row-span-1", ratio: "portrait",  align: "left",   width: "w-[92%]"  },
+  { col: "sm:col-start-2 sm:col-span-4",  row: "sm:row-span-2", ratio: "landscape", align: "right",  width: "w-[78%]"  },
+  { col: "sm:col-start-9 sm:col-span-4",  row: "sm:row-span-2", ratio: "portrait",  align: "center", width: "w-[100%]" },
 ];
 
 /** Tailwind aspect-ratio classes for each ratio bucket. */
@@ -184,14 +188,15 @@ export default function ShopGallery({
   return (
     <ul
       ref={rootRef}
-      // Desktop: 12-col grid with auto rows. Gaps tuned per the
-      // density addendum — typical 48–80px, capped at 120px when
-      // combined with the per-slot mt-offsets. Mobile: flex-col —
-      // slots' alignment + width classes do the asymmetric work.
+      // Desktop: 12-col grid with auto rows. Per-slot mt-offsets
+      // were removed (they collided with grid row tracks under
+      // mixed row-spans), so gap-y carries the vertical breathing
+      // room alone. Mobile: flex-col — slots' alignment + width
+      // classes do the asymmetric work.
       className="
         flex flex-col gap-y-10
-        sm:grid sm:grid-cols-12 sm:gap-x-10 sm:gap-y-16 sm:[grid-auto-flow:dense]
-        lg:gap-x-12 lg:gap-y-20
+        sm:grid sm:grid-cols-12 sm:gap-x-10 sm:gap-y-20 sm:[grid-auto-flow:dense]
+        lg:gap-x-12 lg:gap-y-24
       "
     >
       {order.map((product, i) => {
@@ -208,7 +213,6 @@ export default function ShopGallery({
               "sm:w-full sm:mr-0 sm:ml-0 sm:mx-0",
               slot.col,
               slot.row,
-              slot.mt,
             ].join(" ")}
             style={
               {
