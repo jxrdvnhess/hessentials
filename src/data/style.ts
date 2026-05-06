@@ -861,7 +861,7 @@ Day and evening can be the same scent or two different ones — that is preferen
             priceRange: "$$$",
             alt: "Goldfield & Banks 'Velvet Splendour' for a softer take",
             url: "https://www.sephora.com/product/vetiver-eau-de-toilette-P380901",
-            altUrl: "https://goldfieldbanks.com/products/velvet-splendour",
+            altUrl: "https://us.goldfieldandbanks.com/products/velvet-splendour",
           },
           {
             name: "Eau de Cologne",

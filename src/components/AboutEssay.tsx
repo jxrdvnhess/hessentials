@@ -96,10 +96,14 @@ export default function AboutEssay({ variant }: AboutEssayProps) {
           textShadow,
         }}
       >
-        <p>
+        {/* The opening line is the de facto headline — wrap it as the
+            page <h1> so screen readers and crawlers have an anchor.
+            Visual register stays the same (no font/size shift); the
+            tag swap is purely semantic. */}
+        <h1 className="font-[inherit] text-[inherit] leading-[inherit] tracking-[inherit] m-0">
           For as long as I can remember, the people in my life have asked
           me what I think.
-        </p>
+        </h1>
 
         <p className="mt-5">
           What to wear to the thing. How to set the table. Which flowers

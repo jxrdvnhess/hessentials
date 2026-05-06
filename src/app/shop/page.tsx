@@ -68,9 +68,12 @@ export default function ShopPage() {
           className="block w-20"
           style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
         />
-        <p className="mt-6 mb-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px]">
+        {/* Page <h1> — the eyebrow doubles as the heading anchor.
+            Visually unchanged (small uppercase tracking eyebrow); only
+            the tag swaps from <p> to <h1> for semantic / SEO weight. */}
+        <h1 className="mt-6 mb-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px] font-normal">
           Shop
-        </p>
+        </h1>
         <p className="font-serif text-[clamp(1.125rem,1.6vw,1.25rem)] italic leading-[1.4] text-[#1f1d1b]/70">
           {SHOP_INTRO}
         </p>

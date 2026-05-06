@@ -99,21 +99,33 @@ const ALIGN_CLASS: Record<Slot["align"], string> = {
   center: "mx-auto",
 };
 
-/** Max parallax depth. 0 = no drift; 0.05 ≈ 5px per 100px scroll. */
-const MAX_DEPTH = 0.05;
+/**
+ * Parallax depth bounds.
+ *
+ * Earlier the range was 0 → ~0.05, producing a 78× spread between
+ * the slowest and fastest cards and up to ~700px of relative slip
+ * across the full page. Two specific column pairs collided as a
+ * result. Clamping to a tight 0.010–0.025 range cuts the worst-case
+ * slip to ~240px, which is still enough drift for the editorial
+ * feel but far below the threshold where adjacent frames stack.
+ */
+const MIN_DEPTH = 0.01;
+const MAX_DEPTH = 0.025;
 
 /**
- * Deterministic 0–1 hash → parallax depth.
- * Larger frames (row-span-2) get scaled DOWN slightly; smaller
- * frames drift more so the eye reads depth.
+ * Deterministic per-slug parallax depth in [MIN_DEPTH, MAX_DEPTH].
+ * Stable across SSR / CSR and across re-shuffles in the same
+ * session. Same hash function as before; just the output range
+ * narrowed and the size-based scaling dropped to keep every
+ * frame inside the clamp.
  */
-function depthFor(slug: string, isLarge: boolean): number {
+function depthFor(slug: string): number {
   let h = 0;
   for (let i = 0; i < slug.length; i += 1) {
     h = (h * 31 + slug.charCodeAt(i)) | 0;
   }
-  const base = (Math.abs(h) / 2147483647) * MAX_DEPTH;
-  return isLarge ? base * 0.6 : base;
+  const normalized = Math.abs(h) / 2147483647; // 0..1
+  return MIN_DEPTH + normalized * (MAX_DEPTH - MIN_DEPTH);
 }
 
 export default function ShopGallery({
@@ -131,12 +143,8 @@ export default function ShopGallery({
   // Pre-compute parallax depths once per product.
   const depths = useMemo(() => {
     const out: Record<string, number> = {};
-    for (let i = 0; i < products.length; i += 1) {
-      const slot = SLOTS[i % SLOTS.length];
-      out[products[i].slug] = depthFor(
-        products[i].slug,
-        slot.row.includes("row-span-2")
-      );
+    for (const p of products) {
+      out[p.slug] = depthFor(p.slug);
     }
     return out;
   }, [products]);
