@@ -4,6 +4,7 @@ import RightNow from "../components/RightNow";
 import ImagePoemLine from "../components/ImagePoemLine";
 import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
+import MemorialDayModule from "../components/MemorialDayModule";
 import HomePracticeTeaser from "../components/HomePracticeTeaser";
 
 export const metadata: Metadata = {
@@ -180,11 +181,24 @@ export default function HomePage() {
       </section>
 
       {/*
+        Memorial Day featured moment — second fold.
+
+        Sits in the slot the archived Mother's Day module previously
+        occupied. The image at the left peeks below the hero at the
+        fold and cues continuation as the user finishes reading the
+        H1. Replaced by the next seasonal moment when this one is
+        archived.
+      */}
+      <div style={{ marginTop: GAP_HERO }}>
+        <MemorialDayModule />
+      </div>
+
+      {/*
         Image 01 — Morning, two men at the table — Type A.
 
-        The opening image of the cinematic arc. Tightened gap so the
-        image edge peeks below the hero within the first viewport
-        (fold cue).
+        The opening image of the cinematic arc. Crisp edge — no top
+        gradient fade — so the seam between the Memorial Day module
+        and the arc reads as a clean editorial transition.
 
         Inside the image: Some moments hold. — upper-left plaster wall,
         the undetailed area above and to the left of the older man.
@@ -192,7 +206,7 @@ export default function HomePage() {
       <section
         aria-hidden
         className="w-full"
-        style={{ marginTop: GAP_HERO }}
+        style={{ marginTop: GAP_IMG }}
       >
         <Cinematic
           src="/home/merida-moment-1.jpg"
