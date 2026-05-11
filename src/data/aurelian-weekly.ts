@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "The week the year you planned meets the year actually showing up.",
+    "Late Taurus, when starting begins to substitute for finishing.",
   paragraphs: [
-    "Early May lands one week past Beltane — the cross-quarter halfway between spring equinox and summer solstice. The year's growing arc is half through. Spring's launch is over and summer's heat has not arrived. What is showing on the surface this week is what was actually planted in February and March, not what was planned. The difference is small at the scale of a day and obvious at the scale of a season.",
+    "Mid-May sits in the last full week of Taurus, two weeks past Beltane and ten days short of Gemini. The growing arc is steady but not yet hot. The year's character at this point is duration, not announcement — the part of spring that asks whether the work begun in April is still the work being done in May. Most years, the answer is no. The work has been quietly replaced by its cousin: something close, something newer, something that absorbs the same effort without owing the same finish.",
 
-    "The pattern this week is the gap between the year you intended and the year actually showing up. Most people respond by quietly pushing the pace, hoping the shortfall is a tempo problem. It rarely is. The body has been running long enough by now to recognize that more speed is not the missing input, and the part that knows this has already started ignoring the part that is asking for more.",
+    "The pattern this week is the pull to start a new thread before the current one is finished. The thread offered is usually dressed in the language of completion — the next version, the proper application of what was learned, the project that will use the skill better. It is rarely that. It is the appetite for beginnings interrupting the harder discipline of endings. Taurus does not punish the appetite. It just notices when the appetite shows up first.",
 
-    "The week ends with Mother's Day — a day built around recognizing labor that mostly happens out of view. The mirror is private and easy to miss. The same recognition that is owed outward this Sunday is owed inward all week, and it is the harder of the two to extend. What you have been building in the quiet has not failed to show up. It has simply been showing up without commentary.",
+    "It shows up at the 80% mark — the room half-styled instead of one room finished, the draft re-read for a reason to keep going or a reason to stop. The list in the margin grows. The unfinished sits across the desk. A new idea appears with surprising clarity at the same hour the old one was about to land. The clarity is real and also early. Both can be true and the order still matters.",
 
-    "The watch point is the small private narration that says next week is when the real start happens. Next week has been the answer for several weeks. The week that has actually started is this one. The week's small practice is naming, once, what is already in motion — not what is about to begin. The growing season does not need another launch. It needs the kind of attention that lets what is already growing finish.",
+    "The watch point is the small voice that proposes what is next while the current thing is still mid-sentence. The proposal sounds like momentum. It is usually flight. The week's practice is one finish before any new start — not as principle, but as test. What is already in motion is closer to done than the appetite is willing to admit. Finishing it is the week's quiet weight.",
   ],
   excerpt:
-    "The growing season does not need another launch. It needs the kind of attention that lets what is already growing finish.",
+    "What is already in motion is closer to done than the appetite is willing to admit.",
 } as const;
 
 /* -----------------------------------------------------------------
