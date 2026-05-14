@@ -2312,6 +2312,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-angled-board",
+    name: "The Angled Board",
+    brand: "Material Kitchen",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:37.794Z",
+    reason: "Large enough to be useful and handsome enough to stay out. That is the only reason a board earns counter space.",
+    priceRange: "$120",
+    url: "https://materialkitchen.com/products/the-angled-board",
+    image: "/shop/material-kitchen-the-angled-board/80b3286595ab3fdb.jpg",
+    images: [
+      "/shop/material-kitchen-the-angled-board/80b3286595ab3fdb.jpg",
+      "/shop/material-kitchen-the-angled-board/ef19ba4103ee414b.jpg",
+      "/shop/material-kitchen-the-angled-board/9bca26f73e999786.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
