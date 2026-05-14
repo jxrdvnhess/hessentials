@@ -2454,6 +2454,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "filson-medium-rugged-twill-duffle-bag-tan",
+    name: "Medium Rugged Twill Duffle Bag - Tan",
+    brand: "Filson",
+    category: "accessories",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:52.634Z",
+    reason: "The carry-on sized answer for people who do not want luggage that looks like a gadget.",
+    priceRange: "$599",
+    url: "https://www.filson.com/products/medium-rugged-twill-duffle-bag-tan-1",
+    image: "/shop/filson-medium-rugged-twill-duffle-bag-tan/83a3c85947987655.jpg",
+    images: [
+      "/shop/filson-medium-rugged-twill-duffle-bag-tan/83a3c85947987655.jpg",
+      "/shop/filson-medium-rugged-twill-duffle-bag-tan/768e62d74b684cde.jpg",
+      "/shop/filson-medium-rugged-twill-duffle-bag-tan/768e62d74b684cde.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
