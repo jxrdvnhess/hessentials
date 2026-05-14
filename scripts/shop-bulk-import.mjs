@@ -1480,6 +1480,7 @@ async function runRetryMode(mode = "failed") {
               name: res.candidate.name,
               brand: res.candidate.brand,
               category: res.candidate.category || "home",
+              subcategory: "uncategorized",
               audience: res.candidate.audience,
               dateAdded: new Date().toISOString(),
               reason: res.candidate.reason,
@@ -1926,6 +1927,7 @@ async function main() {
             name: res.candidate.name,
             brand: res.candidate.brand,
             category: res.candidate.category || "home", // placeholder — human picks on draft page
+            subcategory: "uncategorized", // placeholder — human picks on draft page
             audience: res.candidate.audience,
             dateAdded: new Date().toISOString(),
             reason: res.candidate.reason,
