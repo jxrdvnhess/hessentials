@@ -2617,6 +2617,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "buck-mason-white-field-spec-cotton-heavy-tee",
+    name: "White Field-Spec Cotton Heavy Tee",
+    brand: "Buck Mason",
+    category: "mens",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:45:05.743Z",
+    reason: "White tees are only easy when the fabric has backbone. This one does.",
+    priceRange: "$62",
+    url: "https://www.buckmason.com/products/white-field-spec-cotton-vintage-surplus-heavy-tee",
+    image: "/shop/buck-mason-white-field-spec-cotton-heavy-tee/1b6a6ad0d1a65379.jpg",
+    images: [
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/1b6a6ad0d1a65379.jpg",
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/742ce7a89e7bab5a.jpg",
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/f180cdd7e3637012.jpg",
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/aec75e1aa996678c.jpg",
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/55ea6c1ed5e7939e.jpg",
+      "/shop/buck-mason-white-field-spec-cotton-heavy-tee/2ce81d157d1fed3f.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
