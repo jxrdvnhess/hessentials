@@ -2100,6 +2100,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "hawkins-new-york-simple-linen-napkin-flax",
+    name: "Simple Linen Napkin - Flax",
+    brand: "Hawkins New York",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:03.826Z",
+    reason: "Stonewashed linen that looks better slightly rumpled. Adds texture without turning the table into a performance.",
+    priceRange: "$22",
+    url: "https://www.hawkinsnewyork.com/products/simple-linen-napkin-flax",
+    image: "/shop/hawkins-new-york-simple-linen-napkin-flax/de97c9b3abb638ba.jpg",
+    images: [
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/de97c9b3abb638ba.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/e1f37648d9c66675.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/668951d4592adb00.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/cf9598eb2da349f4.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/26fa847058a2f898.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax/9ef6da197396b4b0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
