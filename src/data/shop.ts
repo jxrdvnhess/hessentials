@@ -2416,6 +2416,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "dragon-diffusion-triple-jump-small-black",
+    name: "Triple Jump Small Black",
+    brand: "Dragon Diffusion",
+    category: "accessories",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:47.990Z",
+    reason: "Black makes the weave less vacation and more everyday. Useful when the outfit needs texture but not color.",
+    priceRange: "$450",
+    url: "https://dragondiffusion.com/products/triple-jump-small-black-woven-leather-bag-handmade",
+    image: "/shop/dragon-diffusion-triple-jump-small-black/d42d4b210b4c6421.jpg",
+    images: [
+      "/shop/dragon-diffusion-triple-jump-small-black/d42d4b210b4c6421.jpg",
+      "/shop/dragon-diffusion-triple-jump-small-black/a8a9b45f0a9a9037.jpg",
+      "/shop/dragon-diffusion-triple-jump-small-black/a8a9b45f0a9a9037.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
