@@ -2185,6 +2185,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "coyuchi-unisex-organic-waffle-robe",
+    name: "Unisex Organic Waffle Robe",
+    brand: "Coyuchi",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:18.342Z",
+    reason: "Light enough to use daily. The waffle texture keeps it from becoming spa cosplay.",
+    priceRange: "$98",
+    url: "https://www.coyuchi.com/products/unisex-organic-waffle-robe-alpine-white",
+    image: "/shop/coyuchi-unisex-organic-waffle-robe/cc0493c51f0a5d39.jpg",
+    images: [
+      "/shop/coyuchi-unisex-organic-waffle-robe/cc0493c51f0a5d39.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/c1091f02761202bb.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/8eb748bac34b37d8.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/e6777fc98b3e24fb.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/b197f9f8213c985f.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/441c2def7b1366ff.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/313e1454e54f1bb0.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/9859ddc0d95fae22.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/1244eb99f5d519e1.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/c5b17f0dfb5c9da7.jpg",
+      "/shop/coyuchi-unisex-organic-waffle-robe/cc0493c51f0a5d39.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
