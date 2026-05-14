@@ -2576,6 +2576,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "le-bon-shoppe-her-socks-mc-cotton-dark-tan",
+    name: "Her Socks (MC cotton) - Dark Tan",
+    brand: "Le Bon Shoppe",
+    category: "womens",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:45:01.413Z",
+    reason: "The right sock color can soften the whole outfit. Tan works because it disappears without looking dead.",
+    priceRange: "$12",
+    url: "https://lebonshoppe.com/products/her-socks-mc-cotton-dark-tan",
+    image: "/shop/le-bon-shoppe-her-socks-mc-cotton-dark-tan/1e85d8e678f71da2.jpg",
+    images: [
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-dark-tan/1e85d8e678f71da2.jpg",
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-dark-tan/1e85d8e678f71da2.jpg",
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-dark-tan/1e85d8e678f71da2.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
