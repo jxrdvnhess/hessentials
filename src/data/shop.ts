@@ -2354,6 +2354,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "diaspora-co-pragati-turmeric",
+    name: "Pragati Turmeric",
+    brand: "Diaspora Co.",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:43.794Z",
+    reason: "A small jar that carries actual sourcing intelligence. Better pantry objects do not need to be expensive.",
+    priceRange: "$13",
+    url: "https://www.diasporaco.com/products/pragati-turmeric",
+    image: "/shop/diaspora-co-pragati-turmeric/8532191e5cfaba7e.jpg",
+    images: [
+      "/shop/diaspora-co-pragati-turmeric/8532191e5cfaba7e.jpg",
+      "/shop/diaspora-co-pragati-turmeric/e75d7bd58acacf8f.jpg",
+      "/shop/diaspora-co-pragati-turmeric/e75d7bd58acacf8f.jpg",
+      "/shop/diaspora-co-pragati-turmeric/8532191e5cfaba7e.jpg",
+      "/shop/diaspora-co-pragati-turmeric/774093528b25000a.jpg",
+      "/shop/diaspora-co-pragati-turmeric/774093528b25000a.jpg",
+      "/shop/diaspora-co-pragati-turmeric/13ee4a6bdccc72d6.jpg",
+      "/shop/diaspora-co-pragati-turmeric/13ee4a6bdccc72d6.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
