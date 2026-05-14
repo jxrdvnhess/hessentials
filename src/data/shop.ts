@@ -2534,6 +2534,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-ti-double-450-mug",
+    name: "Ti-Double 450 Mug",
+    brand: "Snow Peak",
+    category: "travel",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:58.305Z",
+    reason: "For people who want the ritual without burning their hands. Still minimal, but not sterile.",
+    priceRange: "$49.95",
+    url: "https://www.snowpeak.com/products/titanium-double-450-mug",
+    image: "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
+    images: [
+      "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
+      "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+      "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+      "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+      "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+      "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
+      "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
