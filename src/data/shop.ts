@@ -2492,6 +2492,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "leatherology-large-travel-organizer-canvas-natural-canvas-black",
+    name: "Large Travel Organizer in Canvas Natural Canvas/Black",
+    brand: "Leatherology",
+    category: "travel",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:54.922Z",
+    reason: "A softer lower-cost version that gives up leather depth but keeps the organization logic.",
+    priceRange: "$90",
+    url: "https://www.leatherology.com/products/large-travel-organizer-in-canvas-natural-canvasblack",
+    image: "/shop/leatherology-large-travel-organizer-canvas-natural-canvas-black/67b564c37a09501a.jpg",
+    images: [
+      "/shop/leatherology-large-travel-organizer-canvas-natural-canvas-black/67b564c37a09501a.jpg",
+      "/shop/leatherology-large-travel-organizer-canvas-natural-canvas-black/44532ec545883d42.jpg",
+      "/shop/leatherology-large-travel-organizer-canvas-natural-canvas-black/44532ec545883d42.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
