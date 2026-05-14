@@ -1247,6 +1247,485 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T19:37:58.755Z"
+    },
+    {
+      "rowIndex": 4,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Brass Tray Oval S",
+      "directUrl": "https://foglinenwork.com/c/gr122/IHP007S",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "fog-linen-work-s-w22-d13-h1-5",
+        "name": "ブラス トレー 楕円形 S 【W22×D13×H1.5】",
+        "brand": "Fog Linen Work",
+        "category": "home",
+        "audience": [],
+        "reason": "Small enough to live by a sink, bedside, or entryway. Brass earns its keep when it patinas instead of staying perfect.",
+        "priceRange": "$4,290",
+        "url": "https://foglinenwork.com/c/gr122/IHP007S",
+        "images": [
+          "https://foglinenwork.itembox.cloud/product/003/000000000377/000000000377-02.jpg?size&#x3D;xs&w&#x3D;MTAw&t&#x3D;20220901191036"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:08.030Z"
+    },
+    {
+      "rowIndex": 5,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Brass Tray Oval M",
+      "directUrl": "https://foglinenwork.com/c/gr122/IHP007M",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "fog-linen-work-m-w32-5-d19-5-h2-5",
+        "name": "ブラス トレー 楕円形 M 【W32.5×D19.5×H2.5】",
+        "brand": "Fog Linen Work",
+        "category": "home",
+        "audience": [],
+        "reason": "The medium size makes it less decorative and more useful. Keys, candles, fruit, mail, all of it looks calmer here.",
+        "priceRange": "$8,580",
+        "url": "https://foglinenwork.com/c/gr122/IHP007M",
+        "images": [
+          "https://foglinenwork.itembox.cloud/product/003/000000000376/000000000376-02.jpg?size&#x3D;xs&w&#x3D;MTAw&t&#x3D;20220901191019"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:08.211Z"
+    },
+    {
+      "rowIndex": 6,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "FÄRGKLAR 18-piece dinnerware set, matte dark gray",
+      "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "ikea-fargklar-18-piece-dinnerware-set-matte-dark-gray",
+        "name": "FÄRGKLAR 18-piece dinnerware set - matte dark gray",
+        "brand": "IKEA",
+        "category": "home",
+        "audience": [],
+        "reason": "The rare inexpensive plate that knows when to be quiet. Matte surface, simple shape, no fake heritage.",
+        "priceRange": "$49.99",
+        "url": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
+        "images": [
+          "https://www.ikea.com/us/en/images/products/faergklar-18-piece-dinnerware-set-matte-dark-gray__1188567_pe899520_s5.jpg"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:09.957Z"
+    },
+    {
+      "rowIndex": 7,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "FÄRGKLAR Plate, matte green, 10\"",
+      "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "ikea-fargklar-plate-matte-green-10",
+        "name": "FÄRGKLAR Plate - matte green 10 \"",
+        "brand": "IKEA",
+        "category": "home",
+        "audience": [],
+        "reason": "Useful as a low-cost table reset. The green is soft enough to layer with better ceramics without pretending to be them.",
+        "priceRange": "$14.99",
+        "url": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
+        "images": [
+          "https://www.ikea.com/us/en/images/products/faergklar-plate-matte-green__0985919_pe816899_s5.jpg"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:11.499Z"
+    },
+    {
+      "rowIndex": 10,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Cozy Cotton Organic Blanket - Stone",
+      "directUrl": "https://www.coyuchi.com/products/cozy-cotton-organic-blanket-stone",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "coyuchi-cozy-cotton-organic-blanket",
+        "name": "Cozy Cotton Organic Blanket",
+        "brand": "Coyuchi",
+        "category": "home",
+        "audience": [],
+        "reason": "Soft without the synthetic hotel-suite feeling. A cleaner answer to comfort.",
+        "priceRange": "$178",
+        "url": "https://www.coyuchi.com/products/cozy-cotton-organic-blanket-stone",
+        "images": [
+          "https://www.coyuchi.com/cdn/shop/files/FA24_CozyCottonOrganic_Blanket_Stone_B_034_121bc944-8ccb-4fbe-8030-ecf0b61c8719.jpg?v=1753834728",
+          "http://www.coyuchi.com/cdn/shop/files/FA24_CozyCottonOrganic_Blanket_Stone_B_034_121bc944-8ccb-4fbe-8030-ecf0b61c8719.jpg?v=1753834728"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:14.303Z"
+    },
+    {
+      "rowIndex": 11,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Coyuchi Conserve Organic Paperless Towels",
+      "directUrl": "https://www.coyuchi.com/products/coyuchi-conserve-organic-paperless-towels-undyed-w-blue-jay",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "coyuchi-coyuchi-conserve-organic-paperless-towels",
+        "name": "Coyuchi Conserve Organic Paperless Towels",
+        "brand": "Coyuchi",
+        "category": "home",
+        "audience": [],
+        "reason": "A humble object that improves the rhythm of the kitchen. Useful, washable, and better looking than a paper towel pile.",
+        "priceRange": "$38",
+        "url": "https://www.coyuchi.com/products/coyuchi-conserve-organic-paperless-towels-undyed-w-blue-jay",
+        "images": [
+          "https://www.coyuchi.com/cdn/shop/files/PDP_ConverveCollection_PaperlessTowels_BlueJay_A_SP22_1611_64ab2a38-25bf-435b-a480-8713858fc702.jpg?v=1753834698",
+          "http://www.coyuchi.com/cdn/shop/files/PDP_ConverveCollection_PaperlessTowels_BlueJay_A_SP22_1611_64ab2a38-25bf-435b-a480-8713858fc702.jpg?v=1753834698"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:14.495Z"
+    },
+    {
+      "rowIndex": 16,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Alabax Small Surface Mount",
+      "directUrl": "https://schoolhouse.com/products/alabax-small-surface-mount",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-alabax-small-surface-mount",
+        "name": "Alabax Small Surface Mount",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "audience": [],
+        "reason": "Quiet utility with a little industrial memory. Good lighting should feel found, not installed for content.",
+        "priceRange": "$199",
+        "url": "https://schoolhouse.com/products/alabax-small-surface-mount",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/AlabaxSmSurface_yellow_web.jpg?v=1674166749"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:19.098Z"
+    },
+    {
+      "rowIndex": 17,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Grant Mirror - Round",
+      "directUrl": "https://schoolhouse.com/products/grant-mirror",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-grant-mirror-round",
+        "name": "Grant Mirror - Round",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "audience": [],
+        "reason": "A mirror with enough presence to anchor an entry without demanding a redesign around it.",
+        "priceRange": "$349",
+        "url": "https://schoolhouse.com/products/grant-mirror",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/GrantMirror28_MG_web.jpg?v=1719516205"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:19.163Z"
+    },
+    {
+      "rowIndex": 18,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Miller Utility Cart",
+      "directUrl": "https://schoolhouse.com/products/miller-utility-cart",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-miller-utility-cart",
+        "name": "Miller Utility Cart",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "audience": [],
+        "reason": "Storage that looks more like furniture than apology. The kind of piece that makes a small space work harder.",
+        "priceRange": "$399",
+        "url": "https://schoolhouse.com/products/miller-utility-cart",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/fall24_142801_miller-utilty-cart-resource-ig-g_2_silo-_1x1_jw.jpg?v=1735002213"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:19.230Z"
+    },
+    {
+      "rowIndex": 19,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Recycled Paper Bind Grid Notebook",
+      "directUrl": "https://www.muji.us/products/recycled-paper-bind-grid-notebook-9s62",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "muji-recycled-paper-bind-grid-notebook",
+        "name": "Recycled Paper Bind Grid Notebook",
+        "brand": "MUJI",
+        "category": "home",
+        "audience": [],
+        "reason": "Almost aggressively humble, which is why it works. Good paper for people who actually write things down.",
+        "priceRange": "$0.90",
+        "url": "https://www.muji.us/products/recycled-paper-bind-grid-notebook-9s62",
+        "images": [
+          "https://www.muji.us/cdn/shop/products/4550182108910_org.jpg?v=1762441914&width=480",
+          "https://www.muji.us/cdn/shop/products/4550182108910_org_1200x1200.jpg?v=1762441914"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:19.833Z"
+    },
+    {
+      "rowIndex": 24,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Pure Flake Sea Salt",
+      "directUrl": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "jacobsen-salt-co-pure-flake-sea-salt",
+        "name": "Pure Flake Sea Salt",
+        "brand": "Jacobsen Salt Co.",
+        "category": "provisions",
+        "audience": [],
+        "reason": "Not a Maldon replacement. A warmer American counterpart with a softer kitchen read.",
+        "priceRange": "$15",
+        "url": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
+        "images": [
+          "http://jacobsensalt.com/cdn/shop/files/jacobsen-pure-flake-sea-salt-bag.jpg?v=1751411925",
+          "https://jacobsensalt.com/cdn/shop/files/jacobsen-pure-flake-sea-salt-bag.jpg?v=1751411925"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:29.635Z"
+    },
+    {
+      "rowIndex": 25,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Pure Flake Sea Salt Slide Tin",
+      "directUrl": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
+        "name": "Pure Flake Sea Salt Slide Tin",
+        "brand": "Jacobsen Salt Co.",
+        "category": "provisions",
+        "audience": [],
+        "reason": "Tiny but useful. A good picnic, travel, or desk-lunch object for people who know salt is not optional.",
+        "priceRange": "$8",
+        "url": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
+        "images": [
+          "http://jacobsensalt.com/cdn/shop/files/Jacobsen-Pure-Flake-Sea-Salt-Slide-Tin-0.46oz.jpg?v=1749150294",
+          "https://jacobsensalt.com/cdn/shop/files/Jacobsen-Pure-Flake-Sea-Salt-Slide-Tin-0.46oz.jpg?v=1749150294"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:29.774Z"
+    },
+    {
+      "rowIndex": 29,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Royal Cinnamon",
+      "directUrl": "https://www.burlapandbarrel.com/products/royal-cinnamon",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "burlap-and-barrel-royal-cinnamon",
+        "name": "Royal Cinnamon",
+        "brand": "Burlap & Barrel",
+        "category": "home",
+        "audience": [],
+        "reason": "The kind of pantry upgrade that changes breakfast, baking, and coffee without requiring new equipment.",
+        "priceRange": "$10",
+        "url": "https://www.burlapandbarrel.com/products/royal-cinnamon",
+        "images": [
+          "http://www.burlapandbarrel.com/cdn/shop/files/Royal_Cinnamon.jpg?crop=center&height=1200&v=1741045125&width=1200",
+          "https://www.burlapandbarrel.com/cdn/shop/files/Royal_Cinnamon.jpg?crop=center&height=1200&v=1741045125&width=1200"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:39.335Z"
+    },
+    {
+      "rowIndex": 34,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Women's Crossbody Bag in Leather, Black Cherry",
+      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr281pv0001pu183gb",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "il-bisonte-fausta-medium-women-s-crossbody-bag-leather-color-black-cherry",
+        "name": "Fausta Medium | Women's crossbody bag in leather color black cherry",
+        "brand": "Il Bisonte",
+        "category": "accessories",
+        "audience": [
+          "womens"
+        ],
+        "reason": "Vegetable-tanned leather that will tell on you in the best way. The color has depth without getting precious.",
+        "priceRange": "$395",
+        "url": "https://www.ilbisonte.com/en-usa/products/bcr281pv0001pu183gb",
+        "images": [
+          "https://www.ilbisonte.com/cdn/shop/files/BCR281PV0001PU183B_0.jpg?v=1744292484",
+          "http://www.ilbisonte.com/cdn/shop/files/BCR281PV0001PU183B_0.jpg?v=1744292484"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Womens only"
+      },
+      "stagedAt": "2026-05-14T20:44:48.354Z"
+    },
+    {
+      "rowIndex": 35,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Archive 1970 Crossbody Bag",
+      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr406tcv001bl404gb",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "il-bisonte-archive-1970-women-s-crossbody-bag-fabric-color-blue-natural",
+        "name": "Archive 1970 | Women's crossbody bag in fabric color blue/natural",
+        "brand": "Il Bisonte",
+        "category": "accessories",
+        "audience": [
+          "womens"
+        ],
+        "reason": "Canvas keeps the heritage from becoming too polished. Feels like travel, errands, and weather.",
+        "priceRange": "$445",
+        "url": "https://www.ilbisonte.com/en-usa/products/bcr406tcv001bl404gb",
+        "images": [
+          "https://www.ilbisonte.com/cdn/shop/files/BCR406TCV001BL404B_0.jpg?v=1773743465",
+          "http://www.ilbisonte.com/cdn/shop/files/BCR406TCV001BL404B_0.jpg?v=1773743465"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Womens only"
+      },
+      "stagedAt": "2026-05-14T20:44:48.495Z"
+    },
+    {
+      "rowIndex": 36,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Boat and Tote, Zip-Top",
+      "directUrl": "https://www.llbean.com/llb/shop/37037?page=boat-and-tote-bag-zip-top",
+      "flags": [
+        "only 0 image(s)"
+      ],
+      "candidate": {
+        "slug": "l-l-bean-boat-and-tote-zip-top",
+        "name": "Boat and Tote®, Zip-Top",
+        "brand": "L.L.Bean",
+        "category": "accessories",
+        "audience": [],
+        "reason": "Still correct because it refuses to become precious. The zip top makes it genuinely useful.",
+        "priceRange": "$45",
+        "url": "https://www.llbean.com/llb/shop/37037?page=boat-and-tote-bag-zip-top",
+        "images": [],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:49.195Z"
+    },
+    {
+      "rowIndex": 41,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "Chatelet Air 2.0 Carry-on Plus Spinner",
+      "directUrl": "https://us.delsey.com/products/401676805-chatelet-air-20-20inch-carry-on-spinner",
+      "flags": [
+        "only 1 image(s)"
+      ],
+      "candidate": {
+        "slug": "delsey-chatelet-air-2-0-carry-on-plus-spinner",
+        "name": "CHATELET AIR 2.0 - Carry-On Plus Spinner",
+        "brand": "Delsey",
+        "category": "travel",
+        "audience": [],
+        "reason": "One of the few hard-sided suitcases that still has visual warmth. Use sparingly, but it earns its place.",
+        "priceRange": "$350",
+        "url": "https://us.delsey.com/products/401676805-chatelet-air-20-20inch-carry-on-spinner",
+        "images": [
+          "https://us.delsey.com/cdn/shop/files/delsey-chateletair2.0-00167680515-02.webp?v=1765583268"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:44:55.811Z"
+    },
+    {
+      "rowIndex": 49,
+      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "articleUrl": "",
+      "anchor": "A5 Recycled Paper Double Ring Blank Notebook - Dark Grey",
+      "directUrl": "https://www.muji.us/products/recycled-paper-double-ring-blank-notebook-dark-grey-a5-9s62066",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "muji-a5-recycled-paper-double-ring-blank-notebook-dark-grey",
+        "name": "A5 Recycled Paper Double Ring Blank Notebook - Dark Grey",
+        "brand": "MUJI",
+        "category": "accessories",
+        "audience": [],
+        "reason": "Almost nothing, which is why it belongs. The travel notebook should not feel like a productivity system.",
+        "priceRange": "$3.90",
+        "url": "https://www.muji.us/products/recycled-paper-double-ring-blank-notebook-dark-grey-a5-9s62066",
+        "images": [
+          "https://www.muji.us/cdn/shop/files/4550182109221_org_1024x1024.jpg?v=1762022394",
+          "https://www.muji.us/cdn/shop/files/4550182109221_org_1200x1200.jpg?v=1762022394"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:45:08.292Z"
     }
   ]
 }
