@@ -2639,6 +2639,27 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "buck-mason-dress-navy-field-spec-heavy-tee",
+    name: "Dress Navy Field-Spec Heavy Tee",
+    brand: "Buck Mason",
+    category: "womens",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:45:07.822Z",
+    reason: "Navy makes the tee feel less gym and more uniform. The weight keeps it honest.",
+    priceRange: "$62",
+    url: "https://www.buckmason.com/products/dress-navy-field-spec-heavy-tee",
+    image: "/shop/buck-mason-dress-navy-field-spec-heavy-tee/c82c961f077b00b2.jpg",
+    images: [
+      "/shop/buck-mason-dress-navy-field-spec-heavy-tee/c82c961f077b00b2.jpg",
+      "/shop/buck-mason-dress-navy-field-spec-heavy-tee/bd02ed6538a15f19.jpg",
+      "/shop/buck-mason-dress-navy-field-spec-heavy-tee/88e658c17bf17921.jpg",
+      "/shop/buck-mason-dress-navy-field-spec-heavy-tee/20e9f5eac38d4917.jpg",
+      "/shop/buck-mason-dress-navy-field-spec-heavy-tee/6ad7215b51957d02.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
