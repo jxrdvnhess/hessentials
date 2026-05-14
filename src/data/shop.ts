@@ -2166,6 +2166,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "coyuchi-honeycomb-organic-blanket",
+    name: "Honeycomb Organic Blanket",
+    brand: "Coyuchi",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:14.043Z",
+    reason: "Weighty without going plush. The texture does the work, which is exactly the point.",
+    priceRange: "$178",
+    url: "https://www.coyuchi.com/products/honeycomb-organic-blanket-undyed-oyster",
+    image: "/shop/coyuchi-honeycomb-organic-blanket/ea3cc1bd5521585c.jpg",
+    images: [
+      "/shop/coyuchi-honeycomb-organic-blanket/ea3cc1bd5521585c.jpg",
+      "/shop/coyuchi-honeycomb-organic-blanket/0d7234dc57d029f1.jpg",
+      "/shop/coyuchi-honeycomb-organic-blanket/ea3cc1bd5521585c.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
