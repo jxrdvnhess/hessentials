@@ -2511,6 +2511,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-ti-single-450-cup",
+    name: "Ti-Single 450 Cup",
+    brand: "Snow Peak",
+    category: "travel",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:57.156Z",
+    reason: "A camping object that makes sense in normal life too. Light, durable, and emotionally useful.",
+    priceRange: "$29.95",
+    url: "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+    image: "/shop/snow-peak-ti-single-450-cup/fbaba06ab8d11bf5.jpg",
+    images: [
+      "/shop/snow-peak-ti-single-450-cup/fbaba06ab8d11bf5.jpg",
+      "/shop/snow-peak-ti-single-450-cup/03e9ded7255c744b.jpg",
+      "/shop/snow-peak-ti-single-450-cup/03e9ded7255c744b.jpg",
+      "/shop/snow-peak-ti-single-450-cup/4e6edf924d5a7b57.jpg",
+      "/shop/snow-peak-ti-single-450-cup/4e6edf924d5a7b57.jpg",
+      "/shop/snow-peak-ti-single-450-cup/2297767c5fd5b5d0.jpg",
+      "/shop/snow-peak-ti-single-450-cup/2297767c5fd5b5d0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
