@@ -1,27 +1,35 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import Byline from "../../components/Byline";
 
 export const metadata: Metadata = {
   title: "Memorial Day — Hessentials",
   description:
-    "Most Memorial Day weekends swing between over-produced and never-happened. The good ones do something else.",
+    "Memorial Day arrives after the season has already started. The day the calendar catches up.",
 };
 
 /**
  * Memorial Day — long-form editorial.
  *
- * Standalone seasonal piece, same architecture as /mothers-day:
+ * Standalone seasonal piece. Architecture mirrors /mothers-day:
  * - Centered, max-w-2xl reading column
- * - Eyebrow → italic-serif H1 → italic dek header
- * - Body uses the same P / SectionHeader / PullQuote primitives so
- *   the reading rhythm matches the rest of the holiday series
- * - One in-body figure at a section break (per the established
- *   pattern — image earns its place, not decorative)
- * - Closing rule, byline, quiet "← Hessentials" exit
+ * - Sentence-case H1 (no eyebrow — H1 opens with "Memorial Day.")
+ * - Italic-serif standfirst
+ * - Body uses local P / SectionHeader / PullQuote primitives so the
+ *   reading rhythm matches the rest of the editorial series
+ * - Section headers sentence case with periods, never CSS-uppercased
+ * - Two pull quotes (red/white/blue + closing)
+ * - Literal "———" typographic break before the close
+ * - Inline byline ("By Jordan Hess") — sentence case, no uppercase
+ *   transform per brief. Diverges from the shared Byline component
+ *   on purpose so Mother's Day's existing render is untouched.
  *
- * No sidebar, no related-content rail. The piece ends.
+ * No in-body figure: the new body does not have a "table" anchor, so
+ * an image inside the column would feel arbitrary. The homepage
+ * MemorialDayModule carries the image.
+ *
+ * Rendering note: this page is JSX, not markdown. Em dashes are
+ * explicit &mdash; entities and apostrophes are &rsquo; — no
+ * smart-punctuation pipeline runs against this file.
  */
 export default function MemorialDayArticle() {
   return (
@@ -29,166 +37,172 @@ export default function MemorialDayArticle() {
       <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
         {/* ---------- Header ---------- */}
         <header className="mb-20 text-center md:mb-28">
-          <p className="mb-10 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[12px]">
-            Memorial Day
-          </p>
           <h1 className="font-serif text-[clamp(2.25rem,5.5vw,3.75rem)] font-normal italic leading-[1.06] tracking-[-0.022em] text-balance text-[#2b1f17]">
-            Not a cookout. The day your backyard starts working.
+            Memorial Day. Not the start of summer.
           </h1>
           <p className="text-pretty mx-auto mt-10 max-w-xl font-serif text-[clamp(1.125rem,1.6vw,1.3rem)] italic leading-[1.55] text-[#1f1d1b]/70">
-            Most Memorial Day weekends swing between over-produced and
-            never-happened. Neither makes the rest of the summer easier.
+            The day the calendar catches up.
           </p>
         </header>
 
         {/* ---------- Body ---------- */}
         <Body>
           <P>
-            Most Memorial Day weekends miss in the same two ways. The
-            over-produced cookout &mdash; the marinades, the seven sides, the
-            playlist, the host who hasn&rsquo;t sat down by four. Or the
-            version where nothing was planned, the chairs are still stacked
-            against the wall from October, and someone is sent for bagged
-            ice at two-fifteen.
+            Memorial Day arrives after the season has already started. The
+            pool has been open for two weeks in Atlanta. The grass has been
+            cut three times in the Northeast. In Houston, every door has
+            been propped open for a month. The calendar&rsquo;s start date
+            isn&rsquo;t a real start date. It&rsquo;s just a date.
           </P>
-          <P>Both feel like work. Neither feels good.</P>
           <P>
-            There&rsquo;s a third option. Smaller. More deliberate. And it
-            sets up the rest of the summer.
+            What the weekend actually is: the first day you&rsquo;ll host
+            the season you&rsquo;ve already been living in.
+          </P>
+          <P>That distinction is the whole article.</P>
+
+          <SectionHeader>The day moves where the weather is.</SectionHeader>
+          <P>
+            Some Memorial Days happen on the patio. Some happen entirely
+            inside, with the AC set to seventy-two and the back doors
+            swinging open every twenty minutes. Both are correct.
+          </P>
+          <P>
+            The mistake is fighting the weather. A 98&deg; afternoon in
+            Houston is not a patio day no matter how committed you are to
+            the cookout idea. Set up inside. Let the grill be a quick
+            out-and-back. Keep the windows open so the day still smells
+            like outside. Fresh flowers on every surface that catches
+            light.
+          </P>
+          <P>
+            The opposite move works in a year when the weather is kind.
+            Move the dining room outside. Pull a rug onto the patio if you
+            have one. Let the inside of the house go quiet for the
+            afternoon.
+          </P>
+          <P>
+            Either way, the day reads as one decision. Pick the room
+            before you pick anything else.
           </P>
 
-          <SectionHeader>The weekend isn&rsquo;t the point.</SectionHeader>
+          <SectionHeader>If there&rsquo;s a pool, that&rsquo;s the anchor.</SectionHeader>
           <P>
-            For most of the year, the outside space is a default. A bag of
-            charcoal under the table. A chair with the cushion still wet
-            from March. A hose kinked since August. Memorial Day is the
-            only weekend most people will walk it, notice all of that, and
-            decide.
+            Stage the pool first. Set up there harder than you set up
+            anywhere else. A real bar with ice, glasses, and three or four
+            things people can pour without asking. A platter of light
+            bites that doesn&rsquo;t need refrigeration for two hours.
+            Towels stacked somewhere visible, not buried in a closet
+            anyone has to ask about.
           </P>
           <P>
-            Walk it now and the rest of the summer flows. Don&rsquo;t, and
-            you&rsquo;ll keep eating inside through July.
+            Trash cans where people would already look for one. Beside the
+            bar. Near the chairs. Not tucked behind a hedge for aesthetic
+            reasons that cost you the floor on cleanup.
           </P>
           <P>
-            Treat the day as setup, not event. The afternoon is the
-            byproduct.
+            The point is that the pool becomes a place the host
+            doesn&rsquo;t have to host. Guests serve themselves. They use
+            the towels. They sort their own trash. The kitchen becomes
+            yours again, which is how you cook a meal worth eating
+            without a sweat ring on your shirt by four.
           </P>
 
-          <SectionHeader>What actually works.</SectionHeader>
+          <SectionHeader>The spread.</SectionHeader>
           <P>
-            Almost nothing about a good afternoon outside has to do with the
-            food. It has to do with staging.
+            No tradition required. Pick the meats that are exciting to you
+            this year and cook them however the setting allows. Brisket if
+            you have the patience. Whole fish if you trust your
+            fishmonger. A pile of bone-in chicken thighs if the day is
+            moving inside and you need a roast that takes care of itself.
+            The point is to be inspired, not loyal to a script.
           </P>
           <P>
-            Set the table before anyone arrives. Not as a flourish &mdash;
-            as a release valve. Once it&rsquo;s set, the host is allowed to
-            sit, and once the host sits, the room sits with them.
+            The one fixed thing on the table is beans. Baked beans,
+            always. A second pot of something with beans in it if the
+            spread is large. Beans hold for hours, feed twelve from a
+            single pot, and reward whatever you cooked alongside them.
+            There is no version of this menu where beans are optional.
+          </P>
+
+          <SectionHeader>
+            Red, white, and blue, where guests won&rsquo;t expect it.
+          </SectionHeader>
+          <P>
+            The palette is the day&rsquo;s only required nod. The trick
+            is where you place it.
+          </P>
+          <P>
+            Not bunting. Not paper flags in the centerpiece. Not the
+            tablecloth. The work happens in the accents nobody will name
+            out loud but everyone will register.
+          </P>
+          <P>
+            A single navy linen napkin folded into a stack of cream ones.
+            A bowl of cherries set beside white peonies and a small
+            ceramic vase the color of the deep end. The pitcher you pour
+            iced tea from in a glazed cobalt. A red enamel pot of beans
+            on a trivet that&rsquo;s nothing special.
           </P>
 
           <PullQuote>
-            A bare table on Memorial Day is a tell. People feel it before
-            they can name it.
+            The palette as a wink, not a costume.
           </PullQuote>
 
           <P>
-            Put the drinks and the trash at the edge of the space, not the
-            center. Drinks at the edge so people serve themselves and stop
-            pulling the host into refills. Trash at the edge so it&rsquo;s
-            not the thing people see when they look up from their plate. If
-            the can isn&rsquo;t visible from the table, the meal lasts an
-            hour longer.
-          </P>
-          <P>
-            Prep one thing the day before. Cold. Done. In a tray you can
-            carry one-handed.
-          </P>
-          <P>
-            Cook one thing the day of. Something with a clear finish line.
-            Steaks come off when they come off. A whole fish comes off when
-            it comes off. Skip the menu with eight finish times.
-          </P>
-          <P>Don&rsquo;t narrate the meal. The food is already on the table.</P>
-
-          <SectionHeader>The table.</SectionHeader>
-
-          {/* Image — placed at the section break, matching the
-              Mother's Day piece's pacing. */}
-          <figure className="my-12 -mx-6 sm:-mx-8 md:my-16 md:mx-0">
-            <div className="relative aspect-[3/2] w-full overflow-hidden">
-              <Image
-                src="/memorial-day.jpg"
-                alt=""
-                fill
-                sizes="(min-width: 768px) 672px, 100vw"
-                quality={92}
-                className="object-cover"
-              />
-            </div>
-          </figure>
-
-          <P>
-            Outside, not in. Even if you have to drag the dining table
-            through a sliding door. The whole afternoon decides itself in
-            the first ten minutes, and ten minutes outdoors reads
-            differently than ten minutes in the kitchen.
-          </P>
-          <P>
-            One cloth on it, not three. One vessel of something fresh
-            &mdash; herbs from the yard, lemons, a bowl of cherries. Plates
-            already out. Glasses already out. Cloth napkins, folded once,
-            stacked, not arranged.
-          </P>
-          <P>
-            If anything looks staged, take one thing off.
+            The day reads as Memorial Day without ever announcing itself.
           </P>
 
           <SectionHeader>The kit.</SectionHeader>
           <P>
-            Six things earn the summer. Buy them once, store them together,
-            stop thinking about them.
+            Six things earn the summer. Buy them once, store them
+            together, stop thinking about them.
           </P>
           <P>
-            Tongs with real spring. The bent stamped-metal pair from the
-            grocery store folds under a steak. A pair with cast joints and
-            proper tension lasts a decade. You&rsquo;ll know on the first
-            use.
+            Tongs with real spring. The stamped-metal pair from the
+            grocery store folds under a steak. A pair with cast joints
+            and proper tension lasts a decade. You&rsquo;ll know on the
+            first use.
           </P>
           <P>
             One tray you can carry with one hand. Wood, melamine, or
-            enameled steel. Not the wide thin plastic kind that flexes when
-            it&rsquo;s full. The point of the tray is that it doesn&rsquo;t
-            require you to walk twice.
+            enameled steel. Not the wide thin plastic kind that flexes
+            under a full load.
           </P>
           <P>
-            A pitcher you can pour without watching. Ceramic or thick glass
-            with a real lip &mdash; not a spout that dribbles. An industrial
-            aluminum-handled pitcher often beats the photogenic option.
+            A pitcher you can pour without watching. Ceramic or thick
+            glass with a real lip, not a spout that dribbles. The good
+            cobalt-glazed ones do double duty as the day&rsquo;s accent
+            piece.
           </P>
           <P>
-            Cotton napkins. Not paper. They wash. The first three uses
-            justify them.
+            Cotton napkins. Not paper. They wash. A short stack in solid
+            colors with one or two navies and reds tucked in will carry
+            every spring and summer event through Labor Day.
           </P>
           <P>
-            A vessel that holds ice. Galvanized bucket or enameled cooler,
-            not the half-melted soft-bag situation that&rsquo;s sweating
-            into the rug by hour three.
+            A vessel that holds ice. Galvanized bucket or enameled
+            cooler, not the soft-bag situation that&rsquo;s sweating
+            into the rug by three.
           </P>
           <P>
             One long-handled lighter with a working trigger. Lives in the
             same drawer all summer. Not matches. Not a gas-station Bic.
           </P>
-
-          <SectionHeader>Why people give up on their own backyards.</SectionHeader>
           <P>
-            It isn&rsquo;t laziness. It&rsquo;s access.
+            And one more thing, if there&rsquo;s a pool: a stack of clean
+            cotton towels in plain sight. Bigger than a hand towel,
+            smaller than a beach towel. Refilled before the first guest
+            arrives.
           </P>
+
+          <SectionHeader>Why this works.</SectionHeader>
+          <P>It isn&rsquo;t discipline. It&rsquo;s access.</P>
           <P>
             Anything that requires walking back inside is the friction
-            point. The cooler at the door instead of in the kitchen. The
-            napkins on the table instead of in the drawer. The lighter
-            beside the grill instead of on the counter. Those are not
-            aesthetic decisions. They decide whether the afternoon happens
-            or not.
+            point. The drinks staged at the pool rather than in a cooler
+            with a closed lid. The napkins on the table rather than in a
+            drawer. The trash where the guest already expects to find
+            one. The towel within arm&rsquo;s reach of the chair.
           </P>
 
           <PullQuote>
@@ -196,14 +210,13 @@ export default function MemorialDayArticle() {
           </PullQuote>
 
           <P>
-            People assume they need more discipline to use their outside
+            People assume they need more rigor to use their outside
             space. What they need is a shorter path between the chair and
             the next thing they want.
           </P>
 
-          {/* Typographic break per brief — literal "———" rendered
-              as the section divider, not a styled <hr>. Generous
-              vertical space holds the same visual beat. */}
+          {/* Typographic break per brief — literal "———" rendered as
+              the section divider, not a styled <hr>. */}
           <p
             aria-hidden
             className="my-16 text-center font-serif text-[#1f1d1b]/55 sm:my-20"
@@ -212,17 +225,21 @@ export default function MemorialDayArticle() {
           </p>
 
           <P>
-            If you do this right, Memorial Day is not the event. It&rsquo;s
-            the setup. The afternoon takes care of itself, and the backyard
-            works through Labor Day.
+            Memorial Day isn&rsquo;t the event. It&rsquo;s the setup.
+            Stage the day well and the afternoon takes care of itself.
+            The backyard, or the kitchen, or the pool, works through
+            Labor Day.
           </P>
-          <P>
-            One day of staging buys a season of using the outside.
-          </P>
+          <P>One day of staging buys a season.</P>
         </Body>
 
-        {/* Closing byline. */}
-        <Byline />
+        {/* Inline byline — sentence case, no CSS uppercase transform
+            per brief. Intentionally diverges from the shared Byline
+            component (BY JORDAN HESS small caps) so Mother's Day's
+            existing render is unaffected. */}
+        <p className="mt-16 font-serif text-[15px] italic leading-[1.55] text-[#1f1d1b]/55 sm:text-[16px]">
+          By Jordan Hess
+        </p>
 
         {/* ---------- Bottom — quiet exit ---------- */}
         <nav
@@ -257,6 +274,9 @@ function P({ children }: { children: React.ReactNode }) {
 }
 
 function SectionHeader({ children }: { children: React.ReactNode }) {
+  // Sentence case in the source text, no CSS text-transform: uppercase.
+  // Italic serif at a body-adjacent size — restrained section turn,
+  // not an all-caps banner.
   return (
     <h2 className="text-balance mt-16 mb-6 font-serif text-[clamp(1.25rem,1.7vw,1.5rem)] font-normal italic leading-[1.3] text-[#2b1f17] sm:mt-20">
       {children}
