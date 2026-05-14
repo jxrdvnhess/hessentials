@@ -2144,6 +2144,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "heath-ceramics-bud-vase",
+    name: "Bud Vase",
+    brand: "Heath Ceramics",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:12.703Z",
+    reason: "A small vessel with real staying power. One stem, one branch, one little correction to the room.",
+    priceRange: "$43",
+    url: "https://www.heathceramics.com/products/bud-vase",
+    image: "/shop/heath-ceramics-bud-vase/ce8e00781d135546.jpg",
+    images: [
+      "/shop/heath-ceramics-bud-vase/ce8e00781d135546.jpg",
+      "/shop/heath-ceramics-bud-vase/ce8e00781d135546.jpg",
+      "/shop/heath-ceramics-bud-vase/dcf0d5f873146feb.jpg",
+      "/shop/heath-ceramics-bud-vase/dcf0d5f873146feb.jpg",
+      "/shop/heath-ceramics-bud-vase/b5b78cda3d21195d.jpg",
+      "/shop/heath-ceramics-bud-vase/b5b78cda3d21195d.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
