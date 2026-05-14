@@ -2557,6 +2557,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "le-bon-shoppe-her-socks-mc-cotton-classic-white",
+    name: "Her Socks (MC cotton) - Classic White",
+    brand: "Le Bon Shoppe",
+    category: "womens",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:59.770Z",
+    reason: "A small styling object with disproportionate power. The rib gives even simple shoes a little intention.",
+    priceRange: "$12",
+    url: "https://lebonshoppe.com/products/her-socks-mc-cotton-classic-white",
+    image: "/shop/le-bon-shoppe-her-socks-mc-cotton-classic-white/72e31e7ac33cbf1c.jpg",
+    images: [
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-classic-white/72e31e7ac33cbf1c.jpg",
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-classic-white/72e31e7ac33cbf1c.jpg",
+      "/shop/le-bon-shoppe-her-socks-mc-cotton-classic-white/72e31e7ac33cbf1c.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
