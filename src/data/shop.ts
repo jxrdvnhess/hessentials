@@ -2473,6 +2473,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "leatherology-large-travel-organizer-black-onyx",
+    name: "Large Travel Organizer Black Onyx",
+    brand: "Leatherology",
+    category: "travel",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:54.007Z",
+    reason: "Organization that does not look tactical. Travel feels calmer when the useful things are quiet.",
+    priceRange: "$125",
+    url: "https://www.leatherology.com/products/large-travel-organizer-black-onyx",
+    image: "/shop/leatherology-large-travel-organizer-black-onyx/2a874375acd47e75.jpg",
+    images: [
+      "/shop/leatherology-large-travel-organizer-black-onyx/2a874375acd47e75.jpg",
+      "/shop/leatherology-large-travel-organizer-black-onyx/1683535915b41a74.jpg",
+      "/shop/leatherology-large-travel-organizer-black-onyx/1683535915b41a74.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
