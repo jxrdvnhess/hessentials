@@ -2250,6 +2250,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-espresso-cup-in-milk",
+    name: "Espresso Cup in Milk",
+    brand: "Felt + Fat",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:22.199Z",
+    reason: "Espresso is small enough that the cup matters. This one feels considered without becoming fussy.",
+    priceRange: "$32",
+    url: "https://www.feltandfat.com/products/espresso-cup-in-milk",
+    image: "/shop/felt-fat-espresso-cup-in-milk/e434d2373fe22169.jpg",
+    images: [
+      "/shop/felt-fat-espresso-cup-in-milk/e434d2373fe22169.jpg",
+      "/shop/felt-fat-espresso-cup-in-milk/044126188ebc5bbc.jpg",
+      "/shop/felt-fat-espresso-cup-in-milk/044126188ebc5bbc.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
