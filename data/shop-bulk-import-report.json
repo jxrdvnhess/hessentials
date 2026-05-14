@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-05-14T20:45:08.293Z",
-  "mode": "commit",
+  "generatedAt": "2026-05-14T20:50:00.382Z",
+  "mode": "commit-retry",
   "csv": "data/shop-import-chateau-adds.csv",
   "counts": {
     "staged-draft": 27,
-    "needs-human": 18,
-    "failed": 3,
+    "needs-human": 4,
+    "failed": 11,
     "editorial-removal": 0,
     "duplicate": 0,
-    "already-staged": 0,
-    "already-live": 0
+    "already-staged": 1,
+    "already-live": 5
   },
   "rows": [
     {
@@ -42,7 +42,7 @@
       "articleUrl": "",
       "anchor": "Brass Tray Oval S",
       "directUrl": "https://foglinenwork.com/c/gr122/IHP007S",
-      "bucket": "needs-human",
+      "bucket": "already-live",
       "slug": "fog-linen-work-s-w22-d13-h1-5",
       "proposedCategory": "home",
       "proposedAudience": "None",
@@ -56,7 +56,7 @@
       "articleUrl": "",
       "anchor": "Brass Tray Oval M",
       "directUrl": "https://foglinenwork.com/c/gr122/IHP007M",
-      "bucket": "needs-human",
+      "bucket": "already-staged",
       "slug": "fog-linen-work-m-w32-5-d19-5-h2-5",
       "proposedCategory": "home",
       "proposedAudience": "None",
@@ -66,31 +66,26 @@
     },
     {
       "rowIndex": 6,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "FÄRGKLAR 18-piece dinnerware set, matte dark gray",
-      "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Rancilio Silvia",
+      "directUrl": "https://www.ranciliogroupna.com/rancilio/silvia/",
       "bucket": "needs-human",
-      "slug": "ikea-fargklar-18-piece-dinnerware-set-matte-dark-gray",
-      "proposedCategory": "home",
+      "slug": "rancilio-silvia-pro-thermal-stability-rancilio-group-north-america",
+      "proposedCategory": "",
       "proposedAudience": "None",
       "flags": [
-        "only 1 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 7,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "FÄRGKLAR Plate, matte green, 10\"",
-      "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
-      "bucket": "needs-human",
-      "slug": "ikea-fargklar-plate-matte-green-10",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "sourceArticle": "Stop buying plush blankets. Use cotton.",
+      "articleUrl": "https://hessentials.co/living/stop-buying-plush-blankets-use-cotton",
+      "anchor": "Bedsure Cotton Waffle Blanket",
+      "directUrl": "https://bedsurehome.com/products/cotton-waffle-blanket",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 8,
@@ -118,31 +113,27 @@
     },
     {
       "rowIndex": 10,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Cozy Cotton Organic Blanket - Stone",
-      "directUrl": "https://www.coyuchi.com/products/cozy-cotton-organic-blanket-stone",
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Stainless Replacement Knob (Le Creuset / Staub)",
+      "directUrl": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
       "bucket": "needs-human",
-      "slug": "coyuchi-cozy-cotton-organic-blanket",
-      "proposedCategory": "home",
+      "slug": "le-creuset-staub-page-not-found",
+      "proposedCategory": "",
       "proposedAudience": "None",
       "flags": [
-        "only 2 image(s)"
+        "only 1 image(s)",
+        "empty prices"
       ]
     },
     {
       "rowIndex": 11,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Coyuchi Conserve Organic Paperless Towels",
-      "directUrl": "https://www.coyuchi.com/products/coyuchi-conserve-organic-paperless-towels-undyed-w-blue-jay",
-      "bucket": "needs-human",
-      "slug": "coyuchi-coyuchi-conserve-organic-paperless-towels",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Staub Dutch Oven (5.5-7qt round)",
+      "directUrl": "https://www.zwilling.com/us/staub/cast-iron/round-cocottes-dutch-ovens/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
     },
     {
       "rowIndex": 12,
@@ -158,12 +149,17 @@
     },
     {
       "rowIndex": 13,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Maple Garden Carry-All",
-      "directUrl": "https://www.shopterrain.com/shop/maple-garden-carry-all",
-      "bucket": "failed",
-      "error": "Source HTTP 403"
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Aritzia for a softer drape",
+      "directUrl": "https://www.aritzia.com/us/en/product/effortless-pant/77775.html",
+      "bucket": "needs-human",
+      "slug": "aritzia-the-effortless-pant-crepette-aritzia-us",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 14,
@@ -171,7 +167,7 @@
       "articleUrl": "",
       "anchor": "Rattan Cylinder Basket Planter",
       "directUrl": "https://www.shopterrain.com/shop/rattan-cylinder-basket-planter-1",
-      "bucket": "failed",
+      "bucket": "already-live",
       "error": "Source HTTP 403"
     },
     {
@@ -180,50 +176,35 @@
       "articleUrl": "",
       "anchor": "Botanical Arch Handle Basket",
       "directUrl": "https://www.shopterrain.com/shop/botanical-arch-handle-basket",
-      "bucket": "failed",
+      "bucket": "already-live",
       "error": "Source HTTP 403"
     },
     {
       "rowIndex": 16,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Alabax Small Surface Mount",
-      "directUrl": "https://schoolhouse.com/products/alabax-small-surface-mount",
-      "bucket": "needs-human",
-      "slug": "schoolhouse-alabax-small-surface-mount",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Knit Polo or Tee",
+      "directUrl": "https://www.reiss.com/us/en/style/su558947/n49742",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
     },
     {
       "rowIndex": 17,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Grant Mirror - Round",
-      "directUrl": "https://schoolhouse.com/products/grant-mirror",
-      "bucket": "needs-human",
-      "slug": "schoolhouse-grant-mirror-round",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Relaxed Trouser",
+      "directUrl": "https://www.cos.com/en-us/men/menswear/trousers/product/relaxed-fit-twill-trousers-black-1219005001",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
     },
     {
       "rowIndex": 18,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Miller Utility Cart",
-      "directUrl": "https://schoolhouse.com/products/miller-utility-cart",
-      "bucket": "needs-human",
-      "slug": "schoolhouse-miller-utility-cart",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Soft Overshirt",
+      "directUrl": "https://www.alexmill.com/products/mill-shirt-in-vintage-wash-cotton-twill-in-military-olive",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 19,
@@ -231,7 +212,7 @@
       "articleUrl": "",
       "anchor": "Recycled Paper Bind Grid Notebook",
       "directUrl": "https://www.muji.us/products/recycled-paper-bind-grid-notebook-9s62",
-      "bucket": "needs-human",
+      "bucket": "already-live",
       "slug": "muji-recycled-paper-bind-grid-notebook",
       "proposedCategory": "home",
       "proposedAudience": "None",
@@ -289,16 +270,16 @@
     },
     {
       "rowIndex": 24,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Pure Flake Sea Salt",
-      "directUrl": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Leather Conditioner",
+      "directUrl": "https://saphir.com/products/renovateur",
       "bucket": "needs-human",
-      "slug": "jacobsen-salt-co-pure-flake-sea-salt",
-      "proposedCategory": "provisions",
+      "slug": "saphir-renovateur",
+      "proposedCategory": "",
       "proposedAudience": "None",
       "flags": [
-        "only 2 image(s)"
+        "empty prices"
       ]
     },
     {
@@ -307,7 +288,7 @@
       "articleUrl": "",
       "anchor": "Pure Flake Sea Salt Slide Tin",
       "directUrl": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
-      "bucket": "needs-human",
+      "bucket": "already-live",
       "slug": "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
       "proposedCategory": "provisions",
       "proposedAudience": "None",
@@ -353,17 +334,12 @@
     },
     {
       "rowIndex": 29,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Royal Cinnamon",
-      "directUrl": "https://www.burlapandbarrel.com/products/royal-cinnamon",
-      "bucket": "needs-human",
-      "slug": "burlap-and-barrel-royal-cinnamon",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "P.F. Candle Co. for an everyday version",
+      "directUrl": "https://pfcandleco.com/products/teakwood-tobacco-soy-candle",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 30,
@@ -415,45 +391,30 @@
     },
     {
       "rowIndex": 34,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Women's Crossbody Bag in Leather, Black Cherry",
-      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr281pv0001pu183gb",
-      "bucket": "needs-human",
-      "slug": "il-bisonte-fausta-medium-women-s-crossbody-bag-leather-color-black-cherry",
-      "proposedCategory": "accessories",
-      "proposedAudience": "Womens only",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "G.H. Bass Weejuns for the original at half the price",
+      "directUrl": "https://www.ghbass.com/products/whitney-weejuns-penny-loafers-black-leather",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 35,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Archive 1970 Crossbody Bag",
-      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr406tcv001bl404gb",
-      "bucket": "needs-human",
-      "slug": "il-bisonte-archive-1970-women-s-crossbody-bag-fabric-color-blue-natural",
-      "proposedCategory": "accessories",
-      "proposedAudience": "Womens only",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Heavyweight Crewneck Knit",
+      "directUrl": "https://naadam.co/products/mens-cashmere-sweater",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 36,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Boat and Tote, Zip-Top",
-      "directUrl": "https://www.llbean.com/llb/shop/37037?page=boat-and-tote-bag-zip-top",
-      "bucket": "needs-human",
-      "slug": "l-l-bean-boat-and-tote-zip-top",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None",
-      "flags": [
-        "only 0 image(s)"
-      ]
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Leather Derby or Loafer",
+      "directUrl": "https://www.margarethowell.co.uk/men/shoes/mhl-plain-derby-shoe-black-mlf1052",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 37,
@@ -505,17 +466,12 @@
     },
     {
       "rowIndex": 41,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Chatelet Air 2.0 Carry-on Plus Spinner",
-      "directUrl": "https://us.delsey.com/products/401676805-chatelet-air-20-20inch-carry-on-spinner",
-      "bucket": "needs-human",
-      "slug": "delsey-chatelet-air-2-0-carry-on-plus-spinner",
-      "proposedCategory": "travel",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Linen Napkin Set",
+      "directUrl": "https://food52.com/shop/products/8393-five-two-everyday-soft-cotton-napkins",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
     },
     {
       "rowIndex": 42,
@@ -603,17 +559,12 @@
     },
     {
       "rowIndex": 49,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "A5 Recycled Paper Double Ring Blank Notebook - Dark Grey",
-      "directUrl": "https://www.muji.us/products/recycled-paper-double-ring-blank-notebook-dark-grey-a5-9s62066",
-      "bucket": "needs-human",
-      "slug": "muji-a5-recycled-paper-double-ring-blank-notebook-dark-grey",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Contrast Shoe",
+      "directUrl": "https://www.commonprojects.com/products/original-achilles-low-in-leather-black-1528",
+      "bucket": "failed",
+      "error": "Network: page.goto: Timeout 20000ms exceeded."
     }
   ],
   "existingEntriesVoiceWarnings": [

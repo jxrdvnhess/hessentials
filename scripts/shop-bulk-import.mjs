@@ -1401,10 +1401,26 @@ async function runRetryMode(mode = "failed") {
     return;
   }
 
-  // 3. Re-read CSV to recover full row data
-  const csvText = await fs.readFile(ARGS.csv, "utf8");
+  // 3. Re-read CSV to recover full row data. Use the CSV path the
+  // report was generated from — defaulting to ARGS.csv (master) led
+  // to mismatched row lookups when retry ran against a chateau-adds
+  // report. Also build a URL→row map for resilient lookup; rowIndex
+  // alone is brittle when CSVs move around.
+  const reportCsv = report.csv
+    ? path.resolve(REPO_ROOT, report.csv)
+    : ARGS.csv;
+  const csvText = await fs.readFile(reportCsv, "utf8");
   const csvRows = asRecords(parseCsv(csvText));
   const byRowIndex = new Map(csvRows.map((r) => [r.__rowIndex, r]));
+  const byUrl = new Map(
+    csvRows
+      .filter((r) => (r["DIRECT PRODUCT URL FOR SALE"] ?? "").trim())
+      .map((r) => [
+        r["DIRECT PRODUCT URL FOR SALE"].trim(),
+        r,
+      ])
+  );
+  console.log(`  csv:    ${path.relative(REPO_ROOT, reportCsv)}`);
 
   // 4. Existing slug / draft sets — both grow as we stage
   const shopSource = await readShopFile();
@@ -1435,7 +1451,12 @@ async function runRetryMode(mode = "failed") {
 
   try {
     for (const prev of retryable) {
-      const row = byRowIndex.get(prev.rowIndex);
+      // Prefer URL match — survives row reordering and partial CSV
+      // edits. Fall back to rowIndex when URL is missing from the
+      // report (older reports may not have it).
+      const row =
+        (prev.directUrl && byUrl.get(prev.directUrl)) ||
+        byRowIndex.get(prev.rowIndex);
       if (!row) {
         updatedRows.push({
           ...prev,
