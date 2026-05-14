@@ -2331,6 +2331,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer",
+    name: "Moccamaster KBGV Coffee Maker – SCA/ECBC Certified Drip Brewer",
+    brand: "Moccamaster",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:38.994Z",
+    reason: "Excellent coffee without turning the counter into a lab. Durable, understandable, and emotionally warmer than most machines.",
+    priceRange: "$369",
+    url: "https://us.moccamaster.com/products/kbgv",
+    image: "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/472b4cc4da83f076.jpg",
+    images: [
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/472b4cc4da83f076.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/8cfd6c860e03522a.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/8cfd6c860e03522a.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/7e93ca0cbe5c24e3.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/7e93ca0cbe5c24e3.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/b80317da1e8b05a8.jpg",
+      "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/b80317da1e8b05a8.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
