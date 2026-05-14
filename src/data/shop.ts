@@ -2397,6 +2397,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "dragon-diffusion-triple-jump-small-dark-brown",
+    name: "Triple Jump Small Dark Brown",
+    brand: "Dragon Diffusion",
+    category: "accessories",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:46.530Z",
+    reason: "The leather softens instead of stiffening with age. Feels carried, not styled.",
+    priceRange: "$450",
+    url: "https://dragondiffusion.com/products/triple-jump-small-dark-brown-woven-leather-bag-handmade",
+    image: "/shop/dragon-diffusion-triple-jump-small-dark-brown/b671e2d565b00b85.jpg",
+    images: [
+      "/shop/dragon-diffusion-triple-jump-small-dark-brown/b671e2d565b00b85.jpg",
+      "/shop/dragon-diffusion-triple-jump-small-dark-brown/1292106579209720.jpg",
+      "/shop/dragon-diffusion-triple-jump-small-dark-brown/1292106579209720.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
