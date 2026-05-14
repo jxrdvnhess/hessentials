@@ -2212,6 +2212,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "farmhouse-pottery-olive-oil-bottle",
+    name: "Olive Oil Bottle",
+    brand: "Farmhouse Pottery",
+    category: "provisions",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:20.653Z",
+    reason: "A countertop object that changes the pace of cooking. Pouring becomes a small ritual instead of a reach for plastic.",
+    priceRange: "$85",
+    url: "https://www.farmhousepottery.com/products/olive-oil-bottle-1",
+    image: "/shop/farmhouse-pottery-olive-oil-bottle/07b169548e0ca265.jpg",
+    images: [
+      "/shop/farmhouse-pottery-olive-oil-bottle/07b169548e0ca265.jpg",
+      "/shop/farmhouse-pottery-olive-oil-bottle/d1157b9a6a43f824.jpg",
+      "/shop/farmhouse-pottery-olive-oil-bottle/d1157b9a6a43f824.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
