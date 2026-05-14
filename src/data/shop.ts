@@ -2435,6 +2435,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "filson-small-rugged-twill-duffle-bag-tan",
+    name: "Small Rugged Twill Duffle Bag - Tan",
+    brand: "Filson",
+    category: "accessories",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:51.178Z",
+    reason: "Looks better after use than it does new. That is the whole travel test.",
+    priceRange: "$495",
+    url: "https://www.filson.com/products/small-rugged-twill-duffle-bag-tan",
+    image: "/shop/filson-small-rugged-twill-duffle-bag-tan/5cadad73670e43b9.jpg",
+    images: [
+      "/shop/filson-small-rugged-twill-duffle-bag-tan/5cadad73670e43b9.jpg",
+      "/shop/filson-small-rugged-twill-duffle-bag-tan/b7d71a2c153f49b7.jpg",
+      "/shop/filson-small-rugged-twill-duffle-bag-tan/b7d71a2c153f49b7.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
