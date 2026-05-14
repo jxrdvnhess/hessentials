@@ -2231,6 +2231,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "farmhouse-pottery-silo-garlic-keeper",
+    name: "Silo Garlic Keeper",
+    brand: "Farmhouse Pottery",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:21.255Z",
+    reason: "Keeps the garlic visible in the right way. Functional storage with enough warmth to live outside the cabinet.",
+    priceRange: "$145",
+    url: "https://www.farmhousepottery.com/products/silo-garlic-keeper",
+    image: "/shop/farmhouse-pottery-silo-garlic-keeper/52208163867abacd.jpg",
+    images: [
+      "/shop/farmhouse-pottery-silo-garlic-keeper/52208163867abacd.jpg",
+      "/shop/farmhouse-pottery-silo-garlic-keeper/49d80421868972f0.jpg",
+      "/shop/farmhouse-pottery-silo-garlic-keeper/49d80421868972f0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
