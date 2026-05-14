@@ -2288,6 +2288,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-mk-free-board",
+    name: "The MK Free Board",
+    brand: "Material Kitchen",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:34.616Z",
+    reason: "A cutting board should be easy to reach and easy to clean. This keeps the kitchen moving.",
+    priceRange: "$52",
+    url: "https://materialkitchen.com/products/the-mk-free-board",
+    image: "/shop/material-kitchen-the-mk-free-board/537e84eab78393df.jpg",
+    images: [
+      "/shop/material-kitchen-the-mk-free-board/537e84eab78393df.jpg",
+      "/shop/material-kitchen-the-mk-free-board/4f5e134963344ce5.jpg",
+      "/shop/material-kitchen-the-mk-free-board/477245e78a4afc02.jpg",
+      "/shop/material-kitchen-the-mk-free-board/6d506f8b4d3de0b4.jpg",
+      "/shop/material-kitchen-the-mk-free-board/5ba2057f8e502dcf.jpg",
+      "/shop/material-kitchen-the-mk-free-board/3112aac5c8039691.jpg",
+      "/shop/material-kitchen-the-mk-free-board/4ebbc17920cf9368.jpg",
+      "/shop/material-kitchen-the-mk-free-board/25c6b299d8fee1fd.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
