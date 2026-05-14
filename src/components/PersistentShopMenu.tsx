@@ -78,15 +78,21 @@ const AUDIENCE_PILLARS = new Set<Category>(["mens", "womens"]);
  * so the menu (a client component) can decide visibility without
  * importing the server-only essay/markdown layer of lib/shop.ts.
  */
+/**
+ * Live (non-draft) products. The menu is a public read path, so
+ * staged drafts must not surface as visible pillars or subcategories.
+ */
+const LIVE_MENU_PRODUCTS = SHOP_PRODUCTS.filter((p) => p.draft !== true);
+
 function pillarHasProducts(pillar: Category): boolean {
   if (AUDIENCE_PILLARS.has(pillar)) {
-    return SHOP_PRODUCTS.some(
+    return LIVE_MENU_PRODUCTS.some(
       (p) =>
         p.category === pillar ||
         (p.audience ?? []).includes(pillar as "mens" | "womens")
     );
   }
-  return SHOP_PRODUCTS.some((p) => p.category === pillar);
+  return LIVE_MENU_PRODUCTS.some((p) => p.category === pillar);
 }
 
 /**
@@ -107,7 +113,7 @@ function presentSubcategories(pillar: Category): string[] {
         (p.audience ?? []).includes(pillar as "mens" | "womens")
       : p.category === pillar;
   const present = new Set<string>();
-  for (const p of SHOP_PRODUCTS) {
+  for (const p of LIVE_MENU_PRODUCTS) {
     if (inPillar(p) && p.subcategory) present.add(p.subcategory);
   }
   const canonical = CATEGORY_TREE[pillar]?.subcategories ?? [];

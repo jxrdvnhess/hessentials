@@ -59,7 +59,9 @@ const SUBCATEGORIES_BY_CATEGORY: Record<Category, string[]> = (() => {
     // to a plain string set for `.has()` against runtime subcategories.
     const canonical = new Set<string>(CATEGORY_TREE[cat].subcategories);
     const present = new Set<string>(
-      SHOP_PRODUCTS.filter((p) => p.category === cat).map((p) => p.subcategory)
+      SHOP_PRODUCTS.filter(
+        (p) => p.category === cat && p.draft !== true
+      ).map((p) => p.subcategory)
     );
     const ordered: string[] = [];
     for (const s of CATEGORY_TREE[cat].subcategories) {
@@ -380,21 +382,26 @@ export default function ShopGrid({
   // order (deterministic, hydration-safe); after mount we swap to a freshly
   // shuffled array so every arrival feels like a new editorial spread when
   // the visitor lands on "All". Specific category filters keep their
-  // declared order — narrowing should feel predictable.
-  const [shuffled, setShuffled] = useState<ShopProduct[]>(SHOP_PRODUCTS);
+  // declared order — narrowing should feel predictable. Drafts (bulk
+  // import staging records) are excluded from every public path.
+  const LIVE = useMemo(
+    () => SHOP_PRODUCTS.filter((p) => p.draft !== true),
+    []
+  );
+  const [shuffled, setShuffled] = useState<ShopProduct[]>(LIVE);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setShuffled(shuffleArray(SHOP_PRODUCTS));
-  }, []);
+    setShuffled(shuffleArray(LIVE));
+  }, [LIVE]);
 
   const products = useMemo(() => {
     let list =
       filter === "All"
         ? shuffled
-        : SHOP_PRODUCTS.filter((p) => p.category === filter);
+        : LIVE.filter((p) => p.category === filter);
     if (subFilter) list = list.filter((p) => p.subcategory === subFilter);
     return list;
-  }, [filter, subFilter, shuffled]);
+  }, [filter, subFilter, shuffled, LIVE]);
 
   /** Clear subcategory filter whenever the top-level changes — a sub
    *  selection rarely makes sense across categories. */

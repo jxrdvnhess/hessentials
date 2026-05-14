@@ -62,7 +62,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // ---------- Dynamic — shop products ----------
-  const shopRoutes: MetadataRoute.Sitemap = SHOP_PRODUCTS.map((p) => ({
+  // Drafts are excluded — they have no public route until promoted.
+  const shopRoutes: MetadataRoute.Sitemap = SHOP_PRODUCTS.filter(
+    (p) => p.draft !== true
+  ).map((p) => ({
     url: `${SITE}/shop/${p.slug}`,
     lastModified: now,
     priority: 0.6,

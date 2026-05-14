@@ -24,6 +24,18 @@ const ESSAY_DIR = path.join(process.cwd(), "content", "shop", "essays");
 const AUDIENCE_PILLARS = new Set<Category>(["mens", "womens"]);
 
 /**
+ * The public-facing list. Drops anything marked `draft: true` — those
+ * entries are mechanically staged by the bulk import flow and live
+ * only inside /admin/shop-drafts until a human promotes them.
+ *
+ * Every public read path should source from this, not from
+ * SHOP_PRODUCTS directly.
+ */
+export const LIVE_PRODUCTS: readonly ShopProduct[] = SHOP_PRODUCTS.filter(
+  (p) => p.draft !== true
+);
+
+/**
  * Return the products that belong to a pillar.
  *
  * For mens / womens: the union of `category === pillar` and any
@@ -32,17 +44,17 @@ const AUDIENCE_PILLARS = new Set<Category>(["mens", "womens"]);
  * surfaces in both routes without being duplicated in the data).
  *
  * Source order is preserved so curated arrangements in shop.ts
- * carry through.
+ * carry through. Drafts are excluded — see LIVE_PRODUCTS.
  */
 export function productsForPillar(pillar: Category): ShopProduct[] {
   if (AUDIENCE_PILLARS.has(pillar)) {
-    return SHOP_PRODUCTS.filter(
+    return LIVE_PRODUCTS.filter(
       (p) =>
         p.category === pillar ||
         (p.audience ?? []).includes(pillar as "mens" | "womens")
     );
   }
-  return SHOP_PRODUCTS.filter((p) => p.category === pillar);
+  return LIVE_PRODUCTS.filter((p) => p.category === pillar);
 }
 
 /** Pillar membership + subcategory match (case-insensitive). */

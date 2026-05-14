@@ -58,6 +58,12 @@ export type NewShopEntry = {
   extractionMethod: ExtractionMethod;
   htmlPriceSelector?: string;
   priceFloor?: number;
+  /**
+   * Staging flag for the bulk-import flow. When `true`, the entry is
+   * held back from public read paths until promoted via the drafts
+   * admin. Omitted / `false` for live entries.
+   */
+  draft?: boolean;
 };
 
 const SHOP_FILE = path.join(process.cwd(), "src", "data", "shop.ts");
@@ -115,6 +121,9 @@ export function formatEntry(entry: NewShopEntry): string {
   if (typeof entry.priceFloor === "number" && entry.priceFloor > 0) {
     lines.push(`    priceFloor: ${entry.priceFloor},`);
   }
+  if (entry.draft === true) {
+    lines.push(`    draft: true,`);
+  }
   lines.push(`  },`);
   return lines.join("\n");
 }
@@ -140,14 +149,15 @@ export async function readExistingSlugs(): Promise<Set<string>> {
 /**
  * Append the entry to SHOP_PRODUCTS in src/data/shop.ts.
  *
- * Anchor: the closing `\n];\n\nexport function getProductBySlug` that
- * follows SHOP_PRODUCTS. We assert the anchor matches exactly once —
- * if the file shape changes upstream, this throws loudly rather than
- * silently inserting at the wrong place.
+ * Anchor: the literal `\n];\n` that closes SHOP_PRODUCTS. The data
+ * file has exactly one such line (verified by the duplicate-match
+ * guard below). Keying on just the array close — rather than on
+ * what comes after it — keeps the writer robust to comment edits
+ * on the downstream `getProductBySlug` export.
  */
 export async function appendShopEntry(entry: NewShopEntry): Promise<void> {
   const source = await fs.readFile(SHOP_FILE, "utf8");
-  const ANCHOR = "\n];\n\nexport function getProductBySlug";
+  const ANCHOR = "\n];\n";
   const idx = source.indexOf(ANCHOR);
   if (idx === -1) {
     throw new Error(
@@ -287,6 +297,59 @@ export async function deleteShopEntry(slug: string): Promise<void> {
   const out = [
     ...lines.slice(0, range.start),
     ...lines.slice(range.end + 1),
+  ].join("\n");
+  await fs.writeFile(SHOP_FILE, out, "utf8");
+}
+
+/**
+ * Flip the `draft` flag on a single entry without re-rendering the
+ * surrounding block. Used by /admin/shop-drafts — promoting an entry
+ * is conceptually a single-field edit, not a full PATCH, and a
+ * surgical edit preserves any manual touches the entry has accrued
+ * (whitespace, ordering, optional fields).
+ *
+ *   - `next === true`  → ensure `    draft: true,` is present just before
+ *     the closing `  },`. Idempotent.
+ *   - `next === false` → remove the existing `    draft: true,` line if
+ *     present. Idempotent.
+ *
+ * Throws if the slug isn't found, or is found more than once.
+ */
+export async function setDraftFlag(
+  slug: string,
+  next: boolean
+): Promise<void> {
+  const source = await fs.readFile(SHOP_FILE, "utf8");
+  const lines = source.split("\n");
+  const range = locateBlockLines(lines, slug);
+  if (!range) {
+    throw new Error(`shop.ts: no entry for slug "${slug}" (or duplicate).`);
+  }
+
+  const draftLine = "    draft: true,";
+  const existingDraftIdx = lines
+    .slice(range.start, range.end + 1)
+    .findIndex((l) => /^\s*draft:\s*true,?\s*$/.test(l));
+
+  if (next === true) {
+    if (existingDraftIdx !== -1) return; // already true
+    // Insert right before the closing `  },` line.
+    const insertAt = range.end;
+    const out = [
+      ...lines.slice(0, insertAt),
+      draftLine,
+      ...lines.slice(insertAt),
+    ].join("\n");
+    await fs.writeFile(SHOP_FILE, out, "utf8");
+    return;
+  }
+
+  // next === false → remove the draft line if present.
+  if (existingDraftIdx === -1) return;
+  const absoluteIdx = range.start + existingDraftIdx;
+  const out = [
+    ...lines.slice(0, absoluteIdx),
+    ...lines.slice(absoluteIdx + 1),
   ].join("\n");
   await fs.writeFile(SHOP_FILE, out, "utf8");
 }

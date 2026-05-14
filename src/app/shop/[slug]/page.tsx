@@ -3,13 +3,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
   CATEGORY_KEYS,
-  SHOP_PRODUCTS,
   getProductBySlug,
   categoryLabel,
   subcategoryLabel,
   type Category,
 } from "../../../data/shop";
-import { getShopEssay } from "../../../lib/shop";
+import { LIVE_PRODUCTS, getShopEssay } from "../../../lib/shop";
 import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
 import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
@@ -43,10 +42,12 @@ export const revalidate = 43200;
 
 export function generateStaticParams() {
   // Both pillar pages and product detail pages share this dynamic
-  // segment — pre-render both sets so SSG covers everything.
+  // segment — pre-render both sets so SSG covers everything. Drafts
+  // are excluded from prerender so their slugs don't 404-then-200 as
+  // they're promoted.
   return [
     ...CATEGORY_KEYS.map((slug) => ({ slug })),
-    ...SHOP_PRODUCTS.map((p) => ({ slug: p.slug })),
+    ...LIVE_PRODUCTS.map((p) => ({ slug: p.slug })),
   ];
 }
 

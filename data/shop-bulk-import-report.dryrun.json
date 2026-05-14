@@ -1,0 +1,1155 @@
+{
+  "generatedAt": "2026-05-14T20:07:58.740Z",
+  "mode": "dry-run-retry",
+  "csv": "data/shop-import-master.csv",
+  "counts": {
+    "staged-draft": 15,
+    "needs-human": 18,
+    "failed": 65,
+    "editorial-removal": 2,
+    "duplicate": 0,
+    "already-staged": 8,
+    "already-live": 4
+  },
+  "rows": [
+    {
+      "rowIndex": 2,
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Breville Bambino",
+      "directUrl": "https://www.breville.com/us/en/products/espresso/bes450.html",
+      "bucket": "staged-draft",
+      "slug": "breville-the-bambino",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 3,
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Breville Barista Express",
+      "directUrl": "https://www.breville.com/us/en/products/espresso/bes870.html",
+      "bucket": "staged-draft",
+      "slug": "breville-the-barista-express",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 4,
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Burr grinder ($120-$200)",
+      "directUrl": "https://www.baratza.com/en-us/product/encoretm-esp-zcg495",
+      "bucket": "staged-draft",
+      "slug": "baratza-suggested-encore-esp",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 5,
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Profitec Go",
+      "directUrl": "https://www.wholelattelove.com/products/profitec-go-espresso-machine",
+      "bucket": "staged-draft",
+      "slug": "profitec-profitec-go-espresso-machine",
+      "proposedCategory": "home",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 6,
+      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
+      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
+      "anchor": "Rancilio Silvia",
+      "directUrl": "https://www.ranciliogroupna.com/rancilio/silvia/",
+      "bucket": "needs-human",
+      "slug": "rancilio-silvia-pro-thermal-stability-rancilio-group-north-america",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 7,
+      "sourceArticle": "Stop buying plush blankets. Use cotton.",
+      "articleUrl": "https://hessentials.co/living/stop-buying-plush-blankets-use-cotton",
+      "anchor": "Bedsure Cotton Waffle Blanket",
+      "directUrl": "https://bedsurehome.com/products/cotton-waffle-blanket",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 8,
+      "sourceArticle": "Stop buying plush blankets. Use cotton.",
+      "articleUrl": "https://hessentials.co/living/stop-buying-plush-blankets-use-cotton",
+      "anchor": "Coyuchi Organic Cotton Blanket (herringbone)",
+      "directUrl": "https://www.coyuchi.com/products/topanga-organic-matelesse-blanket",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 9,
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Le Creuset Dutch Oven (5.5-7qt round)",
+      "directUrl": "https://www.lecreuset.com/round-dutch-oven/LS2501.html",
+      "bucket": "staged-draft",
+      "slug": "le-creuset-signature-round-dutch-oven",
+      "proposedCategory": "home",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 10,
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Stainless Replacement Knob (Le Creuset / Staub)",
+      "directUrl": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 11,
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Staub Dutch Oven (5.5-7qt round)",
+      "directUrl": "https://www.zwilling.com/us/staub/cast-iron/round-cocottes-dutch-ovens/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 12,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Abercrombie for a more accessible version",
+      "directUrl": "https://www.abercrombie.com/shop/us/p/crochet-style-johnny-collar-sweater-polo-58036319",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 13,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Aritzia for a softer drape",
+      "directUrl": "https://www.aritzia.com/us/en/product/effortless-pant/77775.html",
+      "bucket": "needs-human",
+      "slug": "aritzia-the-effortless-pant-crepette-aritzia-us",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 14,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Birkenstock Boston Suede for a more relaxed version",
+      "directUrl": "https://www.birkenstock.com/us/boston-soft-footbed-suede-leather/boston-suede-suedeleather-softfootbed-eva-u_46.html",
+      "bucket": "staged-draft",
+      "slug": "birkenstock-boston-soft-footbed-suede-leather",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 15,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "J.Crew for a simpler option",
+      "directUrl": "https://www.jcrew.com/p/mens/categories/clothing/shirts/secret-wash-shirts/secret-wash-cotton-poplin-shirt/BE996",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 16,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Knit Polo or Tee",
+      "directUrl": "https://www.reiss.com/us/en/style/su558947/n49742",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 17,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Relaxed Trouser",
+      "directUrl": "https://www.cos.com/en-us/men/menswear/trousers/product/relaxed-fit-twill-trousers-black-1219005001",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 18,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Soft Overshirt",
+      "directUrl": "https://www.alexmill.com/products/mill-shirt-in-vintage-wash-cotton-twill-in-military-olive",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 19,
+      "sourceArticle": "Casual is not a free pass",
+      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
+      "anchor": "Suede Everyday Shoe",
+      "directUrl": "https://www.clarks.com/en-us/wallabee/26155519-p",
+      "bucket": "staged-draft",
+      "slug": "clarks-wallabee",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 20,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Bickmore Bick 4 for a more accessible option",
+      "directUrl": "https://bickmore.com/products/bick-4-leather-conditioner-8oz",
+      "bucket": "needs-human",
+      "slug": "bickmore-bick-4-leather-conditioner",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 21,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Conair Turbo Extreme for an everyday version",
+      "directUrl": "https://www.conair.com/extremesteam-handheld-fabric-steamer/GS38R.html",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 22,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Handheld Garment Steamer",
+      "directUrl": "https://steamery.us/products/cirrus-2-handheld-steamer",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 23,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Kiwi for a basic alternative",
+      "directUrl": "https://www.kiwicare.com/en-us/products/kiwi-suede-nubuck-cleaner",
+      "bucket": "needs-human",
+      "slug": "kiwi-contact-us-sc-johnson",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "only 0 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 24,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Leather Conditioner",
+      "directUrl": "https://saphir.com/products/renovateur",
+      "bucket": "needs-human",
+      "slug": "saphir-renovateur",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 25,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Suede Brush + Eraser Kit",
+      "directUrl": "https://jasonmarkk.com/products/premium-suede-cleaning-kit",
+      "bucket": "staged-draft",
+      "slug": "jason-markk-premium-suede-cleaning-kit",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 26,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Compact Speaker",
+      "directUrl": "https://www.sonos.com/en-us/shop/era-100",
+      "bucket": "needs-human",
+      "slug": "sonos-era-100-the-next-gen-stereo-bookshelf-speaker-sonos",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 27,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Leviton Decora for a simpler install",
+      "directUrl": "https://www.leviton.com/en/products/d26hd-2rw",
+      "bucket": "needs-human",
+      "slug": "leviton-products",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 28,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Marshall Stanmore III for warmer character",
+      "directUrl": "https://www.marshall.com/us/en/product/stanmore-iii",
+      "bucket": "staged-draft",
+      "slug": "marshall-stanmore-iii",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 29,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "P.F. Candle Co. for an everyday version",
+      "directUrl": "https://pfcandleco.com/products/teakwood-tobacco-soy-candle",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 30,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Schott Zwiesel Pure for an everyday version",
+      "directUrl": "https://www.crateandbarrel.com/schott-zwiesel-pure-cabernet-wine-glass/s172144",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 31,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Smart Dimmers",
+      "directUrl": "https://www.casetawireless.com/us/en/products/dimmers-switches/diva-smart-dimmer-switch",
+      "bucket": "needs-human",
+      "slug": "lutron-caseta-diva-smart-dimmer-switch-caseta-by-lutron",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 32,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Tuberose or Wood Candle",
+      "directUrl": "https://www.diptyqueparis.com/en_us/p/tubereuse-tuberose-candle-190g.html",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 33,
+      "sourceArticle": "People can feel when it's forced",
+      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
+      "anchor": "Universal Wine Glass",
+      "directUrl": "https://shop.zalto.co/products/zalto-denkart-universal-glass",
+      "bucket": "failed",
+      "error": "Network: page.goto: net::ERR_NAME_NOT_RESOLVED at https://shop.zalto.co/products/zalto-denkart-universal-glass\nCall log:\n\u001b[2m  - navigating to \"https://shop.zalto.co/products/zalto-denkart-universal-glass\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "rowIndex": 34,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "G.H. Bass Weejuns for the original at half the price",
+      "directUrl": "https://www.ghbass.com/products/whitney-weejuns-penny-loafers-black-leather",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 35,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Heavyweight Crewneck Knit",
+      "directUrl": "https://naadam.co/products/mens-cashmere-sweater",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 36,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Leather Derby or Loafer",
+      "directUrl": "https://www.margarethowell.co.uk/men/shoes/mhl-plain-derby-shoe-black-mlf1052",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 37,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Toteme for a more elevated version",
+      "directUrl": "https://toteme-studio.com/products/signature-trousers-black",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 38,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Uniqlo for an everyday version",
+      "directUrl": "https://www.uniqlo.com/us/en/products/E450535-000/00",
+      "bucket": "staged-draft",
+      "slug": "uniqlo-merino-sweater",
+      "proposedCategory": "",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 39,
+      "sourceArticle": "Style is not gendered",
+      "articleUrl": "https://hessentials.co/style/style-is-not-gendered",
+      "anchor": "Wide-Leg Wool Trouser",
+      "directUrl": "https://www.cos.com/en-us/women/womenswear/trousers/product/wide-leg-tailored-wool-trousers-black-1220394001",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 40,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Crate & Barrel for a classic version",
+      "directUrl": "https://www.crateandbarrel.com/mercer-dinner-plate/s237329",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 41,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Linen Napkin Set",
+      "directUrl": "https://food52.com/shop/products/8393-five-two-everyday-soft-cotton-napkins",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 42,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Matte Ceramic Dishware",
+      "directUrl": "https://fable.com/products/dinner-plates",
+      "bucket": "needs-human",
+      "slug": "fable-home-premium-dinnerware-for-every-occasion",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 43,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Naadam for a softer more premium feel",
+      "directUrl": "https://naadam.co/products/mens-cashmere-sweater",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 44,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Suede Loafer",
+      "directUrl": "https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/",
+      "bucket": "failed",
+      "error": "Network: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/\nCall log:\n\u001b[2m  - navigating to \"https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "rowIndex": 45,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Textured Knit Sweater",
+      "directUrl": "https://www.everlane.com/products/mens-cotton-crew-sweater",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 46,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Vince for a more accessible version",
+      "directUrl": "https://www.vince.com/product/oasis-suede-sneaker-MF9735685.html",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 47,
+      "sourceArticle": "Texture is the outfit",
+      "articleUrl": "https://hessentials.co/style/texture-is-the-outfit",
+      "anchor": "Zara Home for a simpler option",
+      "directUrl": "https://www.zarahome.com/us/washed-linen-napkin-l42230022",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 48,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "COS for a cleaner silhouette",
+      "directUrl": "https://www.cos.com/en-us/men/menswear/tshirts/regular-fit/product/boat-neck-cotton-t-shirt-white-1336154001",
+      "bucket": "already-live"
+    },
+    {
+      "rowIndex": 49,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Contrast Shoe",
+      "directUrl": "https://www.commonprojects.com/products/original-achilles-low-in-leather-black-1528",
+      "bucket": "failed",
+      "error": "Network: page.goto: Timeout 20000ms exceeded."
+    },
+    {
+      "rowIndex": 50,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Everlane for a more accessible version",
+      "directUrl": "https://www.everlane.com/products/mens-slim-oxford-navy-bone",
+      "bucket": "already-live"
+    },
+    {
+      "rowIndex": 51,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Madewell for a more accessible price point",
+      "directUrl": "https://www.madewell.com/p/womens/accessories/jewelry/earrings/chunky-small-hoop-earrings/NN563/",
+      "bucket": "needs-human",
+      "slug": "madewell-kule-the-twiggy-cardigan-sweater",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 52,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Minimal Accessory",
+      "directUrl": "https://mejuri.com/products/bold-hoops",
+      "bucket": "needs-human",
+      "slug": "mejuri-bold-huggie-hoops",
+      "proposedCategory": "accessories",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 53,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Structured Base Tee",
+      "directUrl": "https://www.buckmason.com/products/white-field-spec-cotton-heavy-tee",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 54,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Tailored Trouser",
+      "directUrl": "https://www.theory.com/men/pants/zaine-pant-in-precision-ponte/L0197236_XHX.html",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 55,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Textured Layer",
+      "directUrl": "https://www.alexmill.com/products/garment-dyed-work-jacket-in-linen-in-pine-grove",
+      "bucket": "already-live"
+    },
+    {
+      "rowIndex": 56,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Uniqlo for a budget version",
+      "directUrl": "https://www.uniqlo.com/us/en/products/E450251-000/00?colorDisplayCode=32&sizeDisplayCode=029&pldDisplayCode=034",
+      "bucket": "already-live"
+    },
+    {
+      "rowIndex": 57,
+      "sourceArticle": "The 5-piece rule",
+      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
+      "anchor": "Veja V-10 in black for a softer alternative",
+      "directUrl": "https://www.allsaints.com/us/men/boots-and-shoes/sneakers/brody-leather-low-top-sneakers/USM086FB-5.html",
+      "bucket": "staged-draft",
+      "slug": "veja-brody-leather-low-top-sneakers-black-allsaints-us",
+      "proposedCategory": "accessories",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 58,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Classic White Button-Down",
+      "directUrl": "https://toteme-studio.com/products/boxy-pocket-shirt-white",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 59,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Crewneck Cashmere",
+      "directUrl": "https://naadam.co/products/mens-cashmere-sweater",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 60,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Everlane Relaxed Oxford for an everyday version",
+      "directUrl": "https://www.everlane.com/products/mens-relaxed-oxford-shirt-white",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 61,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Levi's 501 — the original still correct",
+      "directUrl": "https://www.levi.com/US/en_US/clothing/men/jeans/straight/501-original-fit-mens-jeans/p/005013482",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 62,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Straight-Leg Denim",
+      "directUrl": "https://agolde.com/products/90s-pinch-waist-high-rise-straight-fall-out",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 63,
+      "sourceArticle": "The anti-trend rule",
+      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
+      "anchor": "Uniqlo 100% Cashmere for a more accessible option",
+      "directUrl": "https://www.uniqlo.com/us/en/products/E450535-000/00",
+      "bucket": "staged-draft",
+      "slug": "uniqlo-merino-sweater-2",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 64,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "Classic Easy Tote",
+      "directUrl": "https://cuyana.com/products/classic-easy-tote",
+      "bucket": "staged-draft",
+      "slug": "cuyana-classic-easy-tote",
+      "proposedCategory": "accessories",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 65,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "Compact Crossbody",
+      "directUrl": "REMOVE FROM ARTICLE",
+      "bucket": "editorial-removal"
+    },
+    {
+      "rowIndex": 66,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "L.L.Bean Boat & Tote (zip-top) for the same logic at a third of the cost",
+      "directUrl": "https://www.llbean.com/llb/shop/37037",
+      "bucket": "needs-human",
+      "slug": "l-l-bean-boat-and-tote-zip-top",
+      "proposedCategory": "accessories",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 67,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "Madewell Transport for a more accessible version",
+      "directUrl": "https://www.madewell.com/p/womens/accessories/bags/totes/the-medium-transport-tote/F5788/",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 68,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "Mansur Gavriel Mini Tote for a softer-shape alternative",
+      "directUrl": "https://www.mansurgavriel.com/products/small-zip-tote-black-flamma",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 69,
+      "sourceArticle": "The bag sets the tone",
+      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
+      "anchor": "Waxed Canvas Carryall",
+      "directUrl": "https://www.filson.com/small-rugged-twill-field-bag.html",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 70,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "California Olive Ranch in a refilled bottle",
+      "directUrl": "https://www.californiaoliveranch.com/products/100-california-extra-virgin-olive-oil",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 71,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Crate & Barrel for a more accessible price point",
+      "directUrl": "https://www.crateandbarrel.com/mercer-blue-stripe-organic-cotton-napkin/s442717",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 72,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Crate & Barrel for a thinner-rim alternative",
+      "directUrl": "https://www.crateandbarrel.com/marin-white-dinner-plate/s402006",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 73,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Flake Salt",
+      "directUrl": "https://www.williams-sonoma.com/products/maldon-salt/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 74,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Jacobsen for an American-made version",
+      "directUrl": "https://jacobsensalt.com/products/flake-finishing-salt",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 75,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Linen Napkins",
+      "directUrl": "https://hawkinsnewyork.com/products/simple-linen-napkins-set-of-4",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 76,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Olive Oil Bottle with Pour Spout",
+      "directUrl": "https://brightland.co/products/awake",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 77,
+      "sourceArticle": "The dinner plate is a style object",
+      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
+      "anchor": "Wide-Rim White Dinnerware",
+      "directUrl": "https://fable.com/products/dinner-plates",
+      "bucket": "needs-human",
+      "slug": "fable-home-premium-dinnerware-for-every-occasion",
+      "proposedCategory": "home",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 78,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "CB2 for a cleaner profile",
+      "directUrl": "https://www.cb2.com/bell-white-table-lamp/s516237",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 79,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Catchall Tray",
+      "directUrl": "https://hawkinsnewyork.com/products/simple-marble-tray",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 80,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Ceramic Table Lamp",
+      "directUrl": "https://cedarandmoss.com/products/luna-table-lamp",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 81,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Crate & Barrel for a basic version",
+      "directUrl": "https://www.crateandbarrel.com/french-kitchen-marble-rectangular-tray/s467364",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 82,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Floor-Length Mirror",
+      "directUrl": "https://www.westelm.com/products/mid-century-floor-mirror-h4053/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 83,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "IKEA Hovet for the same effect at a fraction of the price",
+      "directUrl": "https://www.ikea.com/us/en/p/hovet-mirror-aluminum-50038213/",
+      "bucket": "needs-human",
+      "slug": "ikea-products",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "only 0 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 84,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Rejuvenation for similar quality",
+      "directUrl": "https://www.rejuvenation.com/products/ladd-wall-hook/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 85,
+      "sourceArticle": "The entryway test",
+      "articleUrl": "https://hessentials.co/style/the-entryway-test",
+      "anchor": "Wall-Mounted Brass Hook",
+      "directUrl": "https://www.schoolhouse.com/products/classic-hook",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 86,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Acqua di Parma Colonia for a more affordable classic",
+      "directUrl": "https://www.acquadiparma.com/en-us/p/colonia-eau-de-cologne-COLONIAEDC.html",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 87,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Eau de Cologne",
+      "directUrl": "https://www.chanel.com/us/fragrance/p/102440/paris-biarritz-les-eaux-de-chanel-eau-de-toilette-spray/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 88,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Goldfield & Banks 'Velvet Splendour' for a softer take",
+      "directUrl": "https://us.goldfieldandbanks.com/products/velvet-splendour-perfume",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 89,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Maison Margiela Replica Jazz Club for similar warmth at half the price",
+      "directUrl": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-jazz-club/MM008.html",
+      "bucket": "needs-human",
+      "slug": "maison-margiela-just-a-moment",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "only 0 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 90,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Santal 33",
+      "directUrl": "https://www.lelabofragrances.com/santal-33-147.html",
+      "bucket": "needs-human",
+      "slug": "le-labo-le-labo-fragrances-santal-33-eau-de-parfum",
+      "proposedCategory": "grooming",
+      "proposedAudience": "None",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 91,
+      "sourceArticle": "The scent people remember",
+      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
+      "anchor": "Vetiver",
+      "directUrl": "FLAG FOR JORDAN: Sephora is too broad. Choose a specific vetiver house or remove this anchor.",
+      "bucket": "needs-human",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "FLAG FOR JORDAN: Sephora is too broad. Choose a specific vetiver house or remove this anchor."
+      ]
+    },
+    {
+      "rowIndex": 92,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Alex Mill for the same shape at half the price",
+      "directUrl": "https://www.alexmill.com/products/work-jacket-in-cotton-twill-in-military-olive",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 93,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Field Watch",
+      "directUrl": "https://www.hamiltonwatch.com/en-us/h69439931-khaki-field-mechanical.html",
+      "bucket": "already-staged"
+    },
+    {
+      "rowIndex": 94,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Sezane for a softer more accessible version",
+      "directUrl": "https://www.sezane.com/us/product/andre-loafers/smooth-black",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 95,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Suede Loafer",
+      "directUrl": "https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/",
+      "bucket": "failed",
+      "error": "Network: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/\nCall log:\n\u001b[2m  - navigating to \"https://www.tods.com/us-en/Gommino-Driving-Shoes-in-Suede/p/XXM0GW0Q700RE0S800/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "rowIndex": 96,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Timex Marlin for a vintage-feel alternative",
+      "directUrl": "https://timex.com/products/marlin-hand-wound-34mm-leather-strap-watch-tw2t18200",
+      "bucket": "staged-draft",
+      "slug": "timex-watches-from-timex-digital-analog-and-water-resistant",
+      "proposedCategory": "accessories",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 97,
+      "sourceArticle": "The signature piece",
+      "articleUrl": "https://hessentials.co/style/the-signature-piece",
+      "anchor": "Workwear-Cut Chore Coat",
+      "directUrl": "https://www.margarethowell.co.uk/men/clothing/jackets/mhl-cotton-drill-work-jacket-navy-mhl2059",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 98,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "COS for a slightly more minimal cut",
+      "directUrl": "https://www.cos.com/en-us/men/menswear/tshirts/regular-fit/product/heavyweight-cotton-t-shirt-white-1204990001",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 99,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Heavyweight Structured Tee",
+      "directUrl": "https://www.buckmason.com/products/white-field-spec-cotton-heavy-tee",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 100,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Lululemon for a softer more flexible version",
+      "directUrl": "https://shop.lululemon.com/p/men-pants/ABC-Classic-Fit-Trouser-32/_/prod11500060",
+      "bucket": "failed",
+      "error": "Network: page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://shop.lululemon.com/p/men-pants/ABC-Classic-Fit-Trouser-32/_/prod11500060\nCall log:\n\u001b[2m  - navigating to \"https://shop.lululemon.com/p/men-pants/ABC-Classic-Fit-Trouser-32/_/prod11500060\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "rowIndex": 101,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Minimal Leather Sneaker",
+      "directUrl": "https://www.commonprojects.com/products/original-achilles-low-in-leather-white-1528",
+      "bucket": "failed",
+      "error": "Network: page.goto: net::ERR_CONNECTION_CLOSED at https://www.commonprojects.com/products/original-achilles-low-in-leather-white-1528\nCall log:\n\u001b[2m  - navigating to \"https://www.commonprojects.com/products/original-achilles-low-in-leather-white-1528\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "rowIndex": 102,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "New Balance 990 if you want comfort first",
+      "directUrl": "https://www.newbalance.com/pd/made-in-usa-990v6/M990V6-43021.html",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 103,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Relaxed Tailored Trouser",
+      "directUrl": "https://www.cos.com/en-us/men/menswear/trousers/product/relaxed-fit-twill-trousers-black-1219005001",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 104,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Soft Structured Jacket",
+      "directUrl": "https://www.aloyoga.com/products/m4246r-triumph-bomber-black",
+      "bucket": "needs-human",
+      "proposedCategory": "",
+      "proposedAudience": "None",
+      "flags": [
+        "FLAG FOR JORDAN: Alo may be too activewear-coded for the permanent archive. This only works if the article wants softness and ease more than tailoring."
+      ]
+    },
+    {
+      "rowIndex": 105,
+      "sourceArticle": "The uniform is not boring",
+      "articleUrl": "https://hessentials.co/style/the-uniform-is-not-boring",
+      "anchor": "Theory if you want it sharper",
+      "directUrl": "https://www.theory.com/men/jackets-blazers/clinton-blazer-in-precision-ponte/N0197236_XHX.html",
+      "bucket": "failed",
+      "error": "Source HTTP 410"
+    },
+    {
+      "rowIndex": 106,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "CB2 for a cleaner profile",
+      "directUrl": "https://www.cb2.com/bell-white-table-lamp/s516237",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 107,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "Ceramic Table Lamp",
+      "directUrl": "https://cedarandmoss.com/products/luna-table-lamp",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 108,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "H&M Home for an everyday version",
+      "directUrl": "REMOVE FROM ARTICLE",
+      "bucket": "editorial-removal"
+    },
+    {
+      "rowIndex": 109,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "Heavyweight Linen Throw",
+      "directUrl": "https://www.the-citizenry.com/products/stonewashed-linen-bed-blanket",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 110,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "Linen-Blend Sofa",
+      "directUrl": "https://www.article.com/product/21247/sven-birch-ivory-sofa",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 111,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "Solid Wood Coffee Table",
+      "directUrl": "https://www.crateandbarrel.com/yukon-natural-coffee-table/s319269",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    },
+    {
+      "rowIndex": 112,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "Sundays for a softer more handmade feel",
+      "directUrl": "https://www.sundays-company.com/products/movie-night-sofa-cream-linen",
+      "bucket": "staged-draft",
+      "slug": "sundays-sundays-beautiful-furniture-made-for-real-life",
+      "proposedCategory": "",
+      "proposedAudience": "None"
+    },
+    {
+      "rowIndex": 113,
+      "sourceArticle": "Your home has an outfit too",
+      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
+      "anchor": "West Elm for more design variety",
+      "directUrl": "https://www.westelm.com/products/anton-solid-wood-coffee-table-h4546/",
+      "bucket": "failed",
+      "error": "Source HTTP 403"
+    }
+  ],
+  "existingEntriesVoiceWarnings": [
+    {
+      "slug": "aveda-pureformance-cream",
+      "reason": "Softer hold. Same trick — finish doesn’t read as done.",
+      "hits": [
+        "em dash"
+      ]
+    },
+    {
+      "slug": "ysl-myslf-edp",
+      "reason": "Orange blossom, vetiver. The brighter one — for when L’Homme is too quiet.",
+      "hits": [
+        "em dash"
+      ]
+    },
+    {
+      "slug": "esya-the-dune-set",
+      "reason": "White linen, yellow piping — enough to read as a set, not a uniform.",
+      "hits": [
+        "em dash"
+      ]
+    }
+  ]
+}

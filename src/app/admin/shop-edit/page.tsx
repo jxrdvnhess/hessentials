@@ -25,8 +25,10 @@ export default function AdminShopEditPage() {
 
   // `addedIndex` is the position in the canonical SHOP_PRODUCTS array.
   // The import flow appends new entries, so higher index ≈ more recently
-  // added. Used as the proxy for the Date added sort.
-  const items = SHOP_PRODUCTS.map((p, i) => ({
+  // added. Used as the proxy for the Date added sort. Drafts (bulk
+  // import staging records) live on /admin/shop-drafts — exclude them
+  // here so the live-edit list isn't polluted.
+  const items = SHOP_PRODUCTS.filter((p) => p.draft !== true).map((p, i) => ({
     slug: p.slug,
     name: p.name,
     brand: p.brand,

@@ -245,7 +245,11 @@ const STYLE_ITEMS: SearchItem[] = STYLE_ARTICLES.map((a) => ({
   description: a.dek || a.subtitle,
 }));
 
-const SHOP_ITEMS: SearchItem[] = SHOP_PRODUCTS.map((p) => ({
+// Drafts (bulk import staging records) are excluded — they have no
+// public route and shouldn't surface in the global search.
+const SHOP_ITEMS: SearchItem[] = SHOP_PRODUCTS.filter(
+  (p) => p.draft !== true
+).map((p) => ({
   title: p.name,
   section: "Shop" as const,
   url: "/shop",

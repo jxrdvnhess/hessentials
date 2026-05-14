@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import {
   SHOP_INTRO,
-  SHOP_PRODUCTS,
   SHOP_SUBTITLE,
   categoryLabel,
   type Category,
 } from "../../data/shop";
-import { productsForPillar } from "../../lib/shop";
+import { LIVE_PRODUCTS, productsForPillar } from "../../lib/shop";
 import ShopGallery from "../../components/ShopGallery";
 import DrillDownHero, { type DrillBlock } from "../../components/DrillDownHero";
 
@@ -90,7 +89,7 @@ export default function ShopPage() {
         aria-label="All products"
         className="mx-auto w-full max-w-7xl px-6 pb-32 sm:px-10 md:pb-40"
       >
-        <ShopGallery products={SHOP_PRODUCTS} />
+        <ShopGallery products={[...LIVE_PRODUCTS]} />
       </section>
 
       {/* ---------- Drill-down hero ---------- */}
