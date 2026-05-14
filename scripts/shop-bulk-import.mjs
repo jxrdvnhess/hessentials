@@ -897,6 +897,10 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
   const guess = row.product_name_guess ?? "";
   const thought = row["Chateau's Thoughts"] ?? "";
   const auditNote = row["audit_note (context)"] ?? "";
+  // Optional CSV columns — used as defaults when scrape comes up
+  // empty. Editorial pre-vetted data wins over scraper guesses.
+  const csvPrice = (row.csv_price ?? "").trim();
+  const csvCategory = (row.csv_category ?? "").trim();
 
   const base = {
     rowIndex: row.__rowIndex,
@@ -969,9 +973,15 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
       ? ["mens", "womens"]
       : [];
 
-  const category = proposeCategory(anchor, name);
+  // Category: heuristic guess, then CSV editorial value as fallback.
+  // Editorial wins over heuristic — Chateau's csv_category is more
+  // reliable than my URL-keyword scoring.
+  const category = proposeCategory(anchor, name) || csvCategory;
 
-  const priceRange = priceRangeFrom(scrape.prices);
+  // Price: scraped prices first, then CSV editorial value. Same logic
+  // — Chateau's approx_price is the trusted source when the scrape
+  // can't surface offers info.
+  const priceRange = priceRangeFrom(scrape.prices) || csvPrice;
   const extractionMethod = inferExtractionMethod(directUrl);
 
   const candidate = {
@@ -992,7 +1002,9 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
   const flags = [];
   if (scrape.images.length < 3) flags.push(`only ${scrape.images.length} image(s)`);
   if (isScreamingUppercase(scrape.name) && !guess) flags.push("mangled scraper name, no guess fallback");
-  if (!scrape.prices || scrape.prices.length === 0) flags.push("empty prices");
+  if ((!scrape.prices || scrape.prices.length === 0) && !csvPrice) {
+    flags.push("empty prices");
+  }
   if (DRAFT_REVIEW_PREFIX.test(thought)) flags.push("[DRAFT, NEEDS CHATEAU REVIEW]");
   if (AUDIT_FLAG_PREFIX.test(auditNote)) flags.push(`FLAG FOR JORDAN: ${auditNote.replace(/^FLAG FOR JORDAN:\s*/i, "").trim()}`);
 
