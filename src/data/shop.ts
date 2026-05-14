@@ -2269,6 +2269,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-coffee-mug-in-confetti",
+    name: "Coffee Mug in Confetti",
+    brand: "Felt + Fat",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:29.269Z",
+    reason: "A cheerful glaze that still feels adult. Good for mornings that need one charming thing, not a full personality.",
+    priceRange: "$48",
+    url: "https://www.feltandfat.com/products/coffee-mug-in-confetti",
+    image: "/shop/felt-fat-coffee-mug-in-confetti/332ff03d68ef36f8.jpg",
+    images: [
+      "/shop/felt-fat-coffee-mug-in-confetti/332ff03d68ef36f8.jpg",
+      "/shop/felt-fat-coffee-mug-in-confetti/b05059f93125d51b.jpg",
+      "/shop/felt-fat-coffee-mug-in-confetti/b05059f93125d51b.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
