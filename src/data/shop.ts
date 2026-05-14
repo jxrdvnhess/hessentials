@@ -2122,6 +2122,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "hawkins-new-york-essential-dinner-napkin-set-of-4-ivory",
+    name: "Essential Dinner Napkin, Set of 4 - Ivory",
+    brand: "Hawkins New York",
+    category: "home",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:44:07.207Z",
+    reason: "Casual enough for Tuesday, good enough for people you actually like. The fringe gives the table a little life.",
+    priceRange: "$48",
+    url: "https://www.hawkinsnewyork.com/products/essential-dinner-napkin-ivory",
+    image: "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/21fe1ac5bc3aa8da.jpg",
+    images: [
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/21fe1ac5bc3aa8da.jpg",
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/761174674a9c9c7a.jpg",
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/5926f5c5870ad20c.jpg",
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/106bbcde138c1d44.jpg",
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/6a4c555dc0c67482.jpg",
+      "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/1610a01ebb7ff14d.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
