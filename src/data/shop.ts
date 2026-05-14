@@ -2595,6 +2595,28 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "buck-mason-black-field-spec-cotton-heavy-tee",
+    name: "Black Field-Spec Cotton Heavy Tee",
+    brand: "Buck Mason",
+    category: "mens",
+    subcategory: "uncategorized",
+    dateAdded: "2026-05-14T20:45:03.896Z",
+    reason: "A T-shirt with enough weight to hold its shape. Basics only work when they do not collapse after one wear.",
+    priceRange: "$62",
+    url: "https://www.buckmason.com/products/black-field-spec-cotton-vintage-surplus-heavy-tee",
+    image: "/shop/buck-mason-black-field-spec-cotton-heavy-tee/9be0dfa333bbcc41.jpg",
+    images: [
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/9be0dfa333bbcc41.jpg",
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/1dfe9acbed07c7a7.jpg",
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/03d8dd549818a7f6.jpg",
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/249c064dc746d6f5.jpg",
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/fd09267760481248.jpg",
+      "/shop/buck-mason-black-field-spec-cotton-heavy-tee/8033927a3ff7be2c.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
