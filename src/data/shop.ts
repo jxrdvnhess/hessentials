@@ -2777,6 +2777,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "leatherology-large-tech-bag-organizer",
+    name: "Large Tech Bag Organizer Brown",
+    brand: "Leatherology",
+    category: "accessories",
+    subcategory: "tech organization",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:08.794Z",
+    reason: "Chargers are ugly. This keeps them from setting the tone.",
+    priceRange: "$125",
+    url: "https://www.leatherology.com/products/large-tech-bag-organizer-brown",
+    image: "/shop/leatherology-large-tech-bag-organizer/21407bcb9d7da209.jpg",
+    images: [
+      "/shop/leatherology-large-tech-bag-organizer/21407bcb9d7da209.jpg",
+      "/shop/leatherology-large-tech-bag-organizer/af539e1235952864.jpg",
+      "/shop/leatherology-large-tech-bag-organizer/af539e1235952864.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
