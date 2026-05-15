@@ -3301,6 +3301,27 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "coyuchi-three-season-down-duvet-insert",
+    name: "Three Season Down Duvet Insert",
+    brand: "Coyuchi",
+    category: "home",
+    subcategory: "bedding",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:00.231Z",
+    reason: "Warmth without synthetic bulk. The bed gets softer, not louder.",
+    priceRange: "$35.20–$718.40",
+    url: "https://www.coyuchi.com/products/three-season-down-duvet-insert-white",
+    image: "/shop/coyuchi-three-season-down-duvet-insert/866c947553a2df3a.jpg",
+    images: [
+      "/shop/coyuchi-three-season-down-duvet-insert/866c947553a2df3a.jpg",
+      "/shop/coyuchi-three-season-down-duvet-insert/022729170e06e222.jpg",
+      "/shop/coyuchi-three-season-down-duvet-insert/41d9903985f089ab.jpg",
+      "/shop/coyuchi-three-season-down-duvet-insert/866c947553a2df3a.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
