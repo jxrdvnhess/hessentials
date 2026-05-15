@@ -861,6 +861,25 @@ async function savePending(data) {
   await fs.writeFile(PENDING_FILE, JSON.stringify(data, null, 2) + "\n", "utf8");
 }
 
+/**
+ * Remove any pending entry whose `directUrl` matches `url`. Called
+ * after a successful stage — a URL that's now in shop.ts no longer
+ * belongs in the human-review queue. Without this step, the drafts
+ * admin page shows the same product twice: once as a staged draft
+ * and once as a pending entry.
+ *
+ * Returns true if anything was removed.
+ */
+async function cullPendingByUrl(url) {
+  if (!url) return false;
+  const pending = await loadPending();
+  const before = pending.entries.length;
+  pending.entries = pending.entries.filter((e) => e.directUrl !== url);
+  if (pending.entries.length === before) return false;
+  await savePending(pending);
+  return true;
+}
+
 // ----------------------------------------------------------------------
 // Per-row dispatch
 // ----------------------------------------------------------------------
@@ -1526,6 +1545,10 @@ async function runRetryMode(mode = "failed") {
             existingSlugs.add(res.candidate.slug);
             existingDrafts.add(res.candidate.slug);
             stagedThisRun.set(res.candidate.url, res.candidate.slug);
+            // A previous run may have routed this URL to pending. Now
+            // that it's staged in shop.ts, prune the stale pending
+            // entry so /admin/shop-drafts doesn't show it twice.
+            await cullPendingByUrl(res.candidate.url);
             res.imagesSaved = imgs.saved;
             const commit = gitCommit(res.candidate.slug);
             if (commit && typeof commit === "string") res.commitHash = commit;
@@ -1973,6 +1996,10 @@ async function main() {
           existingSlugs.add(res.candidate.slug);
           existingDrafts.add(res.candidate.slug);
           urlToSlug.set(url, res.candidate.slug);
+          // Prune any stale pending entry pointing at this URL — a
+          // previous run may have routed it to needs-human before
+          // this run staged it.
+          await cullPendingByUrl(res.candidate.url);
           res.imagesSaved = imgs.saved;
           res.imageFailures = imgs.failed;
           const commit = gitCommit(res.candidate.slug);

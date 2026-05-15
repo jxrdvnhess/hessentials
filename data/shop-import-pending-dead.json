@@ -1,0 +1,58 @@
+{
+  "entries": [
+    {
+      "rowIndex": 10,
+      "sourceArticle": "The one pot that does everything",
+      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
+      "anchor": "Stainless Replacement Knob (Le Creuset / Staub)",
+      "directUrl": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices",
+        "DEAD-URL \u2014 scraped a 404/contact page"
+      ],
+      "candidate": {
+        "slug": "le-creuset-staub-page-not-found",
+        "name": "Page Not Found",
+        "brand": "Le Creuset / Staub",
+        "category": "",
+        "audience": [],
+        "reason": "A small upgrade that changes the temperature of the whole object. It makes the pot feel more tool than collectible, which is exactly the correction.",
+        "priceRange": "",
+        "url": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
+        "images": [
+          "https://cdn.cookielaw.org/logos/77fcf17d-4688-47f1-8ab5-72c2238c6a20/01917148-9121-7acb-9e38-c546492da70b/92c999a1-4877-417d-b4c9-a89ecdd59c73/LC_Logo.jpg"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:49:20.391Z"
+    },
+    {
+      "rowIndex": 23,
+      "sourceArticle": "It's usually the small things",
+      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
+      "anchor": "Kiwi for a basic alternative",
+      "directUrl": "https://www.kiwicare.com/en-us/products/kiwi-suede-nubuck-cleaner",
+      "flags": [
+        "only 0 image(s)",
+        "empty prices",
+        "DEAD-URL \u2014 scraped a 404/contact page"
+      ],
+      "candidate": {
+        "slug": "kiwi-contact-us-sc-johnson",
+        "name": "Contact Us | SC Johnson",
+        "brand": "Kiwi",
+        "category": "",
+        "audience": [],
+        "reason": "Basic, inexpensive, and not pretending to be atelier care. It belongs as the floor, not the fantasy: better to clean the suede imperfectly than never clean it at all.",
+        "priceRange": "",
+        "url": "https://www.kiwicare.com/en-us/products/kiwi-suede-nubuck-cleaner",
+        "images": [],
+        "extractionMethod": "shopify",
+        "proposedAudience": "None"
+      },
+      "stagedAt": "2026-05-14T20:08:35.522Z"
+    }
+  ]
+}

@@ -1,116 +1,6 @@
 {
   "entries": [
     {
-      "rowIndex": 2,
-      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
-      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
-      "anchor": "Breville Bambino",
-      "directUrl": "https://www.breville.com/us/en/products/espresso/bes450.html",
-      "flags": [
-        "only 1 image(s)"
-      ],
-      "candidate": {
-        "slug": "breville-the-bambino",
-        "name": "the Bambino®",
-        "brand": "Breville",
-        "category": "",
-        "audience": [],
-        "reason": "Small footprint, real espresso logic, no lifestyle theater. It earns its place because it lets the morning ritual feel deliberate without pretending the kitchen is a cafe.",
-        "priceRange": "$299.95",
-        "url": "https://www.breville.com/us/en/products/espresso/bes450.html",
-        "images": [
-          "https://assets.breville.com/cdn-cgi/image/width=1300,format=auto/BES450/BES450BSS1BUS1/pdp.png?pdp"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:15:53.632Z"
-    },
-    {
-      "rowIndex": 3,
-      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
-      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
-      "anchor": "Breville Barista Express",
-      "directUrl": "https://www.breville.com/us/en/products/espresso/bes870.html",
-      "flags": [
-        "only 1 image(s)"
-      ],
-      "candidate": {
-        "slug": "breville-the-barista-express",
-        "name": "the Barista Express®",
-        "brand": "Breville",
-        "category": "",
-        "audience": [],
-        "reason": "An all-in-one machine that still makes you participate. It is the accessible on-ramp that teaches better habits instead of hiding the process.",
-        "priceRange": "$699.95",
-        "url": "https://www.breville.com/us/en/products/espresso/bes870.html",
-        "images": [
-          "https://assets.breville.com/cdn-cgi/image/width=1300,format=auto/Dynamic_Bundle/US/BES870XL_Transparent_1300x1300.png?pdp"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:15:54.079Z"
-    },
-    {
-      "rowIndex": 4,
-      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
-      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
-      "anchor": "Burr grinder ($120-$200)",
-      "directUrl": "https://www.baratza.com/en-us/product/encoretm-esp-zcg495",
-      "flags": [
-        "only 1 image(s)"
-      ],
-      "candidate": {
-        "slug": "baratza-suggested-encore-esp",
-        "name": "Encore™ ESP",
-        "brand": "Baratza (suggested)",
-        "category": "",
-        "audience": [],
-        "reason": "I would use the Encore ESP over the standard Encore here because the article is about espresso, not drip coffee. It keeps the approachable price logic but gives the grind range the ritual actually needs.",
-        "priceRange": "$199.95",
-        "url": "https://www.baratza.com/en-us/product/encoretm-esp-zcg495",
-        "images": [
-          "https://assets.breville.com/cdn-cgi/image/width=1300,format=auto/ZCG495/ZCG495WHT1AUC1A.png?pdp"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:15:54.726Z"
-    },
-    {
-      "rowIndex": 5,
-      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
-      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
-      "anchor": "Profitec Go",
-      "directUrl": "https://www.wholelattelove.com/products/profitec-go-espresso-machine",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "profitec-profitec-go-espresso-machine",
-        "name": "Profitec GO Espresso Machine",
-        "brand": "Profitec",
-        "category": "home",
-        "audience": [],
-        "reason": "This is the grown-up step before the hobby becomes machinery for machinery's sake. Compact, serious, and plain enough to stay handsome after the novelty wears off.",
-        "priceRange": "",
-        "url": "https://www.wholelattelove.com/products/profitec-go-espresso-machine",
-        "images": [
-          "https://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLK_C_0.jpg?v=1745245603&width=1705",
-          "http://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLK_C_0.jpg?v=1745245603&width=1200",
-          "https://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLK_C_0.jpg?v=1745245603&width=1200",
-          "http://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLKBO_C_0.jpg?v=1745245603&width=1200",
-          "https://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLKBO_C_0.jpg?v=1745245603&width=1200",
-          "http://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLKCR_C_0.jpg?v=1745245603&width=1200",
-          "https://www.wholelattelove.com/cdn/shop/files/bundlerphoto_PTPRO100BLKCR_C_0.jpg?v=1745245603&width=1200"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:15:55.044Z"
-    },
-    {
       "rowIndex": 6,
       "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
       "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
@@ -137,135 +27,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T20:49:14.687Z"
-    },
-    {
-      "rowIndex": 9,
-      "sourceArticle": "The one pot that does everything",
-      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
-      "anchor": "Le Creuset Dutch Oven (5.5-7qt round)",
-      "directUrl": "https://www.lecreuset.com/round-dutch-oven/LS2501.html",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "le-creuset-signature-round-dutch-oven",
-        "name": "Signature Round Dutch Oven",
-        "brand": "Le Creuset",
-        "category": "home",
-        "audience": [],
-        "reason": "The pot that makes the stove look like a place where things happen. Heavy, forgiving, and visually permanent enough to live out instead of being stored away.",
-        "priceRange": "",
-        "url": "https://www.lecreuset.com/round-dutch-oven/LS2501.html",
-        "images": [
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw9e4ffb1b/images/cat_dutch_ovens/provence/provene_rdo_g1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwa03ab0f4/images/cat_dutch_ovens/provence/provene_rdo_g2.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw5ba48b43/images/cat_dutch_ovens/provence/provene_rdo_g4.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwfbe6a8eb/images/cat_dutch_ovens/riviera_lifestyle/riviera_fivefive_rdo_g4.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw9a221796/images/cat_dutch_ovens/riviera_lifestyle/riv_fivefive_rdo1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw1c92c7e9/images/cat_dutch_ovens/riviera_lifestyle/riviera_fourfive_rdo_g2.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw18383c02/images/cat_dutch_ovens/riviera_lifestyle/riviera_fourfive_rdo_g6.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw179a6990/images/cat_dutch_ovens/foret/foret_gallery1_rdo.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwac305a9a/images/cat_dutch_ovens/foret/foret_gallery2_rdo.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw2169c309/images/cat_dutch_ovens/flame_rdo_gallery_26_1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwea8b0528/images/cat_dutch_ovens/lifestyle-rdo/thyme_rdo_g2.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw408495ed/images/cat_dutch_ovens/peche/PECHE_rdo_gold1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwfce67d26/images/cat_dutch_ovens/lifestyle-rdo/flame_rdo_lid_downg1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw6d525c88/images/cat_infographics/info_rdo_capacity.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwa83b7587/images/cat_dutch_ovens/brioche/lifestyle/brioche_color_rdo_5.5qt.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw2b8db244/images/cat_dutch_ovens/nuit_peche_rdogallery1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwc12b0401/images/cat_dutch_ovens/lifestyle-rdo/five_round_seasalt_20240817_Q424BURRATABOLOGNESE_002.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw73816118/images/cat_dutch_ovens/olive-chiffon-pink/olive_rdo_g1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwe7c19b16/images/cat_dutch_ovens/sea_salt_rdog01.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw7dc2afb3/images/cat_dutch_ovens/rdo_plp_gallery.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwaf9232ac/images/cat_dutch_ovens/chambray/chambray_g1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwaefcfda0/images/cat_dutch_ovens/green_holiday_rdo2.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dw2ec0a576/images/cat_dutch_ovens/sea_salt_rdo_grouping1.jpg?sw=650&sh=650&sm=fit",
-          "https://www.lecreuset.com/dw/image/v2/BDRT_PRD/on/demandware.static/-/Sites-le-creuset-master/default/dwfb17247a/images/cat_dutch_ovens/azure/Azure_RDO_g1.jpg?sw=650&sh=650&sm=fit"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:35:47.155Z"
-    },
-    {
-      "rowIndex": 10,
-      "sourceArticle": "The one pot that does everything",
-      "articleUrl": "https://hessentials.co/living/the-one-pot-that-does-everything",
-      "anchor": "Stainless Replacement Knob (Le Creuset / Staub)",
-      "directUrl": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
-      "flags": [
-        "only 1 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "le-creuset-staub-page-not-found",
-        "name": "Page Not Found",
-        "brand": "Le Creuset / Staub",
-        "category": "",
-        "audience": [],
-        "reason": "A small upgrade that changes the temperature of the whole object. It makes the pot feel more tool than collectible, which is exactly the correction.",
-        "priceRange": "",
-        "url": "https://www.lecreuset.com/stainless-steel-knob/94027.html",
-        "images": [
-          "https://cdn.cookielaw.org/logos/77fcf17d-4688-47f1-8ab5-72c2238c6a20/01917148-9121-7acb-9e38-c546492da70b/92c999a1-4877-417d-b4c9-a89ecdd59c73/LC_Logo.jpg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:49:20.391Z"
-    },
-    {
-      "rowIndex": 14,
-      "sourceArticle": "Casual is not a free pass",
-      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
-      "anchor": "Birkenstock Boston Suede for a more relaxed version",
-      "directUrl": "https://www.birkenstock.com/us/boston-soft-footbed-suede-leather/boston-suede-suedeleather-softfootbed-eva-u_46.html",
-      "flags": [
-        "only 2 image(s)"
-      ],
-      "candidate": {
-        "slug": "birkenstock-boston-soft-footbed-suede-leather",
-        "name": "Boston Soft Footbed Suede Leather",
-        "brand": "Birkenstock",
-        "category": "",
-        "audience": [],
-        "reason": "The Boston survives overexposure because it still does the job. Soft suede, honest shape, and enough indifference to make a casual outfit feel intentional.",
-        "priceRange": "$169.95",
-        "url": "https://www.birkenstock.com/us/boston-soft-footbed-suede-leather/boston-suede-suedeleather-softfootbed-eva-u_46.html",
-        "images": [
-          "https://www.birkenstock.com/dw/image/v2/BLZD_PRD/on/demandware.static/-/Sites-master-catalog-amer/default/dw5f05282e/560771/560771.jpg?sw=655&sh=655&sm=fit&q=65",
-          "https://www.birkenstock.com/on/demandware.static/-/Sites-master-catalog-amer/default/dw5f05282e/560771/560771.jpg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:15:59.228Z"
-    },
-    {
-      "rowIndex": 19,
-      "sourceArticle": "Casual is not a free pass",
-      "articleUrl": "https://hessentials.co/style/casual-is-not-a-free-pass",
-      "anchor": "Suede Everyday Shoe",
-      "directUrl": "https://www.clarks.com/en-us/wallabee/26155519-p",
-      "flags": [
-        "only 1 image(s)"
-      ],
-      "candidate": {
-        "slug": "clarks-wallabee",
-        "name": "Wallabee",
-        "brand": "Clarks",
-        "category": "",
-        "audience": [],
-        "reason": "The Wallabee is the better cultural answer than a generic suede shoe. Soft, odd, grounded, and relaxed in a way that still has a point of view.",
-        "priceRange": "$140",
-        "url": "https://www.clarks.com/en-us/wallabee/26155519-p",
-        "images": [
-          "https://cdn.media.amplience.net/i/clarks/26155519_GW_1"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:16:00.850Z"
     },
     {
       "rowIndex": 20,
@@ -299,31 +60,6 @@
       "stagedAt": "2026-05-14T20:08:32.830Z"
     },
     {
-      "rowIndex": 23,
-      "sourceArticle": "It's usually the small things",
-      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
-      "anchor": "Kiwi for a basic alternative",
-      "directUrl": "https://www.kiwicare.com/en-us/products/kiwi-suede-nubuck-cleaner",
-      "flags": [
-        "only 0 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "kiwi-contact-us-sc-johnson",
-        "name": "Contact Us | SC Johnson",
-        "brand": "Kiwi",
-        "category": "",
-        "audience": [],
-        "reason": "Basic, inexpensive, and not pretending to be atelier care. It belongs as the floor, not the fantasy: better to clean the suede imperfectly than never clean it at all.",
-        "priceRange": "",
-        "url": "https://www.kiwicare.com/en-us/products/kiwi-suede-nubuck-cleaner",
-        "images": [],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:08:35.522Z"
-    },
-    {
       "rowIndex": 24,
       "sourceArticle": "It's usually the small things",
       "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
@@ -352,33 +88,6 @@
       "stagedAt": "2026-05-14T20:49:36.198Z"
     },
     {
-      "rowIndex": 25,
-      "sourceArticle": "It's usually the small things",
-      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
-      "anchor": "Suede Brush + Eraser Kit",
-      "directUrl": "https://jasonmarkk.com/products/premium-suede-cleaning-kit",
-      "flags": [
-        "only 2 image(s)"
-      ],
-      "candidate": {
-        "slug": "jason-markk-premium-suede-cleaning-kit",
-        "name": "Premium Suede Cleaning Kit",
-        "brand": "Jason Markk",
-        "category": "",
-        "audience": [],
-        "reason": "Small enough to own, specific enough to matter. It keeps suede from becoming precious, which is the only way suede stays wearable.",
-        "priceRange": "$15",
-        "url": "https://jasonmarkk.com/products/premium-suede-cleaning-kit",
-        "images": [
-          "https://jasonmarkk.com/cdn/shop/files/310110_SuedeKit_GrayBackground_10.25_990x990_01.jpg?v=1764659201",
-          "http://jasonmarkk.com/cdn/shop/files/310110_SuedeKit_GrayBackground_10.25_990x990_01.jpg?v=1764659201"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:16:02.685Z"
-    },
-    {
       "rowIndex": 26,
       "sourceArticle": "People can feel when it's forced",
       "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
@@ -389,7 +98,7 @@
       ],
       "candidate": {
         "slug": "sonos-era-100-the-next-gen-stereo-bookshelf-speaker-sonos",
-        "name": "Era 100: The Next-Gen Stereo Bookshelf Speaker | Sonos",
+        "name": "Era 100: The Next-Gen Stereo Bookshelf Speaker",
         "brand": "Sonos",
         "category": "home",
         "audience": [],
@@ -440,39 +149,6 @@
       "stagedAt": "2026-05-14T20:08:51.566Z"
     },
     {
-      "rowIndex": 28,
-      "sourceArticle": "People can feel when it's forced",
-      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
-      "anchor": "Marshall Stanmore III for warmer character",
-      "directUrl": "https://www.marshall.com/us/en/product/stanmore-iii",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "marshall-stanmore-iii-bluetooth-speaker-is-perfect-any-room-marshall-com",
-        "name": "Stanmore III Bluetooth speaker is perfect for any room | Marshall.com",
-        "brand": "Marshall",
-        "category": "home",
-        "audience": [],
-        "reason": "This is not the invisible speaker. It earns its place when the room can handle an object with a little music history and a warmer visual register.",
-        "priceRange": "",
-        "url": "https://www.marshall.com/us/en/product/stanmore-iii",
-        "images": [
-          "https://images.ctfassets.net/javen7msabdh/2gjMuZQzWqUdnnPY6iEVba/94dced727f75a311ce4fb5429699ad9b/stanmore_iii-front-mobile-1.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/HD26P23QPaw1mrdAqIG9X/fd18af6943430bebfa8acd528fcb5a44/stanmore_iii-lifestyle-mobile-2.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/9ASK09JP6519IyCARS59H/f0e52e083fab342ea690789c9b8174de/stanmore_iii-above-mobile-3.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/ZxJ5BB0NkA5XeCdiMKEq3/cf823a6a6876a29f9e30499c989f672e/stanmore_iii-zoom-mobile-4.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/1v59dDbC3geLxG1Hq3h7v4/3b5d9ca58267f72d86f6fb39576eb168/stanmore_iii-lifestyle-mobile-5.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/4CpOTZ7Sa25nWIsbnUT04s/0e5aa4dbc8fc9a2896f1d97fa385ddc1/stanmore_iii-back-mobile-6.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/2BNgxDJzD8CjfF3ANb3Ojv/300842b2f6d2babe867eed77125e56e1/stanmore_iii-colour-mobile-7.jpeg",
-          "https://images.ctfassets.net/javen7msabdh/5rFG7lcddhUj1hR8DSCeaK/55f28130a2ceeca6f0f8bd69120a489e/stanmore_iii-lifestyle-mobile-8.jpeg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:16:04.003Z"
-    },
-    {
       "rowIndex": 31,
       "sourceArticle": "People can feel when it's forced",
       "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
@@ -483,7 +159,7 @@
       ],
       "candidate": {
         "slug": "lutron-caseta-diva-smart-dimmer-switch-caseta-by-lutron",
-        "name": "Diva Smart Dimmer Switch | Caséta by Lutron",
+        "name": "Diva Smart Dimmer Switch",
         "brand": "Lutron Caseta",
         "category": "home",
         "audience": [],
@@ -503,33 +179,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T20:09:02.314Z"
-    },
-    {
-      "rowIndex": 63,
-      "sourceArticle": "The anti-trend rule",
-      "articleUrl": "https://hessentials.co/style/the-anti-trend-rule",
-      "anchor": "Uniqlo 100% Cashmere for a more accessible option",
-      "directUrl": "https://www.uniqlo.com/us/en/products/E450535-000/00",
-      "flags": [
-        "only 0 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "uniqlo-men-s-merino-sweater-uniqlo-us",
-        "name": "Men's Merino Sweater | UNIQLO US",
-        "brand": "Uniqlo",
-        "category": "",
-        "audience": [
-          "mens"
-        ],
-        "reason": "This is the practical version of the cashmere idea. It gives up luxury depth, but it lets the reader test the uniform logic before investing.",
-        "priceRange": "",
-        "url": "https://www.uniqlo.com/us/en/products/E450535-000/00",
-        "images": [],
-        "extractionMethod": "shopify",
-        "proposedAudience": "Mens only"
-      },
-      "stagedAt": "2026-05-14T19:16:25.243Z"
     },
     {
       "rowIndex": 77,
@@ -616,69 +265,6 @@
       "stagedAt": "2026-05-14T19:16:10.569Z"
     },
     {
-      "rowIndex": 48,
-      "sourceArticle": "The 5-piece rule",
-      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
-      "anchor": "COS for a cleaner silhouette",
-      "directUrl": "https://www.cos.com/en-us/men/menswear/tshirts/regular-fit/product/boat-neck-cotton-t-shirt-white-1336154001",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "cos-men-s-t-shirt",
-        "name": "Men's T-shirt",
-        "brand": "COS",
-        "category": "",
-        "audience": [
-          "mens"
-        ],
-        "reason": "Cleaner neckline, better weight, less noise. This earns the base layer slot because it makes the simplest piece feel selected.",
-        "priceRange": "",
-        "url": "https://www.cos.com/en-us/men/menswear/tshirts/regular-fit/product/boat-neck-cotton-t-shirt-white-1336154001",
-        "images": [
-          "https://media.cos.com/assets/001/5c/be/5cbe2e562ef90d8c7c4f9ae10d633248b977b4c5_xxl-1.jpg",
-          "https://media.cos.com/assets/001/c8/8a/c88afa6015e3fd3f80389ddbe142feba73b3c63c_xxl-1.jpg",
-          "https://media.cos.com/assets/001/7f/51/7f515b82a69ea1eab21a862bac00499f7bb2f568_xxl-1.jpg",
-          "https://media.cos.com/assets/001/00/8c/008cdf2e75dcc9964649968d2db7a229573992a8_xxl-1.jpg",
-          "https://media.cos.com/assets/001/15/9f/159f66430c8923880c16bf4f7c97d58eddf71412_xxl-1.jpg",
-          "https://media.cos.com/assets/001/03/68/03687cfbaf2076a508166222a07401860aacc1b4_xxl-1.jpg",
-          "https://media.cos.com/assets/001/bd/c3/bdc3ec87e66c912c9b00eda6b381b0d0bd469fda_xxl-1.jpg",
-          "https://media.cos.com/assets/001/a7/87/a78720f6fb01bd70addc207f56db5f100ac0d21d_xxl-1.jpg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "Mens only"
-      },
-      "stagedAt": "2026-05-14T19:00:55.199Z"
-    },
-    {
-      "rowIndex": 50,
-      "sourceArticle": "The 5-piece rule",
-      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
-      "anchor": "Everlane for a more accessible version",
-      "directUrl": "https://www.everlane.com/products/mens-slim-oxford-navy-bone",
-      "flags": [
-        "only 2 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "everlane-the-slim-oxford-shirt-bone-navy-standard",
-        "name": "The Slim Oxford Shirt | Bone/Navy | Standard",
-        "brand": "Everlane",
-        "category": "",
-        "audience": [],
-        "reason": "The accessible shirt works because it keeps the stripe crisp and the shape ordinary in the best sense. It gives the five pieces rhythm without adding a new idea.",
-        "priceRange": "",
-        "url": "https://www.everlane.com/products/mens-slim-oxford-navy-bone",
-        "images": [
-          "http://www.everlane.com/cdn/shop/files/23871d9a_e319.jpg?v=1753411703",
-          "https://www.everlane.com/cdn/shop/files/23871d9a_e319.jpg?v=1753411703"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:01:05.995Z"
-    },
-    {
       "rowIndex": 51,
       "sourceArticle": "The 5-piece rule",
       "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
@@ -740,92 +326,6 @@
       "stagedAt": "2026-05-14T20:09:23.338Z"
     },
     {
-      "rowIndex": 55,
-      "sourceArticle": "The 5-piece rule",
-      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
-      "anchor": "Textured Layer",
-      "directUrl": "https://www.alexmill.com/products/garment-dyed-work-jacket-in-linen-in-pine-grove",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "alex-mill-garment-dyed-work-jacket-in-linen-2",
-        "name": "Garment Dyed Work Jacket in Linen",
-        "brand": "Alex Mill",
-        "category": "",
-        "audience": [],
-        "reason": "This is the fifth piece doing real work. It adds texture, color, and a little utility without turning the outfit into styling.",
-        "priceRange": "",
-        "url": "https://www.alexmill.com/products/garment-dyed-work-jacket-in-linen-in-pine-grove",
-        "images": [
-          "http://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-1823_1024x1024.jpg?v=1713282896",
-          "http://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-13914_1024x1024.jpg?v=1715138120",
-          "http://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-13886_1024x1024.jpg?v=1715138120",
-          "https://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-1823_1024x1024.jpg?v=1713282896",
-          "https://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-13914_1024x1024.jpg?v=1715138120",
-          "https://www.alexmill.com/cdn/shop/files/MJ037-2648-PINE-GROVE-13886_1024x1024.jpg?v=1715138120"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:01:12.165Z"
-    },
-    {
-      "rowIndex": 56,
-      "sourceArticle": "The 5-piece rule",
-      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
-      "anchor": "Uniqlo for a budget version",
-      "directUrl": "https://www.uniqlo.com/us/en/products/E450251-000/00?colorDisplayCode=32&sizeDisplayCode=029&pldDisplayCode=034",
-      "flags": [
-        "only 0 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "uniqlo-men-s-slim-chino-pants-uniqlo-us",
-        "name": "Men's Slim Chino Pants | UNIQLO US",
-        "brand": "Uniqlo",
-        "category": "home",
-        "audience": [
-          "mens"
-        ],
-        "reason": "The budget version is not pretending to be Theory. It gives the reader the trouser idea first: cleaner leg, easier waist, better decision.",
-        "priceRange": "",
-        "url": "https://www.uniqlo.com/us/en/products/E450251-000/00?colorDisplayCode=32&sizeDisplayCode=029&pldDisplayCode=034",
-        "images": [],
-        "extractionMethod": "shopify",
-        "proposedAudience": "Mens only"
-      },
-      "stagedAt": "2026-05-14T19:01:12.844Z"
-    },
-    {
-      "rowIndex": 64,
-      "sourceArticle": "The bag sets the tone",
-      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
-      "anchor": "Classic Easy Tote",
-      "directUrl": "https://cuyana.com/products/classic-easy-tote",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "cuyana-classic-easy-tote",
-        "name": "Classic Easy Tote",
-        "brand": "Cuyana",
-        "category": "accessories",
-        "audience": [],
-        "reason": "Cuyana works because the tote looks like it has a life beyond errands. Soft structure, clean leather, and no visible argument about taste.",
-        "priceRange": "",
-        "url": "https://cuyana.com/products/classic-easy-tote",
-        "images": [
-          "https://cuyana.com/cdn/shop/files/PDP_2000x2500_SU22_EasyTote_Cappuccino_Hero_2785_1024x.jpg?v=1773094141",
-          "http://cuyana.com/cdn/shop/files/PDP_2000x2500_SU22_EasyTote_Cappuccino_Hero_2785.jpg?v=1773094141",
-          "https://cuyana.com/cdn/shop/files/PDP_2000x2500_SU22_EasyTote_Cappuccino_Hero_2785.jpg?v=1773094141"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:16:25.559Z"
-    },
-    {
       "rowIndex": 66,
       "sourceArticle": "The bag sets the tone",
       "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
@@ -836,7 +336,7 @@
       ],
       "candidate": {
         "slug": "l-l-bean-boat-and-tote-zip-top",
-        "name": "Boat and Tote®, Zip-Top",
+        "name": "Boat and Tote, Zip-Top",
         "brand": "L.L.Bean",
         "category": "accessories",
         "audience": [],
@@ -870,7 +370,7 @@
       ],
       "candidate": {
         "slug": "maldon-maldon-sea-salt-flakes-8-5-oz-williams-sonoma",
-        "name": "Maldon Sea Salt Flakes 8.5 oz. | Williams Sonoma",
+        "name": "Maldon Sea Salt Flakes 8.5 oz.",
         "brand": "Maldon",
         "category": "provisions",
         "audience": [],
@@ -945,7 +445,7 @@
       ],
       "candidate": {
         "slug": "rejuvenation-heirloom-quality-lighting-hardware-more-rejuvenation",
-        "name": "Heirloom-Quality Lighting, Hardware & More | Rejuvenation",
+        "name": "Heirloom-Quality Lighting, Hardware & More",
         "brand": "Rejuvenation",
         "category": "",
         "audience": [],
@@ -969,7 +469,7 @@
       ],
       "candidate": {
         "slug": "le-labo-le-labo-fragrances-santal-33-eau-de-parfum",
-        "name": "Le Labo Fragrances SANTAL 33 | eau de parfum",
+        "name": "Le Labo Fragrances SANTAL 33",
         "brand": "Le Labo",
         "category": "grooming",
         "audience": [],
@@ -1013,41 +513,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T19:16:36.677Z"
-    },
-    {
-      "rowIndex": 96,
-      "sourceArticle": "The signature piece",
-      "articleUrl": "https://hessentials.co/style/the-signature-piece",
-      "anchor": "Timex Marlin for a vintage-feel alternative",
-      "directUrl": "https://timex.com/products/marlin-hand-wound-34mm-leather-strap-watch-tw2t18200",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "timex-watches-from-timex-digital-analog-and-water-resistant",
-        "name": "Watches from Timex | Digital, Analog, & Water Resistant",
-        "brand": "Timex",
-        "category": "accessories",
-        "audience": [],
-        "reason": "The Marlin is charming because it is not trying to be important. A small vintage-feel watch that adds character without pretending to be an heirloom.",
-        "priceRange": "",
-        "url": "https://timex.com/products/marlin-hand-wound-34mm-leather-strap-watch-tw2t18200",
-        "images": [
-          "http://timex.com/cdn/shop/files/timex-logo_social.png?v=1751986416",
-          "https://timex.com/cdn/shop/files/timex-logo_social.png?v=1751986416",
-          "https://timex.com/cdn/shop/files/preview_images/d05dac67d6a846288e6dda00ec122ca9.thumbnail.0000000000_3000x.jpg?v=1776925854",
-          "https://timex.com/cdn/shop/files/preview_images/1a2b60f3392c4f50aff41402ce51ab52.thumbnail.0000000000_3000x.jpg?v=1777316651",
-          "https://timex.com/cdn/shop/files/TW2Y77000.png?v=1778002068&width=768",
-          "https://timex.com/cdn/shop/files/preview_images/d0bad7f06e2b421abe7f76dd6922c721.thumbnail.0000000000_1000x.jpg?v=1776926446",
-          "https://cdn.shopify.com/s/files/1/0573/1198/5747/files/TW2W68900.png?v=1774288391&width=1000",
-          "https://cdn.shopify.com/s/files/1/0573/1198/5747/files/TW2Y75500.png?v=1777591984&width=1000",
-          "https://cdn.shopify.com/s/files/1/0573/1198/5747/files/TW2V88800.png?v=1773824378&width=1000",
-          "https://cdn.shopify.com/s/files/1/0573/1198/5747/files/TW2Y05800_adf1bf42-73c8-4a77-a9eb-f43da3f000fb.png?v=1773823426&width=1000"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:38:09.545Z"
     },
     {
       "rowIndex": 100,
@@ -1100,40 +565,6 @@
       "stagedAt": "2026-05-14T19:16:51.595Z"
     },
     {
-      "rowIndex": 112,
-      "sourceArticle": "Your home has an outfit too",
-      "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
-      "anchor": "Sundays for a softer more handmade feel",
-      "directUrl": "https://www.sundays-company.com/products/movie-night-sofa-cream-linen",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "sundays-sundays-beautiful-furniture-made-for-real-life",
-        "name": "Sundays - Beautiful furniture, made for real life.",
-        "brand": "Sundays",
-        "category": "",
-        "audience": [],
-        "reason": "Sundays brings the softer, slower sofa feeling. It is less architectural than Article, but warmer and more human in the room.",
-        "priceRange": "",
-        "url": "https://www.sundays-company.com/products/movie-night-sofa-cream-linen",
-        "images": [
-          "https://cdn.shopify.com/s/files/1/0054/6596/4615/files/DIN-BC-014-024-Sundays-Company.jpg?v=1764780087",
-          "https://www.sundays-company.com/cdn/shop/files/preview_images/cede68bd1554407b9f185cf270211382.thumbnail.0000000000_700x.jpg?v=1778086235",
-          "https://www.sundays-company.com/cdn/shop/files/preview_images/f21fc8288b5346f8991da5cc0e02ab9b.thumbnail.0000000000_1000x.jpg?v=1777919239",
-          "https://www.sundays-company.com/cdn/shop/files/delivery_1.png?v=1725628744&width=900",
-          "https://www.sundays-company.com/cdn/shop/files/2025-11-HP-Rooms-Outdoor-Settle-In-Chair.jpg?v=1762807416&width=4000",
-          "https://www.sundays-company.com/cdn/shop/files/2025-11-HP-Rooms-Office-Everyday-Desk.jpg?v=1762807425&width=4000",
-          "https://www.sundays-company.com/cdn/shop/files/2025-11-HP-Rooms-Entryway-Frame-Bench.jpg?v=1762807446&width=4000",
-          "https://www.sundays-company.com/cdn/shop/files/Assembly.png?v=1725628756&width=900",
-          "https://www.sundays-company.com/cdn/shop/files/26-Mitz-Takahashi-HP-Feature-Hero-Desktop.jpg?v=1776797114&width=3016"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:38:16.445Z"
-    },
-    {
       "rowIndex": 113,
       "sourceArticle": "Your home has an outfit too",
       "articleUrl": "https://hessentials.co/style/your-home-has-an-outfit-too",
@@ -1169,7 +600,7 @@
       ],
       "candidate": {
         "slug": "aritzia-the-effortless-pant-crepette-aritzia-us",
-        "name": "The Effortless Pant™ - Crepette™ | Aritzia US",
+        "name": "The Effortless Pant - Crepette",
         "brand": "Aritzia",
         "category": "home",
         "audience": [],
@@ -1192,65 +623,6 @@
       "stagedAt": "2026-05-14T20:49:29.308Z"
     },
     {
-      "rowIndex": 57,
-      "sourceArticle": "The 5-piece rule",
-      "articleUrl": "https://hessentials.co/style/the-5-piece-rule",
-      "anchor": "Veja V-10 in black for a softer alternative",
-      "directUrl": "https://www.allsaints.com/us/men/boots-and-shoes/sneakers/brody-leather-low-top-sneakers/USM086FB-5.html",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "veja-brody-leather-low-top-sneakers-black-allsaints-us",
-        "name": "Brody Leather Low Top Sneakers Black | ALLSAINTS US",
-        "brand": "Veja",
-        "category": "accessories",
-        "audience": [],
-        "reason": "The AllSaints swap is stronger than the original Veja direction. Less wholesome, less internet-uniform, and better aligned with the slightly sharper five-piece argument.",
-        "priceRange": "",
-        "url": "https://www.allsaints.com/us/men/boots-and-shoes/sneakers/brody-leather-low-top-sneakers/USM086FB-5.html",
-        "images": [
-          "https://media.i.allsaints.com/allsaints-prod/image/upload/f_auto,q_auto/v1/products/images/large/M086FB/5/M086FB-5-1",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%201%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%202%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%203%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%204%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%205%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc_pdp_gallery_position_prod%22%20and%20.value%20%3D%3D%206%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_837,h_1046,c_fit/USM086FB-5.json?_i=AG",
-          "https://media.i.allsaints.com/image/list/fn_select:jq:first%28.%5B%5D%7Cif%20has%28%22metadata%22%29%20then%20select%28any%28.metadata%5B%5D%3B%20.external_id%20%3D%3D%20%22sfcc-is-main%22%20and%20.value.value%20%3D%3D%20%22True%22%29%29%20else%20empty%20end%29/f_auto,q_auto,dpr_auto,w_480,h_600,c_fit/USM086FB-5.json?_i=AG",
-          "https://images.allsaints.com/static/900/LWG-1046.png"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:37:23.463Z"
-    },
-    {
-      "rowIndex": 89,
-      "sourceArticle": "The scent people remember",
-      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
-      "anchor": "Maison Margiela Replica Jazz Club for similar warmth at half the price",
-      "directUrl": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-jazz-club/MM008.html",
-      "flags": [
-        "only 0 image(s)",
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "maison-margiela-just-a-moment",
-        "name": "Just a moment...",
-        "brand": "Maison Margiela",
-        "category": "",
-        "audience": [],
-        "reason": "Jazz Club is the accessible warmth with a real atmosphere. It is more obvious than Le Labo, but the tobacco and rum still leave an impression.",
-        "priceRange": "",
-        "url": "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-jazz-club/MM008.html",
-        "images": [],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T19:37:58.755Z"
-    },
-    {
       "rowIndex": 4,
       "sourceArticle": "Chateau Shop Adds 2026-05-14",
       "articleUrl": "",
@@ -1261,7 +633,7 @@
       ],
       "candidate": {
         "slug": "fog-linen-work-s-w22-d13-h1-5",
-        "name": "ブラス トレー 楕円形 S 【W22×D13×H1.5】",
+        "name": "\u30d6\u30e9\u30b9 \u30c8\u30ec\u30fc \u6955\u5186\u5f62 S \u3010W22\u00d7D13\u00d7H1.5\u3011",
         "brand": "Fog Linen Work",
         "category": "home",
         "audience": [],
@@ -1287,7 +659,7 @@
       ],
       "candidate": {
         "slug": "fog-linen-work-m-w32-5-d19-5-h2-5",
-        "name": "ブラス トレー 楕円形 M 【W32.5×D19.5×H2.5】",
+        "name": "\u30d6\u30e9\u30b9 \u30c8\u30ec\u30fc \u6955\u5186\u5f62 M \u3010W32.5\u00d7D19.5\u00d7H2.5\u3011",
         "brand": "Fog Linen Work",
         "category": "home",
         "audience": [],
@@ -1306,14 +678,14 @@
       "rowIndex": 6,
       "sourceArticle": "Chateau Shop Adds 2026-05-14",
       "articleUrl": "",
-      "anchor": "FÄRGKLAR 18-piece dinnerware set, matte dark gray",
+      "anchor": "F\u00c4RGKLAR 18-piece dinnerware set, matte dark gray",
       "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
       "flags": [
         "only 1 image(s)"
       ],
       "candidate": {
         "slug": "ikea-fargklar-18-piece-dinnerware-set-matte-dark-gray",
-        "name": "FÄRGKLAR 18-piece dinnerware set - matte dark gray",
+        "name": "F\u00c4RGKLAR 18-piece dinnerware set - matte dark gray",
         "brand": "IKEA",
         "category": "home",
         "audience": [],
@@ -1332,14 +704,14 @@
       "rowIndex": 7,
       "sourceArticle": "Chateau Shop Adds 2026-05-14",
       "articleUrl": "",
-      "anchor": "FÄRGKLAR Plate, matte green, 10\"",
+      "anchor": "F\u00c4RGKLAR Plate, matte green, 10\"",
       "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
       "flags": [
         "only 1 image(s)"
       ],
       "candidate": {
         "slug": "ikea-fargklar-plate-matte-green-10",
-        "name": "FÄRGKLAR Plate - matte green 10 \"",
+        "name": "F\u00c4RGKLAR Plate - matte green 10 \"",
         "brand": "IKEA",
         "category": "home",
         "audience": [],
@@ -1605,7 +977,7 @@
       ],
       "candidate": {
         "slug": "il-bisonte-fausta-medium-women-s-crossbody-bag-leather-color-black-cherry",
-        "name": "Fausta Medium | Women's crossbody bag in leather color black cherry",
+        "name": "Fausta Medium",
         "brand": "Il Bisonte",
         "category": "accessories",
         "audience": [
@@ -1634,7 +1006,7 @@
       ],
       "candidate": {
         "slug": "il-bisonte-archive-1970-women-s-crossbody-bag-fabric-color-blue-natural",
-        "name": "Archive 1970 | Women's crossbody bag in fabric color blue/natural",
+        "name": "Archive 1970",
         "brand": "Il Bisonte",
         "category": "accessories",
         "audience": [
@@ -1663,7 +1035,7 @@
       ],
       "candidate": {
         "slug": "l-l-bean-boat-and-tote-zip-top",
-        "name": "Boat and Tote®, Zip-Top",
+        "name": "Boat and Tote, Zip-Top",
         "brand": "L.L.Bean",
         "category": "accessories",
         "audience": [],
