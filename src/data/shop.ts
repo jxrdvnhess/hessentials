@@ -2737,6 +2737,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "leatherology-large-travel-organizer",
+    name: "Large Travel Organizer Navy Blue",
+    brand: "Leatherology",
+    category: "travel",
+    subcategory: "organization",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:06.662Z",
+    reason: "Keeps travel from becoming a pile. Quiet organization without tactical energy.",
+    priceRange: "$125",
+    url: "https://www.leatherology.com/products/large-travel-organizer-navy-blue",
+    image: "/shop/leatherology-large-travel-organizer/c4854d6e3a05c086.jpg",
+    images: [
+      "/shop/leatherology-large-travel-organizer/c4854d6e3a05c086.jpg",
+      "/shop/leatherology-large-travel-organizer/99e27c1cadf9b4f2.jpg",
+      "/shop/leatherology-large-travel-organizer/99e27c1cadf9b4f2.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
