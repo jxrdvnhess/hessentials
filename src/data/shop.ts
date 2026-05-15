@@ -3363,6 +3363,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "opinel-no-08-olive-wood-folding-knife-with-sheath",
+    name: "No.08 Olive Wood Folding Knife with Sheath",
+    brand: "Opinel",
+    category: "travel",
+    subcategory: "picnic tools",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:18.168Z",
+    reason: "Olive wood makes the utility feel warmer. Still a tool, just one you want to keep close.",
+    priceRange: "$22–$195",
+    url: "https://www.opinel-usa.com/products/wooden-slide-top-no-8-olive-wood-handle-sheath",
+    image: "/shop/opinel-no-08-olive-wood-folding-knife-with-sheath/0a45102e5e7ecf3f.jpg",
+    images: [
+      "/shop/opinel-no-08-olive-wood-folding-knife-with-sheath/0a45102e5e7ecf3f.jpg",
+      "/shop/opinel-no-08-olive-wood-folding-knife-with-sheath/d7f5b31769acc558.jpg",
+      "/shop/opinel-no-08-olive-wood-folding-knife-with-sheath/0f98114dd7a7e49b.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
