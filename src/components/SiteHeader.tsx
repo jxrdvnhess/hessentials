@@ -48,7 +48,10 @@ export default function SiteHeader() {
   const isHome = pathname === "/";
 
   return (
-    <header aria-label="Site" className="sticky top-0 z-40 w-full">
+    <header aria-label="Site" className="relative z-40 w-full">
+      {/* Stickiness lives on the parent stack in app/layout.tsx so the
+          main header and the /shop/* sub-nav scroll together. This row
+          stays `relative` here. */}
       {/* Soft wash — the bar exists, but its edge does not.
           Mobile gets a near-opaque cream wash + heavier blur so the
           wordmark stays readable and content scrolling beneath the

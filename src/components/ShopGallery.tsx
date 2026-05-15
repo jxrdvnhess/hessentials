@@ -284,6 +284,14 @@ function Frame({
   const images = product.images ?? [product.image];
   const hasGallery = images.length > 1;
   const [active, setActive] = useState(0);
+  // Image-load skeleton state. While `loaded` is false, the image
+  // plate carries a slightly-darker-than-page-bg fill so the frame
+  // outlines itself before the asset arrives (otherwise white-on-cream
+  // reads as "missing content" on slow connections). One flag covers
+  // the whole frame — the first image to load clears the skeleton for
+  // the entire plate. Subsequent gallery images load against the white
+  // plate beneath.
+  const [loaded, setLoaded] = useState(false);
 
   const swipeStartX = useRef<number | null>(null);
   const wasSwipe = useRef(false);
@@ -378,6 +386,17 @@ function Frame({
           {/* Image plate. With multiple images, we fade between them
               by toggling opacity — same pattern as ProductCard. */}
           <div className={`relative w-full overflow-hidden bg-white ${RATIO_CLASS[ratio]}`}>
+            {/* Skeleton — covers the plate until the first image
+                load completes. Flat fill, no shimmer (per brand
+                restraint). Fades to transparent so the white plate
+                takes over once we have something to show. */}
+            <div
+              aria-hidden
+              className={[
+                "pointer-events-none absolute inset-0 bg-[#ebe7e0] transition-opacity duration-500 ease-out",
+                loaded ? "opacity-0" : "opacity-100",
+              ].join(" ")}
+            />
             {images.map((src, i) => (
               <Image
                 key={src}
@@ -385,6 +404,7 @@ function Frame({
                 alt={`${product.brand} — ${product.name}`}
                 fill
                 sizes="(min-width: 1024px) 28vw, (min-width: 640px) 38vw, 78vw"
+                onLoad={() => setLoaded(true)}
                 className={[
                   "object-contain transition-opacity duration-500 ease-out",
                   i === active ? "opacity-100" : "opacity-0",

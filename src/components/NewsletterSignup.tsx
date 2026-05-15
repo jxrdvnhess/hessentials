@@ -1,15 +1,52 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Status = "idle" | "submitting" | "success" | "error";
 type Variant = "default" | "light";
+
+/**
+ * Pillar key controls the tagline copy. "default" carries the site-wide
+ * line; everything else swaps in pillar-specific editorial copy. The
+ * component infers this from the current pathname when no `pillar` prop
+ * is provided, so route changes update the tagline automatically. Pass
+ * the prop explicitly to force a tagline (e.g. for previews).
+ *
+ * Living, Style, and Practice fall through to the default line until
+ * each pillar has its own editorial copy approved.
+ */
+type Pillar = "default" | "shop" | "recipes";
+
+const PILLAR_TAGLINES: Record<Pillar, string> = {
+  default:
+    "Recipes I keep making, what to skip, the upgrades that hold up. Sent when it’s worth it.",
+  recipes:
+    "Recipes I keep making, what to skip, the upgrades that hold up. Sent when it’s worth it.",
+  shop:
+    "Pieces that earned their place. The edits I keep coming back to. Sent when something’s worth keeping.",
+};
+
+/** Map a pathname to its pillar key. Only the routes that have approved
+ *  copy receive a non-default pillar; everything else falls through. */
+function pillarFromPath(pathname: string | null): Pillar {
+  if (!pathname) return "default";
+  if (pathname === "/shop" || pathname.startsWith("/shop/")) return "shop";
+  if (pathname === "/recipes" || pathname.startsWith("/recipes/")) return "recipes";
+  return "default";
+}
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 type NewsletterSignupProps = {
   /** "default" — ink on cream (footer band). "light" — cream on dark image (overlay usage). */
   variant?: Variant;
+  /**
+   * Optional pillar override. When omitted, the component infers from
+   * the current pathname. Pass this when the footer is rendered above
+   * a route the inference rule doesn't cover.
+   */
+  pillar?: Pillar;
 };
 
 /**
@@ -21,7 +58,11 @@ type NewsletterSignupProps = {
  */
 export default function NewsletterSignup({
   variant = "default",
+  pillar,
 }: NewsletterSignupProps = {}) {
+  const pathname = usePathname();
+  const resolvedPillar: Pillar = pillar ?? pillarFromPath(pathname);
+  const tagline_copy = PILLAR_TAGLINES[resolvedPillar];
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
@@ -84,7 +125,7 @@ export default function NewsletterSignup({
       </p>
 
       <p className={`font-serif text-[15px] italic leading-[1.45] sm:text-[16px] ${tagline}`}>
-        Recipes I keep making, what to skip, the upgrades that hold up. Sent when it&rsquo;s worth it.
+        {tagline_copy}
       </p>
 
       {status === "success" ? (

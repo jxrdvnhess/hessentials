@@ -52,15 +52,16 @@ import {
 } from "../data/shop";
 
 /**
- * Launch pillar order. Hand-curated, not derived. WOMENS sits
- * between MENS and ACCESSORIES per the addendum.
- *
- * Provisions remains intentionally absent.
+ * Launch pillar order. Hand-curated, not derived. Mirrors Chateau's
+ * eight approved top-level categories, in editorial order: audience
+ * pillars first (Mens / Womens), then the accessory / grooming family,
+ * then the home + commerce-of-living tail (Travel / Home / Cooking /
+ * Provisions).
  *
  * Pillars with zero products (after the audience-aware filter) are
- * hidden at runtime — see `pillarHasProducts` below. WOMENS
- * therefore reveals itself automatically once at least one matching
- * product lands; no code change required.
+ * hidden at runtime — see `pillarHasProducts` below. New pillars and
+ * future-quiet pillars therefore reveal themselves automatically once
+ * at least one matching product lands; no code change required.
  */
 const PILLARS: readonly Category[] = [
   "mens",
@@ -69,6 +70,8 @@ const PILLARS: readonly Category[] = [
   "grooming",
   "travel",
   "home",
+  "cooking",
+  "provisions",
 ];
 
 const AUDIENCE_PILLARS = new Set<Category>(["mens", "womens"]);
@@ -106,6 +109,13 @@ function pillarHasProducts(pillar: Category): boolean {
  * `audience.includes(pillar)`) only matters for mens / womens —
  * matches the rest of the menu's filtering rule.
  */
+/** Subcategory keys that exist in shop data as placeholders rather
+ *  than real editorial buckets. The bulk import script writes
+ *  `subcategory: "uncategorized"` when a row arrives without one, so
+ *  these surface in product data but should never appear as nav items.
+ *  Products under these keys still render via the parent category. */
+const PLACEHOLDER_SUBCATEGORIES = new Set<string>(["", "uncategorized"]);
+
 function presentSubcategories(pillar: Category): string[] {
   const inPillar = (p: (typeof SHOP_PRODUCTS)[number]) =>
     AUDIENCE_PILLARS.has(pillar)
@@ -114,7 +124,13 @@ function presentSubcategories(pillar: Category): string[] {
       : p.category === pillar;
   const present = new Set<string>();
   for (const p of LIVE_MENU_PRODUCTS) {
-    if (inPillar(p) && p.subcategory) present.add(p.subcategory);
+    if (
+      inPillar(p) &&
+      p.subcategory &&
+      !PLACEHOLDER_SUBCATEGORIES.has(p.subcategory)
+    ) {
+      present.add(p.subcategory);
+    }
   }
   const canonical = CATEGORY_TREE[pillar]?.subcategories ?? [];
   const ordered: string[] = [];

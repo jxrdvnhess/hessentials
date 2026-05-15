@@ -132,8 +132,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="text-[#1f1d1b] antialiased">
-        <SiteHeader />
-        <PersistentShopMenu />
+        {/* Sticky nav stack. The main site header and the per-shop
+            sub-nav share a single sticky container so they always
+            travel together — no height hand-coding needed for the
+            second row to land cleanly under the first. The shop
+            sub-nav renders null off /shop/*, leaving just the header
+            stuck to the top on every other route. */}
+        <div className="sticky top-0 z-40">
+          <SiteHeader />
+          <PersistentShopMenu />
+        </div>
         {children}
         <FooterGate />
         {/* Site-wide structured data — Organization (publisher
