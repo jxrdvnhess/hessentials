@@ -3407,6 +3407,32 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "json-ld",
     draft: true,
   },
+  {
+    slug: "ikea-f-rgklar-plate-matte-light-turquoise",
+    name: "FÄRGKLAR Plate - matte light turquoise 10 \"",
+    brand: "IKEA",
+    category: "home",
+    subcategory: "dinnerware",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:37.357Z",
+    reason: "A plate that understands it is a plate. That humility is the whole appeal.",
+    priceRange: "$14.99",
+    url: "https://www.ikea.com/us/en/p/faergklar-plate-matte-light-turquoise-00477158/",
+    image: "/shop/ikea-f-rgklar-plate-matte-light-turquoise/015dd948b89a002f.jpg",
+    images: [
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/015dd948b89a002f.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/aa88a4345d7e5a77.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/4b92538b189bff20.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/13674b88fb9849d6.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/566e141ca57daf6a.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/9c6dcb3b1aa0085b.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/14a0e7aab5da1629.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/793012e73ea229dd.jpg",
+      "/shop/ikea-f-rgklar-plate-matte-light-turquoise/1a2e5d80d0b29c16.jpg",
+    ],
+    extractionMethod: "json-ld",
+    draft: true,
+  },
 ];
 
 /**
