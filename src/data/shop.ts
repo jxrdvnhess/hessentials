@@ -3047,6 +3047,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-large-coffee-mug-in-milk",
+    name: "Large Coffee Mug in Milk",
+    brand: "Felt + Fat",
+    category: "home",
+    subcategory: "mugs",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:43.265Z",
+    reason: "For the second pour, not the styled first one. Generous, plain, and useful.",
+    priceRange: "$17–$86",
+    url: "https://www.feltandfat.com/products/large-coffee-mug-in-milk",
+    image: "/shop/felt-fat-large-coffee-mug-in-milk/60123053d812aca5.jpg",
+    images: [
+      "/shop/felt-fat-large-coffee-mug-in-milk/60123053d812aca5.jpg",
+      "/shop/felt-fat-large-coffee-mug-in-milk/60123053d812aca5.jpg",
+      "/shop/felt-fat-large-coffee-mug-in-milk/60123053d812aca5.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
