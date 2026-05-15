@@ -3114,6 +3114,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
+    name: "Pure Flake Sea Salt Slide Tin",
+    brand: "Jacobsen Salt Co.",
+    category: "provisions",
+    subcategory: "salt",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:57:10.996Z",
+    reason: "Pocket salt is a little ridiculous until it becomes indispensable. Picnic logic, not performance.",
+    priceRange: "$6.50–$30.50",
+    url: "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
+    image: "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/60c1818efe753d45.jpg",
+    images: [
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/60c1818efe753d45.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/60c1818efe753d45.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/40bbfd3f97857cd9.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/459d115dffcea986.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/4066a41645e348db.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/04b8b3946774ddb3.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/83aec54d2c0c36a5.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/63de14a2c2ac68d5.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/8ae141e968bafe01.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt-slide-tin/2a04ca9402c374e0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
