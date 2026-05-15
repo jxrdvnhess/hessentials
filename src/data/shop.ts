@@ -2967,6 +2967,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "farmhouse-pottery-silo-pitchers",
+    name: "Silo Pitchers",
+    brand: "Farmhouse Pottery",
+    category: "home",
+    subcategory: "serveware",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:13.732Z",
+    reason: "A pitcher should be able to hold flowers, water, cream, or nothing at all. That flexibility earns space.",
+    priceRange: "$35–$155",
+    url: "https://www.farmhousepottery.com/products/silo-pitchers",
+    image: "/shop/farmhouse-pottery-silo-pitchers/db1559188f977f14.jpg",
+    images: [
+      "/shop/farmhouse-pottery-silo-pitchers/db1559188f977f14.jpg",
+      "/shop/farmhouse-pottery-silo-pitchers/a929ac1277f0a2a3.jpg",
+      "/shop/farmhouse-pottery-silo-pitchers/a929ac1277f0a2a3.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
