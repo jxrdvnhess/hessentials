@@ -257,10 +257,22 @@ export default function ShopGallery({
 
 /* ---------- Frame ---------- */
 
+/** Horizontal travel (px) above which a touch is treated as a swipe
+ *  and the underlying Link click is suppressed. Tuned to feel decisive
+ *  on iOS without eating accidental taps. */
+const SWIPE_THRESHOLD = 40;
+
 /**
  * One framed plate. Image is presented inside a thick white mat
  * with a hairline outer border. The hover overlay caption sits on
  * the bottom mat — not on the image — per the addendum.
+ *
+ * When a product carries multiple images, the frame becomes a small
+ * gallery: horizontal swipe on touch devices, hover-revealed arrows
+ * in the side mat on desktop. Click still navigates to detail; the
+ * swipe handler suppresses the click when horizontal travel exceeds
+ * SWIPE_THRESHOLD. Caption shows on hover for pointer devices and
+ * defaults to visible on touch devices (no hover state).
  */
 function Frame({
   product,
@@ -269,34 +281,91 @@ function Frame({
   product: ShopProduct;
   ratio: Slot["ratio"];
 }) {
+  const images = product.images ?? [product.image];
+  const hasGallery = images.length > 1;
+  const [active, setActive] = useState(0);
+
+  const swipeStartX = useRef<number | null>(null);
+  const wasSwipe = useRef(false);
+
+  const goTo = (i: number) =>
+    setActive(((i % images.length) + images.length) % images.length);
+  const next = () => goTo(active + 1);
+  const prev = () => goTo(active - 1);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    swipeStartX.current = e.touches[0].clientX;
+    wasSwipe.current = false;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (swipeStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - swipeStartX.current;
+    swipeStartX.current = null;
+    if (Math.abs(dx) > SWIPE_THRESHOLD) {
+      wasSwipe.current = true;
+      if (dx < 0) next();
+      else prev();
+    }
+  };
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (wasSwipe.current) {
+      e.preventDefault();
+      wasSwipe.current = false;
+    }
+  };
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!hasGallery) return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      prev();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      next();
+    }
+  };
+
+  // Arrow buttons — sit centered vertically in the side mat, not on
+  // the image plate. Subtle: hairline border, near-transparent fill,
+  // fade in on hover for pointer devices, faint resting state on
+  // touch so the affordance is visible without dominating.
+  const arrowBase =
+    "absolute top-1/2 -translate-y-1/2 z-10 flex h-7 w-7 items-center justify-center rounded-full " +
+    "border border-[#1f1d1b]/15 bg-white/70 text-[#1f1d1b]/80 backdrop-blur-sm " +
+    "opacity-0 transition-opacity duration-300 ease-out " +
+    "group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 " +
+    "hover:bg-white hover:text-[#1f1d1b] " +
+    "[@media(hover:none)]:opacity-60";
+
   return (
     <article className="group">
-      <Link
-        href={`/shop/${product.slug}`}
-        aria-label={`${product.brand} — ${product.name}`}
-        className="block focus:outline-none focus-visible:ring-1 focus-visible:ring-[#1f1d1b]/30"
+      <div
+        className="relative bg-white border border-[#1f1d1b]/12 px-[8%] pt-[8%] pb-[10.4%] touch-pan-y"
+        onTouchStart={hasGallery ? handleTouchStart : undefined}
+        onTouchEnd={hasGallery ? handleTouchEnd : undefined}
+        onKeyDown={hasGallery ? handleKeyDown : undefined}
       >
-        <div
-          // The frame: white mat + hairline outer border. Padding
-          // sets the mat thickness — 8% sides, 10.4% bottom (8 × 1.3
-          // for the museum-convention deeper bottom mat). All values
-          // sit in the 6-10% target range from the density addendum.
-          // Padding percentages are relative to frame WIDTH, so mat
-          // scales with the frame, not the source image.
-          className="relative bg-white border border-[#1f1d1b]/12 px-[8%] pt-[8%] pb-[10.4%]"
+        <Link
+          href={`/shop/${product.slug}`}
+          aria-label={`${product.brand} — ${product.name}`}
+          onClick={handleLinkClick}
+          className="block focus:outline-none focus-visible:ring-1 focus-visible:ring-[#1f1d1b]/30"
         >
-          {/* Image plate — natural aspect-ratio bucket. Image uses
-              object-contain so the natural source ratio survives
-              within the bucket without cropping. The bg-white
-              ensures any letterboxing bleeds into the mat seamlessly. */}
+          {/* Image plate. With multiple images, we fade between them
+              by toggling opacity — same pattern as ProductCard. */}
           <div className={`relative w-full overflow-hidden bg-white ${RATIO_CLASS[ratio]}`}>
-            <Image
-              src={product.image}
-              alt={`${product.brand} — ${product.name}`}
-              fill
-              sizes="(min-width: 1024px) 28vw, (min-width: 640px) 38vw, 78vw"
-              className="object-contain"
-            />
+            {images.map((src, i) => (
+              <Image
+                key={src}
+                src={src}
+                alt={`${product.brand} — ${product.name}`}
+                fill
+                sizes="(min-width: 1024px) 28vw, (min-width: 640px) 38vw, 78vw"
+                className={[
+                  "object-contain transition-opacity duration-500 ease-out",
+                  i === active ? "opacity-100" : "opacity-0",
+                ].join(" ")}
+              />
+            ))}
             {/* 5% darken on the IMAGE only on hover. */}
             <div
               aria-hidden
@@ -304,13 +373,12 @@ function Frame({
             />
           </div>
 
-          {/* Caption — sits on the lower mat, fades in on hover.
-              Inset matches the new 8% side mat so the text edge
-              aligns with the image edge. Absolute so the mat keeps
-              its breathing room when nothing's hovering. */}
+          {/* Caption — sits on the lower mat. Fades in on hover for
+              pointer devices; stays visible on touch devices (no hover
+              state means it'd never appear otherwise). */}
           <div
             aria-hidden
-            className="absolute inset-x-[8%] bottom-[3%] flex flex-col items-start opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+            className="absolute inset-x-[8%] bottom-[3%] flex flex-col items-start opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 [@media(hover:none)]:opacity-100"
           >
             <span className="font-serif text-[13px] leading-[1.2] text-[#1f1d1b] sm:text-[14px]">
               {product.name}
@@ -319,8 +387,41 @@ function Frame({
               {product.brand}
             </span>
           </div>
-        </div>
-      </Link>
+        </Link>
+
+        {hasGallery && (
+          <>
+            <button
+              type="button"
+              aria-label="Previous image"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                prev();
+              }}
+              className={`${arrowBase} left-[1.5%]`}
+            >
+              <span aria-hidden className="text-[12px] leading-none">
+                ←
+              </span>
+            </button>
+            <button
+              type="button"
+              aria-label="Next image"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                next();
+              }}
+              className={`${arrowBase} right-[1.5%]`}
+            >
+              <span aria-hidden className="text-[12px] leading-none">
+                →
+              </span>
+            </button>
+          </>
+        )}
+      </div>
     </article>
   );
 }
