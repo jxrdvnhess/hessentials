@@ -3161,6 +3161,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "jacobsen-salt-co-flake-salt-cellar",
+    name: "Flake Salt & Cellar",
+    brand: "Jacobsen Salt Co.",
+    category: "provisions",
+    subcategory: "salt cellar",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:57:26.080Z",
+    reason: "The salt and the vessel arrive as one ritual. Useful, pretty, and not overthought.",
+    priceRange: "$10–$40",
+    url: "https://jacobsensalt.com/products/flake-salt-cellar",
+    image: "/shop/jacobsen-salt-co-flake-salt-cellar/5bb3fd15ff88fe2c.jpg",
+    images: [
+      "/shop/jacobsen-salt-co-flake-salt-cellar/5bb3fd15ff88fe2c.jpg",
+      "/shop/jacobsen-salt-co-flake-salt-cellar/4479dbb75bea1bb7.jpg",
+      "/shop/jacobsen-salt-co-flake-salt-cellar/4479dbb75bea1bb7.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
