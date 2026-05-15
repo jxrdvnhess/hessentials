@@ -2594,6 +2594,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-collapsible-coffee-drip",
+    name: "Collapsible Coffee Drip",
+    brand: "Snow Peak",
+    category: "home",
+    subcategory: "coffee ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:45.862Z",
+    reason: "A fold-flat ritual object. It preserves one calm habit when everything else is moving.",
+    priceRange: "$23.96",
+    url: "https://www.snowpeak.com/products/collapsible_pour_over-cs-113",
+    image: "/shop/snow-peak-collapsible-coffee-drip/892da669aee182fa.jpg",
+    images: [
+      "/shop/snow-peak-collapsible-coffee-drip/892da669aee182fa.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/5ba8146b8ff289e5.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/5ba8146b8ff289e5.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/1ab169994d31f11d.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/1ab169994d31f11d.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/237a9e6d90e8bf14.jpg",
+      "/shop/snow-peak-collapsible-coffee-drip/237a9e6d90e8bf14.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
