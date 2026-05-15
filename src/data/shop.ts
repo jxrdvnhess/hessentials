@@ -3007,6 +3007,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-espresso-cup-in-milk-2",
+    name: "Espresso Cup in Milk",
+    brand: "Felt + Fat",
+    category: "home",
+    subcategory: "coffee ceramics",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:28.364Z",
+    reason: "Small enough to make the moment sharper. The hand-feel does more than the shape admits.",
+    priceRange: "$17–$86",
+    url: "https://www.feltandfat.com/products/espresso-cup-in-milk",
+    image: "/shop/felt-fat-espresso-cup-in-milk-2/e434d2373fe22169.jpg",
+    images: [
+      "/shop/felt-fat-espresso-cup-in-milk-2/e434d2373fe22169.jpg",
+      "/shop/felt-fat-espresso-cup-in-milk-2/044126188ebc5bbc.jpg",
+      "/shop/felt-fat-espresso-cup-in-milk-2/044126188ebc5bbc.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
