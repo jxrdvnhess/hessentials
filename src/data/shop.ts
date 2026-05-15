@@ -2522,6 +2522,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-rebowl",
+    name: "The reBowl® - Multiple Colors",
+    brand: "Material Kitchen",
+    category: "cooking",
+    subcategory: "prep bowls",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:42.244Z",
+    reason: "The unglamorous prep bowl made visually acceptable enough to stay close.",
+    priceRange: "$18",
+    url: "https://materialkitchen.com/products/the-rebowl%C2%AE-multiple-colors",
+    image: "/shop/material-kitchen-the-rebowl/7d8d9404d2da39f9.jpg",
+    images: [
+      "/shop/material-kitchen-the-rebowl/7d8d9404d2da39f9.jpg",
+      "/shop/material-kitchen-the-rebowl/2646c63d445addc7.jpg",
+      "/shop/material-kitchen-the-rebowl/0d8b28996b227e7c.jpg",
+      "/shop/material-kitchen-the-rebowl/1024d76a28bc2d45.jpg",
+      "/shop/material-kitchen-the-rebowl/75fb86a68ed742b2.jpg",
+      "/shop/material-kitchen-the-rebowl/e29d00d22ca718bb.jpg",
+      "/shop/material-kitchen-the-rebowl/0e30f7ee098598a1.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
