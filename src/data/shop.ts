@@ -206,6 +206,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 1000,
+    atmosphereCollection: ["Soft Travel", "Object With Memory"],
+    stabilityTier: 3,
   },
   {
     slug: "omega-aqua-terra-small-seconds",
@@ -225,6 +227,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 5000,
+    atmosphereCollection: ["Things That Age Correctly", "Quiet Uniform"],
   },
   {
     slug: "bedsure-waffle-blanket",
@@ -244,6 +247,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 15,
+    atmosphereCollection: ["Hotel Energy at Home", "Warm Minimalism"],
   },
   {
     slug: "massimo-dutti-linen-double-collar-tee",
@@ -263,6 +267,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 25,
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "lv-hippo-coffee-table",
@@ -283,6 +289,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 800,
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "birkenstock-arizona-eva",
@@ -302,6 +309,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 20,
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
+    stabilityTier: 2,
   },
   {
     slug: "ahlem-louxor",
@@ -321,6 +330,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 200,
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
   },
   {
     slug: "prada-linen-duffel",
@@ -343,6 +353,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 800,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "crazy-water-sampler",
@@ -379,6 +391,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 800,
+    atmosphereCollection: ["Things That Age Correctly", "Quiet Uniform"],
   },
   {
     slug: "aveda-pureformance-clay",
@@ -398,6 +411,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 12,
+    atmosphereCollection: ["Bath & Wash", "Things That Improve a Tuesday"],
+    stabilityTier: 2,
   },
   {
     slug: "massimo-dutti-tapered-jeans",
@@ -418,6 +433,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 30,
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "tiffany-venetian-link-bracelet",
@@ -458,6 +475,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 600,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "pacific-coast-down-pillow",
@@ -475,6 +494,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/pacific-coast-down-pillow-2.jpg",
     ],
     extractionMethod: "manual",
+    atmosphereCollection: ["Hotel Energy at Home", "Warm Minimalism"],
   },
   {
     slug: "massimo-dutti-cotton-slim-pants",
@@ -495,6 +515,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 25,
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "birkenstock-arizona-leather",
@@ -514,6 +536,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 50,
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
+    stabilityTier: 2,
   },
   {
     slug: "johnston-murphy-rhodes-backpack",
@@ -553,6 +577,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 12,
+    atmosphereCollection: ["Bath & Wash", "Things That Improve a Tuesday"],
+    stabilityTier: 2,
   },
   {
     slug: "ahlem-haussmann",
@@ -573,6 +599,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 200,
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
   },
   {
     slug: "away-the-large",
@@ -593,6 +620,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 150,
+    atmosphereCollection: ["Soft Travel", "Things That Age Correctly"],
   },
   {
     slug: "massimo-dutti-cotton-tee",
@@ -613,6 +641,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 15,
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "goodfellow-flat-front-shorts",
@@ -631,6 +661,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 10,
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "prada-renylon-backpack",
@@ -652,6 +683,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 800,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "uniqlo-oxford-oversized-shirt",
@@ -671,6 +704,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 15,
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "abercrombie-premium-ribbed-tank",
@@ -690,6 +724,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 10,
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "prada-renylon-duffle",
@@ -711,6 +746,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 800,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "away-bigger-carry-on",
@@ -731,6 +768,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 100,
+    atmosphereCollection: ["Soft Travel", "Things That Age Correctly"],
   },
   {
     slug: "clayton-crume-canvas-tote",
@@ -770,6 +808,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 20,
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "clayton-daybook",
@@ -790,6 +829,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 80,
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "ibex-wool-dryer-puffs",
@@ -810,6 +850,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 10,
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "ysl-l-homme-edt",
@@ -824,6 +865,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     image: "/shop/ysl-l-homme-1.jpg",
     extractionMethod: "manual",
     priceFloor: 35,
+    atmosphereCollection: ["Hotel Energy at Home"],
   },
   {
     slug: "ysl-myslf-edp",
@@ -842,6 +884,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 40,
+    atmosphereCollection: ["Hotel Energy at Home"],
   },
   {
     slug: "prada-paradigme-edp",
@@ -861,6 +904,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 100,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "kiehls-avocado-eye-cream",
@@ -879,6 +924,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "manual",
     priceFloor: 18,
+    atmosphereCollection: ["Hotel Energy at Home"],
   },
   {
     slug: "louis-vuitton-dopp-kit",
@@ -919,6 +965,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "json-ld",
     priceFloor: 200,
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "dr-bronner-tea-tree-bar-soap",
@@ -938,6 +986,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     ],
     extractionMethod: "shopify",
     priceFloor: 3,
+    atmosphereCollection: ["Hotel Energy at Home"],
   },
   {
     slug: "soeur-blue-imani-dress",
@@ -959,6 +1008,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/soeur-blue-imani-dress-6.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "soeur-grey-hyacinthe-coat",
@@ -979,6 +1029,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/soeur-grey-hyacinthe-coat-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "soeur-grey-ila-tank-top",
@@ -998,6 +1049,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/soeur-grey-ila-tank-top-4.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "carpasus-overshirt-abaca-olive",
@@ -1019,6 +1071,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/carpasus-overshirt-abaca-olive-6.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "kallmeyer-parker-convertible-clutch-in-leather",
@@ -1059,6 +1112,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-canyon-lane-stripe-california-oxford-bd-shirt-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "prada-court-leather-sneakers",
@@ -1072,6 +1127,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.prada.com/us/en/p/court-leather-sneakers/2EE483_070_F0009_F_G000",
     image: "/shop/prada-court-leather-sneakers-1.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "prada-drill-fabric-sneakers",
@@ -1085,6 +1142,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.prada.com/us/en/p/drill-fabric-sneakers/2EE467_3LKE_F0009_F_G000",
     image: "/shop/prada-drill-fabric-sneakers-1.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Soft Travel"],
+    stabilityTier: 3,
   },
   {
     slug: "buck-mason-burnt-orange-sunset-rayon-western-shirt",
@@ -1104,6 +1163,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-burnt-orange-sunset-rayon-western-shirt-4.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "carpasus-overshirt-abaca-black",
@@ -1124,6 +1185,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/carpasus-overshirt-abaca-black-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "carpasus-trousers-abaca-black",
@@ -1144,6 +1206,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/carpasus-trousers-abaca-black-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "thinking-mu-falda-larga-plisada-roja-flowers-pauline-xs",
@@ -1166,6 +1229,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/thinking-mu-falda-larga-plisada-roja-flowers-pauline-xs-6.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "thinking-mu-top-plisado-rojo-flowers-dora-xs",
@@ -1190,6 +1254,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/thinking-mu-top-plisado-rojo-flowers-dora-xs-8.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "thinking-mu-gorra-poppy-chris-u",
@@ -1278,6 +1343,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/scalperscompany-contrast-travel-bag-9.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel"],
   },
   {
     slug: "scalperscompany-fine-knit-cardigan",
@@ -1301,6 +1367,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/scalperscompany-fine-knit-cardigan-7.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "scalperscompany-hoodie-with-front-pocket",
@@ -1323,6 +1390,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/scalperscompany-hoodie-with-front-pocket-6.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "rachel-comey-richie-sandal",
@@ -1346,6 +1414,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/rachel-comey-richie-sandal-7.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "merz-b-schwanen-102-loopwheeled-maco-imit-long-sleeve-henley",
@@ -1366,6 +1435,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/merz-b-schwanen-102-loopwheeled-maco-imit-long-sleeve-henley-4.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "esya-the-dune-set",
@@ -1390,6 +1460,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/esya-the-dune-set-8.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "apieceapart-volta-twist-top-apiece-apart",
@@ -1409,6 +1480,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/apieceapart-volta-twist-top-apiece-apart-3.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "sister-x-soeur-eden-black",
@@ -1428,6 +1500,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/sister-x-soeur-eden-black-3.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "sister-x-soeur-callie-burnt-orange",
@@ -1447,6 +1520,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/sister-x-soeur-callie-burnt-orange-3.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "stetson-stetson-and-amp-the-great-suede-floral-cowboy-boot",
@@ -1468,6 +1542,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/stetson-stetson-and-amp-the-great-suede-floral-cowboy-boot-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "favorite-daughter-the-striped-triangle-scarf",
@@ -1508,6 +1583,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/apieceapart-salome-halter-maxi-apiece-apart-4.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "miu-miu-ivy-embroidered-cotton-handbag",
@@ -1550,6 +1626,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-pacific-dusk-field-spec-cotton-heavy-tee-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "cos-linen-popover-shirt",
@@ -1574,6 +1652,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/cos-linen-popover-shirt-8.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform", "Warm Minimalism"],
+    stabilityTier: 2,
   },
   {
     slug: "cos-jersey-tank-top",
@@ -1596,6 +1676,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/cos-jersey-tank-top-6.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform", "Warm Minimalism"],
+    stabilityTier: 2,
   },
   {
     slug: "cos-boat-neck-cotton-t-shirt",
@@ -1619,6 +1701,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/cos-boat-neck-cotton-t-shirt-7.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform", "Warm Minimalism"],
+    stabilityTier: 2,
   },
   {
     slug: "theory-zaine-pant-in-precision-ponte",
@@ -1637,6 +1721,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/theory-zaine-pant-in-precision-ponte-2.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "uniqlo-mens-slim-chino-pants-uniqlo-us",
@@ -1651,6 +1737,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.uniqlo.com/us/en/products/E450251-000/00?colorDisplayCode=32&sizeDisplayCode=029&pldDisplayCode=034",
     image: "/shop/uniqlo-mens-slim-chino-pants-uniqlo-us-1.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "alex-mill-garment-dyed-work-jacket-in-linen",
@@ -1672,6 +1759,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/alex-mill-garment-dyed-work-jacket-in-linen-5.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "everlane-the-slim-oxford-shirt-bone-navy-standard-xs",
@@ -1694,6 +1782,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/everlane-the-slim-oxford-shirt-bone-navy-standard-xs-6.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "theory-common-projects-men-s-original-achilles-sneakers",
@@ -1708,6 +1797,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.theory.com/men/shoes/common-projects-men%27s-original-achilles-sneakers/F061562X_100.html",
     image: "/shop/theory-common-projects-men-s-original-achilles-sneakers-1.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "theory-common-projects-men-s-original-achilles-sneakers-2",
@@ -1730,6 +1821,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/theory-common-projects-men-s-original-achilles-sneakers-2-6.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform"],
+    stabilityTier: 2,
   },
   {
     slug: "j-crew-broken-in-organic-cotton-oxford-shirt",
@@ -1744,6 +1837,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.jcrew.com/p/mens/categories/clothing/shirts/secret-wash-shirts/secret-wash-cotton-poplin-shirt/BE996",
     image: "/shop/j-crew-broken-in-organic-cotton-oxford-shirt/0631268217ec6763.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "conair-steam-and-press-with-turbo",
@@ -1757,6 +1851,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.conair.com/extremesteam-handheld-fabric-steamer/GS38R.html",
     image: "/shop/conair-steam-and-press-with-turbo/a22c8a31d09e3e0e.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "diptyque-tubereuse-tuberose-classic-candle",
@@ -1770,6 +1865,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.diptyqueparis.com/en_us/p/tubereuse-tuberose-candle-190g.html",
     image: "/shop/diptyque-tubereuse-tuberose-classic-candle/2b298bd06065fedf.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Things That Improve a Tuesday"],
   },
   {
     slug: "madewell-the-medium-transport-tote",
@@ -1798,6 +1894,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.mansurgavriel.com/products/small-zip-tote-black-flamma",
     image: "/shop/mansur-gavriel-small-zip-tote-spazzolato-black-flamma/036d0dad06812142.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel"],
   },
   {
     slug: "brightland-awake-extra-virgin-olive-oil",
@@ -1812,6 +1909,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://brightland.co/products/awake",
     image: "/shop/brightland-awake-extra-virgin-olive-oil/a29de36837c86fbc.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Pantry Rituals"],
   },
   {
     slug: "hamilton-khaki-field-mechanical-38mm",
@@ -1826,6 +1924,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.hamiltonwatch.com/en-us/h69439931-khaki-field-mechanical.html",
     image: "/shop/hamilton-khaki-field-mechanical-38mm/d82136c7ba8a5d05.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Things That Age Correctly", "Quiet Uniform"],
   },
   {
     slug: "breville-the-bambino",
@@ -1839,6 +1938,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.breville.com/us/en/products/espresso/bes450.html",
     image: "/shop/breville-the-bambino/806153b9beb61ca0.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "breville-the-barista-express",
@@ -1852,6 +1952,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.breville.com/us/en/products/espresso/bes870.html",
     image: "/shop/breville-the-barista-express/877970c4867fc34a.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "baratza-suggested-encore-esp",
@@ -1865,6 +1966,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.baratza.com/en-us/product/encoretm-esp-zcg495",
     image: "/shop/baratza-suggested-encore-esp/20e2c90d92c89b4e.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "birkenstock-boston-soft-footbed-suede-leather",
@@ -1879,6 +1981,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.birkenstock.com/us/boston-soft-footbed-suede-leather/boston-suede-suedeleather-softfootbed-eva-u_46.html",
     image: "/shop/birkenstock-boston-soft-footbed-suede-leather/34b7513f27f85f0b.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
+    stabilityTier: 2,
   },
   {
     slug: "clarks-wallabee",
@@ -1893,6 +1997,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.clarks.com/en-us/wallabee/26155519-p",
     image: "/shop/clarks-wallabee/14da1f1c164bf625.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Quiet Uniform", "Soft Travel"],
   },
   {
     slug: "jason-markk-premium-suede-cleaning-kit",
@@ -1906,6 +2011,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://jasonmarkk.com/products/premium-suede-cleaning-kit",
     image: "/shop/jason-markk-premium-suede-cleaning-kit/35a17c2cdb924b8b.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "uniqlo-merino-sweater",
@@ -1920,6 +2026,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.uniqlo.com/us/en/products/E450535-000/00",
     image: "/shop/uniqlo-merino-sweater/fe0cc521e3d58f86.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform"],
   },
   {
     slug: "le-creuset-signature-round-dutch-oven",
@@ -1940,6 +2047,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/le-creuset-signature-round-dutch-oven/72286d596a844b4d.jpg",
     ],
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "marshall-stanmore-iii",
@@ -1953,6 +2061,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.marshall.com/us/en/product/stanmore-iii",
     image: "/shop/marshall-stanmore-iii/339557d50cf89171.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "cuyana-classic-easy-tote",
@@ -1967,6 +2076,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://cuyana.com/products/classic-easy-tote",
     image: "/shop/cuyana-classic-easy-tote/f5c079c3cdd9cd86.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel"],
   },
   {
     slug: "maison-margiela-replica-jazz-club",
@@ -1981,6 +2091,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.maisonmargiela-fragrances.us/fragrances/replica/replica-jazz-club/MM008.html",
     image: "/shop/maison-margiela-replica-jazz-club/3edcc3295e11aa62.jpg",
     extractionMethod: "json-ld",
+    atmosphereCollection: ["Hotel Energy at Home"],
   },
   {
     slug: "timex-watches-from-timex-digital-analog-and-water-resistant",
@@ -2002,6 +2113,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/timex-watches-from-timex-digital-analog-and-water-resistant/013ec6e40d0c9722.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Things That Age Correctly", "Quiet Uniform"],
   },
   {
     slug: "sundays-sundays-beautiful-furniture-made-for-real-life",
@@ -2021,6 +2133,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/sundays-sundays-beautiful-furniture-made-for-real-life/95016acac5bc5056.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "hawkins-new-york-simple-linen-napkin-flax",
@@ -2050,6 +2163,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.hawkinsnewyork.com/products/essential-dinner-napkin-ivory",
     image: "/shop/hawkins-new-york-essential-dinner-napkin-set-of-4-ivory/21fe1ac5bc3aa8da.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Weeknight Table", "The Anti-Hostess Table"],
   },
   {
     slug: "heath-ceramics-bud-vase",
@@ -2079,6 +2193,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.coyuchi.com/products/honeycomb-organic-blanket-undyed-oyster",
     image: "/shop/coyuchi-honeycomb-organic-blanket/ea3cc1bd5521585c.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Hotel Energy at Home", "Warm Minimalism"],
   },
   {
     slug: "coyuchi-unisex-organic-waffle-robe",
@@ -2154,6 +2269,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.feltandfat.com/products/coffee-mug-in-confetti",
     image: "/shop/felt-fat-coffee-mug-in-confetti/332ff03d68ef36f8.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "material-kitchen-the-mk-free-board",
@@ -2199,6 +2315,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://us.moccamaster.com/products/kbgv",
     image: "/shop/moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer/472b4cc4da83f076.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Useful Beauty"],
   },
   {
     slug: "diaspora-co-pragati-turmeric",
@@ -2245,6 +2362,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://dragondiffusion.com/products/triple-jump-small-dark-brown-woven-leather-bag-handmade",
     image: "/shop/dragon-diffusion-triple-jump-small-dark-brown/b671e2d565b00b85.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel", "Things That Age Correctly"],
   },
   {
     slug: "dragon-diffusion-triple-jump-small-black",
@@ -2259,6 +2377,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://dragondiffusion.com/products/triple-jump-small-black-woven-leather-bag-handmade",
     image: "/shop/dragon-diffusion-triple-jump-small-black/d42d4b210b4c6421.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel", "Things That Age Correctly"],
   },
   {
     slug: "filson-small-rugged-twill-duffle-bag-tan",
@@ -2301,6 +2420,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.leatherology.com/products/large-travel-organizer-black-onyx",
     image: "/shop/leatherology-large-travel-organizer-black-onyx/2a874375acd47e75.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel"],
   },
   {
     slug: "leatherology-large-travel-organizer-canvas-natural-canvas-black",
@@ -2315,6 +2435,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     url: "https://www.leatherology.com/products/large-travel-organizer-in-canvas-natural-canvasblack",
     image: "/shop/leatherology-large-travel-organizer-canvas-natural-canvas-black/67b564c37a09501a.jpg",
     extractionMethod: "shopify",
+    atmosphereCollection: ["Soft Travel"],
   },
   {
     slug: "le-bon-shoppe-her-socks-mc-cotton-classic-white",
@@ -2337,6 +2458,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/le-bon-shoppe-her-socks-mc-cotton-classic-white/c52a8df7d097e517.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Correct Low"],
+    stabilityTier: 2,
   },
   {
     slug: "le-bon-shoppe-her-socks-mc-cotton-dark-tan",
@@ -2357,6 +2480,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/le-bon-shoppe-her-socks-mc-cotton-dark-tan/291031bd218ed660.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Correct Low"],
+    stabilityTier: 2,
   },
   {
     slug: "buck-mason-black-field-spec-cotton-heavy-tee",
@@ -2379,6 +2504,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-black-field-spec-cotton-heavy-tee/8033927a3ff7be2c.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "buck-mason-white-field-spec-cotton-heavy-tee",
@@ -2401,6 +2528,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-white-field-spec-cotton-heavy-tee/2ce81d157d1fed3f.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "buck-mason-dress-navy-field-spec-heavy-tee",
@@ -2422,6 +2551,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-dress-navy-field-spec-heavy-tee/6ad7215b51957d02.jpg",
     ],
     extractionMethod: "shopify",
+    atmosphereCollection: ["Quiet Uniform", "Things That Age Correctly"],
+    stabilityTier: 2,
   },
   {
     slug: "hawkins-new-york-simple-linen-napkin-olive",
