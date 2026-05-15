@@ -1919,7 +1919,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     subcategory: "kitchen",
     dateAdded: "2026-05-14T20:08:16.417Z",
     reason: "The pot that makes the stove look like a place where things happen. Heavy, forgiving, and visually permanent enough to live out instead of being stored away.",
-    priceRange: "$30–$650",
+    priceRange: "$270–$650",
     url: "https://www.lecreuset.com/round-dutch-oven/LS2501.html",
     image: "/shop/le-creuset-signature-round-dutch-oven/02f491ce14e1edfc.jpg",
     extractionMethod: "json-ld",

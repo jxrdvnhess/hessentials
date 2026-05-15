@@ -125,14 +125,27 @@ export default async function ShopProductPage({
 
           {/* Meta */}
           <div className="md:col-span-5 md:sticky md:top-24">
+            {/* Breadcrumb — clickable pillar / subcategory so visitors
+                can climb back up the path they came in on. The visual
+                weight is unchanged from the prior read-only version. */}
             <p className="text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/45 sm:text-[12px]">
-              {categoryLabel(product.category)}
+              <Link
+                href={`/shop/${product.category}`}
+                className="transition-colors duration-300 ease-out hover:text-[#1f1d1b]/80"
+              >
+                {categoryLabel(product.category)}
+              </Link>
               {product.subcategory ? (
                 <>
                   <span aria-hidden className="mx-2 text-[#1f1d1b]/25">
                     /
                   </span>
-                  {subcategoryLabel(product.subcategory)}
+                  <Link
+                    href={`/shop/${product.category}/${product.subcategory}`}
+                    className="transition-colors duration-300 ease-out hover:text-[#1f1d1b]/80"
+                  >
+                    {subcategoryLabel(product.subcategory)}
+                  </Link>
                 </>
               ) : null}
             </p>
