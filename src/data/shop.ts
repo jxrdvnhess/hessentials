@@ -2642,6 +2642,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "farmhouse-pottery-silo-garlic-keeper-2",
+    name: "Silo Garlic Keeper",
+    brand: "Farmhouse Pottery",
+    category: "cooking",
+    subcategory: "countertop vessels",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:48.869Z",
+    reason: "Keeps garlic visible without making the counter feel busy. Function with a pulse.",
+    priceRange: "$145",
+    url: "https://www.farmhousepottery.com/products/silo-garlic-keeper",
+    image: "/shop/farmhouse-pottery-silo-garlic-keeper-2/52208163867abacd.jpg",
+    images: [
+      "/shop/farmhouse-pottery-silo-garlic-keeper-2/52208163867abacd.jpg",
+      "/shop/farmhouse-pottery-silo-garlic-keeper-2/49d80421868972f0.jpg",
+      "/shop/farmhouse-pottery-silo-garlic-keeper-2/49d80421868972f0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
