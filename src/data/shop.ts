@@ -2546,6 +2546,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-titanium-french-press",
+    name: "Titanium French Press",
+    brand: "Snow Peak",
+    category: "travel",
+    subcategory: "coffee ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:43.619Z",
+    reason: "Coffee survives movement here. The object feels light, capable, and strangely calm.",
+    priceRange: "$59.95",
+    url: "https://www.snowpeak.com/products/titanium-french-press-cs-111",
+    image: "/shop/snow-peak-titanium-french-press/e08b7ecaee9fe67a.jpg",
+    images: [
+      "/shop/snow-peak-titanium-french-press/e08b7ecaee9fe67a.jpg",
+      "/shop/snow-peak-titanium-french-press/d54649bccde139da.jpg",
+      "/shop/snow-peak-titanium-french-press/d54649bccde139da.jpg",
+      "/shop/snow-peak-titanium-french-press/1e8ef09f77e13b89.jpg",
+      "/shop/snow-peak-titanium-french-press/1e8ef09f77e13b89.jpg",
+      "/shop/snow-peak-titanium-french-press/ed79a87f8ac92916.jpg",
+      "/shop/snow-peak-titanium-french-press/ed79a87f8ac92916.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
