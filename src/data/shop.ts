@@ -2687,6 +2687,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "diaspora-co-the-trio",
+    name: "The Trio",
+    brand: "Diaspora Co.",
+    category: "provisions",
+    subcategory: "spices",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:59.115Z",
+    reason: "Three spices that make cooking feel awake again. Useful before they are beautiful.",
+    priceRange: "$36.50",
+    url: "https://www.diasporaco.com/products/the-trio-3-tin",
+    image: "/shop/diaspora-co-the-trio/99e2bafe4e22547d.jpg",
+    images: [
+      "/shop/diaspora-co-the-trio/99e2bafe4e22547d.jpg",
+      "/shop/diaspora-co-the-trio/9b7e10cd7691060e.jpg",
+      "/shop/diaspora-co-the-trio/9b7e10cd7691060e.jpg",
+      "/shop/diaspora-co-the-trio/99e2bafe4e22547d.jpg",
+      "/shop/diaspora-co-the-trio/59cd645c8847570e.jpg",
+      "/shop/diaspora-co-the-trio/59cd645c8847570e.jpg",
+      "/shop/diaspora-co-the-trio/bfaaf35c33fb5778.jpg",
+      "/shop/diaspora-co-the-trio/bfaaf35c33fb5778.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
