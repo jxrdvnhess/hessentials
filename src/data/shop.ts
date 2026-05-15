@@ -3067,6 +3067,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-cappuccino-cup-in-milk",
+    name: "Cappuccino Cup in Milk",
+    brand: "Felt + Fat",
+    category: "cooking",
+    subcategory: "coffee ceramics",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:50.508Z",
+    reason: "The middle size is often the one people actually use. Less precious than espresso, more intimate than a mug.",
+    priceRange: "$17–$86",
+    url: "https://www.feltandfat.com/products/cappuccino-cup-in-milk",
+    image: "/shop/felt-fat-cappuccino-cup-in-milk/3ed072ea181e24d5.jpg",
+    images: [
+      "/shop/felt-fat-cappuccino-cup-in-milk/3ed072ea181e24d5.jpg",
+      "/shop/felt-fat-cappuccino-cup-in-milk/009daadec156ecb8.jpg",
+      "/shop/felt-fat-cappuccino-cup-in-milk/009daadec156ecb8.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
