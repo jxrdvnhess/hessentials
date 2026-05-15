@@ -86,15 +86,60 @@ export const CATEGORY_TREE = {
       "stationery",
       "laundry",
       "table",
+      "table-linens",
+      "glassware",
+      "dinnerware",
+      "serveware",
+      "vessels",
+      "hardware",
+      "storage",
+      "entryway",
+    ],
+  },
+  cooking: {
+    label: "Cooking",
+    /**
+     * Lived-object category — see `data/sourcing-policy.md`. Cuts
+     * across `home/kitchen` and `provisions/pantry` from the old
+     * department-store taxonomy. Earns first-class status because
+     * the archive thinks in terms of how objects are used at the
+     * counter, not which retail floor they'd sit on.
+     */
+    subcategories: [
+      "prep",
+      "coffee",
+      "picnic",
+      "pantry",
+      "ceramics",
+      "tools",
+      "salt-cellar",
+      "countertop-vessels",
     ],
   },
   travel: {
     label: "Travel",
-    subcategories: ["luggage", "kits", "small-leather-goods"],
+    subcategories: [
+      "luggage",
+      "kits",
+      "small-leather-goods",
+      "bags",
+      "organization",
+      "drinkware",
+      "outdoor",
+      "totes",
+    ],
   },
   provisions: {
     label: "Provisions",
-    subcategories: ["beverages", "pantry", "sundries"],
+    subcategories: [
+      "beverages",
+      "pantry",
+      "sundries",
+      "salt",
+      "spices",
+      "water",
+      "tea",
+    ],
   },
 } as const satisfies Record<string, CategoryDef>;
 
