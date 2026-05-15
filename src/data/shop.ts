@@ -3383,6 +3383,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise",
+    name: "FÄRGKLAR 18-piece dinnerware set - matte light turquoise",
+    brand: "IKEA",
+    category: "home",
+    subcategory: "dinnerware",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:28.166Z",
+    reason: "The accessible dinnerware pick that doesn’t apologize. Matte, simple, useful.",
+    priceRange: "$49.99",
+    url: "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-light-turquoise-80564689/",
+    image: "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/9c6dcb3b1aa0085b.jpg",
+    images: [
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/9c6dcb3b1aa0085b.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/2931973e650f951c.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/4b92538b189bff20.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/008a812afd842694.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/13674b88fb9849d6.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/015dd948b89a002f.jpg",
+      "/shop/ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise/566e141ca57daf6a.jpg",
+    ],
+    extractionMethod: "json-ld",
+    draft: true,
+  },
 ];
 
 /**
