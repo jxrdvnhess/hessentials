@@ -2501,6 +2501,27 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-midi-mk-free-board",
+    name: "The Midi MK Free Board",
+    brand: "Material Kitchen",
+    category: "cooking",
+    subcategory: "prep boards",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:35.508Z",
+    reason: "Small boards get used more than large ones. This is the quiet weekday version.",
+    priceRange: "$44",
+    url: "https://materialkitchen.com/products/the-midi-mk-free-board",
+    image: "/shop/material-kitchen-the-midi-mk-free-board/8eb39dd39ac7579c.jpg",
+    images: [
+      "/shop/material-kitchen-the-midi-mk-free-board/8eb39dd39ac7579c.jpg",
+      "/shop/material-kitchen-the-midi-mk-free-board/925f8c639c8fbd82.jpg",
+      "/shop/material-kitchen-the-midi-mk-free-board/0e2445858de52640.jpg",
+      "/shop/material-kitchen-the-midi-mk-free-board/b4e1a9a215e4426a.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
