@@ -3181,6 +3181,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "diaspora-co-haldi-doodh-les",
+    name: "Golden Milk",
+    brand: "Diaspora Co.",
+    category: "provisions",
+    subcategory: "tea and spice",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:57:35.720Z",
+    reason: "A warm drink with structure behind it. Comfort without powdered wellness language.",
+    priceRange: "$12–$57",
+    url: "https://www.diasporaco.com/products/haldi-doodh",
+    image: "/shop/diaspora-co-haldi-doodh-les/a732c961367ffb00.jpg",
+    images: [
+      "/shop/diaspora-co-haldi-doodh-les/a732c961367ffb00.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/e5f02557d2aea82c.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/e5f02557d2aea82c.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/a732c961367ffb00.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/2f15d5f1fc3d45fd.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/2f15d5f1fc3d45fd.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/ca9eb26387711bc6.jpg",
+      "/shop/diaspora-co-haldi-doodh-les/ca9eb26387711bc6.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
