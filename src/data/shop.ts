@@ -3087,6 +3087,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "jacobsen-salt-co-pure-flake-sea-salt",
+    name: "Pure Flake Sea Salt",
+    brand: "Jacobsen Salt Co.",
+    category: "provisions",
+    subcategory: "salt",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:57:00.389Z",
+    reason: "Finishing salt should live close to the hand. Bright, briny, and useful every day.",
+    priceRange: "$6–$15",
+    url: "https://jacobsensalt.com/products/pure-flake-finishing-salt",
+    image: "/shop/jacobsen-salt-co-pure-flake-sea-salt/fef416999d6327ff.jpg",
+    images: [
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/fef416999d6327ff.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/fef416999d6327ff.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/f2c126e4e41871c6.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/459d115dffcea986.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/63de14a2c2ac68d5.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/f67974a7c73a7501.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/92f564284d8b42e0.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/48a68481f7adc451.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/001d0625d740d041.jpg",
+      "/shop/jacobsen-salt-co-pure-flake-sea-salt/5ef0ac399b5ed6ca.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
