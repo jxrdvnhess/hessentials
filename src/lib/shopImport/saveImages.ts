@@ -17,6 +17,8 @@
  */
 
 import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -109,4 +111,49 @@ export async function saveImagesForSlug(
   }
 
   return { saved, failed };
+}
+
+/**
+ * Download a single remote image and save it content-addressed under
+ * `/public/shop/<slug>/<sha1>.jpg`. Used by the edit form when adding
+ * a new image to an existing product.
+ *
+ * Content-addressing means the same bytes always produce the same path
+ * — re-adding an image that's already on disk is a no-op (no second
+ * write, no duplicate file). The hash is over the *normalized* JPEG
+ * output, so two source URLs that point at the same upstream image
+ * collapse to one file.
+ *
+ * The returned `publicPath` is ready to push into a `ShopProduct`'s
+ * `images` array.
+ */
+export async function saveOneContentAddressed(
+  slug: string,
+  source: string
+): Promise<SavedImage> {
+  if (!/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/.test(slug)) {
+    throw new Error(`Refusing to save: slug must be lowercase kebab-case (got "${slug}")`);
+  }
+  const dir = path.join(PUBLIC_SHOP_DIR, slug);
+  await fs.mkdir(dir, { recursive: true });
+
+  const raw = await downloadOne(source);
+  const jpeg = await normalizeToJpeg(raw);
+  const hash = createHash("sha1").update(jpeg).digest("hex").slice(0, 16);
+  const fileName = `${hash}.jpg`;
+  const fullPath = path.join(dir, fileName);
+
+  // Path-traversal guard. Slug is already pattern-checked above, but
+  // resolving via realpath protects against symlink shenanigans in
+  // the public dir.
+  const resolved = path.resolve(fullPath);
+  if (!resolved.startsWith(path.resolve(PUBLIC_SHOP_DIR) + path.sep)) {
+    throw new Error("Refusing to write outside /public/shop");
+  }
+
+  // Idempotent — same bytes hash to same filename, so existing means done.
+  if (!existsSync(resolved)) {
+    await fs.writeFile(resolved, jpeg);
+  }
+  return { source, publicPath: `/shop/${slug}/${fileName}` };
 }

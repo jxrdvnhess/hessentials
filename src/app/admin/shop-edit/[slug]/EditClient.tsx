@@ -7,10 +7,12 @@
  * across. Differences from import:
  *
  *   - Slug is read-only (rename = delete + re-import).
- *   - Image list is read-only — to change images, delete and re-import.
  *   - Reason field is editable here (this is where editorial copy lands).
+ *   - Images can be added or removed via the dedicated images endpoint;
+ *     each add/remove persists immediately, independent of the form's
+ *     Save button.
  *
- * The save button writes via PATCH to the slug-keyed route. On 200, a
+ * The Save button writes via PATCH to the slug-keyed route. On 200, a
  * "saved" line appears; on error, the message surfaces below the form.
  */
 
@@ -86,6 +88,87 @@ export function EditClient({
   >("idle");
   const [reasonError, setReasonError] = useState<string | null>(null);
 
+  // Images. Persisted via dedicated endpoints (POST add, DELETE remove)
+  // so the changes land immediately — independent of the form's Save
+  // button. Local state mirrors what's on disk after each op.
+  const [images, setImages] = useState<string[]>(initial.images);
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [imageBusy, setImageBusy] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+
+  const onAddImage = async () => {
+    const source = newImageUrl.trim();
+    if (!source) {
+      setImageError("Paste a remote image URL first.");
+      return;
+    }
+    setImageBusy(true);
+    setImageError(null);
+    try {
+      const res = await fetch(
+        `/api/admin/shop-item/${initial.slug}/images`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source }),
+        }
+      );
+      const payload = (await res.json()) as {
+        ok?: boolean;
+        images?: string[];
+        error?: string;
+      };
+      if (!res.ok || !payload.ok || !payload.images) {
+        throw new Error(payload.error ?? `HTTP ${res.status}`);
+      }
+      setImages(payload.images);
+      setNewImageUrl("");
+    } catch (e) {
+      setImageError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setImageBusy(false);
+    }
+  };
+
+  const onRemoveImage = async (index: number) => {
+    if (images.length <= 1) {
+      setImageError("Every product needs at least one image.");
+      return;
+    }
+    if (
+      !confirm(
+        `Remove image ${index + 1} of ${images.length}?\n\nThe file on disk stays; just removes the reference from this product.`
+      )
+    ) {
+      return;
+    }
+    setImageBusy(true);
+    setImageError(null);
+    try {
+      const res = await fetch(
+        `/api/admin/shop-item/${initial.slug}/images`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ index }),
+        }
+      );
+      const payload = (await res.json()) as {
+        ok?: boolean;
+        images?: string[];
+        error?: string;
+      };
+      if (!res.ok || !payload.ok || !payload.images) {
+        throw new Error(payload.error ?? `HTTP ${res.status}`);
+      }
+      setImages(payload.images);
+    } catch (e) {
+      setImageError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setImageBusy(false);
+    }
+  };
+
   const onGenerateReason = async () => {
     if (!name || !brand || !category) {
       setReasonError("Need name, brand, and category before generating.");
@@ -152,7 +235,7 @@ export function EditClient({
           reason,
           priceRange,
           url,
-          images: initial.images,
+          images,
           extractionMethod,
           htmlPriceSelector:
             extractionMethod === "html" ? htmlSelector : undefined,
@@ -403,15 +486,57 @@ export function EditClient({
         </div>
       </section>
 
-      {/* Images — read-only at this surface. */}
+      {/* Images — editable. Add + remove persist immediately via the
+          dedicated images endpoint; saves don't depend on the form's
+          Save button below. */}
       <section className="border-t border-[#1f1d1b]/15 pt-8">
-        <p className={LABEL_CLS}>Images (read only)</p>
+        <p className={LABEL_CLS}>Images</p>
         <p className="mt-2 font-serif text-[13px] italic text-[#1f1d1b]/55">
-          To change images, delete this product and re-import.
+          Add a remote image URL below; the file is downloaded, normalized
+          to JPEG, and stored content-addressed under{" "}
+          <code className="not-italic">public/shop/{initial.slug}/</code>.
+          Removing only unlinks the image from this product — the file
+          stays on disk.
         </p>
-        <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {initial.images.map((src, i) => (
-            <li key={src} className="border border-[#1f1d1b]/15">
+
+        {/* Add */}
+        <div className="mt-5 flex flex-wrap items-end gap-3">
+          <div className="min-w-[280px] flex-1">
+            <label htmlFor="new-image-url" className={LABEL_CLS}>
+              Add image (paste URL)
+            </label>
+            <input
+              id="new-image-url"
+              type="url"
+              value={newImageUrl}
+              onChange={(e) => setNewImageUrl(e.target.value)}
+              placeholder="https://…/product-photo.jpg"
+              className={INPUT_CLS}
+              disabled={imageBusy}
+            />
+          </div>
+          <button
+            type="button"
+            onClick={onAddImage}
+            disabled={imageBusy || !newImageUrl.trim()}
+            className={BUTTON_CLS}
+          >
+            {imageBusy ? "Working…" : "Add"}
+          </button>
+        </div>
+        {imageError ? (
+          <p className="mt-3 font-serif text-[13px] italic text-[#a3431f]">
+            {imageError}
+          </p>
+        ) : null}
+
+        {/* Current images */}
+        <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {images.map((src, i) => (
+            <li
+              key={src}
+              className="group relative border border-[#1f1d1b]/15"
+            >
               <div className="relative aspect-square bg-[#f0e9d9]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -420,9 +545,22 @@ export function EditClient({
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
-              <div className="px-2 py-1.5 text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
-                {i + 1}
-                {i === 0 ? " (primary)" : ""}
+              <div className="flex items-center justify-between px-2 py-1.5">
+                <span className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
+                  {i + 1}
+                  {i === 0 ? " (primary)" : ""}
+                </span>
+                {images.length > 1 ? (
+                  <button
+                    type="button"
+                    onClick={() => onRemoveImage(i)}
+                    disabled={imageBusy}
+                    aria-label={`Remove image ${i + 1}`}
+                    className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/45 transition-colors hover:text-[#a3431f] disabled:opacity-40"
+                  >
+                    Remove
+                  </button>
+                ) : null}
               </div>
             </li>
           ))}
