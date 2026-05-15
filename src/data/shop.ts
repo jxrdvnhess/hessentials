@@ -3583,6 +3583,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "block-shop-textiles-peacock-napkin-ochre",
+    name: "Peacock Napkin | Ochre",
+    brand: "Block Shop Textiles",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T09:00:44.524Z",
+    reason: "Ochre keeps it grounded. Pattern works best when it knows how to sit with neutrals.",
+    priceRange: "$20–$190",
+    url: "https://www.blockshoptextiles.com/products/peacock-napkin-ochre",
+    image: "/shop/block-shop-textiles-peacock-napkin-ochre/1bd55e05080c0e4e.jpg",
+    images: [
+      "/shop/block-shop-textiles-peacock-napkin-ochre/1bd55e05080c0e4e.jpg",
+      "/shop/block-shop-textiles-peacock-napkin-ochre/1bd55e05080c0e4e.jpg",
+      "/shop/block-shop-textiles-peacock-napkin-ochre/523cd2ed7c1c3511.jpg",
+      "/shop/block-shop-textiles-peacock-napkin-ochre/523cd2ed7c1c3511.jpg",
+      "/shop/block-shop-textiles-peacock-napkin-ochre/8b482196e8ecea26.jpg",
+      "/shop/block-shop-textiles-peacock-napkin-ochre/8b482196e8ecea26.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
