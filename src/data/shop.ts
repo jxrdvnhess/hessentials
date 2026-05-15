@@ -3226,6 +3226,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "l-l-bean-boat-and-tote-zip-top",
+    name: "Boat and Tote®, Zip-Top",
+    brand: "L.L.Bean",
+    category: "accessories",
+    subcategory: "totes",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:58:33.089Z",
+    reason: "The democratic tote. No aspiration required, which is why it still works.",
+    priceRange: "$44.95-$64.95",
+    url: "https://www.llbean.com/llb/shop/37037",
+    image: "/shop/l-l-bean-boat-and-tote-zip-top/8ae7a0ac0a816258.jpg",
+    images: [
+      "/shop/l-l-bean-boat-and-tote-zip-top/8ae7a0ac0a816258.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/389cee3619e49b60.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/40eecc8edf0e5647.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/c1ccc86a60ff2428.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/c1ccc86a60ff2428.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/c1ccc86a60ff2428.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/702b07f8ed1b04d8.jpg",
+      "/shop/l-l-bean-boat-and-tote-zip-top/463c17e4981226fe.jpg",
+    ],
+    extractionMethod: "json-ld",
+    draft: true,
+  },
 ];
 
 /**
