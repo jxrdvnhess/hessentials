@@ -2618,6 +2618,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-field-barista-coffee-drip",
+    name: "Field Barista Coffee Drip",
+    brand: "Snow Peak",
+    category: "home",
+    subcategory: "coffee ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:47.325Z",
+    reason: "More engineered than necessary, but in the right way. For the person who refuses hotel-room coffee.",
+    priceRange: "$51.96",
+    url: "https://www.snowpeak.com/products/field-barista-coffee-drip",
+    image: "/shop/snow-peak-field-barista-coffee-drip/decca22a5a490f84.jpg",
+    images: [
+      "/shop/snow-peak-field-barista-coffee-drip/decca22a5a490f84.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/3068d0a05462fa95.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/3068d0a05462fa95.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/b8790d6dfe6ce4f2.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/b8790d6dfe6ce4f2.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/626c9bd88c9bab71.jpg",
+      "/shop/snow-peak-field-barista-coffee-drip/626c9bd88c9bab71.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
