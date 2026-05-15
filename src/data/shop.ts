@@ -3560,6 +3560,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "block-shop-textiles-poppy-napkin-field",
+    name: "Poppy Napkin | Field",
+    brand: "Block Shop Textiles",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T09:00:34.514Z",
+    reason: "A summer table can have color without becoming a theme. This does that.",
+    priceRange: "$20–$190",
+    url: "https://www.blockshoptextiles.com/products/poppy-napkin-field",
+    image: "/shop/block-shop-textiles-poppy-napkin-field/ced332190bc2a7e2.jpg",
+    images: [
+      "/shop/block-shop-textiles-poppy-napkin-field/ced332190bc2a7e2.jpg",
+      "/shop/block-shop-textiles-poppy-napkin-field/ced332190bc2a7e2.jpg",
+      "/shop/block-shop-textiles-poppy-napkin-field/5714b9a1594ed640.jpg",
+      "/shop/block-shop-textiles-poppy-napkin-field/5714b9a1594ed640.jpg",
+      "/shop/block-shop-textiles-poppy-napkin-field/8768b647876afdef.jpg",
+      "/shop/block-shop-textiles-poppy-napkin-field/8768b647876afdef.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
