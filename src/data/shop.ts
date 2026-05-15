@@ -3487,6 +3487,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "muji-recycled-polypropylene-strap-weave-basket-gray",
+    name: "Recycled Polypropylene Strap Weave Basket - Gray - Large (dia. 15.7 x H12.6\")",
+    brand: "MUJI",
+    category: "home",
+    subcategory: "storage",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:58.405Z",
+    reason: "Storage that doesn’t pretend to be sculpture. Light, washable, and visually calm.",
+    priceRange: "$11.90",
+    url: "https://www.muji.us/products/recycled-polypropylene-strap-weave-basket-gray-large-kg10ma4a",
+    image: "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/03b2b8d9ef1a3190.jpg",
+    images: [
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/03b2b8d9ef1a3190.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/8a75e27c79efc526.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/9ac779c9ab6dc972.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/7d413ee61c756dac.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/d91f07c662651ee7.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/bc7044c2fd872058.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/d431152247507253.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/14e26a611962b40c.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/137a8f09e4a09f59.jpg",
+      "/shop/muji-recycled-polypropylene-strap-weave-basket-gray/4131120ac712d454.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
