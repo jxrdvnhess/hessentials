@@ -2712,6 +2712,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "diaspora-co-whole-seeds-trio",
+    name: "Whole Seeds Trio",
+    brand: "Diaspora Co.",
+    category: "provisions",
+    subcategory: "spices",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:03.061Z",
+    reason: "Whole spices ask for a little more attention. The food pays you back.",
+    priceRange: "$35.50",
+    url: "https://www.diasporaco.com/products/whole-seeds-trio",
+    image: "/shop/diaspora-co-whole-seeds-trio/cb3cd6f8b1827b12.jpg",
+    images: [
+      "/shop/diaspora-co-whole-seeds-trio/cb3cd6f8b1827b12.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/a3d7c687866eb287.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/a3d7c687866eb287.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/cb3cd6f8b1827b12.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/a114db99e1a5c126.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/a114db99e1a5c126.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/50e8de143addc750.jpg",
+      "/shop/diaspora-co-whole-seeds-trio/50e8de143addc750.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
