@@ -2923,6 +2923,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "hawkins-new-york-essential-glass-pitcher-clear",
+    name: "Essential Glassware Pitcher - Clear",
+    brand: "Hawkins New York",
+    category: "home",
+    subcategory: "glassware",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:55:49.494Z",
+    reason: "A pitcher changes water from utility to ritual. This one stays quiet about it.",
+    priceRange: "$6–$32",
+    url: "https://www.hawkinsnewyork.com/products/essential-glass-pitcher-clear",
+    image: "/shop/hawkins-new-york-essential-glass-pitcher-clear/0d7a6b05e9e7a3d3.jpg",
+    images: [
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/0d7a6b05e9e7a3d3.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/d3bbb905defdf7c2.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/29125b071bf79bb3.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/0820234ba312c417.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/2e26a4c1a3ff0d73.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/81ab0b380b2b1993.jpg",
+      "/shop/hawkins-new-york-essential-glass-pitcher-clear/09c52405791a4b05.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
