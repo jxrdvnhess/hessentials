@@ -2855,6 +2855,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "los-poblanos-lavender-home-duo",
+    name: "Lavender Home Duo",
+    brand: "Los Poblanos",
+    category: "home",
+    subcategory: "sink ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:19.093Z",
+    reason: "The sink becomes a more considered place without becoming precious.",
+    priceRange: "$52",
+    url: "https://shop.lospoblanos.com/products/home-duo-gift-set",
+    image: "/shop/los-poblanos-lavender-home-duo/218669de3a5e873a.jpg",
+    images: [
+      "/shop/los-poblanos-lavender-home-duo/218669de3a5e873a.jpg",
+      "/shop/los-poblanos-lavender-home-duo/218669de3a5e873a.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
