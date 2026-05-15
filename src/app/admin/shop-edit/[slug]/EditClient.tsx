@@ -96,6 +96,86 @@ export function EditClient({
   const [imageBusy, setImageBusy] = useState(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
+  // Re-scrape from URL — re-runs the JSON-LD/OG extractor on the
+  // current `url` and shows the result so the user can opt in per
+  // field. Doesn't auto-merge; the user clicks Apply on each piece
+  // they want.
+  type Scraped = {
+    name: string;
+    brand: string;
+    description: string;
+    prices: number[];
+    priceRangeSuggestion: string;
+    soldOut: boolean;
+    images: string[];
+    audience: ("mens" | "womens")[];
+    extractionMethod: string;
+  };
+  const [rescrapeBusy, setRescrapeBusy] = useState(false);
+  const [rescrapeError, setRescrapeError] = useState<string | null>(null);
+  const [scraped, setScraped] = useState<Scraped | null>(null);
+
+  const onRescrape = async () => {
+    if (!url) {
+      setRescrapeError("Set a URL on the form first.");
+      return;
+    }
+    setRescrapeBusy(true);
+    setRescrapeError(null);
+    setScraped(null);
+    try {
+      const res = await fetch(
+        `/api/admin/shop-item/${initial.slug}/rescrape`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url }),
+        }
+      );
+      const payload = (await res.json()) as {
+        ok?: boolean;
+        scraped?: Scraped;
+        error?: string;
+      };
+      if (!res.ok || !payload.ok || !payload.scraped) {
+        throw new Error(payload.error ?? `HTTP ${res.status}`);
+      }
+      setScraped(payload.scraped);
+    } catch (e) {
+      setRescrapeError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setRescrapeBusy(false);
+    }
+  };
+
+  const onAdoptScrapedImage = async (source: string) => {
+    setImageBusy(true);
+    setImageError(null);
+    try {
+      const res = await fetch(
+        `/api/admin/shop-item/${initial.slug}/images`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source }),
+        }
+      );
+      const payload = (await res.json()) as {
+        ok?: boolean;
+        images?: string[];
+        error?: string;
+      };
+      if (!res.ok || !payload.ok || !payload.images) {
+        throw new Error(payload.error ?? `HTTP ${res.status}`);
+      }
+      setImages(payload.images);
+    } catch (e) {
+      setImageError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setImageBusy(false);
+    }
+  };
+
   const onAddImage = async () => {
     const source = newImageUrl.trim();
     if (!source) {
@@ -522,6 +602,129 @@ export function EditClient({
         </div>
       </section>
 
+      {/* Re-scrape — refetch the URL through the same JSON-LD/OG
+          extractor used at import. Doesn't auto-merge; surfaces the
+          scraped fields with Apply buttons so the user opts in per
+          piece. Useful when the product page has been updated, or
+          when the original scrape missed structured data. */}
+      <section className="border-t border-[#1f1d1b]/15 pt-8">
+        <p className={LABEL_CLS}>Re-scrape from URL</p>
+        <p className="mt-2 font-serif text-[13px] italic text-[#1f1d1b]/55">
+          Re-runs the scraper against the URL field above. Nothing is
+          applied automatically — the scraped values appear below with
+          their own Apply buttons.
+        </p>
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={onRescrape}
+            disabled={rescrapeBusy || !url}
+            className={BUTTON_CLS}
+          >
+            {rescrapeBusy ? "Scraping…" : "Re-scrape"}
+          </button>
+          {scraped ? (
+            <button
+              type="button"
+              onClick={() => setScraped(null)}
+              className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/55 hover:text-[#1f1d1b]"
+            >
+              Clear result
+            </button>
+          ) : null}
+        </div>
+        {rescrapeError ? (
+          <p className="mt-3 font-serif text-[13px] italic text-[#a3431f]">
+            {rescrapeError}
+          </p>
+        ) : null}
+
+        {scraped ? (
+          <div className="mt-6 space-y-4 border border-[#1f1d1b]/15 bg-white/40 p-5">
+            {/* Name */}
+            <ScrapedField
+              label="Name"
+              current={name}
+              scraped={scraped.name}
+              onApply={() => scraped.name && setName(scraped.name)}
+            />
+            {/* Brand */}
+            <ScrapedField
+              label="Brand"
+              current={brand}
+              scraped={scraped.brand}
+              onApply={() => scraped.brand && setBrand(scraped.brand)}
+            />
+            {/* Price suggestion */}
+            <ScrapedField
+              label="Price range"
+              current={priceRange}
+              scraped={scraped.priceRangeSuggestion}
+              onApply={() =>
+                scraped.priceRangeSuggestion &&
+                setPriceRange(scraped.priceRangeSuggestion)
+              }
+              note={
+                scraped.prices.length > 0
+                  ? `${scraped.prices.length} price${
+                      scraped.prices.length === 1 ? "" : "s"
+                    } seen: ${scraped.prices
+                      .slice(0, 6)
+                      .map((p) => `$${p}`)
+                      .join(", ")}${scraped.prices.length > 6 ? "…" : ""}`
+                  : "Scraper found no prices."
+              }
+            />
+            {/* Sold-out signal */}
+            {scraped.soldOut ? (
+              <p className="font-serif text-[13px] italic text-[#a3431f]">
+                Scraper reports sold-out.
+              </p>
+            ) : null}
+
+            {/* Images — per-image Add buttons. Adopts use the same
+                content-addressed images endpoint, so adding an image
+                that's already on this product is a no-op. */}
+            {scraped.images.length > 0 ? (
+              <div>
+                <p className={LABEL_CLS}>
+                  Images found ({scraped.images.length})
+                </p>
+                <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                  {scraped.images.map((src) => (
+                    <li
+                      key={src}
+                      className="border border-[#1f1d1b]/15 bg-white"
+                    >
+                      <div className="relative aspect-square bg-[#f0e9d9]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={src}
+                          alt=""
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onAdoptScrapedImage(src)}
+                        disabled={imageBusy}
+                        className="block w-full px-2 py-1.5 text-left text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55 transition-colors hover:text-[#1f1d1b] disabled:opacity-40"
+                      >
+                        Add to product
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <p className="font-serif text-[13px] italic text-[#1f1d1b]/55">
+                Scraper found no images.
+              </p>
+            )}
+          </div>
+        ) : null}
+      </section>
+
       {/* Images — editable. Add + remove persist immediately via the
           dedicated images endpoint; saves don't depend on the form's
           Save button below. */}
@@ -646,6 +849,58 @@ export function EditClient({
           <p className="font-mono text-[12px] text-[#a23a23]">{error}</p>
         )}
       </section>
+    </div>
+  );
+}
+
+/**
+ * Single field row inside the re-scrape result panel. Shows the
+ * current form value alongside the scraped value, with an Apply
+ * button when the two differ (and the scraped value is non-empty).
+ */
+function ScrapedField({
+  label,
+  current,
+  scraped,
+  onApply,
+  note,
+}: {
+  label: string;
+  current: string;
+  scraped: string;
+  onApply: () => void;
+  note?: string;
+}) {
+  const same = (current ?? "").trim() === (scraped ?? "").trim();
+  const empty = !(scraped ?? "").trim();
+  return (
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-[120px_1fr_auto] sm:items-start">
+      <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+        {label}
+      </span>
+      <div className="min-w-0">
+        <p className="break-words font-serif text-[14px] text-[#1f1d1b]">
+          {scraped || (
+            <span className="italic text-[#1f1d1b]/45">(empty)</span>
+          )}
+        </p>
+        {note ? (
+          <p className="mt-1 text-[11px] italic text-[#1f1d1b]/55">{note}</p>
+        ) : null}
+        {!empty && !same ? (
+          <p className="mt-1 break-words text-[11px] italic text-[#1f1d1b]/45">
+            current: {current || "(empty)"}
+          </p>
+        ) : null}
+      </div>
+      <button
+        type="button"
+        onClick={onApply}
+        disabled={empty || same}
+        className="justify-self-start sm:justify-self-end text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/55 transition-colors hover:text-[#1f1d1b] disabled:opacity-30"
+      >
+        {same ? "Same" : "Apply"}
+      </button>
     </div>
   );
 }
