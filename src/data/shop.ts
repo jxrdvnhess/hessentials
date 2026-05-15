@@ -3027,6 +3027,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "felt-fat-coffee-mug-in-tenmoku",
+    name: "Coffee Mug in Tenmoku",
+    brand: "Felt + Fat",
+    category: "home",
+    subcategory: "mugs",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:35.617Z",
+    reason: "Dark glaze for slow mornings. Handmade without getting clunky.",
+    priceRange: "$17–$296",
+    url: "https://www.feltandfat.com/products/coffee-mug-in-tenmoku",
+    image: "/shop/felt-fat-coffee-mug-in-tenmoku/359f9e6c370422b4.jpg",
+    images: [
+      "/shop/felt-fat-coffee-mug-in-tenmoku/359f9e6c370422b4.jpg",
+      "/shop/felt-fat-coffee-mug-in-tenmoku/db0d0f5d30eaaf08.jpg",
+      "/shop/felt-fat-coffee-mug-in-tenmoku/db0d0f5d30eaaf08.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
