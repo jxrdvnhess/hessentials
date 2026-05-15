@@ -2757,6 +2757,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "leatherology-nested-travel-organizer-trio",
+    name: "Nested Travel Organizer Trio Navy Blue",
+    brand: "Leatherology",
+    category: "travel",
+    subcategory: "organization",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:07.782Z",
+    reason: "Three sizes solve more problems than one perfect pouch. This is order without overbuilding it.",
+    priceRange: "$315",
+    url: "https://www.leatherology.com/products/nested-travel-organizer-trio-navy-blue",
+    image: "/shop/leatherology-nested-travel-organizer-trio/13eac15526c21cdc.jpg",
+    images: [
+      "/shop/leatherology-nested-travel-organizer-trio/13eac15526c21cdc.jpg",
+      "/shop/leatherology-nested-travel-organizer-trio/4a4b6b5074e3e338.jpg",
+      "/shop/leatherology-nested-travel-organizer-trio/4a4b6b5074e3e338.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
