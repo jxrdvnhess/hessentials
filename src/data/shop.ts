@@ -2987,6 +2987,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "farmhouse-pottery-pantry-bowl",
+    name: "Pantry Bowl",
+    brand: "Farmhouse Pottery",
+    category: "home",
+    subcategory: "prep bowls",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:56:20.932Z",
+    reason: "Sturdy enough for work, beautiful enough for fruit. The best kitchen objects do both.",
+    priceRange: "$50–$155",
+    url: "https://www.farmhousepottery.com/products/pantry-bowl",
+    image: "/shop/farmhouse-pottery-pantry-bowl/5a5a3a91724454f4.jpg",
+    images: [
+      "/shop/farmhouse-pottery-pantry-bowl/5a5a3a91724454f4.jpg",
+      "/shop/farmhouse-pottery-pantry-bowl/39bfb0e4a079962b.jpg",
+      "/shop/farmhouse-pottery-pantry-bowl/39bfb0e4a079962b.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
