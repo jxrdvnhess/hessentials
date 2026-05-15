@@ -895,7 +895,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "soeur-blue-imani-dress",
-    name: "BLUE IMANI DRESS",
+    name: "Blue Imani Dress",
     brand: "Soeur",
     category: "womens",
     subcategory: "dresses",
@@ -916,7 +916,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "soeur-grey-hyacinthe-coat",
-    name: "GREY HYACINTHE COAT",
+    name: "Grey Hyacinthe Coat",
     brand: "Soeur",
     category: "womens",
     subcategory: "outerwear",
@@ -936,7 +936,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "soeur-grey-ila-tank-top",
-    name: "GREY ILA TANK TOP",
+    name: "Grey Ila Tank Top",
     brand: "Soeur",
     category: "womens",
     subcategory: "tops",
@@ -1210,8 +1210,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "scalperscompany-contrast-travel-bag",
-    name: "CONTRAST TRAVEL BAG",
-    brand: "scalperscompany",
+    name: "Contrast Travel Bag",
+    brand: "Scalpers",
     category: "travel",
     subcategory: "bags",
     audience: ["mens", "womens"],
@@ -1235,7 +1235,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "scalperscompany-fine-knit-cardigan",
-    name: "FINE KNIT CARDIGAN",
+    name: "Fine Knit Cardigan",
     brand: "Scalpers",
     category: "mens",
     subcategory: "knitwear",
@@ -1258,7 +1258,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "scalperscompany-hoodie-with-front-pocket",
-    name: "HOODIE WITH FRONT POCKET",
+    name: "Hoodie with Front Pocket",
     brand: "Scalpers",
     category: "mens",
     subcategory: "knitwear",
@@ -1323,7 +1323,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "esya-the-dune-set",
-    name: "THE DUNE SET",
+    name: "The Dune Set",
     brand: "ESYA",
     category: "womens",
     subcategory: "sets",
@@ -1347,7 +1347,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "apieceapart-volta-twist-top-apiece-apart",
-    name: "Volta Twist Top | Apiece Apart",
+    name: "Volta Twist Top",
     brand: "Apieceapart",
     category: "womens",
     subcategory: "shirts",
@@ -1425,7 +1425,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "favorite-daughter-the-striped-triangle-scarf",
-    name: "THE STRIPED TRIANGLE SCARF",
+    name: "The Striped Triangle Scarf",
     brand: "FAVORITE DAUGHTER",
     category: "accessories",
     subcategory: "scarves",
@@ -1507,7 +1507,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "cos-linen-popover-shirt",
-    name: "LINEN POPOVER SHIRT",
+    name: "Linen Popover Shirt",
     brand: "COS",
     category: "mens",
     subcategory: "shirts",
@@ -1531,7 +1531,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "cos-jersey-tank-top",
-    name: "JERSEY TANK TOP",
+    name: "Jersey Tank Top",
     brand: "COS",
     category: "mens",
     subcategory: "tees-and-tanks",
@@ -1553,7 +1553,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "cos-boat-neck-cotton-t-shirt",
-    name: "BOAT-NECK COTTON T-SHIRT",
+    name: "Boat-Neck Cotton T-Shirt",
     brand: "COS",
     category: "mens",
     subcategory: "tees-and-tanks",
@@ -1797,7 +1797,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "breville-the-bambino",
-    name: "the Bambino®",
+    name: "the Bambino",
     brand: "Breville",
     category: "home",
     subcategory: "kitchen",
@@ -1810,7 +1810,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "breville-the-barista-express",
-    name: "the Barista Express®",
+    name: "the Barista Express",
     brand: "Breville",
     category: "home",
     subcategory: "kitchen",
@@ -1823,8 +1823,8 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "baratza-suggested-encore-esp",
-    name: "Encore™ ESP",
-    brand: "Baratza (suggested)",
+    name: "Encore ESP",
+    brand: "Baratza",
     category: "home",
     subcategory: "kitchen",
     dateAdded: "2026-05-14T19:35:38.115Z",
@@ -1939,7 +1939,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
   },
   {
     slug: "veja-brody-leather-low-top-sneakers-black-allsaints-us",
-    name: "Brody Leather Low Top Sneakers Black | ALLSAINTS US",
+    name: "Brody Leather Low Top Sneakers Black",
     brand: "Veja",
     category: "accessories",
     subcategory: "uncategorized",
