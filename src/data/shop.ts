@@ -2570,6 +2570,30 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "snow-peak-ti-double-450-mug",
+    name: "Ti-Double 450 Mug",
+    brand: "Snow Peak",
+    category: "travel",
+    subcategory: "drinkware",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:44.614Z",
+    reason: "The mug that makes travel feel less disposable. Lightweight without feeling temporary.",
+    priceRange: "$39.96",
+    url: "https://www.snowpeak.com/products/titanium-double-450-mug",
+    image: "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
+    images: [
+      "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
+      "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+      "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+      "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+      "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+      "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
+      "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
