@@ -3460,6 +3460,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "muji-pet-underlay-pencil-board-b5",
+    name: "PET Underlay Pencil Board B5",
+    brand: "MUJI",
+    category: "living",
+    subcategory: "writing tools",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:50.232Z",
+    reason: "A small writing tool for people who notice paper. Almost invisible, which is why it works.",
+    priceRange: "$1.90",
+    url: "https://www.muji.us/products/pet-underlay-24aw",
+    image: "/shop/muji-pet-underlay-pencil-board-b5/b1746892b2f91624.jpg",
+    images: [
+      "/shop/muji-pet-underlay-pencil-board-b5/b1746892b2f91624.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/25ed4b589a2cb307.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/46f5025f31ce22b0.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/0d46d37a67f067ab.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/afa95ce89c50e593.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/4131120ac712d454.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/056f56559c4cbcb8.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/88506d1834a55937.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/8fadfdf048a36e7d.jpg",
+      "/shop/muji-pet-underlay-pencil-board-b5/88b7c9db1d0cffcc.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
