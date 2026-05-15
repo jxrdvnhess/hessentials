@@ -3274,6 +3274,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "heath-ceramics-bud-vase-in-opaque-white",
+    name: "Bud Vase in Opaque White",
+    brand: "Heath Ceramics",
+    category: "home",
+    subcategory: "vessels",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:58:52.552Z",
+    reason: "A small white vessel that earns shelf space without demanding it.",
+    priceRange: "$43",
+    url: "https://www.heathceramics.com/products/bud-vase-opaque-white",
+    image: "/shop/heath-ceramics-bud-vase-in-opaque-white/18ea9fbb8256cf38.jpg",
+    images: [
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/18ea9fbb8256cf38.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/18ea9fbb8256cf38.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/4ae44c6c94420048.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/c838d148b550ad9c.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/8e380fe28c9a8b0a.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/1bdc1f90c1faba43.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/7817b1f9beeaf2a7.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/97d2c2ee16134054.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/485a7df4e2179419.jpg",
+      "/shop/heath-ceramics-bud-vase-in-opaque-white/5664026917395ec5.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
