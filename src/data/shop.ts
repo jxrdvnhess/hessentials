@@ -2836,6 +2836,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "los-poblanos-pi-on-bar-soap",
+    name: "Piñon Bar Soap",
+    brand: "Los Poblanos",
+    category: "grooming",
+    subcategory: "bath ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:18.149Z",
+    reason: "Woodsy without trying to smell expensive. A small bar with weather in it.",
+    priceRange: "$12",
+    url: "https://shop.lospoblanos.com/products/pinon-bar-soap",
+    image: "/shop/los-poblanos-pi-on-bar-soap/e5fc8860c7029376.jpg",
+    images: [
+      "/shop/los-poblanos-pi-on-bar-soap/e5fc8860c7029376.jpg",
+      "/shop/los-poblanos-pi-on-bar-soap/e5fc8860c7029376.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
