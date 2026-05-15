@@ -3251,6 +3251,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "json-ld",
     draft: true,
   },
+  {
+    slug: "heath-ceramics-bud-vase-2",
+    name: "Bud Vase",
+    brand: "Heath Ceramics",
+    category: "home",
+    subcategory: "vessels",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:58:47.558Z",
+    reason: "One stem is enough. Heath understands restraint in scale.",
+    priceRange: "$40–$66",
+    url: "https://www.heathceramics.com/products/bud-vase",
+    image: "/shop/heath-ceramics-bud-vase-2/ce8e00781d135546.jpg",
+    images: [
+      "/shop/heath-ceramics-bud-vase-2/ce8e00781d135546.jpg",
+      "/shop/heath-ceramics-bud-vase-2/ce8e00781d135546.jpg",
+      "/shop/heath-ceramics-bud-vase-2/dcf0d5f873146feb.jpg",
+      "/shop/heath-ceramics-bud-vase-2/dcf0d5f873146feb.jpg",
+      "/shop/heath-ceramics-bud-vase-2/b5b78cda3d21195d.jpg",
+      "/shop/heath-ceramics-bud-vase-2/b5b78cda3d21195d.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
