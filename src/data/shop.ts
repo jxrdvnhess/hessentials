@@ -3433,6 +3433,33 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "json-ld",
     draft: true,
   },
+  {
+    slug: "muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm",
+    name: "Planting Tree Paper Double Ringed Ruled Notebook 7 mm",
+    brand: "MUJI",
+    category: "accessories",
+    subcategory: "notebooks",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:44.233Z",
+    reason: "Cheap in price, not in usefulness. The kind of notebook that keeps thought moving.",
+    priceRange: "$2.50",
+    url: "https://www.muji.us/products/planting-tree-paper-double-ringed-ruled-notebook-ea31",
+    image: "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/6636af16d8efce81.jpg",
+    images: [
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/6636af16d8efce81.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/f288fedb9ca2a890.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/f7fed4304d145d60.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/04e9d0b43f0fa3c3.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/7b41e1dac166f7ad.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/5ec2aab595f24f6c.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/4f68731fa708c5cb.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/4f68731fa708c5cb.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/4131120ac712d454.jpg",
+      "/shop/muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm/056f56559c4cbcb8.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
