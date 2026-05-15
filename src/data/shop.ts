@@ -2797,6 +2797,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "opinel-no-08-carbon-steel-folding-knife-2",
+    name: "No.08 Carbon Steel Folding Knife",
+    brand: "Opinel",
+    category: "cooking",
+    subcategory: "picnic tools",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:12.132Z",
+    reason: "The kind of small tool that becomes yours because it marks and sharpens with use.",
+    priceRange: "$22",
+    url: "https://www.opinel-usa.com/products/opinel-no-8-carbon-steel-folding-knife",
+    image: "/shop/opinel-no-08-carbon-steel-folding-knife-2/d1337b97f78f30c4.jpg",
+    images: [
+      "/shop/opinel-no-08-carbon-steel-folding-knife-2/d1337b97f78f30c4.jpg",
+      "/shop/opinel-no-08-carbon-steel-folding-knife-2/e62b02704ad927e5.jpg",
+      "/shop/opinel-no-08-carbon-steel-folding-knife-2/1d1d6f1e8b682a4c.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
