@@ -2874,6 +2874,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "los-poblanos-lavender-on-the-go-set",
+    name: "Lavender On-the-Go",
+    brand: "Los Poblanos",
+    category: "travel",
+    subcategory: "personal care",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:20.089Z",
+    reason: "Travel care that doesn’t look tactical or cosmetic-counter loud.",
+    priceRange: "$15",
+    url: "https://shop.lospoblanos.com/products/lavender-on-the-go",
+    image: "/shop/los-poblanos-lavender-on-the-go-set/2bfb7444b262dfa5.jpg",
+    images: [
+      "/shop/los-poblanos-lavender-on-the-go-set/2bfb7444b262dfa5.jpg",
+      "/shop/los-poblanos-lavender-on-the-go-set/2bfb7444b262dfa5.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
