@@ -131,6 +131,52 @@ export type ShopProduct = {
    * drafts admin sees them. Omit or set `false` for live entries.
    */
   draft?: boolean;
+  /**
+   * Operational stability tier — see `data/sourcing-policy.md`.
+   *
+   *   1 — Forever Infrastructure Brand. Stable SKUs, stable URLs,
+   *       reliable structured data. Earns "skeleton of the shop"
+   *       placement.
+   *   2 — Stable smaller / artisan brand. Solid for the archive
+   *       but secondary to Tier 1 in foundational picks.
+   *   3 — Manual-polish-OK. Page loads but structured data is
+   *       thin; manual image / price entry expected.
+   *   4 — Editorial-mention only. Brand site is bot-walled or
+   *       otherwise too unstable to be an operational dependency.
+   *       Should rarely become a live Shop entry.
+   *
+   * Set on import via the optional CSV column; manually editable
+   * via /admin/shop-edit/<slug>. Surfaces as a small label on the
+   * drafts admin so reviewers can apply the policy at a glance.
+   */
+  stabilityTier?: 1 | 2 | 3 | 4;
+  /**
+   * Atmosphere collections this object belongs to. Emotional groupings
+   * that cut across operational category — see CATEGORY_ATMOSPHERE_MAP
+   * in the Hessentials Object Archive sheet. A single product can sit
+   * inside several atmospheres at once (a titanium mug is both
+   * `Morning Ritual` and `Portable Ritual`).
+   *
+   * Examples:
+   *   ["The Anti-Hostess Table", "Weeknight Table"]
+   *   ["Morning Ritual", "Portable Ritual"]
+   *   ["Things That Age Correctly", "Soft Travel"]
+   *
+   * Empty array or omitted for products that don't anchor a specific
+   * atmosphere yet.
+   */
+  atmosphereCollection?: string[];
+  /**
+   * Tier 1 emotional territory — short three-to-five-word phrase
+   * inherited from the product's brand. Snow Peak's territory is
+   * "soft travel / outdoor calm / analog movement"; Hawkins' is
+   * "table softness / linen texture / understated hosting".
+   *
+   * Surfaces editorially (not enforced at type level). Storing the
+   * territory on the product lets the public detail page render
+   * brand atmosphere alongside category.
+   */
+  territoryWeather?: string;
 };
 
 export const SHOP_INTRO = "Vetted. Chosen. Kept.";
@@ -2363,6 +2409,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
       "/shop/buck-mason-dress-navy-field-spec-heavy-tee/6ad7215b51957d02.jpg",
     ],
     extractionMethod: "shopify",
+  },
+  {
+    slug: "hawkins-new-york-simple-linen-napkin-flax-2",
+    name: "Simple Linen Napkin - Flax",
+    brand: "Hawkins New York",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:26.810Z",
+    reason: "Stonewashed linen that looks better slightly rumpled. Adds texture without making the table perform.",
+    priceRange: "$22",
+    url: "https://www.hawkinsnewyork.com/products/simple-linen-napkin-flax",
+    image: "/shop/hawkins-new-york-simple-linen-napkin-flax-2/de97c9b3abb638ba.jpg",
+    images: [
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/de97c9b3abb638ba.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/e1f37648d9c66675.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/668951d4592adb00.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/cf9598eb2da349f4.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/26fa847058a2f898.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-flax-2/9ef6da197396b4b0.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
   },
 ];
 
