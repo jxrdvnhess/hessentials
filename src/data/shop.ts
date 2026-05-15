@@ -2456,6 +2456,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-angled-board-2",
+    name: "The Angled Board",
+    brand: "Material Kitchen",
+    category: "cooking",
+    subcategory: "prep boards",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:31.676Z",
+    reason: "A prep board with enough weight to stay out and enough restraint not to become decor.",
+    priceRange: "$120",
+    url: "https://materialkitchen.com/products/the-angled-board",
+    image: "/shop/material-kitchen-the-angled-board-2/80b3286595ab3fdb.jpg",
+    images: [
+      "/shop/material-kitchen-the-angled-board-2/80b3286595ab3fdb.jpg",
+      "/shop/material-kitchen-the-angled-board-2/ef19ba4103ee414b.jpg",
+      "/shop/material-kitchen-the-angled-board-2/9bca26f73e999786.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
