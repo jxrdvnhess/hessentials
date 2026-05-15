@@ -2476,6 +2476,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "material-kitchen-the-mk-free-board-2",
+    name: "The MK Free Board",
+    brand: "Material Kitchen",
+    category: "cooking",
+    subcategory: "prep boards",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:33.591Z",
+    reason: "For the jobs that need washable utility, not romance. The right board keeps cooking moving.",
+    priceRange: "$52",
+    url: "https://materialkitchen.com/products/the-mk-free-board",
+    image: "/shop/material-kitchen-the-mk-free-board-2/537e84eab78393df.jpg",
+    images: [
+      "/shop/material-kitchen-the-mk-free-board-2/537e84eab78393df.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/4f5e134963344ce5.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/477245e78a4afc02.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/6d506f8b4d3de0b4.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/5ba2057f8e502dcf.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/3112aac5c8039691.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/4ebbc17920cf9368.jpg",
+      "/shop/material-kitchen-the-mk-free-board-2/25c6b299d8fee1fd.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
