@@ -3322,6 +3322,27 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "coyuchi-organic-shredded-latex-pillow",
+    name: "Organic Shredded Latex Pillow",
+    brand: "Coyuchi",
+    category: "home",
+    subcategory: "bedding",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:08.075Z",
+    reason: "Support that still feels natural. Sleep objects should disappear into use.",
+    priceRange: "$35.20–$438.40",
+    url: "https://www.coyuchi.com/products/organic-shredded-latex-pillow-alpine-white",
+    image: "/shop/coyuchi-organic-shredded-latex-pillow/fe7e6dbbfb785630.jpg",
+    images: [
+      "/shop/coyuchi-organic-shredded-latex-pillow/fe7e6dbbfb785630.jpg",
+      "/shop/coyuchi-organic-shredded-latex-pillow/2303ee8844d4eb01.jpg",
+      "/shop/coyuchi-organic-shredded-latex-pillow/b2bf65e58f906579.jpg",
+      "/shop/coyuchi-organic-shredded-latex-pillow/fe7e6dbbfb785630.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
