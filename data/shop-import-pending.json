@@ -633,7 +633,7 @@
       ],
       "candidate": {
         "slug": "fog-linen-work-s-w22-d13-h1-5",
-        "name": "\u30d6\u30e9\u30b9 \u30c8\u30ec\u30fc \u6955\u5186\u5f62 S \u3010W22\u00d7D13\u00d7H1.5\u3011",
+        "name": "ブラス トレー 楕円形 S 【W22×D13×H1.5】",
         "brand": "Fog Linen Work",
         "category": "home",
         "audience": [],
@@ -659,7 +659,7 @@
       ],
       "candidate": {
         "slug": "fog-linen-work-m-w32-5-d19-5-h2-5",
-        "name": "\u30d6\u30e9\u30b9 \u30c8\u30ec\u30fc \u6955\u5186\u5f62 M \u3010W32.5\u00d7D19.5\u00d7H2.5\u3011",
+        "name": "ブラス トレー 楕円形 M 【W32.5×D19.5×H2.5】",
         "brand": "Fog Linen Work",
         "category": "home",
         "audience": [],
@@ -678,14 +678,14 @@
       "rowIndex": 6,
       "sourceArticle": "Chateau Shop Adds 2026-05-14",
       "articleUrl": "",
-      "anchor": "F\u00c4RGKLAR 18-piece dinnerware set, matte dark gray",
+      "anchor": "FÄRGKLAR 18-piece dinnerware set, matte dark gray",
       "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
       "flags": [
         "only 1 image(s)"
       ],
       "candidate": {
         "slug": "ikea-fargklar-18-piece-dinnerware-set-matte-dark-gray",
-        "name": "F\u00c4RGKLAR 18-piece dinnerware set - matte dark gray",
+        "name": "FÄRGKLAR 18-piece dinnerware set - matte dark gray",
         "brand": "IKEA",
         "category": "home",
         "audience": [],
@@ -704,14 +704,14 @@
       "rowIndex": 7,
       "sourceArticle": "Chateau Shop Adds 2026-05-14",
       "articleUrl": "",
-      "anchor": "F\u00c4RGKLAR Plate, matte green, 10\"",
+      "anchor": "FÄRGKLAR Plate, matte green, 10\"",
       "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
       "flags": [
         "only 1 image(s)"
       ],
       "candidate": {
         "slug": "ikea-fargklar-plate-matte-green-10",
-        "name": "F\u00c4RGKLAR Plate - matte green 10 \"",
+        "name": "FÄRGKLAR Plate - matte green 10 \"",
         "brand": "IKEA",
         "category": "home",
         "audience": [],
@@ -1100,6 +1100,114 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T20:45:08.292Z"
+    },
+    {
+      "directUrl": "https://www.allsaints.com/us/men/boots-and-shoes/sneakers/brody-leather-low-top-sneakers/USM086FB-5.html",
+      "flags": [
+        "sent back from drafts"
+      ],
+      "candidate": {
+        "slug": "veja-brody-leather-low-top-sneakers-black-allsaints-us",
+        "name": "Brody Leather Low Top Sneakers Black",
+        "brand": "Veja",
+        "category": "accessories",
+        "audience": [],
+        "reason": "The AllSaints swap is stronger than the original Veja direction. Less wholesome, less internet-uniform, and better aligned with the slightly sharper five-piece argument.",
+        "priceRange": "$7.95–$319",
+        "url": "https://www.allsaints.com/us/men/boots-and-shoes/sneakers/brody-leather-low-top-sneakers/USM086FB-5.html",
+        "images": [
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/421a79344eddabd0.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/dc4371efddd731ae.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/d0de35ca7bbd63a1.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/17fb7cb7ccdc103b.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/fc64ab5db0e6332e.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/19c97a43e1140a63.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/187ffa93af53cc98.jpg",
+          "/shop/veja-brody-leather-low-top-sneakers-black-allsaints-us/2c99893ec94266be.jpg"
+        ],
+        "extractionMethod": "json-ld"
+      },
+      "stagedAt": "2026-05-15T06:47:31.798Z"
+    },
+    {
+      "directUrl": "https://www.wholelattelove.com/products/profitec-go-espresso-machine",
+      "flags": [
+        "sent back from drafts"
+      ],
+      "candidate": {
+        "slug": "profitec-profitec-go-espresso-machine",
+        "name": "Profitec GO Espresso Machine",
+        "brand": "Profitec",
+        "category": "home",
+        "audience": [],
+        "reason": "This is the grown-up step before the hobby becomes machinery for machinery's sake. Compact, serious, and plain enough to stay handsome after the novelty wears off.",
+        "priceRange": "$1,199",
+        "url": "https://www.wholelattelove.com/products/profitec-go-espresso-machine",
+        "images": [
+          "/shop/profitec-profitec-go-espresso-machine/c4b5291558c5542f.jpg",
+          "/shop/profitec-profitec-go-espresso-machine/c4b5291558c5542f.jpg",
+          "/shop/profitec-profitec-go-espresso-machine/7f43581516db7481.jpg",
+          "/shop/profitec-profitec-go-espresso-machine/7f43581516db7481.jpg",
+          "/shop/profitec-profitec-go-espresso-machine/0a5b0f858afd4b28.jpg",
+          "/shop/profitec-profitec-go-espresso-machine/0a5b0f858afd4b28.jpg"
+        ],
+        "extractionMethod": "shopify"
+      },
+      "stagedAt": "2026-05-15T06:59:11.222Z"
+    },
+    {
+      "directUrl": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+      "flags": [
+        "sent back from drafts"
+      ],
+      "candidate": {
+        "slug": "snow-peak-ti-single-450-cup",
+        "name": "Ti-Single 450 Cup",
+        "brand": "Snow Peak",
+        "category": "travel",
+        "audience": [],
+        "reason": "A camping object that makes sense in normal life too. Light, durable, and emotionally useful.",
+        "priceRange": "$29.95",
+        "url": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
+        "images": [
+          "/shop/snow-peak-ti-single-450-cup/fbaba06ab8d11bf5.jpg",
+          "/shop/snow-peak-ti-single-450-cup/03e9ded7255c744b.jpg",
+          "/shop/snow-peak-ti-single-450-cup/03e9ded7255c744b.jpg",
+          "/shop/snow-peak-ti-single-450-cup/4e6edf924d5a7b57.jpg",
+          "/shop/snow-peak-ti-single-450-cup/4e6edf924d5a7b57.jpg",
+          "/shop/snow-peak-ti-single-450-cup/2297767c5fd5b5d0.jpg",
+          "/shop/snow-peak-ti-single-450-cup/2297767c5fd5b5d0.jpg"
+        ],
+        "extractionMethod": "shopify"
+      },
+      "stagedAt": "2026-05-15T06:59:15.444Z"
+    },
+    {
+      "directUrl": "https://www.snowpeak.com/products/titanium-double-450-mug",
+      "flags": [
+        "sent back from drafts"
+      ],
+      "candidate": {
+        "slug": "snow-peak-ti-double-450-mug",
+        "name": "Ti-Double 450 Mug",
+        "brand": "Snow Peak",
+        "category": "travel",
+        "audience": [],
+        "reason": "For people who want the ritual without burning their hands. Still minimal, but not sterile.",
+        "priceRange": "$49.95",
+        "url": "https://www.snowpeak.com/products/titanium-double-450-mug",
+        "images": [
+          "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
+          "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+          "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
+          "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+          "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
+          "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
+          "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg"
+        ],
+        "extractionMethod": "shopify"
+      },
+      "stagedAt": "2026-05-15T06:59:17.426Z"
     }
   ]
 }

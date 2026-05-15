@@ -144,6 +144,37 @@ const PUBLIC_SHOP_DIR = path.join(REPO_ROOT, "public", "shop");
 const FETCH_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 
+/**
+ * Operationally-blacklisted retailers — see `data/sourcing-policy.md`.
+ * These hosts serve aggressive anti-bot defenses (HTTP 403, CAPTCHA,
+ * HTTP/2 protocol errors, or empty body content) which prevent both
+ * the initial scrape AND the live-pricing layer's periodic refresh.
+ *
+ * Rows pointing at these hosts get a loud warning at import time. The
+ * warning is non-blocking — sometimes a manual entry is worth the
+ * maintenance burden — but the default editorial answer is: find an
+ * alternate source.
+ */
+const ANTI_BOT_HOSTS = new Set([
+  "aritzia.com",
+  "tods.com",
+  "lululemon.com",
+  "shop.lululemon.com",
+  "westelm.com",
+  "zarahome.com",
+  "williams-sonoma.com",
+  "allsaints.com",
+]);
+
+function isAntiBotHost(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+    return ANTI_BOT_HOSTS.has(host);
+  } catch {
+    return false;
+  }
+}
+
 const EDITORIAL_REMOVAL_MARKER = /^\s*REMOVE\s+FROM\s+ARTICLE\s*$/i;
 // The brief described the prefix as `[DRAFT, NEEDS CHATEAU REVIEW]` in
 // Chateau's Thoughts. Chateau's finished audit uses `FLAG FOR JORDAN:`
@@ -965,6 +996,21 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
 
   if (!directUrl || !/^https?:\/\//i.test(directUrl)) {
     return { ...base, bucket: "failed", error: "No DIRECT URL on row" };
+  }
+
+  // Anti-bot blacklist warning — non-blocking. The retailer is known
+  // hostile to scrapers; either the scrape will fail or pricing will
+  // never refresh. Surfaced loudly so Chateau is aware before the
+  // row burns time hitting the wall.
+  if (isAntiBotHost(directUrl)) {
+    try {
+      const host = new URL(directUrl).hostname.replace(/^www\./, "");
+      console.log(
+        `  ⚠ ANTI-BOT (${host}) — row ${row.__rowIndex}. See data/sourcing-policy.md.`
+      );
+    } catch {
+      /* shouldn't happen — directUrl already passed URL check above */
+    }
   }
 
   // 2. Scrape (default: fetch-based; retry mode passes Playwright)
