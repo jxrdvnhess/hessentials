@@ -3206,6 +3206,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "filson-large-rugged-twill-duffle-bag",
+    name: "Large Rugged Twill Duffle Bag - Otter Green",
+    brand: "Filson",
+    category: "accessories",
+    subcategory: "bags",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:58:22.496Z",
+    reason: "Looks better after years of handling. That is usually the correct travel test.",
+    priceRange: "$34–$699",
+    url: "https://www.filson.com/products/large-rugged-twill-duffle-bag-otter-green-1",
+    image: "/shop/filson-large-rugged-twill-duffle-bag/d4f28867398bb38f.jpg",
+    images: [
+      "/shop/filson-large-rugged-twill-duffle-bag/d4f28867398bb38f.jpg",
+      "/shop/filson-large-rugged-twill-duffle-bag/d36c6486972a034d.jpg",
+      "/shop/filson-large-rugged-twill-duffle-bag/d36c6486972a034d.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
