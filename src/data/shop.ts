@@ -2817,6 +2817,25 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "los-poblanos-lavender-hand-soap",
+    name: "Lavender Hand Soap",
+    brand: "Los Poblanos",
+    category: "grooming",
+    subcategory: "sink ritual",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:51:17.252Z",
+    reason: "A sink object with a real place behind it. Quiet enough for daily use, specific enough to matter.",
+    priceRange: "$25",
+    url: "https://shop.lospoblanos.com/products/lavender-hand-soap",
+    image: "/shop/los-poblanos-lavender-hand-soap/d62ebd60d3dbfef4.jpg",
+    images: [
+      "/shop/los-poblanos-lavender-hand-soap/d62ebd60d3dbfef4.jpg",
+      "/shop/los-poblanos-lavender-hand-soap/d62ebd60d3dbfef4.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
