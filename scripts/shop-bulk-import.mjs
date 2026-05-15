@@ -1624,8 +1624,12 @@ async function runRetryMode(mode = "failed") {
       }
 
       // URL-keyed idempotency — check both shop.ts state and anything
-      // we've staged in this loop already.
-      const rowDirectUrl = (row["DIRECT PRODUCT URL FOR SALE"] ?? "").trim();
+      // we've staged in this loop already. Reads either column name.
+      const rowDirectUrl = (
+        row.direct_product_url ??
+        row["DIRECT PRODUCT URL FOR SALE"] ??
+        ""
+      ).trim();
       if (rowDirectUrl && stagedThisRun.has(rowDirectUrl)) {
         updatedRows.push({
           ...prev,
@@ -1831,23 +1835,30 @@ async function runCleanDuplicatesMode() {
   const shopSource = await readShopFile();
   const lines = shopSource.split("\n");
 
-  // Walk every draft entry, recording slug + url + draft flag.
-  const drafts = [];
+  // Walk every entry (draft AND live), recording slug + url + draft
+  // flag + dateAdded. Live duplicates exist when the bulk-import
+  // pre-flight URL check missed (column-name drift) and the same
+  // URL got staged twice across runs. Older entries (lower
+  // dateAdded) are canonical; newer `-N` suffixed copies are
+  // removed.
+  const allEntries = [];
   let inEntry = false;
   let slug = "";
   let url = "";
   let isDraft = false;
+  let dateAdded = "";
   for (const line of lines) {
     if (line === "  {") {
       inEntry = true;
       slug = "";
       url = "";
       isDraft = false;
+      dateAdded = "";
       continue;
     }
     if (!inEntry) continue;
     if (line === "  },") {
-      if (slug && url && isDraft) drafts.push({ slug, url });
+      if (slug && url) allEntries.push({ slug, url, isDraft, dateAdded });
       inEntry = false;
       continue;
     }
@@ -1855,37 +1866,58 @@ async function runCleanDuplicatesMode() {
     if (sm) slug = sm[1];
     const um = /^\s*url:\s*"([^"]+)"/.exec(line);
     if (um) url = um[1];
+    const dm = /^\s*dateAdded:\s*"([^"]+)"/.exec(line);
+    if (dm) dateAdded = dm[1];
     if (/^\s*draft:\s*true,?\s*$/.test(line)) isDraft = true;
   }
 
-  // Group drafts by URL. URLs with >1 draft are the duplicate cases.
+  // Group by URL. URLs with >1 entry are duplicate cases.
   const byUrl = new Map();
-  for (const d of drafts) {
-    if (!byUrl.has(d.url)) byUrl.set(d.url, []);
-    byUrl.get(d.url).push(d.slug);
+  for (const e of allEntries) {
+    if (!byUrl.has(e.url)) byUrl.set(e.url, []);
+    byUrl.get(e.url).push(e);
   }
-  const dupGroups = [...byUrl.entries()].filter(([, slugs]) => slugs.length > 1);
+  const dupGroups = [...byUrl.entries()].filter(([, items]) => items.length > 1);
 
   if (dupGroups.length === 0) {
-    console.log("No duplicate draft URLs found. Nothing to clean.");
+    console.log("No duplicate URLs found. Nothing to clean.");
     return;
   }
 
-  console.log(`Found ${dupGroups.length} URL${dupGroups.length === 1 ? "" : "s"} staged more than once:\n`);
+  // Count how many are draft-only vs. live vs. mixed for the summary.
+  const liveDups = dupGroups.filter(([, items]) =>
+    items.some((i) => !i.isDraft)
+  );
+  console.log(
+    `Found ${dupGroups.length} URL${dupGroups.length === 1 ? "" : "s"} staged more than once ` +
+      `(${liveDups.length} include live entries):\n`
+  );
 
-  // For each group, pick the canonical slug (the one without `-N`
-  // suffix, or the shortest if none qualifies). Remove the rest.
+  // Canonical pick: oldest dateAdded wins (the original entry). If
+  // dateAdded ties or is missing, prefer the slug without a -N suffix,
+  // then the shortest slug.
   const toRemove = [];
-  for (const [groupUrl, slugs] of dupGroups) {
-    // Prefer the slug with no trailing -<digits>; fall back to the
-    // shortest one.
-    const noSuffix = slugs.find((s) => !/-\d+$/.test(s));
-    const canonical = noSuffix ?? [...slugs].sort((a, b) => a.length - b.length)[0];
-    const removing = slugs.filter((s) => s !== canonical);
-    console.log(`  ${groupUrl}`);
-    console.log(`    keep:   ${canonical}`);
-    for (const r of removing) console.log(`    remove: ${r}`);
-    for (const r of removing) toRemove.push(r);
+  for (const [groupUrl, items] of dupGroups) {
+    const sorted = [...items].sort((a, b) => {
+      // Older dateAdded first
+      if (a.dateAdded && b.dateAdded) return a.dateAdded.localeCompare(b.dateAdded);
+      if (a.dateAdded) return -1;
+      if (b.dateAdded) return 1;
+      // Fall back to no-suffix preferred, then shortest
+      const aSuffix = /-\d+$/.test(a.slug) ? 1 : 0;
+      const bSuffix = /-\d+$/.test(b.slug) ? 1 : 0;
+      if (aSuffix !== bSuffix) return aSuffix - bSuffix;
+      return a.slug.length - b.slug.length;
+    });
+    const canonical = sorted[0];
+    const removing = sorted.slice(1);
+    const liveTag = items.some((i) => !i.isDraft) ? " [LIVE]" : " [draft]";
+    console.log(`  ${groupUrl}${liveTag}`);
+    console.log(`    keep:   ${canonical.slug}${canonical.isDraft ? " (draft)" : " (live)"}${canonical.dateAdded ? `  ${canonical.dateAdded}` : ""}`);
+    for (const r of removing) {
+      console.log(`    remove: ${r.slug}${r.isDraft ? " (draft)" : " (live)"}${r.dateAdded ? `  ${r.dateAdded}` : ""}`);
+      toRemove.push(r.slug);
+    }
   }
 
   console.log("");
@@ -2075,7 +2107,14 @@ async function main() {
     // URL is already in shop.ts (draft or live). Slug-based checks
     // fired too late: ensureUnique would have already suffixed `-2`
     // and the post-collision slug never matched the existing one.
-    const rowDirectUrl = (row["DIRECT PRODUCT URL FOR SALE"] ?? "").trim();
+    // Reads either the new sheet shape (`direct_product_url`) or
+    // the legacy audit-CSV column. Must mirror the column-name flex
+    // layer in processRow().
+    const rowDirectUrl = (
+      row.direct_product_url ??
+      row["DIRECT PRODUCT URL FOR SALE"] ??
+      ""
+    ).trim();
     if (rowDirectUrl && existingUrlMap.has(rowDirectUrl)) {
       const present = existingUrlMap.get(rowDirectUrl);
       const bucket = present.draft ? "already-staged" : "already-live";
