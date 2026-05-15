@@ -130,6 +130,42 @@ export function EditClient({
     }
   };
 
+  const onMoveImage = async (from: number, direction: -1 | 1) => {
+    const to = from + direction;
+    if (to < 0 || to >= images.length) return; // edge — disabled by UI
+    const next = images.slice();
+    [next[from], next[to]] = [next[to], next[from]];
+    // Optimistic update so the UI feels instant; revert on error.
+    const previous = images;
+    setImages(next);
+    setImageBusy(true);
+    setImageError(null);
+    try {
+      const res = await fetch(
+        `/api/admin/shop-item/${initial.slug}/images`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ images: next }),
+        }
+      );
+      const payload = (await res.json()) as {
+        ok?: boolean;
+        images?: string[];
+        error?: string;
+      };
+      if (!res.ok || !payload.ok || !payload.images) {
+        throw new Error(payload.error ?? `HTTP ${res.status}`);
+      }
+      setImages(payload.images);
+    } catch (e) {
+      setImages(previous); // rollback
+      setImageError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setImageBusy(false);
+    }
+  };
+
   const onRemoveImage = async (index: number) => {
     if (images.length <= 1) {
       setImageError("Every product needs at least one image.");
@@ -545,22 +581,46 @@ export function EditClient({
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
-              <div className="flex items-center justify-between px-2 py-1.5">
+              <div className="flex items-center justify-between gap-2 px-2 py-1.5">
                 <span className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
                   {i + 1}
                   {i === 0 ? " (primary)" : ""}
                 </span>
-                {images.length > 1 ? (
+                <div className="flex items-center gap-2">
+                  {/* Reorder: ↑ moves toward primary (index 0),
+                      ↓ moves away. Disabled at the edges. */}
                   <button
                     type="button"
-                    onClick={() => onRemoveImage(i)}
-                    disabled={imageBusy}
-                    aria-label={`Remove image ${i + 1}`}
-                    className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/45 transition-colors hover:text-[#a3431f] disabled:opacity-40"
+                    onClick={() => onMoveImage(i, -1)}
+                    disabled={imageBusy || i === 0}
+                    aria-label={`Move image ${i + 1} up`}
+                    title="Move up"
+                    className="text-[12px] leading-none text-[#1f1d1b]/45 transition-colors hover:text-[#1f1d1b] disabled:opacity-25"
                   >
-                    Remove
+                    ↑
                   </button>
-                ) : null}
+                  <button
+                    type="button"
+                    onClick={() => onMoveImage(i, 1)}
+                    disabled={imageBusy || i === images.length - 1}
+                    aria-label={`Move image ${i + 1} down`}
+                    title="Move down"
+                    className="text-[12px] leading-none text-[#1f1d1b]/45 transition-colors hover:text-[#1f1d1b] disabled:opacity-25"
+                  >
+                    ↓
+                  </button>
+                  {images.length > 1 ? (
+                    <button
+                      type="button"
+                      onClick={() => onRemoveImage(i)}
+                      disabled={imageBusy}
+                      aria-label={`Remove image ${i + 1}`}
+                      className="text-[10px] uppercase tracking-[0.18em] text-[#1f1d1b]/45 transition-colors hover:text-[#a3431f] disabled:opacity-40"
+                    >
+                      Remove
+                    </button>
+                  ) : null}
+                </div>
               </div>
             </li>
           ))}

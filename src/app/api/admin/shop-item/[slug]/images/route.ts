@@ -6,6 +6,12 @@
  *           public/shop/<slug>/<sha1>.jpg, append to the entry's
  *           images array, persist. Returns the updated images list.
  *
+ *   PUT    /api/admin/shop-item/[slug]/images   body: { images: string[] }
+ *           Replace the images array with a reordered version. The new
+ *           array must contain exactly the same paths as the current
+ *           array — no additions, no removals. Use POST to add and
+ *           DELETE to remove; PUT is reorder-only.
+ *
  *   DELETE /api/admin/shop-item/[slug]/images   body: { index: number }
  *           Remove image at `index` from the entry's images array.
  *           The file on disk is NOT deleted — content-addressed images
@@ -13,7 +19,7 @@
  *           is small. To purge unreferenced files, run a separate
  *           `clean-orphans` pass (out of scope here).
  *
- * Both routes preserve every other field on the entry. They piggyback
+ * All routes preserve every other field on the entry. They piggyback
  * on the existing `replaceShopEntry` writer with a minimal NewShopEntry
  * built from the runtime SHOP_PRODUCTS state.
  *
@@ -145,6 +151,66 @@ export async function POST(
       nextImages === currentImages ||
       currentImages.includes(saved.publicPath),
   });
+}
+
+export async function PUT(
+  req: NextRequest,
+  ctx: RouteContext
+): Promise<NextResponse> {
+  if (isProd()) return notAvailable();
+
+  const { slug } = await ctx.params;
+  const product = SHOP_PRODUCTS.find((p) => p.slug === slug);
+  if (!product) return notFound(slug);
+
+  let body: { images?: unknown };
+  try {
+    body = (await req.json()) as { images?: unknown };
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+  if (!Array.isArray(body.images) || body.images.length === 0) {
+    return NextResponse.json(
+      { error: "images must be a non-empty array of strings" },
+      { status: 400 }
+    );
+  }
+  const nextImages = body.images.map((x) => String(x));
+
+  // Reorder-only validation: incoming set must be exactly equal to the
+  // current set. No additions, no removals, no duplicates. Caller's
+  // intent here is purely positional.
+  const currentImages = product.images ?? [product.image];
+  const currentSorted = [...currentImages].sort();
+  const nextSorted = [...nextImages].sort();
+  if (
+    nextSorted.length !== currentSorted.length ||
+    nextSorted.some((v, i) => v !== currentSorted[i])
+  ) {
+    return NextResponse.json(
+      {
+        error:
+          "PUT is reorder-only. The submitted array must contain exactly the same images as the current set. Use POST to add or DELETE to remove.",
+      },
+      { status: 400 }
+    );
+  }
+
+  const entry = entryFor(slug, nextImages);
+  if (!entry) return notFound(slug);
+  try {
+    await replaceShopEntry(slug, entry);
+  } catch (e) {
+    return NextResponse.json(
+      {
+        error: `Failed to write shop.ts: ${
+          e instanceof Error ? e.message : String(e)
+        }`,
+      },
+      { status: 500 }
+    );
+  }
+  return NextResponse.json({ ok: true, slug, images: nextImages });
 }
 
 export async function DELETE(
