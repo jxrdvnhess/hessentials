@@ -100,16 +100,52 @@ export default async function ShopProductPage({
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
-      {/* ---------- Top — back link ---------- */}
-      <div className="mx-auto w-full max-w-7xl px-6 pt-10 sm:px-10 md:px-16 md:pt-12">
-        <Link
-          href="/shop"
-          className="inline-flex items-baseline gap-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80 sm:text-[11px]"
-        >
-          <span aria-hidden>←</span>
-          Shop
-        </Link>
-      </div>
+      {/* ---------- Top — breadcrumb trail ----------
+          Single ← prefix, then SHOP / PILLAR / SUBCATEGORY. Each
+          segment links to its level so visitors can climb back up
+          the path they came in on without backtracking through
+          history. The leading arrow stays attached to "SHOP" — the
+          implied anchor of the trail. */}
+      <nav
+        aria-label="Breadcrumb"
+        className="mx-auto w-full max-w-7xl px-6 pt-10 sm:px-10 md:px-16 md:pt-12"
+      >
+        <ol className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/45 sm:text-[11px]">
+          <li>
+            <Link
+              href="/shop"
+              className="inline-flex items-baseline gap-2 transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80"
+            >
+              <span aria-hidden>←</span>
+              Shop
+            </Link>
+          </li>
+          <li className="flex items-baseline gap-2">
+            <span aria-hidden className="text-[#1f1d1b]/25">
+              /
+            </span>
+            <Link
+              href={`/shop/${product.category}`}
+              className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80"
+            >
+              {categoryLabel(product.category)}
+            </Link>
+          </li>
+          {product.subcategory ? (
+            <li className="flex items-baseline gap-2">
+              <span aria-hidden className="text-[#1f1d1b]/25">
+                /
+              </span>
+              <Link
+                href={`/shop/${product.category}/${product.subcategory}`}
+                className="transition-colors duration-500 ease-out hover:text-[#1f1d1b]/80"
+              >
+                {subcategoryLabel(product.subcategory)}
+              </Link>
+            </li>
+          ) : null}
+        </ol>
+      </nav>
 
       {/* ---------- Spread — image + meta side-by-side ---------- */}
       <section className="mx-auto w-full max-w-7xl px-6 pt-10 pb-16 sm:px-10 md:px-16 md:pt-16 md:pb-24">
