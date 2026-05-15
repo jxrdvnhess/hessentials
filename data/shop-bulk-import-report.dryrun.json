@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-05-14T20:43:59.981Z",
+  "generatedAt": "2026-05-15T08:55:27.450Z",
   "mode": "dry-run",
-  "csv": "data/shop-import-chateau-adds.csv",
+  "csv": "data/shop-import-batch-01.csv",
   "counts": {
-    "staged-draft": 27,
-    "needs-human": 18,
-    "failed": 3,
+    "staged-draft": 22,
+    "needs-human": 43,
+    "failed": 2,
     "editorial-removal": 0,
     "duplicate": 0,
     "already-staged": 0,
@@ -14,578 +14,873 @@
   "rows": [
     {
       "rowIndex": 2,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Simple Linen Napkin - Flax",
+      "anchor": "",
       "directUrl": "https://www.hawkinsnewyork.com/products/simple-linen-napkin-flax",
       "bucket": "staged-draft",
-      "slug": "hawkins-new-york-simple-linen-napkin-flax",
+      "slug": "hawkins-new-york-simple-linen-napkin-flax-3",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 3,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Essential Dinner Napkin, Set of 4 - Ivory",
-      "directUrl": "https://www.hawkinsnewyork.com/products/essential-dinner-napkin-ivory",
-      "bucket": "staged-draft",
-      "slug": "hawkins-new-york-essential-dinner-napkin-set-of-4-ivory",
+      "anchor": "",
+      "directUrl": "https://www.hawkinsnewyork.com/products/essential-glassware-clear",
+      "bucket": "needs-human",
+      "slug": "hawkins-new-york-essential-glassware-clear",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 4,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Brass Tray Oval S",
-      "directUrl": "https://foglinenwork.com/c/gr122/IHP007S",
+      "anchor": "",
+      "directUrl": "https://www.hawkinsnewyork.com/products/essential-glass-pitcher-clear",
       "bucket": "needs-human",
-      "slug": "fog-linen-work-s-w22-d13-h1-5",
+      "slug": "hawkins-new-york-essential-glass-pitcher-clear",
       "proposedCategory": "home",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 1 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 5,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Brass Tray Oval M",
-      "directUrl": "https://foglinenwork.com/c/gr122/IHP007M",
-      "bucket": "needs-human",
-      "slug": "fog-linen-work-m-w32-5-d19-5-h2-5",
+      "anchor": "",
+      "directUrl": "https://www.hawkinsnewyork.com/products/simple-linen-napkin-olive",
+      "bucket": "staged-draft",
+      "slug": "hawkins-new-york-simple-linen-napkin-olive-2",
       "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 6,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "FÄRGKLAR 18-piece dinnerware set, matte dark gray",
-      "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-dark-gray-20564710/",
-      "bucket": "needs-human",
-      "slug": "ikea-fargklar-18-piece-dinnerware-set-matte-dark-gray",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "anchor": "",
+      "directUrl": "https://materialkitchen.com/products/the-angled-board",
+      "bucket": "staged-draft",
+      "slug": "material-kitchen-the-angled-board-3",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 7,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "FÄRGKLAR Plate, matte green, 10\"",
-      "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-green-90478177/",
-      "bucket": "needs-human",
-      "slug": "ikea-fargklar-plate-matte-green-10",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "anchor": "",
+      "directUrl": "https://materialkitchen.com/products/the-mk-free-board",
+      "bucket": "staged-draft",
+      "slug": "material-kitchen-the-mk-free-board-3",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 8,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Bud Vase",
-      "directUrl": "https://www.heathceramics.com/products/bud-vase",
+      "anchor": "",
+      "directUrl": "https://materialkitchen.com/products/the-midi-mk-free-board",
       "bucket": "staged-draft",
-      "slug": "heath-ceramics-bud-vase",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
+      "slug": "material-kitchen-the-midi-mk-free-board-2",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 9,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Honeycomb Organic Blanket",
-      "directUrl": "https://www.coyuchi.com/products/honeycomb-organic-blanket-undyed-oyster",
+      "anchor": "",
+      "directUrl": "https://materialkitchen.com/products/the-rebowl%C2%AE-multiple-colors",
       "bucket": "staged-draft",
-      "slug": "coyuchi-honeycomb-organic-blanket",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
+      "slug": "material-kitchen-the-rebowl-2",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 10,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Cozy Cotton Organic Blanket - Stone",
-      "directUrl": "https://www.coyuchi.com/products/cozy-cotton-organic-blanket-stone",
-      "bucket": "needs-human",
-      "slug": "coyuchi-cozy-cotton-organic-blanket",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/titanium-french-press-cs-111",
+      "bucket": "staged-draft",
+      "slug": "snow-peak-titanium-french-press-2",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 11,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Coyuchi Conserve Organic Paperless Towels",
-      "directUrl": "https://www.coyuchi.com/products/coyuchi-conserve-organic-paperless-towels-undyed-w-blue-jay",
-      "bucket": "needs-human",
-      "slug": "coyuchi-coyuchi-conserve-organic-paperless-towels",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 2 image(s)"
-      ]
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/titanium-double-450-mug",
+      "bucket": "staged-draft",
+      "slug": "snow-peak-ti-double-450-mug-2",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 12,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Unisex Organic Waffle Robe - Alpine White",
-      "directUrl": "https://www.coyuchi.com/products/unisex-organic-waffle-robe-alpine-white",
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/collapsible_pour_over-cs-113",
       "bucket": "staged-draft",
-      "slug": "coyuchi-unisex-organic-waffle-robe",
+      "slug": "snow-peak-collapsible-coffee-drip-2",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 13,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Maple Garden Carry-All",
-      "directUrl": "https://www.shopterrain.com/shop/maple-garden-carry-all",
-      "bucket": "failed",
-      "error": "Source HTTP 403"
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/field-barista-coffee-drip",
+      "bucket": "staged-draft",
+      "slug": "snow-peak-field-barista-coffee-drip-2",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 14,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Rattan Cylinder Basket Planter",
-      "directUrl": "https://www.shopterrain.com/shop/rattan-cylinder-basket-planter-1",
-      "bucket": "failed",
-      "error": "Source HTTP 403"
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/rechargeable-mini-hozuki",
+      "bucket": "needs-human",
+      "slug": "snow-peak-rechargeable-mini-hozuki",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 15,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Botanical Arch Handle Basket",
-      "directUrl": "https://www.shopterrain.com/shop/botanical-arch-handle-basket",
-      "bucket": "failed",
-      "error": "Source HTTP 403"
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/hozuki-lantern-2",
+      "bucket": "needs-human",
+      "slug": "snow-peak-hozuki-lantern",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 16,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Alabax Small Surface Mount",
-      "directUrl": "https://schoolhouse.com/products/alabax-small-surface-mount",
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/low-beach-chair",
       "bucket": "needs-human",
-      "slug": "schoolhouse-alabax-small-surface-mount",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
+      "slug": "snow-peak-low-beach-chair",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 1 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 17,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Grant Mirror - Round",
-      "directUrl": "https://schoolhouse.com/products/grant-mirror",
+      "anchor": "",
+      "directUrl": "https://www.farmhousepottery.com/products/olive-oil-bottle-1",
       "bucket": "needs-human",
-      "slug": "schoolhouse-grant-mirror-round",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
+      "slug": "farmhouse-pottery-olive-oil-bottle-2",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 1 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 18,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Miller Utility Cart",
-      "directUrl": "https://schoolhouse.com/products/miller-utility-cart",
-      "bucket": "needs-human",
-      "slug": "schoolhouse-miller-utility-cart",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
-      "flags": [
-        "only 1 image(s)"
-      ]
+      "anchor": "",
+      "directUrl": "https://www.farmhousepottery.com/products/silo-garlic-keeper",
+      "bucket": "staged-draft",
+      "slug": "farmhouse-pottery-silo-garlic-keeper-3",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 19,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Recycled Paper Bind Grid Notebook",
-      "directUrl": "https://www.muji.us/products/recycled-paper-bind-grid-notebook-9s62",
+      "anchor": "",
+      "directUrl": "https://www.farmhousepottery.com/products/silo-pitchers",
       "bucket": "needs-human",
-      "slug": "muji-recycled-paper-bind-grid-notebook",
+      "slug": "farmhouse-pottery-silo-pitchers",
       "proposedCategory": "home",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 20,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Olive Oil Bottle",
-      "directUrl": "https://www.farmhousepottery.com/products/olive-oil-bottle-1",
-      "bucket": "staged-draft",
-      "slug": "farmhouse-pottery-olive-oil-bottle",
-      "proposedCategory": "provisions",
-      "proposedAudience": "None"
+      "anchor": "",
+      "directUrl": "https://www.farmhousepottery.com/products/pantry-bowl",
+      "bucket": "needs-human",
+      "slug": "farmhouse-pottery-pantry-bowl",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 21,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Silo Garlic Keeper",
-      "directUrl": "https://www.farmhousepottery.com/products/silo-garlic-keeper",
-      "bucket": "staged-draft",
-      "slug": "farmhouse-pottery-silo-garlic-keeper",
+      "anchor": "",
+      "directUrl": "https://www.feltandfat.com/products/espresso-cup-in-milk",
+      "bucket": "needs-human",
+      "slug": "felt-fat-espresso-cup-in-milk-2",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 22,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Espresso Cup in Milk",
-      "directUrl": "https://www.feltandfat.com/products/espresso-cup-in-milk",
-      "bucket": "staged-draft",
-      "slug": "felt-fat-espresso-cup-in-milk",
+      "anchor": "",
+      "directUrl": "https://www.feltandfat.com/products/coffee-mug-in-tenmoku",
+      "bucket": "needs-human",
+      "slug": "felt-fat-coffee-mug-in-tenmoku",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 23,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Coffee Mug in Confetti",
-      "directUrl": "https://www.feltandfat.com/products/coffee-mug-in-confetti",
-      "bucket": "staged-draft",
-      "slug": "felt-fat-coffee-mug-in-confetti",
+      "anchor": "",
+      "directUrl": "https://www.feltandfat.com/products/large-coffee-mug-in-milk",
+      "bucket": "needs-human",
+      "slug": "felt-fat-large-coffee-mug-in-milk",
       "proposedCategory": "home",
-      "proposedAudience": "None"
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 24,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Pure Flake Sea Salt",
-      "directUrl": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
+      "anchor": "",
+      "directUrl": "https://www.feltandfat.com/products/cappuccino-cup-in-milk",
       "bucket": "needs-human",
-      "slug": "jacobsen-salt-co-pure-flake-sea-salt",
-      "proposedCategory": "provisions",
-      "proposedAudience": "None",
+      "slug": "felt-fat-cappuccino-cup-in-milk",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "empty prices"
       ]
     },
     {
       "rowIndex": 25,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Pure Flake Sea Salt Slide Tin",
-      "directUrl": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
+      "anchor": "",
+      "directUrl": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
       "bucket": "needs-human",
-      "slug": "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
+      "slug": "jacobsen-salt-co-pure-flake-sea-salt",
       "proposedCategory": "provisions",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "only 2 image(s)",
+        "empty prices"
       ]
     },
     {
       "rowIndex": 26,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "The MK Free Board",
-      "directUrl": "https://materialkitchen.com/products/the-mk-free-board",
-      "bucket": "staged-draft",
-      "slug": "material-kitchen-the-mk-free-board",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 27,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "The Angled Board",
-      "directUrl": "https://materialkitchen.com/products/the-angled-board",
-      "bucket": "staged-draft",
-      "slug": "material-kitchen-the-angled-board",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 28,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "KBGV Coffee Maker",
-      "directUrl": "https://us.moccamaster.com/products/kbgv",
-      "bucket": "staged-draft",
-      "slug": "moccamaster-moccamaster-kbgv-coffee-maker-sca-ecbc-certified-drip-brewer",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 29,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Royal Cinnamon",
-      "directUrl": "https://www.burlapandbarrel.com/products/royal-cinnamon",
+      "anchor": "",
+      "directUrl": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
       "bucket": "needs-human",
-      "slug": "burlap-and-barrel-royal-cinnamon",
-      "proposedCategory": "home",
-      "proposedAudience": "None",
+      "slug": "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "only 2 image(s)",
+        "empty prices"
       ]
     },
     {
-      "rowIndex": 30,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "rowIndex": 27,
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Pragati Turmeric",
+      "anchor": "",
+      "directUrl": "https://jacobsensalt.com/products/ceramic-arch-salt-cellar",
+      "bucket": "needs-human",
+      "slug": "jacobsen-salt-co-ceramic-arch-salt-cellar",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 28,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://jacobsensalt.com/products/flake-salt-cellar",
+      "bucket": "needs-human",
+      "slug": "jacobsen-salt-co-flake-salt-cellar",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 29,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
       "directUrl": "https://www.diasporaco.com/products/pragati-turmeric",
       "bucket": "staged-draft",
-      "slug": "diaspora-co-pragati-turmeric",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
+      "slug": "diaspora-co-pragati-turmeric-3",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 30,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.diasporaco.com/products/the-trio-3-tin",
+      "bucket": "staged-draft",
+      "slug": "diaspora-co-the-trio-2",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 31,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "No.08 Carbon Steel Folding Knife",
-      "directUrl": "https://www.opinel-usa.com/products/opinel-no-8-carbon-steel-folding-knife",
+      "anchor": "",
+      "directUrl": "https://www.diasporaco.com/products/whole-seeds-trio",
       "bucket": "staged-draft",
-      "slug": "opinel-no-08-carbon-steel-folding-knife",
-      "proposedCategory": "home",
-      "proposedAudience": "None"
+      "slug": "diaspora-co-whole-seeds-trio-2",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral"
     },
     {
       "rowIndex": 32,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Triple Jump Small Dark Brown",
-      "directUrl": "https://dragondiffusion.com/products/triple-jump-small-dark-brown-woven-leather-bag-handmade",
-      "bucket": "staged-draft",
-      "slug": "dragon-diffusion-triple-jump-small-dark-brown",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None"
+      "anchor": "",
+      "directUrl": "https://www.diasporaco.com/products/haldi-doodh",
+      "bucket": "needs-human",
+      "slug": "diaspora-co-haldi-doodh-les",
+      "proposedCategory": "provisions",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 33,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Triple Jump Small Black",
-      "directUrl": "https://dragondiffusion.com/products/triple-jump-small-black-woven-leather-bag-handmade",
-      "bucket": "staged-draft",
-      "slug": "dragon-diffusion-triple-jump-small-black",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None"
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/miller-utility-cart",
+      "bucket": "needs-human",
+      "slug": "schoolhouse-miller-utility-cart",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices"
+      ]
     },
     {
       "rowIndex": 34,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Women's Crossbody Bag in Leather, Black Cherry",
-      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr281pv0001pu183gb",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/sidnie-lamp",
       "bucket": "needs-human",
-      "slug": "il-bisonte-fausta-medium-women-s-crossbody-bag-leather-color-black-cherry",
-      "proposedCategory": "accessories",
-      "proposedAudience": "Womens only",
+      "slug": "schoolhouse-sidnie-table-lamp",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "only 1 image(s)",
+        "empty prices"
       ]
     },
     {
       "rowIndex": 35,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Archive 1970 Crossbody Bag",
-      "directUrl": "https://www.ilbisonte.com/en-usa/products/bcr406tcv001bl404gb",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/alabax-small-sconce",
       "bucket": "needs-human",
-      "slug": "il-bisonte-archive-1970-women-s-crossbody-bag-fabric-color-blue-natural",
-      "proposedCategory": "accessories",
-      "proposedAudience": "Womens only",
+      "slug": "schoolhouse-alabax-small-sconce",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
       "flags": [
-        "only 2 image(s)"
+        "only 1 image(s)",
+        "empty prices"
       ]
     },
     {
       "rowIndex": 36,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Boat and Tote, Zip-Top",
-      "directUrl": "https://www.llbean.com/llb/shop/37037?page=boat-and-tote-bag-zip-top",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/perkins-hook-mirror",
+      "bucket": "needs-human",
+      "slug": "schoolhouse-perkins-hook-mirror",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 37,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/eleanor-pull",
+      "bucket": "needs-human",
+      "slug": "schoolhouse-eleanor-pull",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 38,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/g40-matte-porcelain-led-bulb",
+      "bucket": "needs-human",
+      "slug": "schoolhouse-g40-matte-porcelain-led-bulb",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 1 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 39,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.filson.com/products/large-rugged-twill-duffle-bag-otter-green-1",
+      "bucket": "needs-human",
+      "slug": "filson-large-rugged-twill-duffle-bag",
+      "proposedCategory": "accessories",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 40,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.filson.com/products/medium-rugged-twill-duffle-bag",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 41,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.filson.com/products/rugged-twill-tote-bag-with-zipper",
+      "bucket": "failed",
+      "error": "Source HTTP 404"
+    },
+    {
+      "rowIndex": 42,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.leatherology.com/products/large-travel-organizer-navy-blue",
+      "bucket": "staged-draft",
+      "slug": "leatherology-large-travel-organizer-2",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 43,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.leatherology.com/products/nested-travel-organizer-trio-navy-blue",
+      "bucket": "staged-draft",
+      "slug": "leatherology-nested-travel-organizer-trio-2",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 44,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.leatherology.com/products/large-tech-bag-organizer-brown",
+      "bucket": "staged-draft",
+      "slug": "leatherology-large-tech-bag-organizer-2",
+      "proposedCategory": "accessories",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 45,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.llbean.com/llb/shop/37037",
       "bucket": "needs-human",
       "slug": "l-l-bean-boat-and-tote-zip-top",
       "proposedCategory": "accessories",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
       "flags": [
         "only 0 image(s)"
       ]
     },
     {
-      "rowIndex": 37,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "rowIndex": 46,
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Small Rugged Twill Duffle Bag",
-      "directUrl": "https://www.filson.com/products/small-rugged-twill-duffle-bag-tan",
-      "bucket": "staged-draft",
-      "slug": "filson-small-rugged-twill-duffle-bag-tan",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 38,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Medium Rugged Twill Duffle Bag",
-      "directUrl": "https://www.filson.com/products/medium-rugged-twill-duffle-bag-tan-1",
-      "bucket": "staged-draft",
-      "slug": "filson-medium-rugged-twill-duffle-bag-tan",
-      "proposedCategory": "accessories",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 39,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Large Travel Organizer - Black Onyx",
-      "directUrl": "https://www.leatherology.com/products/large-travel-organizer-black-onyx",
-      "bucket": "staged-draft",
-      "slug": "leatherology-large-travel-organizer-black-onyx",
-      "proposedCategory": "travel",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 40,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Large Travel Organizer in Canvas",
-      "directUrl": "https://www.leatherology.com/products/large-travel-organizer-in-canvas-natural-canvasblack",
-      "bucket": "staged-draft",
-      "slug": "leatherology-large-travel-organizer-canvas-natural-canvas-black",
-      "proposedCategory": "travel",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 41,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Chatelet Air 2.0 Carry-on Plus Spinner",
-      "directUrl": "https://us.delsey.com/products/401676805-chatelet-air-20-20inch-carry-on-spinner",
+      "anchor": "",
+      "directUrl": "https://www.llbean.com/llb/shop/33381",
       "bucket": "needs-human",
-      "slug": "delsey-chatelet-air-2-0-carry-on-plus-spinner",
+      "slug": "l-l-bean-boat-and-tote-mini",
+      "proposedCategory": "accessories",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 0 image(s)",
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 47,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.heathceramics.com/products/bud-vase",
+      "bucket": "needs-human",
+      "slug": "heath-ceramics-bud-vase-2",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 48,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.heathceramics.com/products/bud-vase-opaque-white",
+      "bucket": "needs-human",
+      "slug": "heath-ceramics-bud-vase-in-opaque-white",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 49,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.coyuchi.com/products/three-season-down-duvet-insert-white",
+      "bucket": "needs-human",
+      "slug": "coyuchi-three-season-down-duvet-insert",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 50,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.coyuchi.com/products/organic-shredded-latex-pillow-alpine-white",
+      "bucket": "needs-human",
+      "slug": "coyuchi-organic-shredded-latex-pillow",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 51,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.opinel-usa.com/products/opinel-no-8-carbon-steel-folding-knife",
+      "bucket": "staged-draft",
+      "slug": "opinel-no-08-carbon-steel-folding-knife-3",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 52,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.opinel-usa.com/products/no-8-opinel-stainless-steel-blade",
+      "bucket": "needs-human",
+      "slug": "opinel-no-08-stainless-steel-folding-knife",
+      "proposedCategory": "cooking",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 53,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.opinel-usa.com/products/wooden-slide-top-no-8-olive-wood-handle-sheath",
+      "bucket": "needs-human",
+      "slug": "opinel-no-08-olive-wood-folding-knife-with-sheath",
       "proposedCategory": "travel",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 54,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.ikea.com/us/en/p/faergklar-18-piece-dinnerware-set-matte-light-turquoise-80564689/",
+      "bucket": "needs-human",
+      "slug": "ikea-f-rgklar-18-piece-dinnerware-set-matte-light-turquoise",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
       "flags": [
         "only 1 image(s)"
       ]
     },
     {
-      "rowIndex": 42,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "rowIndex": 55,
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Ti-Single 450 Cup",
-      "directUrl": "https://www.snowpeak.com/products/titanium-single-450-cup-mg-043",
-      "bucket": "staged-draft",
-      "slug": "snow-peak-ti-single-450-cup",
-      "proposedCategory": "travel",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 43,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Ti-Double 450 Mug",
-      "directUrl": "https://www.snowpeak.com/products/titanium-double-450-mug",
-      "bucket": "staged-draft",
-      "slug": "snow-peak-ti-double-450-mug",
-      "proposedCategory": "travel",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 44,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Her Socks - Classic White",
-      "directUrl": "https://lebonshoppe.com/products/her-socks-mc-cotton-classic-white",
-      "bucket": "staged-draft",
-      "slug": "le-bon-shoppe-her-socks-mc-cotton-classic-white",
-      "proposedCategory": "womens",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 45,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Her Socks - Dark Tan",
-      "directUrl": "https://lebonshoppe.com/products/her-socks-mc-cotton-dark-tan",
-      "bucket": "staged-draft",
-      "slug": "le-bon-shoppe-her-socks-mc-cotton-dark-tan",
-      "proposedCategory": "womens",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 46,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Field-Spec Cotton Heavy Tee - Black",
-      "directUrl": "https://www.buckmason.com/products/black-field-spec-cotton-vintage-surplus-heavy-tee",
-      "bucket": "staged-draft",
-      "slug": "buck-mason-black-field-spec-cotton-heavy-tee",
-      "proposedCategory": "mens",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 47,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Field-Spec Cotton Heavy Tee - White",
-      "directUrl": "https://www.buckmason.com/products/white-field-spec-cotton-vintage-surplus-heavy-tee",
-      "bucket": "staged-draft",
-      "slug": "buck-mason-white-field-spec-cotton-heavy-tee",
-      "proposedCategory": "mens",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 48,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Field-Spec Cotton Heavy Tee - Dress Navy",
-      "directUrl": "https://www.buckmason.com/products/dress-navy-field-spec-heavy-tee",
-      "bucket": "staged-draft",
-      "slug": "buck-mason-dress-navy-field-spec-heavy-tee",
-      "proposedCategory": "womens",
-      "proposedAudience": "None"
-    },
-    {
-      "rowIndex": 49,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "A5 Recycled Paper Double Ring Blank Notebook - Dark Grey",
-      "directUrl": "https://www.muji.us/products/recycled-paper-double-ring-blank-notebook-dark-grey-a5-9s62066",
+      "anchor": "",
+      "directUrl": "https://www.ikea.com/us/en/p/faergklar-plate-matte-light-turquoise-00477158/",
       "bucket": "needs-human",
-      "slug": "muji-a5-recycled-paper-double-ring-blank-notebook-dark-grey",
+      "slug": "ikea-f-rgklar-plate-matte-light-turquoise",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 1 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 56,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.muji.us/products/planting-tree-paper-double-ringed-ruled-notebook-ea31",
+      "bucket": "needs-human",
+      "slug": "muji-planting-tree-paper-double-ringed-ruled-notebook-7-mm",
       "proposedCategory": "accessories",
-      "proposedAudience": "None",
+      "proposedAudience": "Gender-neutral",
       "flags": [
         "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 57,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.muji.us/products/pet-underlay-24aw",
+      "bucket": "needs-human",
+      "slug": "muji-pet-underlay-pencil-board-b5",
+      "proposedCategory": "living",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 58,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.muji.us/products/recycled-polypropylene-strap-weave-basket-gray-large-kg10ma4a",
+      "bucket": "needs-human",
+      "slug": "muji-recycled-polypropylene-strap-weave-basket-gray",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 59,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.purelysedona.com/products/purely-sedona-1l-artesian-spring-water-12-bottles",
+      "bucket": "needs-human",
+      "slug": "purely-sedona-artesian-spring-water-1-liter-case",
+      "proposedCategory": "accessories",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 60,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.purelysedona.com/products/purely-sedona-500ml-artesian-spring-water",
+      "bucket": "needs-human",
+      "slug": "purely-sedona-artesian-spring-water-500-ml-case",
+      "proposedCategory": "accessories",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "only 2 image(s)"
+      ]
+    },
+    {
+      "rowIndex": 61,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.lospoblanos.com/products/lavender-hand-soap",
+      "bucket": "staged-draft",
+      "slug": "los-poblanos-lavender-hand-soap-2",
+      "proposedCategory": "grooming",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 62,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.lospoblanos.com/products/pinon-bar-soap",
+      "bucket": "staged-draft",
+      "slug": "los-poblanos-pi-on-bar-soap-2",
+      "proposedCategory": "grooming",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 63,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.lospoblanos.com/products/home-duo-gift-set",
+      "bucket": "staged-draft",
+      "slug": "los-poblanos-lavender-home-duo-2",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 64,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.lospoblanos.com/products/lavender-on-the-go",
+      "bucket": "staged-draft",
+      "slug": "los-poblanos-lavender-on-the-go-set-2",
+      "proposedCategory": "travel",
+      "proposedAudience": "Gender-neutral"
+    },
+    {
+      "rowIndex": 65,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.blockshoptextiles.com/products/otto-napkin",
+      "bucket": "needs-human",
+      "slug": "block-shop-textiles-otto-napkin",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 66,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.blockshoptextiles.com/products/dolly-napkin",
+      "bucket": "needs-human",
+      "slug": "block-shop-textiles-dolly-napkin",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 67,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.blockshoptextiles.com/products/poppy-napkin-field",
+      "bucket": "needs-human",
+      "slug": "block-shop-textiles-poppy-napkin-field",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
+      ]
+    },
+    {
+      "rowIndex": 68,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.blockshoptextiles.com/products/peacock-napkin-ochre",
+      "bucket": "needs-human",
+      "slug": "block-shop-textiles-peacock-napkin-ochre",
+      "proposedCategory": "home",
+      "proposedAudience": "Gender-neutral",
+      "flags": [
+        "empty prices"
       ]
     }
   ],

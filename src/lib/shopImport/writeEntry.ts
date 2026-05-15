@@ -64,6 +64,21 @@ export type NewShopEntry = {
    * admin. Omitted / `false` for live entries.
    */
   draft?: boolean;
+  /**
+   * Operational stability tier (1-4) — see `data/sourcing-policy.md`.
+   * Optional; emitted only when set.
+   */
+  stabilityTier?: 1 | 2 | 3 | 4;
+  /**
+   * Atmosphere collections this object belongs to. Emitted as a
+   * literal array when non-empty.
+   */
+  atmosphereCollection?: string[];
+  /**
+   * Tier 1 emotional territory (short phrase). Emitted as a string
+   * when present.
+   */
+  territoryWeather?: string;
 };
 
 const SHOP_FILE = path.join(process.cwd(), "src", "data", "shop.ts");
@@ -123,6 +138,22 @@ export function formatEntry(entry: NewShopEntry): string {
   }
   if (entry.draft === true) {
     lines.push(`    draft: true,`);
+  }
+  if (
+    typeof entry.stabilityTier === "number" &&
+    entry.stabilityTier >= 1 &&
+    entry.stabilityTier <= 4
+  ) {
+    lines.push(`    stabilityTier: ${entry.stabilityTier},`);
+  }
+  if (entry.atmosphereCollection && entry.atmosphereCollection.length > 0) {
+    const items = entry.atmosphereCollection
+      .map((a) => tsString(a))
+      .join(", ");
+    lines.push(`    atmosphereCollection: [${items}],`);
+  }
+  if (entry.territoryWeather && entry.territoryWeather.trim().length > 0) {
+    lines.push(`    territoryWeather: ${tsString(entry.territoryWeather.trim())},`);
   }
   lines.push(`  },`);
   return lines.join("\n");

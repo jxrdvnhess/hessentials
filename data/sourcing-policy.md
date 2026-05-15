@@ -4,6 +4,31 @@ Operating doctrine for how products enter the Hessentials archive. Written by Ch
 
 ---
 
+## The three simultaneous filters
+
+The Shop is not a commerce layer. It is the physical manifestation of the Hessentials worldview. Every object now has to pass all three of these simultaneously:
+
+1. **Editorial correctness** — does it earn its place under the Standard's product filter
+2. **Emotional durability** — will it still feel correct a year from now
+3. **Operational durability** — does the retailer's architecture support a long-term archive entry
+
+None of those can collapse without damaging trust.
+
+---
+
+## The six doctrines
+
+Locked in 2026-05-14. These govern every sourcing and curation decision from here forward.
+
+1. **Density over breadth** — permanent doctrine. The archive deepens into trusted territories rather than expanding sideways.
+2. **Tier 1 deepening over horizontal hunt** — see [`data/tier-1-brands.md`](./tier-1-brands.md). New products in known stable brands beat new brands in unknown territory.
+3. **Atmosphere collections over retail taxonomy** — products group by emotional territory and lived-object logic, not department-store category trees.
+4. **Cross-tagging follows lived-object logic, not department-store logic** — a heavyweight tee is both a basic AND a layer; categorize by how it's actually used, not which retail floor it'd sit on.
+5. **Article objects and Shop objects must remain continuous** — no dead-end editorial references. Anything mentioned in an article body should have a live Shop entry or a deliberate editorial reason it doesn't.
+6. **"Stable enough to survive long-term archival existence" is part of the editorial standard itself** — operational fragility is not a separate concern from editorial quality. They're the same concern.
+
+---
+
 ## The frame
 
 We need to stop thinking like: "find the best product."
@@ -93,6 +118,8 @@ Not because they're trendy. Because they're stable, clear, direct, parseable, pe
 
 Layer seasonal discoveries, artisan finds, smaller makers, and emotional objects ON TOP of this stable foundation. Not instead of it.
 
+The running, updated Tier 1 Expansion List with category coverage, gaps, and watch-list candidates lives at [`data/tier-1-brands.md`](./tier-1-brands.md).
+
 ---
 
 ## The distributor insight
@@ -148,3 +175,76 @@ Before adding a URL to the master CSV:
 5. For non-English brands, find a US distributor.
 
 If a candidate fails 1-3, do not add it. Restraint is the answer.
+
+---
+
+## Current phase plan
+
+Locked 2026-05-14. The work between now and the revamp launch is:
+
+1. **Clean the foundation** — finish the editorial pass on remaining drafts and pending entries. Fix em-dashes, wrong-URL audit rows, SEO-blob names.
+2. **Strengthen Tier 1 density** — close gaps in the Current Tier 1 brands and elevate candidates per [`data/tier-1-brands.md`](./tier-1-brands.md).
+3. **Expand atmosphere collections** — group products by emotional territory (the per-brand territories in the Tier 1 doc) rather than retail taxonomy. World-building, not product accumulation.
+4. **Build the cleanest possible canonical import CSV** — the new schema (with `manual_images` + `stability_tier`) becomes the single source of truth Chateau works in.
+5. **Launch the revamp with emotional coherence, not maximum inventory** — better objects, chosen slowly, kept longer.
+
+---
+
+## Article ↔ Shop continuity — the `shop_refs` convention
+
+Doctrine 5 forbids dead-end editorial references. Operationalized as follows.
+
+Every article that references an object available in the Shop must declare the connection explicitly in its frontmatter:
+
+```yaml
+---
+title: Ditch the coffee machine. Get an espresso machine.
+slug: ditch-the-coffee-machine-get-an-espresso-machine
+category: living
+section: Systems
+shop_refs:
+  - breville-the-bambino
+  - breville-the-barista-express
+  - baratza-suggested-encore-esp
+---
+```
+
+The values are Shop slugs from `src/data/shop.ts`. Writers consciously decide which objects belong to each article's world before publishing — that's the editorial friction we want. The archive stays authored, not auto-inferred.
+
+Post-launch, `scripts/check-article-shop-continuity.mjs` will become the auditor: walk every article, verify each declared `shop_ref` corresponds to a live Shop entry, and report orphans. The frontmatter remains the source of truth; the script is the QA layer.
+
+Existing articles will be backfilled incrementally as they're touched. Until then, the lack of `shop_refs` on an old article is not a failure — it's a marker for future editorial passes.
+
+---
+
+## Architectural direction (post-launch)
+
+Eventually every Shop object inherits three orthogonal dimensions, not just one:
+
+1. **Category** — the operational taxonomy (`mens`, `home`, `travel`, etc.)
+2. **Atmosphere collection** — emotional grouping that cuts across category (Morning Ritual, Soft Travel, Weeknight Table, Hotel Energy at Home)
+3. **Tier 1 territory weather** — the emotional climate of the brand that made it
+
+A Snow Peak titanium mug lives in:
+
+- **Category**: Travel / Coffee / Outdoor
+- **Atmosphere**: Morning Ritual, Portable Ritual
+- **Territory**: soft travel / outdoor calm / analog movement (Snow Peak)
+
+That's where the archive starts feeling alive instead of hierarchical. Not built yet — wait for the editorial ask.
+
+---
+
+## The closing principle
+
+The constraints are sharpening the philosophy instead of weakening it. Anti-decay is becoming one of Hessentials' strongest differentiators.
+
+The reader should feel that Hessentials already filtered the noise for them.
+
+Not: more products.
+
+Better objects. Chosen slowly. Kept longer.
+
+**The emotional product is: relief from noise.**
+
+Not the tote, the mug, the blanket, the lamp.

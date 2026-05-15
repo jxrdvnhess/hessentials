@@ -939,18 +939,79 @@ function inferExtractionMethod(url) {
 }
 
 async function processRow(row, ctx, scrapeFn = scrapeUrl) {
-  const directUrl = (row["DIRECT PRODUCT URL FOR SALE"] ?? "").trim();
+  // Column-name flex layer — the script accepts two CSV shapes:
+  //
+  //   (a) the original editorial-audit shape (DIRECT PRODUCT URL FOR
+  //       SALE, Chateau's Thoughts, csv_price, csv_category, …);
+  //
+  //   (b) the new Object Archive shape Chateau works in directly
+  //       (direct_product_url, chateau_thoughts, price, category,
+  //       subcategory, gender_tags, atmosphere_collection,
+  //       territory_weather, slug, …).
+  //
+  // Reads prefer the new shape, fall back to the old. Both modes
+  // continue to work; mixing within one CSV is supported but not
+  // encouraged.
+  const directUrl = (
+    row.direct_product_url ??
+    row["DIRECT PRODUCT URL FOR SALE"] ??
+    ""
+  ).trim();
   const article = row.source_article ?? "";
   const articleUrl = row.article_url ?? "";
   const anchor = row.anchor_text ?? "";
-  const brandCsv = row.brand ?? "";
-  const guess = row.product_name_guess ?? "";
-  const thought = row["Chateau's Thoughts"] ?? "";
+  const brandCsv = (row.brand ?? "").trim();
+  // Product name: prefer Chateau's explicit `product_name`; fall
+  // back to the old guess column.
+  const guess = (row.product_name ?? row.product_name_guess ?? "").trim();
+  const thought = (row.chateau_thoughts ?? row["Chateau's Thoughts"] ?? "").trim();
   const auditNote = row["audit_note (context)"] ?? "";
   // Optional CSV columns — used as defaults when scrape comes up
   // empty. Editorial pre-vetted data wins over scraper guesses.
-  const csvPrice = (row.csv_price ?? "").trim();
-  const csvCategory = (row.csv_category ?? "").trim();
+  const csvPrice = (row.price ?? row.csv_price ?? "").trim();
+  const csvCategory = (row.category ?? row.csv_category ?? "").trim();
+  // Chateau-supplied slug. When present, overrides buildSlug().
+  const csvSlug = (row.slug ?? "").trim();
+  // Chateau-supplied subcategory. When present, overrides the
+  // "uncategorized" placeholder the script otherwise writes.
+  const csvSubcategory = (row.subcategory ?? "").trim();
+  // Atmosphere collections: semicolon-delimited string → array.
+  const csvAtmosphere = (row.atmosphere_collection ?? "")
+    .split(";")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  // Territory weather (short phrase tied to the brand).
+  const csvTerritory = (row.territory_weather ?? "").trim();
+  // Gender tags ("Men; Women" / "all" / "men") → audience array.
+  const csvGenderRaw = (row.gender_tags ?? "").toLowerCase();
+  const csvGenderTags = csvGenderRaw
+    .split(/[;,]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  let csvAudience = null;
+  if (csvGenderTags.includes("all") || csvGenderTags.includes("gender-neutral")) {
+    csvAudience = ["mens", "womens"];
+  } else if (csvGenderTags.length > 0) {
+    csvAudience = csvGenderTags
+      .map((g) => (g.startsWith("men") ? "mens" : g.startsWith("women") ? "womens" : null))
+      .filter((g) => g === "mens" || g === "womens");
+    if (csvAudience.length === 0) csvAudience = null;
+    else csvAudience = Array.from(new Set(csvAudience));
+  }
+  // Manual image URLs Chateau verified at sourcing time. Semicolon-
+  // delimited; merged with scrape results via dedupe. Lets her ship
+  // a row with complete image data even when the retailer's JSON-LD
+  // is sparse.
+  const csvManualImages = (row.manual_images ?? "")
+    .split(";")
+    .map((s) => s.trim())
+    .filter((s) => /^https?:\/\//i.test(s));
+  // Operational stability tier (1-4) — see data/sourcing-policy.md.
+  const csvStabilityRaw = String(row.stability_tier ?? "").trim();
+  const csvStabilityTier =
+    csvStabilityRaw && /^[1-4]$/.test(csvStabilityRaw)
+      ? Number(csvStabilityRaw)
+      : undefined;
 
   const base = {
     rowIndex: row.__rowIndex,
@@ -1025,18 +1086,37 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
     return { ...base, bucket: "failed", error: "No product name from scrape or guess" };
   }
 
-  const proposedSlug = buildSlug(brandCsv || scrape.brand || "", name);
+  // Slug — honor Chateau's explicit value when present; otherwise
+  // generate. ensureUnique runs in both cases so collisions still
+  // get `-N` suffixes.
+  const proposedSlug = csvSlug || buildSlug(brandCsv || scrape.brand || "", name);
   const slug = ensureUnique(proposedSlug, ctx.existingSlugs);
 
-  const audienceLabel = proposeAudience(articleUrl, anchor, name);
-  const audienceArr =
-    audienceLabel === "Mens only"
-      ? ["mens"]
-      : audienceLabel === "Womens only"
-      ? ["womens"]
-      : audienceLabel === "Gender-neutral"
-      ? ["mens", "womens"]
-      : [];
+  // Audience — prefer Chateau's explicit gender_tags; fall back to
+  // article-URL inference.
+  let audienceArr;
+  let audienceLabel;
+  if (csvAudience !== null) {
+    audienceArr = csvAudience;
+    audienceLabel =
+      audienceArr.length === 2
+        ? "Gender-neutral"
+        : audienceArr[0] === "mens"
+        ? "Mens only"
+        : audienceArr[0] === "womens"
+        ? "Womens only"
+        : "None";
+  } else {
+    audienceLabel = proposeAudience(articleUrl, anchor, name);
+    audienceArr =
+      audienceLabel === "Mens only"
+        ? ["mens"]
+        : audienceLabel === "Womens only"
+        ? ["womens"]
+        : audienceLabel === "Gender-neutral"
+        ? ["mens", "womens"]
+        : [];
+  }
 
   // Category: heuristic guess, then CSV editorial value as fallback.
   // Editorial wins over heuristic — Chateau's csv_category is more
@@ -1049,23 +1129,36 @@ async function processRow(row, ctx, scrapeFn = scrapeUrl) {
   const priceRange = priceRangeFrom(scrape.prices) || csvPrice;
   const extractionMethod = inferExtractionMethod(directUrl);
 
+  // Merge scraped images with Chateau's pre-verified manual_images.
+  // Scraper output goes first (live retailer CDN paths refresh better),
+  // then manual_images appended. Dedupe.
+  const mergedImages = dedupePreserveOrder([
+    ...scrape.images,
+    ...csvManualImages,
+  ]);
+
   const candidate = {
     slug,
     name,
     brand: brandCsv,
     category, // may be ""
+    subcategory: csvSubcategory || undefined,
     audience: audienceArr,
     reason: thought, // verbatim
     priceRange,
     url: directUrl,
-    images: scrape.images,
+    images: mergedImages,
     extractionMethod,
     proposedAudience: audienceLabel,
+    stabilityTier: csvStabilityTier,
+    atmosphereCollection: csvAtmosphere.length > 0 ? csvAtmosphere : undefined,
+    territoryWeather: csvTerritory || undefined,
   };
 
-  // 3. NEEDS HUMAN — apply gates
+  // 3. NEEDS HUMAN — apply gates. Image count uses the merged set so
+  // Chateau's manual_images can lift a row past the "thin" gate.
   const flags = [];
-  if (scrape.images.length < 3) flags.push(`only ${scrape.images.length} image(s)`);
+  if (mergedImages.length < 3) flags.push(`only ${mergedImages.length} image(s)`);
   if (isScreamingUppercase(scrape.name) && !guess) flags.push("mangled scraper name, no guess fallback");
   if ((!scrape.prices || scrape.prices.length === 0) && !csvPrice) {
     flags.push("empty prices");
@@ -1578,7 +1671,7 @@ async function runRetryMode(mode = "failed") {
               name: res.candidate.name,
               brand: res.candidate.brand,
               category: res.candidate.category || "home",
-              subcategory: "uncategorized",
+              subcategory: res.candidate.subcategory || "uncategorized",
               audience: res.candidate.audience,
               dateAdded: new Date().toISOString(),
               reason: res.candidate.reason,
@@ -1587,6 +1680,9 @@ async function runRetryMode(mode = "failed") {
               images: imgs.saved.map((s) => s.publicPath),
               extractionMethod: res.candidate.extractionMethod,
               draft: true,
+              stabilityTier: res.candidate.stabilityTier,
+              atmosphereCollection: res.candidate.atmosphereCollection,
+              territoryWeather: res.candidate.territoryWeather,
             });
             existingSlugs.add(res.candidate.slug);
             existingDrafts.add(res.candidate.slug);
@@ -2028,8 +2124,8 @@ async function main() {
             slug: res.candidate.slug,
             name: res.candidate.name,
             brand: res.candidate.brand,
-            category: res.candidate.category || "home", // placeholder — human picks on draft page
-            subcategory: "uncategorized", // placeholder — human picks on draft page
+            category: res.candidate.category || "home", // placeholder — human picks on draft page if absent
+            subcategory: res.candidate.subcategory || "uncategorized",
             audience: res.candidate.audience,
             dateAdded: new Date().toISOString(),
             reason: res.candidate.reason,
@@ -2038,6 +2134,9 @@ async function main() {
             images: imgs.saved.map((s) => s.publicPath),
             extractionMethod: res.candidate.extractionMethod,
             draft: true,
+            stabilityTier: res.candidate.stabilityTier,
+            atmosphereCollection: res.candidate.atmosphereCollection,
+            territoryWeather: res.candidate.territoryWeather,
           });
           existingSlugs.add(res.candidate.slug);
           existingDrafts.add(res.candidate.slug);

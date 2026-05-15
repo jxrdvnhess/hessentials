@@ -326,39 +326,6 @@
       "stagedAt": "2026-05-14T20:09:23.338Z"
     },
     {
-      "rowIndex": 66,
-      "sourceArticle": "The bag sets the tone",
-      "articleUrl": "https://hessentials.co/style/the-bag-sets-the-tone",
-      "anchor": "L.L.Bean Boat & Tote (zip-top) for the same logic at a third of the cost",
-      "directUrl": "https://www.llbean.com/llb/shop/37037",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "l-l-bean-boat-and-tote-zip-top",
-        "name": "Boat and Tote, Zip-Top",
-        "brand": "L.L.Bean",
-        "category": "accessories",
-        "audience": [],
-        "reason": "The Bean Tote is not a dupe, it is its own language. Canvas, utility, and a kind of democratic permanence that makes the lower price feel like the point.",
-        "priceRange": "",
-        "url": "https://www.llbean.com/llb/shop/37037",
-        "images": [
-          "https://cdni.llbean.net/is/image/wim/112644_2251_41?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_45?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_46?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_47?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_48?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_70?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_71?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41",
-          "https://cdni.llbean.net/is/image/wim/112644_2251_72?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112644_2251_41"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:09:56.450Z"
-    },
-    {
       "rowIndex": 73,
       "sourceArticle": "The dinner plate is a style object",
       "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
@@ -833,30 +800,49 @@
       "stagedAt": "2026-05-14T20:44:19.163Z"
     },
     {
-      "rowIndex": 18,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
+      "rowIndex": 33,
+      "sourceArticle": "",
       "articleUrl": "",
-      "anchor": "Miller Utility Cart",
+      "anchor": "",
       "directUrl": "https://schoolhouse.com/products/miller-utility-cart",
       "flags": [
-        "only 1 image(s)"
+        "empty prices"
       ],
       "candidate": {
         "slug": "schoolhouse-miller-utility-cart",
         "name": "Miller Utility Cart",
         "brand": "Schoolhouse",
         "category": "home",
-        "audience": [],
-        "reason": "Storage that looks more like furniture than apology. The kind of piece that makes a small space work harder.",
-        "priceRange": "$399",
+        "subcategory": "storage",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "A rolling cart that makes storage feel intentional. More workshop than influencer apartment.",
+        "priceRange": "",
         "url": "https://schoolhouse.com/products/miller-utility-cart",
         "images": [
-          "https://cdn.shopify.com/s/files/1/1159/3118/files/fall24_142801_miller-utilty-cart-resource-ig-g_2_silo-_1x1_jw.jpg?v=1735002213"
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/fall24_142801_miller-utilty-cart-resource-ig-g_2_silo-_1x1_jw.jpg?v=1735002213",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/40/18053660221816340/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/30/18250679956274730/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/62/17956266473401462/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/77/18093096739561977/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/45/18347343859146745/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/99/18082594000713499/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/24/18478754698006024/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/3/17955115952857403/low_resolution.jpg"
         ],
         "extractionMethod": "shopify",
-        "proposedAudience": "None"
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "Useful Beauty",
+          "Things Worth Leaving Out",
+          "Warm Utility"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
       },
-      "stagedAt": "2026-05-14T20:44:19.230Z"
+      "stagedAt": "2026-05-15T08:57:42.367Z"
     },
     {
       "rowIndex": 19,
@@ -884,60 +870,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T20:44:19.833Z"
-    },
-    {
-      "rowIndex": 24,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Pure Flake Sea Salt",
-      "directUrl": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
-      "flags": [
-        "only 2 image(s)"
-      ],
-      "candidate": {
-        "slug": "jacobsen-salt-co-pure-flake-sea-salt",
-        "name": "Pure Flake Sea Salt",
-        "brand": "Jacobsen Salt Co.",
-        "category": "provisions",
-        "audience": [],
-        "reason": "Not a Maldon replacement. A warmer American counterpart with a softer kitchen read.",
-        "priceRange": "$15",
-        "url": "https://jacobsensalt.com/products/pure-flake-finishing-salt",
-        "images": [
-          "http://jacobsensalt.com/cdn/shop/files/jacobsen-pure-flake-sea-salt-bag.jpg?v=1751411925",
-          "https://jacobsensalt.com/cdn/shop/files/jacobsen-pure-flake-sea-salt-bag.jpg?v=1751411925"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:44:29.635Z"
-    },
-    {
-      "rowIndex": 25,
-      "sourceArticle": "Chateau Shop Adds 2026-05-14",
-      "articleUrl": "",
-      "anchor": "Pure Flake Sea Salt Slide Tin",
-      "directUrl": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
-      "flags": [
-        "only 2 image(s)"
-      ],
-      "candidate": {
-        "slug": "jacobsen-salt-co-pure-flake-sea-salt-slide-tin",
-        "name": "Pure Flake Sea Salt Slide Tin",
-        "brand": "Jacobsen Salt Co.",
-        "category": "provisions",
-        "audience": [],
-        "reason": "Tiny but useful. A good picnic, travel, or desk-lunch object for people who know salt is not optional.",
-        "priceRange": "$8",
-        "url": "https://jacobsensalt.com/products/pure-flake-sea-salt-slide-tin",
-        "images": [
-          "http://jacobsensalt.com/cdn/shop/files/Jacobsen-Pure-Flake-Sea-Salt-Slide-Tin-0.46oz.jpg?v=1749150294",
-          "https://jacobsensalt.com/cdn/shop/files/Jacobsen-Pure-Flake-Sea-Salt-Slide-Tin-0.46oz.jpg?v=1749150294"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:44:29.774Z"
     },
     {
       "rowIndex": 29,
@@ -1183,31 +1115,466 @@
       "stagedAt": "2026-05-15T06:59:15.444Z"
     },
     {
-      "directUrl": "https://www.snowpeak.com/products/titanium-double-450-mug",
+      "rowIndex": 14,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/rechargeable-mini-hozuki",
       "flags": [
-        "sent back from drafts"
+        "empty prices"
       ],
       "candidate": {
-        "slug": "snow-peak-ti-double-450-mug",
-        "name": "Ti-Double 450 Mug",
+        "slug": "snow-peak-rechargeable-mini-hozuki",
+        "name": "Rechargeable Mini Hozuki",
+        "brand": "Snow Peak",
+        "category": "home",
+        "subcategory": "portable lighting",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "Portable glow without gadget energy. It belongs at camp, bedside, and on a porch after dinner.",
+        "priceRange": "",
+        "url": "https://www.snowpeak.com/products/rechargeable-mini-hozuki",
+        "images": [
+          "http://www.snowpeak.com/cdn/shop/files/ES-141-IV_20240304-SP_M4_02970_path_jpg_600x600.png?v=1720031284",
+          "https://www.snowpeak.com/cdn/shop/files/ES-141-IV_20240304-SP_M4_02970_path_jpg_600x600.png?v=1720031284",
+          "http://www.snowpeak.com/cdn/shop/files/ES-141-NV_20240304-SP_M4_02983_path_jpg_600x600.png?v=1720031284",
+          "https://www.snowpeak.com/cdn/shop/files/ES-141-NV_20240304-SP_M4_02983_path_jpg_600x600.png?v=1720031284",
+          "http://www.snowpeak.com/cdn/shop/files/ES-141-OR_20240304-SP_M4_02977_path_jpg_600x600.png?v=1720031284",
+          "https://www.snowpeak.com/cdn/shop/files/ES-141-OR_20240304-SP_M4_02977_path_jpg_600x600.png?v=1720031284"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 1,
+        "atmosphereCollection": [
+          "The Good Lamp Rule",
+          "Portable Ritual",
+          "Rainy Morning Objects"
+        ],
+        "territoryWeather": "soft travel / outdoor calm / analog movement"
+      },
+      "stagedAt": "2026-05-15T08:55:52.877Z"
+    },
+    {
+      "rowIndex": 15,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/hozuki-lantern-2",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "snow-peak-hozuki-lantern",
+        "name": "Hozuki Lantern",
+        "brand": "Snow Peak",
+        "category": "home",
+        "subcategory": "lighting",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "A lantern that understands atmosphere instead of brightness. The flicker matters.",
+        "priceRange": "",
+        "url": "https://www.snowpeak.com/products/hozuki-lantern-2",
+        "images": [
+          "http://www.snowpeak.com/cdn/shop/products/ES-071_bark_49117f87-d724-4e44-8700-715e8d0f6688_600x600.jpg?v=1641498208",
+          "https://www.snowpeak.com/cdn/shop/products/ES-071_bark_49117f87-d724-4e44-8700-715e8d0f6688_600x600.jpg?v=1641498208",
+          "http://www.snowpeak.com/cdn/shop/products/ES-071_moss_fecf3aad-db4b-4083-8e2f-20d3189aba4b_600x600.jpg?v=1641498208",
+          "https://www.snowpeak.com/cdn/shop/products/ES-071_moss_fecf3aad-db4b-4083-8e2f-20d3189aba4b_600x600.jpg?v=1641498208",
+          "http://www.snowpeak.com/cdn/shop/products/ES-070WH_alt02_600x600.jpg?v=1641498208",
+          "https://www.snowpeak.com/cdn/shop/products/ES-070WH_alt02_600x600.jpg?v=1641498208"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 1,
+        "atmosphereCollection": [
+          "The Good Lamp Rule",
+          "Apartment at 7PM",
+          "Outdoor Calm"
+        ],
+        "territoryWeather": "soft travel / outdoor calm / analog movement"
+      },
+      "stagedAt": "2026-05-15T08:55:55.785Z"
+    },
+    {
+      "rowIndex": 16,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.snowpeak.com/products/low-beach-chair",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "snow-peak-low-beach-chair",
+        "name": "Low Beach Chair",
         "brand": "Snow Peak",
         "category": "travel",
-        "audience": [],
-        "reason": "For people who want the ritual without burning their hands. Still minimal, but not sterile.",
-        "priceRange": "$49.95",
-        "url": "https://www.snowpeak.com/products/titanium-double-450-mug",
-        "images": [
-          "/shop/snow-peak-ti-double-450-mug/c376f48cb1b34aa8.jpg",
-          "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
-          "/shop/snow-peak-ti-double-450-mug/280d21bcf7100ba9.jpg",
-          "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
-          "/shop/snow-peak-ti-double-450-mug/d1c8c69d480d706d.jpg",
-          "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg",
-          "/shop/snow-peak-ti-double-450-mug/cca2ce228d95a46f.jpg"
+        "subcategory": "outdoor seating",
+        "audience": [
+          "mens",
+          "womens"
         ],
-        "extractionMethod": "shopify"
+        "reason": "Canvas, wood, low posture. Outdoor furniture that doesn’t shout camping.",
+        "priceRange": "",
+        "url": "https://www.snowpeak.com/products/low-beach-chair",
+        "images": [
+          "http://www.snowpeak.com/cdn/shop/files/lv-091_reverse_600x600.png?v=1737403106",
+          "https://www.snowpeak.com/cdn/shop/files/lv-091_reverse_600x600.png?v=1737403106",
+          "http://www.snowpeak.com/cdn/shop/products/5_d153c398-e513-400c-915c-c11a7ca3fd09_600x600.jpg?v=1737403106",
+          "https://www.snowpeak.com/cdn/shop/products/5_d153c398-e513-400c-915c-c11a7ca3fd09_600x600.jpg?v=1737403106",
+          "http://www.snowpeak.com/cdn/shop/products/1_b0cf14da-57c9-4de7-bece-bea067bfe504_600x600.jpg?v=1587535891",
+          "https://www.snowpeak.com/cdn/shop/products/1_b0cf14da-57c9-4de7-bece-bea067bfe504_600x600.jpg?v=1587535891"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 1,
+        "atmosphereCollection": [
+          "Soft Travel",
+          "Long Weekend",
+          "Outdoor Calm"
+        ],
+        "territoryWeather": "soft travel / outdoor calm / analog movement"
       },
-      "stagedAt": "2026-05-15T06:59:17.426Z"
+      "stagedAt": "2026-05-15T08:55:58.739Z"
+    },
+    {
+      "rowIndex": 34,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/sidnie-lamp",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-sidnie-table-lamp",
+        "name": "Sidnie Table Lamp",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "subcategory": "lighting",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "A little charming, but not childish. The right lamp changes the room’s mood immediately.",
+        "priceRange": "",
+        "url": "https://schoolhouse.com/products/sidnie-lamp",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/fall25_148324_sidnie-lamp-chrome_silo_1x1_jw.jpg?v=1754665853",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/61/17954553587732861/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/5/18034798067501505/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/69/17949992837697169/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/76/18094216024388976/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/2/17992015832476302/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/47/18232112161269747/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/40/18015673057956740/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/92/18085814713414192/low_resolution.jpg"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "The Good Lamp Rule",
+          "Apartment at 7PM",
+          "Rainy Morning Objects"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
+      },
+      "stagedAt": "2026-05-15T08:57:48.632Z"
+    },
+    {
+      "rowIndex": 35,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/alabax-small-sconce",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-alabax-small-sconce",
+        "name": "Alabax Small Sconce",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "subcategory": "lighting",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "Utilitarian bones with a warmer face. The kind of light that belongs in a hall, not a showroom.",
+        "priceRange": "",
+        "url": "https://schoolhouse.com/products/alabax-small-sconce",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/AlabaxSmSconce_yellow_web.jpg?v=1674166761",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/33/17884305314938533/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/56/17975960036704156/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/10/18057770315009710/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/24/18091790767545024/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/12/18140542393370812/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/94/18019925807637494/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/97/17952756854853297/low_resolution.jpg",
+          "https://cdn-yotpo-images-production.yotpo.com/instagram/45/17895767903969845/low_resolution.jpg"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "The Good Lamp Rule",
+          "Warm Minimalism"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
+      },
+      "stagedAt": "2026-05-15T08:57:54.872Z"
+    },
+    {
+      "rowIndex": 36,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/perkins-hook-mirror",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-perkins-hook-mirror",
+        "name": "Perkins Hook Mirror",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "subcategory": "entryway",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "A mirror with a job. Entryways need usefulness before they need styling.",
+        "priceRange": "",
+        "url": "https://schoolhouse.com/products/perkins-hook-mirror",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142215_perkins-hook-mirror-white-and-maple_silo-_1x1_jw.jpg?v=1713553832",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/LinenNatural_showercurtain_web.jpg?v=1734983848&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/Edgecliff_NB_All.web_900x.jpg?v=1637341618&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/F21_CylinderDoubleSconceNB_104284_04_web_900x.jpg?v=1724267758&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/LedgepullFamily_TB_final_web_900x.jpg?v=1644540219&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/281.p074.11_1620_900x.jpg?v=1623852591&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142393_kit-otto-sconce-bk-g-acorn-2-25-cl_silo-_1x1_jwedit_900x.jpg?v=1716396454&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142089_allegheny-6-sconce-pl-g_silo_1x1_jw_900x.jpg?v=1744836967&width=3840&q=75"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "Entryway Energy",
+          "Useful Beauty"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
+      },
+      "stagedAt": "2026-05-15T08:58:01.105Z"
+    },
+    {
+      "rowIndex": 37,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/eleanor-pull",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-eleanor-pull",
+        "name": "Eleanor Pull",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "subcategory": "hardware",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "A tiny hardware upgrade that changes the hand’s experience every day.",
+        "priceRange": "",
+        "url": "https://schoolhouse.com/products/eleanor-pull",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/fall24_142744_eleanor-pull-4_-nb_silo-_1x1_jw.jpg?v=1719596538",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/cup4433_FINAL.jpg?v=1623852610&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/Edgecliff_NB_All.web_900x.jpg?v=1637341618&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/F21_CylinderDoubleSconceNB_104284_04_web_900x.jpg?v=1724267758&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/LedgepullFamily_TB_final_web_900x.jpg?v=1644540219&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/PrincetonNBShort_119726_final_web_900x.jpg?v=1654815654&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142393_kit-otto-sconce-bk-g-acorn-2-25-cl_silo-_1x1_jwedit_900x.jpg?v=1716396454&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142089_allegheny-6-sconce-pl-g_silo_1x1_jw_900x.jpg?v=1744836967&width=3840&q=75"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "Things That Age Correctly",
+          "Small Ritual Objects"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
+      },
+      "stagedAt": "2026-05-15T08:58:07.390Z"
+    },
+    {
+      "rowIndex": 38,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://schoolhouse.com/products/g40-matte-porcelain-led-bulb",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "schoolhouse-g40-matte-porcelain-led-bulb",
+        "name": "G40 Matte Porcelain LED Bulb",
+        "brand": "Schoolhouse",
+        "category": "home",
+        "subcategory": "lighting accessories",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "Sometimes the bulb is the lamp. Warmth starts at the source.",
+        "priceRange": "",
+        "url": "https://schoolhouse.com/products/g40-matte-porcelain-led-bulb",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/main118839porcelainbulb1611.jpg?v=1623852584",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/F21_CylinderDoubleSconceNB_104284_04_web_900x.jpg?v=1724267758&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/LedgepullFamily_TB_final_web_900x.jpg?v=1644540219&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/281.p074.11_1620_900x.jpg?v=1623852591&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/PrincetonNBShort_119726_final_web_900x.jpg?v=1654815654&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142393_kit-otto-sconce-bk-g-acorn-2-25-cl_silo-_1x1_jwedit_900x.jpg?v=1716396454&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/files/summer24_142089_allegheny-6-sconce-pl-g_silo_1x1_jw_900x.jpg?v=1744836967&width=3840&q=75",
+          "https://cdn.shopify.com/s/files/1/1159/3118/products/118087_884_900x.jpg?v=1623852711&width=3840&q=75"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "The Good Lamp Rule",
+          "Correct Low"
+        ],
+        "territoryWeather": "warm utility / domestic glow / American workshop"
+      },
+      "stagedAt": "2026-05-15T08:58:13.624Z"
+    },
+    {
+      "rowIndex": 46,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://www.llbean.com/llb/shop/33381",
+      "flags": [
+        "empty prices"
+      ],
+      "candidate": {
+        "slug": "l-l-bean-boat-and-tote-mini",
+        "name": "Boat and Tote®, Open-Top",
+        "brand": "L.L.Bean",
+        "category": "accessories",
+        "subcategory": "bags",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "Tiny enough to feel playful, useful enough not to be a joke.",
+        "priceRange": "",
+        "url": "https://www.llbean.com/llb/shop/33381",
+        "images": [
+          "https://cdni.llbean.net/is/image/wim/112636_38875_41?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_45?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_46?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_47?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_48?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_70?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_71?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41",
+          "https://cdni.llbean.net/is/image/wim/112636_38875_72?hei=1379&wid=1200&resMode=sharp2&defaultImage=llbprod/112636_38875_41"
+        ],
+        "extractionMethod": "json-ld",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 2,
+        "atmosphereCollection": [
+          "Correct Low",
+          "Small Ritual Objects"
+        ],
+        "territoryWeather": "generational utility / canvas ease / coastal practicality"
+      },
+      "stagedAt": "2026-05-15T08:58:40.156Z"
+    },
+    {
+      "rowIndex": 59,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.purelysedona.com/products/purely-sedona-1l-artesian-spring-water-12-bottles",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "purely-sedona-artesian-spring-water-1-liter-case",
+        "name": "Artesian Spring Water (1 Liter) - Plastic",
+        "brand": "Purely Sedona",
+        "category": "accessories",
+        "subcategory": "water",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "Regional water with actual sensory identity. The taste is the reason, not the branding.",
+        "priceRange": "$39",
+        "url": "https://shop.purelysedona.com/products/purely-sedona-1l-artesian-spring-water-12-bottles",
+        "images": [
+          "http://shop.purelysedona.com/cdn/shop/products/3-1liter_grande.png?v=1493667456",
+          "https://shop.purelysedona.com/cdn/shop/products/3-1liter_grande.png?v=1493667456"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 3,
+        "atmosphereCollection": [
+          "Pantry Rituals",
+          "Things That Improve a Tuesday",
+          "Desert Calm"
+        ],
+        "territoryWeather": "desert clarity / regional water / glass-bottle ritual"
+      },
+      "stagedAt": "2026-05-15T09:00:03.246Z"
+    },
+    {
+      "rowIndex": 60,
+      "sourceArticle": "",
+      "articleUrl": "",
+      "anchor": "",
+      "directUrl": "https://shop.purelysedona.com/products/purely-sedona-500ml-artesian-spring-water",
+      "flags": [
+        "only 2 image(s)"
+      ],
+      "candidate": {
+        "slug": "purely-sedona-artesian-spring-water-500-ml-case",
+        "name": "Artesian Spring Water (500 mL) - Plastic",
+        "brand": "Purely Sedona",
+        "category": "accessories",
+        "subcategory": "water",
+        "audience": [
+          "mens",
+          "womens"
+        ],
+        "reason": "The smaller bottle has the right daily-use logic. Keep only if the format matches the Hessentials glass-bottle standard.",
+        "priceRange": "$39",
+        "url": "https://shop.purelysedona.com/products/purely-sedona-500ml-artesian-spring-water",
+        "images": [
+          "http://shop.purelysedona.com/cdn/shop/products/500_ml_3_Bottles_grande.png?v=1494603330",
+          "https://shop.purelysedona.com/cdn/shop/products/500_ml_3_Bottles_grande.png?v=1494603330"
+        ],
+        "extractionMethod": "shopify",
+        "proposedAudience": "Gender-neutral",
+        "stabilityTier": 3,
+        "atmosphereCollection": [
+          "Things That Improve a Tuesday",
+          "Desert Calm"
+        ],
+        "territoryWeather": "desert clarity / regional water / glass-bottle ritual"
+      },
+      "stagedAt": "2026-05-15T09:00:05.623Z"
     }
   ]
 }

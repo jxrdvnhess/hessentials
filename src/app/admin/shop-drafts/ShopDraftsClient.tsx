@@ -30,6 +30,7 @@ type DraftRow = {
   url: string;
   image: string;
   extractionMethod: string;
+  stabilityTier?: 1 | 2 | 3 | 4;
 };
 
 type PendingRow = {
@@ -309,9 +310,23 @@ function DraftCard({
       <div>
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
-              {draft.brand}
-            </p>
+            <div className="flex items-baseline gap-2">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                {draft.brand}
+              </p>
+              {draft.stabilityTier ? (
+                // Tiny tier badge — small, declarative, no color noise.
+                // 1 reads as "Forever Infrastructure"; 4 reads as
+                // "manual-only / fragile" by convention. See
+                // data/sourcing-policy.md.
+                <span
+                  title={`Stability tier ${draft.stabilityTier} — see data/sourcing-policy.md`}
+                  className="text-[9px] uppercase tracking-[0.18em] text-[#1f1d1b]/45"
+                >
+                  T{draft.stabilityTier}
+                </span>
+              ) : null}
+            </div>
             <h3 className="mt-1 font-serif text-[18px] leading-[1.3]">
               {draft.name}
             </h3>

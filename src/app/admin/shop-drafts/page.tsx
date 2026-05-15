@@ -88,6 +88,7 @@ export default async function AdminShopDraftsPage() {
     url: p.url,
     image: p.image,
     extractionMethod: p.extractionMethod ?? "manual",
+    stabilityTier: p.stabilityTier,
     sourceArticle: undefined as string | undefined,
     sourceArticleUrl: undefined as string | undefined,
   }));
