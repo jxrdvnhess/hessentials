@@ -288,6 +288,30 @@ function Frame({
   const swipeStartX = useRef<number | null>(null);
   const wasSwipe = useRef(false);
 
+  // Mobile caption reveal — caption only fades in when the card sits
+  // in the vertical center band of the viewport. On touch devices
+  // there's no hover, so the band gives readers a quiet "you've
+  // stopped on this one" cue without making every caption permanent.
+  // Desktop ignores this state; hover drives the caption there.
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const [inCenterBand, setInCenterBand] = useState(false);
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    // rootMargin negative top/bottom by 40% leaves a 20% center band.
+    // Anything intersecting that band is "centered enough" to read.
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.target === el) setInCenterBand(entry.isIntersecting);
+        }
+      },
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   const goTo = (i: number) =>
     setActive(((i % images.length) + images.length) % images.length);
   const next = () => goTo(active + 1);
@@ -339,6 +363,7 @@ function Frame({
   return (
     <article className="group">
       <div
+        ref={frameRef}
         className="relative bg-white border border-[#1f1d1b]/12 px-[8%] pt-[8%] pb-[10.4%] touch-pan-y"
         onTouchStart={hasGallery ? handleTouchStart : undefined}
         onTouchEnd={hasGallery ? handleTouchEnd : undefined}
@@ -374,16 +399,24 @@ function Frame({
           </div>
 
           {/* Caption — sits on the lower mat. Fades in on hover for
-              pointer devices; stays visible on touch devices (no hover
-              state means it'd never appear otherwise). */}
+              pointer devices. On touch devices there's no hover, so
+              we reveal only when the card sits in the viewport center
+              band (see frameRef + IntersectionObserver). That keeps
+              the mobile scroll experience calm — captions only show
+              for the product the reader has stopped on. */}
           <div
             aria-hidden
-            className="absolute inset-x-[8%] bottom-[3%] flex flex-col items-start opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100 [@media(hover:none)]:opacity-100"
+            className={[
+              "absolute inset-x-[8%] bottom-[3%] flex flex-col items-start",
+              "opacity-0 transition-opacity duration-500 ease-out",
+              "group-hover:opacity-100",
+              inCenterBand ? "[@media(hover:none)]:opacity-100" : "",
+            ].join(" ")}
           >
-            <span className="font-serif text-[13px] leading-[1.2] text-[#1f1d1b] sm:text-[14px]">
+            <span className="font-serif text-[11px] leading-[1.2] text-[#1f1d1b] sm:text-[14px]">
               {product.name}
             </span>
-            <span className="mt-1 text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/60">
+            <span className="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#1f1d1b]/60 sm:text-[10px]">
               {product.brand}
             </span>
           </div>
