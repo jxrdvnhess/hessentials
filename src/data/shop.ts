@@ -3141,6 +3141,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "jacobsen-salt-co-ceramic-arch-salt-cellar",
+    name: "Ceramic Arch Salt Cellar",
+    brand: "Jacobsen Salt Co.",
+    category: "provisions",
+    subcategory: "salt cellar",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:57:18.151Z",
+    reason: "A salt cellar changes how often you finish properly. Small object, large behavioral shift.",
+    priceRange: "$10–$38",
+    url: "https://jacobsensalt.com/products/ceramic-arch-salt-cellar",
+    image: "/shop/jacobsen-salt-co-ceramic-arch-salt-cellar/c42f026970416f6b.jpg",
+    images: [
+      "/shop/jacobsen-salt-co-ceramic-arch-salt-cellar/c42f026970416f6b.jpg",
+      "/shop/jacobsen-salt-co-ceramic-arch-salt-cellar/3fb9e81a6e676999.jpg",
+      "/shop/jacobsen-salt-co-ceramic-arch-salt-cellar/3fb9e81a6e676999.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
