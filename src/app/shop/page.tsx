@@ -5,7 +5,16 @@ import {
   categoryLabel,
   type Category,
 } from "../../data/shop";
-import { LIVE_PRODUCTS, productsForPillar } from "../../lib/shop";
+import {
+  LIVE_PRODUCTS,
+  productsForPillar,
+  productsForAtmosphere,
+  representativeImageForAtmosphere,
+} from "../../lib/shop";
+import {
+  LAUNCH_ATMOSPHERES,
+  atmosphereSlug,
+} from "../../data/atmospheres";
 import ShopGallery from "../../components/ShopGallery";
 import DrillDownHero, { type DrillBlock } from "../../components/DrillDownHero";
 
@@ -24,18 +33,18 @@ export const revalidate = 43200;
 
 /**
  * Pillar order for the drill-down hero on `/shop`. Hand-curated.
- * WOMENS sits between MENS and ACCESSORIES; Provisions remains
- * intentionally absent. Pillars with zero matching products
- * (after the audience-aware filter) are hidden — see
- * `LANDING_PILLARS` filter below.
+ * Mirrors Chateau's eight approved top-level categories. Pillars
+ * with zero matching products are hidden via the filter below.
  */
 const LANDING_PILLARS: readonly Category[] = [
   "mens",
   "womens",
   "accessories",
   "grooming",
-  "travel",
   "home",
+  "cooking",
+  "travel",
+  "provisions",
 ];
 
 /** First product in a pillar that has a primary image — used as the hero hover image. */
@@ -45,7 +54,7 @@ function representativeImage(pillar: Category): string | undefined {
 }
 
 export default function ShopPage() {
-  const blocks: DrillBlock[] = LANDING_PILLARS
+  const pillarBlocks: DrillBlock[] = LANDING_PILLARS
     // Hide pillars with zero matching products. WOMENS reveals
     // automatically once at least one product lands.
     .filter((p) => productsForPillar(p).length > 0)
@@ -54,6 +63,19 @@ export default function ShopPage() {
       href: `/shop/${p}`,
       image: representativeImage(p),
     }));
+
+  // Atmosphere blocks — Chateau's launch-facing list. Atmospheres
+  // with zero matching products are hidden so the surface always
+  // reflects what's actually in the archive. Per Chateau's
+  // 2026-05-15 audit: atmosphere is the emotional front door;
+  // categories sit underneath as the operational backbone.
+  const atmosphereBlocks: DrillBlock[] = LAUNCH_ATMOSPHERES.filter(
+    (name) => productsForAtmosphere(name).length > 0
+  ).map((name) => ({
+    label: name,
+    href: `/shop/atmosphere/${atmosphereSlug(name)}`,
+    image: representativeImageForAtmosphere(name),
+  }));
 
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
@@ -67,9 +89,6 @@ export default function ShopPage() {
           className="block w-20"
           style={{ height: "0.5px", backgroundColor: "#c8bfae" }}
         />
-        {/* Page <h1> — the eyebrow doubles as the heading anchor.
-            Visually unchanged (small uppercase tracking eyebrow); only
-            the tag swaps from <p> to <h1> for semantic / SEO weight. */}
         <h1 className="mt-6 mb-6 text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 sm:text-[12px] font-normal">
           Shop
         </h1>
@@ -80,6 +99,14 @@ export default function ShopPage() {
           {SHOP_SUBTITLE}
         </p>
       </section>
+
+      {/* ---------- Atmosphere — the emotional front door ----------
+          Cards grouped by atmosphere collection. Cuts across
+          operational categories: Snow Peak's titanium mug appears in
+          Soft Travel, Morning Ritual, Portable Ritual, etc. simultane-
+          ously. Per Chateau's 2026-05-15 audit, this is now the lead
+          surface; categories sit beneath. */}
+      <DrillDownHero eyebrow="By atmosphere" blocks={atmosphereBlocks} />
 
       {/* ---------- Gallery wall ----------
           Framed plates on the cream page. Standard page margins,
@@ -92,8 +119,11 @@ export default function ShopPage() {
         <ShopGallery products={[...LIVE_PRODUCTS]} />
       </section>
 
-      {/* ---------- Drill-down hero ---------- */}
-      <DrillDownHero eyebrow="Browse by pillar" blocks={blocks} />
+      {/* ---------- Pillar drill-down ----------
+          Operational categories — the secondary navigation surface.
+          Atmosphere leads emotionally; categories handle the
+          "I know what I want" reader. */}
+      <DrillDownHero eyebrow="Browse by category" blocks={pillarBlocks} />
     </main>
   );
 }

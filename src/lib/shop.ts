@@ -88,6 +88,35 @@ export function subcategoriesPresentForPillar(
   return ordered;
 }
 
+/* ---------- Atmosphere collections ---------- */
+
+/**
+ * Return every live product whose `atmosphereCollection` array
+ * contains the given atmosphere name (case-insensitive). Atmosphere
+ * collections cut across operational categories — a single atmosphere
+ * page mixes Home + Cooking + Travel + Mens + Womens + etc., curated
+ * by emotional weather rather than retail taxonomy.
+ */
+export function productsForAtmosphere(atmosphere: string): ShopProduct[] {
+  const target = atmosphere.toLowerCase();
+  return LIVE_PRODUCTS.filter((p) =>
+    (p.atmosphereCollection ?? []).some(
+      (a) => a.toLowerCase() === target
+    )
+  );
+}
+
+/**
+ * Pick a representative image for an atmosphere card on the homepage.
+ * First product in the atmosphere with a populated `image`. Returns
+ * undefined for empty atmospheres — callers should skip those.
+ */
+export function representativeImageForAtmosphere(
+  atmosphere: string
+): string | undefined {
+  return productsForAtmosphere(atmosphere).find((p) => p.image)?.image;
+}
+
 export type ShopEssay = {
   /** The product slug this essay belongs to. */
   slug: string;

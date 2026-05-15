@@ -34,7 +34,7 @@ export type CategoryDef = {
  */
 export const CATEGORY_TREE = {
   mens: {
-    label: "Mens",
+    label: "Men",
     subcategories: [
       "shirts",
       "pants",
@@ -48,7 +48,7 @@ export const CATEGORY_TREE = {
     ],
   },
   womens: {
-    label: "Womens",
+    label: "Women",
     subcategories: [
       "shirts",
       "pants",

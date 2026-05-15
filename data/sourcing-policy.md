@@ -217,6 +217,30 @@ Existing articles will be backfilled incrementally as they're touched. Until the
 
 ---
 
+## Launch-facing atmosphere collections
+
+Per Chateau's 2026-05-15 post-live audit, these atmospheres are the foreground set — what surfaces on the Shop homepage as the emotional front door. Operational categories sit beneath. Source of truth: `src/data/atmospheres.ts`.
+
+1. Soft Travel
+2. Kitchen Counter Objects Worth Leaving Out
+3. The Good Lamp Rule
+4. Things That Improve a Tuesday
+5. Hotel Energy at Home
+6. Quiet Uniform
+7. Pantry Rituals
+8. Portable Ritual
+9. Correct Low
+10. Warm Minimalism
+11. Weeknight Table
+12. Rainy Morning Objects
+13. Useful Beauty
+14. Object With Memory
+15. Things That Age Correctly
+
+Other atmospheres referenced in products' `atmosphereCollection` arrays still render via the dynamic `/shop/atmosphere/[slug]` route — they just don't lead the homepage. New atmospheres earn launch-facing status when the sourcing density justifies it.
+
+---
+
 ## Architectural direction (post-launch)
 
 Eventually every Shop object inherits three orthogonal dimensions, not just one:
