@@ -3537,6 +3537,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "block-shop-textiles-dolly-napkin",
+    name: "Dolly Napkin",
+    brand: "Block Shop Textiles",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T09:00:23.458Z",
+    reason: "Playful geometry, not party-theme energy. Good with plain plates and actual food.",
+    priceRange: "$20–$175",
+    url: "https://www.blockshoptextiles.com/products/dolly-napkin",
+    image: "/shop/block-shop-textiles-dolly-napkin/16d40841cb2c8ad9.jpg",
+    images: [
+      "/shop/block-shop-textiles-dolly-napkin/16d40841cb2c8ad9.jpg",
+      "/shop/block-shop-textiles-dolly-napkin/16d40841cb2c8ad9.jpg",
+      "/shop/block-shop-textiles-dolly-napkin/a5538812ba96da70.jpg",
+      "/shop/block-shop-textiles-dolly-napkin/a5538812ba96da70.jpg",
+      "/shop/block-shop-textiles-dolly-napkin/0c628e3d08556576.jpg",
+      "/shop/block-shop-textiles-dolly-napkin/0c628e3d08556576.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
