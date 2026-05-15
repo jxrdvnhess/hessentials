@@ -2433,6 +2433,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "hawkins-new-york-simple-linen-napkin-olive",
+    name: "Simple Linen Napkin - Olive",
+    brand: "Hawkins New York",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:30.249Z",
+    reason: "The color does the work without turning the table seasonal. Lived-in, washable, and forgiving.",
+    priceRange: "$22",
+    url: "https://www.hawkinsnewyork.com/products/simple-linen-napkin-olive",
+    image: "/shop/hawkins-new-york-simple-linen-napkin-olive/093d30deae674533.jpg",
+    images: [
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/093d30deae674533.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/0177c537e367fbbc.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/b1b171a663873b5d.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/f833b0613ce1bd98.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/26fa847058a2f898.jpg",
+      "/shop/hawkins-new-york-simple-linen-napkin-olive/ed5d625a8da5ba0b.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
