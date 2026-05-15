@@ -2662,6 +2662,31 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "diaspora-co-pragati-turmeric-2",
+    name: "Pragati Turmeric",
+    brand: "Diaspora Co.",
+    category: "provisions",
+    subcategory: "spices",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:50:54.452Z",
+    reason: "A pantry staple with actual origin, color, and force. Not a dusty yellow jar.",
+    priceRange: "$12.50",
+    url: "https://www.diasporaco.com/products/pragati-turmeric",
+    image: "/shop/diaspora-co-pragati-turmeric-2/8532191e5cfaba7e.jpg",
+    images: [
+      "/shop/diaspora-co-pragati-turmeric-2/8532191e5cfaba7e.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/e75d7bd58acacf8f.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/e75d7bd58acacf8f.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/8532191e5cfaba7e.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/774093528b25000a.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/774093528b25000a.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/13ee4a6bdccc72d6.jpg",
+      "/shop/diaspora-co-pragati-turmeric-2/13ee4a6bdccc72d6.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
