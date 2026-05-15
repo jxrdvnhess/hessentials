@@ -3514,6 +3514,29 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "block-shop-textiles-otto-napkin",
+    name: "Otto Napkin",
+    brand: "Block Shop Textiles",
+    category: "home",
+    subcategory: "table linens",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T09:00:15.002Z",
+    reason: "Pattern with enough confidence to carry a table, but not enough ego to take it over.",
+    priceRange: "$20–$75",
+    url: "https://www.blockshoptextiles.com/products/otto-napkin",
+    image: "/shop/block-shop-textiles-otto-napkin/69a2bdba72d3b82b.jpg",
+    images: [
+      "/shop/block-shop-textiles-otto-napkin/69a2bdba72d3b82b.jpg",
+      "/shop/block-shop-textiles-otto-napkin/69a2bdba72d3b82b.jpg",
+      "/shop/block-shop-textiles-otto-napkin/c70759a5a177b6f5.jpg",
+      "/shop/block-shop-textiles-otto-napkin/c70759a5a177b6f5.jpg",
+      "/shop/block-shop-textiles-otto-napkin/1b6899213853fedb.jpg",
+      "/shop/block-shop-textiles-otto-napkin/1b6899213853fedb.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
