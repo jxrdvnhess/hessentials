@@ -3343,6 +3343,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     extractionMethod: "shopify",
     draft: true,
   },
+  {
+    slug: "opinel-no-08-stainless-steel-folding-knife",
+    name: "No.08 Stainless Steel Folding Knife",
+    brand: "Opinel",
+    category: "cooking",
+    subcategory: "picnic tools",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-15T08:59:14.594Z",
+    reason: "The easier-care version. Less romance than carbon steel, more forgiving in a real bag.",
+    priceRange: "$25–$195",
+    url: "https://www.opinel-usa.com/products/no-8-opinel-stainless-steel-blade",
+    image: "/shop/opinel-no-08-stainless-steel-folding-knife/7912633fc16a343f.jpg",
+    images: [
+      "/shop/opinel-no-08-stainless-steel-folding-knife/7912633fc16a343f.jpg",
+      "/shop/opinel-no-08-stainless-steel-folding-knife/9646b5530e0277c7.jpg",
+      "/shop/opinel-no-08-stainless-steel-folding-knife/f0c8aa4348bef067.jpg",
+    ],
+    extractionMethod: "shopify",
+    draft: true,
+  },
 ];
 
 /**
