@@ -68,8 +68,9 @@ export function ShopDraftsClient({
   tree,
 }: Props) {
   const [rows, setRows] = useState<DraftRow[]>(drafts);
+  const [pendingRows, setPendingRows] = useState<PendingRow[]>(pending);
 
-  if (rows.length === 0 && pending.length === 0) {
+  if (rows.length === 0 && pendingRows.length === 0) {
     return (
       <p className="font-serif text-[15px] italic text-[#1f1d1b]/55">
         No drafts. The bulk import either hasn&apos;t run, or every
@@ -101,50 +102,193 @@ export function ShopDraftsClient({
         </section>
       )}
 
-      {pending.length > 0 && (
+      {pendingRows.length > 0 && (
         <section>
           <h2 className="text-[11px] uppercase tracking-[0.26em] text-[#1f1d1b]/55">
             Pending — needs human
           </h2>
           <p className="mt-3 max-w-2xl font-serif text-[13px] italic text-[#1f1d1b]/55">
             Bulk import couldn&apos;t safely stage these. Reasons are
-            shown inline. To stage a row from here, run the regular
-            import flow with the same DIRECT URL — the script will
-            de-duplicate.
+            shown inline. <strong className="font-normal not-italic">Rescrape</strong> re-runs
+            the extractor against the live source; if the missing
+            fields fill in, the row stages as a draft above.
           </p>
           <ul className="mt-6 space-y-6">
-            {pending.map((p, i) => (
-              <li
+            {pendingRows.map((p, i) => (
+              <PendingCard
                 key={`${p.directUrl}-${i}`}
-                className="border-t border-[#1f1d1b]/10 pt-5"
-              >
-                <p className="font-serif text-[15px] leading-[1.4]">
-                  {p.candidate.brand} — {p.candidate.name}
-                </p>
-                {p.flags && p.flags.length > 0 && (
-                  <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
-                    {p.flags.join(" · ")}
-                  </p>
-                )}
-                <p className="mt-2 font-serif text-[13px] italic text-[#1f1d1b]/65">
-                  {p.candidate.reason || <em>(no reason)</em>}
-                </p>
-                <p className="mt-2 break-all text-[12px] text-[#1f1d1b]/45">
-                  <a
-                    href={p.directUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-[#1f1d1b]/80"
-                  >
-                    {p.directUrl}
-                  </a>
-                </p>
-              </li>
+                pending={p}
+                onStaged={(directUrl) =>
+                  setPendingRows((cur) =>
+                    cur.filter((r) => r.directUrl !== directUrl)
+                  )
+                }
+              />
             ))}
           </ul>
         </section>
       )}
     </div>
+  );
+}
+
+/* ---------- Single pending row ---------- */
+
+type RescrapeOutcome =
+  | { kind: "idle" }
+  | { kind: "scraping" }
+  | {
+      kind: "preview";
+      blockers: string[];
+      name: string;
+      brand: string;
+      priceRange: string;
+      imageCount: number;
+      extractionMethod: string;
+      candidateCategory: string | null;
+    }
+  | { kind: "error"; message: string };
+
+function PendingCard({
+  pending,
+  onStaged,
+}: {
+  pending: PendingRow;
+  onStaged: (directUrl: string) => void;
+}) {
+  const router = useRouter();
+  const [outcome, setOutcome] = useState<RescrapeOutcome>({ kind: "idle" });
+
+  async function onRescrape() {
+    setOutcome({ kind: "scraping" });
+    let res: Response;
+    try {
+      res = await fetch("/api/admin/shop-drafts/rescrape-pending", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ directUrl: pending.directUrl }),
+      });
+    } catch (e) {
+      setOutcome({
+        kind: "error",
+        message: e instanceof Error ? e.message : String(e),
+      });
+      return;
+    }
+
+    type ServerOk = {
+      ok: true;
+      staged: boolean;
+      slug?: string;
+      blockers?: string[];
+      preview: {
+        name: string;
+        brand: string;
+        priceRange: string;
+        imageCount: number;
+        extractionMethod: string;
+        candidateCategory: string | null;
+      };
+    };
+    type ServerErr = { ok?: false; error: string };
+
+    const body = (await res.json().catch(() => ({}))) as
+      | ServerOk
+      | ServerErr;
+
+    if (!res.ok || (body && "ok" in body && body.ok === false)) {
+      const message =
+        "error" in body && body.error
+          ? body.error
+          : `Rescrape failed (HTTP ${res.status})`;
+      setOutcome({ kind: "error", message });
+      return;
+    }
+
+    const ok = body as ServerOk;
+    if (ok.staged) {
+      // Row staged as draft — drop it from the pending list and
+      // refresh so the new draft card paints above.
+      onStaged(pending.directUrl);
+      router.refresh();
+      return;
+    }
+
+    setOutcome({
+      kind: "preview",
+      blockers: ok.blockers ?? [],
+      name: ok.preview.name,
+      brand: ok.preview.brand,
+      priceRange: ok.preview.priceRange,
+      imageCount: ok.preview.imageCount,
+      extractionMethod: ok.preview.extractionMethod,
+      candidateCategory: ok.preview.candidateCategory,
+    });
+  }
+
+  return (
+    <li className="border-t border-[#1f1d1b]/10 pt-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <p className="font-serif text-[15px] leading-[1.4]">
+          {pending.candidate.brand} — {pending.candidate.name}
+        </p>
+        <button
+          type="button"
+          onClick={onRescrape}
+          disabled={outcome.kind === "scraping"}
+          className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b] underline decoration-[#1f1d1b]/25 underline-offset-4 transition-colors hover:decoration-[#1f1d1b]/60 disabled:opacity-50"
+        >
+          {outcome.kind === "scraping" ? "Rescraping…" : "Rescrape"}
+        </button>
+      </div>
+      {pending.flags && pending.flags.length > 0 && (
+        <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">
+          {pending.flags.join(" · ")}
+        </p>
+      )}
+      <p className="mt-2 font-serif text-[13px] italic text-[#1f1d1b]/65">
+        {pending.candidate.reason || <em>(no reason)</em>}
+      </p>
+      <p className="mt-2 break-all text-[12px] text-[#1f1d1b]/45">
+        <a
+          href={pending.directUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-[#1f1d1b]/80"
+        >
+          {pending.directUrl}
+        </a>
+      </p>
+
+      {/* Rescrape feedback — preview when the staging threshold still
+          isn't met, or an inline error. A staged-OK result removes the
+          row outright so there's no third state to render here. */}
+      {outcome.kind === "preview" && (
+        <div className="mt-3 border-l border-[#1f1d1b]/15 pl-4">
+          <p className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+            Rescrape result
+          </p>
+          <p className="mt-1 font-serif text-[13px] text-[#1f1d1b]/80">
+            {outcome.imageCount} image{outcome.imageCount === 1 ? "" : "s"} ·{" "}
+            {outcome.priceRange || <em>no price</em>} ·{" "}
+            {outcome.extractionMethod}
+          </p>
+          {outcome.blockers.length > 0 && (
+            <p className="mt-2 font-serif text-[12px] italic text-[#a3431f]">
+              Still missing: {outcome.blockers.join(", ")}.
+              {outcome.blockers.includes("no category") &&
+                " Add a category to the row in `data/shop-import-pending.json` and rescrape again, or import this URL through /admin/shop-import."}
+            </p>
+          )}
+        </div>
+      )}
+
+      {outcome.kind === "error" && (
+        <p className="mt-3 font-serif text-[13px] italic text-[#a3431f]">
+          {outcome.message}
+        </p>
+      )}
+    </li>
   );
 }
 
