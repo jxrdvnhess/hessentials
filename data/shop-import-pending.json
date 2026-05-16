@@ -1,96 +1,6 @@
 {
   "entries": [
     {
-      "rowIndex": 6,
-      "sourceArticle": "Ditch the coffee machine. Get an espresso machine.",
-      "articleUrl": "https://hessentials.co/living/ditch-the-coffee-machine-get-an-espresso-machine",
-      "anchor": "Rancilio Silvia",
-      "directUrl": "https://www.ranciliogroupna.com/rancilio/silvia/",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "rancilio-silvia-pro-thermal-stability-rancilio-group-north-america",
-        "name": "Silvia Pro: Thermal Stability - Rancilio Group North America",
-        "brand": "Rancilio",
-        "category": "",
-        "audience": [],
-        "reason": "A classic because it asks something of the person using it. Not frictionless, not decorative, and better for someone who wants the ritual to have a little discipline.",
-        "priceRange": "",
-        "url": "https://www.ranciliogroupna.com/rancilio/silvia/",
-        "images": [
-          "https://www.ranciliogroupna.com/wp-content/uploads/2021/05/new-ranciliosilviapro8.jpg",
-          "https://www.ranciliogroupna.com/wp-content/uploads/2021/05/DSC_0065_Moment-1024x1024.jpg",
-          "https://www.ranciliogroupna.com/wp-content/uploads/2021/06/SP-Graph-Data.2-1024x601.jpg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:49:14.687Z"
-    },
-    {
-      "rowIndex": 24,
-      "sourceArticle": "It's usually the small things",
-      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
-      "anchor": "Leather Conditioner",
-      "directUrl": "https://saphir.com/products/renovateur",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "saphir-renovateur",
-        "name": "Renovateur",
-        "brand": "Saphir",
-        "category": "",
-        "audience": [],
-        "reason": "This is the elevated standard because it treats leather like something meant to age. Not shine for shine's sake, just nourishment and depth.",
-        "priceRange": "",
-        "url": "https://saphir.com/products/renovateur",
-        "images": [
-          "https://saphir.com/cdn/shop/files/0122-Renovateur-SaphirBDC-50ml_32d23fa6-90ea-4e2d-ae85-abad988d698e.png?v=1746780839&width=1024",
-          "http://saphir.com/cdn/shop/files/0122-Renovateur-SaphirBDC-50ml_32d23fa6-90ea-4e2d-ae85-abad988d698e.png?v=1746780839&width=2048",
-          "https://saphir.com/cdn/shop/files/0122-Renovateur-SaphirBDC-50ml_32d23fa6-90ea-4e2d-ae85-abad988d698e.png?v=1746780839&width=2048"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:49:36.198Z"
-    },
-    {
-      "rowIndex": 26,
-      "sourceArticle": "People can feel when it's forced",
-      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
-      "anchor": "Compact Speaker",
-      "directUrl": "https://www.sonos.com/en-us/shop/era-100",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "sonos-era-100-the-next-gen-stereo-bookshelf-speaker-sonos",
-        "name": "Era 100: The Next-Gen Stereo Bookshelf Speaker",
-        "brand": "Sonos",
-        "category": "home",
-        "audience": [],
-        "reason": "A room changes when the sound has a place. The Era 100 is clean enough to disappear, but good enough that people stop reaching for the phone speaker.",
-        "priceRange": "",
-        "url": "https://www.sonos.com/en-us/shop/era-100",
-        "images": [
-          "https://media.sonos.com/images/znqtjj88/production/c730c924a2d9fe4d3a3b9b9cb7432b7afd0ab392-2000x2000.png",
-          "https://media.sonos.com/images/znqtjj88/production/91c1b41321f53486e256d36bb957ac95c1aa7f98-2000x1867.jpg?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/c730c924a2d9fe4d3a3b9b9cb7432b7afd0ab392-2000x2000.png?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/1af43a9e9662ba3fe9627004f402fb9551f12391-2000x2000.jpg?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/c9869133dbc25edf211181bcdee56526d0f7c52e-2000x2000.png?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/56c1865fb5086b5d48720d8af1a5116ebd19afdb-2000x2000.png?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/0d47d9af938fa56f9eeed9ceb584b0779f126e19-2000x2000.jpg?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/9af29deb12572c83dca338c0160e0d5d875ded32-2000x2000.png?w=3840&q=100&fit=clip&auto=format",
-          "https://media.sonos.com/images/znqtjj88/production/d777825b20ab89fcb42c4e99e1bf2d49e8b3022c-2000x2000.png?w=3840&q=100&fit=clip&auto=format"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:08:48.939Z"
-    },
-    {
       "rowIndex": 27,
       "sourceArticle": "People can feel when it's forced",
       "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
@@ -116,38 +26,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T20:08:51.566Z"
-    },
-    {
-      "rowIndex": 31,
-      "sourceArticle": "People can feel when it's forced",
-      "articleUrl": "https://hessentials.co/style/people-can-feel-when-its-forced",
-      "anchor": "Smart Dimmers",
-      "directUrl": "https://www.casetawireless.com/us/en/products/dimmers-switches/diva-smart-dimmer-switch",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "lutron-caseta-diva-smart-dimmer-switch-caseta-by-lutron",
-        "name": "Diva Smart Dimmer Switch",
-        "brand": "Lutron Caseta",
-        "category": "home",
-        "audience": [],
-        "reason": "This is the rare smart-home object that improves the room without asking to be noticed. Better light, less visible tech, and no performance of futurism.",
-        "priceRange": "",
-        "url": "https://www.casetawireless.com/us/en/products/dimmers-switches/diva-smart-dimmer-switch",
-        "images": [
-          "https://www.casetawireless.com/sites/caseta/files/images/Meta%20Images/diva-smart-dimmer-switch.jpg",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/Caseta%20Diva%20Page/Diva_hero-image.jpg",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/diva%20smart%20dimmer%20switch%20kit/Dont-get-Left-in-Dark_3840x2048_d.jpg",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/Caseta%20Diva%20Page/2nd-Switch-Anywhere-Carousel_3840x2048_d.jpg",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/Caseta%20Diva%20Page/Instantly-set-the-mood_Carousel-with-Slide-in-Overlay_3840x2048_d.jpg",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/Caseta%20Diva%20Page/Diva-Smart_product%20featured_x2_d.png",
-          "https://www.casetawireless.com/sites/caseta/files/caseta-pdp/Caseta%20Diva%20Page/Caseta_DIva-Bridge_original-pico_1526x960_d.jpg"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:09:02.314Z"
     },
     {
       "rowIndex": 77,
