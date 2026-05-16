@@ -152,6 +152,7 @@ type PendingStatus =
   | { kind: "idle" }
   | { kind: "rescraping" }
   | { kind: "staging" }
+  | { kind: "deleting" }
   | { kind: "note"; message: string }
   | { kind: "error"; message: string };
 
@@ -311,7 +312,48 @@ function PendingCard({
     router.refresh();
   }
 
-  const busy = status.kind === "rescraping" || status.kind === "staging";
+  async function onDelete() {
+    if (
+      !confirm(
+        `Remove "${pending.candidate.brand} — ${pending.candidate.name}" from pending?\n\nThe row will be deleted from data/shop-import-pending.json. Use this when the product is discontinued, doesn't ship to the US, or otherwise ruled out for good.`
+      )
+    ) {
+      return;
+    }
+    setStatus({ kind: "deleting" });
+    let res: Response;
+    try {
+      res = await fetch("/api/admin/shop-drafts/delete-pending", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ directUrl: pending.directUrl }),
+      });
+    } catch (e) {
+      setStatus({
+        kind: "error",
+        message: e instanceof Error ? e.message : String(e),
+      });
+      return;
+    }
+    const body = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+    };
+    if (!res.ok || body.ok !== true) {
+      setStatus({
+        kind: "error",
+        message: body.error ?? `Delete failed (HTTP ${res.status})`,
+      });
+      return;
+    }
+    onStaged(pending.directUrl);
+    router.refresh();
+  }
+
+  const busy =
+    status.kind === "rescraping" ||
+    status.kind === "staging" ||
+    status.kind === "deleting";
 
   return (
     <li className="border-t border-[#1f1d1b]/10 pt-5">
@@ -334,14 +376,25 @@ function PendingCard({
             {pending.candidate.brand} — {pending.candidate.name}
           </span>
         </button>
-        <button
-          type="button"
-          onClick={onRescrape}
-          disabled={busy}
-          className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b] underline decoration-[#1f1d1b]/25 underline-offset-4 transition-colors hover:decoration-[#1f1d1b]/60 disabled:opacity-50"
-        >
-          {status.kind === "rescraping" ? "Rescraping…" : "Rescrape"}
-        </button>
+        <div className="flex items-baseline gap-5">
+          <button
+            type="button"
+            onClick={onRescrape}
+            disabled={busy}
+            className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b] underline decoration-[#1f1d1b]/25 underline-offset-4 transition-colors hover:decoration-[#1f1d1b]/60 disabled:opacity-50"
+          >
+            {status.kind === "rescraping" ? "Rescraping…" : "Rescrape"}
+          </button>
+          <button
+            type="button"
+            onClick={onDelete}
+            disabled={busy}
+            title="Remove this row from pending — for products that are discontinued, won't ship to the US, etc."
+            className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/45 transition-colors hover:text-[#a3431f] disabled:opacity-50"
+          >
+            {status.kind === "deleting" ? "Deleting…" : "Delete"}
+          </button>
+        </div>
       </div>
       {pending.flags && pending.flags.length > 0 && (
         <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-[#1f1d1b]/55">

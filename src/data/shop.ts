@@ -3235,6 +3235,26 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     atmosphereCollection: ["The Anti-Hostess Table", "Warm Minimalism"],
     territoryWeather: "block-printed table / graphic warmth / gathered meals",
   },
+  {
+    slug: "bickmore-bick-4-leather-conditioner",
+    name: "Bick 4 Leather Conditioner 8oz",
+    brand: "Bickmore",
+    category: "accessories",
+    subcategory: "leather-care",
+    audience: ["mens", "womens"],
+    dateAdded: "2026-05-16T13:45:13.592Z",
+    reason: "The basic version that does not overcomplicate care. It earns the slot because maintaining things should feel normal, not like entering a private club.",
+    priceRange: "$11.99",
+    url: "https://bickmore.com/products/bick-4-leather-conditioner-8oz?variant=48869643747636",
+    image: "/shop/bickmore-bick-4-leather-conditioner-1.jpg",
+    images: [
+      "/shop/bickmore-bick-4-leather-conditioner-1.jpg",
+      "/shop/bickmore-bick-4-leather-conditioner/653849f67ba5c1af.jpg",
+      "/shop/bickmore-bick-4-leather-conditioner-3.jpg",
+      "/shop/bickmore-bick-4-leather-conditioner/3e9a6207a9cbb56b.jpg",
+    ],
+    extractionMethod: "shopify",
+  },
 ];
 
 /**

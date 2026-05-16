@@ -29,37 +29,6 @@
       "stagedAt": "2026-05-14T20:49:14.687Z"
     },
     {
-      "rowIndex": 20,
-      "sourceArticle": "It's usually the small things",
-      "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
-      "anchor": "Bickmore Bick 4 for a more accessible option",
-      "directUrl": "https://bickmore.com/products/bick-4-leather-conditioner-8oz",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "bickmore-bick-4-leather-conditioner",
-        "name": "Bick 4 Leather Conditioner",
-        "brand": "Bickmore",
-        "category": "",
-        "audience": [],
-        "reason": "The basic version that does not overcomplicate care. It earns the slot because maintaining things should feel normal, not like entering a private club.",
-        "priceRange": "",
-        "url": "https://bickmore.com/products/bick-4-leather-conditioner-8oz",
-        "images": [
-          "http://bickmore.com/cdn/shop/products/Bick4-8oz-Main__97531_1200x1200.jpg?v=1589832484",
-          "http://bickmore.com/cdn/shop/products/Bick4-8oz-Label__79805_1200x1200.png?v=1589832486",
-          "http://bickmore.com/cdn/shop/products/Bick4-8oz-Info__94935_1200x1200.jpg?v=1589832488",
-          "https://bickmore.com/cdn/shop/products/Bick4-8oz-Main__97531_1200x1200.jpg?v=1589832484",
-          "https://bickmore.com/cdn/shop/products/Bick4-8oz-Label__79805_1200x1200.png?v=1589832486",
-          "https://bickmore.com/cdn/shop/products/Bick4-8oz-Info__94935_1200x1200.jpg?v=1589832488"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:08:32.830Z"
-    },
-    {
       "rowIndex": 24,
       "sourceArticle": "It's usually the small things",
       "articleUrl": "https://hessentials.co/style/its-usually-the-small-things",
