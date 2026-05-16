@@ -53,10 +53,12 @@ export const CATEGORY_TREE = {
       "shirts",
       "pants",
       "dresses",
+      "skirts",
       "knitwear",
       "outerwear",
       "footwear",
       "swim",
+      "basics",
     ],
   },
   accessories: {
@@ -68,6 +70,7 @@ export const CATEGORY_TREE = {
       "jewelry",
       "leather-goods",
       "hats",
+      "scarves",
       "belts",
     ],
   },
@@ -77,33 +80,39 @@ export const CATEGORY_TREE = {
   },
   home: {
     label: "Home",
+    /**
+     * Trimmed 2026-05-16 — `kitchen`, `glassware`, `dinnerware`,
+     * `serveware`, `vessels` moved to `cooking` per Chateau's
+     * lived-object directive. The home parent now reads as
+     * "everything that's not a cooking object or a personal-care
+     * item." `candles` added as a real canonical sub.
+     */
     subcategories: [
       "bedding",
-      "kitchen",
+      "bath",
       "furniture",
       "lighting",
-      "bath",
-      "stationery",
-      "laundry",
       "table",
       "table-linens",
-      "glassware",
-      "dinnerware",
-      "serveware",
-      "vessels",
+      "stationery",
+      "laundry",
       "hardware",
       "storage",
       "entryway",
+      "candles",
     ],
   },
   cooking: {
     label: "Cooking",
     /**
      * Lived-object category — see `data/sourcing-policy.md`. Cuts
-     * across `home/kitchen` and `provisions/pantry` from the old
+     * across the old `home/kitchen` and `provisions/pantry` from the
      * department-store taxonomy. Earns first-class status because
      * the archive thinks in terms of how objects are used at the
      * counter, not which retail floor they'd sit on.
+     *
+     * `dinnerware` / `glassware` / `serveware` added 2026-05-16 as
+     * the table-objects bucket migrated out of `home`.
      */
     subcategories: [
       "prep",
@@ -114,6 +123,9 @@ export const CATEGORY_TREE = {
       "tools",
       "salt-cellar",
       "countertop-vessels",
+      "dinnerware",
+      "glassware",
+      "serveware",
     ],
   },
   travel: {
