@@ -28,40 +28,6 @@
       "stagedAt": "2026-05-14T20:08:51.566Z"
     },
     {
-      "rowIndex": 77,
-      "sourceArticle": "The dinner plate is a style object",
-      "articleUrl": "https://hessentials.co/style/the-dinner-plate-is-a-style-object",
-      "anchor": "Wide-Rim White Dinnerware",
-      "directUrl": "https://fable.com/products/dinner-plates",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "fable-home-premium-dinnerware-for-every-occasion",
-        "name": "Premium Dinnerware for Every Occasion",
-        "brand": "Fable Home",
-        "category": "home",
-        "audience": [],
-        "reason": "Fable gives the plate a quiet rim and a softer surface. It is tableware with presence, but it still lets dinner be dinner.",
-        "priceRange": "",
-        "url": "https://fable.com/products/dinner-plates",
-        "images": [
-          "https://cdn.shopify.com/s/files/1/0052/9331/0019/files/New_Year_New_Fable0436_2_1.jpg?v=1741789996",
-          "https://fable.com/cdn/shop/files/longer-hp-desktop.jpg?v=1778248420&width=2000",
-          "https://p19-common-sign.tiktokcdn-us.com/tos-maliva-p-0068/oAwlHPYguyWAi9h4WEQCaBWESELIUyoBiGbD0~tplv-tiktokx-origin.image?dr=9636&x-expires=1778961600&x-signature=sKVjaZMfAzLszcD5mpwXXyg6TWY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
-          "https://p19-common-sign.tiktokcdn-us.com/tos-no1a-p-0037-no/oEypCFRiIyNfFnX1twBN8IS6EAHzbyBrMgECiA~tplv-tiktokx-origin.image?dr=9636&x-expires=1778961600&x-signature=9IpKYrwVQykJD9VTLB%2BLyy5KLzY%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
-          "https://p16-common-sign.tiktokcdn-us.com/tos-useast8-p-0068-tx2/ocqEUuZABgHDfpraAAAjrefKIvIFSAEQAIwQX1~tplv-tiktokx-origin.image?dr=9636&x-expires=1778961600&x-signature=euC3VsqD63fqrU6EH56%2BC1X3JhA%3D&t=4d5b0474&ps=13740610&shp=81f88b70&shcp=43f4a2f9&idc=useast8",
-          "https://fable.com/cdn/shop/files/a8dc05d4729f90bf49ccc34b73431957c15e199b.jpg?v=1775312592",
-          "https://fable.com/cdn/shop/files/fourth-testimony_4.jpg?v=1774553215&width=542",
-          "https://fable.com/cdn/shop/files/fifth-testimony_5.jpg?v=1774553215&width=542",
-          "https://fable.com/cdn/shop/files/first-testimony_0ef822f6-83bb-4917-a7e6-ac5c62b1f837.jpg?v=1774553215&width=542"
-        ],
-        "extractionMethod": "shopify",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:09:58.714Z"
-    },
-    {
       "rowIndex": 95,
       "sourceArticle": "The signature piece",
       "articleUrl": "https://hessentials.co/style/the-signature-piece",
@@ -271,39 +237,6 @@
         "proposedAudience": "None"
       },
       "stagedAt": "2026-05-14T19:16:33.364Z"
-    },
-    {
-      "rowIndex": 90,
-      "sourceArticle": "The scent people remember",
-      "articleUrl": "https://hessentials.co/style/the-scent-people-remember",
-      "anchor": "Santal 33",
-      "directUrl": "https://www.lelabofragrances.com/santal-33-147.html",
-      "flags": [
-        "empty prices"
-      ],
-      "candidate": {
-        "slug": "le-labo-le-labo-fragrances-santal-33-eau-de-parfum",
-        "name": "Le Labo Fragrances SANTAL 33",
-        "brand": "Le Labo",
-        "category": "grooming",
-        "audience": [],
-        "reason": "Santal 33 is overexposed, but still architecturally correct. It stays only because the scent has become a cultural object, not because it is obscure.",
-        "priceRange": "",
-        "url": "https://www.lelabofragrances.com/santal-33-147.html",
-        "images": [
-          "https://lelabo.ips.photos/lelabo-java/images/skus/050PS33100__PRODUCT_01--IMG_1200--SANTAL33--79960236.jpg",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/100PS33100__PRODUCT_01--IMG_1200--SANTAL33-1687759440.jpg",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/500PS33100__PRODUCT_01--IMG_1200--SANTAL33--1170497728.jpg",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/015PS33100__PRODUCT_01--IMG_1200--SANTAL33-1430875591.jpg",
-          "https://www.lelabofragrances.com/santal-33-147.html",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/J0B8010000__PRODUCT_01--IMG_360--SANTAL33-839040423.jpg",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/SHOGS33100__PRODUCT_01--IMG_360--SANTAL33--964675857.jpg",
-          "https://lelabo.ips.photos/lelabo-java/images/skus/050PS33100__PRODUCT_01--IMG_360--SANTAL33-1709550320.jpg"
-        ],
-        "extractionMethod": "json-ld",
-        "proposedAudience": "None"
-      },
-      "stagedAt": "2026-05-14T20:10:19.246Z"
     },
     {
       "rowIndex": 91,
