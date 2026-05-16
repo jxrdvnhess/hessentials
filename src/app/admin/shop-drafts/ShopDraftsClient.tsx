@@ -108,16 +108,19 @@ export function ShopDraftsClient({
             Pending — needs human
           </h2>
           <p className="mt-3 max-w-2xl font-serif text-[13px] italic text-[#1f1d1b]/55">
-            Bulk import couldn&apos;t safely stage these. Reasons are
-            shown inline. <strong className="font-normal not-italic">Rescrape</strong> re-runs
-            the extractor against the live source; if the missing
-            fields fill in, the row stages as a draft above.
+            Bulk import couldn&apos;t safely stage these. Click a row to
+            open the editor, fill in the missing fields, and stage as a
+            draft. <strong className="font-normal not-italic">Rescrape</strong> re-runs
+            the extractor against the live source to populate price /
+            images for you.
           </p>
           <ul className="mt-6 space-y-6">
             {pendingRows.map((p, i) => (
               <PendingCard
                 key={`${p.directUrl}-${i}`}
                 pending={p}
+                categories={categories}
+                tree={tree}
                 onStaged={(directUrl) =>
                   setPendingRows((cur) =>
                     cur.filter((r) => r.directUrl !== directUrl)
@@ -134,33 +137,62 @@ export function ShopDraftsClient({
 
 /* ---------- Single pending row ---------- */
 
-type RescrapeOutcome =
+/**
+ * Pending row state.
+ *
+ *   collapsed — title + reason only (default).
+ *   open      — inline editor expanded; user can fill missing fields
+ *               and Stage as draft, or Rescrape to auto-populate
+ *               price/images.
+ *
+ *  `note` carries inline feedback ("rescrape filled in 5 images / no
+ *  price") so the user knows what happened without leaving the row.
+ */
+type PendingStatus =
   | { kind: "idle" }
-  | { kind: "scraping" }
-  | {
-      kind: "preview";
-      blockers: string[];
-      name: string;
-      brand: string;
-      priceRange: string;
-      imageCount: number;
-      extractionMethod: string;
-      candidateCategory: string | null;
-    }
+  | { kind: "rescraping" }
+  | { kind: "staging" }
+  | { kind: "note"; message: string }
   | { kind: "error"; message: string };
 
 function PendingCard({
   pending,
+  categories,
+  tree,
   onStaged,
 }: {
   pending: PendingRow;
+  categories: { key: string; label: string }[];
+  tree: Record<string, string[]>;
   onStaged: (directUrl: string) => void;
 }) {
   const router = useRouter();
-  const [outcome, setOutcome] = useState<RescrapeOutcome>({ kind: "idle" });
+  const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState<PendingStatus>({ kind: "idle" });
+
+  // Editable form state — initialized from the candidate. The
+  // rescrape path writes back into the same state so the user sees
+  // their form filled in.
+  const [name, setName] = useState(pending.candidate.name);
+  const [brand, setBrand] = useState(pending.candidate.brand);
+  const [reason, setReason] = useState(pending.candidate.reason ?? "");
+  const [category, setCategory] = useState<string>("");
+  const [subcategory, setSubcategory] = useState<string>("");
+  const [priceRange, setPriceRange] = useState<string>("");
+  const [audience, setAudience] = useState<("mens" | "womens")[]>([]);
+
+  const subcategoryOptions = tree[category] ?? [];
+  const audienceLabel =
+    audience.length === 0
+      ? "None"
+      : audience.length === 2
+      ? "Gender-neutral"
+      : audience[0] === "mens"
+      ? "Mens only"
+      : "Womens only";
 
   async function onRescrape() {
-    setOutcome({ kind: "scraping" });
+    setStatus({ kind: "rescraping" });
     let res: Response;
     try {
       res = await fetch("/api/admin/shop-drafts/rescrape-pending", {
@@ -169,7 +201,7 @@ function PendingCard({
         body: JSON.stringify({ directUrl: pending.directUrl }),
       });
     } catch (e) {
-      setOutcome({
+      setStatus({
         kind: "error",
         message: e instanceof Error ? e.message : String(e),
       });
@@ -201,44 +233,114 @@ function PendingCard({
         "error" in body && body.error
           ? body.error
           : `Rescrape failed (HTTP ${res.status})`;
-      setOutcome({ kind: "error", message });
+      setStatus({ kind: "error", message });
       return;
     }
 
     const ok = body as ServerOk;
     if (ok.staged) {
-      // Row staged as draft — drop it from the pending list and
-      // refresh so the new draft card paints above.
       onStaged(pending.directUrl);
       router.refresh();
       return;
     }
 
-    setOutcome({
-      kind: "preview",
-      blockers: ok.blockers ?? [],
-      name: ok.preview.name,
-      brand: ok.preview.brand,
-      priceRange: ok.preview.priceRange,
-      imageCount: ok.preview.imageCount,
-      extractionMethod: ok.preview.extractionMethod,
-      candidateCategory: ok.preview.candidateCategory,
-    });
+    // Pull fresh values back into the form so the user only fills
+    // the remaining gaps (typically category).
+    if (ok.preview.name && !name) setName(ok.preview.name);
+    if (ok.preview.brand && !brand) setBrand(ok.preview.brand);
+    if (ok.preview.priceRange) setPriceRange(ok.preview.priceRange);
+    if (ok.preview.candidateCategory) setCategory(ok.preview.candidateCategory);
+    setOpen(true);
+
+    const blockerNote =
+      (ok.blockers ?? []).length > 0
+        ? `Rescrape filled ${ok.preview.imageCount} image${
+            ok.preview.imageCount === 1 ? "" : "s"
+          }. Still missing: ${(ok.blockers ?? []).join(", ")}.`
+        : `Rescrape filled ${ok.preview.imageCount} image${
+            ok.preview.imageCount === 1 ? "" : "s"
+          }, price ${ok.preview.priceRange || "—"}.`;
+    setStatus({ kind: "note", message: blockerNote });
   }
+
+  async function onStage() {
+    setStatus({ kind: "staging" });
+    const payload = {
+      directUrl: pending.directUrl,
+      fields: {
+        name: name.trim(),
+        brand: brand.trim(),
+        reason: reason.trim(),
+        category,
+        subcategory: subcategory.trim(),
+        priceRange: priceRange.trim(),
+        audience,
+      },
+    };
+
+    let res: Response;
+    try {
+      res = await fetch("/api/admin/shop-drafts/stage-pending", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch (e) {
+      setStatus({
+        kind: "error",
+        message: e instanceof Error ? e.message : String(e),
+      });
+      return;
+    }
+
+    const body = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      slug?: string;
+    };
+
+    if (!res.ok || body.ok !== true) {
+      setStatus({
+        kind: "error",
+        message: body.error ?? `Stage failed (HTTP ${res.status})`,
+      });
+      return;
+    }
+
+    onStaged(pending.directUrl);
+    router.refresh();
+  }
+
+  const busy = status.kind === "rescraping" || status.kind === "staging";
 
   return (
     <li className="border-t border-[#1f1d1b]/10 pt-5">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <p className="font-serif text-[15px] leading-[1.4]">
-          {pending.candidate.brand} — {pending.candidate.name}
-        </p>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="group flex items-baseline gap-3 text-left"
+        >
+          <span
+            aria-hidden
+            className={[
+              "inline-block text-[10px] text-[#1f1d1b]/45 transition-transform",
+              open ? "rotate-90" : "",
+            ].join(" ")}
+          >
+            ▸
+          </span>
+          <span className="font-serif text-[15px] leading-[1.4] decoration-[#1f1d1b]/15 underline-offset-4 group-hover:underline">
+            {pending.candidate.brand} — {pending.candidate.name}
+          </span>
+        </button>
         <button
           type="button"
           onClick={onRescrape}
-          disabled={outcome.kind === "scraping"}
+          disabled={busy}
           className="text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b] underline decoration-[#1f1d1b]/25 underline-offset-4 transition-colors hover:decoration-[#1f1d1b]/60 disabled:opacity-50"
         >
-          {outcome.kind === "scraping" ? "Rescraping…" : "Rescrape"}
+          {status.kind === "rescraping" ? "Rescraping…" : "Rescrape"}
         </button>
       </div>
       {pending.flags && pending.flags.length > 0 && (
@@ -260,32 +362,153 @@ function PendingCard({
         </a>
       </p>
 
-      {/* Rescrape feedback — preview when the staging threshold still
-          isn't met, or an inline error. A staged-OK result removes the
-          row outright so there's no third state to render here. */}
-      {outcome.kind === "preview" && (
-        <div className="mt-3 border-l border-[#1f1d1b]/15 pl-4">
-          <p className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
-            Rescrape result
+      {/* ---------- Inline editor ---------- */}
+      {open && (
+        <div className="mt-5 space-y-4 border-l border-[#1f1d1b]/15 pl-5">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Name
+              </span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              />
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Brand
+              </span>
+              <input
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              />
+            </label>
+          </div>
+
+          <label className="flex flex-col gap-1">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+              Reason
+            </span>
+            <textarea
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              rows={3}
+              className="border border-[#1f1d1b]/20 bg-transparent px-3 py-2 font-serif text-[14px] leading-[1.5]"
+            />
+          </label>
+
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Category
+              </span>
+              <select
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setSubcategory("");
+                }}
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              >
+                <option value="">— pick —</option>
+                {categories.map((c) => (
+                  <option key={c.key} value={c.key}>
+                    {c.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Subcategory
+              </span>
+              <input
+                list={`pending-sub-${pending.directUrl}`}
+                value={subcategory}
+                onChange={(e) => setSubcategory(e.target.value)}
+                placeholder={subcategoryOptions[0] ?? "uncategorized"}
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              />
+              <datalist id={`pending-sub-${pending.directUrl}`}>
+                {subcategoryOptions.map((s) => (
+                  <option key={s} value={s} />
+                ))}
+              </datalist>
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Audience
+              </span>
+              <select
+                value={audienceLabel}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  if (v === "Mens only") setAudience(["mens"]);
+                  else if (v === "Womens only") setAudience(["womens"]);
+                  else if (v === "Gender-neutral")
+                    setAudience(["mens", "womens"]);
+                  else setAudience([]);
+                }}
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              >
+                <option value="None">None</option>
+                <option value="Mens only">Mens only</option>
+                <option value="Womens only">Womens only</option>
+                <option value="Gender-neutral">Gender-neutral</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto]">
+            <label className="flex flex-col gap-1">
+              <span className="text-[10px] uppercase tracking-[0.22em] text-[#1f1d1b]/55">
+                Price range
+              </span>
+              <input
+                value={priceRange}
+                onChange={(e) => setPriceRange(e.target.value)}
+                placeholder="$45–$60"
+                className="border border-[#1f1d1b]/20 bg-transparent px-3 py-1.5 font-serif text-[14px]"
+              />
+            </label>
+            <div className="flex items-end">
+              <button
+                type="button"
+                onClick={onStage}
+                disabled={
+                  busy ||
+                  !name.trim() ||
+                  !brand.trim() ||
+                  !category ||
+                  !priceRange.trim()
+                }
+                className="border border-[#1f1d1b]/60 bg-[#1f1d1b] px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-[#f6f1e7] transition-colors hover:bg-[#1f1d1b]/85 disabled:opacity-40"
+              >
+                {status.kind === "staging" ? "Staging…" : "Stage as draft"}
+              </button>
+            </div>
+          </div>
+
+          <p className="text-[11px] italic text-[#1f1d1b]/45">
+            Images use the candidate&apos;s existing source URLs (or a fresh
+            rescrape if none). After staging, open the draft card above to
+            adjust images, atmosphere, or stability tier.
           </p>
-          <p className="mt-1 font-serif text-[13px] text-[#1f1d1b]/80">
-            {outcome.imageCount} image{outcome.imageCount === 1 ? "" : "s"} ·{" "}
-            {outcome.priceRange || <em>no price</em>} ·{" "}
-            {outcome.extractionMethod}
-          </p>
-          {outcome.blockers.length > 0 && (
-            <p className="mt-2 font-serif text-[12px] italic text-[#a3431f]">
-              Still missing: {outcome.blockers.join(", ")}.
-              {outcome.blockers.includes("no category") &&
-                " Add a category to the row in `data/shop-import-pending.json` and rescrape again, or import this URL through /admin/shop-import."}
-            </p>
-          )}
         </div>
       )}
 
-      {outcome.kind === "error" && (
+      {status.kind === "note" && (
+        <p className="mt-3 font-serif text-[12px] italic text-[#1f1d1b]/60">
+          {status.message}
+        </p>
+      )}
+
+      {status.kind === "error" && (
         <p className="mt-3 font-serif text-[13px] italic text-[#a3431f]">
-          {outcome.message}
+          {status.message}
         </p>
       )}
     </li>
