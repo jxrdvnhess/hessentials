@@ -194,8 +194,28 @@ export function categoryLabel(key: string): string {
   return key.charAt(0).toUpperCase() + key.slice(1);
 }
 
-/** "leather-goods" → "Leather Goods". Used for subcategory display. */
+/**
+ * Subcategory labels that need to deviate from the
+ * kebab-case → title-case default. Add to this map whenever a
+ * subcategory key would render awkwardly under the default rule.
+ *
+ * Convention: use "&" instead of the word "and" in display. Keys
+ * stay kebab-case so URLs stay clean; only the rendered label uses
+ * the ampersand. Examples below.
+ */
+const SUBCATEGORY_LABELS: Readonly<Record<string, string>> = {
+  "t-shirts-and-tanks": "T Shirts & Tanks",
+};
+
+/**
+ * "leather-goods" → "Leather Goods". Used for subcategory display.
+ *
+ * Looks up `SUBCATEGORY_LABELS` first so the editorial overrides
+ * (ampersands, special casing) win over the mechanical title-case
+ * pass. Falls through to title-case-from-key otherwise.
+ */
 export function subcategoryLabel(key: string): string {
+  if (key in SUBCATEGORY_LABELS) return SUBCATEGORY_LABELS[key];
   return key
     .split("-")
     .map((s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s))
