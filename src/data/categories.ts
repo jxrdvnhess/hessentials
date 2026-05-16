@@ -35,8 +35,16 @@ export type CategoryDef = {
 export const CATEGORY_TREE = {
   mens: {
     label: "Men",
+    /**
+     * 2026-05-16: `basics` removed — too broad to filter usefully.
+     * The wardrobe-basics intent now lives in the "Quiet Uniform"
+     * atmosphere collection (cuts across categories). Tees and tanks
+     * get their own subcategory; everything else top-related without
+     * being outerwear sits under `shirts`.
+     */
     subcategories: [
       "shirts",
+      "t-shirts-and-tanks",
       "pants",
       "shorts",
       "knitwear",
@@ -44,13 +52,21 @@ export const CATEGORY_TREE = {
       "footwear",
       "swim",
       "suiting",
-      "basics",
     ],
   },
   womens: {
     label: "Women",
+    /**
+     * 2026-05-16: `basics` and `shirts` removed. Women's tops break
+     * along the same logic as men's: t-shirts and tanks get their
+     * own subcategory; the rest go under `tops`. We don't carry a
+     * "shirts" sub here because in editorial use women's tops are
+     * rarely button-up shirts — the category drifts toward blouses,
+     * twist tops, halter tops, etc.
+     */
     subcategories: [
-      "shirts",
+      "tops",
+      "t-shirts-and-tanks",
       "pants",
       "dresses",
       "skirts",
@@ -58,7 +74,6 @@ export const CATEGORY_TREE = {
       "outerwear",
       "footwear",
       "swim",
-      "basics",
     ],
   },
   accessories: {
@@ -72,6 +87,7 @@ export const CATEGORY_TREE = {
       "hats",
       "scarves",
       "belts",
+      "socks",
     ],
   },
   grooming: {
