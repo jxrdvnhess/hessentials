@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Late Taurus, when starting begins to substitute for finishing.",
+    "Taurus closes mid-week, and the year shifts from weight to sketch.",
   paragraphs: [
-    "Mid-May sits in the last full week of Taurus, two weeks past Beltane and ten days short of Gemini. The growing arc is steady but not yet hot. The year's character at this point is duration, not announcement — the part of spring that asks whether the work begun in April is still the work being done in May. Most years, the answer is no. The work has been quietly replaced by its cousin: something close, something newer, something that absorbs the same effort without owing the same finish.",
+    "This week crosses the threshold from Taurus to Gemini. Wednesday is the last day of fixed earth — the mode that holds one thing until it sets. Thursday opens mutable air — the mode that sketches five things to see which one breathes. The growing arc is past announcement and past consolidation. The plants are in. The work is started. It enters articulation. The season stops asking what to keep and starts asking what to say.",
 
-    "The pattern this week is the pull to start a new thread before the current one is finished. The thread offered is usually dressed in the language of completion — the next version, the proper application of what was learned, the project that will use the skill better. It is rarely that. It is the appetite for beginnings interrupting the harder discipline of endings. Taurus does not punish the appetite. It just notices when the appetite shows up first.",
+    "The pattern is the pull from one thread to many. Taurus reads slowly. Gemini reads adjacent. The tension is between thickness and lightness — between the long sentence and the four short ones, between the single project finished and the four adjacent ones touched lightly. Neither is wrong. The week is the moment the appetite shifts, and the shift is faster than the work behind it.",
 
-    "It shows up at the 80% mark — the room half-styled instead of one room finished, the draft re-read for a reason to keep going or a reason to stop. The list in the margin grows. The unfinished sits across the desk. A new idea appears with surprising clarity at the same hour the old one was about to land. The clarity is real and also early. Both can be true and the order still matters.",
+    "It shows up as tab count. The browser climbing past what one mind can hold. The half-finished thing on the desk and three new openings in the margin, each with surprising momentum. Conversations grow longer and conclusions grow shorter. A new collaborator appears, a new idea, a new angle on something already underway. The desk acquires more surfaces than it can keep flat. The day fragments into adjacent sketches. None of them sit still.",
 
-    "The watch point is the small voice that proposes what is next while the current thing is still mid-sentence. The proposal sounds like momentum. It is usually flight. The week's practice is one finish before any new start — not as principle, but as test. What is already in motion is closer to done than the appetite is willing to admit. Finishing it is the week's quiet weight.",
+    "The watch point is the instinct to chase the third opening before the second one is read. The mind likes new doors. New doors are easier than the long hall. Recognition shows up small — the tab opened and not read, the message half-drafted, the idea named before the last one was finished. The shift is real and also early. The week is the one where the mouth opens before the ear catches up.",
   ],
   excerpt:
-    "What is already in motion is closer to done than the appetite is willing to admit.",
+    "The season stops asking what to keep and starts asking what to say.",
 } as const;
 
 /* -----------------------------------------------------------------
