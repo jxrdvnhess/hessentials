@@ -91,8 +91,13 @@ export default function MobileMenu({ links }: Props) {
               className="flex flex-1 flex-col items-center justify-center gap-7 px-6 pb-20"
             >
               {links.map(({ label, href }) => {
+                // The root path needs exact-match — otherwise
+                // `pathname.startsWith("/")` would make Home read as
+                // active on every page.
                 const active =
-                  pathname === href || pathname.startsWith(`${href}/`);
+                  href === "/"
+                    ? pathname === "/"
+                    : pathname === href || pathname.startsWith(`${href}/`);
                 return (
                   <Link
                     key={href}

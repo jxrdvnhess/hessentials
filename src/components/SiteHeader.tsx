@@ -30,6 +30,18 @@ const NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
 ];
 
 /**
+ * Mobile-only nav list — prepends "Home" so first-time visitors who
+ * land on an interior page (e.g. /aurelian via a Story link sticker)
+ * have an explicit way back without needing to know the wordmark is
+ * the home affordance. Desktop keeps the original NAV_LINKS array
+ * intact — the wordmark is already visually load-bearing there.
+ */
+const MOBILE_NAV_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+  { label: "Home", href: "/" },
+  ...NAV_LINKS,
+];
+
+/**
  * Global site header.
  *
  * Sticky across every page. The wordmark anchors the bar; nav and
@@ -121,7 +133,7 @@ export default function SiteHeader() {
             })}
           </nav>
 
-          <MobileMenu links={NAV_LINKS} />
+          <MobileMenu links={MOBILE_NAV_LINKS} />
           <SiteSearch />
         </div>
       </div>

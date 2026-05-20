@@ -49,3 +49,8 @@ next-env.d.ts
 /COPYRIGHT-REGISTRATION-GUIDE.md
 /STYLE-CHATEAU-AUDIT.md
 /public/*.docx
+
+# Social deliverables — Story slides, share images, etc. Built off-site,
+# served by Instagram, not part of the Next.js app. Kept locally for record;
+# excluded from deploy.
+/social/
