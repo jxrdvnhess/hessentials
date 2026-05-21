@@ -53,6 +53,19 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: false,
       },
+      // /ig → / with Instagram bio UTM. Lets the Instagram profile link
+      // show as a clean "hessentials.co/ig" instead of the full UTM-
+      // tagged URL (Instagram surfaces the raw URL when there's only
+      // one bio link, ignoring custom titles). The redirect tags the
+      // traffic server-side so GA still attributes bio clicks correctly
+      // — separate from Story link traffic, which uses utm_medium=story.
+      // 307 (non-permanent) so we can tweak the UTM params later without
+      // permanent browser caching working against us.
+      {
+        source: "/ig",
+        destination: "/?utm_source=instagram&utm_medium=bio",
+        permanent: false,
+      },
       // /recipes/garlic-butter-chicken-with-crispy-potatoes — retired in
       // the 2026-04-30 library editorial pass (thematic overlap with the
       // pesto-caprese chicken recipe and other chicken-on-a-plate
