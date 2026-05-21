@@ -1519,6 +1519,63 @@ export const recipes: RecipeEntry[] = [
         "Pesto on its own isn't a sauce. Pasta water and a knob of butter are what turn it into one — the starch and fat emulsify the oil and pull everything together, and that's the difference between coating noodles and dressing them.",
     },
   },
+  {
+    slug: "swedish-birthday-meatballs",
+    description:
+      "A Swedish dinner that quietly becomes part of your life.",
+    tags: ["Slow", "Hosting"],
+    recipe: {
+      title: "Swedish Birthday Meatballs",
+      dek: "Buttered poppy seed noodles, creamy pepper gravy, lingonberry jam, and a vinegary cucumber salad.",
+      opening:
+        "There are meals you make to impress people, and then there are meals that quietly become part of your life. This is the second kind. Not a fussy recipe — the whole thing works because you cook by instinct. Taste as you go. Measure with heart. The recipe gives structure; the comfort comes from trusting yourself while making it.",
+      meta: { serves: "Serves 3 generously", time: "1 hr" },
+      byline: "By J.D.H.",
+      ingredients: [
+        { group: "Meatballs", quantity: "1 lb", name: "ground beef", note: "85/15" },
+        { group: "Meatballs", quantity: "1/2 lb", name: "ground pork" },
+        { group: "Meatballs", quantity: "1", name: "egg" },
+        { group: "Meatballs", quantity: "3/4 cup", name: "breadcrumbs" },
+        { group: "Meatballs", quantity: "1/2", name: "yellow onion, grated" },
+        { group: "Meatballs", quantity: "1 tbsp", name: "Worcestershire sauce" },
+        { group: "Meatballs", quantity: "1 tsp", name: "kosher salt" },
+        { group: "Meatballs", quantity: "generous", name: "black pepper" },
+        { group: "Meatballs", quantity: "1/2 tsp", name: "ground allspice" },
+        { group: "Meatballs", quantity: "pinch", name: "ground nutmeg" },
+        { group: "Meatballs", quantity: "to cook", name: "grapeseed oil" },
+        { group: "Gravy", quantity: "2 tbsp", name: "unsalted butter" },
+        { group: "Gravy", name: "all-purpose flour", note: "measured with heart" },
+        { group: "Gravy", quantity: "2 cups", name: "beef broth" },
+        { group: "Gravy", name: "heavy cream" },
+        { group: "Gravy", quantity: "tiny spoon", name: "Dijon mustard", note: "optional" },
+        { group: "Gravy", name: "black pepper" },
+        { group: "Gravy", name: "Worcestershire sauce", note: "as needed" },
+        { group: "Noodles", quantity: "12 oz", name: "wide egg noodles" },
+        { group: "Noodles", quantity: "2–3 tbsp", name: "unsalted butter" },
+        { group: "Noodles", name: "black pepper" },
+        { group: "Noodles", quantity: "small sprinkle", name: "poppy seeds" },
+        { group: "Cucumber Salad", quantity: "1", name: "cucumber, thinly sliced" },
+        { group: "Cucumber Salad", name: "white vinegar" },
+        { group: "Cucumber Salad", quantity: "splash", name: "water" },
+        { group: "Cucumber Salad", name: "salt and black pepper" },
+        { group: "Cucumber Salad", quantity: "pinch", name: "sugar" },
+        { group: "To Serve", name: "lingonberry jam" },
+      ],
+      method: [
+        "Start the cucumber salad first. Toss thinly sliced cucumber with white vinegar, a splash of water, salt, pepper, and a pinch of sugar. Refrigerate while everything else cooks — it gets colder, sharper, and better over time.",
+        "Combine beef, pork, egg, breadcrumbs, grated onion, Worcestershire, salt, pepper, allspice, and nutmeg in a large bowl. Mix gently. Don't overwork the meat. Form into rustic little oval patties rather than perfect meatballs — easier, faster, and better browning.",
+        "Heat grapeseed oil in a cast iron skillet over medium to medium-high. Brown the patties deeply on both sides until beautifully caramelized. Work in batches if needed. Remove to a plate. Don't wipe the pan — those browned bits are the soul of the gravy.",
+        "Lower the heat slightly. Add butter, then enough flour to make a soft paste — the consistency of wet sand. Whisk briefly. Slowly pour in the beef broth while whisking. Simmer until it begins to feel like gravy.",
+        "Add heavy cream gradually until the sauce turns silky and lightly decadent. Season with black pepper, Worcestershire, and a tiny Dijon if using. Taste constantly. Adjust constantly. The gravy should feel savory first and creamy second.",
+        "Nestle the patties back into the gravy. Simmer gently for about five minutes until cooked through and unified with the sauce. Don't aggressively stir — you earned that crust.",
+        "Boil egg noodles in salted water until tender. Drain. Immediately toss with butter, black pepper, and a small sprinkle of poppy seeds. Add a splash of noodle water if needed to keep everything glossy and loose.",
+      ],
+      serve:
+        "Noodles first. Meatballs and gravy over top. Cold cucumber salad on the side. Lingonberry jam alongside — never mixed into the gravy. The contrast between rich savory gravy and bright tart jam is what makes the meal feel Scandinavian instead of simply meatballs and noodles.",
+      notes:
+        "Black pepper matters here. Don't be shy. The nutmeg and allspice should whisper, not scream. The gravy should never become overly thick or gluey. Poppy seeds on the noodles quietly make the dish. Lingonberry jam is non-negotiable.\n\nLow lighting improves flavor by at least 20%. Most importantly: cook by feeling. This is comfort food, not precision engineering.",
+    },
+  },
 ];
 
 export function getRecipeBySlug(slug: string): RecipeEntry | undefined {
