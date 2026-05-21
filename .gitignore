@@ -54,3 +54,8 @@ next-env.d.ts
 # served by Instagram, not part of the Next.js app. Kept locally for record;
 # excluded from deploy.
 /social/
+
+# Private — personal projects, never published to the site.
+/belvedere-*
+/127-*
+*.bak
