@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 /**
  * /ig → / with Instagram bio UTM tags.
  *
@@ -19,14 +17,26 @@ import { NextResponse } from "next/server";
  *   server-side — so GA can distinguish bio taps from Story taps
  *   (utm_medium=bio vs utm_medium=story).
  *
- * Status:
- *   307 (temporary) rather than 308 so we can tweak the UTM params
- *   later without permanent browser caching working against us.
+ * Implementation notes:
+ *   - Hand-built Response (not NextResponse.redirect) so the Location
+ *     header is exactly what we wrote, with no framework massaging.
+ *   - 307 (temporary) rather than 308 so we can tweak the UTM params
+ *     later without permanent browser caching working against us.
+ *   - Cache-Control: no-store so Vercel's edge cache and the user's
+ *     browser don't serve a stale redirect after we change the UTMs.
+ *   - Force-dynamic so Next.js doesn't try to statically optimize
+ *     this route at build time and bake a stale Location into the
+ *     CDN.
  */
-export function GET(request: Request) {
-  const destination = new URL(
-    "/?utm_source=instagram&utm_medium=bio",
-    request.url,
-  );
-  return NextResponse.redirect(destination, 307);
+
+export const dynamic = "force-dynamic";
+
+export function GET() {
+  return new Response(null, {
+    status: 307,
+    headers: {
+      Location: "/?utm_source=instagram&utm_medium=bio",
+      "Cache-Control": "no-store, max-age=0",
+    },
+  });
 }
