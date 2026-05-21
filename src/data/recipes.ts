@@ -14,7 +14,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "mediterranean-shrimp-white-beans",
     description: "A weeknight dish that doesn't act like one.",
-    tags: ["Weeknight", "Hosting"],
+    tags: ["Seafood", "Hosting"],
     recipe: {
       title: "Mediterranean Shrimp & White Beans",
       opening: "A weeknight dish that doesn't act like one. Shrimp, white beans, lemon, and good olive oil — quiet ingredients, given the right pace.",
@@ -64,7 +64,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "caprese-chicken",
     description: "The summer plate, simplified.",
-    tags: ["Weeknight", "Hosting"],
+    tags: ["Chicken", "Hosting"],
     recipe: {
       title: "Caprese Chicken",
       opening: "The summer plate, simplified. One pan, chicken seared and finished under torn mozzarella, tomato, and basil.",
@@ -107,7 +107,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "tuscan-orzo",
     description: "Toasted orzo, sun-dried tomatoes, and a slow lean into cream and parmesan.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Pastas"],
     recipe: {
       title: "Tuscan Orzo",
       opening: "Toasted orzo, sun-dried tomatoes, and a slow lean into cream and parmesan. A quiet bowl that builds itself.",
@@ -161,7 +161,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "lemon-chicken-with-olives-and-herbs",
     description: "Bone-in thighs braised slow in lemon, olive oil, and castelvetranos.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Chicken", "Hosting"],
     recipe: {
       title: "Lemon Chicken with Olives & Herbs",
       opening: "Bone-in thighs braised slow in lemon, olive oil, and castelvetranos. Built for the table, not the timer.",
@@ -203,7 +203,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "orzo-with-spinach-garlic-and-parmesan",
     description: "A quiet weeknight pan.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Pastas"],
     recipe: {
       title: "Orzo with Spinach, Garlic & Parmesan",
       opening: "A quiet weeknight pan. Orzo, stock, spinach, parmesan — finished simply, almost as an afterthought.",
@@ -246,7 +246,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "grilled-salmon-with-citrus-and-dill-yogurt",
     description: "Charred salmon set against a herbed yogurt and a sharp little citrus salad.",
-    tags: ["Hosting"],
+    tags: ["Seafood", "Hosting"],
     recipe: {
       title: "Grilled Salmon with Citrus & Dill Yogurt",
       opening: "Charred salmon set against a herbed yogurt and a sharp little citrus salad. Three elements; the contrast is the point.",
@@ -293,7 +293,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "tomato-and-burrata-with-warm-olive-oil",
     description: "The plate that asks the least and gives the most.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Greens & Vegetables"],
     recipe: {
       title: "Tomato & Burrata with Warm Olive Oil",
       opening: "The plate that asks the least and gives the most. Heirloom tomatoes, torn burrata, warm olive oil.",
@@ -339,7 +339,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "creamy-tuscan-chicken-orzo",
     description: "Pan-seared chicken folded into toasted orzo, sun-dried tomatoes, and cream.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Pastas", "Hosting"],
     recipe: {
       title: "Creamy Tuscan Chicken Orzo",
       opening: "Pan-seared chicken folded into toasted orzo, sun-dried tomatoes, and cream. A heavier cousin of the meatless Tuscan Orzo, built for a colder day.",
@@ -388,7 +388,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "sunday-rigatoni",
     description: "A slow afternoon of garlic, tomato, and good olive oil.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Pastas", "Hosting"],
     recipe: {
       title: "Sunday Rigatoni",
       opening: "A slow afternoon of garlic, tomato, and good olive oil. The pot you make when you have the time.",
@@ -439,7 +439,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "balsamic-roasted-chicken-caprese",
     description: "Thighs roasted dark in balsamic and tomato, finished at the last possible moment under torn mozzarella and basil.",
-    tags: ["Hosting"],
+    tags: ["Chicken", "Hosting"],
     recipe: {
       title: "Balsamic Roasted Chicken Caprese",
       opening: "Thighs roasted dark in balsamic and tomato, finished at the last possible moment under torn mozzarella and basil.",
@@ -482,7 +482,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "maple-dijon-chicken-and-veg-bake",
     description: "A cool-weather sheet pan.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Chicken", "Hosting"],
     recipe: {
       title: "Maple Dijon Chicken & Veg Bake",
       opening: "A cool-weather sheet pan. Chicken, sweet potatoes, and brussels sprouts, glossed in maple and mustard.",
@@ -530,7 +530,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "simple-arugula-salad",
     description: "Five ingredients.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Greens & Vegetables"],
     recipe: {
       title: "Simple Arugula Salad",
       opening: "Five ingredients. Peppery arugula, lemon, olive oil, parmesan. The plate that goes next to almost anything.",
@@ -568,7 +568,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "chopped-mediterranean-salad",
     description: "Cucumber, tomato, chickpeas, feta — chopped fine, dressed in lemon and olive oil.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Greens & Vegetables"],
     recipe: {
       title: "Chopped Mediterranean Salad",
       opening: "Cucumber, tomato, chickpeas, feta — chopped fine, dressed in lemon and olive oil. Better the longer it sits.",
@@ -621,7 +621,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "roasted-sweet-potato-and-avocado-bowl",
     description: "Charred sweet potato, soft greens, avocado, and a tahini-lemon drizzle that pulls it together.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Greens & Vegetables"],
     recipe: {
       title: "Roasted Sweet Potato & Avocado Bowl",
       opening: "Charred sweet potato, soft greens, avocado, and a tahini-lemon drizzle that pulls it together.",
@@ -666,7 +666,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "herby-chicken-and-rice-bowl",
     description: "Lemon-marinated chicken, seared hot, set over rice with a yogurt drizzle and a soft scatter of herbs.",
-    tags: ["Weeknight"],
+    tags: ["Chicken"],
     recipe: {
       title: "Herby Chicken & Rice Bowl",
       opening: "Lemon-marinated chicken, seared hot, set over rice with a yogurt drizzle and a soft scatter of herbs.",
@@ -716,7 +716,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "sourdough-with-olive-oil-and-garlic",
     description: "Thick-sliced sourdough, toasted dark, rubbed warm with raw garlic, dressed in your best olive oil.",
-    tags: ["Pantry", "Vegetarian"],
+    tags: ["Sandwiches"],
     recipe: {
       title: "Sourdough with Olive Oil & Garlic",
       opening: "Thick-sliced sourdough, toasted dark, rubbed warm with raw garlic, dressed in your best olive oil. The simplest thing on the table, often the best.",
@@ -753,7 +753,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "soft-scrambled-eggs-with-herbs",
     description: "Slow scrambled eggs, barely set, finished with chives and herbs at the last moment.",
-    tags: ["Weeknight", "Vegetarian"],
+    tags: ["Morning"],
     recipe: {
       title: "Soft Scrambled Eggs with Herbs",
       opening: "Slow scrambled eggs, barely set, finished with chives and herbs at the last moment.",
@@ -792,7 +792,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "coconut-red-curry-chicken",
     description: "Red curry paste bloomed slowly in the thick cream from the top of a coconut milk can.",
-    tags: ["Slow"],
+    tags: ["Chicken"],
     recipe: {
       title: "Coconut Red Curry Chicken",
       opening: "Red curry paste bloomed slowly in the thick cream from the top of a coconut milk can. That step is the dish.",
@@ -849,7 +849,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "ginger-soy-salmon-noodle-bowl",
     description: "Salmon glazed and broiled hot, over chilled noodles dressed in scallion oil.",
-    tags: ["Weeknight", "Hosting"],
+    tags: ["Seafood", "Hosting"],
     recipe: {
       title: "Ginger Soy Salmon Noodle Bowl",
       opening: "Salmon glazed and broiled hot, over chilled noodles dressed in scallion oil. Built in layers, eaten quickly.",
@@ -904,7 +904,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "thai-basil-ground-chicken",
     description: "Ground chicken cooked hot and fast, left alone long enough to crisp at the edges.",
-    tags: ["Weeknight"],
+    tags: ["Chicken"],
     recipe: {
       title: "Thai Basil Ground Chicken",
       opening: "Ground chicken cooked hot and fast, left alone long enough to crisp at the edges. Dressed at the end with fish sauce, lime, and basil.",
@@ -959,7 +959,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "yellow-coconut-vegetable-curry",
     description: "Whole spices toasted, turmeric bloomed, coconut milk simmered slow.",
-    tags: ["Slow", "Vegetarian", "Pantry"],
+    tags: ["Greens & Vegetables"],
     recipe: {
       title: "Yellow Coconut Vegetable Curry",
       opening: "Whole spices toasted, turmeric bloomed, coconut milk simmered slow. A one-pot that tastes deeper than its ingredients.",
@@ -1021,7 +1021,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "chili-crisp-egg-and-rice-bowl",
     description: "Built quickly but not carelessly.",
-    tags: ["Weeknight", "Pantry"],
+    tags: ["Rice & Grains"],
     recipe: {
       title: "Chili Crisp Egg & Rice Bowl",
       opening: "Built quickly but not carelessly. Hot rice, a slow-fried egg with a jammy yolk, scallion, soy, and chili crisp.",
@@ -1072,7 +1072,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "coconut-ginger-shrimp-soup",
     description: "A coconut broth steeped slow in ginger, lemongrass, and lime.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Soups", "Hosting"],
     recipe: {
       title: "Coconut Ginger Shrimp Soup",
       opening: "A coconut broth steeped slow in ginger, lemongrass, and lime. Shrimp go in at the very end, just barely cooked.",
@@ -1142,7 +1142,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "black-pepper-cheesy-grits",
     description: "Stone-ground grits, slow-simmered into butter and sharp cheddar.",
-    tags: ["Slow"],
+    tags: ["Rice & Grains"],
     recipe: {
       title: "Black Pepper Cheesy Grits",
       opening: "Stone-ground grits, slow-simmered into butter and sharp cheddar. Heavy on the black pepper.",
@@ -1182,7 +1182,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "apple-chicken-brie-fig-sandwich",
     description: "Sweet, savory, fresh.",
-    tags: ["Weeknight", "Pantry"],
+    tags: ["Sandwiches"],
     recipe: {
       title: "Apple, Chicken, Brie & Fig Jam Melt",
       opening: "Sweet, savory, fresh. Comes together in ten minutes.",
@@ -1226,7 +1226,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "swedish-family-plattar",
     description: "Thin Swedish pancakes, somewhere between a crepe and what most Americans call a pancake.",
-    tags: ["Hosting"],
+    tags: ["Morning", "Hosting"],
     recipe: {
       title: "Mormor's Plättar",
       opening: "Thin Swedish pancakes, somewhere between a crepe and what most Americans call a pancake. Meant to be shared.",
@@ -1272,7 +1272,7 @@ export const recipes: RecipeEntry[] = [
   {
     slug: "coconut-milk-rice-spicy-shrimp-curry",
     description: "Coconut rice and a shrimp curry that builds in stages.",
-    tags: ["Hosting", "Slow"],
+    tags: ["Rice & Grains", "Hosting"],
     recipe: {
       title: "Coconut Milk Rice with Spicy Shrimp Curry",
       opening:
@@ -1318,7 +1318,7 @@ export const recipes: RecipeEntry[] = [
     slug: "texan-veggie-chicken-lentil-soup",
     description:
       "Ground chicken, lentils, and vegetables given enough time to actually develop.",
-    tags: ["Weeknight", "Slow"],
+    tags: ["Soups"],
     recipe: {
       title: "Texan Veggie Chicken Lentil Soup",
       opening:
@@ -1362,7 +1362,7 @@ export const recipes: RecipeEntry[] = [
     slug: "white-bean-chicken-chili-charred-peppers",
     description:
       "A layered chili built on charred peppers and slow-simmered beans.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Soups", "Hosting"],
     recipe: {
       title: "White Bean Chicken Chili with Charred Peppers",
       opening:
@@ -1404,7 +1404,7 @@ export const recipes: RecipeEntry[] = [
     slug: "spatchcock-roast-chicken-potatoes-vegetables",
     description:
       "A whole chicken flattened for even cooking and crisp skin.",
-    tags: ["Hosting", "Slow"],
+    tags: ["Chicken", "Hosting"],
     recipe: {
       title: "Spatchcock Roast Chicken with Potatoes & Vegetables",
       opening:
@@ -1482,7 +1482,7 @@ export const recipes: RecipeEntry[] = [
     slug: "sun-dried-tomato-pesto-pasta-caprese-chicken",
     description:
       "Roasted chicken and tomatoes over pasta in a silky sun-dried tomato sauce.",
-    tags: ["Weeknight"],
+    tags: ["Pastas", "Hosting"],
     recipe: {
       title: "Sun-Dried Tomato Pesto Pasta with Caprese Chicken",
       opening:
@@ -1523,7 +1523,7 @@ export const recipes: RecipeEntry[] = [
     slug: "swedish-birthday-meatballs",
     description:
       "A Swedish dinner that quietly becomes part of your life.",
-    tags: ["Slow", "Hosting"],
+    tags: ["Hosting"],
     recipe: {
       title: "Swedish Birthday Meatballs",
       dek: "Buttered poppy seed noodles, creamy pepper gravy, lingonberry jam, and a vinegary cucumber salad.",

@@ -23,13 +23,22 @@ type RecipesFilterProps = {
   deferSlugs?: readonly string[];
 };
 
+// Primary taxonomy: course / dish type. Practical spine; emotional
+// discovery happens elsewhere (mood collections, seasonal edits).
+// "Hosting" is the one editorial cross-cut earned by inventory —
+// reads as the closing note on a row otherwise built on dish form.
+// Hints removed: dish-type labels are self-explanatory.
 const FILTERS = [
-  { label: "All", hint: null },
-  { label: "Weeknight", hint: "fast, reliable" },
-  { label: "Slow", hint: "worth it" },
-  { label: "Hosting", hint: "people over" },
-  { label: "Pantry", hint: "you already have this" },
-  { label: "Vegetarian", hint: null },
+  { label: "All" },
+  { label: "Pastas" },
+  { label: "Chicken" },
+  { label: "Seafood" },
+  { label: "Soups" },
+  { label: "Greens & Vegetables" },
+  { label: "Rice & Grains" },
+  { label: "Sandwiches" },
+  { label: "Morning" },
+  { label: "Hosting" },
 ] as const;
 
 type Filter = (typeof FILTERS)[number]["label"];
@@ -76,7 +85,7 @@ export default function RecipesFilter({
     <>
       <div className="mx-auto mb-16 max-w-4xl px-6 text-center sm:mb-20 sm:px-10">
         <ul className="flex flex-wrap items-baseline justify-center gap-x-7 gap-y-3 text-[11px] uppercase leading-none tracking-[0.24em] sm:text-[12px]">
-          {FILTERS.map(({ label, hint }) => {
+          {FILTERS.map(({ label }) => {
             const isActive = label === active;
             return (
               <li key={label}>
@@ -92,21 +101,6 @@ export default function RecipesFilter({
                   aria-pressed={isActive}
                 >
                   {label}
-                  {hint && (
-                    <span
-                      className={[
-                        // Hidden on mobile — the inline hint pushed the filter row
-                        // to 4–5 wrapped lines on phones. Visible on sm+ where the
-                        // extra context aids scanning without crowding the layout.
-                        "ml-2 hidden text-[11px] normal-case tracking-normal sm:inline",
-                        isActive
-                          ? "text-[#1f1d1b]/55"
-                          : "text-[#1f1d1b]/30",
-                      ].join(" ")}
-                    >
-                      ({hint})
-                    </span>
-                  )}
                 </button>
               </li>
             );
