@@ -8,31 +8,57 @@ type Variant = "default" | "light";
 
 /**
  * Pillar key controls the tagline copy. "default" carries the site-wide
- * line; everything else swaps in pillar-specific editorial copy. The
- * component infers this from the current pathname when no `pillar` prop
- * is provided, so route changes update the tagline automatically. Pass
- * the prop explicitly to force a tagline (e.g. for previews).
+ * line (used on /, fallback routes, and anywhere the inference rule
+ * doesn't match). Everything else swaps in pillar-specific editorial
+ * copy. The component infers this from the current pathname when no
+ * `pillar` prop is provided, so route changes update the tagline
+ * automatically. Pass the prop explicitly to force a tagline (e.g. for
+ * previews).
  *
- * Living, Style, and Practice fall through to the default line until
- * each pillar has its own editorial copy approved.
+ * Aurelian's line is in his own register (no "Sent when…" closer) —
+ * the persona writes differently from the Hessentials house voice.
  */
-type Pillar = "default" | "shop" | "recipes";
+type Pillar =
+  | "default"
+  | "recipes"
+  | "living"
+  | "style"
+  | "practice"
+  | "shop"
+  | "aurelian"
+  | "about";
 
 const PILLAR_TAGLINES: Record<Pillar, string> = {
   default:
-    "Recipes I keep making, what to skip, the upgrades that hold up. Sent when it’s worth it.",
+    "What stayed. What didn’t. The reasoning behind it. Sent when it’s worth a note.",
   recipes:
     "Recipes I keep making, what to skip, the upgrades that hold up. Sent when it’s worth it.",
+  living:
+    "Rooms, routines, and the difference between feeling good and being good. Sent when something earns it.",
+  style:
+    "What stays in rotation. What doesn’t. Sent when something deserves the hanger.",
+  practice:
+    "Practice without doctrine. Without ‘manifest.’ Sent when something works.",
   shop:
     "Pieces that earned their place. The edits I keep coming back to. Sent when something’s worth keeping.",
+  aurelian:
+    "From Aurelian. When the pattern is worth naming.",
+  about:
+    "Hessentials, when it’s ready. Sent when there’s something to show.",
 };
 
-/** Map a pathname to its pillar key. Only the routes that have approved
- *  copy receive a non-default pillar; everything else falls through. */
+/** Map a pathname to its pillar key. Falls through to "default" for
+ *  routes that don't match a specific pillar (homepage, legal pages,
+ *  error pages, anything else). */
 function pillarFromPath(pathname: string | null): Pillar {
   if (!pathname) return "default";
   if (pathname === "/shop" || pathname.startsWith("/shop/")) return "shop";
   if (pathname === "/recipes" || pathname.startsWith("/recipes/")) return "recipes";
+  if (pathname === "/living" || pathname.startsWith("/living/")) return "living";
+  if (pathname === "/style" || pathname.startsWith("/style/")) return "style";
+  if (pathname === "/practice" || pathname.startsWith("/practice/")) return "practice";
+  if (pathname === "/aurelian" || pathname.startsWith("/aurelian/")) return "aurelian";
+  if (pathname === "/about" || pathname.startsWith("/about/")) return "about";
   return "default";
 }
 
