@@ -20,11 +20,12 @@
  * extra space is where the hover caption sits). Conventional
  * museum framing convention.
  *
- * Movement. A single rAF-debounced scroll listener applies a
- * translateY transform per frame, scaled by a deterministic depth
- * derived from each slug. Subtle by intent — the brand voice is
- * restraint. Smaller frames drift slightly more, larger frames
- * less, to amplify the gallery-depth feeling.
+ * Movement. None. Earlier revisions applied a translateY parallax
+ * per frame, scaled by a deterministic depth. Even after clamping the
+ * depth range twice (0–0.05 → 0.010–0.025), tiles were drifting into
+ * each other at some scroll positions and producing visible overlap.
+ * The asymmetric SLOTS array carries the editorial gallery feel on
+ * its own; the parallax was a nice-to-have, not load-bearing.
  *
  * Hover. The frame holds position; the image gains a 5% darken and
  * a name/brand caption fades in on the lower mat (not on the
@@ -37,7 +38,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ShopProduct } from "../data/shop";
 import { shuffleArray } from "../lib/shuffle";
 
@@ -103,35 +104,6 @@ const ALIGN_CLASS: Record<Slot["align"], string> = {
   center: "mx-auto",
 };
 
-/**
- * Parallax depth bounds.
- *
- * Earlier the range was 0 → ~0.05, producing a 78× spread between
- * the slowest and fastest cards and up to ~700px of relative slip
- * across the full page. Two specific column pairs collided as a
- * result. Clamping to a tight 0.010–0.025 range cuts the worst-case
- * slip to ~240px, which is still enough drift for the editorial
- * feel but far below the threshold where adjacent frames stack.
- */
-const MIN_DEPTH = 0.01;
-const MAX_DEPTH = 0.025;
-
-/**
- * Deterministic per-slug parallax depth in [MIN_DEPTH, MAX_DEPTH].
- * Stable across SSR / CSR and across re-shuffles in the same
- * session. Same hash function as before; just the output range
- * narrowed and the size-based scaling dropped to keep every
- * frame inside the clamp.
- */
-function depthFor(slug: string): number {
-  let h = 0;
-  for (let i = 0; i < slug.length; i += 1) {
-    h = (h * 31 + slug.charCodeAt(i)) | 0;
-  }
-  const normalized = Math.abs(h) / 2147483647; // 0..1
-  return MIN_DEPTH + normalized * (MAX_DEPTH - MIN_DEPTH);
-}
-
 export default function ShopGallery({
   products,
 }: {
@@ -144,59 +116,6 @@ export default function ShopGallery({
     setOrder(shuffleArray(products));
   }, [products]);
 
-  // Pre-compute parallax depths once per product.
-  const depths = useMemo(() => {
-    const out: Record<string, number> = {};
-    for (const p of products) {
-      out[p.slug] = depthFor(p.slug);
-    }
-    return out;
-  }, [products]);
-
-  // Parallax is desktop-only. On mobile the gallery becomes a
-  // single flex-column with limited gap-y between frames; a CSS
-  // transform that slides one frame upward by 100–240px will
-  // visually collide with the frame above it (the transform
-  // doesn't reflow layout). Track viewport so we can no-op the
-  // transform under sm.
-  const [isDesktop, setIsDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 640px)");
-    const apply = () => setIsDesktop(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
-  }, []);
-
-  // Single scroll listener writes a CSS variable on the gallery
-  // root; each frame reads its depth × variable in inline style.
-  // Listener is disabled on mobile so --scroll stays at 0.
-  const rootRef = useRef<HTMLUListElement | null>(null);
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-    if (!isDesktop) {
-      root.style.setProperty("--scroll", "0");
-      return;
-    }
-    let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const rect = root.getBoundingClientRect();
-        // Use distance from top of viewport so frames sit at parity
-        // when first scrolled into view, then drift onward.
-        const offset = -rect.top;
-        root.style.setProperty("--scroll", `${offset}`);
-        ticking = false;
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isDesktop]);
-
   if (order.length === 0) {
     return (
       <p className="py-24 text-center font-serif text-[17px] italic text-[#1f1d1b]/55">
@@ -207,7 +126,6 @@ export default function ShopGallery({
 
   return (
     <ul
-      ref={rootRef}
       // Desktop: 12-col grid with auto rows. Per-slot mt-offsets
       // were removed (they collided with grid row tracks under
       // mixed row-spans), so gap-y carries the vertical breathing
@@ -221,7 +139,6 @@ export default function ShopGallery({
     >
       {order.map((product, i) => {
         const slot = SLOTS[i % SLOTS.length];
-        const depth = depths[product.slug] ?? 0;
         return (
           <li
             key={product.slug}
@@ -234,18 +151,6 @@ export default function ShopGallery({
               slot.col,
               slot.row,
             ].join(" ")}
-            style={
-              {
-                // Each frame applies its parallax via the shared
-                // --scroll variable on the root. Desktop-only —
-                // mobile leaves the transform off so frames stack
-                // cleanly in a single flex column.
-                transform: isDesktop
-                  ? `translate3d(0, calc(var(--scroll, 0) * ${depth}px), 0)`
-                  : undefined,
-                willChange: isDesktop && depth > 0 ? "transform" : undefined,
-              } as React.CSSProperties
-            }
           >
             <Frame product={product} ratio={slot.ratio} />
           </li>
