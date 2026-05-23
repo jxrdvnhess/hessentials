@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Aurelian — Hessentials",
   description:
     "Aurelian is the interpretive layer of Hessentials. Astrology used as a behavioral framework — timing, pressure, instinct, emotional regulation, and the gap between how someone appears and how they actually operate inside.",
+  alternates: {
+    canonical: "/aurelian",
+  },
 };
 
 /**

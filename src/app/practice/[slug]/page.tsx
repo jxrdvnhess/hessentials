@@ -3,11 +3,17 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
 import JsonLd from "../../../components/JsonLd";
+import ArticleScrollTracker from "../../../components/ArticleScrollTracker";
 import { articleSchema } from "../../../lib/jsonLd";
 import {
   getAllPracticeSlugs,
   getPracticeArticleBySlug,
 } from "../../../lib/practice";
+import {
+  buildMetaDescription,
+  firstParagraphOf,
+  resolveArticleDates,
+} from "../../../lib/articleMeta";
 
 type Params = { slug: string };
 
@@ -25,9 +31,21 @@ export async function generateMetadata({
   const article = await getPracticeArticleBySlug(slug);
   if (!article) return {};
 
+  // See lib/articleMeta.ts — composes a 120–165 char description from
+  // the available editorial copy. Never a truncated title placeholder
+  // (May 22 pre-push brief Fix 3).
+  const description = buildMetaDescription(
+    article.meta.description,
+    firstParagraphOf(article.body),
+    article.excerpt
+  );
+
   return {
     title: `${article.meta.title} — Hessentials`,
-    description: article.excerpt,
+    description,
+    alternates: {
+      canonical: `/practice/${slug}`,
+    },
   };
 }
 
@@ -106,17 +124,34 @@ export default async function PracticeArticlePage({
         </nav>
       </article>
 
-      {/* Article structured data — same shape as Living, including
-          Practice's editorial section in the description fallback. */}
-      <JsonLd
-        data={articleSchema({
-          url: `/practice/${article.slug}`,
-          headline: meta.title,
-          description: meta.description ?? article.excerpt,
-          datePublished: meta.date,
-          byline: meta.byline,
-        })}
-      />
+      {/* Article structured data — same shape as Living. Dates fall
+          back to git first-commit / last-commit when frontmatter
+          doesn't carry an explicit `date:` / `updated:` (May 22
+          pre-push brief Fix 1). */}
+      {(() => {
+        const { published, modified } = resolveArticleDates({
+          filePath: article.filePath,
+          frontmatterDate: meta.date,
+          frontmatterUpdated: meta.updated,
+        });
+        return (
+          <JsonLd
+            data={articleSchema({
+              url: `/practice/${article.slug}`,
+              headline: meta.title,
+              description: meta.description ?? article.excerpt,
+              datePublished: published,
+              dateModified: modified,
+              byline: meta.byline,
+              image: meta.image,
+            })}
+          />
+        );
+      })()}
+
+      {/* Fires `article_read` at 75% scroll depth (Section 5 of the
+          May 22 launch brief). */}
+      <ArticleScrollTracker pillar="practice" slug={article.slug} />
     </main>
   );
 }

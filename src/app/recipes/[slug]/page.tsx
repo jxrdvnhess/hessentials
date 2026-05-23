@@ -5,6 +5,7 @@ import Recipe from "../../../components/Recipe";
 import JsonLd from "../../../components/JsonLd";
 import { recipeSchema } from "../../../lib/jsonLd";
 import { recipes, getRecipeBySlug } from "../../../data/recipes";
+import { buildMetaDescription } from "../../../lib/articleMeta";
 
 type Params = { slug: string };
 
@@ -21,9 +22,24 @@ export async function generateMetadata({
   const entry = getRecipeBySlug(slug);
   if (!entry) return {};
 
+  // Composer takes the first candidate that lands in 120–165 chars,
+  // otherwise the best fit. `recipe.opening` is the editorial 1–2
+  // sentence intro and is almost always the right length for a
+  // snippet; `recipe.dek` and `entry.description` are short index
+  // lines and only land here if `opening` is missing. (May 22
+  // pre-push brief Fix 3 — no auto-truncated title placeholders.)
+  const description = buildMetaDescription(
+    entry.recipe.opening,
+    entry.recipe.dek,
+    entry.description
+  );
+
   return {
     title: `${entry.recipe.title} — Hessentials`,
-    description: entry.recipe.dek ?? entry.description,
+    description,
+    alternates: {
+      canonical: `/recipes/${slug}`,
+    },
   };
 }
 

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Living — Hessentials",
   description:
     "Notes on rooms, rituals, plants, and the small decisions that change how home feels.",
+  alternates: {
+    canonical: "/living",
+  },
 };
 
 // Section is the canonical source of truth — read directly from each

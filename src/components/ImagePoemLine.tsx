@@ -40,10 +40,13 @@ type ImagePoemLineProps = {
   standfirst?: string;
 };
 
+// Mobile floor was lowered (2.5rem → 1.75rem at lg) so the overlay
+// lines stop breaking onto 3–4 lines and overlapping the photo
+// subjects at 390px. Desktop ceiling unchanged.
 const SIZE_PX: Record<NonNullable<ImagePoemLineProps["size"]>, string> = {
-  sm: "clamp(2rem, 3.5vw, 2.5rem)",   // ~32–40px
-  md: "clamp(2.25rem, 4vw, 3rem)",    // ~36–48px
-  lg: "clamp(2.5rem, 4.5vw, 3.5rem)", // ~40–56px
+  sm: "clamp(1.5rem, 3.5vw, 2.5rem)",   // ~24–40px
+  md: "clamp(1.625rem, 4vw, 3rem)",     // ~26–48px
+  lg: "clamp(1.75rem, 4.5vw, 3.5rem)",  // ~28–56px
 };
 
 /**
@@ -136,6 +139,35 @@ export default function ImagePoemLine({
       className="z-10"
       style={wrapperStyle}
     >
+      {/* Localized scrim — Section 4 of the May 22 launch brief. A
+          soft radial-style darkening anchored to the text block keeps
+          the line legible (WCAG AA contrast) without staining the
+          photograph. text-shadow alone wasn't carrying it at 390px
+          where the lines pass over the photo subjects.
+
+          Implementation: a fixed-position absolute layer inside the
+          wrapper, expanded slightly beyond the text bounds (-10/-12)
+          so the gradient feathers off the edges of the photo zone
+          rather than cutting hard. Reveals on the same timing as the
+          text itself so the scrim doesn't preview the line. */}
+      <div
+        aria-hidden
+        className="pointer-events-none"
+        style={{
+          position: "absolute",
+          inset: "-12px -16px",
+          background:
+            "radial-gradient(120% 90% at 50% 55%, rgba(20,15,10,0.42) 0%, rgba(20,15,10,0.30) 38%, rgba(20,15,10,0.10) 72%, rgba(20,15,10,0) 100%)",
+          opacity: targetOpacity * 0.9,
+          transitionProperty: "opacity",
+          transitionDuration: "650ms",
+          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+          // -1 keeps the scrim inside the wrapper's z-10 stacking
+          // context but behind the text, hairline, and standfirst
+          // siblings (which paint at the wrapper's level).
+          zIndex: -1,
+        }}
+      />
       <p
         className="font-serif italic leading-[1.2] text-balance"
         style={{

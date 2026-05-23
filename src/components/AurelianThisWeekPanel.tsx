@@ -36,10 +36,13 @@ export default function AurelianThisWeekPanel({ layout }: Props) {
   // The desktop layout is an absolute right-side aside; the mobile
   // layout is a relative stacked block. Same internal content tree;
   // only the wrapper geometry differs.
+  // Mobile-stacked layout uses mt-7 (was mt-12) so the panel headline
+  // lands above the fold on 390x844 — paired with the tightened hero
+  // padding in src/app/page.tsx. Desktop aside layout unchanged.
   const wrapperClass =
     layout === "desktop-aside"
       ? "fade-up delay-4 absolute right-10 top-1/2 hidden w-[340px] -translate-y-1/2 border-l border-[#1f1d1b]/20 pl-7 md:block lg:right-16 lg:w-[360px]"
-      : "fade-up delay-4 mt-12 block max-w-[480px] border-l border-[#1f1d1b]/20 pl-6 md:hidden";
+      : "fade-up delay-4 mt-7 block max-w-[480px] border-l border-[#1f1d1b]/20 pl-6 md:hidden";
 
   return (
     <aside aria-label="Aurelian — This Week" className={wrapperClass}>

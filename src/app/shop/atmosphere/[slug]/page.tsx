@@ -50,6 +50,9 @@ export async function generateMetadata({
   return {
     title: `${name} — Shop — Hessentials`,
     description: `Objects in the ${name} atmosphere — chosen for emotional coherence, not category.`,
+    alternates: {
+      canonical: `/shop/atmosphere/${slug}`,
+    },
   };
 }
 

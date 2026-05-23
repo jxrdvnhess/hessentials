@@ -65,9 +65,12 @@ export const metadata: Metadata = {
   description:
     "Choosing well, and standing by it. Food, home, style, and the small decisions that make a life feel considered.",
   metadataBase: new URL("https://hessentials.co"),
-  alternates: {
-    canonical: "/",
-  },
+  // Canonical is set per route, not at the layout root. A root-level
+  // `alternates.canonical: "/"` propagates to every page that doesn't
+  // explicitly override it — which caused /recipes, /living, /style,
+  // etc. to canonicalize to "/" (the May 22 launch brief, Section 6).
+  // The homepage canonical lives in src/app/page.tsx; each pillar and
+  // detail template now declares its own.
   openGraph: {
     title: "Hessentials",
     description: "This is what stayed.",

@@ -6,6 +6,7 @@ import {
   useScrollRevealStack,
   revealStyle,
 } from "../lib/useScrollRevealStack";
+import { trackShopClick } from "../lib/analytics";
 
 type Article = { title: string; url: string; payoff: string };
 
@@ -360,7 +361,22 @@ export default function RightNow({
               >
                 {slot.label}
               </p>
-              <Link href={article.url} className="group mt-1 inline-block">
+              <Link
+                href={article.url}
+                className="group mt-1 inline-block"
+                onClick={() => {
+                  // Section 5 of the May 22 launch brief — shop_click
+                  // fires when a Currently card pointing into /shop/*
+                  // is clicked. surface="currently" lets us read the
+                  // before/after of elevating the Currently block.
+                  if (article.url.startsWith("/shop/")) {
+                    trackShopClick({
+                      surface: "currently",
+                      destination: article.url,
+                    });
+                  }
+                }}
+              >
                 <span
                   className={`inline-flex items-baseline gap-2 font-serif text-[17px] italic leading-[1.35] transition-opacity duration-300 ease-out group-hover:opacity-60 sm:text-[18px] ${
                     light ? "font-medium" : ""

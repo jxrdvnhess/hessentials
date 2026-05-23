@@ -22,6 +22,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: `${title} — Hessentials`,
     description:
       "How affiliate links work on Hessentials — and why they never shape what we cover.",
+    alternates: {
+      canonical: "/affiliate-disclosure",
+    },
   };
 }
 

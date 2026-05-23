@@ -5,6 +5,9 @@ import { recipes } from "../../data/recipes";
 export const metadata: Metadata = {
   title: "Recipes — Hessentials",
   description: "Food that earns its place.",
+  alternates: {
+    canonical: "/recipes",
+  },
 };
 
 // Quiet guidance tags — sentence case, functional, never stacked.

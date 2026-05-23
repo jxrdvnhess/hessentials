@@ -107,13 +107,34 @@ export function ingredientToString(ing: Ingredient): string {
 }
 
 /**
- * Strip the "By " prefix some bylines carry ("By J.D.H." → "J.D.H.").
- * Returns the canonical brand name when no byline is supplied so the
- * Author field is never empty (Article schema requires it).
+ * Strip the "By " prefix some bylines carry, then alias known editorial
+ * variants of the masthead name to a single canonical form so the
+ * schema author signal does not fragment.
+ *
+ * Recipes have been bylined "By J.D.H." (initials) while articles have
+ * been bylined "By Jordan Hess" — two forms of one person, splitting
+ * the author signal that the schema exists to establish. Aliasing here
+ * (in the schema layer only) standardizes the JSON-LD without forcing
+ * an editorial change on what appears on the page itself.
+ *
+ * Add new aliases as new editorial variants come up — keep the canonical
+ * value as the masthead name unless Jordan deliberately bylines as a
+ * persona (e.g. Aurelian) for that piece.
  */
+const AUTHOR_ALIASES: Record<string, string> = {
+  "j.d.h.": "Jordan Hess",
+  jdh: "Jordan Hess",
+  "j. d. h.": "Jordan Hess",
+  "jordan d. hess": "Jordan Hess",
+  "jordan hess": "Jordan Hess",
+};
+
 export function normalizeAuthor(byline: string | undefined): string {
   if (!byline) return BRAND_NAME;
-  return byline.replace(/^by\s+/i, "").trim() || BRAND_NAME;
+  const stripped = byline.replace(/^by\s+/i, "").trim();
+  if (!stripped) return BRAND_NAME;
+  const aliased = AUTHOR_ALIASES[stripped.toLowerCase()];
+  return aliased ?? stripped;
 }
 
 /**
@@ -205,11 +226,21 @@ type ArticleSchemaInput = {
   url: string;
   headline: string;
   description?: string;
-  /** ISO 8601 (e.g., "2026-04-15"). Optional — Article works without. */
+  /** ISO 8601 (e.g., "2026-04-15"). The publish date Google expects on
+   *  any Article — an authority brand publishing undated work reads as
+   *  a real signal gap, so callers should make every effort to supply
+   *  one, even if it has to fall back to a git-derived timestamp. */
   datePublished?: string;
-  /** Plain text — "By J.D.H." style byline. */
+  /** ISO 8601. The date of the most recent meaningful edit. Defaults
+   *  to datePublished when omitted (the piece hasn't been revised). */
+  dateModified?: string;
+  /** Plain text — "By J.D.H." style byline. Normalized via
+   *  normalizeAuthor so editorial variants resolve to the canonical
+   *  masthead name. */
   byline?: string;
-  /** Optional path or URL to a representative image. */
+  /** Optional path or URL to a representative image. When the article
+   *  genuinely has no lead image, leave undefined — the schema field
+   *  stays absent rather than pointing at a generic placeholder. */
   image?: string;
   /** Schema.org @type — defaults to Article; pass "BlogPosting" for
    *  pillar articles if Google starts treating that as more
@@ -222,17 +253,23 @@ export function articleSchema({
   headline,
   description,
   datePublished,
+  dateModified,
   byline,
   image,
   type = "Article",
 }: ArticleSchemaInput) {
   const author = normalizeAuthor(byline);
+  // When a piece hasn't been revised, dateModified equals
+  // datePublished — Schema.org accepts that and Google prefers it to
+  // a missing dateModified.
+  const resolvedDateModified = dateModified ?? datePublished;
   return {
     "@context": "https://schema.org",
     "@type": type,
     headline,
     ...(description ? { description } : {}),
     ...(datePublished ? { datePublished } : {}),
+    ...(resolvedDateModified ? { dateModified: resolvedDateModified } : {}),
     author: {
       "@type": "Person",
       name: author,

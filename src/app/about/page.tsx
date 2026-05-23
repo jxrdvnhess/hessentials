@@ -5,6 +5,9 @@ import AboutEssay from "../../components/AboutEssay";
 export const metadata: Metadata = {
   title: "About — Hessentials",
   description: "An editorial home for choosing well.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 /**

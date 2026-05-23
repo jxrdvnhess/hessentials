@@ -13,6 +13,7 @@ import { fetchProductPrice } from "../../../lib/pricing/fetchPrice";
 import { formatVerifiedDate } from "../../../lib/pricing/format";
 import ProductGallery from "../../../components/ProductGallery";
 import JsonLd from "../../../components/JsonLd";
+import ShopOutboundLink from "../../../components/ShopOutboundLink";
 import { productSchema } from "../../../lib/jsonLd";
 import PillarView from "./PillarView";
 
@@ -60,6 +61,9 @@ export async function generateMetadata({
   if (isPillar(slug)) {
     return {
       title: `${categoryLabel(slug)} — Shop — Hessentials`,
+      alternates: {
+        canonical: `/shop/${slug}`,
+      },
     };
   }
   const product = getProductBySlug(slug);
@@ -68,6 +72,9 @@ export async function generateMetadata({
   return {
     title: `${product.name} — ${product.brand} — Hessentials`,
     description: product.reason,
+    alternates: {
+      canonical: `/shop/${slug}`,
+    },
     openGraph: {
       title: `${product.name} — ${product.brand}`,
       description: product.reason,
@@ -223,17 +230,16 @@ export default async function ShopProductPage({
             )}
 
             <div className="mt-10 flex flex-col items-start gap-4">
-              <a
+              <ShopOutboundLink
                 href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                brand={product.brand}
                 className="group inline-flex items-baseline gap-3 border-b border-[#1f1d1b]/30 pb-2 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b] transition-colors duration-500 ease-out hover:border-[#1f1d1b] sm:text-[12px]"
               >
                 View at {product.brand}
                 <span aria-hidden className="text-[12px]">
                   →
                 </span>
-              </a>
+              </ShopOutboundLink>
 
               {/* Affiliate disclosure — sits directly below the
                   primary buy link per FTC proximity guidance. Quiet

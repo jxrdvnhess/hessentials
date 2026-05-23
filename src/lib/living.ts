@@ -7,8 +7,19 @@ export type Frontmatter = {
   category?: string;
   section?: string;
   description?: string;
+  /** ISO 8601 — explicit publish date. Optional; when absent, the
+   *  detail page falls back to git's first-commit date (see
+   *  src/lib/articleMeta.ts). Adding an explicit `date:` per article
+   *  is an editorial pass; until then, git carries the load. */
   date?: string;
+  /** ISO 8601 — explicit last-meaningful-edit date. Optional. */
+  updated?: string;
   byline?: string;
+  /** Optional lead image — site-relative path or absolute URL. When
+   *  set, it lands in the Article JSON-LD `image` field; when absent,
+   *  the field stays absent (we do not point at a generic placeholder
+   *  per the May 22 brief). */
+  image?: string;
 };
 
 export type LivingArticle = {
@@ -18,6 +29,16 @@ export type LivingArticle = {
   excerpt: string;
   /** Rendered HTML body. */
   html: string;
+  /** Raw markdown body (without frontmatter). Used by generateMetadata
+   *  to compose a meta description in the 120–165 char range when the
+   *  frontmatter `description` is a short editorial tagline. Held in
+   *  memory only for the request that needs it; not exposed in client
+   *  bundles (this module is server-only). */
+  body: string;
+  /** Absolute filesystem path of the source file. Used to resolve a
+   *  git-derived publish/modified date when frontmatter doesn't carry
+   *  an explicit one. */
+  filePath: string;
 };
 
 const CONTENT_DIR = path.join(process.cwd(), "content/living");
@@ -199,7 +220,9 @@ async function readArticle(filename: string): Promise<LivingArticle> {
     section: data.section,
     description: data.description,
     date: data.date,
+    updated: data.updated,
     byline: data.byline,
+    image: data.image,
   };
 
   return {
@@ -207,6 +230,8 @@ async function readArticle(filename: string): Promise<LivingArticle> {
     meta,
     excerpt: meta.description || firstParagraph(content),
     html: markdownToHtml(content),
+    body: content,
+    filePath,
   };
 }
 

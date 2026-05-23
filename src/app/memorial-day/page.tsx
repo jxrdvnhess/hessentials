@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Memorial Day — Hessentials",
   description:
     "Memorial Day arrives after the season has already started. The day the calendar catches up.",
+  alternates: {
+    canonical: "/memorial-day",
+  },
 };
 
 /**

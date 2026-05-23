@@ -46,6 +46,9 @@ export async function generateMetadata({
     title: `${subcategoryLabel(subcategory)} — ${categoryLabel(
       slug
     )} — Shop — Hessentials`,
+    alternates: {
+      canonical: `/shop/${slug}/${subcategory}`,
+    },
   };
 }
 

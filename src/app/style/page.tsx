@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Style — Hessentials",
   description:
     "J.D.H. on what to wear, what to keep, what to ignore.",
+  alternates: {
+    canonical: "/style",
+  },
 };
 
 export default function StyleIndexPage() {

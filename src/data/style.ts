@@ -34,6 +34,15 @@ export type StyleArticle = {
   heroStyle: string;
   sections: StyleSection[];
   tags: string[];
+  /** ISO 8601 — explicit publish date. Style articles are authored as
+   *  TS records rather than markdown files; there is no git fallback
+   *  here, so add this per-piece when each Style article is published.
+   *  Absent until an editorial pass fills these in. */
+  date?: string;
+  /** ISO 8601 — explicit last-meaningful-edit date. */
+  updated?: string;
+  /** Optional lead image — site-relative path or absolute URL. */
+  image?: string;
 };
 
 const TONE = ["editorial", "personal", "practical", "slightly sassy"];

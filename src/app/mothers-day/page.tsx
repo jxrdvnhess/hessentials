@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Mother's Day — Hessentials",
   description:
     "Most Mother's Day plans swing between overdone and forgettable. This is the third option.",
+  alternates: {
+    canonical: "/mothers-day",
+  },
 };
 
 /**

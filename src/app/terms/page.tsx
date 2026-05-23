@@ -21,6 +21,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `${title} — Hessentials`,
     description: "The terms of using Hessentials — written plainly.",
+    alternates: {
+      canonical: "/terms",
+    },
   };
 }
 

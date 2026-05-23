@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: "Shop — Hessentials",
   description:
     "Things bought, used, and returned to. The ones that held up.",
+  alternates: {
+    canonical: "/shop",
+  },
 };
 
 /**

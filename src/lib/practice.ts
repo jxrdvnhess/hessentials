@@ -20,8 +20,14 @@ export type Frontmatter = {
   category?: string;
   section?: string;
   description?: string;
+  /** ISO 8601 — explicit publish date. See lib/living.ts for the
+   *  fallback policy (git-derived when missing from frontmatter). */
   date?: string;
+  /** ISO 8601 — explicit last-meaningful-edit date. */
+  updated?: string;
   byline?: string;
+  /** Optional lead image — site-relative path or absolute URL. */
+  image?: string;
 };
 
 export type PracticeArticle = {
@@ -31,6 +37,11 @@ export type PracticeArticle = {
   excerpt: string;
   /** Rendered HTML body. */
   html: string;
+  /** Raw markdown body used by generateMetadata to compose a full
+   *  meta description from the article's opening paragraph. */
+  body: string;
+  /** Source filesystem path — used to resolve git-derived dates. */
+  filePath: string;
 };
 
 const CONTENT_DIR = path.join(process.cwd(), "content/practice");
@@ -200,7 +211,9 @@ async function readArticle(filename: string): Promise<PracticeArticle> {
     section: data.section,
     description: data.description,
     date: data.date,
+    updated: data.updated,
     byline: data.byline,
+    image: data.image,
   };
 
   return {
@@ -208,6 +221,8 @@ async function readArticle(filename: string): Promise<PracticeArticle> {
     meta,
     excerpt: meta.description || firstParagraph(content),
     html: markdownToHtml(content),
+    body: content,
+    filePath,
   };
 }
 

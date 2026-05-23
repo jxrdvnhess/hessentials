@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { usePathname } from "next/navigation";
+import { trackNewsletterSignup } from "../lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
 type Variant = "default" | "light";
@@ -73,6 +74,13 @@ type NewsletterSignupProps = {
    * a route the inference rule doesn't cover.
    */
   pillar?: Pillar;
+  /**
+   * Analytics surface label — passed to the `newsletter_signup` event
+   * on successful submit so we can distinguish the inline homepage
+   * module from the footer instance in GA4. Defaults to "footer"
+   * because that's the older, more common placement.
+   */
+  source?: "footer" | "inline" | string;
 };
 
 /**
@@ -85,6 +93,7 @@ type NewsletterSignupProps = {
 export default function NewsletterSignup({
   variant = "default",
   pillar,
+  source = "footer",
 }: NewsletterSignupProps = {}) {
   const pathname = usePathname();
   const resolvedPillar: Pillar = pillar ?? pillarFromPath(pathname);
@@ -110,6 +119,11 @@ export default function NewsletterSignup({
       if (response.ok) {
         setStatus("success");
         setEmail("");
+        // Fire newsletter_signup on submit-success only (never on focus
+        // or form_start). source distinguishes the inline homepage
+        // module from the footer instance in GA4. Marked as a Key
+        // Event in property a393214688p535310595.
+        trackNewsletterSignup(source);
       } else {
         setStatus("error");
       }

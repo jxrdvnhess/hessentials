@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
 import JsonLd from "../../../components/JsonLd";
+import ArticleScrollTracker from "../../../components/ArticleScrollTracker";
 import { articleSchema } from "../../../lib/jsonLd";
 import {
   STYLE_ARTICLES,
@@ -10,6 +11,7 @@ import {
   type ShopItem,
   type StyleSection,
 } from "../../../data/style";
+import { buildMetaDescription } from "../../../lib/articleMeta";
 
 type Params = { slug: string };
 
@@ -25,9 +27,31 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getStyleArticleBySlug(slug);
   if (!article) return {};
+
+  // Compose a 120–165 char editorial description. Style's `dek` is the
+  // intentionally short top-of-page line; the subtitle is fuller and
+  // the first intro/essay section's first paragraph is the most
+  // substantial editorial copy. Composer takes the first candidate
+  // that lands in window. (May 22 pre-push brief Fix 3.)
+  const firstSection = article.sections.find(
+    (s) => s.type === "intro" || s.type === "essay"
+  );
+  const firstSectionParagraph =
+    firstSection && (firstSection.type === "intro" || firstSection.type === "essay")
+      ? firstSection.body.split(/\n\s*\n/)[0]
+      : undefined;
+  const description = buildMetaDescription(
+    article.subtitle,
+    firstSectionParagraph,
+    article.dek
+  );
+
   return {
     title: `${article.title} — Hessentials`,
-    description: article.dek,
+    description,
+    alternates: {
+      canonical: `/style/${slug}`,
+    },
   };
 }
 
@@ -330,17 +354,28 @@ export default async function StyleArticlePage({
         </nav>
       </article>
 
-      {/* Article structured data. Style pieces don't carry frontmatter
-          dates (they're authored as static TS objects), so
-          datePublished is omitted — Article schema works without it. */}
+      {/* Article structured data. Style pieces are authored as TS
+          objects rather than markdown files, so there is no git
+          fallback for dates here — `date` / `updated` are added per
+          piece in src/data/style.ts as an editorial pass. `image` is
+          likewise per-piece (no lead image set on a Style article
+          stays absent from the schema, never points at a placeholder).
+          See May 22 pre-push brief, Fix 1 + Fix 2. */}
       <JsonLd
         data={articleSchema({
           url: `/style/${article.slug}`,
           headline: article.title,
           description: article.dek,
+          datePublished: article.date,
+          dateModified: article.updated,
           byline: article.author,
+          image: article.image,
         })}
       />
+
+      {/* Fires `article_read` at 75% scroll depth (Section 5 of the
+          May 22 launch brief). */}
+      <ArticleScrollTracker pillar="style" slug={article.slug} />
     </main>
   );
 }

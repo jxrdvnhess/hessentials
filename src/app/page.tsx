@@ -6,11 +6,15 @@ import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
 import MemorialDayModule from "../components/MemorialDayModule";
 import HomePracticeTeaser from "../components/HomePracticeTeaser";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 export const metadata: Metadata = {
   title: "Hessentials",
   description:
     "Food, home, and style for people who want better defaults, not more options. Recipes, rooms, and small upgrades worth the time.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 /**
@@ -143,26 +147,32 @@ export default function HomePage() {
           Mobile is content-driven (mobile-stacked Aurelian module
           already pushes the hero past viewport on phones); the
           eyebrow of that module serves as the mobile fold cue. */}
-      <section className="relative flex min-h-[42vh] items-end px-6 pt-24 pb-4 sm:px-10 md:min-h-[88vh] md:px-16">
+      {/* Mobile: items-start + tight top padding so H1 sits close to
+          the sticky header and Aurelian This Week's headline lands
+          above the fold on a 390x844 viewport. Desktop unchanged —
+          items-end + 88vh anchor + 96px top padding still hold the
+          existing composition. */}
+      <section className="relative flex min-h-0 items-start px-6 pt-14 pb-4 sm:px-10 md:min-h-[88vh] md:items-end md:pt-24 md:px-16">
         <div className="fade-up delay-3 max-w-[520px]">
-          <p className="mb-10 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px]">
+          <p className="mb-5 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px] md:mb-10">
             Hessentials
           </p>
-          <h1 className="font-serif text-[clamp(2.75rem,7vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-balance">
+          <h1 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-balance">
             Life, edited well.
           </h1>
-          <p className="text-pretty mt-8 font-serif text-[clamp(1.25rem,1.9vw,1.5rem)] italic leading-[1.45] text-[#1f1d1b]/70">
+          <p className="text-pretty mt-5 font-serif text-[clamp(1.125rem,1.9vw,1.5rem)] italic leading-[1.45] text-[#1f1d1b]/70 md:mt-8">
             Food, home, and style for people who want better defaults, not more options.
           </p>
           {/* Direct, blunt clarification. Tells the reader what they're getting. */}
-          <p className="mt-6 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px]">
+          <p className="mt-3 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px] md:mt-6">
             Less to decide. More that works.
           </p>
           {/* Mobile Aurelian This Week — replaces the old "If you're
               new, start here / Aurelian — a short reading" CTA cluster
               so mobile visitors meet the same editorial moment desktop
               visitors do. Same content as the desktop aside, stacked
-              under the hero copy. */}
+              under the hero copy. Tightened mt on mobile so the
+              headline sits above the fold at 390x844. */}
           <AurelianThisWeekPanel layout="mobile-stacked" />
         </div>
 
@@ -181,12 +191,44 @@ export default function HomePage() {
       </section>
 
       {/*
-        Memorial Day featured moment — second fold.
+        Currently — elevated to the second section (was the fifth, sitting
+        as a cream block below Image 03 on mobile and as a Image 03
+        overlay on desktop). This is the highest-intent surface on the
+        site — the editorial navigation into what's on rotation right
+        now — so it reads first, before the photo arc and the seasonal
+        feature. Visible at every breakpoint.
+
+        Acceptance — Section 2 of the May 22 launch brief: at least one
+        card visible by the second scroll gesture on 390x844.
+      */}
+      <section
+        aria-label="Currently"
+        className="px-6 pt-12 pb-4 sm:px-10 sm:pt-14 md:px-16 md:pt-16 md:pb-6"
+      >
+        <div className="mx-auto max-w-[480px]">
+          <RightNow variant="default" />
+        </div>
+      </section>
+
+      {/*
+        Inline newsletter — sits between Currently and the seasonal
+        feature so a mobile visitor meets the form before the photo arc
+        opens. The footer instance still ships; this one closes the gap
+        for visitors who never reach the close. No pop-up, no sticky
+        bar (Section 3 of the May 22 brief).
+      */}
+      <section
+        aria-label="Newsletter"
+        className="border-t border-[#1f1d1b]/10 px-6 py-14 sm:px-10 sm:py-16 md:px-16 md:py-20"
+      >
+        <NewsletterSignup pillar="default" source="inline" />
+      </section>
+
+      {/*
+        Memorial Day featured moment.
 
         Sits in the slot the archived Mother's Day module previously
-        occupied. The image at the left peeks below the hero at the
-        fold and cues continuation as the user finishes reading the
-        H1. Replaced by the next seasonal moment when this one is
+        occupied. Replaced by the next seasonal moment when this one is
         archived.
       */}
       <div style={{ marginTop: GAP_HERO }}>
@@ -257,12 +299,10 @@ export default function HomePage() {
       </section>
 
       {/* ---------- Image 03 — Late afternoon, solo with notebook — Type B ----------
-                  Desktop: full Currently overlay, anchored bottom-right,
-                  with a localized scrim that darkens only the area beneath
-                  the Currently block (per §3.1).
-                  Mobile:  bigger portrait crop with the full Currently
-                  block in a cream section below the image — the image
-                  keeps its brand-poetry moment.
+                  Currently was moved off this image into the second
+                  section of the page (see Section 2 above). Image 03
+                  keeps its brand-poetry moment unencumbered: poem line
+                  only, no overlay block.
                   Inside: You learn the difference. — upper-left wall area
                   where the pink-clay wall catches the gold light, above
                   and to the left of the seated man. */}
@@ -284,43 +324,7 @@ export default function HomePage() {
           >
             You learn the difference.
           </ImagePoemLine>
-
-          {/* DESKTOP: right-edge scrim per Frame 4 §3.2 — a narrow
-              gradient running from the right edge inward (60% width),
-              transparent on the left → warm-dark on the right. Pairs
-              with the .right-now character text-shadow (§3.3) — scrim
-              handles backdrop, text-shadow handles characters.
-              z-[1] sits above the image, below the .right-now overlay
-              which is z-[2]. */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 right-0 z-[1] hidden w-[60%] md:block"
-            style={{
-              background:
-                "linear-gradient(to left, rgba(20,15,10,0.45) 0%, rgba(20,15,10,0.25) 40%, rgba(20,15,10,0) 100%)",
-            }}
-          />
-          <div className="absolute right-16 bottom-16 z-[2] hidden max-w-[320px] md:block">
-            <RightNow variant="light" withSlideIn />
-          </div>
-
-          {/* MOBILE: image stays clean. All Start Here + Currently labels
-              live in the cream block below so the cream block reads as a
-              single, guided composition rather than splitting an eyebrow
-              across the seam. */}
         </Cinematic>
-      </section>
-
-      {/* MOBILE-ONLY: Currently block as a clean cream section below
-          the afternoon image. Shares state with the desktop overlay
-          via the singleton in RightNow.tsx (Frame 4 §3.5). */}
-      <section
-        aria-label="Currently"
-        className="block px-6 pt-12 pb-2 sm:px-10 md:hidden"
-      >
-        <div className="mx-auto max-w-[420px]">
-          <RightNow variant="default" />
-        </div>
       </section>
 
       {/* ---------- Practice statement teaser ----------

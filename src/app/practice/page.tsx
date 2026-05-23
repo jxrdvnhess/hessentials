@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Practice — Hessentials",
   description:
     "Notes on the small returning things — what to do every day, what to do once a year, what to carry, what to ignore.",
+  alternates: {
+    canonical: "/practice",
+  },
 };
 
 // Section is the canonical source of truth — read directly from each
