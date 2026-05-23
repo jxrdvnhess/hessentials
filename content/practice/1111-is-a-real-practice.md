@@ -5,6 +5,10 @@ category: practice
 section: Inner
 description: The number doesn't mean anything. The pause means everything.
 byline: By Jordan Hess
+image: /practice/1111-flip-clock.jpg
+imageWidth: 1086
+imageHeight: 1448
+imageAlt: A flip clock reading 11:11 on a wood surface against a plaster wall.
 ---
 
 If you've spent any time on the internet, you've seen the claim: 11:11 is a sign from the universe, a moment of synchronicity, a cosmic wink that you should make a wish or take it as confirmation that you're "on the right path."

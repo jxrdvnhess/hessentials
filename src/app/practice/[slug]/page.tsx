@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Byline from "../../../components/Byline";
@@ -96,6 +97,41 @@ export default async function PracticeArticlePage({
           {/* Top-of-article byline + date were removed per the
               Authorship brief. See <Byline /> at end of body. */}
         </header>
+
+        {/*
+          ---------- Lead image ----------
+
+          Practice lead-image pattern (locked 2026-05-22):
+            • Stacked inside the reading column (max-w-2xl) — sits in
+              the same gutters as the body, not full-bleed.
+            • Below the standfirst, above the body — arrives as the
+              object that confirms what the reader just read, not as
+              a hero announcing the page.
+            • Natural aspect ratio, no crop — `width` and `height` pass
+              the source dimensions to Next.js Image, and `w-full
+              h-auto` lets the image scale to the column while
+              preserving ratio (no object-cover, no aspect wrapper).
+            • Renders only when image + width + height are all set in
+              frontmatter; otherwise the page falls through cleanly to
+              the text-led header → body sequence.
+
+          Future Practice articles follow the same treatment. Add
+          imageWidth / imageHeight / imageAlt to each piece's
+          frontmatter alongside `image`.
+        */}
+        {meta.image && meta.imageWidth && meta.imageHeight && (
+          <figure className="mb-20 md:mb-28">
+            <Image
+              src={meta.image}
+              alt={meta.imageAlt ?? ""}
+              width={Number(meta.imageWidth)}
+              height={Number(meta.imageHeight)}
+              sizes="(min-width: 768px) 42rem, 100vw"
+              className="h-auto w-full"
+              quality={90}
+            />
+          </figure>
+        )}
 
         {/* ---------- Body ---------- */}
         <div

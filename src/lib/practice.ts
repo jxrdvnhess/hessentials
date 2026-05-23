@@ -26,8 +26,30 @@ export type Frontmatter = {
   /** ISO 8601 — explicit last-meaningful-edit date. */
   updated?: string;
   byline?: string;
-  /** Optional lead image — site-relative path or absolute URL. */
+  /** Optional lead image — site-relative path or absolute URL.
+   *
+   *  Lead image pattern for Practice articles (locked 2026-05-22):
+   *  stacked inside the reading column, below the standfirst, at the
+   *  image's natural aspect ratio with no crop. The image arrives as
+   *  the object that confirms what the reader just read — not as a
+   *  hero that announces the page. Words lead.
+   *
+   *  When set, the page template renders the image. When absent, the
+   *  template falls through cleanly (text-led header → body) and the
+   *  Article JSON-LD's image field stays absent (no placeholder). */
   image?: string;
+  /** Natural pixel width of the lead image. Required when `image` is
+   *  set so the Next.js Image component can preserve aspect ratio
+   *  without cropping. Future Practice articles must populate this
+   *  alongside `image`. */
+  imageWidth?: string;
+  /** Natural pixel height of the lead image. Pairs with imageWidth. */
+  imageHeight?: string;
+  /** Alt text describing the image itself. For a lead image sitting
+   *  beneath the headline, this should describe what is visible (not
+   *  restate the headline — the headline is already adjacent). When
+   *  omitted, the template falls back to `alt=""` (decorative). */
+  imageAlt?: string;
 };
 
 export type PracticeArticle = {
@@ -214,6 +236,9 @@ async function readArticle(filename: string): Promise<PracticeArticle> {
     updated: data.updated,
     byline: data.byline,
     image: data.image,
+    imageWidth: data.imageWidth,
+    imageHeight: data.imageHeight,
+    imageAlt: data.imageAlt,
   };
 
   return {
