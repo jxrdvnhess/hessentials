@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Taurus closes mid-week, and the year shifts from weight to sketch.",
+    "Gemini settles in, and the questions stack faster than the replies.",
   paragraphs: [
-    "This week crosses the threshold from Taurus to Gemini. Wednesday is the last day of fixed earth — the mode that holds one thing until it sets. Thursday opens mutable air — the mode that sketches five things to see which one breathes. The growing arc is past announcement and past consolidation. The plants are in. The work is started. It enters articulation. The season stops asking what to keep and starts asking what to say.",
+    "This week sits in Gemini's middle. Last week was the threshold. This week is the inhabit. Light stays past dinner. The garden is past announcement — it's growing past the trellis. Summer's first audible signal is a month out and already in the air. The questions that opened in early May are still open. The new ones keep arriving. The week is the one where the inbox of half-answered things stops being a metaphor.",
 
-    "The pattern is the pull from one thread to many. Taurus reads slowly. Gemini reads adjacent. The tension is between thickness and lightness — between the long sentence and the four short ones, between the single project finished and the four adjacent ones touched lightly. Neither is wrong. The week is the moment the appetite shifts, and the shift is faster than the work behind it.",
+    "The pattern is the gap between intake and reply. Gemini gathers fast. Answering is slower. Asking takes seconds. The right answer takes a walk. The tension is between the appetite for new threads and the obligation behind the ones already pulled. New conversations are easier than the conclusion of an old one. The week is when the asymmetry shows up at full size.",
 
-    "It shows up as tab count. The browser climbing past what one mind can hold. The half-finished thing on the desk and three new openings in the margin, each with surprising momentum. Conversations grow longer and conclusions grow shorter. A new collaborator appears, a new idea, a new angle on something already underway. The desk acquires more surfaces than it can keep flat. The day fragments into adjacent sketches. None of them sit still.",
+    "It looks like a text thread that branched into three. A friend who proposed a trip and is waiting on a date. A draft opened twice and written into once. A summer calendar with five soft yeses and no hard ones. A garden grown enough to need thinning, not watering. None of these are crises. Each is owed a paragraph that has not been written.",
 
-    "The watch point is the instinct to chase the third opening before the second one is read. The mind likes new doors. New doors are easier than the long hall. Recognition shows up small — the tab opened and not read, the message half-drafted, the idea named before the last one was finished. The shift is real and also early. The week is the one where the mouth opens before the ear catches up.",
+    "The watch point is the instinct to ask a fifth thing before the third is answered. New questions feel like progress. They are not. Recognition shows up in small refusals — the tab closed without replying, the draft saved instead of sent, the calendar invite read and left unaccepted. Reply is the actual work this week. The mouth has been open. Now the ear closes around what was already said.",
   ],
   excerpt:
-    "The season stops asking what to keep and starts asking what to say.",
+    "Asking takes seconds. The right answer takes a walk.",
 } as const;
 
 /* -----------------------------------------------------------------
