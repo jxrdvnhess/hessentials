@@ -20,5 +20,7 @@ import SiteFooter from "./SiteFooter";
 export default function FooterGate() {
   const pathname = usePathname();
   if (pathname?.startsWith("/admin")) return null;
+  // /curtain-test is a chrome-free atmospheric prototype — no footer.
+  if (pathname === "/curtain-test") return null;
   return <SiteFooter />;
 }

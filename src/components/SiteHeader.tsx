@@ -59,6 +59,9 @@ export default function SiteHeader() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
+  // /curtain-test is a chrome-free atmospheric prototype — no header.
+  if (pathname === "/curtain-test") return null;
+
   return (
     <header aria-label="Site" className="relative z-40 w-full">
       {/* Stickiness lives on the parent stack in app/layout.tsx so the
