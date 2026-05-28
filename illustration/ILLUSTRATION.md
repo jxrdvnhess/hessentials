@@ -70,6 +70,19 @@ notan built on negative space, and narrative panels.
 | `tone.py` | **Form Principle** modeling (`render_tonal`) and two-value **notan** (`render_notan`) |
 | `scribble.py` | **scratch-tone** portrait (`scribble_portrait`) — value field rendered as massed short strokes |
 | `scene.py` | **scene** translation (`scene_scratch`, `scene_notan`) — re-draws an owned photo as scratch-tone / notan on linen; strokes follow the forms |
+| `line_figure.py` | **confident-line** figures — charcoal-weight tapered strokes (`stroke`, `render`); proven on a single figure and a two-figure embrace. The register the brand is aimed at: economical, made, restrained |
+
+### The line register (current direction)
+
+The brand's figures are **economical made line** — few committed marks, real
+weight, restraint (cf. Matisse / Boris Schmitz; never scratch-density, never
+sterile vector, never traced from a photo). Hard rules, all learned the hard way:
+line of action first (the body carries the gesture, not just the head); trust
+the first confident mark — don't spline-sand it into grace (`stroke(smoothing=)`,
+~0.5 bodies / ~0.8 limbs); crop or recede the lower body rather than fold it into
+a column; the hand is downstream of the arm — weld it as one stroke-path; short
+strokes are densified so fingers don't render as two dots; ends crop at full
+weight (`cap_start`/`cap_end`), never fade; no cast shadow; home on warm linen.
 
 ### Emotion controls (`face.py` → `EMOTIONS`)
 
