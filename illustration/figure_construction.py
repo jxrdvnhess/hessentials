@@ -1,63 +1,92 @@
 """
-STAGE 3 — figure construction. Built on the reclined-gazing-up gesture (stage 2),
-which is the exact pose the Merida notebook beat needs.
+STAGE 3 — figure construction. The reclined-gazing-up gesture built into a
+believable body as proportioned Loomis masses.
 
-The fundamental (Loomis): a believable body is simple solid masses with
-proportion and balance — a torso with volume, a real lap and back, limbs that
-are tapered tubes with weight (never thin sticks), an arm that could actually
-wrap or bear weight, and clean joins (no tangles where parts meet).
+THE BELIEVABLE GATE (its own test, so it can't be graded around — the lesson:
+a list of true small fixes is not a believable whole). Run ALL THREE before
+calling a body believable:
+  1. proportion in heads — ~7-8 heads, limbs in proportion, not stretched/thin.
+  2. name the masses — point to a ribcage, a PELVIS, a thigh as distinct volumes.
+  3. squint test — squint at the silhouette; say "human" or "insect" out loud.
+The previous pass failed all three (too long/thin, no pelvis, insectile). Build
+the body from real masses with real thickness so it survives them.
 
-Second half of the gate: the believable body must STAY ALIVE. The masses hang on
-the living action line; they don't replace it. So the head-cover test from stage
-2 is run again, now on a real body: hide the head and the reclined-gazing-up
-attitude must still hold. Believable AND alive, or it isn't a pass.
+THE ALIVE GATE (kept from stage 2): hide the head; the reclined attitude must
+still hold. Believable AND alive, both, or it isn't a pass.
 """
 import os
+import numpy as np
 from line_figure import render
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "samples")
-W, H = 1200, 950
+W, H = 1200, 1000
+HEAD = 100.0   # one head-height; the unit the whole figure is proportioned in
+
+def ellipse_poly(cx, cy, a, b, ang, n=30):
+    t = np.linspace(0, 2*np.pi, n)
+    x, y = a*np.cos(t), b*np.sin(t)
+    ca, sa = np.cos(ang), np.sin(ang)
+    return list(zip((cx+x*ca-y*sa).tolist(), (cy+x*sa+y*ca).tolist()))
+
+def capsule(p0, p1, r0, r1, n=10):
+    """Outline of a tapered limb (a stadium): radius r0 at p0, r1 at p1."""
+    p0 = np.array(p0, float); p1 = np.array(p1, float)
+    d = p1-p0; ang = np.arctan2(d[1], d[0]); L = float(np.hypot(*d))
+    local = [(0, r0), (L, r1)]
+    local += [(L+r1*np.cos(a), r1*np.sin(a)) for a in np.linspace(np.pi/2, -np.pi/2, n)]  # far cap
+    local += [(0, -r0)]
+    local += [(r0*np.cos(a), r0*np.sin(a)) for a in np.linspace(-np.pi/2, -3*np.pi/2, n)] # near cap
+    ca, sa = np.cos(ang), np.sin(ang)
+    return [ (p0[0]+x*ca-y*sa, p0[1]+x*sa+y*ca) for (x, y) in local ]
 
 def reclined_body(hide_head=False):
-    """Reclined, weight settled back onto a propping arm, legs extended forward,
-    head tipped back gazing up-and-out. Facing left; legs extend right (toward
-    the light, in the beat). Torso = back contour (the action line) + front
-    contour; limbs are tapered tubes with real width."""
+    """Reclined, propped back on the left arm, legs extended right, head tipped
+    back gazing up. Masses sized in head-units (HEAD=100): ribcage ~1.6H,
+    pelvis ~1H, thigh ~2H, etc., with real thickness so it reads human."""
     S = []
-    # ===== TORSO — the action line lives in the back; front gives it volume =====
-    S.append(dict(ctrl=[(398,378),(440,452),(508,556),(566,624)], w=13, lead=0.08, tail=0.14, swell=0.45, smoothing=0.7))  # BACK (action line)
-    S.append(dict(ctrl=[(406,400),(452,486),(516,576),(576,618)], w=9, lead=0.12, tail=0.2, swell=0.35, phase=1.0, smoothing=0.7))  # front of torso -> lap
-    # ===== HEAD — tipped back, gazing up, no face =====
+    OUT_W = 5     # mass outline weight
+    def mass(pts, w=OUT_W):  S.append(dict(ctrl=pts+[pts[0]], w=w, smoothing=0.62, swell=0.12))
+    def limb(p0,p1,r0,r1,w=OUT_W): S.append(dict(ctrl=capsule(p0,p1,r0,r1), w=w, smoothing=0.6, swell=0.12))
+
+    # --- joints (reclined diagonal; facing left, legs extend right) ---
+    head_c=(360,298)
+    shoulder=(414,392); waist=(508,548); crotch=(572,632)
+    hip_n=(578,616); hip_f=(560,634)
+    knee_n=(764,654); ankle_n=(902,708)
+    knee_f=(736,694); ankle_f=(866,746)
+    elbowP=(366,506); wristP=(322,642)            # propping arm (weight-bearing)
+    elbowN=(492,540); handN=(616,628)             # near arm rests on the lap/thigh
+
+    # --- torso masses (the missing pelvis is now a real mass) ---
+    mass(ellipse_poly((shoulder[0]+waist[0])/2+6,(shoulder[1]+waist[1])/2,80,56,
+                      np.arctan2(waist[1]-shoulder[1],waist[0]-shoulder[0])), w=6)   # RIBCAGE egg ~1.6H
+    mass(ellipse_poly((waist[0]+crotch[0])/2,(waist[1]+crotch[1])/2,52,48,
+                      np.arctan2(crotch[1]-waist[1],crotch[0]-waist[0])), w=6)        # PELVIS ~1H (real)
+    # --- legs: thick weighted tubes (thigh ~2H, real thickness) ---
+    limb(hip_n,knee_n,30,24); limb(knee_n,ankle_n,23,16)        # near leg
+    limb((ankle_n[0],ankle_n[1]),(ankle_n[0]+34,ankle_n[1]+6),15,7)   # near foot
+    limb(hip_f,knee_f,28,22); limb(knee_f,ankle_f,21,15)        # far leg (behind/lower)
+    limb((ankle_f[0],ankle_f[1]),(ankle_f[0]+32,ankle_f[1]+6),14,7)   # far foot
+    # --- propping arm: thick enough to bear the recline ---
+    limb(shoulder,elbowP,24,20); limb(elbowP,wristP,20,15)
+    for i,dx in enumerate((-10,0,10,20)):                       # planted hand, fingers
+        S.append(dict(ctrl=[(wristP[0]+dx-6,wristP[1]+8),(wristP[0]+dx-10,wristP[1]+34)],
+                      w=4, cap_start=True, cap_end=True, swell=0.2, smoothing=0.9))
+    # --- near arm resting forward on the thigh ---
+    limb((426,406),elbowN,21,16); limb(elbowN,handN,16,11)
+    # --- head + neck (tipped back, gazing up; no face) ---
     if not hide_head:
-        S.append(dict(ctrl=[(398,378),(388,318),(356,298),(326,322),(330,358)], w=8, lead=0.10, tail=0.2, swell=0.35, smoothing=0.7))  # skull, tipped back
-        S.append(dict(ctrl=[(330,358),(340,388),(364,392),(398,384)], w=6, lead=0.16, tail=0.3, swell=0.3, phase=0.6, smoothing=0.7))   # jaw/throat (chin up)
-        S.append(dict(ctrl=[(356,298),(386,302),(398,330)], w=5, lead=0.22, tail=0.3, swell=0.5, smoothing=0.7))   # hair
-    # ===== NEAR LEG — a tube with volume (top + underside), extended forward =====
-    S.append(dict(ctrl=[(572,616),(656,634),(744,650)], w=12, lead=0.14, swell=0.3, smoothing=0.7))               # thigh top
-    S.append(dict(ctrl=[(562,650),(652,668),(736,680)], w=9, lead=0.16, tail=0.2, swell=0.3, smoothing=0.7))      # thigh underside
-    S.append(dict(ctrl=[(744,652),(812,676),(880,702)], w=10, lead=0.12, swell=0.3, smoothing=0.7))               # shin top
-    S.append(dict(ctrl=[(736,682),(806,704),(872,720)], w=8, lead=0.14, tail=0.18, swell=0.3, smoothing=0.7))     # shin underside
-    S.append(dict(ctrl=[(880,702),(910,708),(874,722)], w=7, cap_start=True, cap_end=True, swell=0.2, smoothing=0.85))  # foot
-    # ===== FAR LEG — subordinate, slightly behind and lower =====
-    S.append(dict(ctrl=[(556,634),(700,668),(848,718)], w=11, lead=0.16, tail=0.16, swell=0.32, smoothing=0.7))
-    S.append(dict(ctrl=[(848,718),(878,724),(846,736)], w=6.5, cap_start=True, cap_end=True, swell=0.2, smoothing=0.85))  # far foot
-    # ===== PROPPING ARM — bears the reclined weight: a tube to the planted hand =
-    S.append(dict(ctrl=[(404,414),(360,500),(322,612),(312,648)], w=11, lead=0.12, tail=0.10, swell=0.4, smoothing=0.72))  # upper arm -> forearm -> wrist
-    # the planted hand (fingers spread on the ground), full weight
-    S.append(dict(ctrl=[(308,648),(296,672)], w=5, cap_start=True, cap_end=True, swell=0.2, smoothing=0.9))
-    S.append(dict(ctrl=[(316,652),(308,684)], w=4, cap_start=True, cap_end=True, swell=0.2, smoothing=0.9))
-    S.append(dict(ctrl=[(326,650),(324,684)], w=4, cap_start=True, cap_end=True, swell=0.2, smoothing=0.9))
-    S.append(dict(ctrl=[(336,646),(342,680)], w=4, cap_start=True, cap_end=True, swell=0.2, smoothing=0.9))
-    # ===== NEAR ARM — rests forward onto the lap/thigh (a tube, welds to the hand)
-    S.append(dict(ctrl=[(418,428),(476,544),(556,604)], w=10, lead=0.12, tail=0.08, swell=0.36, smoothing=0.72))
-    # ===== seat / ground contact under the hips (weight) =====
-    S.append(dict(ctrl=[(540,668),(606,674),(548,670)], w=6, cap_start=True, cap_end=True, swell=0.2, smoothing=0.85))
+        limb(shoulder,(388,352),18,16)                          # neck
+        mass(ellipse_poly(head_c[0],head_c[1],42,50,-0.18), w=6) # head
+        S.append(dict(ctrl=[(340,266),(372,262),(392,286)], w=4.5, lead=0.2, tail=0.3, swell=0.5, smoothing=0.7))  # hair
+    # --- the line of action drawn through the back (keeps it alive) ---
+    S.append(dict(ctrl=[(404,372),(452,470),(520,560),(576,628)], w=7, lead=0.1, tail=0.16, swell=0.4, smoothing=0.72))
     return S, []
 
 if __name__ == "__main__":
-    S,_ = reclined_body(hide_head=False)
+    S,_ = reclined_body(False)
     render(S, [], W, H, render_on_linen=True,  seed=4).save(f"{OUT}/stage3_body_linen.png")
     render(S, [], W, H, render_on_linen=False, seed=4).save(f"{OUT}/stage3_body_bare.png")
-    Sh,_ = reclined_body(hide_head=True)
+    Sh,_ = reclined_body(True)
     render(Sh, [], W, H, render_on_linen=False, seed=4).save(f"{OUT}/stage3_body_headless.png")
     print("done")
