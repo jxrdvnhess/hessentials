@@ -73,7 +73,8 @@ notan built on negative space, and narrative panels.
 | `line_figure.py` | **confident-line** figures — charcoal-weight tapered strokes (`stroke`, `render`); proven on a single figure and a two-figure embrace. The register the brand is aimed at: economical, made, restrained |
 | `construction.py` | **Stage 1 — construction & space.** A pinhole `Camera` (one ground plane / horizon / VP); forms built as 3D solids (`cuboid`) and projected through one camera so a figure and a doorway share one room. Kills the floating arch. |
 | `gesture.py` | **Stage 2 — gesture & line of action.** A pose hung on one dominant line-of-action curve so the figure reads alive and specific, not a stacked armature. Gate: the 3-word-name test + `render_gesture(headless=True)` (the body carries the attitude head-covered). |
-| `figure_construction.py` | **Stage 3 — figure construction.** The reclined-gazing-up gesture built into a believable body (Loomis masses): torso volume, real lap/back, limbs as weighted tubes, a propping arm — no sticks, no tangles — that stays alive head-covered (`reclined_body(hide_head=True)`). |
+| `figure_construction.py` | **Stage 3 — figure construction.** The reclined-gazing-up gesture built into a believable body (Loomis masses): torso volume, real lap/back, limbs as weighted tubes, a propping arm — no sticks, no tangles — that stays alive head-covered (`reclined_body(hide_head=True)`). Believable-gate: proportion-in-heads / name-the-masses / squint human-not-insect. |
+| `value_light.py` | **Stage 4 — value & light.** The built body in the lit room under one warm raking light: light = bare linen, shadow = a few big soft warm masses on the form. Gates: light reads (direction+warmth) / no mud-no wedge / body survives head-covered. |
 
 ### The course (building the illustrator from the foundation, in causal order)
 
