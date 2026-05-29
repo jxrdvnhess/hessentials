@@ -71,6 +71,17 @@ notan built on negative space, and narrative panels.
 | `scribble.py` | **scratch-tone** portrait (`scribble_portrait`) — value field rendered as massed short strokes |
 | `scene.py` | **scene** translation (`scene_scratch`, `scene_notan`) — re-draws an owned photo as scratch-tone / notan on linen; strokes follow the forms |
 | `line_figure.py` | **confident-line** figures — charcoal-weight tapered strokes (`stroke`, `render`); proven on a single figure and a two-figure embrace. The register the brand is aimed at: economical, made, restrained |
+| `construction.py` | **Stage 1 — construction & space.** A pinhole `Camera` (one ground plane / horizon / VP); forms built as 3D solids (`cuboid`) and projected through one camera so a figure and a doorway share one room. Kills the floating arch. |
+| `gesture.py` | **Stage 2 — gesture & line of action.** A pose hung on one dominant line-of-action curve so the figure reads alive and specific, not a stacked armature. Self-check `render_pose(hide_head=True)`: the body must carry the attitude with the head removed. |
+
+### The course (building the illustrator from the foundation, in causal order)
+
+Each stage is a fundamental encoded as a procedure + a self-check, banked here as
+it passes. 1 construction & space (`construction.py`) → 2 gesture / line of
+action (`line_figure.py`) → 3 figure construction (Loomis masses) → 4 value &
+light (restraint: light = bare linen, shadow = few soft masses, never mud) → 5
+composition & master copies. Graduation: take one source and return a composed,
+lit, alive, *made* illustration that holds the charge and breaks no doctrine.
 
 ### The line register (current direction)
 

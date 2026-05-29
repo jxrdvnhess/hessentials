@@ -47,13 +47,15 @@ def stroke(draw, ctrl, w, lead=0.10, tail=0.16, swell=0.35, swell_k=1.3,
             tt = np.linspace(0, d[-1], len(P))
             lin = np.stack([np.interp(tt,d,cp[:,0]), np.interp(tt,d,cp[:,1])],1)
             P = smoothing*P + (1-smoothing)*lin   # blend toward the direct gesture
-    # densify so SHORT strokes (e.g. fingers from 2 control points) still fill
-    # the whole length instead of stamping only their endpoints as two dots
-    if len(P) < 24:
-        dd = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P,axis=0),axis=1))]
-        if dd[-1] > 0:
-            tt = np.linspace(0, dd[-1], 40)
-            P = np.stack([np.interp(tt,dd,P[:,0]), np.interp(tt,dd,P[:,1])], 1)
+    # resample to ~1px spacing along the WHOLE length so strokes of any length
+    # stay solid. (Short fingers were stamping only endpoints -> two dots; long
+    # thin lines were stamping too sparsely -> a dotted/stippled line. Both fixed
+    # by spacing the stamps by length, not by a fixed point count.)
+    dd = np.r_[0, np.cumsum(np.linalg.norm(np.diff(P,axis=0),axis=1))]
+    if dd[-1] > 0:
+        npts = int(min(6000, max(len(P), dd[-1]/1.1)))
+        tt = np.linspace(0, dd[-1], npts)
+        P = np.stack([np.interp(tt,dd,P[:,0]), np.interp(tt,dd,P[:,1])], 1)
     N = len(P)
     for i,(x,y) in enumerate(P):
         t = i/(N-1)
