@@ -56,8 +56,15 @@ def fill_mask(polys):
 def soft(a,r):
     return np.asarray(Image.fromarray((np.clip(a,0,1)*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(r)),float)/255.0
 
+# THREE GUARDS on changing any lock (an honest fix vs a quiet goalpost move):
+#   1. A change to the test is only honest if you would make the same change when
+#      it causes you to FAIL, not only when it lets you pass.
+#   2. The IMAGE has to move, not just the number. If only the metric changed, you
+#      fudged it.
+#   3. Your EYE is the final word over the readout. The number serves the eye,
+#      never the reverse.
 def gate_B(img, fig, sh, dim, verbose=True):
-    """The lock. Measure, don't feel."""
+    """The lock. Measure, don't feel. (See the three guards above.)"""
     lum = img.mean(2)
     figm = fig > 0.5
     lit  = figm & (sh < 0.18)
