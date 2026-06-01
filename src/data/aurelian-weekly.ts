@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Gemini settles in, and the questions stack faster than the replies.",
+    "The light is near its peak, and the year is near its midpoint.",
   paragraphs: [
-    "This week sits in Gemini's middle. Last week was the threshold. This week is the inhabit. Light stays past dinner. The garden is past announcement — it's growing past the trellis. Summer's first audible signal is a month out and already in the air. The questions that opened in early May are still open. The new ones keep arriving. The week is the one where the inbox of half-answered things stops being a metaphor.",
+    "June opens with the light near its ceiling. The days still lengthen, but barely — near the solstice the gain narrows to minutes. Gemini is in its last stretch. The solstice is three weeks out. And the year is closing on its midpoint. The month flips and the arithmetic arrives uninvited: the plans made in January are now being judged by a season January couldn't see.",
 
-    "The pattern is the gap between intake and reply. Gemini gathers fast. Answering is slower. Asking takes seconds. The right answer takes a walk. The tension is between the appetite for new threads and the obligation behind the ones already pulled. New conversations are easier than the conclusion of an old one. The week is when the asymmetry shows up at full size.",
+    "The pattern is the pace assumed against the pace kept. January planned as if the year hadn't started. June says it has. The tension runs between the calendar, which advances at a fixed rate, and the private sense that the real beginning is still ahead. Effort continues at the spring rate. The returns have quietly flattened. The input keeps coming after it has stopped moving the number.",
 
-    "It looks like a text thread that branched into three. A friend who proposed a trip and is waiting on a date. A draft opened twice and written into once. A summer calendar with five soft yeses and no hard ones. A garden grown enough to need thinning, not watering. None of these are crises. Each is owed a paragraph that has not been written.",
+    "It looks like a list in January's handwriting, half its items still open. A project labeled \"this year\" that assumed more runway than the calendar gave. A trip deferred to \"when summer starts,\" and summer has started. A goal held at the effort that worked in April, returning less each week. None of it is failure. Each is a plan meeting the season it actually landed in.",
 
-    "The watch point is the instinct to ask a fifth thing before the third is answered. New questions feel like progress. They are not. Recognition shows up in small refusals — the tab closed without replying, the draft saved instead of sent, the calendar invite read and left unaccepted. Reply is the actual work this week. The mouth has been open. Now the ear closes around what was already said.",
+    "The watch point is the move to call June the real start — the year reset to begin now, the clock pushed back to zero. It feels like a fresh page. It is the same page, later. Recognition shows up in small reckonings — the list reread instead of rewritten, the deferred thing pulled forward a week, the plan adjusted to June instead of defended from January. The year does not restart. It asks to be met where it is.",
   ],
   excerpt:
-    "Asking takes seconds. The right answer takes a walk.",
+    "It feels like a fresh page. It is the same page, later.",
 } as const;
 
 /* -----------------------------------------------------------------
