@@ -17,7 +17,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 OUT="/sessions/nifty-keen-cerf/mnt/hessentials/illustration/loomis"
-W,H,SS=920,1160,2
+W,H,SS=920,1300,2
 PAPER=(237,232,223); INK=(44,44,58); FAINT=(171,168,161); LABEL=(96,94,90)
 CREASE=math.radians(54); FOC=380.0
 
@@ -181,13 +181,13 @@ def raster_head(faces_src,cx,cy,sc,yaw,pitch,roll=0,foc=FOC,deform=None,minp=28,
 BROODER=dict(cran_h=0.90,cran_w=1.08,cran_back=1.16,face_h=0.97,jaw_w=1.16,jaw_h=0.84,
              brow=1.8,nose_len=1.0,nose_proj=1.02,cheek=1.10,brow_fwd=30,chin_recede=20)
 FB=make_faces(BROODER)
-G=gravity(LEAN=1.05,SAG=0.85,ASYM=1.1)
+G=gravity(LEAN=0.62,SAG=0.62,ASYM=1.55)
 
-# big head — dropped forward under its own weight, mass settling to one side
-raster_head(FB, 462*SS,500*SS, 2.05*SS, yaw=-30,pitch=-28,roll=17, deform=G, minp=28, silw=2)
+# big head — bowed and SETTLED to one side (still a head, not a boulder)
+raster_head(FB, 460*SS,470*SS, 1.78*SS, yaw=-32,pitch=-13,roll=15, deform=G, minp=20, silw=2)
 # the lesson, small: TILTED (geometry only) vs LEANING (mass settled)
-raster_head(FB, 250*SS,930*SS, 0.86*SS, yaw=-30,pitch=-28,roll=17, deform=None, minp=22, silw=1)
-raster_head(FB, 650*SS,930*SS, 0.86*SS, yaw=-30,pitch=-28,roll=17, deform=G,    minp=22, silw=1)
+raster_head(FB, 250*SS,1035*SS, 0.66*SS, yaw=-32,pitch=-13,roll=15, deform=None, minp=16, silw=1)
+raster_head(FB, 650*SS,1035*SS, 0.66*SS, yaw=-32,pitch=-13,roll=15, deform=G,    minp=16, silw=1)
 
 img=Image.fromarray(np.clip(CANVAS,0,255).astype(np.uint8)); D=ImageDraw.Draw(img)
 def font(px,bold=False):
@@ -199,10 +199,10 @@ def caps(s): return ' '.join(s.upper())
 D.text((46*SS,40*SS),'THE BROODER  ·  WEIGHT BEFORE FEATURE',fill=INK,font=F_TTL)
 D.text((46*SS,74*SS),caps('heavy before a single feature — silhouette, tilt, mass, proportion'),fill=LABEL,font=F_CAP)
 D.line([(46*SS,100*SS),(874*SS,100*SS)],fill=FAINT,width=max(1,int(1*SS)))
-D.text((300*SS,800*SS),caps('the head tilts'),fill=LABEL,font=F_SM)
-D.text((600*SS,800*SS),caps('the mass leans'),fill=LABEL,font=F_SM)
-D.line([(46*SS,1024*SS),(874*SS,1024*SS)],fill=FAINT,width=max(1,int(1*SS)))
-D.text((46*SS,1040*SS),'forward brow, receding chin, the weight settling to one side — heavy before he is anyone.',
+D.text((212*SS,876*SS),caps('the head tilts'),fill=LABEL,font=F_SM)
+D.text((612*SS,876*SS),caps('the mass leans'),fill=LABEL,font=F_SM)
+D.line([(46*SS,1190*SS),(874*SS,1190*SS)],fill=FAINT,width=max(1,int(1*SS)))
+D.text((46*SS,1208*SS),'forward brow, receding chin, the weight settling to one side — heavy before he is anyone.',
        fill=LABEL,font=F_IT)
 out=img.resize((W,H),Image.LANCZOS); os.makedirs(OUT,exist_ok=True)
 out.save(f'{OUT}/the_brooder.png'); print('done',out.size)
