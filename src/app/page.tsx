@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import RightNow from "../components/RightNow";
 import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
-import MemorialDayModule from "../components/MemorialDayModule";
 import NewsletterSignup from "../components/NewsletterSignup";
 import UnderRenovation from "../components/UnderRenovation";
 
@@ -36,7 +35,13 @@ export const revalidate = 3600;
  *
  * Kept, unchanged: the hero (H1 + subhead + "Less to decide. More
  * that works." + Aurelian This Week panel), the CURRENTLY pillar
- * previews, the inline newsletter, the Memorial Day featured moment.
+ * previews, the inline newsletter.
+ *
+ * Featured moment slot (2026-06-07): Memorial Day archived off the
+ * homepage now that the holiday has passed. Its replacement, the
+ * "Half revealed." Practice piece, is built (HalfRevealedModule +
+ * /half-revealed) but held out of the homepage until its made image
+ * lands — see the gated slot comment below.
  *
  * Atmosphere now comes from spacing, typography, pacing, and
  * restraint — not from a hero or background image carrying the
@@ -53,8 +58,7 @@ export const revalidate = 3600;
  *     no longer referenced.
  */
 
-const GAP_HERO = "4vh"; // Hero → Memorial Day — fold cue spacing
-const GAP_FOOTER = "96px"; // Memorial Day → SiteFooter — preserved from prior arc closer
+const GAP_FOOTER = "96px"; // featured moment → SiteFooter — preserved from prior arc closer
 
 export default function HomePage() {
   return (
@@ -134,17 +138,24 @@ export default function HomePage() {
       </section>
 
       {/*
-        Memorial Day featured moment.
+        Featured moment slot — currently empty (gated).
 
-        Sits in the slot the archived Mother's Day module previously
-        occupied. Followed by the "Under renovation" placeholder graphic
-        below, which carries the 96px breathing room into the SiteFooter
-        (the bottom margin that used to live on this wrapper moved with
-        the closer that took its place).
+        Memorial Day has passed and its module was archived off the
+        homepage (the component and the /memorial-day article page remain
+        in the repo per the Mother's Day convention; the direct link
+        stands). Its replacement, the "Half revealed." midyear Practice
+        piece, is built and ready in src/components/HalfRevealedModule.tsx
+        and lives at /half-revealed, but per the publish brief the block
+        must not go live with a placeholder image. It stays out of the
+        homepage until /public/half-revealed.jpg (a made dusk-interior
+        painting per image-brief-half-revealed.md) lands.
+
+        TO REINSTATE once the image is in /public/half-revealed.jpg:
+          import HalfRevealedModule from "../components/HalfRevealedModule";
+          <div style={{ marginTop: "4vh" }}>
+            <HalfRevealedModule />
+          </div>
       */}
-      <div style={{ marginTop: GAP_HERO }}>
-        <MemorialDayModule />
-      </div>
 
       {/*
         "Under renovation" placeholder graphic — hand-drawn scaffolding +
