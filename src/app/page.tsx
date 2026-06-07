@@ -72,8 +72,20 @@ export default function HomePage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
       <div className="mx-auto max-w-[1180px] px-6 sm:px-10 md:px-14">
+        {/* ===== MASTHEAD LOCKUP — homepage only =====
+            The wordmark lives in the global header above; here the tagline +
+            drawn rule complete the cover masthead, so the homepage reads as
+            the front of the current issue. Interior pages keep just the clean
+            global bar and go straight into content. */}
+        <div className="pt-6 md:pt-8">
+          <p className="font-serif text-[clamp(1rem,1.6vw,1.25rem)] italic leading-none text-[#1f1d1b]/60">
+            Life, edited well.
+          </p>
+        </div>
+        <HandRule className="mt-5 md:mt-6" />
+
         {/* ============ THE COVER ============ */}
-        <section className="relative grid grid-cols-1 items-center gap-y-8 pt-8 pb-12 md:grid-cols-12 md:gap-y-0 md:pt-12 md:pb-16">
+        <section className="relative grid grid-cols-1 items-center gap-y-8 pt-9 pb-12 md:grid-cols-12 md:gap-y-0 md:pt-12 md:pb-16">
           <Link
             href="/half-revealed"
             aria-label="Read the essay — Half revealed."
@@ -148,7 +160,7 @@ export default function HomePage() {
         <HandRule />
 
         {/* ============ CLOSING WHISPER ============ */}
-        <div className="flex items-end justify-between gap-8 py-9">
+        <div className="flex flex-col items-start gap-3 py-9 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
           <p className="max-w-[34rem] font-serif text-[clamp(0.95rem,1.4vw,1.15rem)] italic leading-[1.45] text-[#1f1d1b]/55">
             The year isn&rsquo;t half over. It&rsquo;s half revealed.
           </p>
