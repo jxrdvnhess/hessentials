@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import RightNow from "../components/RightNow";
 import Symbol from "../components/Symbol";
 import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
+import HalfRevealedModule from "../components/HalfRevealedModule";
 import NewsletterSignup from "../components/NewsletterSignup";
 import UnderRenovation from "../components/UnderRenovation";
 
@@ -38,10 +39,10 @@ export const revalidate = 3600;
  * previews, the inline newsletter.
  *
  * Featured moment slot (2026-06-07): Memorial Day archived off the
- * homepage now that the holiday has passed. Its replacement, the
- * "Half revealed." Practice piece, is built (HalfRevealedModule +
- * /half-revealed) but held out of the homepage until its made image
- * lands — see the gated slot comment below.
+ * homepage now that the holiday has passed. Replaced by the
+ * "Half revealed." midyear Practice piece (HalfRevealedModule +
+ * /half-revealed), now live with its made image at
+ * /public/half-revealed.jpg.
  *
  * Atmosphere now comes from spacing, typography, pacing, and
  * restraint — not from a hero or background image carrying the
@@ -138,24 +139,17 @@ export default function HomePage() {
       </section>
 
       {/*
-        Featured moment slot — currently empty (gated).
+        Featured moment — "Half revealed." midyear Practice piece.
 
-        Memorial Day has passed and its module was archived off the
-        homepage (the component and the /memorial-day article page remain
-        in the repo per the Mother's Day convention; the direct link
-        stands). Its replacement, the "Half revealed." midyear Practice
-        piece, is built and ready in src/components/HalfRevealedModule.tsx
-        and lives at /half-revealed, but per the publish brief the block
-        must not go live with a placeholder image. It stays out of the
-        homepage until /public/half-revealed.jpg (a made dusk-interior
-        painting per image-brief-half-revealed.md) lands.
-
-        TO REINSTATE once the image is in /public/half-revealed.jpg:
-          import HalfRevealedModule from "../components/HalfRevealedModule";
-          <div style={{ marginTop: "4vh" }}>
-            <HalfRevealedModule />
-          </div>
+        Sits in the slot Memorial Day (and Mother's Day before it)
+        occupied. Memorial Day was archived off the homepage; its
+        component and the /memorial-day article page remain in the repo
+        per the Mother's Day convention (direct link stands). The made
+        dusk-interior drawing lives at /public/half-revealed.jpg.
       */}
+      <div style={{ marginTop: "4vh" }}>
+        <HalfRevealedModule />
+      </div>
 
       {/*
         "Under renovation" placeholder graphic — hand-drawn scaffolding +
