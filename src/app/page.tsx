@@ -1,166 +1,159 @@
+import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import RightNow from "../components/RightNow";
-import Symbol from "../components/Symbol";
-import AurelianThisWeekPanel from "../components/AurelianThisWeekPanel";
-import HalfRevealedModule from "../components/HalfRevealedModule";
-import NewsletterSignup from "../components/NewsletterSignup";
-import UnderRenovation from "../components/UnderRenovation";
+import { getCurrentReading } from "../data/aurelian-weekly";
 
 export const metadata: Metadata = {
   title: "Hessentials",
   description:
-    "Food, home, and style for people who want better defaults, not more options. Recipes, rooms, and small upgrades worth the time.",
-  alternates: {
-    canonical: "/",
-  },
+    "A curated editorial home for choosing well. One issue at a time — food, home, style, and the conditions underneath a considered life.",
+  alternates: { canonical: "/" },
 };
 
 /**
- * Revalidate hourly so the Aurelian This Week panel's auto-computed
- * date range (`May 4–10, 2026`) rolls over within an hour of Monday
- * morning without requiring a redeploy. Editorial copy still rolls
- * with a push — see src/data/aurelian-weekly.ts.
+ * Revalidate hourly so the Aurelian This Week band's auto-computed date
+ * range rolls over within an hour of Monday morning without a redeploy.
  */
 export const revalidate = 3600;
 
 /**
- * Homepage — Version Next (2026-05-27).
+ * Homepage — the cover model (2026-06-07).
  *
- * Subtractive edit per the Homepage Version Next brief. The cinematic
- * Mérida photo arc (Image 01/02/03 + the Practice statement teaser
- * that carried "What was real, stayed.") came off — AI-photorealistic
- * imagery violates the brand doctrine: Hessentials does not
- * counterfeit human experience. The page now moves from the
- * Memorial Day featured moment directly into the clean cream
- * SiteFooter (also de-Mérida'd in the same brief).
+ * The homepage is the current issue's COVER (doctrine Amendment II). Two
+ * layers: the permanent masthead (the global SiteHeader) and the monthly
+ * cover (one cover illustration + cover story). The standards stay; the
+ * selections change.
  *
- * Kept, unchanged: the hero (H1 + subhead + "Less to decide. More
- * that works." + Aurelian This Week panel), the CURRENTLY pillar
- * previews, the inline newsletter.
+ * Direction (locked): D + C — evidence-only made drawing, no figure,
+ * embedded into the page on the same sheet as the type (edges feathered
+ * into the cream); the page composition carries the weight, never a hero
+ * banner. Illustration craft keeps improving over time; the system does
+ * not wait for it.
  *
- * Featured moment slot (2026-06-07): Memorial Day archived off the
- * homepage now that the holiday has passed. Replaced by the
- * "Half revealed." midyear Practice piece (HalfRevealedModule +
- * /half-revealed), now live with its made image at
- * /public/half-revealed.jpg.
+ * Aurelian — This Week gets its own prominent band: the covers, essays,
+ * and recipes rotate, but Aurelian returns weekly, so it's the strongest
+ * recurring relationship on the site and reads as one.
  *
- * Atmosphere now comes from spacing, typography, pacing, and
- * restraint — not from a hero or background image carrying the
- * weight. This is version one of an accumulation, not the final
- * system; "continuity" and "the final system" are explicitly out of
- * scope at this stage.
+ * Deferred (brand-system phase, intentionally not in this launch):
+ *   - Masthead restyle (tagline "Life, edited well." + drawn rule into
+ *     the global SiteHeader), the page frame, and retiring RightNow's
+ *     scroll-reveal. Tracked for the next pass.
  *
- * Prior architecture documented for the next iteration:
- *   - The Cinematic component was inline in this file and is
- *     removed with the sections that used it.
- *   - HomePracticeTeaser and ImagePoemLine remain in the codebase
- *     as orphaned components — not deleted per scope-strict rule.
- *   - merida-moment-*.jpg assets remain in /public/home/ but are
- *     no longer referenced.
+ * June issue cover: /public/cover-june-final.jpg. Swap the const below to
+ * change the cover; everything else is content, not structure.
  */
 
-const GAP_FOOTER = "96px"; // featured moment → SiteFooter — preserved from prior arc closer
+const COVER = "/cover-june-final.jpg";
+
+// Locked treatment: broad, embedded, edges dissolved into the page.
+const FEATHER_STRONG: React.CSSProperties = {
+  WebkitMaskImage: "radial-gradient(112% 122% at 54% 48%, #000 50%, rgba(0,0,0,0) 95%)",
+  maskImage: "radial-gradient(112% 122% at 54% 48%, #000 50%, rgba(0,0,0,0) 95%)",
+};
+
+const CURRENTLY = [
+  ["In the Kitchen", "Early summer suppers.", "/recipes"],
+  ["At Home", "Open windows. Edited rooms.", "/living"],
+  ["On the Table", "Simple settings that last.", "/style"],
+  ["In Practice", "Thoughts for the season.", "/practice"],
+] as const;
+
+function HandRule({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 1200 8" preserveAspectRatio="none" className={`block h-[7px] w-full ${className}`} aria-hidden>
+      <path d="M0 4 Q 150 2.2 300 4 T 600 4 T 900 4 T 1200 4" fill="none" stroke="#1f1d1b" strokeOpacity="0.3" strokeWidth="1" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 export default function HomePage() {
+  const { range, headline, excerpt } = getCurrentReading();
+
   return (
     <main className="relative z-10 text-[#1f1d1b]">
-      {/* ---------- Hero — H1 left, Aurelian This Week panel right (md+).
-          §1.2 — min-h compressed to 42vh with items-end so the H1 sits
-          near the bottom and CURRENTLY enters the viewport at ~30–40%
-          of its height (first cut of a film, not a portrait).
-          §1.3 — Aurelian This Week panel anchors the right side on md+;
-          on mobile, the original "If you're new, start here / Aurelian"
-          CTA cluster returns to the left column. */}
-      <section className="relative flex min-h-0 items-start px-6 pt-14 pb-4 sm:px-10 md:min-h-[88vh] md:items-end md:pt-24 md:px-16">
-        <div className="fade-up delay-3 max-w-[520px]">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.28em] text-[#1f1d1b]/55 sm:text-[12px] md:mb-10">
-            Hessentials
+      <div className="mx-auto max-w-[1180px] px-6 sm:px-10 md:px-14">
+        {/* ============ THE COVER ============ */}
+        <section className="relative grid grid-cols-1 items-center gap-y-8 pt-8 pb-12 md:grid-cols-12 md:gap-y-0 md:pt-12 md:pb-16">
+          <Link
+            href="/half-revealed"
+            aria-label="Read the essay — Half revealed."
+            className="group order-2 md:order-none md:col-start-3 md:col-end-13 md:row-start-1"
+          >
+            <Image
+              src={COVER}
+              alt=""
+              width={1024}
+              height={1536}
+              priority
+              style={FEATHER_STRONG}
+              className="mx-auto h-auto w-[74%] max-w-[340px] transition-opacity duration-500 ease-out group-hover:opacity-90 md:ml-auto md:mr-0 md:w-full md:max-w-[820px]"
+            />
+          </Link>
+          <div className="relative z-10 order-1 md:order-none md:col-start-1 md:col-end-8 md:row-start-1">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">June 2026</p>
+            <h1 className="mt-6 font-serif text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.95] tracking-[-0.015em] text-[#2b1f17]">
+              Half revealed.
+            </h1>
+            <p className="text-pretty mt-7 max-w-[23rem] font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] italic leading-[1.5] text-[#1f1d1b]/70">
+              In January we are designing a house. In June we are discovering which rooms we actually live in.
+            </p>
+            <Link
+              href="/half-revealed"
+              className="group/cta mt-9 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/70 transition-colors duration-300 hover:text-[#1f1d1b]"
+            >
+              <span className="border-b border-[#1f1d1b]/30 pb-1 transition-colors duration-300 group-hover/cta:border-[#1f1d1b]/70">
+                Read the essay
+              </span>
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        </section>
+
+        <HandRule />
+
+        {/* ============ AURELIAN — THIS WEEK (the recurring relationship) ============ */}
+        <section aria-label="Aurelian — This Week" className="py-14 text-center md:py-20">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/50">Aurelian — This Week</p>
+          <p className="mt-3 text-[11px] uppercase tracking-[0.24em] text-[#1f1d1b]/40">{range}</p>
+          <h2 className="text-balance mx-auto mt-7 max-w-2xl font-serif text-[clamp(1.6rem,2.8vw,2.2rem)] font-normal italic leading-[1.25] text-[#2b1f17]">
+            {headline}
+          </h2>
+          <p className="mx-auto mt-5 max-w-md text-[14px] leading-[1.6] text-[#1f1d1b]/65">{excerpt}</p>
+          <Link
+            href="/aurelian"
+            className="mt-8 inline-block font-serif text-[16px] italic text-[#1f1d1b] transition-opacity duration-300 ease-out hover:opacity-70"
+          >
+            Read this week&nbsp;&nbsp;&rarr;
+          </Link>
+        </section>
+
+        <HandRule />
+
+        {/* ============ CURRENTLY ============ */}
+        <section aria-label="Currently" className="py-12 md:py-14">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">Currently</p>
+          <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-9 md:grid-cols-4">
+            {CURRENTLY.map(([label, line, href]) => (
+              <li key={label}>
+                <Link href={href} className="group block">
+                  <p className="font-serif text-[17px] leading-[1.2] text-[#2b1f17]">{label}</p>
+                  <p className="mt-2 font-serif text-[14px] italic leading-[1.4] text-[#1f1d1b]/60">{line}</p>
+                  <span className="mt-3 inline-block text-[13px] text-[#1f1d1b]/40 transition-colors duration-300 group-hover:text-[#1f1d1b]/80">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <HandRule />
+
+        {/* ============ CLOSING WHISPER ============ */}
+        <div className="flex items-end justify-between gap-8 py-9">
+          <p className="max-w-[34rem] font-serif text-[clamp(0.95rem,1.4vw,1.15rem)] italic leading-[1.45] text-[#1f1d1b]/55">
+            The year isn&rsquo;t half over. It&rsquo;s half revealed.
           </p>
-          <h1 className="font-serif text-[clamp(2.5rem,7vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-balance">
-            Life, edited well.
-          </h1>
-          <p className="text-pretty mt-5 font-serif text-[clamp(1.125rem,1.9vw,1.5rem)] italic leading-[1.45] text-[#1f1d1b]/70 md:mt-8">
-            Food, home, and style for people who want better defaults, not more options.
-          </p>
-          {/* Direct, blunt clarification. Tells the reader what they're getting. */}
-          <p className="mt-3 max-w-[420px] text-[13px] leading-[1.55] text-[#1f1d1b]/55 sm:text-[13.5px] md:mt-6">
-            Less to decide. More that works.
-          </p>
-          {/* Mobile Aurelian This Week — replaces the old "If you're
-              new, start here / Aurelian — a short reading" CTA cluster
-              so mobile visitors meet the same editorial moment desktop
-              visitors do. Same content as the desktop aside, stacked
-              under the hero copy. Tightened mt on mobile so the
-              headline sits above the fold at 390x844. */}
-          <AurelianThisWeekPanel layout="mobile-stacked" />
+          <span className="shrink-0 font-serif text-[18px] italic text-[#1f1d1b]/45">JH</span>
         </div>
-
-        {/* Aurelian This Week — desktop right-side aside (md+). */}
-        <AurelianThisWeekPanel layout="desktop-aside" />
-
-        {/* Hero asymmetry mark — quiet "h" anchoring the upper-right
-            quadrant. Hidden on md+ (the Aurelian panel now anchors that
-            zone with real content). */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute right-6 top-12 hidden opacity-25 sm:right-10 sm:block md:hidden"
-        >
-          <Symbol size="xs" />
-        </div>
-      </section>
-
-      {/*
-        Currently — pillar previews (COOKING / WEARING / REFINING /
-        SHOPPING). The highest-intent surface on the site — editorial
-        navigation into what's on rotation right now — so it reads
-        first, before the seasonal feature. Visible at every breakpoint.
-      */}
-      <section
-        aria-label="Currently"
-        className="px-6 pt-12 pb-4 sm:px-10 sm:pt-14 md:px-16 md:pt-16 md:pb-6"
-      >
-        <div className="mx-auto max-w-[480px]">
-          <RightNow variant="default" />
-        </div>
-      </section>
-
-      {/*
-        Inline newsletter — sits between Currently and the seasonal
-        feature so a mobile visitor meets the form before the seasonal
-        feature opens. The footer instance still ships; this one closes
-        the gap for visitors who never reach the close. No pop-up, no
-        sticky bar.
-      */}
-      <section
-        aria-label="Newsletter"
-        className="border-t border-[#1f1d1b]/10 px-6 py-14 sm:px-10 sm:py-16 md:px-16 md:py-20"
-      >
-        <NewsletterSignup pillar="default" source="inline" />
-      </section>
-
-      {/*
-        Featured moment — "Half revealed." midyear Practice piece.
-
-        Sits in the slot Memorial Day (and Mother's Day before it)
-        occupied. Memorial Day was archived off the homepage; its
-        component and the /memorial-day article page remain in the repo
-        per the Mother's Day convention (direct link stands). The made
-        dusk-interior drawing lives at /public/half-revealed.jpg.
-      */}
-      <div style={{ marginTop: "4vh" }}>
-        <HalfRevealedModule />
-      </div>
-
-      {/*
-        "Under renovation" placeholder graphic — hand-drawn scaffolding +
-        tools + hanging sign. Approved by Jordan, landed alongside Version
-        Next per a separate brief. Sits on the cream ground (the SVG
-        carries its own slightly warmer linen ground so it reads as a
-        contained moment, not as a section change). Symmetric 96px
-        gutters above and below before the SiteFooter takes over.
-      */}
-      <div style={{ marginTop: GAP_FOOTER, marginBottom: GAP_FOOTER }}>
-        <UnderRenovation />
       </div>
     </main>
   );
