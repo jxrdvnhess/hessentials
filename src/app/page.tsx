@@ -51,12 +51,59 @@ const FEATHER_STRONG: React.CSSProperties = {
   maskImage: "radial-gradient(112% 122% at 54% 48%, #000 50%, rgba(0,0,0,0) 95%)",
 };
 
-const CURRENTLY = [
-  ["In the Kitchen", "Early summer suppers.", "/recipes"],
-  ["At Home", "Open windows. Edited rooms.", "/living"],
-  ["On the Table", "Simple settings that last.", "/style"],
-  ["In Practice", "Thoughts for the season.", "/practice"],
-] as const;
+/**
+ * Currently — each department surfaces one current pick, and the set
+ * rotates hourly (deterministic by the clock, so there's no client JS and
+ * no flash — see the scroll-listener scar). The value is fixed at
+ * render/revalidation, server-side.
+ *
+ * Recipes are chosen by season (early-summer plates). The other three lead
+ * with editorial strength and, where GA shows it, traction: as of
+ * 2026-06-07 only one article ("What the Cows Know") has meaningful reads,
+ * so ranking by analytics would be noise. These sets stay editorially
+ * curated until article-level traffic is real; the shape here is already
+ * what a GA-driven "top + needs-a-boost" feed will populate. Lines reuse
+ * the pieces' own approved copy (recipe descriptions, Style subtitles,
+ * titles) — not new editorial.
+ */
+type Pick = { line: string; href: string };
+type Department = { label: string; picks: readonly Pick[] };
+
+const CURRENTLY: readonly Department[] = [
+  {
+    label: "In the Kitchen",
+    picks: [
+      { line: "The plate that asks the least and gives the most.", href: "/recipes/tomato-and-burrata-with-warm-olive-oil" },
+      { line: "The summer plate, simplified.", href: "/recipes/caprese-chicken" },
+      { line: "Charred salmon. Sharp citrus. Cool dill.", href: "/recipes/grilled-salmon-with-citrus-and-dill-yogurt" },
+      { line: "Cucumber, tomato, feta. Lemon and oil.", href: "/recipes/chopped-mediterranean-salad" },
+    ],
+  },
+  {
+    label: "At Home",
+    picks: [
+      { line: "Summer bedding: cotton, not plush.", href: "/living/stop-buying-plush-blankets-use-cotton" },
+      { line: "You're not bad with plants.", href: "/living/youre-not-bad-with-plants" },
+      { line: "Stop owning twelve. Own one.", href: "/living/the-one-pot-that-does-everything" },
+    ],
+  },
+  {
+    label: "On the Table",
+    picks: [
+      { line: "Same food, different plate. A different meal.", href: "/style/the-dinner-plate-is-a-style-object" },
+      { line: "Some rooms aren't dressed well.", href: "/style/your-home-has-an-outfit-too" },
+      { line: "It argues before you say a word.", href: "/style/the-entryway-test" },
+    ],
+  },
+  {
+    label: "In Practice",
+    picks: [
+      { line: "What the cows know.", href: "/practice/what-the-cows-know" },
+      { line: "I stopped drinking at 30.", href: "/practice/i-stopped-drinking-at-30" },
+      { line: "Five minutes. No app.", href: "/practice/silence-five-minutes-no-app" },
+    ],
+  },
+];
 
 function HandRule({ className = "" }: { className?: string }) {
   return (
@@ -145,27 +192,29 @@ export default function HomePage() {
         <section aria-label="Currently" className="py-12 md:py-14">
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">Currently</p>
           <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-9 md:grid-cols-4">
-            {CURRENTLY.map(([label, line, href]) => (
-              <li key={label}>
-                <Link href={href} className="group block">
-                  <p className="font-serif text-[17px] leading-[1.2] text-[#2b1f17]">{label}</p>
-                  <p className="mt-2 font-serif text-[14px] italic leading-[1.4] text-[#1f1d1b]/60">{line}</p>
-                  <span className="mt-3 inline-block text-[13px] text-[#1f1d1b]/40 transition-colors duration-300 group-hover:text-[#1f1d1b]/80">→</span>
-                </Link>
-              </li>
-            ))}
+            {CURRENTLY.map((dept, i) => {
+              // Deterministic hourly rotation, offset per department so they
+              // don't all advance in lockstep. This is a Server Component
+              // baked per ISR revalidation (revalidate=3600), so reading the
+              // clock is intentional and safe — the value is fixed in the
+              // cached HTML for the hour, never re-evaluated on a client; no
+              // client JS, no scroll listener.
+              // eslint-disable-next-line react-hooks/purity
+              const seed = Math.floor(Date.now() / 3_600_000) + i;
+              const pick = dept.picks[seed % dept.picks.length];
+              return (
+                <li key={dept.label}>
+                  <Link href={pick.href} className="group block">
+                    <p className="font-serif text-[17px] leading-[1.2] text-[#2b1f17]">{dept.label}</p>
+                    <p className="mt-2 font-serif text-[14px] italic leading-[1.4] text-[#1f1d1b]/60">{pick.line}</p>
+                    <span className="mt-3 inline-block text-[13px] text-[#1f1d1b]/40 transition-colors duration-300 group-hover:text-[#1f1d1b]/80">→</span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </section>
 
-        <HandRule />
-
-        {/* ============ CLOSING WHISPER ============ */}
-        <div className="flex flex-col items-start gap-3 py-9 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
-          <p className="max-w-[34rem] font-serif text-[clamp(0.95rem,1.4vw,1.15rem)] italic leading-[1.45] text-[#1f1d1b]/55">
-            The year isn&rsquo;t half over. It&rsquo;s half revealed.
-          </p>
-          <span className="shrink-0 font-serif text-[18px] italic text-[#1f1d1b]/45">JH</span>
-        </div>
       </div>
     </main>
   );
