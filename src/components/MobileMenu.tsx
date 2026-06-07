@@ -54,7 +54,7 @@ export default function MobileMenu({ links }: Props) {
         aria-expanded={open}
         aria-controls="site-mobile-menu"
         onClick={() => setOpen(true)}
-        className="text-[10.5px] uppercase tracking-[0.26em] text-[#1f1d1b]/65 transition-colors duration-300 ease-out hover:text-[#1f1d1b] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1f1d1b]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f6f3] md:hidden"
+        className="-m-2.5 inline-flex cursor-pointer touch-manipulation select-none items-center p-2.5 text-[10.5px] uppercase tracking-[0.26em] text-[#1f1d1b]/65 transition-colors duration-300 ease-out hover:text-[#1f1d1b] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1f1d1b]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f8f6f3] md:hidden"
       >
         Menu
       </button>

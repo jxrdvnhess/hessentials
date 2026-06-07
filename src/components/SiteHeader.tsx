@@ -85,7 +85,7 @@ export default function SiteHeader() {
         }}
       />
 
-      <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-6 py-2.5 sm:px-10 sm:py-3 md:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] items-center justify-between gap-6 px-6 py-2.5 sm:px-10 sm:py-3 md:px-16">
         {/* Homepage nod gesture (initial load only): nav + search fade
             in first, then a 250ms beat, then the wordmark fades into
             its masthead position. The eye lands on whatever arrives
