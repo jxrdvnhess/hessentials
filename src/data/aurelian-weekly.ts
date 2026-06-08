@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "The light is near its peak, and the year is near its midpoint.",
+    "Late spring keeps opening doors faster than the week can close them.",
   paragraphs: [
-    "June opens with the light near its ceiling. The days still lengthen, but barely — near the solstice the gain narrows to minutes. Gemini is in its last stretch. The solstice is three weeks out. And the year is closing on its midpoint. The month flips and the arithmetic arrives uninvited: the plans made in January are now being judged by a season January couldn't see.",
+    "Mid-June, and the year is at full leaf. Gemini holds the week, the solstice still two weeks out, the evenings now long enough to lose track of. Late spring does not conserve. It multiplies — the garden putting out more than any hand can keep up with, the calendar filling faster than it empties. Everything is in motion at once. Nothing has been asked to choose yet.",
 
-    "The pattern is the pace assumed against the pace kept. January planned as if the year hadn't started. June says it has. The tension runs between the calendar, which advances at a fixed rate, and the private sense that the real beginning is still ahead. Effort continues at the spring rate. The returns have quietly flattened. The input keeps coming after it has stopped moving the number.",
+    "The pattern is breadth against depth. The appetite for the next thing runs ahead of the patience for the current one. Gemini's instinct is to open — another tab, another plan, another conversation half-begun — and the week rewards the opening more than the closing. Starting is cheap right now. Finishing is not. The two pull in opposite directions, and the new one usually wins.",
 
-    "It looks like a list in January's handwriting, half its items still open. A project labeled \"this year\" that assumed more runway than the calendar gave. A trip deferred to \"when summer starts,\" and summer has started. A goal held at the effort that worked in April, returning less each week. None of it is failure. Each is a plan meeting the season it actually landed in.",
+    "It looks like six things begun and none carried through. A reading list growing faster than it shrinks. A project set down the moment it got difficult, replaced by a fresher one that hasn't gone hard yet. Three group threads alive at once, each owed a reply. The desk holds more open loops on Friday than it did on Monday. None of this is laziness. It is the season's surplus, untended.",
 
-    "The watch point is the move to call June the real start — the year reset to begin now, the clock pushed back to zero. It feels like a fresh page. It is the same page, later. Recognition shows up in small reckonings — the list reread instead of rewritten, the deferred thing pulled forward a week, the plan adjusted to June instead of defended from January. The year does not restart. It asks to be met where it is.",
+    "The watch point is the move to read motion as progress — the fifth thing opened because the fourth got hard, the new start standing in for the finish that stalled. It feels like momentum. It is mostly width. Recognition shows up small — the tab closed instead of multiplied, the hard thing returned to rather than swapped out, the one loop chosen over the ten. The week does not need more begun. It needs something finished.",
   ],
   excerpt:
-    "It feels like a fresh page. It is the same page, later.",
+    "Starting is cheap right now. Finishing is not.",
 } as const;
 
 /* -----------------------------------------------------------------
