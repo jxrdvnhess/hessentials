@@ -52,7 +52,8 @@ export default function HalfRevealedArticle() {
         <Body>
           <P>
             By June the light stays late, and it fills the house
-            differently than it did in winter. The windows are open.
+            differently than it did in winter. The blinds are open at
+            eight and the light is still there.
             Something in the garden has grown past the point you planned
             for. You walk through the rooms near dusk, not looking for
             anything in particular, and you see them as they are.
