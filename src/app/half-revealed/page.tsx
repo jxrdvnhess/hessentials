@@ -87,9 +87,8 @@ export default function HalfRevealedArticle() {
           <P>
             Some things survived without your protection. A route your
             feet learned before you decided to walk it. A cup that
-            migrated to the same spot every morning and stayed. A song you
-            did not so much choose as fail to skip, a hundred mornings
-            running. And a conversation that returns to you at odd hours,
+            migrated to the same spot every morning and stayed. And a
+            conversation that returns to you at odd hours,
             still unfinished, that you did not plan to keep and cannot put
             down. You never defended any of these. They earned the house
             by being used, which is the only test that holds.
@@ -104,8 +103,12 @@ export default function HalfRevealedArticle() {
             June is honest about the difference.
           </P>
           <P>
-            And some things fit once and no longer do. A door you keep
-            opening out of habit into a room you have already left. A fear
+            And some things fit once and no longer do. A song you had on
+            repeat every morning, until the lyrics started giving back the
+            start of the year, and now you skip it before the first line.
+            The song hasn&rsquo;t changed. What it carries has. A door you
+            keep opening out of habit into a room you have already left. A
+            fear
             that felt load-bearing in January and turns out to have been
             holding nothing up. Growth is seldom the addition you
             pictured. More often it is a subtraction you notice only when
