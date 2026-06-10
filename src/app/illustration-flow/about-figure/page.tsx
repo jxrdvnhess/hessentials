@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import AboutEssay from "../../../components/AboutEssay";
+import Mock from "./Mock";
 
 export const metadata: Metadata = {
   title: "About — still figure mock",
@@ -10,42 +10,35 @@ export const metadata: Metadata = {
 /**
  * PREVIEW MOCK — not linked in nav, noindex. Live /about untouched.
  *
- * About, version next: no backdrop image. The page sits on the site's
- * own plaster ground like every other page. The essay reads on the
- * left; on the right, THE MAN stands — a made line drawing, back
- * turned, clothed, still (illustration/about_figure.py). He is present
- * while the text runs. No mirror, no motion, no interaction; the
- * column is CSS sticky so he simply stays, the way a person stands in
- * a room you're reading in.
+ * Baseline: the figure alone on the site's plaster ground. The three
+ * environment studies (Jordan's art direction, 2026-06-10 — evidence,
+ * not possessions) sit at /a, /b, /c:
  *
- * Mobile: the figure steps aside entirely; the essay reads alone.
+ *   A — the shelf: three objects, one gap.
+ *   B — the window: light falling, nothing else.
+ *   C — the comparison: two near-identical vessels, one forward.
  *
- * If adopted, this replaces the about-room backdrop at /about.
+ * If adopted, the chosen version replaces the about-room backdrop.
  */
 export default function AboutFigureMock() {
   return (
-    <main className="relative z-10 text-[#1f1d1b]">
-      <section
-        aria-label="About Hessentials — still figure mock"
-        className="mx-auto w-full max-w-6xl px-7 sm:px-10 md:grid md:grid-cols-[minmax(0,53%)_minmax(0,1fr)] md:gap-x-[5vw]"
+    <>
+      <nav
+        aria-label="Variants"
+        className="fixed left-1/2 top-4 z-50 -translate-x-1/2 rounded-full bg-[#f8f6f3]/85 px-5 py-2 text-[10px] uppercase tracking-[0.26em] text-[#1f1d1b]/55 backdrop-blur-sm"
       >
-        <div className="pb-[35vh] pt-[26vh]">
-          <AboutEssay variant="inline" />
-        </div>
-
-        <div aria-hidden className="hidden md:block">
-          <div className="sticky top-0 flex h-screen items-end justify-center pb-[7vh]">
-            <Image
-              src="/about/the-man-about.png"
-              alt=""
-              width={560}
-              height={1560}
-              priority
-              className="h-[76vh] w-auto opacity-90"
-            />
-          </div>
-        </div>
-      </section>
-    </main>
+        <span className="mr-4">Figure</span>
+        <Link href="/illustration-flow/about-figure/a" className="mr-4 hover:text-[#1f1d1b]">
+          A · Shelf
+        </Link>
+        <Link href="/illustration-flow/about-figure/b" className="mr-4 hover:text-[#1f1d1b]">
+          B · Window
+        </Link>
+        <Link href="/illustration-flow/about-figure/c" className="hover:text-[#1f1d1b]">
+          C · Comparison
+        </Link>
+      </nav>
+      <Mock src="/about/the-man-about.png" width={560} height={1560} />
+    </>
   );
 }
