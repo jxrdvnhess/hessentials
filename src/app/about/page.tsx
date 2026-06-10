@@ -11,84 +11,61 @@ export const metadata: Metadata = {
 };
 
 /**
- * About — sticky-backdrop hero.
+ * About — the essay, inside a room after a decision.
  *
- *   merida_moment_5.jpg becomes a full-bleed sticky backdrop. The
- *   essay scrolls over the image; the image stays pinned for the
- *   duration of the essay, then releases and the page continues into
- *   the global SiteFooter unchanged.
+ *   The backdrop (illustration/about_room.py) is a made graphite drawing of a
+ *   wall in raking light where a picture once hung: the un-faded rectangle the
+ *   frame protected, the nail still above it, the room's light falling past.
+ *   Observed, not symbolized — nothing announces itself; meaning accumulates.
  *
- *   Pattern: relative section → absolute child fills it and contains
- *   the sticky h-screen image → relative-positioned essay column drives
- *   section height via top/bottom padding.
+ *   The wall pins (sticky) while the essay scrolls through the open light on
+ *   the left, so the reader reads from inside the room. Dark ink on the lit
+ *   wall; a faint cream wash lifts the type off the graphite shading. The
+ *   essay is a worked proof — a discerning reader's residue on the words
+ *   (circle, underline, margin rule; see AboutEssay).
  *
- *   Padding math:
- *     pt-[50vh]   — first line sits ~halfway up the viewport at scroll
- *                   0, landing on the wall portion of the image so the
- *                   user sees it immediately and knows to scroll
- *     pb-[100vh]  — sticky releases at the same scroll position the
- *                   last line exits the top (clean release, no dead
- *                   pinned-image runway after the essay)
- *
- *   Mobile (2026-04-30 unification): same sticky pattern as desktop.
- *   The earlier mobile-stacked variant was reconsidered — with
- *   object-left so the wall area dominates the portrait crop, a
- *   uniform vertical scrim for legibility, and the existing cream +
- *   text-shadow on AboutEssay's overlay variant, the editorial weight
- *   (image present through the whole read, signature on the image)
- *   carries to mobile.
+ *   Earlier directions — the photoreal hacienda, the made-drawing backdrop,
+ *   and the name-as-wallpaper studies — are all retired. The page is a place,
+ *   not a brand mark.
  */
 export default function AboutPage() {
   return (
     <main className="relative z-10 text-[#1f1d1b]">
       <section aria-label="About Hessentials" className="relative w-full">
-        {/* Background layer — fills the entire section. The sticky
-            child inside it pins to the viewport top while this layer
-            (i.e., the section) is in view. Once the section's bottom
-            scrolls past the viewport top, the sticky releases. */}
         <div className="absolute inset-0">
           <div className="sticky top-0 h-screen w-full overflow-hidden">
             <Image
-              src="/about/merida-moment-5.jpg"
+              src="/about/about-room.jpg"
               alt=""
               fill
               sizes="100vw"
-              quality={95}
+              quality={92}
               priority
-              className="object-cover object-left md:object-center"
+              className="object-cover object-center"
             />
-            {/* MOBILE scrim — uniform vertical darken across the full
-                photograph so cream type reads cleanly anywhere in the
-                column on a portrait crop. Subtle so the wall still
-                carries. */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 md:hidden"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgba(20,18,16,0.40) 0%, rgba(20,18,16,0.32) 50%, rgba(20,18,16,0.45) 100%)",
-              }}
-            />
-            {/* DESKTOP scrim — left-side gradient. Holds cream type
-                against the wall; transparent on the right (table side
-                stays photographically clean). */}
+            {/* Soft cream wash over the reading (left) side — lifts dark ink
+                off the wall's graphite shading without darkening the room. */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 hidden md:block"
               style={{
                 background:
-                  "linear-gradient(to right, rgba(20,18,16,0.32) 0%, rgba(20,18,16,0.18) 22%, rgba(20,18,16,0) 55%)",
+                  "linear-gradient(to right, rgba(244,240,232,0.84) 0%, rgba(244,240,232,0.52) 32%, rgba(244,240,232,0.12) 50%, rgba(244,240,232,0) 60%)",
+              }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 md:hidden"
+              style={{
+                background:
+                  "linear-gradient(to bottom, rgba(244,240,232,0.86) 0%, rgba(244,240,232,0.62) 46%, rgba(244,240,232,0.86) 100%)",
               }}
             />
           </div>
         </div>
 
-        {/* Foreground — text column. Drives the section's height via
-            top/bottom padding so the sticky has scroll runway. Mobile
-            uses the full column width with page padding; desktop
-            constrains to the left half of the viewport. */}
-        <div className="relative z-10 px-6 pt-[50vh] pb-[100vh] sm:px-8 md:max-w-[50vw] md:pl-[8vw] md:pr-[2vw]">
-          <AboutEssay variant="overlay" />
+        <div className="relative z-10 px-7 pb-[90vh] pt-[30vh] sm:px-10 md:max-w-[47vw] md:pl-[7vw] md:pr-[2vw]">
+          <AboutEssay variant="inline" />
         </div>
       </section>
     </main>

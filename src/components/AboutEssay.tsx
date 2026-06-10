@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 type Variant = "overlay" | "inline";
 
@@ -15,6 +15,71 @@ type AboutEssayProps = {
    */
   variant: Variant;
 };
+
+/**
+ * Editing residue — the page marking itself.
+ *
+ * Not illustration. The real-world marks a discerning reader leaves on a
+ * page: a rule in the margin beside the line that matters, a word circled,
+ * a phrase underlined. Graphite over the printed ink, so it reads as
+ * annotation on a worked proof — evidence of judgment, observed, not a
+ * concept of judgment, invented. Kept faint and slightly uneven on purpose.
+ */
+const GRAPHITE = "rgba(58,52,47,0.5)";
+
+function MarginRule() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 6 100"
+      preserveAspectRatio="none"
+      className="pointer-events-none absolute -left-4 top-1 h-[calc(100%-0.5rem)] w-[6px] sm:-left-6"
+      style={{ color: GRAPHITE }}
+    >
+      <path d="M3 1 Q1.4 24 3 49 T2.6 99" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function CircleWord({ children }: { children: ReactNode }) {
+  return (
+    <span className="relative inline-block">
+      {children}
+      <svg
+        aria-hidden
+        viewBox="0 0 200 80"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[1.95em] w-[122%] -translate-x-1/2 -translate-y-1/2"
+        style={{ color: GRAPHITE }}
+      >
+        <path
+          d="M44 13 C13 16 5 41 27 59 C58 75 150 73 183 53 C199 43 195 16 148 9 C106 3 62 8 38 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function Underline({ children }: { children: ReactNode }) {
+  return (
+    <span className="relative inline-block whitespace-nowrap">
+      {children}
+      <svg
+        aria-hidden
+        viewBox="0 0 200 10"
+        preserveAspectRatio="none"
+        className="pointer-events-none absolute -bottom-[0.22em] left-0 h-[6px] w-full"
+        style={{ color: GRAPHITE }}
+      >
+        <path d="M2 6 Q52 2.5 100 5 T198 4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      </svg>
+    </span>
+  );
+}
 
 /**
  * About — personal essay (Master Update Brief §4 + 2026-04-29 sticky
@@ -141,7 +206,8 @@ export default function AboutEssay({ variant }: AboutEssayProps) {
 
         <p className="mt-5">
           Most editorial brands lean on personality or trends or aesthetic
-          moods. I wanted to build one that leaned on discernment itself.
+          moods. I wanted to build one that leaned on{" "}
+          <CircleWord>discernment</CircleWord> itself.
         </p>
 
         <p className="mt-5">So this is Hessentials.</p>
@@ -150,10 +216,12 @@ export default function AboutEssay({ variant }: AboutEssayProps) {
           A curated editorial home for choosing well. Food, home, style,
           practice. The small decisions that hold up &mdash; what to cook,
           what to keep, what to buy, what to ignore. Not trends. Not
-          algorithms. Not a performance of taste. Only what proves itself.
+          algorithms. Not a performance of taste. Only what{" "}
+          <Underline>proves itself</Underline>.
         </p>
 
-        <p className="mt-5">
+        <p className="relative mt-5">
+          <MarginRule />
           Every piece passes one test before it gets in: does it refuse a
           false binary and occupy a third stance with standards. If it
           does, it stays. If it doesn&rsquo;t, it doesn&rsquo;t.
