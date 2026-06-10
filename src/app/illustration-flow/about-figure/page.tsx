@@ -34,8 +34,11 @@ export default function AboutFigureMock() {
         <Link href="/illustration-flow/about-figure/b" className="mr-4 hover:text-[#1f1d1b]">
           B · Window
         </Link>
-        <Link href="/illustration-flow/about-figure/c" className="hover:text-[#1f1d1b]">
+        <Link href="/illustration-flow/about-figure/c" className="mr-4 hover:text-[#1f1d1b]">
           C · Comparison
+        </Link>
+        <Link href="/illustration-flow/about-figure/frame" className="hover:text-[#1f1d1b]">
+          Frame
         </Link>
       </nav>
       <Mock src="/about/the-man-about.png" width={560} height={1560} />
