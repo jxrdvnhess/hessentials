@@ -103,8 +103,39 @@ def scene_c():
     return S
 
 
+# ------------------------------------------------------------ D — THE PAINTER
+def scene_d():
+    """Jordan's direction, 2026-06-11: the man mid-paint. The painted
+    side of the wall is the text's living area — the cream wash the
+    page already uses to lift the essay becomes diegetic. He is the
+    reason the words have somewhere to sit.
+
+    Evidence kept minimal: the raised arm, the roller at the wet edge,
+    the edge itself running the height of the wall. No tray, no drips,
+    no drop cloth — enough to establish the act, never the story."""
+    S = figure_strokes(FCX, left_arm="raised")
+    # the roller — frame from the fist, then a full-width cylinder
+    # against the wall (a 9-inch roller is near half his shoulder span)
+    S.append(s([(394, 180), (380, 158)], 1.4, cs=True))                   # frame/handle
+    S.append(s([(316, 138), (372, 132), (428, 136)], 2.0, swell=0.1))     # cylinder, top
+    S.append(s([(314, 158), (370, 152), (426, 156)], 2.0, swell=0.1))     # cylinder, bottom
+    S.append(s([(316, 138), (314, 158)], 1.3, cs=True, ce=True))          # end cap
+    S.append(s([(428, 136), (426, 156)], 1.3, cs=True, ce=True))          # end cap
+    # the wet edge — the boundary of what he has painted, full height,
+    # alive, slightly wandering. Everything left of it is done; the
+    # essay lives there.
+    S.append(s([(374, 60), (377, 280), (371, 560), (376, 840),
+                (372, 1080), (374, 1230)], 1.3, lead=0.04, tail=0.3,
+               swell=0.06, cs=True))
+    # one recent pass, not yet cut in — fades both ends
+    S.append(s([(350, 184), (354, 446)], 0.6, lead=0.3, tail=0.35,
+               swell=0.03))
+    return S
+
+
 if __name__ == "__main__":
-    for name, build in (("a", scene_a), ("b", scene_b), ("c", scene_c)):
+    for name, build in (("a", scene_a), ("b", scene_b), ("c", scene_c),
+                        ("d", scene_d)):
         fa = render_strokes(build(), W, H)
         save_paper(fa, os.path.join(SAMPLES, f"about_scene_{name}_paper.png"))
         save_web(fa, os.path.join(WEB, f"the-man-scene-{name}.png"))

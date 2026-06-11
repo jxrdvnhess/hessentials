@@ -32,9 +32,13 @@ INK = np.array([31, 29, 27], float)  # #1f1d1b
 FIG_TOP, FIG_BOTTOM = 60, 1504
 
 
-def figure_strokes(cx):
+def figure_strokes(cx, left_arm="down"):
     """THE MAN's stroke list, placed at horizontal center `cx`.
-    Reused by about_scenes.py to stand him inside an environment."""
+    Reused by about_scenes.py to stand him inside an environment.
+
+    left_arm: "down" (canonical, default) or "raised" — reaching up-left,
+    mid-task (scene D, the painter). The canonical figure is untouched
+    when the default is used."""
     S = []
     def a(ctrl, w, lead=0.14, tail=0.2, swell=0.22, sm=0.6, cs=False, ce=False):
         S.append(dict(ctrl=ctrl, w=w, lead=lead, tail=tail, swell=swell,
@@ -58,12 +62,25 @@ def figure_strokes(cx):
 
     # ---- SHIRT — collar from behind bows up; sleeves; V-taper; tilted hem ----
     a([(cx-34, 240), (cx-2, 232), (cx+35, 242)], 1.4)                  # collar band (back arc)
-    # left arm (hangs close)
-    a([(cx-150, 306), (cx-172, 346), (cx-180, 432), (cx-172, 524),
-       (cx-161, 618), (cx-153, 696), (cx-149, 742)], 2.8, swell=0.2)   # outer sleeve
-    a([(cx-124, 362), (cx-136, 454), (cx-141, 548), (cx-144, 648),
-       (cx-146, 734)], 2.0, lead=0.22, swell=0.16)                      # inner sleeve
-    a([(cx-166, 736), (cx-149, 741)], 1.1, cs=True, ce=True)           # cuff
+    if left_arm == "down":
+        # left arm (hangs close)
+        a([(cx-150, 306), (cx-172, 346), (cx-180, 432), (cx-172, 524),
+           (cx-161, 618), (cx-153, 696), (cx-149, 742)], 2.8, swell=0.2)   # outer sleeve
+        a([(cx-124, 362), (cx-136, 454), (cx-141, 548), (cx-144, 648),
+           (cx-146, 734)], 2.0, lead=0.22, swell=0.16)                      # inner sleeve
+        a([(cx-166, 736), (cx-149, 741)], 1.1, cs=True, ce=True)           # cuff
+    else:
+        # left arm raised — reaching up-left to the work, mid-task.
+        # A soft elbow bend; the two sleeve lines stay clearly apart so
+        # the arm keeps its width all the way to the wrist.
+        a([(cx-150, 306), (cx-202, 276), (cx-244, 240), (cx-270, 218)],
+          2.8, swell=0.2)                                                   # outer sleeve
+        a([(cx-124, 362), (cx-174, 326), (cx-222, 288), (cx-246, 262)],
+          2.0, lead=0.22, swell=0.16)                                       # inner sleeve
+        a([(cx-272, 220), (cx-250, 258)], 1.1, cs=True, ce=True)            # cuff
+        # the shirt pulls with the reach — one diagonal fold
+        a([(cx-118, 470), (cx-136, 398), (cx-146, 356)], 0.9, lead=0.25,
+          tail=0.3, swell=0.08)
     # right arm (carries a few degrees away from the body)
     a([(cx+148, 316), (cx+175, 356), (cx+187, 442), (cx+184, 534),
        (cx+177, 630), (cx+169, 704), (cx+165, 748)], 2.8, swell=0.2)
@@ -81,8 +98,14 @@ def figure_strokes(cx):
       swell=0.08)                                                       # one quiet back fold
 
     # ---- HANDS — compact, blunt-bottomed, no taper to a point ----
-    a([(cx-149, 742), (cx-155, 770), (cx-152, 796), (cx-143, 806),
-       (cx-134, 800), (cx-132, 778)], 1.6, swell=0.1)
+    if left_arm == "down":
+        a([(cx-149, 742), (cx-155, 770), (cx-152, 796), (cx-143, 806),
+           (cx-134, 800), (cx-132, 778)], 1.6, swell=0.1)
+    else:
+        # raised hand — a compact fist around the handle, real mass
+        a([(cx-270, 218), (cx-290, 210), (cx-298, 192), (cx-290, 174),
+           (cx-272, 172), (cx-262, 186)], 1.7, swell=0.1)
+        a([(cx-288, 198), (cx-272, 194)], 0.9, swell=0.06)                  # knuckle line
     a([(cx+165, 748), (cx+171, 778), (cx+167, 804), (cx+157, 813),
        (cx+148, 806), (cx+147, 784)], 1.6, swell=0.1)
 
