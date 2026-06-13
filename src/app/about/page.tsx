@@ -11,22 +11,29 @@ export const metadata: Metadata = {
 };
 
 /**
- * About — the essay, inside a room after a decision.
+ * About — the essay on the painted side of the wall (2026-06-11).
  *
- *   The backdrop (illustration/about_room.py) is a made graphite drawing of a
- *   wall in raking light where a picture once hung: the un-faded rectangle the
- *   frame protected, the nail still above it, the room's light falling past.
- *   Observed, not symbolized — nothing announces itself; meaning accumulates.
+ *   The backdrop (illustration/about_wall_page.py) is a made drawing of
+ *   THE MAN halfway through painting a tall wall in the brand's first
+ *   admitted color (clay). The painted side is the essay's living
+ *   area — the wash that used to lift the type off the backdrop is now
+ *   diegetic: he is the reason the words have somewhere to sit. The
+ *   working evidence (roller on its pole, the unfinished strip, the
+ *   tray and open can at his feet) stays right of the reading column,
+ *   at body height and below; the settled field stays calm where the
+ *   reading happens. Cooperative, not quiet.
  *
- *   The wall pins (sticky) while the essay scrolls through the open light on
- *   the left, so the reader reads from inside the room. Dark ink on the lit
- *   wall; a faint cream wash lifts the type off the graphite shading. The
- *   essay is a worked proof — a discerning reader's residue on the words
- *   (circle, underline, margin rule; see AboutEssay).
+ *   The wall pins (sticky) while the essay scrolls through the settled
+ *   clay field on the left, so the reader reads from inside the room
+ *   being made. No cream scrim on desktop — the paint itself carries
+ *   the legibility.
  *
- *   Earlier directions — the photoreal hacienda, the made-drawing backdrop,
- *   and the name-as-wallpaper studies — are all retired. The page is a place,
- *   not a brand mark.
+ *   Mobile keeps the portrait study (the-man-scene-d.png) with the
+ *   vertical wash; the landscape composition needs the width to mean
+ *   anything.
+ *
+ *   Earlier directions — the photoreal hacienda, the picture-that-hung
+ *   room, the A/B/C evidence studies — are retired by this page.
  */
 export default function AboutPage() {
   return (
@@ -34,24 +41,25 @@ export default function AboutPage() {
       <section aria-label="About Hessentials" className="relative w-full">
         <div className="absolute inset-0">
           <div className="sticky top-0 h-screen w-full overflow-hidden">
+            {/* Desktop — landscape wall, composed for the reading column */}
             <Image
-              src="/about/about-room.jpg"
+              src="/about/about-wall-wide.jpg"
               alt=""
               fill
               sizes="100vw"
               quality={92}
               priority
-              className="object-cover object-center"
+              className="hidden object-cover object-center md:block"
             />
-            {/* Soft cream wash over the reading (left) side — lifts dark ink
-                off the wall's graphite shading without darkening the room. */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 hidden md:block"
-              style={{
-                background:
-                  "linear-gradient(to right, rgba(244,240,232,0.84) 0%, rgba(244,240,232,0.52) 32%, rgba(244,240,232,0.12) 50%, rgba(244,240,232,0) 60%)",
-              }}
+            {/* Mobile — portrait study; the vertical wash carries the text */}
+            <Image
+              src="/about/the-man-scene-d.png"
+              alt=""
+              fill
+              sizes="100vw"
+              quality={92}
+              priority
+              className="object-cover object-center md:hidden"
             />
             <div
               aria-hidden
@@ -64,7 +72,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="relative z-10 px-7 pb-[90vh] pt-[30vh] sm:px-10 md:max-w-[47vw] md:pl-[7vw] md:pr-[2vw]">
+        <div className="relative z-10 px-7 pb-[90vh] pt-[30vh] sm:px-10 md:max-w-[44vw] md:pl-[6vw] md:pr-[2vw]">
           <AboutEssay variant="inline" />
         </div>
       </section>
