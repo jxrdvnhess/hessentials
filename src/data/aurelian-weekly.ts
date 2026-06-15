@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Late spring keeps opening doors faster than the week can close them.",
+    "Spring's last full week ends on the longest day — the year at its height, already starting to turn.",
   paragraphs: [
-    "Mid-June, and the year is at full leaf. Gemini holds the week, the solstice still two weeks out, the evenings now long enough to lose track of. Late spring does not conserve. It multiplies — the garden putting out more than any hand can keep up with, the calendar filling faster than it empties. Everything is in motion at once. Nothing has been asked to choose yet.",
+    "This is the last full week of spring. Gemini holds it through Saturday, then Cancer takes the turn, and on Sunday the solstice marks the longest day of the year. The light is at its full height now. After this week it begins, quietly, to shorten. The year stops climbing here. Nothing announces it. The day simply reaches as far as it will reach, and starts back.",
 
-    "The pattern is breadth against depth. The appetite for the next thing runs ahead of the patience for the current one. Gemini's instinct is to open — another tab, another plan, another conversation half-begun — and the week rewards the opening more than the closing. Starting is cheap right now. Finishing is not. The two pull in opposite directions, and the new one usually wins.",
+    "The pattern is the outward reach running past the inward turn. Gemini still wants the wider circle — the open evening, the new room, the next conversation half-begun. But the appetite underneath has already started to face the other way, toward the smaller table and the door closed earlier. The schedule keeps expanding. The wanting has begun to contract. They are moving in opposite directions now.",
 
-    "It looks like six things begun and none carried through. A reading list growing faster than it shrinks. A project set down the moment it got difficult, replaced by a fresher one that hasn't gone hard yet. Three group threads alive at once, each owed a reply. The desk holds more open loops on Friday than it did on Monday. None of this is laziness. It is the season's surplus, untended.",
+    "It looks like a yes given to the late gathering and a quiet relief when it ends early. The long evening accepted, then spent half-watching the window. A preference forming for the porch over the party, for being home before the light goes. The calendar still reads like May. The body has started keeping a different hour. One says out. The other says in.",
 
-    "The watch point is the move to read motion as progress — the fifth thing opened because the fourth got hard, the new start standing in for the finish that stalled. It feels like momentum. It is mostly width. Recognition shows up small — the tab closed instead of multiplied, the hard thing returned to rather than swapped out, the one loop chosen over the ten. The week does not need more begun. It needs something finished.",
+    "The watch point is the move to read the peak as a plateau — to treat the longest day as a place to stay rather than the hinge it is. It feels like arrival. It is mostly the top of the arc. Recognition shows up small — the first evening noticed getting shorter, the in chosen over the out, the smaller circle kept without apology. The light has already started its turn. This is the week to turn with it.",
   ],
   excerpt:
-    "Starting is cheap right now. Finishing is not.",
+    "The schedule keeps expanding. The wanting has begun to contract.",
 } as const;
 
 /* -----------------------------------------------------------------
