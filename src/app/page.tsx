@@ -98,6 +98,7 @@ const CURRENTLY: readonly Department[] = [
   {
     label: "In Practice",
     picks: [
+      { line: "What was I watching?", href: "/practice/what-was-i-watching" },
       { line: "What the cows know.", href: "/practice/what-the-cows-know" },
       { line: "I stopped drinking at 30.", href: "/practice/i-stopped-drinking-at-30" },
       { line: "Five minutes. No app.", href: "/practice/silence-five-minutes-no-app" },
