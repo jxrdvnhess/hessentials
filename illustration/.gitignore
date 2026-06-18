@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Regenerable render outputs — keep source (.py/.md), not the renders.
+samples/
+**/out/
