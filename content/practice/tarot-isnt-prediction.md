@@ -9,11 +9,11 @@ byline: By Jordan Hess
 
 The wrong way to use tarot is to draw three cards and ask "will I get the job?" or "is this person right for me?" That isn't what the deck does. It can't. Nothing can.
 
-The right way to use tarot is to draw a card — sometimes one card is enough — and use the image and the traditional meaning as a structured prompt for whatever you're avoiding looking at directly.
+The right way to use tarot is to draw a card, sometimes one card is enough, and use the image and the traditional meaning as a structured prompt for whatever you're avoiding looking at directly.
 
 Tarot is a thinking tool. Specifically, it's a tool for getting around your own defenses.
 
-Here's what's actually happening in a tarot reading. You arrive with a question or a feeling that you can't quite name. You turn over a card. The card has an image and a tradition of meanings attached to it — say, the Five of Cups, which is a figure mourning over three spilled cups while two cups stand full behind him. You sit with that image. You think about what's full and what's spilled in your life right now. The card didn't tell you anything; it gave you a structure to think against. Your own answer surfaces.
+What happens in a tarot reading is simple. You arrive with a question or a feeling that you can't quite name. You turn over a card. The card has an image and a tradition of meanings attached to it, say, the Five of Cups: a figure mourning over three spilled cups while two cups stand full behind him. You sit with that image. You think about what's full and what's spilled in your life right now. The card didn't tell you anything; it gave you a structure to think against. Your own answer surfaces.
 
 Same with a good therapist's question, a good poem, a good Rorschach. The medium is irrelevant. The function is to give your own intelligence a frame to push against so that it can produce something that wouldn't have surfaced without the frame.
 
@@ -29,6 +29,6 @@ Standards.
 
 *Don't take the cards too seriously.* If you draw a card you don't like, don't redraw. But also: the card isn't a verdict. It's a prompt. You're the one doing the work.
 
-*Use a deck whose images you actually like.* The Rider-Waite is the standard for a reason — its images are traditional and rich. The wellness-aesthetic decks (pastel everything, decolonized intentions) tend to be too sanitized to do real work. Get a serious deck.
+*Use a deck whose images you actually like.* The Rider-Waite is the standard for a reason: its images are traditional and rich. The wellness-aesthetic decks (pastel everything, decolonized intentions) tend to be too sanitized to do real work. Get a serious deck.
 
-The future isn't in the cards. What's in the cards is whatever you bring to them, made slightly more visible than it would be otherwise. That's not nothing. It's actually quite a lot.
+The future isn't in the cards. What's in the cards is whatever you bring to them, made slightly more visible than it would be otherwise.

@@ -264,11 +264,12 @@ This audience builds businesses.
 
 ## TYPOGRAPHY — DASHES
 
-Em dashes (—) in body copy and eyebrows: use surrounding spaces.
+**Amendment II (June 18, 2026): em dashes are retired from body copy.** The em dash read as an AI tell across the Practice pillar — the dramatic-pause dash standing in for a comma, colon, or period. In prose, use those instead. The spaced em dash survives only as a structural separator in eyebrows and labels (PILLAR — SUBCATEGORY), never in sentences. This supersedes the prior rule below.
+
+~~Em dashes (—) in body copy and eyebrows: use surrounding spaces.~~ (Body-copy use retired — see Amendment II.)
 
 ```
-word — word
-PILLAR — SUBCATEGORY
+PILLAR — SUBCATEGORY   (eyebrow/label only)
 ```
 
 En dashes (–) in numeric and date ranges: no surrounding spaces.

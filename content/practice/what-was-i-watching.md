@@ -28,7 +28,7 @@ The easy answer is that it was entertaining. And it was. But entertainment isnâ€
 
 I have dropped shows, movies, podcasts, hobbies, and whole interests over the years. Reality television stayed. Not one show. The category. Long enough to follow me from a guest room into adulthood. Long enough that I stopped seeing it.
 
-It turns out people study this. For years. Somewhere a person defended a dissertation on why we watch strangers fall in and out of love on television. Somewhere a person with an advanced degree has spent years thinking about why we watch strangers on television. A DVR full of Housewives on one side, a peer-reviewed journal on the other.
+It turns out people study this. For years. Somewhere a person defended a dissertation on why we watch strangers fall in and out of love on television. A DVR full of Housewives on one side, a peer-reviewed journal on the other.
 
 I had assumed the answer was simple. That we watch because people are endlessly interesting. The people who looked into it found it wasnâ€™t quite that simple. And past that, the explanations stopped agreeing with each other. I came away with the question I started with, plus one mildly humbling detail. Serious people had been at this for years and come back no surer than I was.
 

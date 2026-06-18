@@ -17,19 +17,19 @@ That isn't what's happening, and the framing does more harm than good. It teache
 
 But there's something real underneath it.
 
-The actual practice: when you happen to look at a clock and it says 11:11, stop for ten seconds and answer one question — *what do I actually want right now*. Not later. Not in five years. Right now, in this hour, what would I move toward if nothing was in the way.
+The actual practice: when you happen to look at a clock and it says 11:11, stop for ten seconds and answer one question: *what do I actually want right now*. Not later. Not in five years. Right now, in this hour, what would I move toward if nothing was in the way.
 
-That's it. The number is arbitrary. The hour is arbitrary. What matters is the brief, repeated, structured pause.
+The number is arbitrary. The hour is arbitrary. What matters is the brief, repeated, structured pause.
 
-Most people go entire days without asking themselves that question. The mind is too busy responding. A small, recurring trigger — any trigger — that briefly pulls you out of response and into intention is genuinely useful.
+Most people go entire days without asking themselves that question. The mind is too busy responding. A small, recurring trigger, any trigger, that briefly pulls you out of response and into intention is useful.
 
-The reason 11:11 specifically caught on is that it's symmetrical and rare and feels meaningful. Fine. Use it. But the meaning isn't in the digits. The meaning is that you're using a coincidence as a tap on the shoulder.
+The reason 11:11 specifically caught on is that it's symmetrical and rare and feels meaningful. So use it. But the meaning isn't in the digits. The meaning is that you're using a coincidence as a tap on the shoulder.
 
 A few notes.
 
 *The wish is not a wish.* It's a sentence. *I want to call my mother today.* *I want to leave this conversation and go for a walk.* *I want to stop pretending this job is fine.* Whatever's true.
 
-*Don't tell anyone.* The moment it becomes social — *I just saw 11:11, I'm making a wish* — the practice collapses. It's private and exists between you and your honest answer.
+*Don't tell anyone.* The moment it becomes social (*I just saw 11:11, I'm making a wish*), the practice collapses. It's private and exists between you and your honest answer.
 
 *Don't track it.* The point isn't to count occurrences and feel chosen. The point is the ten seconds.
 
