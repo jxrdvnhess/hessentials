@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -37,7 +38,19 @@ export const metadata: Metadata = {
 export default function WhatGrewArticle() {
   return (
     <main className="relative z-10 min-h-screen text-[#1f1d1b]">
-      <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
+      {/* Shared July air — the essay lives in the same warm light as the cover.
+          A faint warm wash, warmer toward the foot of the page (toward the
+          closing plate). Felt, not seen; the words stay on clean paper. This is
+          the atmosphere doctrine (conditions made felt), applied to the page. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(245,233,205,0) 0%, rgba(245,233,205,0.20) 55%, rgba(240,225,195,0.5) 100%)",
+        }}
+      />
+      <article className="relative mx-auto w-full max-w-2xl px-6 py-20 sm:px-8 md:py-28">
         {/* ---------- Header ---------- */}
         <header className="mb-20 text-center md:mb-28">
           <h1 className="font-serif text-[clamp(2.25rem,5.5vw,3.75rem)] font-normal italic leading-[1.06] tracking-[-0.022em] text-balance text-[#2b1f17]">
@@ -127,10 +140,24 @@ export default function WhatGrewArticle() {
           — Jordan Hess
         </p>
 
+        {/* ---------- Closing plate — the yard, now that you've read it.
+             The cover illustration returns AFTER the words: only now does the
+             reader see that every object was evidence. Edges dissolve into the
+             page (alpha baked into the PNG); no caption, the image speaks. ---- */}
+        <figure className="mt-24 sm:mt-32">
+          <Image
+            src="/cover-july.png"
+            alt="A quiet Sonoran yard in late July: a thriving volunteer creosote and a prickly pear, and nearby a dry planting basin, a nursery stake, and a slack drip line."
+            width={1024}
+            height={1536}
+            className="mx-auto h-auto w-full max-w-2xl"
+          />
+        </figure>
+
         {/* ---------- Bottom — quiet exit ---------- */}
         <nav
           aria-label="Onward"
-          className="mx-auto mt-32 max-w-2xl text-center sm:mt-40 md:mt-48"
+          className="mx-auto mt-20 max-w-2xl text-center sm:mt-24"
         >
           <Link
             href="/"
