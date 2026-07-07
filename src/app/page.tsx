@@ -39,11 +39,11 @@ export const revalidate = 3600;
  *     the global SiteHeader), the page frame, and retiring RightNow's
  *     scroll-reveal. Tracked for the next pass.
  *
- * June issue cover: /public/cover-june-final.jpg. Swap the const below to
+ * July issue cover: /public/cover-july.jpg. Swap the const below to
  * change the cover; everything else is content, not structure.
  */
 
-const COVER = "/cover-june-final.jpg";
+const COVER = "/cover-july.jpg";
 
 // Locked treatment: broad, embedded, edges dissolved into the page.
 const FEATHER_STRONG: React.CSSProperties = {
@@ -135,8 +135,8 @@ export default function HomePage() {
         {/* ============ THE COVER ============ */}
         <section className="relative grid grid-cols-1 items-center gap-y-8 pt-9 pb-12 md:grid-cols-12 md:gap-y-0 md:pt-12 md:pb-16">
           <Link
-            href="/half-revealed"
-            aria-label="Read the essay — Half revealed."
+            href="/what-grew"
+            aria-label="Read the essay — What grew."
             className="group order-2 md:order-none md:col-start-3 md:col-end-13 md:row-start-1"
           >
             <Image
@@ -150,15 +150,15 @@ export default function HomePage() {
             />
           </Link>
           <div className="relative z-10 order-1 md:order-none md:col-start-1 md:col-end-8 md:row-start-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">June 2026</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">July 2026</p>
             <h1 className="mt-6 font-serif text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.95] tracking-[-0.015em] text-[#2b1f17]">
-              Half revealed.
+              What grew.
             </h1>
             <p className="text-pretty mt-7 max-w-[23rem] font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] italic leading-[1.5] text-[#1f1d1b]/70">
-              In January we are designing a house. In June we are discovering which rooms we actually live in.
+              In spring it was a plan on paper. By July, the conditions have answered.
             </p>
             <Link
-              href="/half-revealed"
+              href="/what-grew"
               className="group/cta mt-9 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/70 transition-colors duration-300 hover:text-[#1f1d1b]"
             >
               <span className="border-b border-[#1f1d1b]/30 pb-1 transition-colors duration-300 group-hover/cta:border-[#1f1d1b]/70">
