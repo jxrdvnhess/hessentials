@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Spring's last full week ends on the longest day — the year at its height, already starting to turn.",
+    "Half the year is gone the moment July opens, and the plans made in winter meet the person who has quietly stopped being the one who made them.",
   paragraphs: [
-    "This is the last full week of spring. Gemini holds it through Saturday, then Cancer takes the turn, and on Sunday the solstice marks the longest day of the year. The light is at its full height now. After this week it begins, quietly, to shorten. The year stops climbing here. Nothing announces it. The day simply reaches as far as it will reach, and starts back.",
+    "Half the year is behind us now. The first days of July put the calendar's midpoint in the rearview, and six months are spent whether or not they were spent the way anyone meant them to be. Cancer season is still running, tidal and domestic, the stretch of the year that keeps records and holds onto what was. Nothing on the calendar marks the crossing. The year does not announce that half of it is gone. It simply is.",
 
-    "The pattern is the outward reach running past the inward turn. Gemini still wants the wider circle — the open evening, the new room, the next conversation half-begun. But the appetite underneath has already started to face the other way, toward the smaller table and the door closed earlier. The schedule keeps expanding. The wanting has begun to contract. They are moving in opposite directions now.",
+    "The pattern is the pull between the person who made the plans and the person now holding them. Someone back in January decided what the year would be and wrote some of it down. Cancer keeps faith with that decision, loyal to the self who made it. But the self has moved. Staying true to the old plan runs against the plain evidence that the one who drew it up is no longer in the room.",
 
-    "It looks like a yes given to the late gathering and a quiet relief when it ends early. The long evening accepted, then spent half-watching the window. A preference forming for the porch over the party, for being home before the light goes. The calendar still reads like May. The body has started keeping a different hour. One says out. The other says in.",
+    "It looks like the note found again from January, half its lines already quietly abandoned. The goal still technically alive and no longer wanted, kept on out of habit. The subscription that renews each month for a version of the person who stopped opening it. The book started in February, uncreased past page forty, still on the table where it was set down. Nobody moved it.",
 
-    "The watch point is the move to read the peak as a plateau — to treat the longest day as a place to stay rather than the hinge it is. It feels like arrival. It is mostly the top of the arc. Recognition shows up small — the first evening noticed getting shorter, the in chosen over the out, the smaller circle kept without apology. The light has already started its turn. This is the week to turn with it.",
+    "The watch point is reading the dropped plan as a failure of will rather than as information about who was doing the planning. It is the apology made to a January self who cannot hear it. Recognition stays quiet. The plan named honestly as no longer wanted, and the lightness that comes right after the admission. Half the year is spent. The other half belongs to whoever is here now.",
   ],
   excerpt:
-    "The schedule keeps expanding. The wanting has begun to contract.",
+    "It is the apology made to a January self who cannot hear it.",
 } as const;
 
 /* -----------------------------------------------------------------
