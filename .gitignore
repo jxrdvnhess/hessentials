@@ -61,3 +61,6 @@ next-env.d.ts
 *.bak
 
 Personal Photos/
+
+# July cover source exports (kept locally, not in git; chosen one archived in illustration/)
+JULY 2026 Image*.png

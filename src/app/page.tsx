@@ -39,17 +39,14 @@ export const revalidate = 3600;
  *     the global SiteHeader), the page frame, and retiring RightNow's
  *     scroll-reveal. Tracked for the next pass.
  *
- * July issue cover: /public/cover-july.jpg. Swap the const below to
- * change the cover; everything else is content, not structure.
+ * July issue cover: /public/cover-july.png — a full illustration plate
+ * (observed graphite botanical yard, warm July light) whose sky dissolves into
+ * the page cream via alpha baked into the PNG, so no CSS mask is needed. Swap
+ * the const below to change the cover; everything else is content, not
+ * structure.
  */
 
-const COVER = "/cover-july.jpg";
-
-// Locked treatment: broad, embedded, edges dissolved into the page.
-const FEATHER_STRONG: React.CSSProperties = {
-  WebkitMaskImage: "radial-gradient(112% 122% at 54% 48%, #000 50%, rgba(0,0,0,0) 95%)",
-  maskImage: "radial-gradient(112% 122% at 54% 48%, #000 50%, rgba(0,0,0,0) 95%)",
-};
+const COVER = "/cover-july.png";
 
 /**
  * Currently — each department surfaces one current pick, and the set
@@ -132,12 +129,16 @@ export default function HomePage() {
         </div>
         <HandRule className="mt-5 md:mt-6" />
 
-        {/* ============ THE COVER ============ */}
-        <section className="relative grid grid-cols-1 items-center gap-y-8 pt-9 pb-12 md:grid-cols-12 md:gap-y-0 md:pt-12 md:pb-16">
+        {/* ============ THE COVER ============
+            A full illustration plate (the July issue): an observed graphite
+            desert yard whose warm sky dissolves into the page cream. The
+            masthead lockup floats in the open sky, magazine-cover style. The
+            whole plate links to the cover essay. */}
+        <section className="relative pt-4 pb-10 md:pt-6 md:pb-14">
           <Link
             href="/what-grew"
             aria-label="Read the essay — What grew."
-            className="group order-2 md:order-none md:col-start-3 md:col-end-13 md:row-start-1"
+            className="group relative mx-auto block w-full max-w-[880px]"
           >
             <Image
               src={COVER}
@@ -145,28 +146,25 @@ export default function HomePage() {
               width={1024}
               height={1536}
               priority
-              style={FEATHER_STRONG}
-              className="mx-auto h-auto w-[74%] max-w-[340px] transition-opacity duration-500 ease-out group-hover:opacity-90 md:ml-auto md:mr-0 md:w-full md:max-w-[820px]"
+              className="h-auto w-full transition-opacity duration-500 ease-out group-hover:opacity-95"
             />
-          </Link>
-          <div className="relative z-10 order-1 md:order-none md:col-start-1 md:col-end-8 md:row-start-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/45">July 2026</p>
-            <h1 className="mt-6 font-serif text-[clamp(3rem,7vw,5.5rem)] font-medium leading-[0.95] tracking-[-0.015em] text-[#2b1f17]">
-              What grew.
-            </h1>
-            <p className="text-pretty mt-7 max-w-[23rem] font-serif text-[clamp(1.125rem,1.5vw,1.35rem)] italic leading-[1.5] text-[#1f1d1b]/70">
-              In spring it was a plan on paper. By July, the conditions have answered.
-            </p>
-            <Link
-              href="/what-grew"
-              className="group/cta mt-9 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/70 transition-colors duration-300 hover:text-[#1f1d1b]"
-            >
-              <span className="border-b border-[#1f1d1b]/30 pb-1 transition-colors duration-300 group-hover/cta:border-[#1f1d1b]/70">
-                Read the essay
+            {/* the masthead lockup, set into the open sky (upper-left) */}
+            <div className="absolute inset-x-0 top-0 px-[7%] pt-[7%]">
+              <p className="text-[11px] uppercase tracking-[0.3em] text-[#1f1d1b]/50">July 2026</p>
+              <h1 className="mt-4 max-w-[7em] font-serif text-[clamp(2.5rem,6.4vw,5rem)] font-medium leading-[0.95] tracking-[-0.015em] text-[#2b1f17]">
+                What grew.
+              </h1>
+              <p className="text-pretty mt-5 max-w-[19rem] font-serif text-[clamp(1.05rem,1.5vw,1.3rem)] italic leading-[1.5] text-[#1f1d1b]/70">
+                In spring it was a plan on paper. By July, the conditions have answered.
+              </p>
+              <span className="mt-7 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-[#1f1d1b]/70 transition-colors duration-300 group-hover:text-[#1f1d1b]">
+                <span className="border-b border-[#1f1d1b]/30 pb-1 transition-colors duration-300 group-hover:border-[#1f1d1b]/70">
+                  Read the essay
+                </span>
+                <span aria-hidden>→</span>
               </span>
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </section>
 
         <HandRule />
