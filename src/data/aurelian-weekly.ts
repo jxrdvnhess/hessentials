@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Half the year is gone the moment July opens, and the plans made in winter meet the person who has quietly stopped being the one who made them.",
+    "The heat settles in for the long middle of July, and the door pulled shut against it starts doing a second job nobody named out loud.",
   paragraphs: [
-    "Half the year is behind us now. The first days of July put the calendar's midpoint in the rearview, and six months are spent whether or not they were spent the way anyone meant them to be. Cancer season is still running, tidal and domestic, the stretch of the year that keeps records and holds onto what was. Nothing on the calendar marks the crossing. The year does not announce that half of it is gone. It simply is.",
+    "Cancer season is in its last full stretch now, the water sign's inward pull running down toward the end of the month. Mid-July has stopped being an event. The heat is no longer news, only the condition each day arrives inside of. Nothing about the week is dramatic. The year has made its turn and settled, and the long flat middle of summer is simply here, holding.",
 
-    "The pattern is the pull between the person who made the plans and the person now holding them. Someone back in January decided what the year would be and wrote some of it down. Cancer keeps faith with that decision, loyal to the self who made it. But the self has moved. Staying true to the old plan runs against the plain evidence that the one who drew it up is no longer in the room.",
+    "The pattern is the difference between rest that restores and retreat that hides. Cancer turns a person inward, toward the known room and the closed door, and the turn can be either one. Restoration returns someone to the world with something back. The other kind keeps them. It wears the same clothes as rest and asks for the same quiet, and only the leaving tells them apart.",
 
-    "It looks like the note found again from January, half its lines already quietly abandoned. The goal still technically alive and no longer wanted, kept on out of habit. The subscription that renews each month for a version of the person who stopped opening it. The book started in February, uncreased past page forty, still on the table where it was set down. Nobody moved it.",
+    "It looks like the third straight afternoon indoors, called recovery. The message read and not answered, because answering means agreeing to something. The work set down until it cools, in a month that does not cool. The invitation declined for a good reason, and the good reason waiting again the next time. The room is comfortable. That was never in question.",
 
-    "The watch point is reading the dropped plan as a failure of will rather than as information about who was doing the planning. It is the apology made to a January self who cannot hear it. Recognition stays quiet. The plan named honestly as no longer wanted, and the lightness that comes right after the admission. Half the year is spent. The other half belongs to whoever is here now.",
+    "The watch point is calling the shut door rest when it has quietly become the place where no one asks anything. It is the relief when the plan falls through, and the thin flatness that arrives a beat behind it. Recognition stays quiet. The retreat named for what it is on a given day, refuge or hiding, with no verdict attached. The door still opens. It always did.",
   ],
   excerpt:
-    "It is the apology made to a January self who cannot hear it.",
+    "It wears the same clothes as rest and asks for the same quiet, and only the leaving tells them apart.",
 } as const;
 
 /* -----------------------------------------------------------------
