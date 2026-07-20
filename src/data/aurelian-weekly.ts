@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "The heat settles in for the long middle of July, and the door pulled shut against it starts doing a second job nobody named out loud.",
+    "Midweek the year crosses out of Cancer and into Leo, and the attention that ran inward all month turns and starts facing the room again.",
   paragraphs: [
-    "Cancer season is in its last full stretch now, the water sign's inward pull running down toward the end of the month. Mid-July has stopped being an event. The heat is no longer news, only the condition each day arrives inside of. Nothing about the week is dramatic. The year has made its turn and settled, and the long flat middle of summer is simply here, holding.",
+    "Cancer season closes on Wednesday, and Leo opens the day after. The water sign spent July pulling people inward, toward the known room and the shut door. Now the fire sign asks the opposite. Step back out into the light. The heat has not changed. What has changed is the direction attention wants to face, toward the room instead of away from it.",
 
-    "The pattern is the difference between rest that restores and retreat that hides. Cancer turns a person inward, toward the known room and the closed door, and the turn can be either one. Restoration returns someone to the world with something back. The other kind keeps them. It wears the same clothes as rest and asks for the same quiet, and only the leaving tells them apart.",
+    "The pattern is the difference between warmth given and warmth performed. Leo runs on being witnessed, and being witnessed is a real need, not a failing. But the same gesture can travel two ways. One warms the room and asks for nothing back. The other warms the room and watches to see who noticed. From across the table they look identical. The difference is whether the giver keeps count.",
 
-    "It looks like the third straight afternoon indoors, called recovery. The message read and not answered, because answering means agreeing to something. The work set down until it cools, in a month that does not cool. The invitation declined for a good reason, and the good reason waiting again the next time. The room is comfortable. That was never in question.",
+    "It looks like the good story told once, landed, then told again to someone who missed it. The favor done gladly and mentioned one time more than it needed to be. The photo taken of the meal before anyone lifts a fork. The generous hour that checks, afterward, whether the generosity registered anywhere. None of it is false. The warmth is real, and it only wants a receipt.",
 
-    "The watch point is calling the shut door rest when it has quietly become the place where no one asks anything. It is the relief when the plan falls through, and the thin flatness that arrives a beat behind it. Recognition stays quiet. The retreat named for what it is on a given day, refuge or hiding, with no verdict attached. The door still opens. It always did.",
+    "The watch point is the small backward glance after the warm thing is done, reading the faces for proof it counted. It is the message reread for how it will look rather than for what it says. Recognition stays quiet. The generous act named for which kind it was on the day, gift or bid, with no verdict pinned to it. The room was warmed either way.",
   ],
   excerpt:
-    "It wears the same clothes as rest and asks for the same quiet, and only the leaving tells them apart.",
+    "The warmth is real, and it only wants a receipt.",
 } as const;
 
 /* -----------------------------------------------------------------
