@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "Midweek the year crosses out of Cancer and into Leo, and the attention that ran inward all month turns and starts facing the room again.",
+    "The heat is still at its peak, but Saturday brings the first harvest, and the year quietly turns from growing things to counting what they came to.",
   paragraphs: [
-    "Cancer season closes on Wednesday, and Leo opens the day after. The water sign spent July pulling people inward, toward the known room and the shut door. Now the fire sign asks the opposite. Step back out into the light. The heat has not changed. What has changed is the direction attention wants to face, toward the room instead of away from it.",
+    "Leo season runs at full heat this week, and on Saturday the year reaches Lughnasadh, the first harvest. It is the oldest turn in the calendar. The fields still look full, but the first grain is already cut. Summer has not ended. The light is long and the afternoons are heavy. Something in the year has quietly stopped growing and started asking to be counted.",
 
-    "The pattern is the difference between warmth given and warmth performed. Leo runs on being witnessed, and being witnessed is a real need, not a failing. But the same gesture can travel two ways. One warms the room and asks for nothing back. The other warms the room and watches to see who noticed. From across the table they look identical. The difference is whether the giver keeps count.",
+    "The pattern is the difference between tending a thing and finishing it. Tending is safe. As long as the work stays open, no one has to say what it came to. The first harvest removes that shelter. It sets a ready thing in front of the grower and asks for a verdict the effort would rather keep deferring. Growing forward, or reaping what already grew. The two pull against each other.",
 
-    "It looks like the good story told once, landed, then told again to someone who missed it. The favor done gladly and mentioned one time more than it needed to be. The photo taken of the meal before anyone lifts a fork. The generous hour that checks, afterward, whether the generosity registered anywhere. None of it is false. The warmth is real, and it only wants a receipt.",
+    "It looks like the project kept almost-finished for a month, one task from done and left there. The draft revised again so it never has to be read. The garden watered well past the point where more water helps. The plan talked over a fourth time instead of started. None of it is idleness. Each is real work. It is also the work that keeps the verdict at a distance.",
 
-    "The watch point is the small backward glance after the warm thing is done, reading the faces for proof it counted. It is the message reread for how it will look rather than for what it says. Recognition stays quiet. The generous act named for which kind it was on the day, gift or bid, with no verdict pinned to it. The room was warmed either way.",
+    "The watch point is the extra pass made this week not to improve the thing but to delay the counting of it. It is the one more round that quiets the question of whether the season yielded what it was meant to. The first grain is cut whether the grower looks or not. Better to look. What grew is already what grew.",
   ],
   excerpt:
-    "The warmth is real, and it only wants a receipt.",
+    "As long as the work stays open, no one has to say what it came to.",
 } as const;
 
 /* -----------------------------------------------------------------
