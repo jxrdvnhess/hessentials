@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "The heat is still at its peak, but Saturday brings the first harvest, and the year quietly turns from growing things to counting what they came to.",
+    "The dog days close this week and the heat does not, leaving a long flat stretch the mind is quick to read as permission to hold still.",
   paragraphs: [
-    "Leo season runs at full heat this week, and on Saturday the year reaches Lughnasadh, the first harvest. It is the oldest turn in the calendar. The fields still look full, but the first grain is already cut. Summer has not ended. The light is long and the afternoons are heavy. Something in the year has quietly stopped growing and started asking to be counted.",
+    "Leo season is in its back half this week, and the dog days reach their end around Tuesday, the stretch the old calendars named for Sirius rising with the sun. The heat does not break. It holds flat and bright and long. The equinox is six weeks off. Nothing in the year is turning yet. The season sits at its widest point and stays there.",
 
-    "The pattern is the difference between tending a thing and finishing it. Tending is safe. As long as the work stays open, no one has to say what it came to. The first harvest removes that shelter. It sets a ready thing in front of the grower and asks for a verdict the effort would rather keep deferring. Growing forward, or reaping what already grew. The two pull against each other.",
+    "The pattern is the gap between resting and waiting. Rest is chosen. It knows what it is recovering from and what it means to return to. Waiting wears the same stillness and means something else. It holds because nothing has told it to move, and mid-August tells no one to move. A chosen pause and a deferred one look identical from the outside. Only one of them is honest about itself.",
 
-    "It looks like the project kept almost-finished for a month, one task from done and left there. The draft revised again so it never has to be read. The garden watered well past the point where more water helps. The plan talked over a fourth time instead of started. None of it is idleness. Each is real work. It is also the work that keeps the verdict at a distance.",
+    "It looks like the Perseids midweek, a chair dragged out past midnight to watch for something to fall. The message left on read because the heat makes everything feel like it can keep. The errand saved for when it cools. The conversation moved to a better week the calendar is not going to hand over. None of it is refusal. It is the season being read as permission.",
 
-    "The watch point is the extra pass made this week not to improve the thing but to delay the counting of it. It is the one more round that quiets the question of whether the season yielded what it was meant to. The first grain is cut whether the grower looks or not. Better to look. What grew is already what grew.",
+    "The watch point is the thing set aside until the season breaks, held this week in the quiet certainty that a break is coming to make it easier. The heat is not going to lift on its own schedule, and neither is the choice. Waiting for cooler air is a way of not deciding in the air there is. The season is not the obstacle. Move in the heat.",
   ],
   excerpt:
-    "As long as the work stays open, no one has to say what it came to.",
+    "Waiting for cooler air is a way of not deciding in the air there is.",
 } as const;
 
 /* -----------------------------------------------------------------
