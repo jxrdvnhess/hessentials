@@ -49,7 +49,7 @@ export default function PausedPage() {
         Closed for a short while.
       </p>
       <p className="mt-6 max-w-[25rem] text-[13.5px] leading-[1.8] text-[#1f1d1b]/55">
-        The site is being rebuilt. It opens again when it&rsquo;s good.
+        The site is under renovation. It opens again when it&rsquo;s good.
       </p>
     </main>
   );
