@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { Playfair_Display, Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SiteHeader from "../components/SiteHeader";
@@ -127,11 +128,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+/**
+ * TEMPORARY — remove with src/middleware.ts and src/app/paused/ when the
+ * site comes back. While the pause gate is up it rewrites every route to
+ * the /paused sign and stamps this header on the request; the sign is
+ * chrome-free, so the header, shop sub-nav and footer all sit out. This is
+ * checked server-side because a middleware rewrite is invisible to the
+ * client router — usePathname() would still report the original route.
+ *
+ * Reading headers() makes the layout dynamic, which costs nothing while
+ * every route is one cached-free placeholder. Deleting these three lines
+ * (and the `async`) restores static/ISR rendering.
+ */
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const paused = (await headers()).get("x-hs-paused") === "1";
+
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body className="text-[#1f1d1b] antialiased">
@@ -141,12 +156,14 @@ export default function RootLayout({
             second row to land cleanly under the first. The shop
             sub-nav renders null off /shop/*, leaving just the header
             stuck to the top on every other route. */}
-        <div className="sticky top-0 z-40">
-          <SiteHeader />
-          <PersistentShopMenu />
-        </div>
+        {!paused && (
+          <div className="sticky top-0 z-40">
+            <SiteHeader />
+            <PersistentShopMenu />
+          </div>
+        )}
         {children}
-        <FooterGate />
+        {!paused && <FooterGate />}
         {/* Site-wide structured data — Organization (publisher
             identity) + WebSite (with SitelinksSearchBox potentialAction
             pointed at /search). Per-page schemas (Article, Recipe,

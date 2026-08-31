@@ -22,5 +22,7 @@ export default function FooterGate() {
   if (pathname?.startsWith("/admin")) return null;
   // /curtain-test is a chrome-free atmospheric prototype — no footer.
   if (pathname === "/curtain-test") return null;
+  // /paused is the closed-storefront sign — no footer. (Remove with the pause.)
+  if (pathname === "/paused") return null;
   return <SiteFooter />;
 }

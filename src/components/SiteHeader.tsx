@@ -61,6 +61,10 @@ export default function SiteHeader() {
 
   // /curtain-test is a chrome-free atmospheric prototype — no header.
   if (pathname === "/curtain-test") return null;
+  // /paused is the closed-storefront sign — no header. (The gate in
+  // src/middleware.ts already suppresses chrome for rewritten routes;
+  // this covers a direct visit to /paused. Remove with the pause.)
+  if (pathname === "/paused") return null;
 
   return (
     <header aria-label="Site" className="relative z-40 w-full">
