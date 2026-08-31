@@ -47,18 +47,18 @@ export type AurelianWeeklyReading = {
  */
 const CURRENT_READING_COPY = {
   headline:
-    "The heat is still at its peak, but Saturday brings the first harvest, and the year quietly turns from growing things to counting what they came to.",
+    "Nothing in the year has stopped, and September still gets treated as a second January.",
   paragraphs: [
-    "Leo season runs at full heat this week, and on Saturday the year reaches Lughnasadh, the first harvest. It is the oldest turn in the calendar. The fields still look full, but the first grain is already cut. Summer has not ended. The light is long and the afternoons are heavy. Something in the year has quietly stopped growing and started asking to be counted.",
+    "The month turns Tuesday. September gets credit for the change, though the calendar is doing most of the work. The equinox is three weeks out. The week closes against a holiday weekend that has already decided summer is over. Sunset lands before eight now and the heat holds straight through it. Virgo season keeps running underneath all of it, indifferent to which page is showing.",
 
-    "The pattern is the difference between tending a thing and finishing it. Tending is safe. As long as the work stays open, no one has to say what it came to. The first harvest removes that shelter. It sets a ready thing in front of the grower and asks for a verdict the effort would rather keep deferring. Growing forward, or reaping what already grew. The two pull against each other.",
+    "The pattern is the restart against the thing already running. September invites a second January, and the invitation is easy to accept. A restart costs nothing until Wednesday. The actual work of the year has not paused once. It has been going since March, unglamorous, three-quarters done. The restart offers a clean first page. The continuing thing offers page ninety-one.",
 
-    "It looks like the project kept almost-finished for a month, one task from done and left there. The draft revised again so it never has to be read. The garden watered well past the point where more water helps. The plan talked over a fourth time instead of started. None of it is idleness. Each is real work. It is also the work that keeps the verdict at a distance.",
+    "It looks like a new notebook bought while the old one is two-thirds full. A calendar rebuilt in a different app over a weekend. Goals retyped from the January list, same order, same three still unfinished. A pantry cleared for a fall menu the weather will not support for a month. Someone sets a six o'clock alarm for Tuesday and means it.",
 
-    "The watch point is the extra pass made this week not to improve the thing but to delay the counting of it. It is the one more round that quiets the question of whether the season yielded what it was meant to. The first grain is cut whether the grower looks or not. Better to look. What grew is already what grew.",
+    "The watch point is the hour spent designing the system in a week where the task itself takes forty minutes. It reads as preparation. It feels like momentum. Nothing that was already running stops for either. The old notebook is in a drawer with the answer in it, on a page from June. The new one is blank, and the blankness is the appeal.",
   ],
   excerpt:
-    "As long as the work stays open, no one has to say what it came to.",
+    "The restart offers a clean first page. The continuing thing offers page ninety-one.",
 } as const;
 
 /* -----------------------------------------------------------------
